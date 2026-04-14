@@ -1,0 +1,16 @@
+package dev.imagio.slot.inventory.action;
+
+public enum InventoryCommandId {
+    TRANSFER_ONE,
+    TRANSFER_STACK,
+    TRANSFER_ALL_EXACT,
+    TRANSFER_ALL_VISIBLE,
+    TOGGLE_FAVORITE,
+    TOGGLE_COLLECTION_MEMBERSHIP,
+    APPLY_LOADOUT,
+    SELECT_LOADOUT,
+    DISMISS_RECENT,
+    SORT_SOURCE_LOCAL,
+    TRASH,
+    VOID
+}

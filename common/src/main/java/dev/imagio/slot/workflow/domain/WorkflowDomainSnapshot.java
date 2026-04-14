@@ -1,0 +1,51 @@
+package dev.imagio.slot.workflow.domain;
+
+import dev.imagio.slot.inventory.browse.InventoryBrowsePreferences;
+import dev.imagio.slot.inventory.browse.InventoryBrowseSessionState;
+
+public record WorkflowDomainSnapshot(
+        long nextGlobalSequence,
+        WorkflowProjection.Snapshot workflowProjection,
+        WorkflowEventStore.Snapshot workflowEvents,
+        ActivityProjection.Snapshot activityProjection,
+        InventoryActivityStore.Snapshot activityEvents,
+        InventoryBrowsePreferences browsePreferences,
+        InventoryBrowseSessionState browseSessionState
+) {
+    public WorkflowDomainSnapshot {
+        nextGlobalSequence = Math.max(1L, nextGlobalSequence);
+        workflowProjection = workflowProjection == null ? WorkflowProjection.Snapshot.empty() : workflowProjection;
+        workflowEvents = workflowEvents == null ? WorkflowEventStore.Snapshot.empty() : workflowEvents;
+        activityProjection = activityProjection == null ? ActivityProjection.Snapshot.empty() : activityProjection;
+        activityEvents = activityEvents == null ? InventoryActivityStore.Snapshot.empty() : activityEvents;
+        browsePreferences = browsePreferences == null ? InventoryBrowsePreferences.defaults() : browsePreferences;
+        browseSessionState = browseSessionState == null
+                ? InventoryBrowseSessionState.defaults(browsePreferences)
+                : browseSessionState;
+    }
+
+    public static WorkflowDomainSnapshot empty() {
+        InventoryBrowsePreferences defaults = InventoryBrowsePreferences.defaults();
+        return new WorkflowDomainSnapshot(
+                1L,
+                WorkflowProjection.Snapshot.empty(),
+                WorkflowEventStore.Snapshot.empty(),
+                ActivityProjection.Snapshot.empty(),
+                InventoryActivityStore.Snapshot.empty(),
+                defaults,
+                InventoryBrowseSessionState.defaults(defaults)
+        );
+    }
+
+    public CollectionProjection collections() {
+        return workflowProjection.collections();
+    }
+
+    public RecentView recents() {
+        return activityProjection.recents();
+    }
+
+    public ProtectionSnapshotPolicy protection() {
+        return workflowProjection.protection();
+    }
+}

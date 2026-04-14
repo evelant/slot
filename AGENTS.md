@@ -1,0 +1,5 @@
+- This mod is unreleased and experimental. Any and all code may be deleted or restructured at any time without regard for backwards compatibility or API surface change. Aim for clean and correct abstractions, do not assume existing code is necessarily correct, favor larger refactors that keep things clean over patches/hacks designed to be compatible with the current code.
+- Do _not_ keep old interfaces or fascades in place to avoid refactoring code. Always do clean implementation of the current plan/direction without leaving any old baggage. 
+- Use context7 and deepwiki mcp to review and examine related mods, documentation, minecraft and neoforge apis rather than guessing
+- There are related mods cloned into the `reference` directory -- use them for inspiration and to examine how others have approached similar problems
+- Do not make focused patches for reported bugs without exploring the wider context, root causes, and impacts. Doing that causes more bugs. Always investigate thoroughly to find a real root cause before proposing a patch for an issue.

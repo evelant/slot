@@ -1,0 +1,16 @@
+package dev.imagio.slot.workflow.domain;
+
+public enum InventoryActivityProducer {
+    ROUTER_ACTION,
+    EXTERNAL_WITHDRAWAL,
+    TOOL_OUTPUT_EXTRACTION,
+    WORLD_PICKUP,
+    CRAFTING_RESULT,
+    SMELTING_RESULT,
+    SOPHISTICATED_BACKPACK_DELTA,
+    MERCHANT_TRADE,
+    QUEST_REWARD,
+    AUTHORITY_DIFF,
+    COMPATIBILITY_API,
+    UNKNOWN_EXTERNAL
+}

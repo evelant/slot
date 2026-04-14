@@ -1,0 +1,91 @@
+plugins {
+    id 'net.neoforged.moddev'
+}
+
+base {
+    archivesName = "${mod_id}-neoforge-${minecraft_version}"
+}
+
+evaluationDependsOn(':common')
+
+sourceSets {
+    main {
+        java.srcDirs += project(':common').sourceSets.main.java.srcDirs
+        resources.srcDirs += project(':common').sourceSets.main.resources.srcDirs
+    }
+    test {
+        java.srcDirs += project(':common').sourceSets.test.java.srcDirs
+        resources.srcDirs += project(':common').sourceSets.test.resources.srcDirs
+    }
+}
+
+neoForge {
+    version = neoforge_version
+
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+
+    runs {
+        configureEach {
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
+        }
+
+        client {
+            client()
+        }
+
+        server {
+            server()
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    compileOnly "org.spongepowered:mixin:${mixin_version}"
+    compileOnly "io.github.llamalad7:mixinextras-common:${mixinextras_version}"
+    annotationProcessor "io.github.llamalad7:mixinextras-common:${mixinextras_version}"
+    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+
+    testImplementation platform("org.junit:junit-bom:${junit_version}")
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testImplementation "com.google.code.gson:gson:2.10.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+processResources {
+    def replaceProperties = [
+            version                     : project.version,
+            mod_id                      : mod_id,
+            mod_name                    : mod_name,
+            mod_license                 : mod_license,
+            mod_authors                 : mod_authors,
+            mod_description             : mod_description,
+            minecraft_version_range     : minecraft_version_range,
+            neoforge_version_range      : neoforge_version_range,
+            neoforge_loader_version_range: neoforge_loader_version_range
+    ]
+
+    inputs.properties replaceProperties
+
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand replaceProperties
+    }
+
+    filesMatching("${mod_id}.mixins.json") {
+        expand mod_id: mod_id
+    }
+
+    filesMatching("${mod_id}.neoforge.mixins.json") {
+        expand mod_id: mod_id
+    }
+}
