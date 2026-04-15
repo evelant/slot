@@ -137,6 +137,8 @@ public final class TomsStorageInventoryIntegrationProvider implements InventoryI
                                 .mapToObj(index -> new InventoryActionTarget.SourceSlotTarget(CRAFTING_INPUT_REGION + "/source", index))
                                 .toList(),
                         new InventoryActionTarget.SourceSlotTarget(CRAFTING_OUTPUT_REGION + "/source", 0),
+                        3,
+                        3,
                         true,
                         true,
                         true,
@@ -262,7 +264,13 @@ public final class TomsStorageInventoryIntegrationProvider implements InventoryI
                 }
 
                 return switch (request.kind()) {
-                    case EXTRACT -> MutationResult.success(extract(host.menu(), request.entryId(), request.identity(), request.transferMode()));
+                    case EXTRACT -> MutationResult.success(extract(
+                            host.menu(),
+                            request.entryId(),
+                            request.identity(),
+                            request.requestedCount(),
+                            request.transferMode()
+                    ));
                     case INSERT -> MutationResult.success(insert(host.menu(), request.stack()));
                     case ACTIVATE_TARGET, UNSPECIFIED -> MutationResult.blocked("unsupported_mutation", request.stack());
                 };
@@ -336,6 +344,7 @@ public final class TomsStorageInventoryIntegrationProvider implements InventoryI
             AbstractContainerMenu menu,
             String entryId,
             dev.imagio.slot.inventory.core.ItemIdentity identity,
+            int requestedCount,
             InventoryTransferMode mode
     ) {
         Object terminal = REFLECTION.terminal(menu);
@@ -346,7 +355,9 @@ public final class TomsStorageInventoryIntegrationProvider implements InventoryI
             return ItemStack.EMPTY;
         }
 
-        long amount = switch (mode) {
+        long amount = requestedCount > 0
+                ? requestedCount
+                : switch (mode) {
             case ONE -> 1L;
             case STACK, ALL -> Math.max(1, REFLECTION.actualStack(storedStack).getMaxStackSize());
         };

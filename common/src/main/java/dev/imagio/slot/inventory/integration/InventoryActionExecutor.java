@@ -9,6 +9,8 @@ import dev.imagio.slot.inventory.action.InventoryCommandReasonCode;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryTargetCanonicalizer;
 import dev.imagio.slot.inventory.core.InventoryActionPolicy;
+import dev.imagio.slot.inventory.core.InventoryBindingResolver;
+import dev.imagio.slot.inventory.core.InventoryCraftingSurfaceSupport;
 import dev.imagio.slot.inventory.core.HostInstanceKey;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
@@ -23,8 +25,11 @@ import dev.imagio.slot.workflow.domain.InventoryActivityKind;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.inventory.ClickType;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class InventoryActionExecutor {
@@ -206,6 +211,19 @@ public final class InventoryActionExecutor {
             ServerPlayer player,
             InventoryActionRequest request
     ) {
+        if (InventoryCraftingSurfaceSupport.isCraftingOutputTarget(host, request.primaryTarget())) {
+            BuiltinInventoryActionExecutor.ExecutionResult resultPickup = pickupCraftingResult(host, player, request);
+            if (resultPickup.successful()) {
+                ItemStack pickedUp = resultPickup.stackRemainder();
+                return successful(
+                        host,
+                        request,
+                        pickedUp,
+                        explicitActivityEvents(host, request, pickedUp, ItemStack.EMPTY)
+                );
+            }
+        }
+
         BuiltinInventoryActionExecutor.ExecutionResult builtin = BuiltinInventoryActionExecutor.pickup(host, player, request);
         if (builtin.successful()) {
             ItemStack pickedUp = builtin.stackRemainder();
@@ -267,7 +285,12 @@ public final class InventoryActionExecutor {
         }
         BuiltinInventoryActionExecutor.ExecutionResult builtin = BuiltinInventoryActionExecutor.quickMove(host, player, request);
         return builtin.successful()
-                ? successful(host, request, builtin.stackRemainder(), List.of())
+                ? successful(
+                host,
+                request,
+                builtin.stackRemainder(),
+                explicitActivityEvents(host, request, builtin.actionStack(), builtin.stackRemainder())
+        )
                 : blocked(host, request, builtin.diagnostics(), ItemStack.EMPTY);
     }
 
@@ -289,7 +312,7 @@ public final class InventoryActionExecutor {
 
         MutationResult result = InventoryMutationRouter.mutate(
                 host,
-                extractionRequest(host, player, sourceTarget, request.identity(), transferMode(request.kind())),
+                extractionRequest(host, player, sourceTarget, request.identity(), request.requestedCount(), transferMode(request.kind())),
                 InventoryMutationMode.valueOf(request.mode().name())
         );
         if (!result.successful() || result.stackRemainder().isEmpty()) {
@@ -315,14 +338,19 @@ public final class InventoryActionExecutor {
             return ProviderInsertion.blocked("target_is_not_provider_backed");
         }
 
+        ItemStack requestedStack = requestedInsertStack(request, stack);
+        if (requestedStack.isEmpty()) {
+            return ProviderInsertion.success(stack == null ? ItemStack.EMPTY : stack.copy());
+        }
         MutationResult result = InventoryMutationRouter.mutate(
                 host,
-                insertionRequest(host, player, target, stack),
+                insertionRequest(host, player, target, request.requestedCount(), requestedStack),
                 InventoryMutationMode.valueOf(request.mode().name())
         );
-        return result.successful()
-                ? ProviderInsertion.success(result.stackRemainder())
-                : ProviderInsertion.blocked(result.diagnostics());
+        if (!result.successful()) {
+            return ProviderInsertion.blocked(result.diagnostics());
+        }
+        return ProviderInsertion.success(mergeUnattemptedRemainder(stack, requestedStack, result.stackRemainder()));
     }
 
     private static void restoreProvider(
@@ -351,23 +379,25 @@ public final class InventoryActionExecutor {
             ServerPlayer player,
             InventoryActionTarget sourceTarget,
             dev.imagio.slot.inventory.core.ItemIdentity identity,
+            int requestedCount,
             InventoryTransferMode transferMode
     ) {
         String sourceId = InventoryAuthorityReadService.sourceId(host, sourceTarget);
         String entryId = InventoryAuthorityReadService.entryId(sourceTarget);
         if (!entryId.isBlank()) {
-            return InventoryMutationRequest.extract(host, player, sourceId, entryId, identity, transferMode);
+            return InventoryMutationRequest.extract(host, player, sourceId, entryId, requestedCount, identity, transferMode);
         }
         int slotIndex = InventoryAuthorityReadService.slotIndex(host, sourceTarget);
         return slotIndex >= 0
-                ? InventoryMutationRequest.extract(host, player, sourceId, slotIndex, identity, transferMode)
-                : InventoryMutationRequest.extract(host, player, sourceId, identity, transferMode);
+                ? InventoryMutationRequest.extract(host, player, sourceId, slotIndex, requestedCount, identity, transferMode)
+                : InventoryMutationRequest.extract(host, player, sourceId, requestedCount, identity, transferMode);
     }
 
     private static InventoryMutationRequest insertionRequest(
             InventoryHostDescriptor host,
             ServerPlayer player,
             InventoryActionTarget target,
+            int requestedCount,
             ItemStack stack
     ) {
         String sourceId = InventoryAuthorityReadService.sourceId(host, target);
@@ -377,8 +407,8 @@ public final class InventoryActionExecutor {
         }
         int slotIndex = InventoryAuthorityReadService.slotIndex(host, target);
         return slotIndex >= 0
-                ? InventoryMutationRequest.insert(host, player, sourceId, slotIndex, stack)
-                : InventoryMutationRequest.insert(host, player, sourceId, stack);
+                ? InventoryMutationRequest.insert(host, player, sourceId, slotIndex, requestedCount, stack)
+                : InventoryMutationRequest.insert(host, player, sourceId, requestedCount, stack);
     }
 
     private static InventoryMutationRequest restoreRequest(
@@ -652,6 +682,7 @@ public final class InventoryActionExecutor {
             ItemStack remainder,
             List<InventoryActivityEvent> activityEvents
     ) {
+        refreshCraftingIfNeeded(host, request);
         int requestedCount = request == null ? 0 : request.requestedCount();
         int appliedCount = requestedCount > 0
                 ? requestedCount
@@ -707,6 +738,146 @@ public final class InventoryActionExecutor {
                 remainder,
                 resolvedDiagnostics
         );
+    }
+
+    private static BuiltinInventoryActionExecutor.ExecutionResult pickupCraftingResult(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            InventoryActionRequest request
+    ) {
+        Integer menuSlotId = InventoryBindingResolver.resolveMenuSlot(host, request.primaryTarget());
+        if (host == null || player == null || request == null || host.menu() == null || menuSlotId == null || menuSlotId < 0) {
+            return BuiltinInventoryActionExecutor.ExecutionResult.blocked("crafting_result_slot_unavailable");
+        }
+        if (!MenuCursorAccess.get(host.menu()).isEmpty() && request.mode() == InventoryActionMode.EXECUTE) {
+            return BuiltinInventoryActionExecutor.ExecutionResult.blocked("pickup_requires_empty_cursor");
+        }
+        Slot slot = safeMenuSlot(host.menu(), menuSlotId);
+        if (slot == null || !slot.hasItem() || !slot.mayPickup(player)) {
+            return BuiltinInventoryActionExecutor.ExecutionResult.blocked("crafting_result_slot_unavailable");
+        }
+        ItemStack before = slot.getItem().copy();
+        if (request.mode() == InventoryActionMode.SIMULATE) {
+            return BuiltinInventoryActionExecutor.ExecutionResult.success(before.copy(), before);
+        }
+        host.menu().clicked(menuSlotId, 0, ClickType.PICKUP, player);
+        ItemStack cursorAfter = MenuCursorAccess.get(host.menu()).copy();
+        return cursorAfter.isEmpty()
+                ? BuiltinInventoryActionExecutor.ExecutionResult.blocked("crafting_result_pickup_failed")
+                : BuiltinInventoryActionExecutor.ExecutionResult.success(cursorAfter, cursorAfter);
+    }
+
+    private static ItemStack requestedInsertStack(
+            InventoryActionRequest request,
+            ItemStack stack
+    ) {
+        if (stack == null || stack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        if (request == null || request.requestedCount() <= 0 || request.requestedCount() >= stack.getCount()) {
+            return stack.copy();
+        }
+        ItemStack limited = stack.copy();
+        limited.setCount(request.requestedCount());
+        return limited;
+    }
+
+    private static ItemStack mergeUnattemptedRemainder(
+            ItemStack original,
+            ItemStack attempted,
+            ItemStack remainder
+    ) {
+        ItemStack originalStack = original == null ? ItemStack.EMPTY : original.copy();
+        ItemStack attemptedStack = attempted == null ? ItemStack.EMPTY : attempted.copy();
+        ItemStack resultRemainder = remainder == null ? ItemStack.EMPTY : remainder.copy();
+        if (originalStack.isEmpty()) {
+            return resultRemainder;
+        }
+        int unattempted = Math.max(0, originalStack.getCount() - attemptedStack.getCount());
+        if (unattempted <= 0) {
+            return resultRemainder;
+        }
+        if (resultRemainder.isEmpty()) {
+            ItemStack merged = originalStack.copy();
+            merged.setCount(unattempted);
+            return merged;
+        }
+        if (ItemStack.isSameItemSameComponents(resultRemainder, originalStack)) {
+            resultRemainder.grow(unattempted);
+            return resultRemainder;
+        }
+        return resultRemainder;
+    }
+
+    private static void refreshCraftingIfNeeded(
+            InventoryHostDescriptor host,
+            InventoryActionRequest request
+    ) {
+        if (host == null || request == null || request.mode() != InventoryActionMode.EXECUTE || host.menu() == null) {
+            return;
+        }
+        if (!shouldRefreshCrafting(request)) {
+            return;
+        }
+        InventoryCraftingSurfaceSupport.ResolvedCraftingSurface surface = InventoryCraftingSurfaceSupport.resolve(host, request.primaryTarget());
+        if (!surface.present()) {
+            surface = InventoryCraftingSurfaceSupport.resolve(host, request.secondaryTarget());
+        }
+        if (!surface.present()) {
+            return;
+        }
+
+        List<Integer> inputMenuSlots = craftingInputMenuSlots(host, surface);
+        MenuCraftingRefreshSupport.RefreshPlan refreshPlan = MenuCraftingRefreshSupport.resolve(host.menu(), inputMenuSlots);
+        if (refreshPlan.supported()) {
+            refreshPlan.refresh();
+        }
+        host.menu().broadcastChanges();
+    }
+
+    private static boolean shouldRefreshCrafting(InventoryActionRequest request) {
+        if (request == null) {
+            return false;
+        }
+        return switch (request.kind()) {
+            case TRANSFER_ONE, TRANSFER_STACK, TRANSFER_ALL, PICKUP, PLACE, QUICK_MOVE, TOOL_ACTION -> true;
+            default -> false;
+        };
+    }
+
+    private static List<Integer> craftingInputMenuSlots(
+            InventoryHostDescriptor host,
+            InventoryCraftingSurfaceSupport.ResolvedCraftingSurface surface
+    ) {
+        if (host == null || surface == null || !surface.present()) {
+            return List.of();
+        }
+        if (surface.inputRegion() != null) {
+            return host.topology().menuSlotsForToolRegion(surface.inputRegion().id());
+        }
+        ArrayList<Integer> menuSlots = new ArrayList<>();
+        for (int inputIndex = 0; inputIndex < surface.inputCount(); inputIndex++) {
+            InventoryActionTarget target = surface.inputTarget(inputIndex);
+            Integer menuSlot = InventoryBindingResolver.resolveMenuSlot(host, target);
+            if (menuSlot != null && menuSlot >= 0) {
+                menuSlots.add(menuSlot);
+            }
+        }
+        return List.copyOf(menuSlots);
+    }
+
+    private static Slot safeMenuSlot(
+            net.minecraft.world.inventory.AbstractContainerMenu menu,
+            int slotId
+    ) {
+        if (menu == null || slotId < 0) {
+            return null;
+        }
+        try {
+            return menu.getSlot(slotId);
+        } catch (RuntimeException ignored) {
+            return null;
+        }
     }
 
     private record ProviderExtraction(

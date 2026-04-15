@@ -3,6 +3,7 @@ package dev.imagio.slot.inventory.core;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 
+import java.lang.reflect.Method;
 import java.util.Set;
 
 public final class ItemIdentityMatcher {
@@ -25,11 +26,71 @@ public final class ItemIdentityMatcher {
         if (stack == null || stack.isEmpty()) {
             throw new IllegalArgumentException("stack must not be empty");
         }
-        String itemId = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
-        if (!stack.isStackable() || !stack.getComponentsPatch().isEmpty()) {
-            return ItemIdentity.exact(itemId, stack.getComponentsPatch().toString());
+        String itemId = resolveItemId(stack);
+        String components = resolveComponentFingerprint(stack);
+        if (!stackable(stack) || !components.isBlank()) {
+            return ItemIdentity.exact(itemId, components);
         }
         return ItemIdentity.of(itemId);
+    }
+
+    private static String resolveItemId(ItemStack stack) {
+        try {
+            return BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        } catch (RuntimeException | LinkageError ignored) {
+        }
+
+        String reflectedItemId = invokeStringMethod(stack, "itemId");
+        if (!reflectedItemId.isBlank()) {
+            return reflectedItemId;
+        }
+        return stack.toString();
+    }
+
+    private static boolean stackable(ItemStack stack) {
+        try {
+            return stack.isStackable();
+        } catch (RuntimeException | LinkageError ignored) {
+        }
+        try {
+            return stack.getMaxStackSize() > 1;
+        } catch (RuntimeException | LinkageError ignored) {
+        }
+        return true;
+    }
+
+    private static String resolveComponentFingerprint(ItemStack stack) {
+        try {
+            Object patch = stack.getComponentsPatch();
+            if (patch == null) {
+                return "";
+            }
+            try {
+                Method isEmpty = patch.getClass().getMethod("isEmpty");
+                Object empty = isEmpty.invoke(patch);
+                if (empty instanceof Boolean booleanValue && booleanValue) {
+                    return "";
+                }
+            } catch (ReflectiveOperationException | RuntimeException ignored) {
+            }
+            String fingerprint = patch.toString();
+            return "{}".equals(fingerprint) ? "" : fingerprint;
+        } catch (RuntimeException | LinkageError ignored) {
+        }
+        return invokeStringMethod(stack, "componentFingerprint");
+    }
+
+    private static String invokeStringMethod(ItemStack stack, String methodName) {
+        if (stack == null || methodName == null || methodName.isBlank()) {
+            return "";
+        }
+        try {
+            Method method = stack.getClass().getMethod(methodName);
+            Object value = method.invoke(stack);
+            return value instanceof String string ? string : "";
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            return "";
+        }
     }
 
     public static ItemIdentity normalizeMovable(ItemIdentity identity) {

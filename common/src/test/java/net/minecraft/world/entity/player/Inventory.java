@@ -1,11 +1,12 @@
 package net.minecraft.world.entity.player;
 
+import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inventory {
+public class Inventory implements Container {
     public final Player player;
     public final List<ItemStack> items = new ArrayList<>();
     public final List<ItemStack> armor = new ArrayList<>();

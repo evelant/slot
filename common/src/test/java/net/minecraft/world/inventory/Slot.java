@@ -1,18 +1,19 @@
 package net.minecraft.world.inventory;
 
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class Slot {
-    public final Object container;
+    public final Container container;
     private final int containerSlot;
     private ItemStack item;
 
-    public Slot(Object container, int containerSlot) {
+    public Slot(Container container, int containerSlot) {
         this(container, containerSlot, ItemStack.EMPTY);
     }
 
-    public Slot(Object container, int containerSlot, ItemStack item) {
+    public Slot(Container container, int containerSlot, ItemStack item) {
         this.container = container;
         this.containerSlot = containerSlot;
         this.item = item == null ? ItemStack.EMPTY : item;

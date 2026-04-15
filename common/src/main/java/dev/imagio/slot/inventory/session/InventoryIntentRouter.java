@@ -228,14 +228,16 @@ public final class InventoryIntentRouter {
                     trace,
                     precomputedTransferPlan
             );
+            case InventoryMutationIntent.ToolAction toolAction -> routeCraftingMutation(toolAction, trace);
+            case InventoryMutationIntent.ToolToggle toolToggle -> routeCraftingMutation(toolToggle, trace);
+            case InventoryMutationIntent.CraftingPlaceSelected craftingPlaceSelected -> routeCraftingMutation(craftingPlaceSelected, trace);
+            case InventoryMutationIntent.CraftingPlaceCursor craftingPlaceCursor -> routeCraftingMutation(craftingPlaceCursor, trace);
+            case InventoryMutationIntent.CraftingDragCursor craftingDragCursor -> routeCraftingMutation(craftingDragCursor, trace);
+            case InventoryMutationIntent.CraftingExtractResult craftingExtractResult -> routeCraftingMutation(craftingExtractResult, trace);
             case InventoryMutationIntent.TrashEntry ignored ->
                     InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "trash_not_yet_specified");
             case InventoryMutationIntent.VoidEntry ignored ->
                     InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "void_not_yet_specified");
-            case InventoryMutationIntent.ToolControl ignored ->
-                    InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "tool_control_routing_not_yet_implemented");
-            case InventoryMutationIntent.CraftingSurface ignored ->
-                    InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "crafting_surface_routing_deferred_to_crafting_phase");
         };
     }
 
@@ -308,6 +310,65 @@ public final class InventoryIntentRouter {
                 null,
                 String.join(",", plan.diagnostics())
         );
+    }
+
+    private InventoryIntentRoutingResult routeCraftingMutation(
+            InventoryMutationIntent mutationIntent,
+            RouteTrace trace
+    ) {
+        InventoryCraftingPlan plan = InventoryCraftingPreflightService.preflight(coordinator.snapshot(), mutationIntent);
+        if (!plan.dispatchable()) {
+            return InventoryIntentRoutingResult.rejected(
+                    coordinator.snapshot(),
+                    plan.reasonCodes(),
+                    plan.diagnostics().isBlank() ? "missing_crafting_plan" : plan.diagnostics()
+            );
+        }
+
+        List<InventoryActionRequest> tracedRequests = plan.requests().stream()
+                .map(request -> traceRequest(request, trace, mutationOrigin(mutationIntent)))
+                .toList();
+        if (hasPendingConflict(tracedRequests)) {
+            return InventoryIntentRoutingResult.rejected(
+                    coordinator.snapshot(),
+                    List.of(InventoryCommandReasonCode.INVALID_INTENT),
+                    "pending_conflict"
+            );
+        }
+
+        InventorySessionSnapshot updated = tracedRequests.size() == 1
+                ? coordinator.dispatch(trace.sequenceId(), InventoryActionDispatchNode.of(tracedRequests.getFirst()))
+                : coordinator.dispatchAll(
+                trace.sequenceId(),
+                tracedRequests.stream().map(InventoryActionDispatchNode::of).toList()
+        );
+        return new InventoryIntentRoutingResult(
+                InventoryRoutingStatus.DISPATCHED,
+                updated,
+                plan.reasonCodes(),
+                tracedRequests,
+                null,
+                null,
+                plan.diagnostics()
+        );
+    }
+
+    private String mutationOrigin(InventoryMutationIntent mutationIntent) {
+        if (mutationIntent == null) {
+            return "";
+        }
+        return switch (mutationIntent) {
+            case InventoryMutationIntent.ExecuteRequest executeRequest -> executeRequest.origin();
+            case InventoryMutationIntent.ProjectedRowTransfer projectedRowTransfer -> projectedRowTransfer.origin();
+            case InventoryMutationIntent.TrashEntry trashEntry -> trashEntry.origin();
+            case InventoryMutationIntent.VoidEntry voidEntry -> voidEntry.origin();
+            case InventoryMutationIntent.ToolAction toolAction -> toolAction.origin();
+            case InventoryMutationIntent.ToolToggle toolToggle -> toolToggle.origin();
+            case InventoryMutationIntent.CraftingPlaceSelected craftingPlaceSelected -> craftingPlaceSelected.origin();
+            case InventoryMutationIntent.CraftingPlaceCursor craftingPlaceCursor -> craftingPlaceCursor.origin();
+            case InventoryMutationIntent.CraftingDragCursor craftingDragCursor -> craftingDragCursor.origin();
+            case InventoryMutationIntent.CraftingExtractResult craftingExtractResult -> craftingExtractResult.origin();
+        };
     }
 
     private InventoryIntentRoutingResult routeApplyLoadout(

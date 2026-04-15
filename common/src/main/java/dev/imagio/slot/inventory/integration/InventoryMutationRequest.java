@@ -10,6 +10,7 @@ public record InventoryMutationRequest(
         String sourceId,
         int slotIndex,
         String entryId,
+        int requestedCount,
         ItemIdentity identity,
         ItemStack stack,
         InventoryTransferMode transferMode,
@@ -22,6 +23,7 @@ public record InventoryMutationRequest(
         sourceId = sourceId == null ? "" : sourceId;
         slotIndex = Math.max(-1, slotIndex);
         entryId = entryId == null ? "" : entryId;
+        requestedCount = Math.max(0, requestedCount);
         stack = stack == null ? ItemStack.EMPTY : stack;
         transferMode = transferMode == null ? InventoryTransferMode.ONE : transferMode;
         targetId = targetId == null ? "" : targetId;
@@ -34,7 +36,7 @@ public record InventoryMutationRequest(
             ItemIdentity identity,
             InventoryTransferMode mode
     ) {
-        return extract(host, player, sourceId, -1, "", identity, mode);
+        return extract(host, player, sourceId, -1, "", 0, identity, mode);
     }
 
     public static InventoryMutationRequest extract(
@@ -45,7 +47,19 @@ public record InventoryMutationRequest(
             ItemIdentity identity,
             InventoryTransferMode mode
     ) {
-        return extract(host, player, sourceId, slotIndex, "", identity, mode);
+        return extract(host, player, sourceId, slotIndex, "", 0, identity, mode);
+    }
+
+    public static InventoryMutationRequest extract(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            String sourceId,
+            int slotIndex,
+            int requestedCount,
+            ItemIdentity identity,
+            InventoryTransferMode mode
+    ) {
+        return extract(host, player, sourceId, slotIndex, "", requestedCount, identity, mode);
     }
 
     public static InventoryMutationRequest extract(
@@ -56,7 +70,19 @@ public record InventoryMutationRequest(
             ItemIdentity identity,
             InventoryTransferMode mode
     ) {
-        return extract(host, player, sourceId, -1, entryId, identity, mode);
+        return extract(host, player, sourceId, -1, entryId, 0, identity, mode);
+    }
+
+    public static InventoryMutationRequest extract(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            String sourceId,
+            String entryId,
+            int requestedCount,
+            ItemIdentity identity,
+            InventoryTransferMode mode
+    ) {
+        return extract(host, player, sourceId, -1, entryId, requestedCount, identity, mode);
     }
 
     private static InventoryMutationRequest extract(
@@ -65,6 +91,7 @@ public record InventoryMutationRequest(
             String sourceId,
             int slotIndex,
             String entryId,
+            int requestedCount,
             ItemIdentity identity,
             InventoryTransferMode mode
     ) {
@@ -73,6 +100,7 @@ public record InventoryMutationRequest(
                 sourceId,
                 slotIndex,
                 entryId,
+                requestedCount,
                 identity,
                 ItemStack.EMPTY,
                 mode,
@@ -88,7 +116,7 @@ public record InventoryMutationRequest(
             String sourceId,
             ItemStack stack
     ) {
-        return insert(host, player, sourceId, -1, "", stack);
+        return insert(host, player, sourceId, -1, "", 0, stack);
     }
 
     public static InventoryMutationRequest insert(
@@ -98,7 +126,18 @@ public record InventoryMutationRequest(
             int slotIndex,
             ItemStack stack
     ) {
-        return insert(host, player, sourceId, slotIndex, "", stack);
+        return insert(host, player, sourceId, slotIndex, "", 0, stack);
+    }
+
+    public static InventoryMutationRequest insert(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            String sourceId,
+            int slotIndex,
+            int requestedCount,
+            ItemStack stack
+    ) {
+        return insert(host, player, sourceId, slotIndex, "", requestedCount, stack);
     }
 
     public static InventoryMutationRequest insert(
@@ -108,7 +147,7 @@ public record InventoryMutationRequest(
             String entryId,
             ItemStack stack
     ) {
-        return insert(host, player, sourceId, -1, entryId, stack);
+        return insert(host, player, sourceId, -1, entryId, 0, stack);
     }
 
     private static InventoryMutationRequest insert(
@@ -117,6 +156,7 @@ public record InventoryMutationRequest(
             String sourceId,
             int slotIndex,
             String entryId,
+            int requestedCount,
             ItemStack stack
     ) {
         return new InventoryMutationRequest(
@@ -124,6 +164,7 @@ public record InventoryMutationRequest(
                 sourceId,
                 slotIndex,
                 entryId,
+                requestedCount,
                 null,
                 stack,
                 InventoryTransferMode.ALL,

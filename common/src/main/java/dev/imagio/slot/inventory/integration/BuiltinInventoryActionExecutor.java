@@ -321,14 +321,19 @@ final class BuiltinInventoryActionExecutor {
         if (host == null || player == null || target == null || request == null) {
             return StackResult.blocked("missing_host_player_or_target");
         }
+        ItemStack originalInput = stack == null ? ItemStack.EMPTY : stack.copy();
+        ItemStack attemptedInput = requestedInsertStack(request, originalInput);
+        if (attemptedInput.isEmpty()) {
+            return StackResult.success(originalInput);
+        }
         if (target instanceof InventoryActionTarget.SourceTarget sourceTarget) {
             MutationResult mutation = mutateSource(
                     host,
-                    InventoryMutationRequest.insert(host, player, sourceTarget.sourceId(), stack),
+                    InventoryMutationRequest.insert(host, player, sourceTarget.sourceId(), request.requestedCount(), attemptedInput),
                     InventoryMutationMode.valueOf(request.mode().name())
             );
             return mutation.successful()
-                    ? StackResult.success(mutation.stackRemainder())
+                    ? StackResult.success(mergeUnattemptedRemainder(originalInput, attemptedInput, mutation.stackRemainder()))
                     : StackResult.blocked(mutation.diagnostics());
         }
 
@@ -337,11 +342,14 @@ final class BuiltinInventoryActionExecutor {
             return StackResult.blocked("unresolved_target");
         }
 
-        return switch (resolved.bindingRoute()) {
-            case MENU -> insertMenuBound(host.menu(), resolved, request.mode(), stack);
-            case PLAYER -> insertPlayerBound(player.getInventory(), resolved, request.mode(), stack);
+        StackResult result = switch (resolved.bindingRoute()) {
+            case MENU -> insertMenuBound(host.menu(), resolved, request.mode(), attemptedInput);
+            case PLAYER -> insertPlayerBound(player.getInventory(), resolved, request.mode(), attemptedInput);
             case PROVIDER, TOOL -> StackResult.blocked("non_builtin_target_route");
         };
+        return result.successful()
+                ? StackResult.success(mergeUnattemptedRemainder(originalInput, attemptedInput, result.stack()))
+                : result;
     }
 
     static ItemStack currentStack(
@@ -722,6 +730,48 @@ final class BuiltinInventoryActionExecutor {
         ItemStack remainder = stack.copy();
         remainder.shrink(Math.max(0, transferable));
         return remainder;
+    }
+
+    private static ItemStack requestedInsertStack(
+            InventoryActionRequest request,
+            ItemStack stack
+    ) {
+        if (stack == null || stack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        if (request == null || request.requestedCount() <= 0 || request.requestedCount() >= stack.getCount()) {
+            return stack.copy();
+        }
+        ItemStack limited = stack.copy();
+        limited.setCount(request.requestedCount());
+        return limited;
+    }
+
+    private static ItemStack mergeUnattemptedRemainder(
+            ItemStack original,
+            ItemStack attempted,
+            ItemStack remainder
+    ) {
+        ItemStack originalStack = original == null ? ItemStack.EMPTY : original.copy();
+        ItemStack attemptedStack = attempted == null ? ItemStack.EMPTY : attempted.copy();
+        ItemStack resultRemainder = remainder == null ? ItemStack.EMPTY : remainder.copy();
+        if (originalStack.isEmpty()) {
+            return resultRemainder;
+        }
+        int unattempted = Math.max(0, originalStack.getCount() - attemptedStack.getCount());
+        if (unattempted <= 0) {
+            return resultRemainder;
+        }
+        if (resultRemainder.isEmpty()) {
+            ItemStack merged = originalStack.copy();
+            merged.setCount(unattempted);
+            return merged;
+        }
+        if (ItemStack.isSameItemSameComponents(resultRemainder, originalStack)) {
+            resultRemainder.grow(unattempted);
+            return resultRemainder;
+        }
+        return resultRemainder;
     }
 
     private static int requestedTransferAmount(InventoryTransferMode mode, int available) {

@@ -55,14 +55,6 @@ final class MenuBackedToolActionExecutor {
         if (!changed) {
             return ToolActionResult.blocked("tool_action_had_no_effect");
         }
-
-        MenuCraftingRefreshSupport.RefreshPlan refreshPlan = MenuCraftingRefreshSupport.resolve(host.menu(), inputSlots);
-        if (refreshPlan.supported()) {
-            refreshPlan.refresh();
-        }
-        if (host.menu() != null) {
-            host.menu().broadcastChanges();
-        }
         return ToolActionResult.success();
     }
 

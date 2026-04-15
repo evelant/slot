@@ -1,10 +1,12 @@
 package dev.imagio.slot.inventory.session;
 
 import dev.imagio.slot.inventory.action.InventoryActionMode;
+import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionStatus;
+import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryCommandId;
 import dev.imagio.slot.inventory.action.InventoryCommandReasonCode;
 import dev.imagio.slot.inventory.browse.HeuristicInventoryCategoryResolver;
@@ -18,6 +20,7 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
 import dev.imagio.slot.inventory.browse.InventoryCategoryOverrides;
 import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.CraftingSurfaceDescriptor;
 import dev.imagio.slot.inventory.core.HostInstanceKey;
 import dev.imagio.slot.inventory.core.InventoryActionRoute;
 import dev.imagio.slot.inventory.core.InventoryBindingRoute;
@@ -28,11 +31,29 @@ import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDomain;
 import dev.imagio.slot.inventory.core.InventorySourceRole;
 import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
+import dev.imagio.slot.inventory.core.InventoryToolAction;
+import dev.imagio.slot.inventory.core.InventoryToolActionId;
+import dev.imagio.slot.inventory.core.InventoryToolDescriptor;
+import dev.imagio.slot.inventory.core.InventoryToolKind;
+import dev.imagio.slot.inventory.core.InventoryToolToggle;
+import dev.imagio.slot.inventory.core.InventoryToolToggleId;
 import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
+import dev.imagio.slot.inventory.core.MenuCursorAccess;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
+import dev.imagio.slot.inventory.core.ToolPresentationHints;
+import dev.imagio.slot.inventory.core.ToolRegionDescriptor;
+import dev.imagio.slot.inventory.core.ToolRegionRole;
 import dev.imagio.slot.inventory.integration.InventoryHostSession;
+import dev.imagio.slot.inventory.intent.CraftingDragMode;
+import dev.imagio.slot.inventory.intent.CraftingPlacementMode;
 import dev.imagio.slot.inventory.intent.InventoryBrowseIntent;
+import dev.imagio.slot.inventory.intent.InventoryMutationIntent;
+import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.query.InventoryEntryKey;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
 import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
@@ -275,6 +296,248 @@ class InventoryIntentRouterTest {
         assertEquals(trashPreflight.availability().reasonCodes(), trashResult.reasonCodes());
     }
 
+    @Test
+    void craftingPlaceSelectedUsesExactProviderEntryTarget() {
+        TestContext context = craftingContext(
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN, List.of(),
+                        "craft.input.source", List.of(),
+                        "craft.output.source", List.of()
+                ),
+                Map.of(
+                        "external.provider",
+                        providerEntrySnapshot(
+                                "external.provider",
+                                "entry:healing",
+                                new ItemStack("minecraft:potion", "healing", 6, 64),
+                                6
+                        )
+                ),
+                ItemStack.EMPTY,
+                3,
+                true
+        );
+
+        dev.imagio.slot.inventory.browse.InventoryBrowseEntry.ItemEntry externalPotion = itemEntry(
+                context.coordinator.snapshot().browseDocument(),
+                InventoryPaneMembership.EXTERNAL,
+                "minecraft:potion"
+        );
+        InventoryIntentRoutingResult selectResult = context.router.route(
+                context.coordinator.sessionToken(),
+                new InventoryBrowseIntent.SelectSubject(externalPotion.subjectRef(), "test.select.crafting")
+        );
+        assertEquals(InventoryRoutingStatus.APPLIED, selectResult.status());
+
+        InventoryIntentRoutingResult result = context.router.route(
+                context.coordinator.sessionToken(),
+                new InventoryMutationIntent.CraftingPlaceSelected(
+                        "tool.crafting",
+                        0,
+                        CraftingPlacementMode.STACK,
+                        InventoryActionMode.EXECUTE,
+                        "test.craft.selected"
+                )
+        );
+
+        assertEquals(InventoryRoutingStatus.DISPATCHED, result.status());
+        assertEquals(1, result.dispatchedRequests().size());
+        InventoryActionRequest request = result.dispatchedRequests().getFirst();
+        assertEquals(InventoryActionKind.TRANSFER_STACK, request.kind());
+        assertEquals(6, request.requestedCount());
+        assertTrue(request.primaryTarget() instanceof InventoryActionTarget.SourceEntryTarget);
+        InventoryActionTarget.SourceEntryTarget sourceEntryTarget =
+                (InventoryActionTarget.SourceEntryTarget) request.primaryTarget();
+        assertEquals("external.provider", sourceEntryTarget.sourceId());
+        assertEquals("entry:healing", sourceEntryTarget.entryId());
+        assertEquals(
+                new InventoryActionTarget.ToolRegionTarget("tool.crafting", "tool.crafting/input", 0),
+                request.secondaryTarget()
+        );
+    }
+
+    @Test
+    void staleCraftingIntentsAreRejectedAfterRevisionChange() {
+        TestContext context = craftingContext(
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN, List.of(
+                                new InventoryStackSnapshot(0, new ItemStack("minecraft:oak_planks", 12, 64), 12)
+                        ),
+                        "craft.input.source", List.of(),
+                        "craft.output.source", List.of()
+                ),
+                Map.of(),
+                ItemStack.EMPTY,
+                3,
+                false
+        );
+
+        dev.imagio.slot.inventory.browse.InventoryBrowseEntry.ItemEntry planks = itemEntry(
+                context.coordinator.snapshot().browseDocument(),
+                InventoryPaneMembership.CARRIED,
+                "minecraft:oak_planks"
+        );
+        InventoryIntentRoutingResult selectResult = context.router.route(
+                context.coordinator.sessionToken(),
+                new InventoryBrowseIntent.SelectSubject(planks.subjectRef(), "test.select.crafting")
+        );
+        assertEquals(InventoryRoutingStatus.APPLIED, selectResult.status());
+
+        InventorySessionToken staleToken = context.coordinator.sessionToken();
+        context.coordinator.publishCurrent("revision.bump");
+
+        InventoryIntentRoutingResult result = context.router.route(
+                staleToken,
+                new InventoryMutationIntent.CraftingPlaceSelected(
+                        "tool.crafting",
+                        0,
+                        CraftingPlacementMode.SINGLE,
+                        InventoryActionMode.EXECUTE,
+                        "test.craft.stale"
+                )
+        );
+
+        assertEquals(InventoryRoutingStatus.STALE, result.status());
+        assertTrue(result.reasonCodes().contains(InventoryCommandReasonCode.INVALID_INTENT));
+    }
+
+    @Test
+    void craftingPlaceCursorSingleUsesRequestedCountOne() {
+        TestContext context = craftingContext(
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN, List.of(),
+                        "craft.input.source", List.of(),
+                        "craft.output.source", List.of()
+                ),
+                Map.of(),
+                new ItemStack("minecraft:oak_planks", 5, 64),
+                3,
+                false
+        );
+
+        InventoryIntentRoutingResult result = context.router.route(
+                context.coordinator.sessionToken(),
+                new InventoryMutationIntent.CraftingPlaceCursor(
+                        "tool.crafting",
+                        1,
+                        CraftingPlacementMode.SINGLE,
+                        InventoryActionMode.EXECUTE,
+                        "test.craft.cursor"
+                )
+        );
+
+        assertEquals(InventoryRoutingStatus.DISPATCHED, result.status());
+        InventoryActionRequest request = result.dispatchedRequests().getFirst();
+        assertEquals(InventoryActionKind.PLACE, request.kind());
+        assertEquals(1, request.requestedCount());
+        assertEquals(1, request.stack().getCount());
+        assertEquals(
+                new InventoryActionTarget.ToolRegionTarget("tool.crafting", "tool.crafting/input", 1),
+                request.primaryTarget()
+        );
+    }
+
+    @Test
+    void craftingDragCursorSkipsFullTargetsAndPreservesOrderedEligibleTraversal() {
+        TestContext context = craftingContext(
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN, List.of(),
+                        "craft.input.source", List.of(
+                                new InventoryStackSnapshot(0, new ItemStack("minecraft:oak_planks", 63, 64), 63),
+                                new InventoryStackSnapshot(2, new ItemStack("minecraft:cobblestone", 16, 64), 16),
+                                new InventoryStackSnapshot(3, new ItemStack("minecraft:oak_planks", 64, 64), 64)
+                        ),
+                        "craft.output.source", List.of()
+                ),
+                Map.of(),
+                new ItemStack("minecraft:oak_planks", 7, 64),
+                3,
+                false
+        );
+
+        InventoryIntentRoutingResult result = context.router.route(
+                context.coordinator.sessionToken(),
+                new InventoryMutationIntent.CraftingDragCursor(
+                        "tool.crafting",
+                        List.of(3, 2, 0, 1),
+                        CraftingDragMode.SINGLE_PER_SLOT,
+                        InventoryActionMode.EXECUTE,
+                        "test.craft.drag"
+                )
+        );
+
+        assertEquals(InventoryRoutingStatus.DISPATCHED, result.status());
+        assertEquals(2, result.dispatchedRequests().size());
+        assertEquals(
+                List.of(
+                        new InventoryActionTarget.ToolRegionTarget("tool.crafting", "tool.crafting/input", 0),
+                        new InventoryActionTarget.ToolRegionTarget("tool.crafting", "tool.crafting/input", 1)
+                ),
+                result.dispatchedRequests().stream().map(InventoryActionRequest::primaryTarget).toList()
+        );
+        assertEquals(
+                List.of(1, 1),
+                result.dispatchedRequests().stream().map(InventoryActionRequest::requestedCount).toList()
+        );
+    }
+
+    @Test
+    void rotateGridIsRejectedOnTwoByTwoCraftingSurface() {
+        TestContext context = craftingContext(
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN, List.of(),
+                        "craft.input.source", List.of(),
+                        "craft.output.source", List.of()
+                ),
+                Map.of(),
+                ItemStack.EMPTY,
+                2,
+                false
+        );
+
+        InventoryIntentRoutingResult result = context.router.route(
+                context.coordinator.sessionToken(),
+                new InventoryMutationIntent.ToolAction(
+                        "tool.crafting",
+                        InventoryToolActionId.ROTATE_GRID,
+                        InventoryActionMode.EXECUTE,
+                        "test.rotate.unsupported"
+                )
+        );
+
+        assertEquals(InventoryRoutingStatus.REJECTED, result.status());
+        assertTrue(result.reasonCodes().contains(InventoryCommandReasonCode.UNSUPPORTED));
+    }
+
+    @Test
+    void autoRefillToggleRoutesWhenExposedByCraftingTool() {
+        TestContext context = craftingContext(
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN, List.of(),
+                        "craft.input.source", List.of(),
+                        "craft.output.source", List.of()
+                ),
+                Map.of(),
+                ItemStack.EMPTY,
+                3,
+                true
+        );
+
+        InventoryIntentRoutingResult result = context.router.route(
+                context.coordinator.sessionToken(),
+                new InventoryMutationIntent.ToolToggle(
+                        "tool.crafting",
+                        InventoryToolToggleId.AUTO_REFILL,
+                        true,
+                        InventoryActionMode.EXECUTE,
+                        "test.toggle.refill"
+                )
+        );
+
+        assertEquals(InventoryRoutingStatus.DISPATCHED, result.status());
+        assertEquals(InventoryActionKind.TOOL_TOGGLE, result.dispatchedRequests().getFirst().kind());
+    }
+
     private static InventoryActionOutcome successfulOutcome(
             InventoryActionRequest request,
             ItemIdentity identity,
@@ -329,8 +592,33 @@ class InventoryIntentRouterTest {
     }
 
     private static TestContext context(Map<String, List<InventoryStackSnapshot>> snapshotsBySourceId) {
-        InventoryHostDescriptor host = host();
+        return context(host(), snapshotsBySourceId, Map.of(), ItemStack.EMPTY);
+    }
+
+    private static TestContext craftingContext(
+            Map<String, List<InventoryStackSnapshot>> slotSnapshotsBySourceId,
+            Map<String, InventorySourceSnapshot> explicitSourceSnapshotsById,
+            ItemStack cursorStack,
+            int gridWidth,
+            boolean includeAutoRefillToggle
+    ) {
+        return context(
+                craftingHost(gridWidth, includeAutoRefillToggle),
+                slotSnapshotsBySourceId,
+                explicitSourceSnapshotsById,
+                cursorStack
+        );
+    }
+
+    private static TestContext context(
+            InventoryHostDescriptor host,
+            Map<String, List<InventoryStackSnapshot>> snapshotsBySourceId,
+            Map<String, InventorySourceSnapshot> explicitSourceSnapshotsById,
+            ItemStack cursorStack
+    ) {
         MutableSessionSource source = new MutableSessionSource(host, snapshotsBySourceId);
+        source.setExplicitSourceSnapshots(explicitSourceSnapshotsById);
+        source.setCursorStack(cursorStack);
         InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(repository, null);
         repository.browseSessionState().replaceWith(new dev.imagio.slot.inventory.browse.InventoryBrowseSessionState(
@@ -358,6 +646,25 @@ class InventoryIntentRouterTest {
         );
         InventoryIntentRouter router = new InventoryIntentRouter(coordinator);
         return new TestContext(source, repository, runtime, dispatcher, coordinator, router);
+    }
+
+    private static InventorySourceSnapshot providerEntrySnapshot(
+            String sourceId,
+            String entryId,
+            ItemStack stack,
+            int count
+    ) {
+        return new InventorySourceSnapshot(
+                sourceId,
+                0,
+                List.of(new InventoryEntrySnapshot(
+                        InventoryEntryKey.providerEntry(sourceId, entryId),
+                        stack,
+                        count,
+                        ""
+                )),
+                ""
+        );
     }
 
     private static Function<dev.imagio.slot.inventory.query.InventoryEntrySnapshot, ItemIdentity> stackIdentity() {
@@ -394,6 +701,159 @@ class InventoryIntentRouterTest {
                 BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
                 BuiltinInventoryDescriptors.builtInEquipmentGroups(),
                 List.of(),
+                false,
+                true,
+                false,
+                ""
+        );
+    }
+
+    private static InventoryHostDescriptor craftingHost(int gridWidth, boolean includeAutoRefillToggle) {
+        TestMenu menu = new TestMenu();
+        String toolId = "tool.crafting";
+        String inputRegionId = toolId + "/input";
+        String outputRegionId = toolId + "/output";
+        String inputSourceId = "craft.input.source";
+        String outputSourceId = "craft.output.source";
+        int inputCount = gridWidth == 2 ? 4 : 9;
+
+        InventorySourceDescriptor inputSource = InventorySourceDescriptor.builder(inputSourceId)
+                .label(Component.literal("Crafting Input"))
+                .domain(InventorySourceDomain.HOST_STORAGE)
+                .role(InventorySourceRole.PROVIDER_DEFINED)
+                .logicalSlotCount(inputCount)
+                .bindingRoute(InventoryBindingRoute.MENU)
+                .capabilities(Set.of(InventoryCapability.INSERT, InventoryCapability.EXTRACT))
+                .actionRoute(InventoryActionRoute.MENU_MUTATION)
+                .paneMembership(InventoryPaneMembership.HIDDEN)
+                .stableOrder(150)
+                .build();
+        InventorySourceDescriptor outputSource = InventorySourceDescriptor.builder(outputSourceId)
+                .label(Component.literal("Crafting Output"))
+                .domain(InventorySourceDomain.HOST_STORAGE)
+                .role(InventorySourceRole.PROVIDER_DEFINED)
+                .logicalSlotCount(1)
+                .bindingRoute(InventoryBindingRoute.MENU)
+                .capabilities(Set.of(InventoryCapability.EXTRACT))
+                .actionRoute(InventoryActionRoute.MENU_MUTATION)
+                .paneMembership(InventoryPaneMembership.HIDDEN)
+                .stableOrder(151)
+                .build();
+        InventorySourceDescriptor providerExternal = InventorySourceDescriptor.builder("external.provider")
+                .label(Component.literal("External Provider"))
+                .domain(InventorySourceDomain.HOST_STORAGE)
+                .role(InventorySourceRole.PRIMARY_STORAGE)
+                .logicalSlotCount(0)
+                .bindingRoute(InventoryBindingRoute.PROVIDER)
+                .capabilities(Set.of(InventoryCapability.INSERT, InventoryCapability.EXTRACT))
+                .actionRoute(InventoryActionRoute.PROVIDER_MUTATION)
+                .paneMembership(InventoryPaneMembership.EXTERNAL)
+                .stableOrder(100)
+                .build();
+
+        ToolRegionDescriptor inputRegion = new ToolRegionDescriptor(
+                inputRegionId,
+                ToolRegionRole.INPUT,
+                inputCount,
+                InventoryBindingRoute.MENU,
+                Set.of(InventoryCapability.TOOL_REGION_MUTATION, InventoryCapability.INSERT, InventoryCapability.EXTRACT),
+                true,
+                inputSourceId,
+                ""
+        );
+        ToolRegionDescriptor outputRegion = new ToolRegionDescriptor(
+                outputRegionId,
+                ToolRegionRole.OUTPUT,
+                1,
+                InventoryBindingRoute.MENU,
+                Set.of(InventoryCapability.TOOL_REGION_MUTATION, InventoryCapability.EXTRACT),
+                true,
+                outputSourceId,
+                ""
+        );
+        List<InventoryToolAction> actions = gridWidth == 2
+                ? List.of(
+                new InventoryToolAction("clear_grid", InventoryToolActionId.CLEAR_GRID, Component.literal("Clear"), Component.empty()),
+                new InventoryToolAction("balance_grid", InventoryToolActionId.BALANCE_GRID, Component.literal("Balance"), Component.empty())
+        )
+                : List.of(
+                new InventoryToolAction("clear_grid", InventoryToolActionId.CLEAR_GRID, Component.literal("Clear"), Component.empty()),
+                new InventoryToolAction("balance_grid", InventoryToolActionId.BALANCE_GRID, Component.literal("Balance"), Component.empty()),
+                new InventoryToolAction("rotate_grid", InventoryToolActionId.ROTATE_GRID, Component.literal("Rotate"), Component.empty())
+        );
+        List<InventoryToolToggle> toggles = includeAutoRefillToggle
+                ? List.of(new InventoryToolToggle("auto_refill", InventoryToolToggleId.AUTO_REFILL, Component.literal("Auto Refill"), Component.empty()))
+                : List.of();
+        InventoryToolDescriptor craftingTool = new InventoryToolDescriptor(
+                toolId,
+                "test",
+                InventoryToolKind.CRAFTING_GRID,
+                Component.literal("Crafting"),
+                new ToolPresentationHints("Crafting", 50, "docked", 60),
+                50,
+                true,
+                true,
+                true,
+                null,
+                List.of(inputRegion, outputRegion),
+                actions,
+                toggles,
+                Map.of(InventoryToolToggleId.AUTO_REFILL, includeAutoRefillToggle),
+                Map.of(),
+                new CraftingSurfaceDescriptor(
+                        java.util.stream.IntStream.range(0, inputCount)
+                                .mapToObj(index -> new InventoryActionTarget.SourceSlotTarget(inputSourceId, index))
+                                .toList(),
+                        new InventoryActionTarget.SourceSlotTarget(outputSourceId, 0),
+                        gridWidth,
+                        gridWidth,
+                        true,
+                        true,
+                        true,
+                        gridWidth == 3,
+                        ""
+                ),
+                ""
+        );
+
+        LinkedHashMap<String, List<Integer>> menuSlotsBySource = new LinkedHashMap<>();
+        menuSlotsBySource.put(inputSourceId, java.util.stream.IntStream.range(0, inputCount).boxed().toList());
+        menuSlotsBySource.put(outputSourceId, List.of(inputCount));
+        LinkedHashMap<Integer, String> sourceByMenuSlot = new LinkedHashMap<>();
+        for (int index = 0; index < inputCount; index++) {
+            sourceByMenuSlot.put(index, inputSourceId);
+        }
+        sourceByMenuSlot.put(inputCount, outputSourceId);
+
+        return new InventoryHostDescriptor(
+                new HostInstanceKey(TestMenu.class.getName(), 0, "router.crafting", ""),
+                InventoryHostDescriptor.serverMenuRef(menu),
+                "router.crafting",
+                Component.literal("Crafting Test"),
+                menu,
+                new InventoryTopologyDescriptor(
+                        Map.copyOf(menuSlotsBySource),
+                        Map.copyOf(sourceByMenuSlot),
+                        Map.of(
+                                inputRegionId, menuSlotsBySource.get(inputSourceId),
+                                outputRegionId, menuSlotsBySource.get(outputSourceId)
+                        )
+                ),
+                InventoryHostSession.empty(),
+                List.of(),
+                PlayerRuntimeStateDescriptor.vanilla(0),
+                List.of(
+                        BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty()),
+                        BuiltinInventoryDescriptors.quickAccessLane0Source(InventoryTopologyDescriptor.empty()),
+                        BuiltinInventoryDescriptors.armorSource(InventoryTopologyDescriptor.empty()),
+                        BuiltinInventoryDescriptors.offhandSource(InventoryTopologyDescriptor.empty()),
+                        providerExternal,
+                        inputSource,
+                        outputSource
+                ),
+                BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
+                BuiltinInventoryDescriptors.builtInEquipmentGroups(),
+                List.of(craftingTool),
                 false,
                 true,
                 false,
@@ -443,6 +903,8 @@ class InventoryIntentRouterTest {
         private final InventoryHostDescriptor host;
         private Map<String, List<InventoryStackSnapshot>> snapshotsBySourceId;
         private final Map<String, Integer> capacitiesBySourceId = new LinkedHashMap<>();
+        private Map<String, InventorySourceSnapshot> explicitSourceSnapshotsById = Map.of();
+        private ItemStack cursorStack = ItemStack.EMPTY;
 
         private MutableSessionSource(
                 InventoryHostDescriptor host,
@@ -453,6 +915,9 @@ class InventoryIntentRouterTest {
             capacitiesBySourceId.put(BuiltinInventoryIds.PLAYER_MAIN, 27);
             capacitiesBySourceId.put("carried.backpack.one", 9);
             capacitiesBySourceId.put("external.chest", 9);
+            capacitiesBySourceId.put("external.provider", 0);
+            capacitiesBySourceId.put("craft.input.source", 9);
+            capacitiesBySourceId.put("craft.output.source", 1);
         }
 
         @Override
@@ -462,11 +927,68 @@ class InventoryIntentRouterTest {
 
         @Override
         public dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot readAuthority(InventoryHostDescriptor resolvedHost) {
-            return InventoryAuthorityFixtures.authority(resolvedHost, snapshotsBySourceId, capacitiesBySourceId);
+            if (resolvedHost == null) {
+                return InventoryAuthoritySnapshot.empty();
+            }
+            MenuCursorAccess.set(resolvedHost.menu(), cursorStack);
+            if (explicitSourceSnapshotsById.isEmpty()) {
+                return InventoryAuthorityFixtures.authority(resolvedHost, snapshotsBySourceId, capacitiesBySourceId);
+            }
+
+            LinkedHashMap<String, InventorySourceSnapshot> sourceSnapshots = new LinkedHashMap<>();
+            for (InventorySourceDescriptor source : resolvedHost.sourceDescriptors()) {
+                if (source == null) {
+                    continue;
+                }
+                InventorySourceSnapshot snapshot = explicitSourceSnapshotsById.get(source.id());
+                if (snapshot == null) {
+                    snapshot = slotBackedSnapshot(source, snapshotsBySourceId.get(source.id()));
+                }
+                sourceSnapshots.put(source.id(), snapshot == null ? InventorySourceSnapshot.empty(source.id()) : snapshot);
+            }
+            return new InventoryAuthoritySnapshot(
+                    resolvedHost,
+                    Map.copyOf(sourceSnapshots),
+                    InventoryAuthorityReadService.cursor(resolvedHost.menu())
+            );
         }
 
         private void setSnapshots(Map<String, List<InventoryStackSnapshot>> snapshotsBySourceId) {
             this.snapshotsBySourceId = snapshotsBySourceId == null ? Map.of() : snapshotsBySourceId;
+        }
+
+        private void setExplicitSourceSnapshots(Map<String, InventorySourceSnapshot> explicitSourceSnapshotsById) {
+            this.explicitSourceSnapshotsById = explicitSourceSnapshotsById == null ? Map.of() : explicitSourceSnapshotsById;
+        }
+
+        private void setCursorStack(ItemStack cursorStack) {
+            this.cursorStack = cursorStack == null ? ItemStack.EMPTY : cursorStack.copy();
+        }
+
+        private InventorySourceSnapshot slotBackedSnapshot(
+                InventorySourceDescriptor source,
+                List<InventoryStackSnapshot> snapshots
+        ) {
+            ArrayList<InventoryEntrySnapshot> entries = new ArrayList<>();
+            if (snapshots != null) {
+                for (InventoryStackSnapshot snapshot : snapshots) {
+                    if (snapshot == null) {
+                        continue;
+                    }
+                    entries.add(new InventoryEntrySnapshot(
+                            InventoryEntryKey.slot(source.id(), snapshot.handle()),
+                            snapshot.stack(),
+                            snapshot.count(),
+                            ""
+                    ));
+                }
+            }
+            int highestSlot = entries.stream().mapToInt(InventoryEntrySnapshot::slotIndex).max().orElse(-1);
+            int slotCapacity = Math.max(
+                    capacitiesBySourceId.getOrDefault(source.id(), source.logicalSlotCount()),
+                    Math.max(source.logicalSlotCount(), highestSlot + 1)
+            );
+            return new InventorySourceSnapshot(source.id(), slotCapacity, List.copyOf(entries), "");
         }
     }
 

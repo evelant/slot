@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.integration.InventoryIntegrationRegistry;
 import dev.imagio.slot.inventory.integration.MenuBackedInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.integration.SophisticatedBackpackInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.integration.TomsStorageInventoryIntegrationProvider;
+import dev.imagio.slot.inventory.integration.VanillaCraftingInventoryIntegrationProvider;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
@@ -20,6 +21,7 @@ public final class SlotCommon {
         LOGGER.info("Initializing {}", MOD_NAME);
         InventoryIntegrationRegistry.clear();
         InventoryIntegrationRegistry.register(new MenuBackedInventoryIntegrationProvider());
+        InventoryIntegrationRegistry.register(new VanillaCraftingInventoryIntegrationProvider());
         InventoryIntegrationRegistry.register(new TomsStorageInventoryIntegrationProvider());
         InventoryIntegrationRegistry.register(new SophisticatedBackpackInventoryIntegrationProvider());
         InventoryIntegrationRegistry.markBootstrapped();

@@ -212,10 +212,7 @@ final class MenuBackedHostSupport {
                     || (request.identity() != null && !ItemIdentityMatcher.matchesMovable(stack, request.identity()))) {
                 return MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
             }
-            int amount = switch (request.transferMode()) {
-                case ONE -> 1;
-                case STACK, ALL -> stack.getCount();
-            };
+            int amount = requestedExtractAmount(request, stack.getCount());
             if (mode == InventoryMutationMode.SIMULATE) {
                 ItemStack simulated = stack.copy();
                 simulated.setCount(Math.min(amount, simulated.getCount()));
@@ -236,10 +233,7 @@ final class MenuBackedHostSupport {
                 continue;
             }
 
-            int amount = switch (request.transferMode()) {
-                case ONE -> 1;
-                case STACK, ALL -> stack.getCount();
-            };
+            int amount = requestedExtractAmount(request, stack.getCount());
             if (mode == InventoryMutationMode.SIMULATE) {
                 ItemStack simulated = stack.copy();
                 simulated.setCount(Math.min(amount, simulated.getCount()));
@@ -248,6 +242,19 @@ final class MenuBackedHostSupport {
             return MutationResult.success(slot.safeTake(amount, stack.getCount(), player));
         }
         return MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
+    }
+
+    private static int requestedExtractAmount(
+            InventoryMutationRequest request,
+            int available
+    ) {
+        if (request != null && request.requestedCount() > 0) {
+            return Math.min(request.requestedCount(), Math.max(1, available));
+        }
+        return switch (request == null ? InventoryTransferMode.ONE : request.transferMode()) {
+            case ONE -> 1;
+            case STACK, ALL -> Math.max(1, available);
+        };
     }
 
     private static ItemStack simulateInsert(Slot slot, ItemStack sourceStack) {
