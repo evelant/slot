@@ -55,9 +55,13 @@ class InventoryIntegrationContractTest {
                 new Inventory(new TestPlayer()),
                 Component.literal("Terminal"),
                 "ae2.terminal",
-                false,
-                true,
-                false
+                new InventoryHostObservationHints(
+                        InventoryHostFamilyHint.TERMINAL_HYBRID,
+                        InventorySlotOwnershipPosture.HYBRID,
+                        false,
+                        true,
+                        Map.of()
+                )
         ));
 
         assertNotNull(host.source("ae2:terminal.primary"));
@@ -85,9 +89,13 @@ class InventoryIntegrationContractTest {
                 new Inventory(new TestPlayer()),
                 Component.literal("Grid"),
                 "rs.terminal",
-                false,
-                true,
-                false
+                new InventoryHostObservationHints(
+                        InventoryHostFamilyHint.TERMINAL_HYBRID,
+                        InventorySlotOwnershipPosture.HYBRID,
+                        false,
+                        true,
+                        Map.of()
+                )
         ));
 
         assertNotNull(host.source("rs:grid.primary"));

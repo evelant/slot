@@ -55,9 +55,7 @@ public final class InventoryHostResolver {
                 BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
                 BuiltinInventoryDescriptors.builtInEquipmentGroups(),
                 hostSession.tools(),
-                context.slotOwned(),
-                context.recordsRecent(),
-                context.carriedOnly(),
+                context.observationHints(),
                 hostResult == null ? "" : hostResult.diagnostics().summary()
         );
 
@@ -96,9 +94,7 @@ public final class InventoryHostResolver {
                 List.copyOf(mergedLanes),
                 List.copyOf(mergedGroups),
                 preliminaryHost.toolDescriptors(),
-                preliminaryHost.slotOwned(),
-                preliminaryHost.recordsRecent(),
-                preliminaryHost.carriedOnly(),
+                preliminaryHost.observationHints(),
                 preliminaryHost.diagnostics()
         );
     }

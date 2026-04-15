@@ -9,12 +9,11 @@ public record InventoryHostContext(
         Inventory playerInventory,
         Component title,
         String screenClassName,
-        boolean slotOwned,
-        boolean recordsRecent,
-        boolean carriedOnly
+        InventoryHostObservationHints observationHints
 ) {
     public InventoryHostContext {
         title = title == null ? Component.empty() : title;
         screenClassName = screenClassName == null ? "" : screenClassName;
+        observationHints = observationHints == null ? InventoryHostObservationHints.defaults() : observationHints;
     }
 }

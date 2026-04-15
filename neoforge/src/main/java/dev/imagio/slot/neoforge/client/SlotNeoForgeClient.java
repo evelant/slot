@@ -2,20 +2,22 @@ package dev.imagio.slot.neoforge.client;
 
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.action.InventoryActionRequestPayload;
-import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.session.InventoryIntentRouter;
 import dev.imagio.slot.inventory.session.InventorySessionCoordinator;
 import dev.imagio.slot.inventory.session.InventorySessionSource;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
+import dev.imagio.slot.neoforge.client.host.ObservedScreenContext;
+import dev.imagio.slot.neoforge.client.host.ObservedScreenContexts;
+import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
 import dev.imagio.slot.neoforge.persistence.WorkflowDomainFileStore;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.network.PacketDistributor;
 
@@ -25,12 +27,25 @@ public final class SlotNeoForgeClient {
     private static WorkflowDomainRuntime workflowRuntime;
     private static InventorySessionCoordinator sessionCoordinator;
     private static InventoryIntentRouter intentRouter;
+    private static boolean setupListenerRegistered;
+    private static boolean runtimeInitialized;
     private static boolean shutdownHookRegistered;
 
     private SlotNeoForgeClient() {
     }
 
     public static void init(IEventBus modBus) {
+        if (setupListenerRegistered) {
+            return;
+        }
+        modBus.addListener(SlotNeoForgeClient::onClientSetup);
+        setupListenerRegistered = true;
+    }
+
+    private static void onClientSetup(FMLClientSetupEvent event) {
+        if (runtimeInitialized) {
+            return;
+        }
         SlotDebugLog.setEnabledSupplier(() -> SlotClientConfig.CLIENT.debugLogging.get());
         InMemoryWorkflowDomainStateRepository workflowStateRepository = new InMemoryWorkflowDomainStateRepository();
         WorkflowDomainPersistenceService workflowPersistenceService = new WorkflowDomainPersistenceService(new WorkflowDomainFileStore(defaultWorkflowStatePath()));
@@ -42,7 +57,9 @@ public final class SlotNeoForgeClient {
                 request -> PacketDistributor.sendToServer(new InventoryActionRequestPayload(request))
         );
         intentRouter = new InventoryIntentRouter(sessionCoordinator);
+        SlotWorkspaceMountController.init();
         registerShutdownHook();
+        runtimeInitialized = true;
     }
 
     public static WorkflowDomainRuntime workflowRuntime() {
@@ -79,18 +96,11 @@ public final class SlotNeoForgeClient {
         @Override
         public dev.imagio.slot.inventory.core.InventoryHostDescriptor resolveHost() {
             Minecraft minecraft = Minecraft.getInstance();
-            if (minecraft == null || minecraft.player == null || minecraft.player.containerMenu == null) {
+            if (minecraft == null || !SlotClientConfig.CLIENT.enabled.get()) {
                 return null;
             }
-            return InventoryHostResolver.resolve(new InventoryHostContext(
-                    minecraft.player.containerMenu,
-                    minecraft.player.getInventory(),
-                    Component.empty(),
-                    "",
-                    false,
-                    true,
-                    false
-            ));
+            ObservedScreenContext observed = ObservedScreenContexts.observe(minecraft);
+            return observed == null ? null : InventoryHostResolver.resolve(observed.toHostContext());
         }
 
         @Override

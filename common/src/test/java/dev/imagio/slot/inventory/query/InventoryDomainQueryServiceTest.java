@@ -68,9 +68,7 @@ class InventoryDomainQueryServiceTest {
                 List.of(),
                 List.of(),
                 List.of(),
-                false,
-                true,
-                false,
+                dev.imagio.slot.inventory.integration.InventoryHostObservationHints.defaults(),
                 ""
         );
         InventoryAuthoritySnapshot authority = InventoryAuthorityFixtures.authority(

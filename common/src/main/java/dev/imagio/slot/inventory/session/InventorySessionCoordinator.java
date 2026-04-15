@@ -264,7 +264,7 @@ public final class InventorySessionCoordinator {
 
         this.host = nextHost;
         this.authority = resolvedAuthority;
-        this.snapshot = new InventorySessionSnapshot(
+        this.snapshot = InventorySessionSnapshot.create(
                 new InventorySessionToken(sessionId, nextRevision++),
                 nextHost,
                 resolvedAuthority,

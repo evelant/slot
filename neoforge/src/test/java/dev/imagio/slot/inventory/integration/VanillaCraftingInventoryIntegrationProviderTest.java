@@ -33,9 +33,7 @@ class VanillaCraftingInventoryIntegrationProviderTest {
                 inventory,
                 Component.literal("Inventory"),
                 "test.inventory",
-                false,
-                true,
-                false
+                InventoryHostObservationHints.defaults()
         ));
 
         assertTrue(result.supported());
@@ -65,9 +63,7 @@ class VanillaCraftingInventoryIntegrationProviderTest {
                 inventory,
                 Component.literal("Crafting"),
                 "test.crafting",
-                false,
-                true,
-                false
+                InventoryHostObservationHints.defaults()
         ));
 
         assertTrue(result.supported());

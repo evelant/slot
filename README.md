@@ -15,6 +15,14 @@ actually opened.
 
 SLOT is unreleased and still changing aggressively.
 
+Current baseline:
+
+- the headless authority/projection/workflow kernel is landed
+- the session coordinator, intent router, and routed crafting pipeline are
+  landed
+- the next milestone is the first real NeoForge host over that core; screen
+  replacement configs remain off by default until that work lands
+
 Current target:
 
 - Minecraft `1.21.1`
@@ -29,6 +37,8 @@ Current target:
   problems it is trying to solve, and the current feature direction.
 - [ARCHITECTURE.md](ARCHITECTURE.md): the living core model for authority,
   projection, actions, crafting surfaces, and the workflow/activity runtime.
+- [HOST_UI_ARCHITECTURE.md](HOST_UI_ARCHITECTURE.md): the planned host and UI
+  architecture above the current headless kernel.
 - [SPEC.md](SPEC.md): the normative behavior specification.
 - [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md): the current near-term
   engineering plan.

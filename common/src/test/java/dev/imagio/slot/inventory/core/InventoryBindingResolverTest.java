@@ -67,9 +67,7 @@ class InventoryBindingResolverTest {
                         Map.of(),
                         ""
                 )),
-                false,
-                true,
-                false,
+                dev.imagio.slot.inventory.integration.InventoryHostObservationHints.defaults(),
                 ""
         );
 

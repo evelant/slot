@@ -32,8 +32,8 @@ public final class SlotClientConfig {
 
             replacePlayerInventory = builder
                     .translation("slot.config.replace_player_inventory")
-                    .comment("Replaces the vanilla player inventory screen when supported. Disabled by default during the core authority cut.")
-                    .define("replacePlayerInventory", false);
+                    .comment("Replaces the vanilla player inventory screen when supported.")
+                    .define("replacePlayerInventory", true);
 
             replaceChestLikeStorage = builder
                     .translation("slot.config.replace_chest_like_storage")

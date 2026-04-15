@@ -114,9 +114,7 @@ class InventoryWorkingSetProjectionServiceTest {
                 List.of(),
                 List.of(),
                 List.of(),
-                false,
-                true,
-                false,
+                dev.imagio.slot.inventory.integration.InventoryHostObservationHints.defaults(),
                 ""
         );
     }

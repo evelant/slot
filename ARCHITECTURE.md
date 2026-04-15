@@ -364,7 +364,9 @@ Important types:
 
 - input slot targets
 - output slot target
-- immediate-craft support flags
+- grid dimensions
+- crafting-surface capability flags such as immediate craft, clear, balance,
+  and rotate support
 
 Tool regions are presentation and routing aliases over linked source slots.
 They are not independent inventory authority.
@@ -386,13 +388,15 @@ Current rules:
 
 ## Current Open Architectural Work
 
-The core rewrite landed the main authority/projection/action primitives. The
-largest remaining architecture work is above that baseline:
+The main authority/projection/action/session primitives are now landed. The
+largest remaining architecture work is at the host and integration boundary:
 
-- a central intent router over the event-backed workflow/activity runtime
-- a session coordinator for external activity signals, authority invalidation,
-  refresh, and conservative diff inference
-- one end-to-end crafting pipeline across selected-row and cursor-driven flows
-- thinner screen/UI hosts over the existing projection, workflow, and action
-  contracts
-- broader workflow/UI experiments without reintroducing screen-owned semantics
+- accurate screen observation and host binding into `InventoryHostContext`
+- a thin shared host layer over browse documents, command invocation, and typed
+  intents
+- first carried-only and dual-pane hosts over the existing projection,
+  workflow, and action contracts
+- broader explicit external-activity signal bridges where integrations can
+  provide them, with conservative invalidation remaining the fallback
+- recipe-assisted workflows and cleanup/recovery semantics built on the current
+  routed action and activity model without reintroducing screen-owned semantics

@@ -7,12 +7,19 @@ import dev.imagio.slot.inventory.action.InventoryActionOutcomePayload;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
+import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
+import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.InventoryHostResolver;
+import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.inventory.CraftingMenu;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
+
+import java.util.Map;
 
 public final class InventoryActionRequestPayloadHandler {
     private InventoryActionRequestPayloadHandler() {
@@ -34,9 +41,17 @@ public final class InventoryActionRequestPayloadHandler {
                     player.getInventory(),
                     Component.empty(),
                     "",
-                    false,
-                    true,
-                    false
+                    new InventoryHostObservationHints(
+                            player.containerMenu instanceof InventoryMenu
+                                    ? InventoryHostFamilyHint.CARRIED_ONLY
+                                    : InventoryHostFamilyHint.UNKNOWN,
+                            player.containerMenu instanceof InventoryMenu || player.containerMenu instanceof CraftingMenu
+                                    ? InventorySlotOwnershipPosture.SLOT_OWNED
+                                    : InventorySlotOwnershipPosture.UNKNOWN,
+                            player.containerMenu instanceof InventoryMenu,
+                            true,
+                            Map.of("serverContext", "true")
+                    )
             ));
             InventoryActionOutcome outcome = InventoryActionExecutor.execute(
                     host,

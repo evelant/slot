@@ -153,9 +153,7 @@ class LoadoutApplyAuthoritySnapshotTest {
                 BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
                 BuiltinInventoryDescriptors.builtInEquipmentGroups(),
                 List.of(),
-                false,
-                true,
-                false,
+                dev.imagio.slot.inventory.integration.InventoryHostObservationHints.defaults(),
                 ""
         );
     }

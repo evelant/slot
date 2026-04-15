@@ -47,9 +47,13 @@ class InventoryHostResolverTest {
                 playerInventory,
                 Component.literal("Host"),
                 "test.screen",
-                true,
-                true,
-                false
+                new InventoryHostObservationHints(
+                        InventoryHostFamilyHint.DUAL_PANE,
+                        InventorySlotOwnershipPosture.SLOT_OWNED,
+                        false,
+                        true,
+                        Map.of("resolverTest", "true")
+                )
         ));
 
         assertNotNull(host);
@@ -61,6 +65,8 @@ class InventoryHostResolverTest {
         assertEquals(List.of(40, 41), host.topology().menuSlotsForSource("provider.storage.a"));
         assertEquals(List.of(42, 43), host.topology().menuSlotsForToolRegion("tool.region.filter"));
         assertTrue(host.tool("tool.filter").regions().stream().anyMatch(region -> region.id().equals("tool.region.filter")));
+        assertEquals(InventoryHostFamilyHint.DUAL_PANE, host.observationHints().hostFamilyHint());
+        assertEquals(InventorySlotOwnershipPosture.SLOT_OWNED, host.observationHints().slotOwnershipPosture());
     }
 
     @Test
@@ -75,9 +81,7 @@ class InventoryHostResolverTest {
                 playerInventory,
                 Component.literal("Host"),
                 "test.screen",
-                true,
-                true,
-                false
+                InventoryHostObservationHints.defaults()
         );
 
         InventoryHostDescriptor first = InventoryHostResolver.resolve(context);
@@ -97,9 +101,7 @@ class InventoryHostResolverTest {
                 new Inventory(new TestPlayer()),
                 Component.literal("Host"),
                 "duplicate.screen",
-                true,
-                true,
-                false
+                InventoryHostObservationHints.defaults()
         )));
     }
 

@@ -341,9 +341,7 @@ class CollectionWorkflowDomainServiceTest {
                 BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
                 BuiltinInventoryDescriptors.builtInEquipmentGroups(),
                 java.util.List.of(),
-                false,
-                true,
-                false,
+                dev.imagio.slot.inventory.integration.InventoryHostObservationHints.defaults(),
                 ""
         );
     }

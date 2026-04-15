@@ -10,8 +10,8 @@ For current architecture, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Current Baseline
 
-The core rewrite established the main inventory kernel that future UI
-experiments should build on.
+The main headless core is now in place. The current phase should build the
+first real hosts on top of it rather than reopening the inventory kernel.
 
 Landed baseline:
 
@@ -36,9 +36,6 @@ Landed baseline:
   - `ProjectedRowTransferPlanner`
 - host-aware canonicalization for quick access, equipment, tool regions, and
   outcomes
-- `CraftingSurfaceDescriptor` for crafting-capable tool surfaces
-- workflow/loadout services consuming authority snapshots instead of legacy
-  parallel maps
 - hybrid event-backed workflow/activity runtime through:
   - `WorkflowEventStore`
   - `InventoryActivityStore`
@@ -49,145 +46,143 @@ Landed baseline:
 - recent dismissal keyed to activity sequence rather than transient visible
   state
 - checkpoint-plus-event-tail persistence with direct legacy snapshot migration
+- selected-subject browse posture persisted in `InventoryBrowseSessionState`
+- central client-owned session and routing layer through:
+  - `InventorySessionCoordinator`
+  - `InventoryIntentRouter`
+  - `InventoryCommandInvocation`
+  - `InventoryCommandPreflightService`
+- correlation, causation, and session metadata threaded through workflow
+  events, action requests, outcomes, and activity recording
+- typed crafting/tool intents and one routed crafting pipeline for:
+  - selected-row placement
+  - cursor placement
+  - cursor drag distribution
+  - authoritative result extraction
+  - tool actions and tool toggles
+- crafting refresh centralized in the action execution layer
+- aligned crafting-surface support for:
+  - vanilla `InventoryMenu` and `CraftingMenu`
+  - Tom's Storage crafting terminals
+  - Sophisticated Backpack crafting upgrades
 - old mutable workflow/acquisition store patterns removed instead of preserved
   as facades
+- orphaned pre-router action-session storage removed instead of carried forward
 
-This means the next work should not reopen the core authority/projection split.
-The next work should build above that kernel and above the new event-backed
-workflow/activity runtime.
+This means the next work should not reopen the authority/projection split, the
+session/router kernel, or the crafting operation model. The next work should
+prove that kernel in real hosts.
 
 ## Current Status Review
 
-At a high level, the core is now strong enough to support real UI experiments
-without reopening the inventory kernel again.
+At a high level, the codebase is now ready for the first real host/UI slice.
 
 What is solid:
 
 - exact authority is explicit and no longer conflated with visible rows
 - merged carried browsing retains exact backing refs for deterministic actions
 - provider-entry inventories are modeled honestly instead of as fake slots
-- row-driven transfer planning exists and is tested
-- browse documents are now a real core output instead of screen-owned assembly
+- browse documents are a core output instead of screen-owned assembly
 - durable workflow semantics and bounded inventory activity are event-backed
-- legacy mutable workflow store patterns are removed
+- one refresh-owned routed path exists from command or typed intent to
+  authoritative outcome and rebuilt browse state
+- correlation/session metadata is now real operational data instead of empty
+  envelope fields
+- crafting surfaces follow one contract across vanilla, Tom's, and
+  Sophisticated integrations
+- the server boundary stays narrow: server handlers execute concrete
+  `InventoryActionRequest`s only
 
 What is only partially landed:
 
-- typed browse/workflow/mutation intents exist, but there is still no central
-  router executing them end to end
-- browse command availability exists in browse documents, but there is still no
-  command-invocation layer that maps those commands back into intents
-- the event envelope already has `correlationId`, `causationId`, and
-  `sessionId`, but the current runtime does not propagate real values through
-  workflow events and activity events yet
-- external activity can be appended explicitly, but there is still no session
-  coordinator for invalidation, refresh ownership, and conservative diff
-  fallback
-
-What is still missing for the decoupled-UI target:
-
-- one refresh-owned path from `browse command or typed intent` to
-  `workflow write or action planning` to `authoritative outcome` to
-  `activity recording` to `rebuilt browse document`
-- a clean external-signal path for pickups, trades, quest rewards, and compat
-  deltas that happen outside direct SLOT row actions
-- one end-to-end crafting pipeline across row-driven and cursor-driven actions
+- the client runtime exposes the session coordinator and intent router, but no
+  production screen host consumes them yet
+- the current NeoForge client bootstrap still resolves hosts with placeholder
+  screen metadata, so compat that relies on accurate screen context is not yet
+  proven through the live client path
+- external invalidation and conservative diff fallback exist, but explicit
+  world/mod signal producers for pickups, trades, quest rewards, and similar
+  activity are still sparse
+- workflow surfaces exist in browse output, but no production UI host renders
+  collections, loadouts, recents, and cleanup over the new core yet
+- trash, overflow, recovery, and undo semantics remain intentionally deferred
+- recipe-assisted workflows such as EMI/JEI transfer are not started
 
 ## Known Gaps And Risks
 
 These are the highest-signal issues still visible from the current code and
 plan.
 
-### 1. Intent Scaffolding Is Ahead Of Executable Routing
+### 1. The Docs Lag The Code
 
-The repo now has typed intent families in:
-
-- `InventoryBrowseIntent`
-- `InventoryWorkflowIntent`
-- `InventoryMutationIntent`
-
-but they are still just data contracts. There is no `InventoryIntentRouter`,
-no command invocation surface, and no shared router result model yet.
+The previous implementation plan still described the router/coordinator and the
+crafting pipeline as missing even though those pieces are now landed.
 
 Practical consequence:
 
-- UI hosts would still need to branch on commands/intents locally to do
-  anything meaningful
-- that is the main remaining blocker for truly decoupled UI
+- the written execution order no longer matches the actual codebase
+- planning drift is now a bigger risk than kernel under-design
 
-### 2. Browse Selection Is Inconsistent
+### 2. There Is No Real Host Over The New Core Yet
 
-`InventoryBrowseIntent.SelectEntry` already exists, but
-`InventoryBrowseSessionState` does not currently persist a selected entry id,
-and item/placeholder browse rows do not expose selected state.
-
-Practical consequence:
-
-- there is no clean shared notion of row selection yet
-- a UI host would still need local selection semantics for normal item rows
-
-### 3. External Activity Handling Is Still Underdefined In Code
-
-The event-backed runtime can record explicit activity events, but there is no
-coordinator yet for:
-
-- authority invalidation
-- explicit external signals
-- conservative diff inference when explicit hooks are absent
-- refresh ownership across open sessions
+The main session/runtime exists, but there is still no shipped carried-only or
+dual-pane screen consuming browse documents, command invocation, and typed
+intents end to end.
 
 Practical consequence:
 
-- recents and cleanup can be correct for direct routed outcomes today
-- they are not yet guaranteed to stay correct for all world/mod-driven changes
-  while a UI is open
+- the largest remaining risk is now at the screen/session boundary
+- core behavior is well-tested headlessly, but the actual user path is not yet
+  proven
 
-### 4. Crafting Intents Are Not Yet Rich Enough For The Planned Pipeline
+### 3. Client Host Context Is Still Under-Specified
 
-`InventoryMutationIntent.CraftingSurface` is still just a thin identifier-level
-contract. It does not yet capture enough detail for:
-
-- selected-row placement vs cursor placement
-- left/right click differences
-- drag-distribution semantics
-- result extraction/refill sequencing
+The current NeoForge bootstrap resolves hosts from the active menu, but it does
+not yet feed real screen class, title, ownership, or related host hints into
+`InventoryHostContext`.
 
 Practical consequence:
 
-- crafting surfaces are modeled correctly at the descriptor level
-- the action/intention layer above them is still under-specified
+- compat providers that match on screen context are not yet exercised through
+  the actual client runtime
+- the first host slice needs proper screen observation instead of more planner
+  work
 
-### 5. Trash / Overflow / Recovery Are Only Partially Designed
+### 4. External Activity Is Still Conservative-First
 
-The activity model now has the right vocabulary for:
+The coordinator can invalidate and classify carried acquisitions from authority
+diffs, but explicit signal bridges are still limited.
 
-- `TRASHED`
-- `OVERFLOW_STAGED`
-- `RESTORED`
-- `VOIDED`
+Practical consequence:
 
-but the operational semantics are still open:
+- direct routed outcomes are correct
+- some world/mod-driven changes still rely on invalidation plus conservative
+  inference instead of explicit producers
+
+### 5. Trash / Overflow / Recovery Are Still Product Work, Not Engineering Debt
+
+The activity model has the right vocabulary, but the behavior rules are still
+open:
 
 - where recoverable trash lives
 - when overflow staging happens
 - what gets a recovery token
-- what the restore path is allowed to do
+- what restore is allowed to do
 
 Practical consequence:
 
-- the event model is ahead of the actual product rules
-- this is good groundwork, but it is not a finished feature design
+- this should stay deferred until the first real host proves the current
+  browse/workflow model
 
-### 6. Correlation Plumbing Exists Structurally But Not Operationally
+### 6. Recipe-Assisted Workflows Are Still Absent
 
-`DomainEventEnvelope` already has global sequence, stream sequence,
-correlation, causation, and session fields. The current runtime still writes
-empty correlation/causation/session values.
+Crafting is now routed cleanly, but recipe transfer/fill workflows are not yet
+integrated.
 
 Practical consequence:
 
-- the model is ready for proper end-to-end tracing
-- the router/coordinator pass still needs to make those fields real
+- the next tool-adjacent work should be EMI/JEI-style integration, not another
+  rewrite of core crafting semantics
 
 ## Ground Rules
 
@@ -196,161 +191,162 @@ Practical consequence:
    semantics.
 3. Unsupported or ambiguous integrations fail closed.
 4. Broad actions plan against backing entries, not aggregate counts alone.
-5. Crafting must stay slot-backed and descriptor-driven.
-6. New UI hosts must consume the same authority/projection/browse/action
-   contracts.
+5. Crafting stays slot-backed and descriptor-driven.
+6. New hosts must consume the same authority/projection/browse/action
+   contracts instead of inventing screen-local semantics.
 
 ## Next Execution Order
 
-### 1. Build A Central Intent Router And Session Coordinator
+### 1. Build Real Screen Observation And Host Binding
 
 Goal:
 
-- replace screen/helper branching and ad hoc refresh handling with one
-  refresh-owned session pipeline
+- turn live NeoForge screen/menu state into accurate `InventoryHostContext`
+  instead of placeholder bootstrap metadata
 
 Deliverables:
 
-- `InventoryCommandInvocation` and command-subject routing for item, section,
-  and pane commands
-- typed intents for row actions, cursor actions, pane transfers, quick-access
-  actions, loadout actions, trash/void, and crafting/tool actions
-- a router that validates intents against the active session and dispatches to
-  planners, workflow writes, or direct operations
-- router result/effect types that always return:
-  - refreshed authority
-  - refreshed browse document
-  - typed status/reason data
-  - executed outcomes or planner details where relevant
-- a session coordinator that owns:
-  - authority refresh
-  - browse rebuild
-  - external activity ingestion
-  - explicit invalidation handling
-  - conservative diff fallback when explicit hooks are missing
-- correlation and result plumbing that ties:
-  - typed intents
-  - workflow events
-  - authoritative outcomes
-  - activity events
-- browse-state support for real selected-entry persistence instead of only
-  selected loadout persistence
-- screen code reduced to hit testing, presentation, and intent emission
+- screen observation that captures:
+  - actual screen class
+  - actual title
+  - slot ownership and host shape hints
+  - carried-only vs external-host posture
+- session refresh ownership around screen/menu transitions
+- host resolution that uses those real values before compat matching
 
 Exit criteria:
 
-- one user action maps to one intent family and one refresh-owned result path
-- browse commands no longer require host-local semantic branching
-- row selection exists as shared core state rather than screen-local convention
-- external pickups/trades/compat changes no longer require screen-local recent
-  or cleanup bookkeeping
-- screen-local branching no longer chooses mutation semantics
-- outcomes and refresh behavior are driven by shared action results
+- compat providers no longer depend on blank screen metadata through the live
+  client path
+- host changes rebuild the session cleanly without screen-local branching
 
-### 2. Rewrite Crafting As One Pipeline
+### 2. Build A Thin Shared Screen Core
 
 Goal:
 
-- make selected-row placement, cursor placement, drag distribution, result
-  extraction, and refill use one end-to-end crafting pipeline
+- make carried-only and dual-pane hosts thin render/input shells over the same
+  browse/session/intent pipeline
 
 Deliverables:
 
-- typed crafting intents
-- authoritative routing through current crafting surfaces
-- unified planner/operation path for selected-row and cursor-driven crafting
-  interactions
-- tests for left click, right click, drag, result extraction, and blocked cases
+- reusable row/list materialization over `InventoryBrowseDocument`
+- one input mapping layer for:
+  - `InventoryBrowseIntent`
+  - `InventoryCommandInvocation`
+  - typed crafting/tool intents
+- shared handling for search, grouping, selection, pending-action state, and
+  tool pinning
+- screen modules that do layout and hit testing without owning semantics
 
 Exit criteria:
 
-- tool panels stop owning crafting semantics
-- generic carried-drop routing cannot steal crafting inputs
-- backpack and terminal crafting surfaces follow the same core contract
+- no screen class chooses mutation semantics locally
+- selection, pending actions, and refresh behavior derive from shared session
+  state
+- carried-only and dual-pane hosts can share the same intent pipeline
 
-### 3. Move Workflow/UI Experiments Onto The New Core
+### 3. Ship The First Carried Host Behind Config
 
 Goal:
 
-- let UI experiments and workflow features consume the new
-  projection/action/workflow/activity model directly
+- prove the new core on the player inventory path before widening to container
+  hosts
 
 Deliverables:
 
-- carried-browser experiments over `InventoryWorkingSetProjection`
-- row-driven transfer flows over `ProjectedRowTransferPlanner`
-- workflow surfaces for collections, loadouts, recents, cleanup, and future
-  recovery flows that consume projections rather than screen-local state
+- player-inventory replacement path behind `replacePlayerInventory`
+- carried browser rendering over the browse document
+- search/filter/grouping flows over shared browse state
+- row commands, favorites, collections, loadouts, and recents over the router
+- crafting tool panel integration for the vanilla 2x2 surface
 
 Exit criteria:
 
-- no new feature work depends on old prototype-style view wrappers
-- merged-row semantics stay consistent across browsing and workflow flows
-- recent and cleanup behavior stays consistent across multiple UI hosts
+- a carried-only host works end to end without old prototype wrappers
+- the first user-visible SLOT host is using the new core rather than bypassing
+  it
 
-### 4. Split The Screen Layer Into A Thin Shared Core
+### 4. Add Dual-Pane And Container Hosts
 
 Goal:
 
-- make carried-only and dual-pane hosts thin specializations over the same
-  projection/intent/action pipeline
+- apply the same shared core to chest-like storage and supported compat hosts
 
 Deliverables:
 
-- reusable row/list materialization over projections
-- smaller state/render/action modules under the screen layer
-- thinner concrete screen classes that mostly configure mode and layout
+- dual-pane layout over the same browse/session pipeline
+- carried/external row actions and pane/section commands through the router
+- compact crafting/tool panels where the active host exposes them
+- explicit guarded fallback when a host is unsupported
 
 Exit criteria:
 
-- carried and workspace screens share the same intent and refresh pipeline
-- large screen classes no longer own workflow semantics or action selection
+- carried and external panes share one intent and refresh pipeline
+- supported chest-like and terminal-style hosts run through the same host core
 
-### 5. Tighten Compat Bridges Around The New Contracts
+### 5. Add Recipe-Assisted Workflows And Better External Signals
 
 Goal:
 
-- keep optional-mod integration aligned with the new authority/projection/action
-  model
+- extend the existing core for recipe viewers and richer activity signaling
+  without reopening action semantics
 
 Deliverables:
 
-- bridge modules that emit SLOT-owned descriptors, targets, and diagnostics
-- no reflection leaking into screen, projection, or planner code
-- future adapter work for more equipment/accessory ecosystems built on the same
-  contracts
+- recipe transfer/fill intents routed through existing crafting surfaces
+- EMI/JEI-facing compat bridges that emit SLOT-owned intents and diagnostics
+- explicit activity signal bridges for pickups, trades, quest rewards, and
+  compat deltas where available
 
 Exit criteria:
 
-- bridge failures are explicit and fail closed
-- provider-entry and crafting-surface integrations remain first-class instead of
-  degenerating into special cases
+- recipe-assisted workflows do not invent new authority paths
+- recents can use explicit producers where integrations provide them
+
+### 6. Design Trash / Overflow / Recovery On Top Of The Existing Activity Model
+
+Goal:
+
+- finish cleanup/undo semantics after the first real hosts prove the browse and
+  workflow model
+
+Deliverables:
+
+- explicit product rules for trash, overflow staging, restore, and void
+- routed intents and activity producers aligned with those rules
+- recovery surfaces that consume activity, not inferred current state
+
+Exit criteria:
+
+- cleanup and recovery semantics are specified before implementation expands
+- trash/void remain explicit-intent features, never passive side effects
 
 ## Testing Priorities
 
 Highest-value near-term coverage:
 
-- intent routing and outcome sequencing
-- external activity ingestion and authority invalidation handling
-- crafting placement/drag/result/refill flows
+- screen/session boundary behavior
+- screen observation and host binding
+- intent emission from carried-only and dual-pane hosts
 - row-driven bulk transfer behavior across merged carried rows
+- crafting placement/drag/result flows through live hosts
 - protection and workflow interactions with broad actions
-- refresh/session preservation across projection rebuilds
+- refresh/session preservation across projection rebuilds and host changes
 - compat bridge receiver guards and fallback behavior
 - Recent production and suppression matrix
-- activity replay, dismissal watermark, and cleanup/recovery projection behavior
+- activity replay, dismissal watermark, and future cleanup/recovery projection
+  behavior
 - persistence migration from legacy snapshots into checkpoint-plus-log state
 
 ## Definition Of Done For This Phase
 
 This phase is complete when:
 
-- typed intents sit above the current planner/operation layer
-- workflow/activity runtime remains the only durable write path for recents,
-  cleanup, tags, collections, and loadouts
-- crafting uses one pipeline end to end
-- UI experiments consume the new core directly
-- screen classes are materially thinner
+- the docs reflect the landed router/session/crafting baseline
+- a production NeoForge carried host consumes the new core directly
+- at least one dual-pane/container host consumes the same shared host layer
+- screen classes are materially thinner and no longer choose inventory
+  semantics
 - compat bridges stay narrow and descriptor-driven
-- the docs remain aligned with the current architecture instead of with deleted
-  prototype abstractions
+- recipe-assisted workflows and cleanup/recovery remain clearly separated
+  follow-on phases unless they are explicitly landed

@@ -28,6 +28,7 @@ class ArchitectureDependencyTest {
             "action/session",
             "inventory/action",
             "inventory/core",
+            "inventory/workspace",
             "client/policy",
             "inventory/kernel",
             "inventory/query",

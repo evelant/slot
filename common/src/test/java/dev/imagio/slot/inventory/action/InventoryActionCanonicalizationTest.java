@@ -168,9 +168,7 @@ class InventoryActionCanonicalizationTest {
                 List.of(),
                 List.of(),
                 List.of(tool),
-                false,
-                true,
-                false,
+                dev.imagio.slot.inventory.integration.InventoryHostObservationHints.defaults(),
                 ""
         );
     }

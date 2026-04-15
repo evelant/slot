@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.core;
 
 import dev.imagio.slot.inventory.integration.InventoryHostSession;
+import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.PlayerInventoryExtension;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -24,9 +25,7 @@ public record InventoryHostDescriptor(
         List<QuickAccessLaneDescriptor> quickAccessLanes,
         List<EquipmentGroupDescriptor> equipmentGroups,
         List<InventoryToolDescriptor> toolDescriptors,
-        boolean slotOwned,
-        boolean recordsRecent,
-        boolean carriedOnly,
+        InventoryHostObservationHints observationHints,
         String diagnostics
 ) {
     public InventoryHostDescriptor {
@@ -43,6 +42,7 @@ public record InventoryHostDescriptor(
         quickAccessLanes = quickAccessLanes == null ? List.of() : List.copyOf(quickAccessLanes);
         equipmentGroups = equipmentGroups == null ? List.of() : List.copyOf(equipmentGroups);
         toolDescriptors = toolDescriptors == null ? List.of() : List.copyOf(toolDescriptors);
+        observationHints = observationHints == null ? InventoryHostObservationHints.defaults() : observationHints;
         diagnostics = diagnostics == null ? "" : diagnostics;
     }
 
