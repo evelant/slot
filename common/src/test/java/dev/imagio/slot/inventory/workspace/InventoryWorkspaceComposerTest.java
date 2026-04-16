@@ -2,7 +2,6 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
-import dev.imagio.slot.inventory.browse.HeuristicInventoryCategoryResolver;
 import dev.imagio.slot.inventory.browse.InventoryBrowseDocument;
 import dev.imagio.slot.inventory.browse.InventoryBrowseFilter;
 import dev.imagio.slot.inventory.browse.InventoryBrowseFilterScope;
@@ -13,7 +12,6 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSessionState;
 import dev.imagio.slot.inventory.browse.InventoryBrowseSortMode;
 import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
 import dev.imagio.slot.inventory.browse.InventoryBrowseService;
-import dev.imagio.slot.inventory.browse.InventoryCategoryOverrides;
 import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.CraftingSurfaceDescriptor;
@@ -278,8 +276,7 @@ class InventoryWorkspaceComposerTest {
                 repository.snapshot(),
                 repository.browsePreferences().current(),
                 repository.browseSessionState().current(),
-                entry -> ItemIdentity.of(entry.stack().itemId()),
-                new HeuristicInventoryCategoryResolver(InventoryCategoryOverrides.empty())
+                entry -> ItemIdentity.of(entry.stack().itemId())
         ));
         return InventorySessionSnapshot.create(
                 new InventorySessionToken("workspace-test", 1L),

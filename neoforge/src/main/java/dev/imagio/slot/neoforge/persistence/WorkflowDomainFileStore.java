@@ -825,7 +825,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
         return new InventoryBrowsePreferences(
                 decodeEnum(InventoryBrowseSortMode.class, data.defaultSortMode, InventoryBrowseSortMode.NAME),
-                decodeEnum(InventoryBrowseGroupingMode.class, data.defaultGroupingMode, InventoryBrowseGroupingMode.CATEGORY),
+                decodeEnum(InventoryBrowseGroupingMode.class, data.defaultGroupingMode, InventoryBrowseGroupingMode.FLAT),
                 decodeEnum(InventoryBrowsePaneMode.class, data.defaultPaneMode, InventoryBrowsePaneMode.CARRIED_ONLY),
                 decodeEnum(InventoryActionScope.class, data.defaultBulkActionScope, InventoryActionScope.VISIBLE_MATCHES)
         );

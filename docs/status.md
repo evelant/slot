@@ -41,37 +41,31 @@ Current prototype validation point:
   into the map, pan/zoom works, and atlas card to hotbar movement works
 - the first atlas styling pass has known issues: aliased/flickering background
   texture, overly large item-card padding/text, and text overflow at detail zoom
-- the current prototype direction is triage-first visual memory: new and
-  ambiguous item identities go to `Triage`; only very high-confidence items
-  should auto-home, and player-authored homes become authoritative visual
-  placement
+- the current prototype direction is triage-first visual memory with
+  **no silent auto-homing**: a fresh atlas contains only the Triage island,
+  and a small set of conservative per-card suggestion chips (driven by item
+  class / tag / component signals, never id substring matching) lets the
+  player materialize Food / Tools / Weapons / Armor / Materials / Storage
+  islands on demand; everything beyond those six seeds is player-authored
+  or driven by rules learned from the player's own manual placements
 
-## Current Next Work
+## Current Focus
 
-The next implementation pass should replace broad automatic categorization
-with explicit triage and player-authored homes. The prototype list is no
-longer the target surface.
+Next work is the triage-first atlas loop. The previous string-match
+auto-home is being removed outright (no `Blocks` starter, no heuristic
+id classifier) before the new suggestion-chip layer is built on top.
+Chips come from a small set of class/tag/component-based templates and
+from rules learned from manual placements; nothing is homed without a
+player tap.
 
-1. Clean atlas rendering: reduce/replace the aliased background texture,
-   shrink item-card padding, reduce detail text size, and move full ids/source
-   details into an inspector.
-2. Add a first-class `Triage` island and route everything except
-   high-confidence obvious building blocks to it.
-3. Add in-memory `VisualHomeAssignment` state so player-authored item homes
-   survive LDLib view refreshes during the session.
-4. Implement low-friction placement: select a triage card, click an island
-   header to assign it there, or click empty atlas space to create a new island.
-5. Preserve camera, search query, selection, and home assignments through view
-   refreshes.
-6. Keep external storage memory, search result trays, recipe viewer
-   integration, trash/void/recovery, and persisted visual homes as follow-on
-   slices unless explicitly selected.
-7. After the triage/home loop proves out, the Kit prototype
-   ([plans/kit-prototype.md](plans/kit-prototype.md)) is the next workflow-rail
-   slice: a camera-anchored Belt landmark, a toggleable Kit Rack, Kit Cards
-   that unify task item membership with hotbar page layouts, and multi-page
-   belt switching via the existing `LoadoutApplyService` path. The old
-   sidebar-style collections/loadouts prototype is superseded.
+The full slice sequence lives in [plans/current.md](plans/current.md) —
+single source of truth. Near-term order: atlas readability cleanup →
+remove legacy auto-categorization → template predicate layer (headless)
+→ chips on Triage cards → home assignment + learned rules → undo toast
+→ island management basics → search spotlight → persisted homes and
+learned rules. Kit prototype
+([plans/kit-prototype.md](plans/kit-prototype.md)) follows after the
+triage/home loop proves out.
 
 ## Project Structure
 
@@ -132,6 +126,59 @@ Reference code:
   carried-container and crafting-upgrade integration references
 - `reference/Toms-Storage`: terminal/provider-entry reference
 - `reference/emi`: recipe-viewer integration reference
+
+## Concept → Code Map
+
+Use this to find the right package quickly. Paths are under
+`common/src/main/java/dev/imagio/slot/` unless noted.
+
+| Concept | Package / area |
+| --- | --- |
+| Authority snapshots, read services | `inventory/query` |
+| Source/entry identity, slot targets | `inventory/core` |
+| Action taxonomy (`Kind+Quantity+Scope+Policy`) | `inventory/action` |
+| Action planners, canonicalization | `inventory/action` |
+| Browse documents, panes, rows | `inventory/browse` |
+| Session coordinator, intent router, preflight | `inventory/session` |
+| Host resolution, mutation router, executors | `inventory/integration` |
+| Workspace composition (UI-neutral) | `inventory/workspace` |
+| Collections, loadouts, recents, protection | `workflow/domain` |
+| Host compat shared helpers | `compat` |
+| Screen/menu observation | `neoforge/client/host` |
+| Player inventory replacement trigger | `neoforge/client/screen` |
+| LDLib2 workspace menu, session, view-model, RPC | `neoforge/screen/ldlib` |
+| Atlas `GraphView`, item cards, camera preservation | `neoforge/screen/ldlib` (UI factory) |
+| Open-workspace network payloads | `neoforge/network` |
+| Persistence bridge | `neoforge/persistence` |
+
+LDLib2 imports must stay out of `common/`. Inventory semantics stay out
+of `neoforge/` UI code.
+
+## Key Terms
+
+Cross-doc vocabulary. Expanded definitions live in the linked docs.
+
+**Atlas** — pan/zoom visual inventory canvas; the primary player-inventory
+surface. See [design/atlas.md](design/atlas.md).
+**Home** — stable visual coordinate owned by one item identity.
+**Island** — player-facing organizational cluster inside a region.
+**Region** — broad map zone containing one or more islands.
+**Triage** — special island for unhomed/ambiguous identities.
+**Lens** — overlay that changes meaning without rewriting atlas geometry
+(search, Recent, cleanup, task).
+**Landmark** — fixed atlas object (Belt, Triage intake) used as a
+navigation anchor.
+**Mirror / Ghost / Anchor / Action Surface** — projection roles; see
+"Canonical Home Versus Derived Projection" in atlas.md.
+**Kit** — task-shaped unit that unifies earlier "collection" + "loadout".
+See [design/kits.md](design/kits.md).
+**Belt** — camera-anchored atlas landmark representing the active hotbar.
+**Kit Rack** — toggleable Kit Card shelf on the atlas.
+**Authority** — the source of truth about what is in which slot. Kernel
+owns authority; UI never invents it.
+**Projection** — derived read model built from authority for a surface.
+**Intent / Action Request** — server-authoritative command built from a
+UI-triggered intent; see [architecture/action-taxonomy.md](architecture/action-taxonomy.md).
 
 ## External Resources
 

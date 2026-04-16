@@ -62,12 +62,16 @@ Plans:
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit prototype
   slices.
 
-Decisions (ADR-style, historical):
+Decisions (ADR-style):
 
 - [docs/decisions/0001-core-rewrite.md](docs/decisions/0001-core-rewrite.md)
   — reasoning behind the core architecture rewrite.
 - [docs/decisions/0002-ldlib2-workspace.md](docs/decisions/0002-ldlib2-workspace.md)
-  — accepted LDLib2 workspace transport decision.
+  — LDLib2 workspace transport adoption.
+- [docs/decisions/0003-atlas-primary-surface.md](docs/decisions/0003-atlas-primary-surface.md)
+  — atlas replaces the list-first prototype as the primary surface.
+- [docs/decisions/0004-kits-supersede-collections-loadouts.md](docs/decisions/0004-kits-supersede-collections-loadouts.md)
+  — Kits unify the earlier collections + loadouts split.
 
 Research and assessments:
 

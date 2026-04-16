@@ -30,7 +30,7 @@ public final class InventoryBrowseService {
     }
 
     public static InventoryBrowseDocument browse(InventoryBrowseRequest request) {
-        InventoryBrowseRequest resolved = request == null ? new InventoryBrowseRequest(null, null, null, null, null, null) : request;
+        InventoryBrowseRequest resolved = request == null ? new InventoryBrowseRequest(null, null, null, null, null) : request;
         if (resolved.authority().host() == null) {
             return new InventoryBrowseDocument(
                     InventoryBrowsePaneMode.CARRIED_ONLY,
@@ -143,24 +143,13 @@ public final class InventoryBrowseService {
         LinkedHashMap<String, String> titleBySectionId = new LinkedHashMap<>();
         LinkedHashMap<String, InventoryBrowseSectionKind> kindBySectionId = new LinkedHashMap<>();
         for (InventoryBrowseEntry.ItemEntry itemEntry : itemEntries) {
-            String sectionId;
-            String title;
-            InventoryBrowseSectionKind sectionKind;
-            if (groupingMode == InventoryBrowseGroupingMode.SOURCE) {
-                String sourceId = itemEntry.row().backingSources().isEmpty() ? "unknown" : itemEntry.row().backingSources().getFirst();
-                InventorySourceDescriptor source = request.authority().source(sourceId);
-                sectionId = "source:" + sourceId;
-                title = source == null ? sourceId : source.label().getString();
-                sectionKind = InventoryBrowseSectionKind.SOURCE;
-            } else {
-                ItemCategory category = itemEntry.annotations().category();
-                sectionId = "category:" + category.name().toLowerCase(Locale.ROOT);
-                title = category.title();
-                sectionKind = category == ItemCategory.MISC ? InventoryBrowseSectionKind.ITEMS : InventoryBrowseSectionKind.CATEGORY;
-            }
+            String sourceId = itemEntry.row().backingSources().isEmpty() ? "unknown" : itemEntry.row().backingSources().getFirst();
+            InventorySourceDescriptor source = request.authority().source(sourceId);
+            String sectionId = "source:" + sourceId;
+            String title = source == null ? sourceId : source.label().getString();
             entriesBySectionId.computeIfAbsent(sectionId, ignored -> new ArrayList<>()).add(itemEntry);
             titleBySectionId.putIfAbsent(sectionId, title);
-            kindBySectionId.putIfAbsent(sectionId, sectionKind);
+            kindBySectionId.putIfAbsent(sectionId, InventoryBrowseSectionKind.SOURCE);
         }
 
         ArrayList<InventoryBrowseSection> sections = new ArrayList<>();
@@ -197,8 +186,7 @@ public final class InventoryBrowseService {
                     row.identity(),
                     collections,
                     recents,
-                    selectedCollectionId,
-                    request.categoryResolver()
+                    selectedCollectionId
             );
             if (!matchesScope(request.sessionState(), annotations)) {
                 continue;
@@ -257,8 +245,7 @@ public final class InventoryBrowseService {
                     identity,
                     request.workflow().collections(),
                     request.workflow().recents(),
-                    collectionId,
-                    request.categoryResolver()
+                    collectionId
             );
             InventoryBrowseSubjectRef.PlaceholderRef subjectRef = new InventoryBrowseSubjectRef.PlaceholderRef(collectionId, identity);
             placeholders.add(new InventoryBrowseEntry.PlaceholderEntry(
@@ -316,8 +303,7 @@ public final class InventoryBrowseService {
             ItemIdentity identity,
             CollectionProjection collections,
             RecentView recents,
-            String selectedCollectionId,
-            InventoryCategoryResolver categoryResolver
+            String selectedCollectionId
     ) {
         Set<String> collectionIds = collections.memberships().getOrDefault(identity, Set.of());
         int desiredCount = selectedCollectionId == null || selectedCollectionId.isBlank()
@@ -326,7 +312,6 @@ public final class InventoryBrowseService {
                 .getOrDefault(selectedCollectionId, Map.of())
                 .getOrDefault(identity, 0);
         return new InventoryBrowseAnnotations(
-                categoryResolver.resolve(identity),
                 collections.favoriteTags().contains(identity),
                 collections.junkTags().contains(identity),
                 recents.countsByIdentity().containsKey(identity),

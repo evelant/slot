@@ -1931,7 +1931,6 @@ final class SlotWorkspaceUiFactory {
             String count = island.itemCount() + " item" + (island.itemCount() == 1 ? "" : "s");
             return switch (island.kind()) {
                 case TRIAGE -> count + " awaiting placement";
-                case STARTER -> count + " high-confidence homes";
                 case PLAYER -> count + " player-authored homes";
             };
         }

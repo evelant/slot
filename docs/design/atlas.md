@@ -293,31 +293,99 @@ From Triage, the player can:
 - add to Kit or collection
 - ignore for now
 
-### Auto-Homing
+### No Silent Auto-Homing
 
-Auto-homing is deliberately conservative. Player trust matters more than
-classifier coverage.
-
-Initial scope:
-
-- obvious placeable building blocks can auto-home to a `Blocks` starter
-  island
-- everything else starts in `Triage`
-
-Rules:
-
-- **manual home beats automatic home** (`PLAYER_PLACED` wins)
-- pinned/favorite/loadout items get stronger homes
-- ambiguous or risky items stay in triage
-- broad mod namespace or tag guesses are suggestions, not silent homes
+Nothing is homed without a player tap. A fresh atlas contains **only** the
+Triage island; there are no pre-created category islands waiting for items
+to fall into them. This rule is intentionally stricter than "conservative
+auto-homing" — prior prototypes showed that string-matching item ids (even
+with a small whitelist) misclassifies enough in modded packs to erode
+trust on day one.
 
 A bad silent home is worse than visible triage.
 
-### Learning From Repetition
+### Suggestion Chips (Templates)
 
-If the player repeatedly moves an item to a visual area, SLOT can offer
-("Always place Copper Ore here?") but should not auto-apply — surprises
-break trust.
+To make the placement workflow discoverable on a fresh map, Triage cards
+can display small **suggestion chips** the player taps to place the item.
+A chip is a one-tap commit: on first tap for a given template, the chip
+materializes the target island and homes the item in one motion.
+
+Template set (six, signal-based — class / component / tag, never item-id
+substrings):
+
+- **Food** — item has a `DataComponents.FOOD` value
+- **Tools** — `DiggerItem` plus `ShearsItem`, `FishingRodItem`,
+  `FlintAndSteelItem`
+- **Weapons** — `SwordItem`, `BowItem`, `CrossbowItem`, `TridentItem`,
+  `MaceItem`
+- **Armor** — `ArmorItem` (plus `Equipable` capability for modded gear)
+- **Materials** — `#c:ingots`, `#c:gems`, `#c:raw_materials`, `#c:ores`
+- **Storage** — `#c:chests`, `#c:shulker_boxes`, `#c:barrels`
+
+Items that match no template get no template chip. That's fine; they
+sit in Triage until the player acts, and the **learned-rule layer** picks
+up the rest.
+
+Template lifecycle:
+
+- templates are dormant on a fresh profile
+- first matching item surfaces a chip on its Triage card using template
+  defaults (name, color, seed icon)
+- tapping the chip creates the island with those defaults, homes the
+  item, and records the placement
+- subsequent matches chip to the already-materialized island, which the
+  player may have renamed / recolored / repositioned freely
+- if the player deletes a materialized-template island, the template
+  goes permanently dormant for that save — no resurrection on the next
+  matching pickup
+
+### Learned Rules (Repetition)
+
+Every manual placement (chip tap or explicit assignment) is recorded
+with its adjacency signals: shared item tags, shared mod namespace,
+shared creative tab. Once the same `(adjacency → island)` pair is
+confirmed N≥2 times, it becomes a **learned rule** that surfaces a chip
+on future Triage cards sharing that adjacency.
+
+Learned-rule ranking, strongest first: shared tag, shared namespace,
+shared creative tab. A small recency bias keeps stale patterns from
+outranking the player's current organization.
+
+### Chip Display Rules
+
+- **Max 1 template chip per card.** Templates are curated; they don't
+  compete with each other.
+- **Up to 2 learned chips per card** when more than one island has a
+  comparable score. Genuine ambiguity deserves a choice; anything beyond
+  two chips becomes a menu and defeats "tap to place."
+- **Hard cap of 2 chips total per card.**
+- **Learned rule wins the first slot when it disagrees with the template.**
+  A template chip takes the second slot only if it points to a different
+  island than the learned rule and there is no second learned rule to
+  show.
+- **Narrow suppression.** A learned rule suppresses the template chip
+  only for the adjacency category it actually covers. A rule for
+  `#minecraft:fishes → "Sushi Bar"` suppresses the Food template chip
+  on fish items but not on other food.
+- **Close-tie chips show both.** The player's pick becomes another
+  confirmation and breaks the tie for next time.
+
+### Placement Rules
+
+- **Manual home beats everything** (`PLAYER_PLACED` wins)
+- **Pinned / favorite / Kit items get stronger homes**
+- **Ambiguous items stay in Triage** — no chip is better than a wrong one
+- **Broad mod namespace or creative-tab guesses are suggestions, not
+  silent homes**
+
+### Undo
+
+Every chip-accept or manual assignment opens a short-window undo toast.
+Undo removes the home; if that action created the island *and* the island
+is still empty *and* still at its template-default name/color/icon, the
+island is deleted too. Renamed, recolored, or non-empty islands stay on
+undo — the player has already invested in them.
 
 ## Handling Scale
 

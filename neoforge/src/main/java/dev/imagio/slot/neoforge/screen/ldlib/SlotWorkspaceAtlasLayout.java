@@ -1,12 +1,9 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
-import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -19,19 +16,15 @@ final class SlotWorkspaceAtlasLayout {
     static final int CARD_HEIGHT = 32;
     static final int CARD_GAP = 4;
     static final String ISLAND_TRIAGE = "triage";
-    static final String ISLAND_BLOCKS = "starter.blocks";
     private static final int CANVAS_MARGIN = 24;
 
     private static final int TRIAGE_COLOR = 0xCC2D4455;
-    private static final int BLOCKS_COLOR = 0xCC3D5A47;
     private static final int PLAYER_COLOR = 0xCC5A4A6E;
     static final int ISLAND_CONTENT_PADDING_X = 14;
     static final int ISLAND_CONTENT_PADDING_Y = 14;
     static final int ISLAND_CONTENT_TOP = 56;
     private static final int TRIAGE_MIN_WIDTH = 420;
     private static final int TRIAGE_MIN_HEIGHT = 260;
-    private static final int BLOCKS_MIN_WIDTH = 320;
-    private static final int BLOCKS_MIN_HEIGHT = 220;
     private static final int PLAYER_ISLAND_MIN_WIDTH = 260;
     private static final int PLAYER_ISLAND_MIN_HEIGHT = 180;
     private static final int ISLAND_TRAILING_BUFFER_X = CARD_WIDTH + CARD_GAP;
@@ -51,17 +44,6 @@ final class SlotWorkspaceAtlasLayout {
                 TRIAGE_MIN_WIDTH,
                 TRIAGE_MIN_HEIGHT,
                 TRIAGE_COLOR,
-                0
-        ));
-        islands.add(new SlotWorkspaceViewModel.AtlasIsland(
-                ISLAND_BLOCKS,
-                "Blocks",
-                VisualAtlasIslandKind.STARTER,
-                668,
-                148,
-                BLOCKS_MIN_WIDTH,
-                BLOCKS_MIN_HEIGHT,
-                BLOCKS_COLOR,
                 0
         ));
         if (visualHomeMap != null) {
@@ -99,25 +81,6 @@ final class SlotWorkspaceAtlasLayout {
             fitted.add(fitIsland(island, resolvedItems));
         }
         return List.copyOf(fitted);
-    }
-
-    static String defaultIslandId(ItemStack stack) {
-        if (stack == null || stack.isEmpty()) {
-            return ISLAND_TRIAGE;
-        }
-        try {
-            Object item = stack.getClass().getMethod("getItem").invoke(stack);
-            if (item instanceof BlockItem) {
-                return ISLAND_BLOCKS;
-            }
-        } catch (ReflectiveOperationException | RuntimeException ignored) {
-        }
-        String itemId = ItemIdentityMatcher.create(stack).itemId();
-        String path = itemId.contains(":") ? itemId.substring(itemId.indexOf(':') + 1) : itemId;
-        if (looksLikeStarterBlock(path)) {
-            return ISLAND_BLOCKS;
-        }
-        return ISLAND_TRIAGE;
     }
 
     static Placement placementForOrdinal(
@@ -297,7 +260,6 @@ final class SlotWorkspaceAtlasLayout {
     private static int minIslandWidth(VisualAtlasIslandKind kind) {
         return switch (kind == null ? VisualAtlasIslandKind.PLAYER : kind) {
             case TRIAGE -> TRIAGE_MIN_WIDTH;
-            case STARTER -> BLOCKS_MIN_WIDTH;
             case PLAYER -> PLAYER_ISLAND_MIN_WIDTH;
         };
     }
@@ -305,27 +267,8 @@ final class SlotWorkspaceAtlasLayout {
     private static int minIslandHeight(VisualAtlasIslandKind kind) {
         return switch (kind == null ? VisualAtlasIslandKind.PLAYER : kind) {
             case TRIAGE -> TRIAGE_MIN_HEIGHT;
-            case STARTER -> BLOCKS_MIN_HEIGHT;
             case PLAYER -> PLAYER_ISLAND_MIN_HEIGHT;
         };
-    }
-
-    private static boolean looksLikeStarterBlock(String path) {
-        if (path == null || path.isBlank()) {
-            return false;
-        }
-        String normalized = "_" + path.toLowerCase() + "_";
-        return normalized.contains("_stone_")
-                || normalized.contains("_cobblestone_")
-                || normalized.contains("_dirt_")
-                || normalized.contains("_sand_")
-                || normalized.contains("_gravel_")
-                || normalized.contains("_planks_")
-                || normalized.contains("_log_")
-                || normalized.contains("_slab_")
-                || normalized.contains("_stairs_")
-                || normalized.contains("_brick_")
-                || normalized.contains("_glass_");
     }
 
     record Placement(

@@ -28,7 +28,7 @@ public sealed interface InventoryBrowseEntry permits
             String diagnostics
     ) implements InventoryBrowseEntry {
         public ItemEntry {
-            annotations = annotations == null ? InventoryBrowseAnnotations.empty(ItemCategory.MISC) : annotations;
+            annotations = annotations == null ? InventoryBrowseAnnotations.empty() : annotations;
             commands = commands == null ? Map.of() : Map.copyOf(commands);
             diagnostics = diagnostics == null ? "" : diagnostics;
         }
@@ -45,7 +45,7 @@ public sealed interface InventoryBrowseEntry permits
     ) implements InventoryBrowseEntry {
         public PlaceholderEntry {
             collectionId = collectionId == null ? "" : collectionId;
-            annotations = annotations == null ? InventoryBrowseAnnotations.empty(ItemCategory.MISC) : annotations;
+            annotations = annotations == null ? InventoryBrowseAnnotations.empty() : annotations;
             commands = commands == null ? Map.of() : Map.copyOf(commands);
             diagnostics = diagnostics == null ? "" : diagnostics;
         }

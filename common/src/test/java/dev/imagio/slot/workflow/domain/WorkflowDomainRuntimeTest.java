@@ -39,7 +39,7 @@ class WorkflowDomainRuntimeTest {
         runtime.browseSessionState().replaceWith(new InventoryBrowseSessionState(
                 new InventoryBrowseFilter("stone", InventoryBrowseFilterScope.ALL),
                 InventoryBrowseSortMode.COUNT_DESC,
-                InventoryBrowseGroupingMode.CATEGORY,
+                InventoryBrowseGroupingMode.FLAT,
                 InventoryBrowsePaneMode.DUAL_PANE,
                 InventoryPaneMembership.EXTERNAL,
                 collection.id(),

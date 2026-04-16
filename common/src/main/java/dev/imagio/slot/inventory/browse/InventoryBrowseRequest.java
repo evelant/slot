@@ -12,8 +12,7 @@ public record InventoryBrowseRequest(
         WorkflowDomainSnapshot workflow,
         InventoryBrowsePreferences preferences,
         InventoryBrowseSessionState sessionState,
-        Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
-        InventoryCategoryResolver categoryResolver
+        Function<InventoryEntrySnapshot, ItemIdentity> identityResolver
 ) {
     public InventoryBrowseRequest {
         authority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
@@ -23,8 +22,5 @@ public record InventoryBrowseRequest(
         identityResolver = identityResolver == null
                 ? entry -> entry == null || !entry.present() ? null : dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(entry.stack())
                 : identityResolver;
-        categoryResolver = categoryResolver == null
-                ? new HeuristicInventoryCategoryResolver(InventoryCategoryOverrides.empty())
-                : categoryResolver;
     }
 }

@@ -10,7 +10,7 @@ public record InventoryBrowsePreferences(
 ) {
     public InventoryBrowsePreferences {
         defaultSortMode = defaultSortMode == null ? InventoryBrowseSortMode.NAME : defaultSortMode;
-        defaultGroupingMode = defaultGroupingMode == null ? InventoryBrowseGroupingMode.CATEGORY : defaultGroupingMode;
+        defaultGroupingMode = defaultGroupingMode == null ? InventoryBrowseGroupingMode.FLAT : defaultGroupingMode;
         defaultPaneMode = defaultPaneMode == null ? InventoryBrowsePaneMode.CARRIED_ONLY : defaultPaneMode;
         defaultBulkActionScope = defaultBulkActionScope == null ? InventoryActionScope.VISIBLE_MATCHES : defaultBulkActionScope;
     }
@@ -18,7 +18,7 @@ public record InventoryBrowsePreferences(
     public static InventoryBrowsePreferences defaults() {
         return new InventoryBrowsePreferences(
                 InventoryBrowseSortMode.NAME,
-                InventoryBrowseGroupingMode.CATEGORY,
+                InventoryBrowseGroupingMode.FLAT,
                 InventoryBrowsePaneMode.CARRIED_ONLY,
                 InventoryActionScope.VISIBLE_MATCHES
         );

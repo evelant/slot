@@ -10,7 +10,6 @@ import dev.imagio.slot.inventory.action.InventoryActionStatus;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryCommandId;
 import dev.imagio.slot.inventory.action.InventoryCommandReasonCode;
-import dev.imagio.slot.inventory.browse.HeuristicInventoryCategoryResolver;
 import dev.imagio.slot.inventory.browse.InventoryBrowseDocument;
 import dev.imagio.slot.inventory.browse.InventoryBrowseDocumentQueries;
 import dev.imagio.slot.inventory.browse.InventoryBrowseFilter;
@@ -18,7 +17,6 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseFilterScope;
 import dev.imagio.slot.inventory.browse.InventoryBrowseGroupingMode;
 import dev.imagio.slot.inventory.browse.InventoryBrowsePaneMode;
 import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
-import dev.imagio.slot.inventory.browse.InventoryCategoryOverrides;
 import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.CraftingSurfaceDescriptor;
@@ -647,8 +645,7 @@ class InventoryIntentRouterTest {
                 source,
                 runtime,
                 dispatcher,
-                stackIdentity(),
-                new HeuristicInventoryCategoryResolver(InventoryCategoryOverrides.empty())
+                stackIdentity()
         );
         InventoryIntentRouter router = new InventoryIntentRouter(coordinator);
         return new TestContext(source, repository, runtime, dispatcher, coordinator, router);

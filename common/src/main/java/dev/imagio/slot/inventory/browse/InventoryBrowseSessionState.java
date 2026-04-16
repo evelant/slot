@@ -22,7 +22,7 @@ public record InventoryBrowseSessionState(
     public InventoryBrowseSessionState {
         filter = filter == null ? InventoryBrowseFilter.empty() : filter;
         sortMode = sortMode == null ? InventoryBrowseSortMode.NAME : sortMode;
-        groupingMode = groupingMode == null ? InventoryBrowseGroupingMode.CATEGORY : groupingMode;
+        groupingMode = groupingMode == null ? InventoryBrowseGroupingMode.FLAT : groupingMode;
         paneMode = paneMode == null ? InventoryBrowsePaneMode.CARRIED_ONLY : paneMode;
         activePane = activePane == null ? InventoryPaneMembership.CARRIED : activePane;
         selectedCollectionId = selectedCollectionId == null ? "" : selectedCollectionId;

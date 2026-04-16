@@ -235,7 +235,6 @@ class SlotWorkspaceLdlibModelTest {
         );
 
         assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE)));
-        assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS)));
         assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(machines.id())));
 
         assertEquals(2, viewModel.atlasItems().size());
@@ -254,7 +253,7 @@ class SlotWorkspaceLdlibModelTest {
         assertEquals(machines.y() + 60, apple.y());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, apple.width());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, apple.height());
-        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS, stone.islandId());
+        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, stone.islandId());
         assertEquals(17, stone.totalCount());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, stone.width());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, stone.height());
@@ -328,30 +327,30 @@ class SlotWorkspaceLdlibModelTest {
                 SlotWorkspaceAtlasLayout.baseIslands(runtime().snapshot().visualHomeMap()),
                 List.of()
         );
-        SlotWorkspaceViewModel.AtlasIsland blocks = islands.stream()
-                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS))
+        SlotWorkspaceViewModel.AtlasIsland triage = islands.stream()
+                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
                 .findFirst()
                 .orElseThrow();
 
         SlotWorkspaceAtlasLayout.Placement topLeft = SlotWorkspaceAtlasLayout.placementForDrop(
                 islands,
-                SlotWorkspaceAtlasLayout.ISLAND_BLOCKS,
-                blocks.x() - 200,
-                blocks.y() - 200
+                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                triage.x() - 200,
+                triage.y() - 200
         );
         SlotWorkspaceAtlasLayout.Placement bottomRight = SlotWorkspaceAtlasLayout.placementForDrop(
                 islands,
-                SlotWorkspaceAtlasLayout.ISLAND_BLOCKS,
-                blocks.x() + blocks.width() + 200,
-                blocks.y() + blocks.height() + 200
+                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                triage.x() + triage.width() + 200,
+                triage.y() + triage.height() + 200
         );
 
         assertTrue(topLeft.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
         assertTrue(topLeft.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(bottomRight.localX() <= blocks.width() - SlotWorkspaceAtlasLayout.CARD_WIDTH - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(bottomRight.localY() <= blocks.height() - SlotWorkspaceAtlasLayout.CARD_HEIGHT - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_Y);
-        assertTrue(topLeft.x() >= blocks.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(topLeft.y() >= blocks.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+        assertTrue(bottomRight.localX() <= triage.width() - SlotWorkspaceAtlasLayout.CARD_WIDTH - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(bottomRight.localY() <= triage.height() - SlotWorkspaceAtlasLayout.CARD_HEIGHT - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_Y);
+        assertTrue(topLeft.x() >= triage.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(topLeft.y() >= triage.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
     }
 
     @Test
@@ -360,8 +359,8 @@ class SlotWorkspaceLdlibModelTest {
                 SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
                 List.of()
         );
-        SlotWorkspaceViewModel.AtlasIsland blocks = base.stream()
-                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS))
+        SlotWorkspaceViewModel.AtlasIsland triage = base.stream()
+                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
                 .findFirst()
                 .orElseThrow();
 
@@ -371,9 +370,9 @@ class SlotWorkspaceLdlibModelTest {
                 "Stone",
                 1,
                 0,
-                SlotWorkspaceAtlasLayout.ISLAND_BLOCKS,
-                blocks.x() + blocks.width() - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X - SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                blocks.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
+                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                triage.x() + triage.width() - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X - SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                triage.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
                 SlotWorkspaceAtlasLayout.CARD_WIDTH,
                 SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                 false,
@@ -383,11 +382,11 @@ class SlotWorkspaceLdlibModelTest {
 
         List<SlotWorkspaceViewModel.AtlasIsland> fitted = SlotWorkspaceAtlasLayout.fittedIslands(base, List.of(edgeItem));
         SlotWorkspaceViewModel.AtlasIsland grown = fitted.stream()
-                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS))
+                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
                 .findFirst()
                 .orElseThrow();
 
-        assertTrue(grown.width() > blocks.width());
+        assertTrue(grown.width() > triage.width());
         assertEquals(1, grown.itemCount());
     }
 

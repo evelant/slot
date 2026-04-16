@@ -96,7 +96,7 @@ class InventoryBrowseServiceTest {
         repository.browseSessionState().replaceWith(new InventoryBrowseSessionState(
                 new InventoryBrowseFilter("", InventoryBrowseFilterScope.SELECTED_COLLECTION),
                 InventoryBrowseSortMode.COUNT_DESC,
-                InventoryBrowseGroupingMode.CATEGORY,
+                InventoryBrowseGroupingMode.FLAT,
                 InventoryBrowsePaneMode.DUAL_PANE,
                 InventoryPaneMembership.CARRIED,
                 mining.id(),
@@ -112,8 +112,7 @@ class InventoryBrowseServiceTest {
                 repository.snapshot(),
                 repository.browsePreferences().current(),
                 repository.browseSessionState().current(),
-                entry -> ItemIdentity.of(entry.stack().itemId()),
-                new HeuristicInventoryCategoryResolver(InventoryCategoryOverrides.empty())
+                entry -> ItemIdentity.of(entry.stack().itemId())
         ));
 
         assertEquals(InventoryBrowsePaneMode.DUAL_PANE, document.paneMode());
@@ -132,7 +131,6 @@ class InventoryBrowseServiceTest {
         assertTrue(torchEntry.commands().get(InventoryCommandId.TRANSFER_ALL_EXACT).available());
         assertTrue(torchEntry.commands().get(InventoryCommandId.DISMISS_RECENT).available());
 
-        assertEquals(ItemCategory.TOOLS_UTILITY, pickaxePlaceholder.annotations().category());
         assertTrue(pickaxePlaceholder.commands().get(InventoryCommandId.TRANSFER_STACK).reasonCodes()
                 .contains(InventoryCommandReasonCode.PLACEHOLDER_ONLY));
         assertTrue(pickaxePlaceholder.commands().get(InventoryCommandId.TOGGLE_COLLECTION_MEMBERSHIP).available());
@@ -185,8 +183,7 @@ class InventoryBrowseServiceTest {
                 repository.snapshot(),
                 repository.browsePreferences().current(),
                 repository.browseSessionState().current(),
-                entry -> ItemIdentity.of(entry.stack().itemId()),
-                new HeuristicInventoryCategoryResolver(InventoryCategoryOverrides.empty())
+                entry -> ItemIdentity.of(entry.stack().itemId())
         );
 
         InventoryBrowseDocument first = InventoryBrowseService.browse(request);

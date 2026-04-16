@@ -11,6 +11,7 @@ For action semantics, see
 [../architecture/action-taxonomy.md](../architecture/action-taxonomy.md).
 For the LDLib2 workspace decision, see
 [../decisions/0002-ldlib2-workspace.md](../decisions/0002-ldlib2-workspace.md).
+For the triage/home design, see [../design/atlas.md](../design/atlas.md).
 
 ## Current Baseline
 
@@ -59,21 +60,32 @@ Risk:
   feels too slow, too abstract, or too easy to confuse with real inventory
   movement
 
-### 2. Automatic Categorization Can Break Trust
+### 2. Silent Auto-Homing Breaks Trust
 
-The previous category/list prototype showed that broad automatic classification
-is hard to get right in heavily modded packs.
+The previous list/atlas prototypes auto-homed items by string-matching item
+ids (e.g. `*_stone_* → Blocks`). In modded packs this misclassifies constantly
+and teaches the player the atlas is unreliable.
 
 Risk:
 
-- if SLOT silently puts an item in the wrong visual home, the player learns not
-  to trust the atlas
+- if SLOT silently places an item in the wrong visual home, the player learns
+  not to trust the atlas
 
 Mitigation:
 
-- route ambiguous items to `Triage`
-- auto-home only high-confidence obvious building blocks at first
-- treat heuristic categories as suggestions until the player confirms placement
+- no pre-created islands on a fresh map — Triage is the only starting island
+- no silent auto-homing; everything starts in `Triage`
+- a small set of **suggestion templates** (Food, Tools, Weapons, Armor,
+  Materials, Storage) drives conservative per-Triage-card **chips**; a chip
+  only acts on player tap, and a first-tap materializes the island
+- template signals are class/tag/component based (e.g. `DiggerItem`,
+  `DataComponents.FOOD`, `#c:ingots`), not substring matching on item ids
+- beyond the template seed, suggestions come from **learned rules** built
+  from the player's own manual placements (N≥2 confirmations on a shared
+  tag / namespace / creative tab before a rule fires)
+- learned rules dominate template chips: if a rule covers the same adjacency
+  category a template would match, the template chip is suppressed for that
+  adjacency
 
 ### 3. Visual Home Movement And Real Item Movement Can Be Confused
 
@@ -87,9 +99,10 @@ Risk:
 
 Mitigation:
 
-- start with click-to-assign from `Triage` to an island/header
+- start with click-to-assign from `Triage` (chip tap or island-header click)
 - keep real stack movement on explicit hotbar/action targets
 - add precise drag-to-reposition only after the safer assignment flow is clear
+- every chip-accept shows a short-window undo toast
 
 ### 4. Dual-Pane And Compat Hosts Are Not Proven
 
@@ -123,6 +136,7 @@ Risk:
 5. Broad actions plan against backing entries, not aggregate counts alone.
 6. Crafting stays slot-backed and descriptor-driven.
 7. LDLib2 owns UI transport and widget composition, not SLOT's inventory domain.
+8. Home-assignment commands stay separate from real inventory mutation commands.
 
 ## Next Execution Order
 
@@ -145,52 +159,139 @@ Exit criteria:
 - normal browsing and detail zoom remain readable without common labels
   ellipsizing or overflowing the screen
 
-### 2. Add Triage-First Projection
+### 2a. Remove Legacy Auto-Categorization
 
 Goal:
 
-- replace broad automatic classification with a trusted first-contact flow
+- delete the list-prototype category resolver and the neoforge string-match
+  auto-home before building the new suggestion layer on top of dead code
 
 Deliverables:
 
-- `Triage` island as the default for unhomed identities
-- `Blocks` starter island for obvious high-confidence placeable building blocks
-- projection state that marks `TRIAGE`, `HIGH_CONFIDENCE_AUTO`, and
-  `PLAYER_PLACED`
-- tests proving ambiguous, modded, and multi-use items stay in `Triage`
+- delete `ItemCategory`, `InventoryCategoryResolver`,
+  `HeuristicInventoryCategoryResolver`, `InventoryCategoryOverrides`
+- drop the `category` field from `InventoryBrowseAnnotations` and the
+  `InventoryBrowseGroupingMode.CATEGORY` branch from `InventoryBrowseService`
+- drop `categoryResolver` from `InventoryBrowseRequest` and its callers
+- gut `SlotWorkspaceAtlasLayout.defaultIslandId` / `looksLikeStarterBlock` and
+  remove the pre-seeded `Blocks` starter island; fresh atlas = Triage only
+- simplify `VisualHomeOrigin` to `TRIAGE` + `PLAYER_PLACED`
+  (drop `HIGH_CONFIDENCE_AUTO` — chip-accepts are player-confirmed)
+- update tests to match
 
 Exit criteria:
 
-- new items land somewhere obvious and trusted instead of being silently sorted
-  into questionable categories
+- `:common:testClasses` and `:neoforge:testClasses` both compile clean
+- zero automatic categorization exists in the codebase
+- opening the atlas on a fresh profile shows only the Triage island with
+  every item inside it
 
-### 3. Add In-Memory Home Assignment
+### 2b. Template Predicate Layer (Headless)
 
 Goal:
 
-- prove that the player can place an item identity once and rely on that place
-  during the current session
+- build the conservative seed suggestion engine without any UI wiring
 
 Deliverables:
 
-- selected triage card state
-- click island header to assign selected item to that island
-- click empty atlas space to create a new player island seeded by selected item
-- in-memory `VisualHomeAssignment` state
-- preservation of camera, search query, selection, and homes through LDLib view
-  refreshes
+- common `inventory/triage/` package:
+  - `IslandSuggestionTemplate` enum: `FOOD`, `TOOLS`, `WEAPONS`, `ARMOR`,
+    `MATERIALS`, `STORAGE`
+  - `IslandSignalDescriptor` — per-identity flag set populated platform-side
+    (food component present, tool/weapon/armor class hit, matched item tags)
+  - `LearnedIslandRuleStore` — in-memory adjacency → island map with
+    confirmation counts and recency
+  - `IslandSuggestionService` — pure function `(descriptor, learnedRules,
+    islands) → List<ChipSuggestion>`; max 1 template chip, up to 2 learned
+    chips, hard cap of 2 total; learned rules suppress the template chip for
+    the adjacency they cover
+- neoforge `IslandSignalExtractor` — reads `ItemStack` via
+  `DataComponents.FOOD`, `DiggerItem`/`ArmorItem`/`SwordItem`/etc. subclass
+  checks, and `#c:ingots` / `#c:chests` / `#c:shulker_boxes` / `#c:barrels`
+  tag lookups; produces `IslandSignalDescriptor`
+- unit tests for each template predicate and for ranking / suppression
+  rules in `IslandSuggestionService`
 
 Exit criteria:
 
-- future copies of a placed identity appear at that home for the rest of the
-  session
-- visual-home commands remain separate from real inventory mutation commands
+- given an item, the module boundary produces the right chip list with no UI
+  involved
+- template predicates are class/tag/component based — no substring matching
+  on item ids anywhere
 
-### 4. Add Basic Island Management
+### 2c. Chips On Triage Cards
 
 Goal:
 
-- make player-created islands usable enough to judge the visual-memory loop
+- surface chips on Triage cards without yet giving them any behavior
+
+Deliverables:
+
+- workspace view model carries `List<ChipSuggestion>` per Triage card entry
+- atlas rendering shows chips with the target island's color/icon
+  (template defaults if the island is not yet materialized)
+- chip cards are visually distinct from the main Triage card body
+
+Exit criteria:
+
+- chips appear on the right Triage cards and match the service's output
+- clicking a chip does nothing yet (wiring comes in 3a)
+
+### 3a. Home Assignment + Learned Rules
+
+Goal:
+
+- make the player able to place an item identity and have the atlas learn
+  from it
+
+Deliverables:
+
+- home-assignment RPC distinct from transfer RPC
+- chip tap → `ASSIGN_HOME` command; creates the island (from template
+  defaults) on first accept, homes the identity, preserves camera/selection
+- manual assignment paths:
+  - click an existing island header while a Triage card is selected →
+    home there
+  - click empty atlas space while a Triage card is selected → draft a new
+    player island seeded by that item
+- every accepted assignment (chip or manual) writes to
+  `LearnedIslandRuleStore` keyed on `(shared_item_tag | shared_namespace |
+  shared_creative_tab) → islandId` with a confirmation threshold of N≥2
+  before a learned rule fires in the suggestion service
+- camera, search query, selection, and homes survive LDLib view refreshes
+
+Exit criteria:
+
+- after homing two similar items manually, a third similar item picked up
+  later shows a learned chip pointing at that island
+- chip-accept and manual-assign paths produce identical downstream state
+- home-assignment commands remain fully separate from transfer commands
+
+### 3b. Undo Toast
+
+Goal:
+
+- make chip-accept safe enough to feel instant
+
+Deliverables:
+
+- 5-second "Undo" toast after any home-assignment
+- undo removes the home; if the island is empty **and** still at its
+  template-default name/color/icon, delete the island too
+- renamed, recolored, or non-empty islands stay on undo (the player has
+  already invested in them)
+
+Exit criteria:
+
+- accidental chip taps on a fresh map can be fully reversed inside the
+  undo window with no lingering empty islands
+
+### 4. Basic Island Management
+
+Goal:
+
+- make player-created and materialized-template islands usable enough to
+  judge the visual-memory loop
 
 Deliverables:
 
@@ -198,11 +299,13 @@ Deliverables:
 - island recolor
 - island icon from seed item
 - visual island move without real inventory movement
-- deletion only for empty player islands
+- deletion only for empty player-owned and materialized-template islands
 
 Exit criteria:
 
 - player-authored islands are understandable without adding persistence yet
+- deleting a materialized-template island leaves that template permanently
+  dormant for the save (no auto-respawn on next matching pickup)
 
 ### 5. Restore Search As Spotlight
 
@@ -219,26 +322,29 @@ Deliverables:
 
 Exit criteria:
 
-- search teaches where items live instead of replacing the map with a transient
-  list
+- search teaches where items live instead of replacing the map with a
+  transient list
 
-### 6. Persist Visual Homes
+### 6. Persist Visual Homes And Learned Rules
 
 Goal:
 
-- promote the proven in-memory home model into durable user organization state
+- promote the proven in-memory home and learning model into durable state
 
 Deliverables:
 
 - workflow-domain `VisualHomeMap` state
+- persisted `LearnedIslandRuleStore`
 - migration/versioning rules
 - player-authored home precedence over suggestions
+- materialized-template islands persist as regular islands (no special flag
+  beyond "this template is no longer dormant")
 - ghost homes for important absent identities
 
 Exit criteria:
 
-- placed homes survive client restart/world reload without implying physical
-  source authority
+- placed homes and learned rules survive client restart/world reload
+  without implying physical source authority
 
 ### 7. Later Feature Tracks
 
@@ -265,9 +371,13 @@ Highest-value near-term coverage:
 - exact hotbar assignment semantics
 - player-bound target resolution
 - action policy/protection rejection
-- atlas projection to `Triage`, `Blocks`, and player-authored homes
-- in-memory `VisualHomeAssignment` precedence over suggestions
-- home assignment commands that do not mutate inventory
+- `IslandSuggestionService` ranking, suppression, and cap rules
+- per-template predicate correctness (positive + negative samples)
+- learned-rule threshold behavior (single placement does not fire; N≥2 does)
+- chip-accept creates island + homes identity + records rule, in one pipeline
+- manual-assign records rule identically to chip-accept
+- undo window: removes home and deletes default-state island; leaves
+  renamed/recolored/non-empty islands
 - atlas camera/query/selection/home preservation across refresh
 - session refresh and stale menu rejection
 - common workspace composition output
@@ -279,9 +389,12 @@ This phase is complete when:
 
 - the LDLib atlas is the primary player-inventory workspace manually and in
   tests
+- a fresh profile opens to Triage only, with no pre-seeded non-Triage islands
+- chip-accept and manual-assign both drive the same home-assignment pipeline
+  and both feed the learned-rule store
+- after the player places a few items, new similar items get learned chips
+  pointing at their home islands
 - hotbar assignment/transfer continues to route through the taxonomy model
-- `Triage`, high-confidence `Blocks` auto-home, and player-authored in-memory
-  homes work through refreshes
 - search spotlights stable homes without replacing the map
 - screen/client code remains transport and presentation only
 - visual-home changes remain separate from real inventory mutations

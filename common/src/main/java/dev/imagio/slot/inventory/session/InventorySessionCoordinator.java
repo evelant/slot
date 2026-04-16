@@ -4,13 +4,10 @@ import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryTargetCanonicalizer;
-import dev.imagio.slot.inventory.browse.HeuristicInventoryCategoryResolver;
 import dev.imagio.slot.inventory.browse.InventoryBrowseDocument;
 import dev.imagio.slot.inventory.browse.InventoryBrowseDocumentQueries;
 import dev.imagio.slot.inventory.browse.InventoryBrowseRequest;
 import dev.imagio.slot.inventory.browse.InventoryBrowseSessionState;
-import dev.imagio.slot.inventory.browse.InventoryCategoryOverrides;
-import dev.imagio.slot.inventory.browse.InventoryCategoryResolver;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
@@ -35,7 +32,6 @@ public final class InventorySessionCoordinator {
     private final WorkflowDomainRuntime workflowRuntime;
     private final InventoryActionDispatcher actionDispatcher;
     private final Function<InventoryEntrySnapshot, ItemIdentity> identityResolver;
-    private final InventoryCategoryResolver categoryResolver;
     private final String sessionId;
     private final Map<String, PendingInventoryAction> pendingActionsByRequestId = new LinkedHashMap<>();
     private final Map<String, DispatchContinuation> continuationsByRequestId = new LinkedHashMap<>();
@@ -54,8 +50,7 @@ public final class InventorySessionCoordinator {
                 sessionSource,
                 workflowRuntime,
                 actionDispatcher,
-                entry -> entry == null || !entry.present() ? null : ItemIdentityMatcher.create(entry.stack()),
-                new HeuristicInventoryCategoryResolver(InventoryCategoryOverrides.empty())
+                entry -> entry == null || !entry.present() ? null : ItemIdentityMatcher.create(entry.stack())
         );
     }
 
@@ -63,8 +58,7 @@ public final class InventorySessionCoordinator {
             InventorySessionSource sessionSource,
             WorkflowDomainRuntime workflowRuntime,
             InventoryActionDispatcher actionDispatcher,
-            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
-            InventoryCategoryResolver categoryResolver
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver
     ) {
         this.sessionSource = Objects.requireNonNull(sessionSource, "sessionSource");
         this.workflowRuntime = Objects.requireNonNull(workflowRuntime, "workflowRuntime");
@@ -72,9 +66,6 @@ public final class InventorySessionCoordinator {
         this.identityResolver = identityResolver == null
                 ? entry -> entry == null || !entry.present() ? null : ItemIdentityMatcher.create(entry.stack())
                 : identityResolver;
-        this.categoryResolver = categoryResolver == null
-                ? new HeuristicInventoryCategoryResolver(InventoryCategoryOverrides.empty())
-                : categoryResolver;
         this.sessionId = UUID.randomUUID().toString();
         this.authority = InventoryAuthoritySnapshot.empty();
         this.snapshot = InventorySessionSnapshot.empty();
@@ -231,8 +222,7 @@ public final class InventorySessionCoordinator {
                 workflow,
                 workflow.browsePreferences(),
                 workflow.browseSessionState(),
-                identityResolver,
-                categoryResolver
+                identityResolver
         ));
 
         InventoryBrowseSessionState browseSessionState = workflow.browseSessionState();
@@ -257,8 +247,7 @@ public final class InventorySessionCoordinator {
                     workflow,
                     workflow.browsePreferences(),
                     workflow.browseSessionState(),
-                    identityResolver,
-                    categoryResolver
+                    identityResolver
             ));
         }
 

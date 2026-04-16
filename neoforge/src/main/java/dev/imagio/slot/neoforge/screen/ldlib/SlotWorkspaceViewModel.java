@@ -106,7 +106,7 @@ public record SlotWorkspaceViewModel(
         for (MainAccumulator accumulator : accumulators) {
             VisualHomeAssignment assignment = visualHomeMap.assignment(accumulator.identity());
             String islandId = assignment == null
-                    ? SlotWorkspaceAtlasLayout.defaultIslandId(accumulator.displayStack())
+                    ? SlotWorkspaceAtlasLayout.ISLAND_TRIAGE
                     : assignment.islandId();
             SlotWorkspaceAtlasLayout.Placement placement;
             boolean playerPlaced = false;
