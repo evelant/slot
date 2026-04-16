@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.integration;
 
+import dev.imagio.slot.SlotDiagnostics;
 import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
 import dev.imagio.slot.inventory.core.EquipmentGroupDescriptor;
 import dev.imagio.slot.inventory.core.HostInstanceKey;
@@ -80,7 +81,7 @@ public final class InventoryHostResolver {
         validateUniqueToolIds(hostSession.tools());
         validateToolRegionLinks(mergedSources, hostSession.tools());
 
-        return new InventoryHostDescriptor(
+        InventoryHostDescriptor resolved = new InventoryHostDescriptor(
                 preliminaryHost.hostId(),
                 preliminaryHost.serverMenuRef(),
                 preliminaryHost.screenClassName(),
@@ -97,6 +98,8 @@ public final class InventoryHostResolver {
                 preliminaryHost.observationHints(),
                 preliminaryHost.diagnostics()
         );
+        SlotDiagnostics.hostResolved(context.screenClassName(), resolved);
+        return resolved;
     }
 
     private static InventoryTopologyDescriptor mergeTopologies(

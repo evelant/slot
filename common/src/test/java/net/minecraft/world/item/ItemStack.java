@@ -1,5 +1,10 @@
 package net.minecraft.world.item;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+
 public class ItemStack {
     public static final ItemStack EMPTY = new ItemStack("", "", 0, 64, true);
 
@@ -43,6 +48,18 @@ public class ItemStack {
         return count;
     }
 
+    public void grow(int amount) {
+        if (!immutableEmpty) {
+            this.count = Math.max(0, this.count + Math.max(0, amount));
+        }
+    }
+
+    public void shrink(int amount) {
+        if (!immutableEmpty) {
+            this.count = Math.max(0, this.count - Math.max(0, amount));
+        }
+    }
+
     public boolean isEmpty() {
         return count <= 0 || itemId.isBlank();
     }
@@ -57,6 +74,31 @@ public class ItemStack {
 
     public String componentFingerprint() {
         return componentFingerprint;
+    }
+
+    public Component getHoverName() {
+        return Component.literal(itemId);
+    }
+
+    public Tag saveOptional(HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("itemId", itemId);
+        tag.putString("componentFingerprint", componentFingerprint);
+        tag.putInt("count", count);
+        tag.putInt("maxStackSize", maxStackSize);
+        return tag;
+    }
+
+    public static ItemStack parseOptional(HolderLookup.Provider provider, CompoundTag tag) {
+        if (tag == null) {
+            return EMPTY;
+        }
+        return new ItemStack(
+                tag.getString("itemId"),
+                tag.getString("componentFingerprint"),
+                tag.getInt("count"),
+                tag.getInt("maxStackSize")
+        );
     }
 
     public static boolean isSameItemSameComponents(ItemStack first, ItemStack second) {

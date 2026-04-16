@@ -1,8 +1,10 @@
 package dev.imagio.slot.inventory.integration;
 
+import dev.imagio.slot.SlotDiagnostics;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionStatus;
 import dev.imagio.slot.inventory.action.InventoryCommandReasonCode;
@@ -90,13 +92,13 @@ public final class InventoryActionExecutor {
         }
 
         return switch (request.kind()) {
-            case TRANSFER_ONE, TRANSFER_STACK, TRANSFER_ALL, EQUIP, UNEQUIP ->
-                    executeTransfer(host, player, request);
-            case PICKUP -> executePickup(host, player, request);
-            case PLACE -> executePlace(host, player, request);
-            case SWAP -> executeSwap(host, player, request);
+            case TRANSFER -> executeTransfer(host, player, request);
+            case ASSIGN -> executeAssign(host, player, request);
+            case CURSOR_PICKUP -> executePickup(host, player, request);
+            case CURSOR_PLACE -> executePlace(host, player, request);
+            case CURSOR_SWAP -> executeSwap(host, player, request);
             case QUICK_MOVE -> executeQuickMove(host, player, request);
-            case DROP -> executeDrop(host, player, request);
+            case DROP_TO_WORLD -> executeDrop(host, player, request);
             case USE -> executeUse(host, player, request);
             case TOOL_ACTIVATE -> fromTool(host, request, InventoryMutationRouter.activateTool(host, toolId(request), request.mode()));
             case TOOL_ACTION -> fromTool(host, request, InventoryMutationRouter.executeToolAction(
@@ -112,6 +114,8 @@ public final class InventoryActionExecutor {
                     request.desiredToggleState(),
                     request.mode()
             ));
+            case SWAP, TRASH, VOID, SORT_SOURCE, DISTRIBUTE, COLLECT_MATCHING, SET_FILTER ->
+                    blocked(host, request, "action_kind_not_implemented:" + request.kind().name().toLowerCase(java.util.Locale.ROOT), ItemStack.EMPTY);
         };
     }
 
@@ -172,6 +176,17 @@ public final class InventoryActionExecutor {
             restoreProvider(host, player, request, extracted, extraction);
         }
         return blocked(host, request, insertion.diagnostics().isBlank() ? builtinInsert.diagnostics() : insertion.diagnostics(), ItemStack.EMPTY);
+    }
+
+    private static InventoryActionOutcome executeAssign(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            InventoryActionRequest request
+    ) {
+        BuiltinInventoryActionExecutor.ExecutionResult builtin = BuiltinInventoryActionExecutor.assign(host, player, request);
+        return builtin.successful()
+                ? successful(host, request, builtin.stackRemainder(), List.of())
+                : blocked(host, request, builtin.diagnostics(), ItemStack.EMPTY);
     }
 
     private static InventoryActionOutcome executeDrop(
@@ -312,7 +327,7 @@ public final class InventoryActionExecutor {
 
         MutationResult result = InventoryMutationRouter.mutate(
                 host,
-                extractionRequest(host, player, sourceTarget, request.identity(), request.requestedCount(), transferMode(request.kind())),
+                extractionRequest(host, player, sourceTarget, request.identity(), request.requestedCount(), transferMode(request)),
                 InventoryMutationMode.valueOf(request.mode().name())
         );
         if (!result.successful() || result.stackRemainder().isEmpty()) {
@@ -428,11 +443,11 @@ public final class InventoryActionExecutor {
                 : InventoryMutationRequest.insert(host, player, sourceId, stack);
     }
 
-    private static InventoryTransferMode transferMode(InventoryActionKind kind) {
-        return switch (kind) {
-            case TRANSFER_ONE -> InventoryTransferMode.ONE;
-            case TRANSFER_STACK, EQUIP, UNEQUIP, DROP -> InventoryTransferMode.STACK;
-            case TRANSFER_ALL -> InventoryTransferMode.ALL;
+    private static InventoryTransferMode transferMode(InventoryActionRequest request) {
+        InventoryActionQuantity quantity = request == null ? InventoryActionQuantity.DEFAULT : request.quantity();
+        return switch (quantity) {
+            case ONE -> InventoryTransferMode.ONE;
+            case ALL_MATCHING -> InventoryTransferMode.ALL;
             default -> InventoryTransferMode.STACK;
         };
     }
@@ -514,7 +529,7 @@ public final class InventoryActionExecutor {
         if (source == null || source.paneMembership() != InventoryPaneMembership.EXTERNAL) {
             return false;
         }
-        if (request.kind() == InventoryActionKind.PICKUP) {
+        if (request.kind() == InventoryActionKind.CURSOR_PICKUP) {
             return true;
         }
         InventoryActionTarget destination = request.secondaryTarget();
@@ -693,6 +708,9 @@ public final class InventoryActionExecutor {
                 request.requestId(),
                 request.kind(),
                 request.mode(),
+                request.quantity(),
+                request.scope(),
+                request.conflictPolicy(),
                 request.origin(),
                 request.correlationId(),
                 request.causationId(),
@@ -717,12 +735,15 @@ public final class InventoryActionExecutor {
             ItemStack remainder
     ) {
         String resolvedDiagnostics = diagnostics == null ? "" : diagnostics;
-        return new InventoryActionOutcome(
+        InventoryActionOutcome outcome = new InventoryActionOutcome(
                 resolvedHostKey(host, request),
                 host == null ? (request == null ? null : request.serverMenuRef()) : host.serverMenuRef(),
                 request == null ? "" : request.requestId(),
-                request == null ? InventoryActionKind.TRANSFER_ONE : request.kind(),
+                request == null ? InventoryActionKind.TRANSFER : request.kind(),
                 request == null ? dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE : request.mode(),
+                request == null ? dev.imagio.slot.inventory.action.InventoryActionQuantity.DEFAULT : request.quantity(),
+                request == null ? dev.imagio.slot.inventory.action.InventoryActionScope.BEST_SINGLE_SOURCE : request.scope(),
+                request == null ? dev.imagio.slot.inventory.action.InventoryActionConflictPolicy.DEFAULT : request.conflictPolicy(),
                 request == null ? "" : request.origin(),
                 request == null ? "" : request.correlationId(),
                 request == null ? "" : request.causationId(),
@@ -738,6 +759,8 @@ public final class InventoryActionExecutor {
                 remainder,
                 resolvedDiagnostics
         );
+        SlotDiagnostics.actionBlocked(host, request, outcome);
+        return outcome;
     }
 
     private static BuiltinInventoryActionExecutor.ExecutionResult pickupCraftingResult(
@@ -840,7 +863,7 @@ public final class InventoryActionExecutor {
             return false;
         }
         return switch (request.kind()) {
-            case TRANSFER_ONE, TRANSFER_STACK, TRANSFER_ALL, PICKUP, PLACE, QUICK_MOVE, TOOL_ACTION -> true;
+            case TRANSFER, ASSIGN, CURSOR_PICKUP, CURSOR_PLACE, QUICK_MOVE, TOOL_ACTION -> true;
             default -> false;
         };
     }

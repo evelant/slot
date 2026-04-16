@@ -1,16 +1,14 @@
 package net.minecraft.world.entity.player;
 
 import net.minecraft.world.Container;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Inventory implements Container {
     public final Player player;
-    public final List<ItemStack> items = new ArrayList<>();
-    public final List<ItemStack> armor = new ArrayList<>();
-    public final List<ItemStack> offhand = new ArrayList<>();
+    public final NonNullList<ItemStack> items = NonNullList.create();
+    public final NonNullList<ItemStack> armor = NonNullList.create();
+    public final NonNullList<ItemStack> offhand = NonNullList.create();
     public int selected;
 
     public Inventory(Player player) {

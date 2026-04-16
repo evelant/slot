@@ -1,7 +1,10 @@
 package dev.imagio.slot.inventory.session;
 
 import dev.imagio.slot.inventory.action.InventoryActionKind;
+import dev.imagio.slot.inventory.action.InventoryActionConflictPolicy;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
+import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryCommandReasonCode;
 import dev.imagio.slot.inventory.core.InventoryCraftingSurfaceSupport;
@@ -98,6 +101,9 @@ public final class InventoryCraftingPreflightService {
                 "",
                 InventoryActionKind.TOOL_ACTION,
                 toolAction.mode(),
+                InventoryActionQuantity.DEFAULT,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.DEFAULT,
                 toolAction.origin(),
                 primaryTarget,
                 null,
@@ -134,6 +140,9 @@ public final class InventoryCraftingPreflightService {
                 "",
                 InventoryActionKind.TOOL_TOGGLE,
                 toolToggle.mode(),
+                InventoryActionQuantity.DEFAULT,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.DEFAULT,
                 toolToggle.origin(),
                 new InventoryActionTarget.ToolControlTarget(surface.tool().id(), surface.toggleStableId(toolToggle.toggleId())),
                 null,

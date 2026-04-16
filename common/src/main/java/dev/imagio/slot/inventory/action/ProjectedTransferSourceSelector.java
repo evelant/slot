@@ -47,8 +47,8 @@ final class ProjectedTransferSourceSelector {
                         .toList();
             }
             case VISIBLE_ROWS -> List.copyOf(visibleRows);
-            case SOURCE_LOCAL -> {
-                addDiagnostic(diagnostics, "source_local_scope_not_supported_by_row_transfer_planner");
+            case SINGLE_TARGET, SELECTED_TARGETS, SOURCE_LOCAL, COLLECTION, LOADOUT, ALL_MATCHING_IN_HOST -> {
+                addDiagnostic(diagnostics, "scope_not_supported_by_row_transfer_planner:" + intent.scope().name().toLowerCase(java.util.Locale.ROOT));
                 yield List.of();
             }
         };

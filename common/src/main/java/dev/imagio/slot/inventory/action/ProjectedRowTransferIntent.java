@@ -13,6 +13,7 @@ public record ProjectedRowTransferIntent(
         List<ProjectedInventoryRow> visibleRowsInUiOrder,
         ProjectedInventoryRow anchorRow,
         InventoryActionKind kind,
+        InventoryActionQuantity quantity,
         InventoryActionScope scope,
         InventoryActionDestination destination,
         ProtectionPolicy protectionPolicy,
@@ -25,6 +26,8 @@ public record ProjectedRowTransferIntent(
                 ? List.of()
                 : List.copyOf(visibleRowsInUiOrder.stream().filter(Objects::nonNull).toList());
         protectionPolicy = protectionPolicy == null ? ProtectionPolicy.allowAll() : protectionPolicy;
+        kind = kind == null ? InventoryActionKind.TRANSFER : kind;
+        quantity = quantity == null ? InventoryActionQuantity.STACK : quantity;
         mode = mode == null ? InventoryActionMode.EXECUTE : mode;
         origin = origin == null ? "" : origin;
     }

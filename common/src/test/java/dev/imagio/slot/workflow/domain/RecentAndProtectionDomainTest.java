@@ -1,8 +1,11 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.action.InventoryActionKind;
+import dev.imagio.slot.inventory.action.InventoryActionConflictPolicy;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
+import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionStatus;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.HostInstanceKey;
@@ -43,10 +46,10 @@ class RecentAndProtectionDomainTest {
         InventoryActionTarget target = new InventoryActionTarget.EquipmentTarget("equipment.offhand", 0);
         ProtectionSnapshotPolicy policy = new ProtectionSnapshotPolicy(Set.of(shield), Set.of(target), true);
 
-        assertTrue(policy.protects(shield, InventoryActionKind.DROP));
-        assertTrue(policy.protectsTarget(target, InventoryActionKind.UNEQUIP));
+        assertTrue(policy.protects(shield, InventoryActionKind.DROP_TO_WORLD));
+        assertTrue(policy.protectsTarget(target, InventoryActionKind.TRANSFER));
         assertTrue(policy.protectsPortableContainers());
-        assertFalse(policy.protects(ItemIdentity.of("minecraft:stone"), InventoryActionKind.DROP));
+        assertFalse(policy.protects(ItemIdentity.of("minecraft:stone"), InventoryActionKind.DROP_TO_WORLD));
     }
 
     @Test
@@ -58,8 +61,11 @@ class RecentAndProtectionDomainTest {
                 new HostInstanceKey("menu", 4, "test", ""),
                 new ServerMenuRef("menu", 4),
                 "req-1",
-                InventoryActionKind.TRANSFER_STACK,
+                InventoryActionKind.TRANSFER,
                 InventoryActionMode.EXECUTE,
+                InventoryActionQuantity.STACK,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.INSERT_ONLY,
                 "test",
                 new InventoryActionTarget.SourceSlotTarget("player.main", 0),
                 null,
@@ -76,8 +82,11 @@ class RecentAndProtectionDomainTest {
                 new HostInstanceKey("menu", 4, "test", ""),
                 new ServerMenuRef("menu", 4),
                 "req-2",
-                InventoryActionKind.TRANSFER_STACK,
+                InventoryActionKind.TRANSFER,
                 InventoryActionMode.EXECUTE,
+                InventoryActionQuantity.STACK,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.INSERT_ONLY,
                 "test",
                 new InventoryActionTarget.SourceSlotTarget("player.main", 0),
                 null,
@@ -94,8 +103,11 @@ class RecentAndProtectionDomainTest {
                 new HostInstanceKey("menu", 4, "test", ""),
                 new ServerMenuRef("menu", 4),
                 "req-3",
-                InventoryActionKind.TRANSFER_ONE,
+                InventoryActionKind.TRANSFER,
                 InventoryActionMode.EXECUTE,
+                InventoryActionQuantity.ONE,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.INSERT_ONLY,
                 "test",
                 new InventoryActionTarget.SourceSlotTarget("player.main", 1),
                 null,
@@ -127,19 +139,19 @@ class RecentAndProtectionDomainTest {
         });
 
         assertTrue(InventoryActionPolicy.blockedByProtection(
-                InventoryActionKind.DROP,
+                InventoryActionKind.DROP_TO_WORLD,
                 shield,
                 ItemStack.EMPTY,
                 policy
         ));
         assertTrue(PortableContainerClassifiers.isPortableContainer(container));
         assertTrue(InventoryActionPolicy.blockedByProtection(
-                InventoryActionKind.TRANSFER_STACK,
+                InventoryActionKind.TRANSFER,
                 null,
                 container,
                 policy
         ));
-        assertFalse(InventoryActionPolicy.blockedByProtection(
+        assertTrue(InventoryActionPolicy.blockedByProtection(
                 InventoryActionKind.USE,
                 shield,
                 container,

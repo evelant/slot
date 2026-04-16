@@ -14,6 +14,9 @@ public record InventoryActionOutcome(
         String requestId,
         InventoryActionKind kind,
         InventoryActionMode mode,
+        InventoryActionQuantity quantity,
+        InventoryActionScope scope,
+        InventoryActionConflictPolicy conflictPolicy,
         String origin,
         String correlationId,
         String causationId,
@@ -33,8 +36,11 @@ public record InventoryActionOutcome(
         hostId = hostId == null ? HostInstanceKey.empty() : hostId;
         serverMenuRef = serverMenuRef == null ? new ServerMenuRef("", -1) : serverMenuRef;
         requestId = requestId == null ? "" : requestId;
-        kind = kind == null ? InventoryActionKind.TRANSFER_ONE : kind;
+        kind = kind == null ? InventoryActionKind.TRANSFER : kind;
         mode = mode == null ? InventoryActionMode.EXECUTE : mode;
+        quantity = quantity == null ? InventoryActionQuantity.DEFAULT : quantity;
+        scope = scope == null ? InventoryActionScope.BEST_SINGLE_SOURCE : scope;
+        conflictPolicy = conflictPolicy == null ? InventoryActionConflictPolicy.DEFAULT : conflictPolicy;
         origin = origin == null ? "" : origin;
         correlationId = correlationId == null ? "" : correlationId;
         causationId = causationId == null ? "" : causationId;
@@ -59,6 +65,9 @@ public record InventoryActionOutcome(
             String requestId,
             InventoryActionKind kind,
             InventoryActionMode mode,
+            InventoryActionQuantity quantity,
+            InventoryActionScope scope,
+            InventoryActionConflictPolicy conflictPolicy,
             String origin,
             InventoryActionTarget primaryTarget,
             InventoryActionTarget secondaryTarget,
@@ -73,6 +82,9 @@ public record InventoryActionOutcome(
                 requestId,
                 kind,
                 mode,
+                quantity,
+                scope,
+                conflictPolicy,
                 origin,
                 "",
                 "",
@@ -96,6 +108,9 @@ public record InventoryActionOutcome(
             String requestId,
             InventoryActionKind kind,
             InventoryActionMode mode,
+            InventoryActionQuantity quantity,
+            InventoryActionScope scope,
+            InventoryActionConflictPolicy conflictPolicy,
             String origin,
             InventoryActionTarget primaryTarget,
             InventoryActionTarget secondaryTarget,
@@ -114,6 +129,9 @@ public record InventoryActionOutcome(
                 requestId,
                 kind,
                 mode,
+                quantity,
+                scope,
+                conflictPolicy,
                 origin,
                 "",
                 "",

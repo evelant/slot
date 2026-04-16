@@ -26,7 +26,11 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ProtectedTargetMarked,
         WorkflowEvent.ProtectedTargetUnmarked,
         WorkflowEvent.PortableContainerProtectionSet,
-        WorkflowEvent.RecentDismissedUpTo {
+        WorkflowEvent.RecentDismissedUpTo,
+        WorkflowEvent.VisualIslandCreated,
+        WorkflowEvent.VisualIslandMoved,
+        WorkflowEvent.VisualHomeAssigned,
+        WorkflowEvent.VisualHomeCleared {
 
     record CollectionCreated(
             String collectionId,
@@ -180,5 +184,30 @@ public sealed interface WorkflowEvent permits
         public RecentDismissedUpTo {
             dismissedUpToGlobalSequence = Math.max(0L, dismissedUpToGlobalSequence);
         }
+    }
+
+    record VisualIslandCreated(
+            VisualAtlasIsland island
+    ) implements WorkflowEvent {
+    }
+
+    record VisualIslandMoved(
+            String islandId,
+            int x,
+            int y
+    ) implements WorkflowEvent {
+        public VisualIslandMoved {
+            islandId = islandId == null ? "" : islandId;
+        }
+    }
+
+    record VisualHomeAssigned(
+            VisualHomeAssignment assignment
+    ) implements WorkflowEvent {
+    }
+
+    record VisualHomeCleared(
+            ItemIdentity identity
+    ) implements WorkflowEvent {
     }
 }

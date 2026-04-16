@@ -1,9 +1,12 @@
 package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.action.InventoryActionKind;
+import dev.imagio.slot.inventory.action.InventoryActionConflictPolicy;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
+import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryTargetCanonicalizer;
 import dev.imagio.slot.inventory.core.InventoryActionPolicy;
@@ -141,8 +144,11 @@ public final class LoadoutApplyService {
                         host.hostId(),
                         host.serverMenuRef(),
                         UUID.randomUUID().toString(),
-                        InventoryActionKind.TRANSFER_STACK,
+                        InventoryActionKind.TRANSFER,
                         resolvedMode,
+                        InventoryActionQuantity.STACK,
+                        InventoryActionScope.SINGLE_TARGET,
+                        InventoryActionConflictPolicy.INSERT_ONLY,
                         "workflow:loadout_stage",
                         target,
                         new InventoryActionTarget.SourceSlotTarget(stagingTarget.sourceId(), stagingTarget.slotIndex()),
@@ -160,6 +166,9 @@ public final class LoadoutApplyService {
                         UUID.randomUUID().toString(),
                         targetKind,
                         resolvedMode,
+                        quantityFor(targetKind),
+                        InventoryActionScope.LOADOUT,
+                        conflictPolicyFor(targetKind),
                         "workflow:loadout_stage_rollback",
                         new InventoryActionTarget.SourceSlotTarget(stagingTarget.sourceId(), stagingTarget.slotIndex()),
                         target,
@@ -182,6 +191,9 @@ public final class LoadoutApplyService {
                     UUID.randomUUID().toString(),
                     targetKind,
                     resolvedMode,
+                    quantityFor(targetKind),
+                    InventoryActionScope.LOADOUT,
+                    conflictPolicyFor(targetKind),
                     "workflow:loadout_apply",
                     candidate.actionTarget(),
                     target,
@@ -412,7 +424,7 @@ public final class LoadoutApplyService {
                     continue;
                 }
                 if (InventoryActionPolicy.blockedByProtection(
-                        InventoryActionKind.TRANSFER_STACK,
+                        InventoryActionKind.TRANSFER,
                         protectionTargetForSource(authority.host(), source.id(), slotIndex),
                         null,
                         ItemStack.EMPTY,
@@ -477,8 +489,23 @@ public final class LoadoutApplyService {
 
     private static InventoryActionKind actionKindFor(LoadoutTarget target) {
         return switch (target) {
-            case LoadoutTarget.QuickAccessLaneTarget ignored -> InventoryActionKind.TRANSFER_STACK;
-            case LoadoutTarget.EquipmentSlotTarget ignored -> InventoryActionKind.EQUIP;
+            case LoadoutTarget.QuickAccessLaneTarget ignored -> InventoryActionKind.ASSIGN;
+            case LoadoutTarget.EquipmentSlotTarget ignored -> InventoryActionKind.ASSIGN;
+        };
+    }
+
+    private static InventoryActionQuantity quantityFor(InventoryActionKind kind) {
+        return switch (kind) {
+            case ASSIGN -> InventoryActionQuantity.STACK;
+            default -> InventoryActionQuantity.DEFAULT;
+        };
+    }
+
+    private static InventoryActionConflictPolicy conflictPolicyFor(InventoryActionKind kind) {
+        return switch (kind) {
+            case ASSIGN -> InventoryActionConflictPolicy.ASSIGN_WITH_DISPLACE;
+            case TRANSFER -> InventoryActionConflictPolicy.INSERT_ONLY;
+            default -> InventoryActionConflictPolicy.DEFAULT;
         };
     }
 

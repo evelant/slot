@@ -34,6 +34,11 @@ import dev.imagio.slot.workflow.domain.ProtectionSnapshotPolicy;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutDefinition;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutEntry;
 import dev.imagio.slot.workflow.domain.RecentView;
+import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
+import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
+import dev.imagio.slot.workflow.domain.VisualHomeMap;
+import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistencePort;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import dev.imagio.slot.workflow.domain.WorkflowEvent;
@@ -55,7 +60,7 @@ import java.util.Set;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 4;
+    private static final int SCHEMA_VERSION = 5;
 
     private final Path statePath;
 
@@ -285,7 +290,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 Set.of(),
                 Set.of(),
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
-                Map.of()
+                Map.of(),
+                VisualHomeMap.empty()
         );
 
         ActivityProjection.Snapshot activityProjection = new ActivityProjection.Snapshot(
@@ -349,6 +355,12 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 ),
                 resolved.recentDismissedUpToByIdentity().entrySet().stream()
                         .map(entry -> new RecentDismissalData(identity(entry.getKey()), entry.getValue()))
+                        .toList(),
+                resolved.visualHomeMap().playerIslands().stream()
+                        .map(WorkflowDomainFileStore::visualIsland)
+                        .toList(),
+                resolved.visualHomeMap().assignments().values().stream()
+                        .map(WorkflowDomainFileStore::visualHome)
                         .toList()
         );
     }
@@ -463,6 +475,26 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
 
+        ArrayList<VisualAtlasIsland> playerIslands = new ArrayList<>();
+        if (data.visualIslands != null) {
+            for (VisualIslandData islandData : data.visualIslands) {
+                VisualAtlasIsland island = decodeVisualIsland(islandData);
+                if (island != null) {
+                    playerIslands.add(island);
+                }
+            }
+        }
+
+        LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>();
+        if (data.visualHomes != null) {
+            for (VisualHomeData homeData : data.visualHomes) {
+                VisualHomeAssignment home = decodeVisualHome(homeData);
+                if (home != null) {
+                    visualHomes.put(home.identity(), home);
+                }
+            }
+        }
+
         return new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
@@ -471,7 +503,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 favoriteTags,
                 junkTags,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
-                recentDismissals
+                recentDismissals,
+                new VisualHomeMap(playerIslands, visualHomes)
         );
     }
 
@@ -615,6 +648,24 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.identity = identity(event.identity());
                 data.sequence = event.dismissedUpToGlobalSequence();
             }
+            case WorkflowEvent.VisualIslandCreated event -> {
+                data.kind = "VisualIslandCreated";
+                data.visualIsland = visualIsland(event.island());
+            }
+            case WorkflowEvent.VisualIslandMoved event -> {
+                data.kind = "VisualIslandMoved";
+                data.islandId = event.islandId();
+                data.x = event.x();
+                data.y = event.y();
+            }
+            case WorkflowEvent.VisualHomeAssigned event -> {
+                data.kind = "VisualHomeAssigned";
+                data.visualHome = visualHome(event.assignment());
+            }
+            case WorkflowEvent.VisualHomeCleared event -> {
+                data.kind = "VisualHomeCleared";
+                data.identity = identity(event.identity());
+            }
         }
         return data;
     }
@@ -645,6 +696,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case "ProtectedTargetUnmarked" -> new WorkflowEvent.ProtectedTargetUnmarked(decodeInventoryTarget(data.target));
             case "PortableContainerProtectionSet" -> new WorkflowEvent.PortableContainerProtectionSet(data.enabled);
             case "RecentDismissedUpTo" -> new WorkflowEvent.RecentDismissedUpTo(decodeIdentity(data.identity), data.sequence);
+            case "VisualIslandCreated" -> new WorkflowEvent.VisualIslandCreated(decodeVisualIsland(data.visualIsland));
+            case "VisualIslandMoved" -> new WorkflowEvent.VisualIslandMoved(nonNull(data.islandId), data.x, data.y);
+            case "VisualHomeAssigned" -> new WorkflowEvent.VisualHomeAssigned(decodeVisualHome(data.visualHome));
+            case "VisualHomeCleared" -> new WorkflowEvent.VisualHomeCleared(decodeIdentity(data.identity));
             default -> null;
         };
         return event == null ? null : new WorkflowEventRecord(envelope, event);
@@ -824,6 +879,69 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         return identity == null ? null : new IdentityData(identity.itemId(), identity.comparisonMode().name(), identity.componentFingerprint());
     }
 
+    private static VisualIslandData visualIsland(VisualAtlasIsland island) {
+        if (island == null) {
+            return null;
+        }
+        return new VisualIslandData(
+                island.id(),
+                island.label(),
+                island.kind().name(),
+                island.x(),
+                island.y(),
+                island.width(),
+                island.height(),
+                island.color(),
+                identity(island.iconIdentity())
+        );
+    }
+
+    private static VisualAtlasIsland decodeVisualIsland(VisualIslandData data) {
+        if (data == null || blank(data.id)) {
+            return null;
+        }
+        return new VisualAtlasIsland(
+                data.id,
+                nonNull(data.label),
+                decodeEnum(VisualAtlasIslandKind.class, data.kind, VisualAtlasIslandKind.PLAYER),
+                data.x,
+                data.y,
+                data.width,
+                data.height,
+                data.color,
+                decodeIdentity(data.iconIdentity)
+        );
+    }
+
+    private static VisualHomeData visualHome(VisualHomeAssignment assignment) {
+        if (assignment == null) {
+            return null;
+        }
+        return new VisualHomeData(
+                identity(assignment.identity()),
+                assignment.islandId(),
+                assignment.localX(),
+                assignment.localY(),
+                assignment.origin().name(),
+                assignment.locked()
+        );
+    }
+
+    private static VisualHomeAssignment decodeVisualHome(VisualHomeData data) {
+        ItemIdentity identity = decodeIdentity(data == null ? null : data.identity);
+        if (identity == null || data == null || blank(data.islandId)) {
+            return null;
+        }
+        return new VisualHomeAssignment(
+                identity,
+                data.islandId,
+                data.x,
+                data.y,
+                decodeEnum(VisualHomeOrigin.class, data.origin, VisualHomeOrigin.PLAYER_PLACED),
+                data.locked
+        );
+    }
+
     private static TargetData target(LoadoutTarget target) {
         return switch (target) {
             case LoadoutTarget.QuickAccessLaneTarget laneTarget ->
@@ -964,7 +1082,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<IdentityData> favoriteTags,
             List<IdentityData> junkTags,
             ProtectionData protection,
-            List<RecentDismissalData> recentDismissals
+            List<RecentDismissalData> recentDismissals,
+            List<VisualIslandData> visualIslands,
+            List<VisualHomeData> visualHomes
     ) {
     }
 
@@ -979,15 +1099,20 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private EnvelopeData envelope;
         private String kind;
         private String collectionId;
+        private String islandId;
         private String loadoutId;
         private String name;
         private IdentityData identity;
         private int desiredCount;
         private boolean enabled;
         private long sequence;
+        private int x;
+        private int y;
         private TargetData target;
         private LoadoutData loadout;
         private List<LoadoutEntryData> loadoutEntries;
+        private VisualIslandData visualIsland;
+        private VisualHomeData visualHome;
     }
 
     private static final class ActivityEventData {
@@ -1036,6 +1161,29 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     }
 
     private record RecentDismissalData(IdentityData identity, long dismissedUpToSequence) {
+    }
+
+    private record VisualIslandData(
+            String id,
+            String label,
+            String kind,
+            int x,
+            int y,
+            int width,
+            int height,
+            int color,
+            IdentityData iconIdentity
+    ) {
+    }
+
+    private record VisualHomeData(
+            IdentityData identity,
+            String islandId,
+            int x,
+            int y,
+            String origin,
+            boolean locked
+    ) {
     }
 
     private record ProtectionData(List<IdentityData> identities, List<TargetData> targets, boolean protectPortableContainers) {

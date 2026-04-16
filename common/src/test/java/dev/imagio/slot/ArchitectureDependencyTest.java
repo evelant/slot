@@ -563,4 +563,35 @@ class ArchitectureDependencyTest {
                 () -> "Platform bootstrap regressed to exposing raw workflow repository state: " + violations
         );
     }
+
+    @Test
+    void ldlibImportsStayIsolatedToLdlibScreenPackage() throws IOException {
+        Path neoforgeSourceRoot = REPO_ROOT.resolve("neoforge/src/main/java");
+        Path allowedRoot = neoforgeSourceRoot.resolve("dev/imagio/slot/neoforge/screen/ldlib");
+        Map<String, List<String>> violations = new LinkedHashMap<>();
+
+        try (Stream<Path> files = Files.walk(neoforgeSourceRoot)) {
+            files.filter(path -> path.toString().endsWith(".java"))
+                    .filter(path -> !path.normalize().startsWith(allowedRoot))
+                    .sorted()
+                    .forEach(file -> {
+                        try {
+                            List<String> matches = Files.readAllLines(file).stream()
+                                    .map(String::trim)
+                                    .filter(line -> line.startsWith("import com.lowdragmc.lowdraglib2"))
+                                    .toList();
+                            if (!matches.isEmpty()) {
+                                violations.put(file.toString(), matches);
+                            }
+                        } catch (IOException exception) {
+                            throw new RuntimeException(exception);
+                        }
+                    });
+        }
+
+        assertTrue(
+                violations.isEmpty(),
+                () -> "LDLib2 imports must stay under neoforge LDLib workspace package: " + violations
+        );
+    }
 }

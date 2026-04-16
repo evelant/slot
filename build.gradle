@@ -42,5 +42,9 @@ subprojects {
             name = 'TerraformersMC'
             url = uri('https://maven.terraformersmc.com/')
         }
+        maven {
+            name = 'FirstDark'
+            url = uri('https://maven.firstdark.dev/snapshots')
+        }
     }
 }

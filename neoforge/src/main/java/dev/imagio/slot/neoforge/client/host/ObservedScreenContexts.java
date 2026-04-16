@@ -30,9 +30,6 @@ public final class ObservedScreenContexts {
     }
 
     public static ObservedScreenContext observe(AbstractContainerScreen<?> screen, Inventory playerInventory) {
-        if (screen instanceof ObservedScreenContextProvider provider) {
-            return provider.observedScreenContext();
-        }
         if (screen == null || playerInventory == null) {
             return null;
         }

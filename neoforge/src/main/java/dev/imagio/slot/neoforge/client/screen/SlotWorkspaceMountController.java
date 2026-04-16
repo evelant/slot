@@ -7,13 +7,14 @@ import dev.imagio.slot.inventory.workspace.InventoryWorkspaceComposer;
 import dev.imagio.slot.inventory.workspace.InventoryWorkspaceProfileId;
 import dev.imagio.slot.neoforge.client.host.ObservedScreenContext;
 import dev.imagio.slot.neoforge.client.host.ObservedScreenContexts;
-import dev.imagio.slot.neoforge.config.SlotClientConfig;
+import dev.imagio.slot.neoforge.network.SlotWorkspaceOpenPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public final class SlotWorkspaceMountController {
     private static boolean registered;
@@ -31,7 +32,7 @@ public final class SlotWorkspaceMountController {
 
     private static void onScreenOpening(ScreenEvent.Opening event) {
         Screen candidate = event.getNewScreen();
-        if (!(candidate instanceof AbstractContainerScreen<?> containerScreen) || candidate instanceof SlotWorkspaceScreen) {
+        if (!(candidate instanceof AbstractContainerScreen<?> containerScreen)) {
             return;
         }
         Minecraft minecraft = Minecraft.getInstance();
@@ -39,16 +40,8 @@ public final class SlotWorkspaceMountController {
             fail("missing_client_or_player", candidate);
             return;
         }
-        if (!SlotClientConfig.CLIENT.enabled.get()) {
-            fail("client_disabled", candidate);
-            return;
-        }
         if (!(candidate instanceof InventoryScreen)) {
             fail("only_player_inventory_enabled_for_first_slice", candidate);
-            return;
-        }
-        if (!SlotClientConfig.CLIENT.replacePlayerInventory.get()) {
-            fail("replace_player_inventory_disabled", candidate);
             return;
         }
 
@@ -82,9 +75,9 @@ public final class SlotWorkspaceMountController {
             fail("profile_not_carried:" + profileId, candidate);
             return;
         }
-
-        event.setNewScreen(new SlotWorkspaceScreen(observed));
-        SlotDebugLog.log("Replacing {} with SLOT workspace shell", candidate.getClass().getName());
+        PacketDistributor.sendToServer(new SlotWorkspaceOpenPayload());
+        event.setCanceled(true);
+        SlotDebugLog.log("Requesting SLOT LDLib workspace menu for {}", candidate.getClass().getName());
     }
 
     private static void fail(String reason, Screen candidate) {

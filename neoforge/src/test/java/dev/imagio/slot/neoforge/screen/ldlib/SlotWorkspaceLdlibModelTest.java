@@ -1,0 +1,598 @@
+package dev.imagio.slot.neoforge.screen.ldlib;
+
+import dev.imagio.slot.inventory.action.InventoryActionConflictPolicy;
+import dev.imagio.slot.inventory.action.InventoryActionKind;
+import dev.imagio.slot.inventory.action.InventoryActionMode;
+import dev.imagio.slot.inventory.action.InventoryActionOutcome;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
+import dev.imagio.slot.inventory.action.InventoryActionRequest;
+import dev.imagio.slot.inventory.action.InventoryActionScope;
+import dev.imagio.slot.inventory.action.InventoryActionStatus;
+import dev.imagio.slot.inventory.action.InventoryActionTarget;
+import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.HostInstanceKey;
+import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
+import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
+import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
+import dev.imagio.slot.inventory.integration.InventoryHostSession;
+import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
+import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
+import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
+import dev.imagio.slot.workflow.domain.VisualHomeMap;
+import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class SlotWorkspaceLdlibModelTest {
+    @Test
+    void mainRowToHotbarBuildsServerDerivedQuickAccessAssignRequest() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(4, new ItemStack("minecraft:stone", 32, 64), 32))
+        ));
+
+        SlotWorkspaceTransferRequestFactory.BuildResult build = SlotWorkspaceTransferRequestFactory.build(
+                host,
+                authority,
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 4),
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 2),
+                "test.main_to_hotbar"
+        );
+
+        assertTrue(build.dispatchable());
+        InventoryActionRequest request = build.request();
+        assertEquals(InventoryActionKind.ASSIGN, request.kind());
+        assertEquals(InventoryActionMode.EXECUTE, request.mode());
+        assertEquals(InventoryActionQuantity.STACK, request.quantity());
+        assertEquals(InventoryActionScope.SINGLE_TARGET, request.scope());
+        assertEquals(InventoryActionConflictPolicy.ASSIGN_WITH_DISPLACE, request.conflictPolicy());
+        assertEquals(new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 4), request.primaryTarget());
+        assertEquals(new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 2), request.secondaryTarget());
+        assertEquals(32, request.requestedCount());
+        assertEquals("minecraft:stone", request.identity().itemId());
+        assertEquals("minecraft:stone", request.stack().itemId());
+        assertEquals(32, request.stack().getCount());
+        assertEquals("test.main_to_hotbar", request.origin());
+        assertFalse(request.requestId().isBlank());
+    }
+
+    @Test
+    void hotbarToMainBuildsSourceDestinationTransferRequest() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(7, new ItemStack("minecraft:torch", 12, 64), 12))
+        ));
+
+        SlotWorkspaceTransferRequestFactory.BuildResult build = SlotWorkspaceTransferRequestFactory.build(
+                host,
+                authority,
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 7),
+                new InventoryActionTarget.SourceTarget(BuiltinInventoryIds.PLAYER_MAIN),
+                "test.hotbar_to_main"
+        );
+
+        assertTrue(build.dispatchable());
+        InventoryActionRequest request = build.request();
+        assertEquals(InventoryActionKind.TRANSFER, request.kind());
+        assertEquals(InventoryActionQuantity.STACK, request.quantity());
+        assertEquals(InventoryActionScope.SINGLE_TARGET, request.scope());
+        assertEquals(InventoryActionConflictPolicy.INSERT_ONLY, request.conflictPolicy());
+        assertEquals(new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 7), request.primaryTarget());
+        assertEquals(new InventoryActionTarget.SourceTarget(BuiltinInventoryIds.PLAYER_MAIN), request.secondaryTarget());
+        assertEquals(12, request.requestedCount());
+        assertEquals("minecraft:torch", request.identity().itemId());
+    }
+
+    @Test
+    void occupiedHotbarBuildsQuickAccessAssignRequestForReplacement() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(1, new ItemStack("minecraft:crossbow", 1, 1), 1)),
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(2, new ItemStack("toms_storage:inventory_cable", 23, 64), 23))
+        ));
+
+        SlotWorkspaceTransferRequestFactory.BuildResult build = SlotWorkspaceTransferRequestFactory.build(
+                host,
+                authority,
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 1),
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 2),
+                "test.replace_hotbar"
+        );
+
+        assertTrue(build.dispatchable());
+        InventoryActionRequest request = build.request();
+        assertEquals(InventoryActionKind.ASSIGN, request.kind());
+        assertEquals(InventoryActionConflictPolicy.ASSIGN_WITH_DISPLACE, request.conflictPolicy());
+        assertEquals(new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 1), request.primaryTarget());
+        assertEquals(new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 2), request.secondaryTarget());
+        assertEquals(1, request.requestedCount());
+        assertEquals("minecraft:crossbow", request.identity().itemId());
+    }
+
+    @Test
+    void occupiedHotbarBuildsQuickAccessAssignRequestFromLiveServerAuthority() {
+        TestMenu menu = new TestMenu();
+        InventoryHostDescriptor host = host(menu);
+        ServerPlayer player = new ServerPlayer();
+        player.containerMenu = menu;
+        player.getInventory().items.set(11, new ItemStack("minecraft:arrow", 62, 64));
+        player.getInventory().items.set(3, new ItemStack("minecraft:oak_log", 1, 64));
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+
+        SlotWorkspaceTransferRequestFactory.BuildResult build = SlotWorkspaceTransferRequestFactory.build(
+                host,
+                authority,
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 2),
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 3),
+                "test.live_replace_hotbar"
+        );
+
+        assertTrue(build.dispatchable());
+        assertEquals(InventoryActionKind.ASSIGN, build.request().kind());
+        assertEquals(InventoryActionConflictPolicy.ASSIGN_WITH_DISPLACE, build.request().conflictPolicy());
+        assertEquals("minecraft:arrow", build.request().identity().itemId());
+        assertEquals(62, build.request().requestedCount());
+    }
+
+    @Test
+    void emptySourceIsRejectedBeforeExecution() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of());
+
+        SlotWorkspaceTransferRequestFactory.BuildResult build = SlotWorkspaceTransferRequestFactory.build(
+                host,
+                authority,
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0),
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 0),
+                "test.empty_source"
+        );
+
+        assertFalse(build.dispatchable());
+        assertEquals("empty_source", build.diagnostics());
+    }
+
+    @Test
+    void missingHostOrAuthorityRejectsTransfer() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:dirt", 1, 64), 1))
+        ));
+
+        assertFalse(SlotWorkspaceTransferRequestFactory.build(
+                null,
+                authority,
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0),
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 0),
+                "test.missing"
+        ).dispatchable());
+        assertFalse(SlotWorkspaceTransferRequestFactory.build(
+                host,
+                null,
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0),
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 0),
+                "test.missing"
+        ).dispatchable());
+    }
+
+    @Test
+    void viewModelProjectsAtlasHomesCollectionsAndHotbar() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(
+                        new InventoryStackSnapshot(8, new ItemStack("minecraft:stone", 12, 64), 12),
+                        new InventoryStackSnapshot(2, new ItemStack("minecraft:apple", 3, 64), 3),
+                        new InventoryStackSnapshot(4, new ItemStack("minecraft:stone", 5, 64), 5)
+                ),
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(1, new ItemStack("minecraft:torch", 16, 64), 16))
+        ));
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String buildKit = runtime.collectionWorkflow().createCollection("Build Kit").id();
+        runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:stone"), buildKit);
+        VisualAtlasIsland machines = runtime.visualAtlasWorkflow().createIsland(
+                "Machines",
+                744,
+                104,
+                320,
+                196,
+                0xCC5A4A6E,
+                ItemIdentity.of("minecraft:apple")
+        );
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:apple"), machines.id(), 16, 60);
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority,
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                1,
+                9
+        );
+
+        assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE)));
+        assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS)));
+        assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(machines.id())));
+
+        assertEquals(2, viewModel.atlasItems().size());
+        SlotWorkspaceViewModel.AtlasItem apple = viewModel.atlasItems().stream()
+                .filter(item -> item.identity().itemId().equals("minecraft:apple"))
+                .findFirst()
+                .orElseThrow();
+        SlotWorkspaceViewModel.AtlasItem stone = viewModel.atlasItems().stream()
+                .filter(item -> item.identity().itemId().equals("minecraft:stone"))
+                .findFirst()
+                .orElseThrow();
+        assertEquals(machines.id(), apple.islandId());
+        assertTrue(apple.playerPlaced());
+        assertEquals(3, apple.totalCount());
+        assertEquals(machines.x() + 16, apple.x());
+        assertEquals(machines.y() + 60, apple.y());
+        assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, apple.width());
+        assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, apple.height());
+        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS, stone.islandId());
+        assertEquals(17, stone.totalCount());
+        assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, stone.width());
+        assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, stone.height());
+        assertTrue(stone.collectionIds().contains(buildKit));
+
+        assertEquals(9, viewModel.hotbarSlots().size());
+        assertFalse(viewModel.hotbarSlots().get(0).occupied());
+        assertTrue(viewModel.hotbarSlots().get(1).occupied());
+        assertTrue(viewModel.hotbarSlots().get(1).selected());
+        assertEquals("minecraft:torch", viewModel.hotbarSlots().get(1).displayStack().itemId());
+        assertEquals(16, viewModel.hotbarSlots().get(1).count());
+    }
+
+    @Test
+    void playerIslandDraftUsesLayoutCoordinatesWithoutRequiringPersistedId() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft first = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                "Machines",
+                ItemIdentity.of("minecraft:redstone"),
+                runtime.snapshot().visualHomeMap()
+        );
+        runtime.visualAtlasWorkflow().createIsland(
+                first.label(),
+                first.x(),
+                first.y(),
+                first.width(),
+                first.height(),
+                first.color(),
+                first.iconIdentity()
+        );
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft second = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                "Storage",
+                ItemIdentity.of("minecraft:chest"),
+                runtime.snapshot().visualHomeMap()
+        );
+
+        assertEquals("Machines", first.label());
+        assertTrue(first.width() >= 96);
+        assertTrue(first.height() >= 72);
+        assertTrue(second.x() > first.x());
+    }
+
+    @Test
+    void placementStartsBelowIslandHeaderReserve() {
+        List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.fittedIslands(
+                SlotWorkspaceAtlasLayout.baseIslands(runtime().snapshot().visualHomeMap()),
+                List.of()
+        );
+        SlotWorkspaceViewModel.AtlasIsland triage = islands.stream()
+                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
+                .findFirst()
+                .orElseThrow();
+
+        SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
+                islands,
+                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                0
+        );
+
+        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, placement.islandId());
+        assertTrue(placement.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(placement.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+        assertTrue(placement.x() >= triage.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(placement.y() >= triage.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+    }
+
+    @Test
+    void dropPlacementClampsInsideIslandContentBounds() {
+        List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.fittedIslands(
+                SlotWorkspaceAtlasLayout.baseIslands(runtime().snapshot().visualHomeMap()),
+                List.of()
+        );
+        SlotWorkspaceViewModel.AtlasIsland blocks = islands.stream()
+                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS))
+                .findFirst()
+                .orElseThrow();
+
+        SlotWorkspaceAtlasLayout.Placement topLeft = SlotWorkspaceAtlasLayout.placementForDrop(
+                islands,
+                SlotWorkspaceAtlasLayout.ISLAND_BLOCKS,
+                blocks.x() - 200,
+                blocks.y() - 200
+        );
+        SlotWorkspaceAtlasLayout.Placement bottomRight = SlotWorkspaceAtlasLayout.placementForDrop(
+                islands,
+                SlotWorkspaceAtlasLayout.ISLAND_BLOCKS,
+                blocks.x() + blocks.width() + 200,
+                blocks.y() + blocks.height() + 200
+        );
+
+        assertTrue(topLeft.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(topLeft.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+        assertTrue(bottomRight.localX() <= blocks.width() - SlotWorkspaceAtlasLayout.CARD_WIDTH - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(bottomRight.localY() <= blocks.height() - SlotWorkspaceAtlasLayout.CARD_HEIGHT - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_Y);
+        assertTrue(topLeft.x() >= blocks.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(topLeft.y() >= blocks.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+    }
+
+    @Test
+    void fittedIslandsGrowWhenContentsReachCurrentEdge() {
+        List<SlotWorkspaceViewModel.AtlasIsland> base = SlotWorkspaceAtlasLayout.fittedIslands(
+                SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
+                List.of()
+        );
+        SlotWorkspaceViewModel.AtlasIsland blocks = base.stream()
+                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS))
+                .findFirst()
+                .orElseThrow();
+
+        SlotWorkspaceViewModel.AtlasItem edgeItem = new SlotWorkspaceViewModel.AtlasItem(
+                SlotWorkspaceViewModel.IdentityRef.from(ItemIdentity.of("minecraft:stone")),
+                new ItemStack("minecraft:stone", 1, 64),
+                "Stone",
+                1,
+                0,
+                SlotWorkspaceAtlasLayout.ISLAND_BLOCKS,
+                blocks.x() + blocks.width() - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X - SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                blocks.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
+                SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                SlotWorkspaceAtlasLayout.CARD_HEIGHT,
+                false,
+                false,
+                List.of()
+        );
+
+        List<SlotWorkspaceViewModel.AtlasIsland> fitted = SlotWorkspaceAtlasLayout.fittedIslands(base, List.of(edgeItem));
+        SlotWorkspaceViewModel.AtlasIsland grown = fitted.stream()
+                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_BLOCKS))
+                .findFirst()
+                .orElseThrow();
+
+        assertTrue(grown.width() > blocks.width());
+        assertEquals(1, grown.itemCount());
+    }
+
+    @Test
+    void storedLocalHomeCoordinatesProjectBackIntoAtlasSpace() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Machines",
+                744,
+                104,
+                320,
+                196,
+                0xCC5A4A6E,
+                ItemIdentity.of("minecraft:redstone")
+        );
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:redstone"), island.id(), 24, 60);
+
+        List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap());
+        SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.resolvePlacement(
+                islands,
+                island.id(),
+                runtime.snapshot().visualHomeMap().assignment(ItemIdentity.of("minecraft:redstone")).localX(),
+                runtime.snapshot().visualHomeMap().assignment(ItemIdentity.of("minecraft:redstone")).localY()
+        );
+
+        assertEquals(island.id(), placement.islandId());
+        assertEquals(24, placement.localX());
+        assertEquals(60, placement.localY());
+        assertEquals(island.x() + 24, placement.x());
+        assertEquals(island.y() + 60, placement.y());
+    }
+
+    @Test
+    void movedIslandReprojectsStoredLocalHomes() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Machines",
+                744,
+                104,
+                320,
+                196,
+                0xCC5A4A6E,
+                ItemIdentity.of("minecraft:redstone")
+        );
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:redstone"), island.id(), 24, 60);
+        runtime.visualAtlasWorkflow().moveIsland(island.id(), 960, 280);
+
+        InventoryAuthoritySnapshot authority = authority(host(), Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:redstone", 8, 64), 8))
+        ));
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority,
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1
+        );
+
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItems().stream()
+                .filter(candidate -> candidate.identity().itemId().equals("minecraft:redstone"))
+                .findFirst()
+                .orElseThrow();
+        SlotWorkspaceViewModel.AtlasIsland moved = viewModel.island(island.id());
+
+        assertEquals(960, moved.x());
+        assertEquals(280, moved.y());
+        assertEquals(984, item.x());
+        assertEquals(340, item.y());
+    }
+
+    @Test
+    void viewModelRoundTripsThroughSyncTag() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(3, new ItemStack("minecraft:oak_log", 8, 64), 8)),
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:stone_pickaxe", 1, 1), 1))
+        ));
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        String tracked = runtime.collectionWorkflow().createCollection("Tracked").id();
+        runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:oak_log"), tracked);
+        HolderLookup.Provider provider = new HolderLookup.Provider() {
+        };
+
+        SlotWorkspaceViewModel original = SlotWorkspaceViewModel.project(
+                authority,
+                runtime.snapshot(),
+                "transfer rejected",
+                "full_destination",
+                1,
+                0,
+                12
+        );
+        SlotWorkspaceViewModel restored = SlotWorkspaceViewModel.fromTag(provider, original.toTag(provider));
+
+        assertEquals(original.revision(), restored.revision());
+        assertEquals(original.status(), restored.status());
+        assertEquals(original.diagnostics(), restored.diagnostics());
+        assertEquals(original.atlasItems().size(), restored.atlasItems().size());
+        assertEquals(original.atlasItems().getFirst().identity().itemId(), restored.atlasItems().getFirst().identity().itemId());
+        assertEquals(original.atlasItems().getFirst().collectionIds(), restored.atlasItems().getFirst().collectionIds());
+        assertEquals(original.islands().size(), restored.islands().size());
+        assertEquals(original.hotbarSlots().getFirst().displayStack().itemId(), restored.hotbarSlots().getFirst().displayStack().itemId());
+        assertTrue(restored.hotbarSlots().getFirst().selected());
+    }
+
+    @Test
+    void fullDestinationRemainderIsReportedAsRejectedNoOp() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:torch", 12, 64), 12))
+        ));
+        InventoryActionRequest request = SlotWorkspaceTransferRequestFactory.build(
+                host,
+                authority,
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 0),
+                new InventoryActionTarget.SourceTarget(BuiltinInventoryIds.PLAYER_MAIN),
+                "test.full_destination"
+        ).request();
+        InventoryActionOutcome outcome = new InventoryActionOutcome(
+                request.hostId(),
+                request.serverMenuRef(),
+                request.requestId(),
+                request.kind(),
+                request.mode(),
+                request.quantity(),
+                request.scope(),
+                request.conflictPolicy(),
+                request.origin(),
+                request.primaryTarget(),
+                request.secondaryTarget(),
+                InventoryActionStatus.SUCCESS,
+                List.of(),
+                request.requestedCount(),
+                request.requestedCount(),
+                false,
+                List.of(),
+                request.stack().copy(),
+                ""
+        );
+
+        SlotWorkspaceUiSession.TransferFeedback feedback = SlotWorkspaceUiSession.feedback(request, outcome);
+
+        assertEquals("transfer rejected", feedback.status());
+        assertEquals("destination_full_or_incompatible", feedback.diagnostics());
+    }
+
+    private static InventoryAuthoritySnapshot authority(
+            InventoryHostDescriptor host,
+            Map<String, List<InventoryStackSnapshot>> snapshotsBySource
+    ) {
+        return InventoryAuthorityFixtures.authority(
+                host,
+                snapshotsBySource,
+                Map.of(
+                        BuiltinInventoryIds.PLAYER_MAIN, 27,
+                        BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, 9
+                )
+        );
+    }
+
+    private static InventoryHostDescriptor host() {
+        return host(new TestMenu());
+    }
+
+    private static WorkflowDomainRuntime runtime() {
+        return new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+    }
+
+    private static InventoryHostDescriptor host(TestMenu menu) {
+        return new InventoryHostDescriptor(
+                new HostInstanceKey(TestMenu.class.getName(), 0, "slot.workspace.test", ""),
+                InventoryHostDescriptor.serverMenuRef(menu),
+                "slot.workspace.test",
+                Component.literal("Workspace Test"),
+                menu,
+                InventoryTopologyDescriptor.empty(),
+                InventoryHostSession.empty(),
+                List.of(),
+                PlayerRuntimeStateDescriptor.vanilla(0),
+                List.of(
+                        BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty()),
+                        BuiltinInventoryDescriptors.quickAccessLane0Source(InventoryTopologyDescriptor.empty())
+                ),
+                BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
+                BuiltinInventoryDescriptors.builtInEquipmentGroups(),
+                List.of(),
+                InventoryHostObservationHints.defaults(),
+                ""
+        );
+    }
+
+    private static final class TestMenu extends AbstractContainerMenu {
+        private TestMenu() {
+            super(null, 0);
+        }
+
+        @Override
+        public boolean stillValid(Player player) {
+            return true;
+        }
+    }
+}

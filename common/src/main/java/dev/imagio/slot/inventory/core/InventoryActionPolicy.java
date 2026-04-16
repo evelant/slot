@@ -102,50 +102,56 @@ public final class InventoryActionPolicy {
 
     private static boolean supports(InventorySourceDescriptor source, InventoryActionKind kind) {
         return switch (kind) {
-            case TRANSFER_ONE, TRANSFER_STACK, TRANSFER_ALL, PICKUP, PLACE, SWAP, QUICK_MOVE ->
+            case TRANSFER, CURSOR_PICKUP, CURSOR_PLACE, CURSOR_SWAP, QUICK_MOVE, SWAP, DISTRIBUTE, COLLECT_MATCHING ->
                     source.supports(InventoryCapability.INSERT) || source.supports(InventoryCapability.EXTRACT);
+            case ASSIGN -> source.supports(InventoryCapability.INSERT) && source.supports(InventoryCapability.EXTRACT);
             case USE -> source.supports(InventoryCapability.USE);
-            case DROP -> source.supports(InventoryCapability.DROP);
-            case EQUIP -> source.supports(InventoryCapability.EQUIP);
-            case UNEQUIP -> source.supports(InventoryCapability.UNEQUIP);
-            case TOOL_ACTIVATE, TOOL_ACTION, TOOL_TOGGLE -> false;
+            case DROP_TO_WORLD -> source.supports(InventoryCapability.DROP);
+            case TRASH, VOID, SORT_SOURCE, SET_FILTER, TOOL_ACTIVATE, TOOL_ACTION, TOOL_TOGGLE -> false;
         };
     }
 
     private static boolean supports(QuickAccessLaneDescriptor lane, InventoryActionKind kind) {
         return switch (kind) {
             case USE -> lane.supports(InventoryCapability.USE);
-            case DROP -> lane.supports(InventoryCapability.DROP);
-            case TRANSFER_ONE, TRANSFER_STACK, TRANSFER_ALL, PICKUP, PLACE, SWAP, QUICK_MOVE ->
+            case DROP_TO_WORLD -> lane.supports(InventoryCapability.DROP);
+            case TRANSFER, CURSOR_PICKUP, CURSOR_PLACE, CURSOR_SWAP, QUICK_MOVE, SWAP, DISTRIBUTE, COLLECT_MATCHING ->
                     lane.supports(InventoryCapability.INSERT) || lane.supports(InventoryCapability.EXTRACT);
+            case ASSIGN -> lane.supports(InventoryCapability.QUICK_ACCESS_ASSIGN);
             default -> false;
         };
     }
 
     private static boolean supports(EquipmentGroupDescriptor group, InventoryActionKind kind) {
         return switch (kind) {
-            case EQUIP -> group.supports(InventoryCapability.EQUIP) || group.supports(InventoryCapability.INSERT);
-            case UNEQUIP -> group.supports(InventoryCapability.UNEQUIP) || group.supports(InventoryCapability.EXTRACT);
+            case ASSIGN -> group.supports(InventoryCapability.EQUIP) || group.supports(InventoryCapability.INSERT);
+            case TRANSFER, CURSOR_PICKUP, CURSOR_PLACE, CURSOR_SWAP, QUICK_MOVE, SWAP ->
+                    group.supports(InventoryCapability.UNEQUIP)
+                            || group.supports(InventoryCapability.EXTRACT)
+                            || group.supports(InventoryCapability.EQUIP)
+                            || group.supports(InventoryCapability.INSERT);
             case USE -> group.supports(InventoryCapability.USE);
-            case DROP -> group.supports(InventoryCapability.DROP);
+            case DROP_TO_WORLD -> group.supports(InventoryCapability.DROP);
             default -> false;
         };
     }
 
     private static boolean supports(ToolRegionDescriptor region, InventoryActionKind kind) {
         return switch (kind) {
-            case TRANSFER_ONE, TRANSFER_STACK, TRANSFER_ALL, PICKUP, PLACE, SWAP, QUICK_MOVE ->
+            case TRANSFER, CURSOR_PICKUP, CURSOR_PLACE, CURSOR_SWAP, QUICK_MOVE, SWAP, DISTRIBUTE, COLLECT_MATCHING ->
                     region.supports(InventoryCapability.TOOL_REGION_MUTATION)
                             || region.supports(InventoryCapability.INSERT)
                             || region.supports(InventoryCapability.EXTRACT);
+            case ASSIGN -> false;
             default -> false;
         };
     }
 
     private static boolean mutatesProtectedState(InventoryActionKind kind) {
         return switch (kind) {
-            case TRANSFER_ONE, TRANSFER_STACK, TRANSFER_ALL, PICKUP, PLACE, SWAP, QUICK_MOVE, DROP, EQUIP, UNEQUIP -> true;
-            case USE, TOOL_ACTIVATE, TOOL_ACTION, TOOL_TOGGLE -> false;
+            case TRANSFER, ASSIGN, SWAP, CURSOR_PICKUP, CURSOR_PLACE, CURSOR_SWAP, QUICK_MOVE,
+                    DROP_TO_WORLD, TRASH, VOID, USE, SORT_SOURCE, DISTRIBUTE, COLLECT_MATCHING, SET_FILTER -> true;
+            case TOOL_ACTIVATE, TOOL_ACTION, TOOL_TOGGLE -> false;
         };
     }
 

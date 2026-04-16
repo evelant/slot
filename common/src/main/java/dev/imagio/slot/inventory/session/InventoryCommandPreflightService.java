@@ -2,6 +2,7 @@ package dev.imagio.slot.inventory.session;
 
 import dev.imagio.slot.inventory.action.InventoryActionDestination;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryCommandAvailability;
 import dev.imagio.slot.inventory.action.InventoryCommandId;
@@ -71,7 +72,7 @@ public final class InventoryCommandPreflightService {
                     commandAvailability(entry.commands(), invocation.commandId()),
                     pane,
                     entry.row(),
-                    InventoryActionKind.TRANSFER_ONE,
+                    InventoryActionQuantity.ONE,
                     InventoryActionScope.BEST_SINGLE_SOURCE,
                     subjectRef.paneMembership()
             );
@@ -81,7 +82,7 @@ public final class InventoryCommandPreflightService {
                     commandAvailability(entry.commands(), invocation.commandId()),
                     pane,
                     entry.row(),
-                    InventoryActionKind.TRANSFER_STACK,
+                    InventoryActionQuantity.STACK,
                     InventoryActionScope.BEST_SINGLE_SOURCE,
                     subjectRef.paneMembership()
             );
@@ -91,7 +92,7 @@ public final class InventoryCommandPreflightService {
                     commandAvailability(entry.commands(), invocation.commandId()),
                     pane,
                     entry.row(),
-                    InventoryActionKind.TRANSFER_ALL,
+                    InventoryActionQuantity.ALL_MATCHING,
                     InventoryActionScope.VISIBLE_MATCHES,
                     subjectRef.paneMembership()
             );
@@ -244,7 +245,7 @@ public final class InventoryCommandPreflightService {
             InventoryCommandAvailability declaredAvailability,
             InventoryBrowsePane pane,
             dev.imagio.slot.inventory.query.ProjectedInventoryRow anchorRow,
-            InventoryActionKind kind,
+            InventoryActionQuantity quantity,
             InventoryActionScope scope,
             InventoryPaneMembership sourcePaneMembership
     ) {
@@ -256,7 +257,8 @@ public final class InventoryCommandPreflightService {
                 session.authority(),
                 InventoryBrowseDocumentQueries.projectedRows(itemEntries),
                 anchorRow,
-                kind,
+                InventoryActionKind.TRANSFER,
+                quantity,
                 scope,
                 defaultDestination(session, sourcePaneMembership),
                 session.workflow().protection(),
@@ -296,7 +298,8 @@ public final class InventoryCommandPreflightService {
                 session.authority(),
                 InventoryBrowseDocumentQueries.projectedRows(itemEntries),
                 itemEntries.getFirst().row(),
-                InventoryActionKind.TRANSFER_ALL,
+                InventoryActionKind.TRANSFER,
+                InventoryActionQuantity.ALL_MATCHING,
                 InventoryActionScope.VISIBLE_ROWS,
                 defaultDestination(session, sourcePaneMembership),
                 session.workflow().protection(),

@@ -4,6 +4,8 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.neoforge.client.SlotNeoForgeClient;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.network.SlotNetworking;
+import dev.imagio.slot.neoforge.screen.ldlib.SlotWorkspaceLdlibMenus;
+import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -16,7 +18,9 @@ public final class SlotNeoForge {
         SlotCommon.init();
 
         container.registerConfig(ModConfig.Type.CLIENT, SlotClientConfig.CLIENT_SPEC);
+        SlotWorkspaceLdlibMenus.init();
         SlotNetworking.init(modBus);
+        SlotPlayerWorkflowRuntimeService.init();
 
         if (dist == Dist.CLIENT) {
             SlotNeoForgeClient.init(modBus);

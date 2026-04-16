@@ -1,8 +1,9 @@
 package dev.imagio.slot.inventory.session;
 
-import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
+import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionStatus;
@@ -343,7 +344,8 @@ class InventoryIntentRouterTest {
         assertEquals(InventoryRoutingStatus.DISPATCHED, result.status());
         assertEquals(1, result.dispatchedRequests().size());
         InventoryActionRequest request = result.dispatchedRequests().getFirst();
-        assertEquals(InventoryActionKind.TRANSFER_STACK, request.kind());
+        assertEquals(InventoryActionKind.TRANSFER, request.kind());
+        assertEquals(InventoryActionQuantity.STACK, request.quantity());
         assertEquals(6, request.requestedCount());
         assertTrue(request.primaryTarget() instanceof InventoryActionTarget.SourceEntryTarget);
         InventoryActionTarget.SourceEntryTarget sourceEntryTarget =
@@ -428,7 +430,8 @@ class InventoryIntentRouterTest {
 
         assertEquals(InventoryRoutingStatus.DISPATCHED, result.status());
         InventoryActionRequest request = result.dispatchedRequests().getFirst();
-        assertEquals(InventoryActionKind.PLACE, request.kind());
+        assertEquals(InventoryActionKind.CURSOR_PLACE, request.kind());
+        assertEquals(InventoryActionQuantity.ONE, request.quantity());
         assertEquals(1, request.requestedCount());
         assertEquals(1, request.stack().getCount());
         assertEquals(
@@ -549,6 +552,9 @@ class InventoryIntentRouterTest {
                 request.requestId(),
                 request.kind(),
                 request.mode(),
+                request.quantity(),
+                request.scope(),
+                request.conflictPolicy(),
                 request.origin(),
                 request.correlationId(),
                 request.causationId(),

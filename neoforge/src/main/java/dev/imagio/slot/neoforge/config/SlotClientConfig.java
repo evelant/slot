@@ -17,28 +17,10 @@ public final class SlotClientConfig {
     }
 
     public static final class Client {
-        public final ModConfigSpec.BooleanValue enabled;
-        public final ModConfigSpec.BooleanValue replacePlayerInventory;
-        public final ModConfigSpec.BooleanValue replaceChestLikeStorage;
         public final ModConfigSpec.BooleanValue debugLogging;
 
         private Client(ModConfigSpec.Builder builder) {
             builder.comment("Client-side SLOT settings").push("client");
-
-            enabled = builder
-                    .translation("slot.config.enabled")
-                    .comment("Master enable switch for SLOT.")
-                    .define("enabled", true);
-
-            replacePlayerInventory = builder
-                    .translation("slot.config.replace_player_inventory")
-                    .comment("Replaces the vanilla player inventory screen when supported.")
-                    .define("replacePlayerInventory", true);
-
-            replaceChestLikeStorage = builder
-                    .translation("slot.config.replace_chest_like_storage")
-                    .comment("Replaces supported chest-like storage screens. Disabled by default during the core authority cut.")
-                    .define("replaceChestLikeStorage", false);
 
             debugLogging = builder
                     .translation("slot.config.debug_logging")

@@ -48,4 +48,8 @@ public record WorkflowDomainSnapshot(
     public ProtectionSnapshotPolicy protection() {
         return workflowProjection.protection();
     }
+
+    public VisualHomeMap visualHomeMap() {
+        return workflowProjection.visualHomeMap();
+    }
 }

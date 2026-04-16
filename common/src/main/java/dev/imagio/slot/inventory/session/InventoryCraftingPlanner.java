@@ -1,7 +1,10 @@
 package dev.imagio.slot.inventory.session;
 
 import dev.imagio.slot.inventory.action.InventoryActionKind;
+import dev.imagio.slot.inventory.action.InventoryActionConflictPolicy;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
+import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryCommandReasonCode;
 import dev.imagio.slot.inventory.browse.InventoryBrowseDocumentQueries;
@@ -65,7 +68,7 @@ public final class InventoryCraftingPlanner {
         SourceCandidate sourceCandidate = firstSourceCandidate(
                 session,
                 selectedEntry.row().backingEntries(),
-                placementMode == CraftingPlacementMode.SINGLE ? InventoryActionKind.TRANSFER_ONE : InventoryActionKind.TRANSFER_STACK,
+                InventoryActionKind.TRANSFER,
                 identity
         );
         if (sourceCandidate == null) {
@@ -78,9 +81,10 @@ public final class InventoryCraftingPlanner {
             return InventoryCraftingPlan.rejected("destination_full_for_crafting_input", InventoryCommandReasonCode.DESTINATION_FULL);
         }
 
-        InventoryActionKind kind = placementMode == CraftingPlacementMode.SINGLE
-                ? InventoryActionKind.TRANSFER_ONE
-                : InventoryActionKind.TRANSFER_STACK;
+        InventoryActionKind kind = InventoryActionKind.TRANSFER;
+        InventoryActionQuantity quantity = placementMode == CraftingPlacementMode.SINGLE
+                ? InventoryActionQuantity.ONE
+                : InventoryActionQuantity.STACK;
         if (blockedByProtection(session, kind, destinationTarget, identity, sourceCandidate.stack())) {
             return InventoryCraftingPlan.rejected("destination_blocked_by_policy", InventoryCommandReasonCode.DESTINATION_BLOCKED_BY_POLICY);
         }
@@ -91,6 +95,9 @@ public final class InventoryCraftingPlanner {
                 "",
                 kind,
                 mode,
+                quantity,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.INSERT_ONLY,
                 normalizedOrigin(origin, "crafting_place_selected"),
                 sourceCandidate.target(),
                 destinationTarget,
@@ -128,7 +135,7 @@ public final class InventoryCraftingPlanner {
 
         InventoryActionTarget destinationTarget = surface.inputTarget(inputIndex);
         ItemIdentity identity = ItemIdentityMatcher.create(cursorStack);
-        if (blockedByProtection(session, InventoryActionKind.PLACE, destinationTarget, identity, cursorStack)) {
+        if (blockedByProtection(session, InventoryActionKind.CURSOR_PLACE, destinationTarget, identity, cursorStack)) {
             return InventoryCraftingPlan.rejected("destination_blocked_by_policy", InventoryCommandReasonCode.DESTINATION_BLOCKED_BY_POLICY);
         }
 
@@ -141,8 +148,11 @@ public final class InventoryCraftingPlanner {
                 host.hostId(),
                 host.serverMenuRef(),
                 "",
-                InventoryActionKind.PLACE,
+                InventoryActionKind.CURSOR_PLACE,
                 mode,
+                placementMode == CraftingPlacementMode.SINGLE ? InventoryActionQuantity.ONE : InventoryActionQuantity.STACK,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.INSERT_ONLY,
                 normalizedOrigin(origin, "crafting_place_cursor"),
                 destinationTarget,
                 null,
@@ -185,7 +195,7 @@ public final class InventoryCraftingPlanner {
                 continue;
             }
             InventoryActionTarget target = surface.inputTarget(inputIndex);
-            if (target == null || blockedByProtection(session, InventoryActionKind.PLACE, target, identity, cursorStack)) {
+            if (target == null || blockedByProtection(session, InventoryActionKind.CURSOR_PLACE, target, identity, cursorStack)) {
                 continue;
             }
             int capacity = transferableCount(session, target, cursorStack, false);
@@ -214,8 +224,13 @@ public final class InventoryCraftingPlanner {
                     host.hostId(),
                     host.serverMenuRef(),
                     "",
-                    InventoryActionKind.PLACE,
+                    InventoryActionKind.CURSOR_PLACE,
                     mode,
+                    dragMode == CraftingDragMode.SINGLE_PER_SLOT
+                            ? InventoryActionQuantity.SINGLE_PER_TARGET
+                            : InventoryActionQuantity.EVEN_SPLIT,
+                    InventoryActionScope.SELECTED_TARGETS,
+                    InventoryActionConflictPolicy.INSERT_ONLY,
                     normalizedOrigin(origin, "crafting_drag_cursor"),
                     target.target(),
                     null,
@@ -261,8 +276,11 @@ public final class InventoryCraftingPlanner {
                 host.hostId(),
                 host.serverMenuRef(),
                 "",
-                resultMode == CraftingResultMode.QUICK_MOVE ? InventoryActionKind.QUICK_MOVE : InventoryActionKind.PICKUP,
+                resultMode == CraftingResultMode.QUICK_MOVE ? InventoryActionKind.QUICK_MOVE : InventoryActionKind.CURSOR_PICKUP,
                 mode,
+                InventoryActionQuantity.STACK,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.DEFAULT,
                 normalizedOrigin(origin, "crafting_extract_result"),
                 outputTarget,
                 null,

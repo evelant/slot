@@ -21,6 +21,7 @@ import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.LoadoutTarget;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutEntry;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutDefinition;
+import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
 import org.junit.jupiter.api.Test;
@@ -76,6 +77,17 @@ class WorkflowDomainFileStoreTest {
                 true
         );
         runtime.setProtectPortableContainers(true);
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Machines",
+                744,
+                104,
+                320,
+                196,
+                0xCC5A4A6E,
+                ItemIdentity.of("minecraft:torch")
+        );
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:torch"), island.id(), 16, 60);
+        runtime.visualAtlasWorkflow().moveIsland(island.id(), 912, 236);
         source.browseSessionState().replaceWith(new InventoryBrowseSessionState(
                 new InventoryBrowseFilter("torch", InventoryBrowseFilterScope.SELECTED_COLLECTION),
                 InventoryBrowseSortMode.COUNT_DESC,

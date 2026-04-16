@@ -1,7 +1,7 @@
 package dev.imagio.slot.inventory.integration;
 
-import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
+import dev.imagio.slot.inventory.action.InventoryActionQuantity;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
@@ -241,6 +241,89 @@ final class BuiltinInventoryActionExecutor {
         return ExecutionResult.success(targetBefore, cursorStack);
     }
 
+    static ExecutionResult assign(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            InventoryActionRequest request
+    ) {
+        if (host == null || player == null || request == null || request.primaryTarget() == null || request.secondaryTarget() == null) {
+            return ExecutionResult.blocked("assign_requires_source_and_target");
+        }
+        if (!assignTargetSupported(host, request.secondaryTarget())) {
+            return ExecutionResult.blocked("assign_requires_supported_target");
+        }
+
+        ResolvedTarget source = resolve(host, request.primaryTarget());
+        ResolvedTarget destination = resolve(host, request.secondaryTarget());
+        if (source == null || destination == null) {
+            return ExecutionResult.blocked("assign_target_unavailable");
+        }
+        if (sameSlot(source, destination)) {
+            return ExecutionResult.blocked("assign_requires_distinct_targets");
+        }
+        if (source.bindingRoute() != InventoryBindingRoute.PLAYER || destination.bindingRoute() != InventoryBindingRoute.PLAYER) {
+            return ExecutionResult.blocked("assign_requires_player_bound_targets");
+        }
+        if (!destinationSupportsAssign(host, request.secondaryTarget(), destination)) {
+            return ExecutionResult.blocked("assign_requires_supported_sources");
+        }
+        if (!source.canExtract() || !source.canInsert() || !destination.canExtract() || !destination.canInsert()) {
+            return ExecutionResult.blocked("assign_target_unavailable");
+        }
+
+        ItemStack sourceBefore = currentStack(host.menu(), player.getInventory(), source).copy();
+        if (sourceBefore.isEmpty()) {
+            return ExecutionResult.blocked("source_stack_missing");
+        }
+        if (!matchesIdentity(request, sourceBefore)) {
+            return ExecutionResult.blocked("player_slot_identity_mismatch");
+        }
+        ItemStack destinationBefore = currentStack(host.menu(), player.getInventory(), destination).copy();
+        if (request.mode() == InventoryActionMode.EXECUTE) {
+            if (!setTargetStack(host.menu(), player.getInventory(), destination, sourceBefore)) {
+                return ExecutionResult.blocked("assign_apply_failed");
+            }
+            if (!setTargetStack(host.menu(), player.getInventory(), source, destinationBefore)) {
+                setTargetStack(host.menu(), player.getInventory(), destination, destinationBefore);
+                return ExecutionResult.blocked("assign_apply_failed");
+            }
+        }
+        return ExecutionResult.success(ItemStack.EMPTY, sourceBefore);
+    }
+
+    private static boolean assignTargetSupported(InventoryHostDescriptor host, InventoryActionTarget target) {
+        if (host == null || target == null) {
+            return false;
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget laneTarget) {
+            QuickAccessLaneDescriptor lane = host.quickAccessLane(laneTarget.laneId());
+            return lane != null && lane.supports(InventoryCapability.QUICK_ACCESS_ASSIGN);
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
+            return group != null && (group.supports(InventoryCapability.EQUIP) || group.supports(InventoryCapability.INSERT));
+        }
+        return false;
+    }
+
+    private static boolean destinationSupportsAssign(
+            InventoryHostDescriptor host,
+            InventoryActionTarget destinationTarget,
+            ResolvedTarget destination
+    ) {
+        if (host == null || destinationTarget == null || destination == null || destination.source() == null) {
+            return false;
+        }
+        if (destinationTarget instanceof InventoryActionTarget.QuickAccessTarget) {
+            return destination.source().supports(InventoryCapability.QUICK_ACCESS_ASSIGN);
+        }
+        if (destinationTarget instanceof InventoryActionTarget.EquipmentTarget) {
+            return destination.source().supports(InventoryCapability.EQUIP)
+                    || destination.source().supports(InventoryCapability.INSERT);
+        }
+        return false;
+    }
+
     static ExecutionResult quickMove(
             InventoryHostDescriptor host,
             ServerPlayer player,
@@ -290,7 +373,7 @@ final class BuiltinInventoryActionExecutor {
                             player,
                             sourceTarget.sourceId(),
                             request.identity(),
-                            transferMode(request.kind())
+                            transferMode(request)
                     ),
                     InventoryMutationMode.valueOf(request.mode().name())
             );
@@ -506,18 +589,18 @@ final class BuiltinInventoryActionExecutor {
         if (request.requestedCount() > 0) {
             return Math.min(request.requestedCount(), Math.max(1, available));
         }
-        return switch (request.kind()) {
-            case TRANSFER_ONE -> 1;
-            case TRANSFER_STACK, TRANSFER_ALL, DROP, EQUIP, UNEQUIP, PICKUP, PLACE, SWAP, QUICK_MOVE -> Math.max(1, available);
+        return switch (request.quantity()) {
+            case ONE, SINGLE_PER_TARGET -> 1;
+            case HALF_SOURCE, HALF_CURSOR -> Math.max(1, (available + 1) / 2);
             default -> Math.max(1, available);
         };
     }
 
-    private static InventoryTransferMode transferMode(InventoryActionKind kind) {
-        return switch (kind) {
-            case TRANSFER_ONE -> InventoryTransferMode.ONE;
-            case TRANSFER_STACK, EQUIP, UNEQUIP, DROP -> InventoryTransferMode.STACK;
-            case TRANSFER_ALL -> InventoryTransferMode.ALL;
+    private static InventoryTransferMode transferMode(InventoryActionRequest request) {
+        InventoryActionQuantity quantity = request == null ? InventoryActionQuantity.DEFAULT : request.quantity();
+        return switch (quantity) {
+            case ONE, SINGLE_PER_TARGET -> InventoryTransferMode.ONE;
+            case ALL_MATCHING -> InventoryTransferMode.ALL;
             default -> InventoryTransferMode.STACK;
         };
     }
@@ -558,20 +641,32 @@ final class BuiltinInventoryActionExecutor {
 
         ItemStack remainder = input;
         Inventory inventory = request.player().getInventory();
+        boolean insertedAny = false;
+        String lastBlockedDiagnostics = "";
         for (int logicalSlot = 0; logicalSlot < source.logicalSlotCount(); logicalSlot++) {
             int playerSlot = playerSlotIndex(source.id(), logicalSlot);
             if (playerSlot < 0) {
                 continue;
             }
-            remainder = insertPlayerBound(
+            StackResult insertion = insertPlayerBound(
                     inventory,
                     new ResolvedTarget(source, InventoryBindingRoute.PLAYER, null, playerSlot, true, source.supports(InventoryCapability.EXTRACT)),
                     mode == InventoryMutationMode.SIMULATE ? InventoryActionMode.SIMULATE : InventoryActionMode.EXECUTE,
                     remainder
-            ).stack();
+            );
+            if (!insertion.successful()) {
+                lastBlockedDiagnostics = insertion.diagnostics();
+                continue;
+            }
+            int beforeCount = remainder.getCount();
+            remainder = insertion.stack();
+            insertedAny = insertedAny || remainder.getCount() < beforeCount;
             if (remainder.isEmpty()) {
                 return MutationResult.success(ItemStack.EMPTY);
             }
+        }
+        if (!insertedAny && !lastBlockedDiagnostics.isBlank()) {
+            return MutationResult.blocked(lastBlockedDiagnostics, remainder);
         }
         return mode == InventoryMutationMode.SIMULATE
                 ? MutationResult.blocked("simulation_incomplete", remainder)

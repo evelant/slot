@@ -34,6 +34,8 @@ public final class WorkflowProjection {
         LinkedHashSet<InventoryActionTarget> protectedTargets = new LinkedHashSet<>(current.protection().protectedTargets());
         boolean protectPortableContainers = current.protection().protectPortableContainers();
         LinkedHashMap<ItemIdentity, Long> recentDismissals = new LinkedHashMap<>(current.recentDismissedUpToByIdentity());
+        ArrayList<VisualAtlasIsland> playerIslands = new ArrayList<>(current.visualHomeMap().playerIslands());
+        LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>(current.visualHomeMap().assignments());
 
         switch (record.event()) {
             case WorkflowEvent.CollectionCreated event -> {
@@ -178,6 +180,43 @@ public final class WorkflowProjection {
                     ));
                 }
             }
+            case WorkflowEvent.VisualIslandCreated event -> {
+                if (event.island() != null) {
+                    playerIslands.removeIf(island -> island.id().equals(event.island().id()));
+                    playerIslands.add(event.island());
+                }
+            }
+            case WorkflowEvent.VisualIslandMoved event -> {
+                if (event.islandId() != null && !event.islandId().isBlank()) {
+                    for (int index = 0; index < playerIslands.size(); index++) {
+                        VisualAtlasIsland existing = playerIslands.get(index);
+                        if (existing.id().equals(event.islandId())) {
+                            playerIslands.set(index, new VisualAtlasIsland(
+                                    existing.id(),
+                                    existing.label(),
+                                    existing.kind(),
+                                    event.x(),
+                                    event.y(),
+                                    existing.width(),
+                                    existing.height(),
+                                    existing.color(),
+                                    existing.iconIdentity()
+                            ));
+                            break;
+                        }
+                    }
+                }
+            }
+            case WorkflowEvent.VisualHomeAssigned event -> {
+                if (event.assignment() != null && event.assignment().identity() != null) {
+                    visualHomes.put(event.assignment().identity(), event.assignment());
+                }
+            }
+            case WorkflowEvent.VisualHomeCleared event -> {
+                if (event.identity() != null) {
+                    visualHomes.remove(event.identity());
+                }
+            }
         }
 
         return new Snapshot(
@@ -188,7 +227,8 @@ public final class WorkflowProjection {
                 favorites,
                 junk,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
-                recentDismissals
+                recentDismissals,
+                new VisualHomeMap(playerIslands, visualHomes)
         );
     }
 
@@ -209,7 +249,8 @@ public final class WorkflowProjection {
             Set<ItemIdentity> favoriteTags,
             Set<ItemIdentity> junkTags,
             ProtectionSnapshotPolicy protection,
-            Map<ItemIdentity, Long> recentDismissedUpToByIdentity
+            Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
+            VisualHomeMap visualHomeMap
     ) {
         public Snapshot {
             userCollections = userCollections == null ? List.of() : List.copyOf(userCollections);
@@ -220,10 +261,21 @@ public final class WorkflowProjection {
             junkTags = junkTags == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(junkTags));
             protection = protection == null ? new ProtectionSnapshotPolicy(Set.of(), Set.of(), false) : protection;
             recentDismissedUpToByIdentity = copyRecentDismissals(recentDismissedUpToByIdentity);
+            visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
         }
 
         public static Snapshot empty() {
-            return new Snapshot(List.of(), Map.of(), Map.of(), Map.of(), Set.of(), Set.of(), new ProtectionSnapshotPolicy(Set.of(), Set.of(), false), Map.of());
+            return new Snapshot(
+                    List.of(),
+                    Map.of(),
+                    Map.of(),
+                    Map.of(),
+                    Set.of(),
+                    Set.of(),
+                    new ProtectionSnapshotPolicy(Set.of(), Set.of(), false),
+                    Map.of(),
+                    VisualHomeMap.empty()
+            );
         }
 
         public Set<String> collectionIds() {

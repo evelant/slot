@@ -3,6 +3,7 @@ package dev.imagio.slot.workflow.domain;
 import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
+import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryActionStatus;
 import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
@@ -66,6 +67,16 @@ class CollectionWorkflowDomainServiceTest {
         assertTrue(repository.workflowProjection().favoriteTags().contains(identity));
         assertTrue(workflow.setDesiredCount(tools.id(), identity, 8));
         assertEquals(8, repository.workflowProjection().desiredCountsByCollection().get(tools.id()).get(identity));
+    }
+
+    @Test
+    void toggleCollectionMembershipRejectsUnknownCollectionIds() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        CollectionWorkflowDomainService workflow = new CollectionWorkflowDomainService(repository);
+        ItemIdentity identity = ItemIdentity.of("minecraft:stone");
+
+        assertFalse(workflow.toggleCollectionMembership(identity, "missing"));
+        assertFalse(repository.workflowProjection().memberships().containsKey(identity));
     }
 
     @Test
@@ -159,7 +170,7 @@ class CollectionWorkflowDomainServiceTest {
         assertEquals(0, plan.missingTargets().size());
         assertEquals(created.id(), repository.browseSessionState().current().selectedLoadoutId());
         assertEquals(
-                java.util.Set.of(InventoryActionKind.TRANSFER_STACK, InventoryActionKind.EQUIP),
+                java.util.Set.of(InventoryActionKind.TRANSFER, InventoryActionKind.ASSIGN),
                 plan.requests().stream().map(request -> request.kind()).collect(java.util.stream.Collectors.toSet())
         );
         java.util.Map<String, String> sourceByTarget = plan.requests().stream().collect(java.util.stream.Collectors.toMap(
@@ -185,6 +196,9 @@ class CollectionWorkflowDomainServiceTest {
                         request.requestId(),
                         request.kind(),
                         InventoryActionMode.EXECUTE,
+                        request.quantity(),
+                        request.scope(),
+                        request.conflictPolicy(),
                         request.origin(),
                         request.primaryTarget(),
                         request.secondaryTarget(),
@@ -193,7 +207,7 @@ class CollectionWorkflowDomainServiceTest {
                         request.requestedCount(),
                         request.requestedCount(),
                         false,
-                        request.kind() == InventoryActionKind.EQUIP
+                        request.secondaryTarget() instanceof InventoryActionTarget.EquipmentTarget
                                 ? java.util.List.of()
                                 : java.util.List.of(new InventoryActivityEvent(
                                 InventoryActivityKind.ACQUIRED,

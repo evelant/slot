@@ -415,6 +415,9 @@ public final class CollectionWorkflowDomainService {
         if (identity == null || collectionId == null || collectionId.isBlank()) {
             return false;
         }
+        if (!collections().collectionIds().contains(collectionId)) {
+            return false;
+        }
         if (collections().memberships().getOrDefault(identity, Set.of()).contains(collectionId)) {
             repository.appendWorkflowEvent(
                     new WorkflowEvent.CollectionItemRemoved(collectionId, identity),

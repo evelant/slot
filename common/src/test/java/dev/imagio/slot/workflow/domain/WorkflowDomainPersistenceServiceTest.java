@@ -61,6 +61,17 @@ class WorkflowDomainPersistenceServiceTest {
                 true
         );
         runtime.setProtectPortableContainers(true);
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Machines",
+                744,
+                104,
+                320,
+                196,
+                0xCC5A4A6E,
+                ItemIdentity.of("minecraft:torch")
+        );
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:torch"), island.id(), 16, 60);
+        runtime.visualAtlasWorkflow().moveIsland(island.id(), 912, 236);
         source.browsePreferences().replaceWith(new InventoryBrowsePreferences(
                 InventoryBrowseSortMode.COUNT_DESC,
                 InventoryBrowseGroupingMode.SOURCE,

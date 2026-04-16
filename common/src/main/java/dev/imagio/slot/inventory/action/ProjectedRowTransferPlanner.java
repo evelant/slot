@@ -28,7 +28,7 @@ public final class ProjectedRowTransferPlanner {
         if (intent.destination() == null) {
             return ProjectedRowTransferPlan.empty(intent, List.of("missing_destination"));
         }
-        if (!validCombination(intent.kind(), intent.scope())) {
+        if (!validCombination(intent.kind(), intent.quantity(), intent.scope())) {
             return ProjectedRowTransferPlan.empty(intent, List.of("invalid_kind_scope_combination"));
         }
 
@@ -69,7 +69,7 @@ public final class ProjectedRowTransferPlanner {
             ArrayList<PlannedTransferStep> steps = new ArrayList<>();
 
             for (ProjectedTransferSourceCandidate candidate : candidates) {
-                int desiredCount = requestedCount(intent.kind(), candidate.availableCount());
+                int desiredCount = requestedCount(intent.quantity(), candidate.availableCount());
                 if (desiredCount <= 0) {
                     continue;
                 }
@@ -106,6 +106,9 @@ public final class ProjectedRowTransferPlanner {
                             UUID.randomUUID().toString(),
                             intent.kind(),
                             intent.mode(),
+                            intent.quantity(),
+                            intent.scope(),
+                            InventoryActionConflictPolicy.INSERT_ONLY,
                             normalizedOrigin(intent.origin()),
                             candidate.sourceTarget(),
                             allocation.destinationTarget(),
@@ -202,41 +205,44 @@ public final class ProjectedRowTransferPlanner {
             case BEST_SINGLE_SOURCE -> {
                 ProjectedTransferSourceCandidate candidate = candidates.stream().filter(Objects::nonNull).findFirst().orElse(null);
                 if (candidate != null) {
-                    yield requestedCount(intent.kind(), candidate.availableCount());
+                    yield requestedCount(intent.quantity(), candidate.availableCount());
                 }
                 int fallback = row.backingEntries().stream()
                         .filter(Objects::nonNull)
                         .mapToInt(entry -> entry.count())
                         .findFirst()
                         .orElse(0);
-                yield requestedCount(intent.kind(), fallback);
+                yield requestedCount(intent.quantity(), fallback);
             }
             case VISIBLE_MATCHES, VISIBLE_ROWS -> row.backingEntries().stream()
                     .filter(Objects::nonNull)
                     .mapToInt(entry -> Math.max(0, entry.count()))
                     .sum();
-            case SOURCE_LOCAL -> 0;
+            case SINGLE_TARGET, SELECTED_TARGETS, SOURCE_LOCAL, COLLECTION, LOADOUT, ALL_MATCHING_IN_HOST -> 0;
         };
     }
 
-    private static int requestedCount(InventoryActionKind kind, int availableCount) {
+    private static int requestedCount(InventoryActionQuantity quantity, int availableCount) {
         if (availableCount <= 0) {
             return 0;
         }
-        return switch (kind) {
-            case TRANSFER_ONE -> 1;
-            case TRANSFER_STACK, TRANSFER_ALL -> availableCount;
-            default -> 0;
+        return switch (quantity) {
+            case ONE, SINGLE_PER_TARGET -> 1;
+            case HALF_SOURCE, HALF_CURSOR -> Math.max(1, (availableCount + 1) / 2);
+            case DEFAULT, STACK, ALL_MATCHING, EXACT_COUNT, FILL_TARGET, EVEN_SPLIT -> availableCount;
         };
     }
 
-    private static boolean validCombination(InventoryActionKind kind, InventoryActionScope scope) {
-        if (kind == null || scope == null) {
+    private static boolean validCombination(InventoryActionKind kind, InventoryActionQuantity quantity, InventoryActionScope scope) {
+        if (kind == null || quantity == null || scope == null) {
             return false;
         }
-        return switch (kind) {
-            case TRANSFER_ONE, TRANSFER_STACK -> scope == InventoryActionScope.BEST_SINGLE_SOURCE;
-            case TRANSFER_ALL -> scope == InventoryActionScope.VISIBLE_MATCHES || scope == InventoryActionScope.VISIBLE_ROWS;
+        if (kind != InventoryActionKind.TRANSFER) {
+            return false;
+        }
+        return switch (quantity) {
+            case ONE, STACK -> scope == InventoryActionScope.BEST_SINGLE_SOURCE;
+            case ALL_MATCHING -> scope == InventoryActionScope.VISIBLE_MATCHES || scope == InventoryActionScope.VISIBLE_ROWS;
             default -> false;
         };
     }

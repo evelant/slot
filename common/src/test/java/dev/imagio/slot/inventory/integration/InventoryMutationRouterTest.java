@@ -14,7 +14,9 @@ import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.core.HostInstanceKey;
 import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
@@ -95,6 +97,54 @@ class InventoryMutationRouterTest {
         assertTrue(activation.successful());
         assertTrue(action.successful());
         assertTrue(toggle.successful());
+    }
+
+    @Test
+    void playerSourceWideInsertSkipsIncompatibleSlotsInsteadOfTreatingBlockedSlotAsSuccess() {
+        InventorySourceDescriptor playerMain = source(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                InventorySourceDomain.PLAYER,
+                InventorySourceRole.MAIN,
+                InventoryActionRoute.PLAYER_MUTATION,
+                InventoryBindingRoute.PLAYER
+        );
+        TestMenu menu = new TestMenu();
+        InventoryHostDescriptor host = new InventoryHostDescriptor(
+                new HostInstanceKey(TestMenu.class.getName(), 0, "test", ""),
+                InventoryHostDescriptor.serverMenuRef(menu),
+                "test.screen",
+                Component.literal("Test"),
+                menu,
+                InventoryTopologyDescriptor.empty(),
+                InventoryHostSession.empty(),
+                List.of(),
+                PlayerRuntimeStateDescriptor.vanilla(0),
+                List.of(playerMain),
+                List.of(),
+                List.of(),
+                List.of(),
+                dev.imagio.slot.inventory.integration.InventoryHostObservationHints.defaults(),
+                ""
+        );
+        ServerPlayer player = new ServerPlayer();
+        player.getInventory().items.set(9, new ItemStack("minecraft:stone", 64, 64));
+
+        MutationResult result = InventoryMutationRouter.mutate(
+                host,
+                InventoryMutationRequest.insert(
+                        host,
+                        player,
+                        BuiltinInventoryIds.PLAYER_MAIN,
+                        new ItemStack("minecraft:torch", 12, 64)
+                ),
+                InventoryMutationMode.EXECUTE
+        );
+
+        assertTrue(result.successful());
+        assertTrue(result.stackRemainder().isEmpty());
+        assertEquals("minecraft:stone", player.getInventory().items.get(9).itemId());
+        assertEquals("minecraft:torch", player.getInventory().items.get(10).itemId());
+        assertEquals(12, player.getInventory().items.get(10).getCount());
     }
 
     private static InventorySourceDescriptor source(

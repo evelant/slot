@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.integration;
 
+import dev.imagio.slot.SlotDiagnostics;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
@@ -17,31 +18,61 @@ public final class InventoryMutationRouter {
             InventoryMutationMode mode
     ) {
         if (host == null || request == null) {
-            return MutationResult.blocked("missing_host_or_request", request == null ? ItemStack.EMPTY : request.stack());
+            MutationResult result = MutationResult.blocked(
+                    "missing_host_or_request",
+                    request == null ? ItemStack.EMPTY : request.stack()
+            );
+            SlotDiagnostics.mutationRejected("missing_host_or_request", host, null, request, mode, result);
+            return result;
         }
 
         InventorySourceDescriptor source = host.source(request.sourceId());
         if (source == null) {
-            return MutationResult.blocked("unknown_source", request.stack());
+            MutationResult result = MutationResult.blocked("unknown_source", request.stack());
+            SlotDiagnostics.mutationRejected("unknown_source", host, null, request, mode, result);
+            return result;
         }
         if (mode == InventoryMutationMode.SIMULATE && !source.simulationSupported()) {
-            return MutationResult.blocked("simulation_not_supported_by_source", request.stack());
+            MutationResult result = MutationResult.blocked("simulation_not_supported_by_source", request.stack());
+            SlotDiagnostics.mutationRejected("simulation_not_supported_by_source", host, source, request, mode, result);
+            return result;
         }
 
+        String route;
+        MutationResult result;
         if (host.ownsHostSource(source.id())) {
-            return host.hostSession().mutate(host, request, mode);
+            route = "host:" + host.hostSession().providerId();
+            result = host.hostSession().mutate(host, request, mode);
+        } else {
+            PlayerInventoryExtension extension = host.extensionOwningSource(source.id());
+            if (extension != null) {
+                route = "extension:" + extension.providerId();
+                result = extension.mutate(host, request, mode);
+            } else {
+                switch (source.actionRoute()) {
+                    case PLAYER_MUTATION, MENU_MUTATION -> {
+                        route = "builtin:" + source.actionRoute();
+                        result = BuiltinInventoryActionExecutor.mutateSource(host, request, mode);
+                    }
+                    case PROVIDER_MUTATION -> {
+                        route = "provider_route_missing_owner";
+                        result = MutationResult.blocked("provider_route_missing_owner", request.stack());
+                    }
+                    case NON_ACTIONABLE -> {
+                        route = "non_actionable";
+                        result = MutationResult.blocked("source_is_non_actionable", request.stack());
+                    }
+                    default -> throw new IllegalStateException("unhandled_action_route:" + source.actionRoute());
+                }
+            }
         }
 
-        PlayerInventoryExtension extension = host.extensionOwningSource(source.id());
-        if (extension != null) {
-            return extension.mutate(host, request, mode);
+        if (result != null && result.successful()) {
+            SlotDiagnostics.mutationRouted(route, host, source, request, mode, result);
+        } else {
+            SlotDiagnostics.mutationRejected(route, host, source, request, mode, result);
         }
-
-        return switch (source.actionRoute()) {
-            case PLAYER_MUTATION, MENU_MUTATION -> BuiltinInventoryActionExecutor.mutateSource(host, request, mode);
-            case PROVIDER_MUTATION -> MutationResult.blocked("provider_route_missing_owner", request.stack());
-            case NON_ACTIONABLE -> MutationResult.blocked("source_is_non_actionable", request.stack());
-        };
+        return result;
     }
 
     public static ToolActionResult activateTool(
