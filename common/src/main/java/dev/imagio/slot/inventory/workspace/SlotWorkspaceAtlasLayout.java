@@ -1,4 +1,4 @@
-package dev.imagio.slot.neoforge.screen.ldlib;
+package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
@@ -9,31 +9,31 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-final class SlotWorkspaceAtlasLayout {
-    static final int CANVAS_WIDTH = 2200;
-    static final int CANVAS_HEIGHT = 1480;
-    static final int CARD_WIDTH = 32;
-    static final int CARD_HEIGHT = 32;
-    static final int CARD_GAP = 4;
-    static final String ISLAND_TRIAGE = "triage";
+public final class SlotWorkspaceAtlasLayout {
+    public static final int CANVAS_WIDTH = 2200;
+    public static final int CANVAS_HEIGHT = 1480;
+    public static final int CARD_WIDTH = 32;
+    public static final int CARD_HEIGHT = 32;
+    public static final int CARD_GAP = 4;
+    public static final String ISLAND_TRIAGE = "triage";
     private static final int CANVAS_MARGIN = 24;
 
     private static final int TRIAGE_COLOR = 0xCC2D4455;
     private static final int PLAYER_COLOR = 0xCC5A4A6E;
-    static final int ISLAND_CONTENT_PADDING_X = 14;
-    static final int ISLAND_CONTENT_PADDING_Y = 14;
-    static final int ISLAND_CONTENT_TOP = 56;
+    public static final int ISLAND_CONTENT_PADDING_X = 14;
+    public static final int ISLAND_CONTENT_PADDING_Y = 14;
+    public static final int ISLAND_CONTENT_TOP = 56;
     private static final int TRIAGE_MIN_WIDTH = 420;
     private static final int TRIAGE_MIN_HEIGHT = 260;
-    static final int PLAYER_ISLAND_MIN_WIDTH = 260;
-    static final int PLAYER_ISLAND_MIN_HEIGHT = 180;
+    public static final int PLAYER_ISLAND_MIN_WIDTH = 260;
+    public static final int PLAYER_ISLAND_MIN_HEIGHT = 180;
     private static final int ISLAND_TRAILING_BUFFER_X = CARD_WIDTH + CARD_GAP;
     private static final int ISLAND_TRAILING_BUFFER_Y = CARD_HEIGHT + CARD_GAP;
 
     private SlotWorkspaceAtlasLayout() {
     }
 
-    static List<SlotWorkspaceViewModel.AtlasIsland> baseIslands(VisualHomeMap visualHomeMap) {
+    public static List<SlotWorkspaceViewModel.AtlasIsland> baseIslands(VisualHomeMap visualHomeMap) {
         ArrayList<SlotWorkspaceViewModel.AtlasIsland> islands = new ArrayList<>();
         islands.add(new SlotWorkspaceViewModel.AtlasIsland(
                 ISLAND_TRIAGE,
@@ -58,8 +58,8 @@ final class SlotWorkspaceAtlasLayout {
                             island.kind(),
                             island.x(),
                             island.y(),
-                            PLAYER_ISLAND_MIN_WIDTH,
-                            PLAYER_ISLAND_MIN_HEIGHT,
+                            Math.max(PLAYER_ISLAND_MIN_WIDTH, island.width()),
+                            Math.max(PLAYER_ISLAND_MIN_HEIGHT, island.height()),
                             island.color(),
                             0
                     )));
@@ -67,7 +67,7 @@ final class SlotWorkspaceAtlasLayout {
         return List.copyOf(islands);
     }
 
-    static List<SlotWorkspaceViewModel.AtlasIsland> fittedIslands(
+    public static List<SlotWorkspaceViewModel.AtlasIsland> fittedIslands(
             List<SlotWorkspaceViewModel.AtlasIsland> baseIslands,
             List<SlotWorkspaceViewModel.AtlasItem> atlasItems
     ) {
@@ -83,7 +83,7 @@ final class SlotWorkspaceAtlasLayout {
         return List.copyOf(fitted);
     }
 
-    static Placement placementForOrdinal(
+    public static Placement placementForOrdinal(
             List<SlotWorkspaceViewModel.AtlasIsland> islands,
             String islandId,
             int ordinal
@@ -103,7 +103,7 @@ final class SlotWorkspaceAtlasLayout {
         ));
     }
 
-    static Placement placementForDrop(
+    public static Placement placementForDrop(
             List<SlotWorkspaceViewModel.AtlasIsland> islands,
             String islandId,
             int worldX,
@@ -113,13 +113,20 @@ final class SlotWorkspaceAtlasLayout {
         if (island == null) {
             return new Placement(ISLAND_TRIAGE, ISLAND_CONTENT_PADDING_X, ISLAND_CONTENT_TOP, 0, 0);
         }
-        return clampPlacement(islands, islandId, new LocalPlacement(
-                worldX - island.x() - CARD_WIDTH / 2,
-                worldY - island.y() - CARD_HEIGHT / 2
-        ));
+        int requestedX = worldX - island.x() - CARD_WIDTH / 2;
+        int requestedY = worldY - island.y() - CARD_HEIGHT / 2;
+        int localX = Math.max(ISLAND_CONTENT_PADDING_X, requestedX);
+        int localY = Math.max(ISLAND_CONTENT_TOP, requestedY);
+        return new Placement(
+                island.islandId(),
+                localX,
+                localY,
+                island.x() + localX,
+                island.y() + localY
+        );
     }
 
-    static Placement clampPlacement(
+    public static Placement clampPlacement(
             List<SlotWorkspaceViewModel.AtlasIsland> islands,
             String islandId,
             LocalPlacement placement
@@ -148,36 +155,28 @@ final class SlotWorkspaceAtlasLayout {
         );
     }
 
-    static Placement resolvePlacement(
+    public static Placement resolvePlacement(
             List<SlotWorkspaceViewModel.AtlasIsland> islands,
             String islandId,
             int localX,
             int localY
     ) {
-        return clampPlacement(islands, islandId, new LocalPlacement(localX, localY));
-    }
-
-    static IslandOrigin clampIslandOrigin(
-            List<SlotWorkspaceViewModel.AtlasIsland> islands,
-            String islandId,
-            int requestedX,
-            int requestedY
-    ) {
-        SlotWorkspaceViewModel.AtlasIsland island = island(islands, islandId);
+        SlotWorkspaceViewModel.AtlasIsland island = resolvedIsland(islands, islandId);
         if (island == null) {
-            return new IslandOrigin(CANVAS_MARGIN, CANVAS_MARGIN);
+            return new Placement(ISLAND_TRIAGE, ISLAND_CONTENT_PADDING_X, ISLAND_CONTENT_TOP, 0, 0);
         }
-        int minX = CANVAS_MARGIN;
-        int maxX = Math.max(minX, CANVAS_WIDTH - island.width() - CANVAS_MARGIN);
-        int minY = CANVAS_MARGIN;
-        int maxY = Math.max(minY, CANVAS_HEIGHT - island.height() - CANVAS_MARGIN);
-        return new IslandOrigin(
-                Math.max(minX, Math.min(maxX, requestedX)),
-                Math.max(minY, Math.min(maxY, requestedY))
+        int clampedX = Math.max(ISLAND_CONTENT_PADDING_X, localX);
+        int clampedY = Math.max(ISLAND_CONTENT_TOP, localY);
+        return new Placement(
+                island.islandId(),
+                clampedX,
+                clampedY,
+                island.x() + clampedX,
+                island.y() + clampedY
         );
     }
 
-    static SlotWorkspaceViewModel.AtlasIsland island(
+    public static SlotWorkspaceViewModel.AtlasIsland island(
             List<SlotWorkspaceViewModel.AtlasIsland> islands,
             String islandId
     ) {
@@ -198,7 +197,7 @@ final class SlotWorkspaceAtlasLayout {
         return island != null ? island : island(islands, ISLAND_TRIAGE);
     }
 
-    static PlayerIslandDraft createNextPlayerIslandDraft(
+    public static PlayerIslandDraft createNextPlayerIslandDraft(
             String label,
             ItemIdentity iconIdentity,
             VisualHomeMap visualHomeMap
@@ -241,8 +240,6 @@ final class SlotWorkspaceAtlasLayout {
         int fittedHeight = itemCount == 0
                 ? minHeight
                 : maxBottom - island.y() + ISLAND_CONTENT_PADDING_Y + ISLAND_TRAILING_BUFFER_Y;
-        int maxWidth = Math.max(minWidth, CANVAS_WIDTH - island.x() - CANVAS_MARGIN);
-        int maxHeight = Math.max(minHeight, CANVAS_HEIGHT - island.y() - CANVAS_MARGIN);
 
         return new SlotWorkspaceViewModel.AtlasIsland(
                 island.islandId(),
@@ -250,8 +247,8 @@ final class SlotWorkspaceAtlasLayout {
                 island.kind(),
                 island.x(),
                 island.y(),
-                Math.max(minWidth, Math.min(maxWidth, fittedWidth)),
-                Math.max(minHeight, Math.min(maxHeight, fittedHeight)),
+                Math.max(minWidth, fittedWidth),
+                Math.max(minHeight, fittedHeight),
                 island.color(),
                 itemCount
         );
@@ -271,7 +268,7 @@ final class SlotWorkspaceAtlasLayout {
         };
     }
 
-    record Placement(
+    public record Placement(
             String islandId,
             int localX,
             int localY,
@@ -280,19 +277,13 @@ final class SlotWorkspaceAtlasLayout {
     ) {
     }
 
-    record LocalPlacement(
+    public record LocalPlacement(
             int x,
             int y
     ) {
     }
 
-    record IslandOrigin(
-            int x,
-            int y
-    ) {
-    }
-
-    record PlayerIslandDraft(
+    public record PlayerIslandDraft(
             String label,
             int x,
             int y,

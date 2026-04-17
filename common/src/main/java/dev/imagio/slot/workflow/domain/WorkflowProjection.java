@@ -9,6 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 public final class WorkflowProjection {
     private WorkflowProjection() {
@@ -37,6 +38,7 @@ public final class WorkflowProjection {
         ArrayList<VisualAtlasIsland> playerIslands = new ArrayList<>(current.visualHomeMap().playerIslands());
         LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>(current.visualHomeMap().assignments());
         LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>(current.visualHomeMap().dismissedTemplateIds());
+        LinkedHashMap<UUID, ClaimedChest> claimedChests = indexChests(current.claimedChestMap().chests());
 
         switch (record.event()) {
             case WorkflowEvent.CollectionCreated event -> {
@@ -293,6 +295,44 @@ public final class WorkflowProjection {
                     dismissedTemplateIds.add(event.templateId());
                 }
             }
+            case WorkflowEvent.ClaimedChestCreated event -> {
+                if (event.chest() != null) {
+                    claimedChests.put(event.chest().storageId(), event.chest());
+                }
+            }
+            case WorkflowEvent.ClaimedChestMoved event -> {
+                if (event.storageId() != null) {
+                    ClaimedChest existing = claimedChests.get(event.storageId());
+                    if (existing != null) {
+                        claimedChests.put(event.storageId(), existing.withAtlasPosition(event.atlasX(), event.atlasY()));
+                    }
+                }
+            }
+            case WorkflowEvent.ClaimedChestAnchorsChanged event -> {
+                if (event.storageId() != null) {
+                    ClaimedChest existing = claimedChests.get(event.storageId());
+                    if (existing != null) {
+                        if (event.anchors().isEmpty()) {
+                            claimedChests.remove(event.storageId());
+                        } else {
+                            claimedChests.put(event.storageId(), existing.withAnchors(event.anchors()));
+                        }
+                    }
+                }
+            }
+            case WorkflowEvent.ClaimedChestRelabeled event -> {
+                if (event.storageId() != null) {
+                    ClaimedChest existing = claimedChests.get(event.storageId());
+                    if (existing != null) {
+                        claimedChests.put(event.storageId(), existing.withLabel(event.label()));
+                    }
+                }
+            }
+            case WorkflowEvent.ClaimedChestDeleted event -> {
+                if (event.storageId() != null) {
+                    claimedChests.remove(event.storageId());
+                }
+            }
         }
 
         return new Snapshot(
@@ -304,8 +344,22 @@ public final class WorkflowProjection {
                 junk,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
-                new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds)
+                new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
+                new ClaimedChestMap(new ArrayList<>(claimedChests.values()))
         );
+    }
+
+    private static LinkedHashMap<UUID, ClaimedChest> indexChests(List<ClaimedChest> source) {
+        LinkedHashMap<UUID, ClaimedChest> indexed = new LinkedHashMap<>();
+        if (source == null) {
+            return indexed;
+        }
+        for (ClaimedChest chest : source) {
+            if (chest != null) {
+                indexed.put(chest.storageId(), chest);
+            }
+        }
+        return indexed;
     }
 
     public static Snapshot replay(WorkflowEventStore.Snapshot storeSnapshot, Snapshot checkpoint) {
@@ -326,7 +380,8 @@ public final class WorkflowProjection {
             Set<ItemIdentity> junkTags,
             ProtectionSnapshotPolicy protection,
             Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
-            VisualHomeMap visualHomeMap
+            VisualHomeMap visualHomeMap,
+            ClaimedChestMap claimedChestMap
     ) {
         public Snapshot {
             userCollections = userCollections == null ? List.of() : List.copyOf(userCollections);
@@ -338,6 +393,7 @@ public final class WorkflowProjection {
             protection = protection == null ? new ProtectionSnapshotPolicy(Set.of(), Set.of(), false) : protection;
             recentDismissedUpToByIdentity = copyRecentDismissals(recentDismissedUpToByIdentity);
             visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
+            claimedChestMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
         }
 
         public static Snapshot empty() {
@@ -350,7 +406,8 @@ public final class WorkflowProjection {
                     Set.of(),
                     new ProtectionSnapshotPolicy(Set.of(), Set.of(), false),
                     Map.of(),
-                    VisualHomeMap.empty()
+                    VisualHomeMap.empty(),
+                    ClaimedChestMap.empty()
             );
         }
 

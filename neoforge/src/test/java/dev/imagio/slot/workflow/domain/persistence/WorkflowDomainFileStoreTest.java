@@ -1,4 +1,4 @@
-package dev.imagio.slot.neoforge.persistence;
+package dev.imagio.slot.workflow.domain.persistence;
 
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryActionScope;

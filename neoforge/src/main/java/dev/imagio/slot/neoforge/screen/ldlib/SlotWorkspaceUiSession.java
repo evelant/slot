@@ -1,13 +1,12 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
-import dev.imagio.slot.SlotDiagnostics;
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.SlotDiagnostics;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
-import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
@@ -18,15 +17,16 @@ import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
-import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
-import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
+import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
+import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
-import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
-import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
-import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -63,18 +63,17 @@ final class SlotWorkspaceUiSession {
         if (player instanceof ServerPlayer serverPlayer) {
             refreshServerView(serverPlayer);
         }
-        return lastViewTag == null ? viewModel.toTag(player.registryAccess()) : lastViewTag.copy();
+        return lastViewTag == null ? SlotWorkspaceViewModelCodec.encode(viewModel, player.registryAccess()) : lastViewTag.copy();
     }
 
     void acceptRemoteView(Tag tag) {
-        viewModel = SlotWorkspaceViewModel.fromTag(player.registryAccess(), tag);
+        viewModel = SlotWorkspaceViewModelCodec.decode(player.registryAccess(), tag);
     }
 
     void transfer(Integer sourceKind, Integer sourceIndex, Integer destinationKind, Integer destinationIndex, String origin) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-
         InventoryActionTarget source = target(sourceKind, sourceIndex, true);
         InventoryActionTarget destination = target(destinationKind, destinationIndex, false);
         if (source == null || destination == null) {
@@ -82,8 +81,7 @@ final class SlotWorkspaceUiSession {
             reject("invalid_transfer_target");
             return;
         }
-
-        TransferExecution execution = executeTransfer(serverPlayer, source, destination, origin);
+        WorkspaceTransferExecution execution = executeTransfer(serverPlayer, source, destination, origin);
         status = execution.feedback().status();
         diagnostics = execution.feedback().diagnostics();
         broadcast(serverPlayer);
@@ -93,18 +91,20 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null || islandId == null || islandId.isBlank()) {
-            reject("invalid_home_assignment");
-            return;
-        }
-        SlotWorkspaceViewModel.AtlasItem item = visibleAtlasItem(serverPlayer, identity);
-        if (item == null) {
-            reject("selected_item_not_visible");
-            return;
-        }
-        applyHomeDrop(serverPlayer, identity, islandId, worldX, worldY, "slot_workspace.ldlib.home_assign");
-        broadcast(serverPlayer);
+        refreshServerView(serverPlayer);
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.assignHome(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                learnedRules,
+                IslandSignalExtractor::extract,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                islandId,
+                worldX,
+                worldY
+        );
+        applyOutcome(serverPlayer, outcome);
     }
 
     void acceptChip(
@@ -117,84 +117,19 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null || chipIslandId == null || chipIslandId.isBlank()) {
-            reject("invalid_chip_accept");
-            return;
-        }
-        SlotWorkspaceViewModel.AtlasItem item = visibleAtlasItem(serverPlayer, identity);
-        if (item == null) {
-            reject("selected_item_not_visible");
-            return;
-        }
-        IslandSuggestionTemplate template = resolveTemplate(templateName);
-        String resolvedIslandId;
-        if (template != null) {
-            resolvedIslandId = resolveOrMaterializeTemplateIsland(serverPlayer, template, identity, item.name());
-            if (resolvedIslandId == null) {
-                reject("template_island_creation_failed");
-                return;
-            }
-            refreshServerView(serverPlayer);
-        } else {
-            WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-            if (runtime.visualAtlasWorkflow().visualHomeMap().island(chipIslandId) == null) {
-                reject("unknown_island");
-                return;
-            }
-            resolvedIslandId = chipIslandId;
-        }
-        applyHomeDrop(serverPlayer, identity, resolvedIslandId, null, null, "slot_workspace.ldlib.chip_accept");
-        broadcast(serverPlayer);
-    }
-
-    private String resolveOrMaterializeTemplateIsland(
-            ServerPlayer serverPlayer,
-            IslandSuggestionTemplate template,
-            ItemIdentity seedIdentity,
-            String seedLabel
-    ) {
-        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().stream()
-                .filter(island -> island != null && template.defaultLabel().equalsIgnoreCase(island.label()))
-                .findFirst()
-                .orElse(null);
-        if (existing != null) {
-            return existing.id();
-        }
-        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
-                template.defaultLabel(),
-                seedIdentity,
-                runtime.visualAtlasWorkflow().visualHomeMap()
+        refreshServerView(serverPlayer);
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.acceptChip(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                learnedRules,
+                IslandSignalExtractor::extract,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                chipIslandId,
+                templateName
         );
-        VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIsland(
-                draft.label(),
-                draft.x(),
-                draft.y(),
-                draft.width(),
-                draft.height(),
-                template.defaultColor(),
-                seedIdentity,
-                DomainEventMetadata.origin("slot_workspace.ldlib.chip_accept.island_create")
-        );
-        SlotDebugLog.log(
-                "LDLib atlas template island materialized {} ({}) for chip accept seed={}",
-                created == null ? "null" : created.id(),
-                template.name(),
-                seedLabel
-        );
-        return created == null ? null : created.id();
-    }
-
-    private static IslandSuggestionTemplate resolveTemplate(String templateName) {
-        if (templateName == null || templateName.isBlank()) {
-            return null;
-        }
-        try {
-            return IslandSuggestionTemplate.valueOf(templateName);
-        } catch (IllegalArgumentException ignored) {
-            return null;
-        }
+        applyOutcome(serverPlayer, outcome);
     }
 
     void createNamedIslandForItem(
@@ -209,223 +144,89 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        SlotWorkspaceViewModel.AtlasItem item = visibleAtlasItem(serverPlayer, identity);
-        if (identity == null) {
-            reject("invalid_island_seed");
-            return;
-        }
-        if (item == null) {
-            reject("selected_item_not_visible");
-            return;
-        }
-        String trimmedLabel = label == null ? "" : label.trim();
-        if (trimmedLabel.isBlank()) {
-            reject("invalid_island_label");
-            return;
-        }
-        if (color == null || worldX == null || worldY == null) {
-            reject("invalid_island_placement");
-            return;
-        }
-        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        try {
-            VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIsland(
-                    trimmedLabel,
-                    worldX,
-                    worldY,
-                    SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_WIDTH,
-                    SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_HEIGHT,
-                    color,
-                    identity,
-                    DomainEventMetadata.origin("slot_workspace.ldlib.island_create")
-            );
-            SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
-                    SlotWorkspaceAtlasLayout.baseIslands(runtime.visualAtlasWorkflow().visualHomeMap()),
-                    created.id(),
-                    0
-            );
-            runtime.visualAtlasWorkflow().assignHome(
-                    identity,
-                    created.id(),
-                    placement.localX(),
-                    placement.localY(),
-                    VisualHomeOrigin.PLAYER_PLACED,
-                    true,
-                    DomainEventMetadata.origin("slot_workspace.ldlib.home_assign")
-            );
-            status = "island created";
-            diagnostics = created.label();
-            SlotDebugLog.log("LDLib atlas island created {} for {}", created.id(), identity.itemId());
-            broadcast(serverPlayer);
-        } catch (IllegalArgumentException exception) {
-            reject(exception.getMessage());
-        }
+        refreshServerView(serverPlayer);
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.createNamedIslandForItem(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                learnedRules,
+                IslandSignalExtractor::extract,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                label,
+                color,
+                worldX,
+                worldY
+        );
+        applyOutcome(serverPlayer, outcome);
     }
 
     void moveIsland(String islandId, Integer worldX, Integer worldY) {
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] session.moveIsland received id={} requestedX={} requestedY={}",
+                islandId, worldX, worldY);
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        if (islandId == null || islandId.isBlank() || worldX == null || worldY == null) {
-            reject("invalid_island_move");
-            return;
-        }
         refreshServerView(serverPlayer);
-        SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
-        if (island == null || island.kind() != dev.imagio.slot.workflow.domain.VisualAtlasIslandKind.PLAYER) {
-            reject("unknown_player_island");
-            return;
-        }
-        SlotWorkspaceAtlasLayout.IslandOrigin origin = SlotWorkspaceAtlasLayout.clampIslandOrigin(
-                viewModel.islands(),
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.moveIsland(
+                workflowRuntime(serverPlayer),
+                viewModel,
                 islandId,
                 worldX,
                 worldY
         );
-        VisualAtlasIsland moved = workflowRuntime(serverPlayer).visualAtlasWorkflow().moveIsland(
-                islandId,
-                origin.x(),
-                origin.y(),
-                DomainEventMetadata.origin("slot_workspace.ldlib.island_move")
-        );
-        if (moved == null) {
-            reject("island_move_rejected");
-            return;
+        if (outcome.success()) {
+            dev.imagio.slot.SlotCommon.LOGGER.info(
+                    "[SLOT] session.moveIsland applied id={} newPos=({},{})",
+                    islandId, worldX, worldY);
         }
-        status = "island moved";
-        diagnostics = moved.label();
-        SlotDebugLog.log("LDLib atlas island moved {} -> {},{}", islandId, origin.x(), origin.y());
-        broadcast(serverPlayer);
+        applyOutcome(serverPlayer, outcome);
     }
 
     void renameIsland(String islandId, String label) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        if (islandId == null || islandId.isBlank() || label == null || label.isBlank()) {
-            reject("invalid_island_rename");
-            return;
-        }
-        try {
-            VisualAtlasIsland renamed = workflowRuntime(serverPlayer).visualAtlasWorkflow().renameIsland(
-                    islandId,
-                    label,
-                    DomainEventMetadata.origin("slot_workspace.ldlib.island_rename")
-            );
-            if (renamed == null) {
-                reject("island_rename_rejected");
-                return;
-            }
-            status = "island renamed";
-            diagnostics = renamed.label();
-            SlotDebugLog.log("LDLib atlas island renamed {} -> {}", islandId, renamed.label());
-            broadcast(serverPlayer);
-        } catch (IllegalArgumentException exception) {
-            reject(exception.getMessage());
-        }
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.renameIsland(
+                workflowRuntime(serverPlayer),
+                islandId,
+                label
+        ));
     }
 
     void recolorIsland(String islandId, Integer color) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        if (islandId == null || islandId.isBlank() || color == null) {
-            reject("invalid_island_recolor");
-            return;
-        }
-        VisualAtlasIsland recolored = workflowRuntime(serverPlayer).visualAtlasWorkflow().recolorIsland(
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.recolorIsland(
+                workflowRuntime(serverPlayer),
                 islandId,
-                color,
-                DomainEventMetadata.origin("slot_workspace.ldlib.island_recolor")
-        );
-        if (recolored == null) {
-            reject("island_recolor_rejected");
-            return;
-        }
-        status = "island recolored";
-        diagnostics = Integer.toHexString(recolored.color());
-        SlotDebugLog.log("LDLib atlas island recolored {} -> {}", islandId, Integer.toHexString(recolored.color()));
-        broadcast(serverPlayer);
+                color
+        ));
     }
 
     void setIslandIcon(String islandId, String itemId, String comparisonMode, String componentFingerprint) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        if (islandId == null || islandId.isBlank()) {
-            reject("invalid_island_icon");
-            return;
-        }
-        ItemIdentity iconIdentity = itemId == null || itemId.isBlank()
-                ? null
-                : resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (itemId != null && !itemId.isBlank() && iconIdentity == null) {
-            reject("invalid_icon_identity");
-            return;
-        }
-        VisualAtlasIsland updated = workflowRuntime(serverPlayer).visualAtlasWorkflow().setIslandIcon(
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.setIslandIcon(
+                workflowRuntime(serverPlayer),
                 islandId,
-                iconIdentity,
-                DomainEventMetadata.origin("slot_workspace.ldlib.island_icon")
-        );
-        if (updated == null) {
-            reject("island_icon_rejected");
-            return;
-        }
-        status = iconIdentity == null ? "island icon cleared" : "island icon set";
-        diagnostics = iconIdentity == null ? "" : iconIdentity.itemId();
-        SlotDebugLog.log("LDLib atlas island icon {} -> {}", islandId, iconIdentity == null ? "<none>" : iconIdentity.itemId());
-        broadcast(serverPlayer);
+                itemId,
+                comparisonMode,
+                componentFingerprint
+        ));
     }
 
     void deleteIsland(String islandId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        if (islandId == null || islandId.isBlank()) {
-            reject("invalid_island_delete");
-            return;
-        }
-        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
-        if (existing == null || existing.kind() != dev.imagio.slot.workflow.domain.VisualAtlasIslandKind.PLAYER) {
-            reject("unknown_player_island");
-            return;
-        }
-        IslandSuggestionTemplate materializedTemplate = matchingTemplate(existing);
-        boolean deleted = runtime.visualAtlasWorkflow().deleteIsland(
-                islandId,
-                DomainEventMetadata.origin("slot_workspace.ldlib.island_delete")
-        );
-        if (!deleted) {
-            reject("island_not_empty");
-            return;
-        }
-        if (materializedTemplate != null) {
-            runtime.visualAtlasWorkflow().dismissTemplate(
-                    materializedTemplate.defaultIslandId(),
-                    DomainEventMetadata.origin("slot_workspace.ldlib.template_dismiss")
-            );
-        }
-        status = "island deleted";
-        diagnostics = existing.label();
-        SlotDebugLog.log("LDLib atlas island deleted {}{}", islandId,
-                materializedTemplate == null ? "" : " (template " + materializedTemplate.defaultIslandId() + " dismissed)");
-        broadcast(serverPlayer);
-    }
-
-    private static IslandSuggestionTemplate matchingTemplate(VisualAtlasIsland island) {
-        if (island == null) {
-            return null;
-        }
-        for (IslandSuggestionTemplate template : IslandSuggestionTemplate.values()) {
-            if (template.defaultLabel().equalsIgnoreCase(island.label())
-                    && template.defaultColor() == island.color()) {
-                return template;
-            }
-        }
-        return null;
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.deleteIsland(
+                workflowRuntime(serverPlayer),
+                islandId
+        ));
     }
 
     void moveHotbarToAtlas(Integer hotbarIndex, String islandId, Integer worldX, Integer worldY) {
@@ -447,7 +248,7 @@ final class SlotWorkspaceUiSession {
             return;
         }
         ItemIdentity identity = ItemIdentityMatcher.create(hotbarSlot.displayStack());
-        TransferExecution execution = executeTransfer(
+        WorkspaceTransferExecution execution = executeTransfer(
                 serverPlayer,
                 new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, resolvedHotbarIndex),
                 new InventoryActionTarget.SourceTarget(BuiltinInventoryIds.PLAYER_MAIN),
@@ -459,94 +260,49 @@ final class SlotWorkspaceUiSession {
             broadcast(serverPlayer);
             return;
         }
-        applyHomeDrop(serverPlayer, identity, islandId, worldX, worldY, "slot_workspace.ldlib.drag.hotbar_home");
-        broadcast(serverPlayer);
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.applyHomeDrop(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                learnedRules,
+                IslandSignalExtractor::extract,
+                identity,
+                islandId,
+                worldX,
+                worldY,
+                "slot_workspace.ldlib.drag.hotbar_home"
+        ));
     }
 
     void toggleCollectionMembership(String itemId, String comparisonMode, String componentFingerprint, String collectionId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        SlotWorkspaceViewModel.AtlasItem item = visibleAtlasItem(serverPlayer, identity);
-        if (identity == null || collectionId == null || collectionId.isBlank()) {
-            reject("invalid_collection_toggle");
-            return;
-        }
-        if (item == null) {
-            reject("selected_item_not_visible");
-            return;
-        }
-        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        if (viewModel.collections().stream().noneMatch(collection -> collection.collectionId().equals(collectionId))) {
-            reject("unknown_collection");
-            return;
-        }
-        boolean currentlyMember = runtime.snapshot().collections().memberships().getOrDefault(identity, java.util.Set.of()).contains(collectionId);
-        boolean changed = runtime.collectionWorkflow().toggleCollectionMembership(
-                identity,
-                collectionId,
-                DomainEventMetadata.origin("slot_workspace.ldlib.collection_toggle")
-        );
-        if (!changed) {
-            reject("collection_toggle_rejected");
-            return;
-        }
-        status = currentlyMember ? "removed from collection" : "added to collection";
-        diagnostics = collectionId;
-        SlotDebugLog.log("LDLib collection toggle {} {} {}", identity.itemId(), collectionId, currentlyMember ? "removed" : "added");
-        broadcast(serverPlayer);
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.toggleCollectionMembership(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                collectionId
+        ));
     }
 
     void createCollection(String name) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        try {
-            var definition = workflowRuntime(serverPlayer).collectionWorkflow().createCollection(
-                    name,
-                    DomainEventMetadata.origin("slot_workspace.ldlib.collection_create")
-            );
-            status = "collection created";
-            diagnostics = definition.name();
-            SlotDebugLog.log("LDLib collection created {}", definition.id());
-            broadcast(serverPlayer);
-        } catch (IllegalArgumentException exception) {
-            reject(exception.getMessage());
-        }
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.createCollection(
+                workflowRuntime(serverPlayer),
+                name
+        ));
     }
 
-    static TransferFeedback feedback(InventoryActionRequest request, InventoryActionOutcome outcome) {
-        if (outcome == null) {
-            return TransferFeedback.rejected("transfer_failed");
-        }
-        if (!outcome.successful()) {
-            return TransferFeedback.rejected(outcome.diagnostics().isBlank()
-                    ? outcome.status().name().toLowerCase(java.util.Locale.ROOT)
-                    : outcome.diagnostics());
-        }
-
-        int requestedCount = request == null || request.requestedCount() <= 0
-                ? outcome.requestedCount()
-                : request.requestedCount();
-        int movedCount = movedCount(request, outcome.stackRemainder(), requestedCount);
-        if (requestedCount > 0 && movedCount <= 0) {
-            return TransferFeedback.rejected("destination_full_or_incompatible");
-        }
-        if (outcome.stackRemainder() != null && !outcome.stackRemainder().isEmpty()) {
-            return new TransferFeedback("partial transfer applied", "remainder:" + outcome.stackRemainder().getCount());
-        }
-        return new TransferFeedback("transfer applied", "");
-    }
-
-    private static int movedCount(InventoryActionRequest request, net.minecraft.world.item.ItemStack remainder, int requestedCount) {
-        if (requestedCount <= 0 || remainder == null || remainder.isEmpty()) {
-            return Math.max(0, requestedCount);
-        }
-        if (request == null || request.identity() == null || ItemIdentityMatcher.matchesMovable(remainder, request.identity())) {
-            return Math.max(0, requestedCount - remainder.getCount());
-        }
-        return requestedCount;
+    private void applyOutcome(ServerPlayer serverPlayer, WorkspaceCommandOutcome outcome) {
+        status = outcome.status();
+        diagnostics = outcome.diagnostics();
+        broadcast(serverPlayer);
     }
 
     private void reject(String reason) {
@@ -573,13 +329,14 @@ final class SlotWorkspaceUiSession {
                 0,
                 selected,
                 0,
-                learnedRules
+                learnedRules,
+                IslandSignalExtractor::extract
         );
-        CompoundTag nextContent = projected.toTag(serverPlayer.registryAccess(), false);
+        CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
         if (!nextContent.equals(lastContentTag)) {
             lastContentTag = nextContent.copy();
             viewModel = projected.withRevision(nextRevision++);
-            lastViewTag = viewModel.toTag(serverPlayer.registryAccess());
+            lastViewTag = SlotWorkspaceViewModelCodec.encode(viewModel, serverPlayer.registryAccess());
         }
     }
 
@@ -607,7 +364,7 @@ final class SlotWorkspaceUiSession {
         return SlotPlayerWorkflowRuntimeService.runtime(serverPlayer);
     }
 
-    private TransferExecution executeTransfer(
+    private WorkspaceTransferExecution executeTransfer(
             ServerPlayer serverPlayer,
             InventoryActionTarget source,
             InventoryActionTarget destination,
@@ -616,7 +373,7 @@ final class SlotWorkspaceUiSession {
         InventoryHostDescriptor host = resolveHost(serverPlayer);
         if (host == null) {
             SlotDiagnostics.workspaceTransferHostMissing(source, destination, serverPlayer.containerMenu);
-            return TransferExecution.rejected("host_resolution_failed");
+            return WorkspaceTransferExecution.rejected("host_resolution_failed");
         }
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
         var sourceEntry = InventoryAuthorityReadService.entrySnapshot(authority, source);
@@ -630,7 +387,7 @@ final class SlotWorkspaceUiSession {
         );
         if (!build.dispatchable()) {
             SlotDiagnostics.workspaceTransferBuildRejected(build.diagnostics(), host, source, destination, sourceEntry);
-            return TransferExecution.rejected(build.diagnostics());
+            return WorkspaceTransferExecution.rejected(build.diagnostics());
         }
 
         InventoryActionRequest request = build.request();
@@ -642,7 +399,7 @@ final class SlotWorkspaceUiSession {
                 ProtectionPolicy.allowAll()
         );
         workflowRuntime(serverPlayer).recordOutcome(outcome);
-        TransferFeedback feedback = feedback(request, outcome);
+        WorkspaceTransferFeedback feedback = WorkspaceTransferFeedback.interpret(request, outcome);
         SlotDiagnostics.workspaceTransferExecuted(host, request, outcome, feedback.status(), feedback.diagnostics());
         SlotDebugLog.log(
                 "LDLib workspace transfer {} {} -> {} {}",
@@ -651,106 +408,7 @@ final class SlotWorkspaceUiSession {
                 destination.stableKey(),
                 feedback.diagnostics()
         );
-        return new TransferExecution(host, request, outcome, feedback);
-    }
-
-    private void applyHomeDrop(
-            ServerPlayer serverPlayer,
-            ItemIdentity identity,
-            String islandId,
-            Integer worldX,
-            Integer worldY,
-            String origin
-    ) {
-        if (identity == null || islandId == null || islandId.isBlank()) {
-            reject("invalid_home_assignment");
-            return;
-        }
-        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
-        if (island == null) {
-            reject("unknown_island");
-            return;
-        }
-        if (SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId)) {
-            runtime.visualAtlasWorkflow().clearHome(
-                    identity,
-                    DomainEventMetadata.origin(origin + ".clear")
-            );
-            status = "returned to inbox";
-            diagnostics = island.label();
-            SlotDebugLog.log("LDLib atlas home cleared {} -> {}", identity.itemId(), islandId);
-            return;
-        }
-
-        SlotWorkspaceAtlasLayout.Placement placement = resolvePlacement(islandId, worldX, worldY);
-        runtime.visualAtlasWorkflow().assignHome(
-                identity,
-                islandId,
-                placement.localX(),
-                placement.localY(),
-                VisualHomeOrigin.PLAYER_PLACED,
-                true,
-                DomainEventMetadata.origin(origin)
-        );
-        recordLearnedAssignment(identity, islandId);
-        status = "home assigned";
-        diagnostics = island.label();
-        SlotDebugLog.log(
-                "LDLib atlas home assigned {} -> {} local={},{} atlas={},{}",
-                identity.itemId(),
-                islandId,
-                placement.localX(),
-                placement.localY(),
-                placement.x(),
-                placement.y()
-        );
-    }
-
-    private void recordLearnedAssignment(ItemIdentity identity, String islandId) {
-        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(identity));
-        net.minecraft.world.item.ItemStack displayStack = item == null ? null : item.displayStack();
-        IslandSignalDescriptor descriptor = IslandSignalExtractor.extract(displayStack);
-        if (descriptor.identity() == null || descriptor.identity().itemId() == null || descriptor.identity().itemId().isBlank()) {
-            descriptor = new IslandSignalDescriptor(
-                    identity,
-                    descriptor.classSignals(),
-                    descriptor.itemTags(),
-                    namespaceOf(identity.itemId()),
-                    ""
-            );
-        }
-        learnedRules.recordAssignment(descriptor, islandId, System.currentTimeMillis());
-    }
-
-    private static String namespaceOf(String itemId) {
-        if (itemId == null) {
-            return "";
-        }
-        int colon = itemId.indexOf(':');
-        return colon <= 0 ? "" : itemId.substring(0, colon);
-    }
-
-    private SlotWorkspaceAtlasLayout.Placement resolvePlacement(String islandId, Integer worldX, Integer worldY) {
-        if (worldX != null && worldY != null && worldX >= 0 && worldY >= 0) {
-            return SlotWorkspaceAtlasLayout.placementForDrop(viewModel.islands(), islandId, worldX, worldY);
-        }
-        long existingCount = viewModel.atlasItems().stream()
-                .filter(candidate -> candidate.islandId().equals(islandId))
-                .count();
-        return SlotWorkspaceAtlasLayout.placementForOrdinal(
-                viewModel.islands(),
-                islandId,
-                Math.toIntExact(existingCount)
-        );
-    }
-
-    private SlotWorkspaceViewModel.AtlasItem visibleAtlasItem(ServerPlayer serverPlayer, ItemIdentity identity) {
-        if (identity == null) {
-            return null;
-        }
-        refreshServerView(serverPlayer);
-        return viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(identity));
+        return new WorkspaceTransferExecution(host, request, outcome, feedback);
     }
 
     private SlotWorkspaceViewModel.HotbarSlot visibleHotbarSlot(ServerPlayer serverPlayer, int hotbarIndex) {
@@ -795,47 +453,4 @@ final class SlotWorkspaceUiSession {
         };
     }
 
-    private static ItemIdentity resolveIdentity(String itemId, String comparisonMode, String componentFingerprint) {
-        if (itemId == null || itemId.isBlank()) {
-            return null;
-        }
-        ItemComparisonMode mode = ItemComparisonMode.ITEM_ID;
-        try {
-            if (comparisonMode != null && !comparisonMode.isBlank()) {
-                mode = ItemComparisonMode.valueOf(comparisonMode);
-            }
-        } catch (IllegalArgumentException ignored) {
-            mode = ItemComparisonMode.ITEM_ID;
-        }
-        return new ItemIdentity(itemId, mode, componentFingerprint == null ? "" : componentFingerprint);
-    }
-
-    record TransferFeedback(
-            String status,
-            String diagnostics
-    ) {
-        TransferFeedback {
-            status = status == null || status.isBlank() ? "rejected" : status;
-            diagnostics = diagnostics == null ? "" : diagnostics;
-        }
-
-        static TransferFeedback rejected(String diagnostics) {
-            return new TransferFeedback("transfer rejected", diagnostics);
-        }
-    }
-
-    private record TransferExecution(
-            InventoryHostDescriptor host,
-            InventoryActionRequest request,
-            InventoryActionOutcome outcome,
-            TransferFeedback feedback
-    ) {
-        private static TransferExecution rejected(String diagnostics) {
-            return new TransferExecution(null, null, null, TransferFeedback.rejected(diagnostics));
-        }
-
-        private boolean appliedCompletely() {
-            return "transfer applied".equals(feedback.status());
-        }
-    }
 }

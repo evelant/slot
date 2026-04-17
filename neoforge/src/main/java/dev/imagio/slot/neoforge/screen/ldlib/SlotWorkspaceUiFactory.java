@@ -21,7 +21,10 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
+import dev.imagio.slot.atlas.FitCarriedCamera;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -59,6 +62,13 @@ final class SlotWorkspaceUiFactory {
     private static final int READ_CELL_PX = 58;
     private static final int INSPECT_CELL_PX = 94;
     private static final int DETAIL_CELL_PX = 124;
+    private static final float CARRIED_FIT_MIN_SCALE = 0.20f;
+    private static final float CARRIED_FIT_MAX_SCALE = 2.50f;
+    private static final float CARRIED_FIT_READABILITY_MIN_SCALE = 1.00f;
+    private static final float CARRIED_FIT_PADDING_PX = 72f;
+    private static final float GHOST_CARD_ALPHA = 0.18f;
+    private static final int GHOST_ICON_OVERLAY_COLOR = 0xC8060A0E;
+    private static final int DRAG_START_THRESHOLD_PX = 4;
 
     private SlotWorkspaceUiFactory() {
     }
@@ -326,14 +336,13 @@ final class SlotWorkspaceUiFactory {
             atlas.layout(layout -> layout.widthPercent(100).heightPercent(100));
             atlas.style(style -> style.backgroundTexture(rect(0xB810171D)).zIndex(0));
             atlas.graphViewStyle(style -> style
-                    .minScale(0.30f)
+                    .minScale(0.05f)
                     .maxScale(4.50f)
                     .gridTexture(IGuiTexture.EMPTY)
                     .gridSize(48));
             atlas.addEventListener(UIEvents.LAYOUT_CHANGED, event -> {
                 if (atlasCamera == null) {
-                    atlas.fitToChildren(72f, 0.45f);
-                    atlas.captureCamera();
+                    applyInitialCamera(atlas);
                 } else {
                     atlas.restoreCamera(atlasCamera);
                 }
@@ -387,11 +396,13 @@ final class SlotWorkspaceUiFactory {
 
             Button header = button(island.label(), true, island.color());
             header.layout(layout -> layout.widthPercent(100).height(18));
-            header.setOnClick(event -> {
+            header.addEventListener(UIEvents.CLICK, event -> {
+                if (event.button != 0) {
+                    return;
+                }
                 event.stopPropagation();
                 if (selectedAtlasItem() == null) {
                     localStatus = "select a triage or homed item first";
-                    rebuild();
                     return;
                 }
                 sendAssignHome(island.islandId());
@@ -409,6 +420,33 @@ final class SlotWorkspaceUiFactory {
             installIslandDragSource(header, atlas, island);
             installIslandDropTarget(panel, panel, atlas, island);
             installIslandDropTarget(header, panel, atlas, island);
+
+            if (island.carriedCount() > 0) {
+                Button carriedBadge = button(
+                        island.carriedCount() + "●",
+                        true,
+                        ACTIVE_HOTBAR
+                );
+                carriedBadge.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(4)
+                        .top(4)
+                        .width(26)
+                        .height(12));
+                carriedBadge.textStyle(style -> style
+                        .textColor(TEXT)
+                        .textShadow(false)
+                        .fontSize(7)
+                        .textAlignHorizontal(Horizontal.CENTER)
+                        .textAlignVertical(Vertical.CENTER));
+                carriedBadge.style(style -> style.zIndex(4));
+                carriedBadge.setOnClick(event -> {
+                    event.stopPropagation();
+                    panToIsland(atlas, island);
+                    localStatus = "panned to " + island.label();
+                });
+                panel.addChild(carriedBadge);
+            }
 
             if (island.kind() == VisualAtlasIslandKind.PLAYER) {
                 Button editButton = button("...", true, PANEL_ALT);
@@ -468,7 +506,7 @@ final class SlotWorkspaceUiFactory {
             boolean searchMatch = matchesSearch(item);
             boolean activeSearchMatch = !normalizedSearchQuery().isBlank() && searchMatch;
             AtlasRenderBudget initialBudget = atlasBudget(atlas, item);
-            Button button = button("", true, cardChromeColor(initialBudget.level(), selected, searchMatch, item.recent()));
+            Button button = button("", true, cardChromeColor(initialBudget.level(), selected, searchMatch, item.recent(), item.carried()));
             button.layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(item.x())
@@ -513,7 +551,7 @@ final class SlotWorkspaceUiFactory {
                     lastBudget[0] = budget;
                 }
                 button.style(style -> style.zIndex(focused ? 10 : currentSelected ? 7 : 2));
-                applyButtonColors(button, true, cardChromeColor(budget.level(), currentSelected, searchMatch, item.recent()));
+                applyButtonColors(button, true, cardChromeColor(budget.level(), currentSelected, searchMatch, item.recent(), item.carried()));
             });
             return button;
         }
@@ -642,6 +680,79 @@ final class SlotWorkspaceUiFactory {
                 rebuild();
             });
             return button;
+        }
+
+        private void applyInitialCamera(SlotAtlasGraphView atlas) {
+            float viewportWidth = atlas.getContentWidth();
+            float viewportHeight = atlas.getContentHeight();
+            if (viewportWidth <= 0f || viewportHeight <= 0f) {
+                // Viewport not laid out yet; leave atlasCamera null so the next
+                // LAYOUT_CHANGED pass can compute the real fit-carried camera.
+                return;
+            }
+
+            ArrayList<FitCarriedCamera.Rect> carriedRects = new ArrayList<>();
+            for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
+                if (item.carried()) {
+                    carriedRects.add(FitCarriedCamera.Rect.of(item.x(), item.y(), item.width(), item.height()));
+                }
+            }
+
+            FitCarriedCamera.Camera camera = null;
+            if (!carriedRects.isEmpty()) {
+                camera = FitCarriedCamera.fitOrFallback(
+                        carriedRects,
+                        viewportWidth,
+                        viewportHeight,
+                        CARRIED_FIT_MIN_SCALE,
+                        CARRIED_FIT_MAX_SCALE,
+                        CARRIED_FIT_READABILITY_MIN_SCALE,
+                        CARRIED_FIT_PADDING_PX
+                );
+            }
+
+            if (camera == null) {
+                SlotWorkspaceViewModel.AtlasIsland triage = viewModel.island(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE);
+                if (triage != null) {
+                    camera = FitCarriedCamera.fit(
+                            FitCarriedCamera.Rect.of(triage.x(), triage.y(), triage.width(), triage.height()),
+                            viewportWidth,
+                            viewportHeight,
+                            CARRIED_FIT_READABILITY_MIN_SCALE,
+                            CARRIED_FIT_MAX_SCALE,
+                            CARRIED_FIT_PADDING_PX
+                    );
+                }
+            }
+
+            if (camera == null) {
+                atlas.fitToChildren(CARRIED_FIT_PADDING_PX, 0.45f);
+                atlas.captureCamera();
+                return;
+            }
+            atlas.restoreCamera(new AtlasCamera(camera.offsetX(), camera.offsetY(), camera.scale()));
+        }
+
+        private void panToIsland(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
+            if (atlas == null || island == null) {
+                return;
+            }
+            float viewportWidth = atlas.getContentWidth();
+            float viewportHeight = atlas.getContentHeight();
+            if (viewportWidth <= 0f || viewportHeight <= 0f) {
+                return;
+            }
+            FitCarriedCamera.Camera camera = FitCarriedCamera.fit(
+                    FitCarriedCamera.Rect.of(island.x(), island.y(), island.width(), island.height()),
+                    viewportWidth,
+                    viewportHeight,
+                    CARRIED_FIT_MIN_SCALE,
+                    CARRIED_FIT_MAX_SCALE,
+                    CARRIED_FIT_PADDING_PX
+            );
+            if (camera != null) {
+                atlas.restoreCamera(new AtlasCamera(camera.offsetX(), camera.offsetY(), camera.scale()));
+            }
         }
 
         private Button clearSearchButton() {
@@ -1353,6 +1464,9 @@ final class SlotWorkspaceUiFactory {
                     worldX,
                     worldY
             );
+            dev.imagio.slot.SlotCommon.LOGGER.info(
+                    "[SLOT] sendMoveIsland id={} worldX={} worldY={} sent={}",
+                    islandId, worldX, worldY, sent);
             localStatus = sent ? "island move requested" : "island move unavailable";
             rebuild();
         }
@@ -1379,19 +1493,41 @@ final class SlotWorkspaceUiFactory {
             if (island.kind() != VisualAtlasIslandKind.PLAYER) {
                 return;
             }
-            source.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            int[] clickWorldX = {Integer.MIN_VALUE};
+            int[] clickWorldY = {Integer.MIN_VALUE};
+            source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button != 0) {
+                    return;
+                }
+                clickWorldX[0] = atlas.worldX(event.x);
+                clickWorldY[0] = atlas.worldY(event.y);
+            }, true);
+            source.addEventListener(UIEvents.MOUSE_UP, event -> {
+                clickWorldX[0] = Integer.MIN_VALUE;
+                clickWorldY[0] = Integer.MIN_VALUE;
+            }, true);
+            source.addEventListener(UIEvents.MOUSE_MOVE, event -> {
+                if (clickWorldX[0] == Integer.MIN_VALUE) {
+                    return;
+                }
                 if (!source.isMouseDown(0) || isDragging(source)) {
                     return;
                 }
-                int grabOffsetX = Math.max(0, Math.min(island.width(), atlas.worldX(event.x) - island.x()));
-                int grabOffsetY = Math.max(0, Math.min(island.height(), atlas.worldY(event.y) - island.y()));
+                float scale = atlas.getScale();
+                float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
+                float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
+                if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
+                    return;
+                }
+                int grabOffsetX = Math.max(0, Math.min(island.width(), clickWorldX[0] - island.x()));
+                int grabOffsetY = Math.max(0, Math.min(island.height(), clickWorldY[0] - island.y()));
                 int actualWidthPx = Math.max(48, atlas.screenPixelsForWorldUnits(island.width()));
                 int actualHeightPx = Math.max(24, atlas.screenPixelsForWorldUnits(island.height()));
                 float dragScale = Math.min(1f, Math.min(260f / actualWidthPx, 180f / actualHeightPx));
                 int dragWidthPx = Math.max(72, Math.round(actualWidthPx * dragScale));
                 int dragHeightPx = Math.max(22, Math.round(actualHeightPx * dragScale));
-                int dragOffsetX = Math.round(grabOffsetX * atlas.getScale() * dragScale);
-                int dragOffsetY = Math.round(grabOffsetY * atlas.getScale() * dragScale);
+                int dragOffsetX = Math.round(grabOffsetX * scale * dragScale);
+                int dragOffsetY = Math.round(grabOffsetY * scale * dragScale);
                 source.startDrag(
                         new IslandDrag(island.islandId(), grabOffsetX, grabOffsetY),
                         rect((island.color() & 0x00FFFFFF) | 0x5A000000)
@@ -1446,6 +1582,12 @@ final class SlotWorkspaceUiFactory {
                 if (item == null) {
                     localStatus = "dragged item is no longer visible";
                     rebuild();
+                    return;
+                }
+                if (!item.carried()) {
+                    localStatus = "can't move " + item.name() + " to hotbar — none carried";
+                    rebuild();
+                    event.stopPropagation();
                     return;
                 }
                 sendTransfer(
@@ -1601,7 +1743,14 @@ final class SlotWorkspaceUiFactory {
         }
 
         private void updateHotbarDropOverlay(Button target, SlotWorkspaceViewModel.HotbarSlot slot, UIEvent event) {
-            updateGenericDropOverlay(target, atlasItemDrag(event) != null, slot.occupied() ? ACTIVE_HOTBAR : ACCENT);
+            AtlasItemDrag drag = atlasItemDrag(event);
+            if (drag == null) {
+                clearDropOverlay(target);
+                return;
+            }
+            SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(drag.identity());
+            boolean carried = item != null && item.carried();
+            updateGenericDropOverlay(target, carried, carried ? (slot.occupied() ? ACTIVE_HOTBAR : ACCENT) : WARNING);
         }
 
         private void updateIslandDropOverlay(UIElement highlightTarget, SlotWorkspaceViewModel.AtlasIsland island, UIEvent event) {
@@ -1708,7 +1857,8 @@ final class SlotWorkspaceUiFactory {
                 boolean searchMatch
         ) {
             UIElement body = atlasBodyContainer();
-            float shell = atlas.worldUnitsForPixels(budget.shellPx());
+            float cardBound = Math.min(item.width(), item.height());
+            float shell = Math.min(cardBound, atlas.worldUnitsForPixels(budget.shellPx()));
             float shellLeft = centeredWorld(item.width(), shell);
             float shellTop = centeredWorld(item.height(), shell);
             addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
@@ -1726,7 +1876,8 @@ final class SlotWorkspaceUiFactory {
                 boolean searchMatch
         ) {
             UIElement body = atlasBodyContainer();
-            float shell = atlas.worldUnitsForPixels(budget.shellPx());
+            float cardBound = Math.min(item.width(), item.height());
+            float shell = Math.min(cardBound, atlas.worldUnitsForPixels(budget.shellPx()));
             float shellLeft = centeredWorld(item.width(), shell);
             float shellTop = centeredWorld(item.height(), shell);
             addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
@@ -1945,18 +2096,22 @@ final class SlotWorkspaceUiFactory {
                 float shellPx,
                 float iconPx
         ) {
-            float shell = atlas.worldUnitsForPixels(shellPx);
-            float inset = atlas.worldUnitsForPixels(1f);
-            float icon = atlas.worldUnitsForPixels(iconPx);
-            UIElement shellElement = panel(0xB0141B23).layout(layout -> layout.width(shell).height(shell));
+            float cardBound = Math.min(item.width(), item.height());
+            float shell = Math.min(cardBound, atlas.worldUnitsForPixels(shellPx));
+            float inset = Math.min(shell * 0.5f, atlas.worldUnitsForPixels(1f));
+            float icon = Math.max(0f, Math.min(shell - inset * 2f, atlas.worldUnitsForPixels(iconPx)));
+            boolean carried = item.carried();
+            int shellColor = carried ? 0xB0141B23 : dimAlpha(0xB0141B23, GHOST_CARD_ALPHA);
+            int innerColor = carried ? 0xD90A1218 : dimAlpha(0xD90A1218, GHOST_CARD_ALPHA);
+            UIElement shellElement = panel(shellColor).layout(layout -> layout.width(shell).height(shell));
             shellElement.setAllowHitTest(false);
-            shellElement.addChild(panel(0xD90A1218).layout(layout -> layout
+            shellElement.addChild(panel(innerColor).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(inset)
                     .top(inset)
                     .width(shell - inset * 2f)
                     .height(shell - inset * 2f)));
-            shellElement.addChild(itemIcon(item.displayStack(), icon).layout(layout -> layout
+            shellElement.addChild(itemIcon(item.displayStack(), icon, carried).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(centeredWorld(shell, icon))
                     .top(centeredWorld(shell, icon))));
@@ -1967,15 +2122,18 @@ final class SlotWorkspaceUiFactory {
             float shell = size;
             float inset = 1f;
             float icon = Math.max(10f, size - 4f);
-            UIElement shellElement = panel(0xB0141B23).layout(layout -> layout.width(shell).height(shell));
+            boolean carried = item.carried();
+            int shellColor = carried ? 0xB0141B23 : dimAlpha(0xB0141B23, GHOST_CARD_ALPHA);
+            int innerColor = carried ? 0xD90A1218 : dimAlpha(0xD90A1218, GHOST_CARD_ALPHA);
+            UIElement shellElement = panel(shellColor).layout(layout -> layout.width(shell).height(shell));
             shellElement.setAllowHitTest(false);
-            shellElement.addChild(panel(0xD90A1218).layout(layout -> layout
+            shellElement.addChild(panel(innerColor).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(inset)
                     .top(inset)
                     .width(shell - inset * 2f)
                     .height(shell - inset * 2f)));
-            shellElement.addChild(itemIcon(item.displayStack(), icon).layout(layout -> layout
+            shellElement.addChild(itemIcon(item.displayStack(), icon, carried).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(centeredWorld(shell, icon))
                     .top(centeredWorld(shell, icon))));
@@ -1990,19 +2148,7 @@ final class SlotWorkspaceUiFactory {
             return shellElement;
         }
 
-        private UIElement anchorStatePip(
-                SlotAtlasGraphView atlas,
-                SlotWorkspaceViewModel.AtlasItem item,
-                AtlasRenderBudget budget
-        ) {
-            UIElement marker = panel(itemMarkerColor(item)).layout(layout -> layout
-                    .width(atlas.worldUnitsForPixels(budget.pipPx()))
-                    .height(atlas.worldUnitsForPixels(budget.pipPx())));
-            marker.setAllowHitTest(false);
-            return marker;
-        }
-
-        private void addCommonAtlasSignals(
+private void addCommonAtlasSignals(
                 UIElement body,
                 SlotAtlasGraphView atlas,
                 SlotWorkspaceViewModel.AtlasItem item,
@@ -2017,12 +2163,9 @@ final class SlotWorkspaceUiFactory {
                         .width(atlas.worldUnitsForPixels(budget.level().atLeast(DisclosureLevel.READ) ? 2f : 1f))
                         .height(item.height() - atlas.worldUnitsForPixels(2f))));
             }
-            body.addChild(anchorStatePip(atlas, item, budget).layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .right(atlas.worldUnitsForPixels(2f))
-                    .top(atlas.worldUnitsForPixels(2f))
-                    .width(atlas.worldUnitsForPixels(budget.pipPx()))
-                    .height(atlas.worldUnitsForPixels(budget.pipPx()))));
+            // Corner pip intentionally omitted — see docs/plans/current.md
+            // "newness indicators (`+N` delta since last open)" for the
+            // tracking slice that will re-introduce it with correct semantics.
             if (searchMatch) {
                 body.addChild(panel(ACCENT).layout(layout -> layout
                         .positionType(TaffyPosition.ABSOLUTE)
@@ -2354,9 +2497,10 @@ final class SlotWorkspaceUiFactory {
 
         private String islandSubtitle(SlotWorkspaceViewModel.AtlasIsland island) {
             String count = island.itemCount() + " item" + (island.itemCount() == 1 ? "" : "s");
+            String carriedBadge = island.carriedCount() > 0 ? "  ·  " + island.carriedCount() + " carried" : "";
             return switch (island.kind()) {
-                case TRIAGE -> count + " awaiting placement";
-                case PLAYER -> count + " player-authored homes";
+                case TRIAGE -> count + " awaiting placement" + carriedBadge;
+                case PLAYER -> count + " player-authored homes" + carriedBadge;
             };
         }
 
@@ -2386,6 +2530,24 @@ final class SlotWorkspaceUiFactory {
         }
 
         private int cardChromeColor(DisclosureLevel level, boolean selected, boolean searchMatch, boolean recent) {
+            return cardChromeColor(level, selected, searchMatch, recent, true);
+        }
+
+        private int cardChromeColor(
+                DisclosureLevel level,
+                boolean selected,
+                boolean searchMatch,
+                boolean recent,
+                boolean carried
+        ) {
+            int base = cardChromeBaseColor(level, selected, searchMatch, recent);
+            if (!carried && !selected) {
+                base = dimAlpha(base, GHOST_CARD_ALPHA);
+            }
+            return base;
+        }
+
+        private int cardChromeBaseColor(DisclosureLevel level, boolean selected, boolean searchMatch, boolean recent) {
             if (level == DisclosureLevel.REGION) {
                 if (selected) {
                     return 0x68435F55;
@@ -2402,6 +2564,12 @@ final class SlotWorkspaceUiFactory {
                 return recent ? ROW_MATCH : 0xC926313B;
             }
             return searchMatch ? (recent ? ROW_MATCH : ROW_HOVER) : 0x2824313D;
+        }
+
+        private static int dimAlpha(int color, float alphaFactor) {
+            int alpha = (color >>> 24) & 0xFF;
+            int dimmed = Math.round(alpha * alphaFactor);
+            return (dimmed << 24) | (color & 0x00FFFFFF);
         }
 
         private String itemName(ItemStack stack) {
@@ -2453,9 +2621,19 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement itemIcon(ItemStack stack, float size) {
+            return itemIcon(stack, size, true);
+        }
+
+        private UIElement itemIcon(ItemStack stack, float size, boolean carried) {
             ItemStack iconStack = stack == null ? ItemStack.EMPTY : stack.copy();
+            ItemStackTexture texture = new ItemStackTexture(iconStack);
             UIElement icon = new UIElement().layout(layout -> layout.width(size).height(size))
-                    .style(style -> style.backgroundTexture(new ItemStackTexture(iconStack)));
+                    .style(style -> {
+                        style.backgroundTexture(texture);
+                        if (!carried) {
+                            style.overlayTexture(rect(GHOST_ICON_OVERLAY_COLOR));
+                        }
+                    });
             icon.setAllowHitTest(false);
             return icon;
         }

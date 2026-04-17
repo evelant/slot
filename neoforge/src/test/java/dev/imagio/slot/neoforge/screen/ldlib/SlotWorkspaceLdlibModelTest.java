@@ -25,6 +25,10 @@ import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
@@ -243,7 +247,7 @@ class SlotWorkspaceLdlibModelTest {
         assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE)));
         assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(machines.id())));
 
-        assertEquals(2, viewModel.atlasItems().size());
+        assertEquals(3, viewModel.atlasItems().size());
         SlotWorkspaceViewModel.AtlasItem apple = viewModel.atlasItems().stream()
                 .filter(item -> item.identity().itemId().equals("minecraft:apple"))
                 .findFirst()
@@ -252,18 +256,27 @@ class SlotWorkspaceLdlibModelTest {
                 .filter(item -> item.identity().itemId().equals("minecraft:stone"))
                 .findFirst()
                 .orElseThrow();
+        SlotWorkspaceViewModel.AtlasItem torch = viewModel.atlasItems().stream()
+                .filter(item -> item.identity().itemId().equals("minecraft:torch"))
+                .findFirst()
+                .orElseThrow();
         assertEquals(machines.id(), apple.islandId());
         assertTrue(apple.playerPlaced());
+        assertTrue(apple.carried());
         assertEquals(3, apple.totalCount());
         assertEquals(machines.x() + 16, apple.x());
         assertEquals(machines.y() + 60, apple.y());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, apple.width());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, apple.height());
         assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, stone.islandId());
+        assertTrue(stone.carried());
         assertEquals(17, stone.totalCount());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, stone.width());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, stone.height());
         assertTrue(stone.collectionIds().contains(buildKit));
+        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, torch.islandId());
+        assertTrue(torch.carried());
+        assertEquals(16, torch.totalCount());
 
         assertEquals(9, viewModel.hotbarSlots().size());
         assertFalse(viewModel.hotbarSlots().get(0).occupied());
@@ -328,7 +341,7 @@ class SlotWorkspaceLdlibModelTest {
     }
 
     @Test
-    void dropPlacementClampsInsideIslandContentBounds() {
+    void dropPlacementFloorsToContentMinimumButAllowsGrowthPastEdge() {
         List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.fittedIslands(
                 SlotWorkspaceAtlasLayout.baseIslands(runtime().snapshot().visualHomeMap()),
                 List.of()
@@ -344,7 +357,7 @@ class SlotWorkspaceLdlibModelTest {
                 triage.x() - 200,
                 triage.y() - 200
         );
-        SlotWorkspaceAtlasLayout.Placement bottomRight = SlotWorkspaceAtlasLayout.placementForDrop(
+        SlotWorkspaceAtlasLayout.Placement beyondRight = SlotWorkspaceAtlasLayout.placementForDrop(
                 islands,
                 SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
                 triage.x() + triage.width() + 200,
@@ -353,10 +366,12 @@ class SlotWorkspaceLdlibModelTest {
 
         assertTrue(topLeft.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
         assertTrue(topLeft.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(bottomRight.localX() <= triage.width() - SlotWorkspaceAtlasLayout.CARD_WIDTH - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(bottomRight.localY() <= triage.height() - SlotWorkspaceAtlasLayout.CARD_HEIGHT - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_Y);
         assertTrue(topLeft.x() >= triage.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
         assertTrue(topLeft.y() >= triage.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+        assertTrue(beyondRight.localX() > triage.width(),
+                "drop past right edge should preserve requested localX so fitIsland can grow the island");
+        assertTrue(beyondRight.localY() > triage.height(),
+                "drop past bottom edge should preserve requested localY so fitIsland can grow the island");
     }
 
     @Test
@@ -491,7 +506,7 @@ class SlotWorkspaceLdlibModelTest {
                 0,
                 12
         );
-        SlotWorkspaceViewModel restored = SlotWorkspaceViewModel.fromTag(provider, original.toTag(provider));
+        SlotWorkspaceViewModel restored = SlotWorkspaceViewModelCodec.decode(provider, SlotWorkspaceViewModelCodec.encode(original, provider));
 
         assertEquals(original.revision(), restored.revision());
         assertEquals(original.status(), restored.status());
@@ -540,7 +555,7 @@ class SlotWorkspaceLdlibModelTest {
                 ""
         );
 
-        SlotWorkspaceUiSession.TransferFeedback feedback = SlotWorkspaceUiSession.feedback(request, outcome);
+        WorkspaceTransferFeedback feedback = WorkspaceTransferFeedback.interpret(request, outcome);
 
         assertEquals("transfer rejected", feedback.status());
         assertEquals("destination_full_or_incompatible", feedback.diagnostics());
@@ -581,7 +596,8 @@ class SlotWorkspaceLdlibModelTest {
                 0,
                 0,
                 1,
-                store
+                store,
+                IslandSignalExtractor::extract
         );
 
         SlotWorkspaceViewModel.AtlasItem copper = viewModel.atlasItems().stream()
@@ -641,6 +657,76 @@ class SlotWorkspaceLdlibModelTest {
         assertEquals(chipStore.allRules().size(), manualStore.allRules().size());
         assertEquals(chipStore.firingRulesFor(descriptorFor(ItemIdentity.of("modded:copper_ingot"))).size(),
                 manualStore.firingRulesFor(descriptorFor(ItemIdentity.of("modded:copper_ingot"))).size());
+    }
+
+    @Test
+    void carriedFlagDerivesFromAnyCarriedLane() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:stone", 1, 64), 1)),
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:torch", 1, 64), 1))
+        ));
+        WorkflowDomainRuntime runtime = runtime();
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
+
+        assertTrue(viewModel.atlasItems().stream()
+                .filter(item -> item.identity().itemId().equals("minecraft:stone"))
+                .findFirst().orElseThrow().carried());
+        assertTrue(viewModel.atlasItems().stream()
+                .filter(item -> item.identity().itemId().equals("minecraft:torch"))
+                .findFirst().orElseThrow().carried());
+    }
+
+    @Test
+    void ghostItemAppearsForHomedIdentityNotInCarried() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity absent = ItemIdentity.of("minecraft:diamond");
+        VisualAtlasIsland gems = runtime.visualAtlasWorkflow().createIsland(
+                "Gems", 800, 200, 260, 180, 0xCC5A4A6E, absent);
+        runtime.visualAtlasWorkflow().assignHome(absent, gems.id(), 16, 60);
+
+        InventoryAuthoritySnapshot authority = authority(host(), Map.of());
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
+
+        SlotWorkspaceViewModel.AtlasItem ghostDiamond = viewModel.atlasItems().stream()
+                .filter(item -> item.identity().itemId().equals("minecraft:diamond"))
+                .findFirst()
+                .orElseThrow();
+        assertFalse(ghostDiamond.carried(), "homed identity not in any carried lane should be a ghost");
+        assertEquals(gems.id(), ghostDiamond.islandId());
+    }
+
+    @Test
+    void islandCarriedCountEqualsCarriedHomesInThatIsland() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
+                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
+        VisualAtlasIsland gems = runtime.visualAtlasWorkflow().createIsland(
+                "Gems", 900, 200, 260, 180, 0xCC3C5A6E, ItemIdentity.of("minecraft:diamond"));
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:stone"), materials.id(), 16, 60);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:cobblestone"), materials.id(), 48, 60);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:diamond"), gems.id(), 16, 60);
+
+        InventoryAuthoritySnapshot authority = authority(host(), Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:stone", 32, 64), 32)),
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:cobblestone", 12, 64), 12))
+        ));
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
+
+        SlotWorkspaceViewModel.AtlasIsland materialsView = viewModel.island(materials.id());
+        SlotWorkspaceViewModel.AtlasIsland gemsView = viewModel.island(gems.id());
+        assertEquals(2, materialsView.carriedCount(), "stone + cobblestone carried into materials");
+        assertEquals(0, gemsView.carriedCount(), "diamond is homed but not carried");
     }
 
     private static void acceptTemplateChip(

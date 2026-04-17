@@ -1,4 +1,4 @@
-package dev.imagio.slot.neoforge.persistence;
+package dev.imagio.slot.workflow.domain.persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +19,7 @@ import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.workflow.domain.ActivityProjection;
+import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.CollectionProjection;
 import dev.imagio.slot.workflow.domain.DomainEventEnvelope;
@@ -113,10 +114,12 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         state.workflowCheckpoint = encodeWorkflowCheckpoint(snapshot.workflowProjection());
         state.workflowEvents = snapshot.workflowEvents().records().stream()
                 .map(WorkflowDomainFileStore::encodeWorkflowRecord)
+                .filter(java.util.Objects::nonNull)
                 .toList();
         state.activityCheckpoint = encodeActivityCheckpoint(snapshot.activityProjection());
         state.activityEvents = snapshot.activityEvents().records().stream()
                 .map(WorkflowDomainFileStore::encodeActivityRecord)
+                .filter(java.util.Objects::nonNull)
                 .toList();
 
         InventoryBrowsePreferences browsePreferences = snapshot.browsePreferences();
@@ -291,7 +294,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 Set.of(),
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 Map.of(),
-                VisualHomeMap.empty()
+                VisualHomeMap.empty(),
+                ClaimedChestMap.empty()
         );
 
         ActivityProjection.Snapshot activityProjection = new ActivityProjection.Snapshot(
@@ -514,7 +518,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 junkTags,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
-                new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds)
+                new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
+                ClaimedChestMap.empty()
         );
     }
 
@@ -698,6 +703,24 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case WorkflowEvent.TemplateIslandDismissed event -> {
                 data.kind = "TemplateIslandDismissed";
                 data.templateId = event.templateId();
+            }
+            // Claimed-chest events are not yet persisted (storage prototype Slice 7 lands the
+            // full codec + ClaimedChestMap checkpoint + load-time reconciliation). Until then,
+            // these events are domain-only; encoding returns null so the caller drops them.
+            case WorkflowEvent.ClaimedChestCreated ignored -> {
+                return null;
+            }
+            case WorkflowEvent.ClaimedChestMoved ignored -> {
+                return null;
+            }
+            case WorkflowEvent.ClaimedChestAnchorsChanged ignored -> {
+                return null;
+            }
+            case WorkflowEvent.ClaimedChestRelabeled ignored -> {
+                return null;
+            }
+            case WorkflowEvent.ClaimedChestDeleted ignored -> {
+                return null;
             }
         }
         return data;

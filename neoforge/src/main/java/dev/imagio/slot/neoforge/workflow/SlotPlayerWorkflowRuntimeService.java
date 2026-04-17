@@ -4,7 +4,7 @@ import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
-import dev.imagio.slot.neoforge.persistence.WorkflowDomainFileStore;
+import dev.imagio.slot.workflow.domain.persistence.WorkflowDomainFileStore;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.storage.LevelResource;

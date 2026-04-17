@@ -101,23 +101,86 @@ public final class VisualAtlasWorkflowDomainService {
         String id = uniqueSlug(normalizedLabel, visualHomeMap().playerIslands().stream()
                 .map(VisualAtlasIsland::id)
                 .collect(Collectors.toSet()), "island");
-        VisualAtlasIsland island = new VisualAtlasIsland(
+        return appendIslandCreated(
+                new VisualAtlasIsland(
+                        id,
+                        normalizedLabel,
+                        VisualAtlasIslandKind.PLAYER,
+                        x,
+                        y,
+                        width,
+                        height,
+                        color,
+                        iconIdentity
+                ),
+                metadata
+        );
+    }
+
+    public VisualAtlasIsland createIslandWithId(
+            String id,
+            String label,
+            int x,
+            int y,
+            int width,
+            int height,
+            int color,
+            ItemIdentity iconIdentity
+    ) {
+        return createIslandWithId(
                 id,
-                normalizedLabel,
-                VisualAtlasIslandKind.PLAYER,
+                label,
                 x,
                 y,
                 width,
                 height,
                 color,
-                iconIdentity
+                iconIdentity,
+                DomainEventMetadata.origin("workflow.visual.island.create")
         );
+    }
+
+    public VisualAtlasIsland createIslandWithId(
+            String id,
+            String label,
+            int x,
+            int y,
+            int width,
+            int height,
+            int color,
+            ItemIdentity iconIdentity,
+            DomainEventMetadata metadata
+    ) {
+        if (id == null || id.isBlank()) {
+            return null;
+        }
+        if (visualHomeMap().island(id) != null) {
+            return null;
+        }
+        String normalizedLabel = normalizeName(label, "Island label must not be blank");
+        return appendIslandCreated(
+                new VisualAtlasIsland(
+                        id,
+                        normalizedLabel,
+                        VisualAtlasIslandKind.PLAYER,
+                        x,
+                        y,
+                        width,
+                        height,
+                        color,
+                        iconIdentity
+                ),
+                metadata
+        );
+    }
+
+    private VisualAtlasIsland appendIslandCreated(VisualAtlasIsland island, DomainEventMetadata metadata) {
         repository.appendWorkflowEvent(
                 new WorkflowEvent.VisualIslandCreated(island),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.island.create")
         );
         mutationObserver.run();
-        return visualHomeMap().island(id);
+        return visualHomeMap().island(island.id());
     }
 
     public VisualHomeAssignment assignHome(

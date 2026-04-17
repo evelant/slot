@@ -1,0 +1,339 @@
+package dev.imagio.slot.neoforge.screen.ldlib;
+
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.VisualHomeMap;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * NBT transport for {@link SlotWorkspaceViewModel}. The view model and all its records are
+ * platform-neutral data; serialization to Minecraft NBT lives here so the common module
+ * does not depend on {@code net.minecraft.nbt} types.
+ */
+public final class SlotWorkspaceViewModelCodec {
+    private SlotWorkspaceViewModelCodec() {
+    }
+
+    public static CompoundTag encode(SlotWorkspaceViewModel viewModel, HolderLookup.Provider provider) {
+        return encode(viewModel, provider, true);
+    }
+
+    public static CompoundTag encode(
+            SlotWorkspaceViewModel viewModel,
+            HolderLookup.Provider provider,
+            boolean includeRevision
+    ) {
+        CompoundTag tag = new CompoundTag();
+        if (includeRevision) {
+            tag.putLong("revision", viewModel.revision());
+        }
+        tag.putString("status", viewModel.status());
+        tag.putString("diagnostics", viewModel.diagnostics());
+        tag.putInt("pendingCount", viewModel.pendingCount());
+        tag.putInt("selectedQuickAccessSlot", viewModel.selectedQuickAccessSlot());
+        tag.putInt("canvasWidth", viewModel.canvasWidth());
+        tag.putInt("canvasHeight", viewModel.canvasHeight());
+
+        ListTag islandTags = new ListTag();
+        for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
+            islandTags.add(encodeIsland(island));
+        }
+        tag.put("islands", islandTags);
+
+        ListTag itemTags = new ListTag();
+        for (SlotWorkspaceViewModel.AtlasItem atlasItem : viewModel.atlasItems()) {
+            itemTags.add(encodeItem(atlasItem, provider));
+        }
+        tag.put("atlasItems", itemTags);
+
+        ListTag collectionTags = new ListTag();
+        for (SlotWorkspaceViewModel.CollectionEntry collection : viewModel.collections()) {
+            collectionTags.add(encodeCollection(collection));
+        }
+        tag.put("collections", collectionTags);
+
+        ListTag hotbarTags = new ListTag();
+        for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
+            hotbarTags.add(encodeHotbar(slot, provider));
+        }
+        tag.put("hotbarSlots", hotbarTags);
+        tag.put("offhand", encodeOffhand(viewModel.offhand(), provider));
+        return tag;
+    }
+
+    public static SlotWorkspaceViewModel decode(HolderLookup.Provider provider, Tag tag) {
+        if (!(tag instanceof CompoundTag compoundTag)) {
+            return SlotWorkspaceViewModel.empty();
+        }
+
+        ArrayList<SlotWorkspaceViewModel.AtlasIsland> islands = new ArrayList<>();
+        ListTag islandTags = compoundTag.getList("islands", Tag.TAG_COMPOUND);
+        for (int index = 0; index < islandTags.size(); index++) {
+            islands.add(decodeIsland(islandTags.getCompound(index)));
+        }
+
+        ArrayList<SlotWorkspaceViewModel.AtlasItem> atlasItems = new ArrayList<>();
+        ListTag itemTags = compoundTag.getList("atlasItems", Tag.TAG_COMPOUND);
+        for (int index = 0; index < itemTags.size(); index++) {
+            atlasItems.add(decodeItem(provider, itemTags.getCompound(index)));
+        }
+
+        ArrayList<SlotWorkspaceViewModel.CollectionEntry> collections = new ArrayList<>();
+        ListTag collectionTags = compoundTag.getList("collections", Tag.TAG_COMPOUND);
+        for (int index = 0; index < collectionTags.size(); index++) {
+            collections.add(decodeCollection(collectionTags.getCompound(index)));
+        }
+
+        ArrayList<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots = new ArrayList<>();
+        ListTag hotbarTags = compoundTag.getList("hotbarSlots", Tag.TAG_COMPOUND);
+        for (int index = 0; index < hotbarTags.size(); index++) {
+            hotbarSlots.add(decodeHotbar(provider, hotbarTags.getCompound(index)));
+        }
+
+        return new SlotWorkspaceViewModel(
+                compoundTag.getLong("revision"),
+                compoundTag.getString("status"),
+                compoundTag.getString("diagnostics"),
+                compoundTag.getInt("pendingCount"),
+                compoundTag.getInt("selectedQuickAccessSlot"),
+                compoundTag.getInt("canvasWidth"),
+                compoundTag.getInt("canvasHeight"),
+                islands.isEmpty()
+                        ? SlotWorkspaceAtlasLayout.fittedIslands(
+                        SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
+                        List.of()
+                )
+                        : islands,
+                atlasItems,
+                collections,
+                hotbarSlots.isEmpty() ? SlotWorkspaceViewModel.emptyHotbar() : hotbarSlots,
+                decodeOffhand(provider, compoundTag.getCompound("offhand"))
+        );
+    }
+
+    private static CompoundTag encodeIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("itemId", identity.itemId());
+        tag.putString("comparisonMode", identity.comparisonMode());
+        tag.putString("componentFingerprint", identity.componentFingerprint());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.IdentityRef decodeIdentity(CompoundTag tag) {
+        return new SlotWorkspaceViewModel.IdentityRef(
+                tag.getString("itemId"),
+                tag.getString("comparisonMode"),
+                tag.getString("componentFingerprint")
+        );
+    }
+
+    private static CompoundTag encodeIsland(SlotWorkspaceViewModel.AtlasIsland island) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("islandId", island.islandId());
+        tag.putString("label", island.label());
+        tag.putString("kind", island.kind().name());
+        tag.putInt("x", island.x());
+        tag.putInt("y", island.y());
+        tag.putInt("width", island.width());
+        tag.putInt("height", island.height());
+        tag.putInt("color", island.color());
+        tag.putInt("itemCount", island.itemCount());
+        tag.putInt("carriedCount", island.carriedCount());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.AtlasIsland decodeIsland(CompoundTag tag) {
+        return new SlotWorkspaceViewModel.AtlasIsland(
+                tag.getString("islandId"),
+                tag.getString("label"),
+                decodeIslandKind(tag.getString("kind")),
+                tag.getInt("x"),
+                tag.getInt("y"),
+                tag.getInt("width"),
+                tag.getInt("height"),
+                tag.getInt("color"),
+                tag.getInt("itemCount"),
+                tag.getInt("carriedCount")
+        );
+    }
+
+    private static CompoundTag encodeItem(SlotWorkspaceViewModel.AtlasItem item, HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.put("identity", encodeIdentity(item.identity()));
+        tag.put("displayStack", item.displayStack().saveOptional(provider));
+        tag.putString("name", item.name());
+        tag.putInt("totalCount", item.totalCount());
+        tag.putInt("firstSlotIndex", item.firstSlotIndex());
+        tag.putString("islandId", item.islandId());
+        tag.putInt("x", item.x());
+        tag.putInt("y", item.y());
+        tag.putInt("width", item.width());
+        tag.putInt("height", item.height());
+        tag.putBoolean("recent", item.recent());
+        tag.putBoolean("playerPlaced", item.playerPlaced());
+        tag.putBoolean("carried", item.carried());
+        ListTag collectionTags = new ListTag();
+        for (String collectionId : item.collectionIds()) {
+            CompoundTag collectionTag = new CompoundTag();
+            collectionTag.putString("collectionId", collectionId);
+            collectionTags.add(collectionTag);
+        }
+        tag.put("collectionIds", collectionTags);
+        ListTag chipTags = new ListTag();
+        for (ChipSuggestion chip : item.chipSuggestions()) {
+            chipTags.add(encodeChip(chip));
+        }
+        tag.put("chipSuggestions", chipTags);
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.AtlasItem decodeItem(HolderLookup.Provider provider, CompoundTag tag) {
+        ArrayList<String> collectionIds = new ArrayList<>();
+        ListTag collectionTags = tag.getList("collectionIds", Tag.TAG_COMPOUND);
+        for (int index = 0; index < collectionTags.size(); index++) {
+            collectionIds.add(collectionTags.getCompound(index).getString("collectionId"));
+        }
+        ArrayList<ChipSuggestion> chipSuggestions = new ArrayList<>();
+        ListTag chipTags = tag.getList("chipSuggestions", Tag.TAG_COMPOUND);
+        for (int index = 0; index < chipTags.size(); index++) {
+            ChipSuggestion chip = decodeChip(chipTags.getCompound(index));
+            if (chip != null) {
+                chipSuggestions.add(chip);
+            }
+        }
+        return new SlotWorkspaceViewModel.AtlasItem(
+                decodeIdentity(tag.getCompound("identity")),
+                ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
+                tag.getString("name"),
+                tag.getInt("totalCount"),
+                tag.getInt("firstSlotIndex"),
+                tag.getString("islandId"),
+                tag.getInt("x"),
+                tag.getInt("y"),
+                tag.getInt("width"),
+                tag.getInt("height"),
+                tag.getBoolean("recent"),
+                tag.getBoolean("playerPlaced"),
+                tag.getBoolean("carried"),
+                collectionIds,
+                chipSuggestions
+        );
+    }
+
+    private static CompoundTag encodeChip(ChipSuggestion chip) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("kind", chip.kind().name());
+        tag.putString("template", chip.template() == null ? "" : chip.template().name());
+        tag.putString("islandId", chip.islandId());
+        tag.putString("label", chip.label());
+        tag.putInt("color", chip.color());
+        if (chip.iconIdentity() != null) {
+            tag.put("iconIdentity", encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(chip.iconIdentity())));
+        }
+        return tag;
+    }
+
+    private static ChipSuggestion decodeChip(CompoundTag tag) {
+        ChipSuggestion.ChipKind kind;
+        try {
+            kind = ChipSuggestion.ChipKind.valueOf(tag.getString("kind"));
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+        IslandSuggestionTemplate template = null;
+        String templateName = tag.getString("template");
+        if (templateName != null && !templateName.isBlank()) {
+            try {
+                template = IslandSuggestionTemplate.valueOf(templateName);
+            } catch (IllegalArgumentException ignored) {
+            }
+        }
+        ItemIdentity iconIdentity = null;
+        if (tag.contains("iconIdentity", Tag.TAG_COMPOUND)) {
+            iconIdentity = decodeIdentity(tag.getCompound("iconIdentity")).toIdentity();
+        }
+        String islandId = tag.getString("islandId");
+        String label = tag.getString("label");
+        int color = tag.getInt("color");
+        if (kind == ChipSuggestion.ChipKind.TEMPLATE && template == null) {
+            return null;
+        }
+        if (kind == ChipSuggestion.ChipKind.LEARNED && (islandId == null || islandId.isBlank())) {
+            return null;
+        }
+        return new ChipSuggestion(kind, template, islandId, label, color, iconIdentity);
+    }
+
+    private static CompoundTag encodeCollection(SlotWorkspaceViewModel.CollectionEntry collection) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("collectionId", collection.collectionId());
+        tag.putString("label", collection.label());
+        tag.putInt("memberCount", collection.memberCount());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.CollectionEntry decodeCollection(CompoundTag tag) {
+        return new SlotWorkspaceViewModel.CollectionEntry(
+                tag.getString("collectionId"),
+                tag.getString("label"),
+                tag.getInt("memberCount")
+        );
+    }
+
+    private static CompoundTag encodeHotbar(SlotWorkspaceViewModel.HotbarSlot slot, HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("hotbarIndex", slot.hotbarIndex());
+        tag.putBoolean("selected", slot.selected());
+        tag.putBoolean("occupied", slot.occupied());
+        tag.put("displayStack", slot.displayStack().saveOptional(provider));
+        tag.putInt("count", slot.count());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.HotbarSlot decodeHotbar(HolderLookup.Provider provider, CompoundTag tag) {
+        return new SlotWorkspaceViewModel.HotbarSlot(
+                tag.getInt("hotbarIndex"),
+                tag.getBoolean("selected"),
+                tag.getBoolean("occupied"),
+                ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
+                tag.getInt("count")
+        );
+    }
+
+    private static CompoundTag encodeOffhand(SlotWorkspaceViewModel.OffhandSlot offhand, HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.putBoolean("occupied", offhand.occupied());
+        tag.put("displayStack", offhand.displayStack().saveOptional(provider));
+        tag.putInt("count", offhand.count());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.OffhandSlot decodeOffhand(HolderLookup.Provider provider, CompoundTag tag) {
+        return new SlotWorkspaceViewModel.OffhandSlot(
+                tag.getBoolean("occupied"),
+                ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
+                tag.getInt("count")
+        );
+    }
+
+    private static VisualAtlasIslandKind decodeIslandKind(String raw) {
+        try {
+            return raw == null || raw.isBlank()
+                    ? VisualAtlasIslandKind.PLAYER
+                    : VisualAtlasIslandKind.valueOf(raw);
+        } catch (IllegalArgumentException ignored) {
+            return VisualAtlasIslandKind.PLAYER;
+        }
+    }
+}

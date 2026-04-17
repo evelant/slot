@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-16
+Last updated: 2026-04-17
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -34,6 +34,59 @@ Currently landed:
 - a LDLib2 `GraphView` carried-atlas proof of concept with pan, zoom,
   item-card selection, progressive disclosure, translucent workspace chrome,
   search/navigation overlay, camera preservation, and hotbar transfer behavior
+- storage prototype Slice 0 (test helper command) and Slice 1 (carried
+  readability at scale) — see
+  [plans/storage-prototype.md](plans/storage-prototype.md) for per-slice
+  detail. Key landing points:
+  - `/slot test populate-atlas {triage|homed} <count>` and `/slot test clear`
+    (op-gated) for reproducible populated atlases
+  - `AtlasItem.carried` / `AtlasIsland.carriedCount` on the view model;
+    carried lanes = main + hotbar + offhand; ghost items emitted for homed
+    identities not in any carried lane
+  - `FitCarriedCamera` in `common/atlas/` with largest-cluster fallback;
+    wired into the workspace `LAYOUT_CHANGED` initial-camera path
+  - ghost rendering via card-chrome alpha dim + `overlayTexture` on the
+    icon itself (shader-color tints were discarded — see AGENTS.md Traps)
+  - per-island carried-count pill with click-to-pan
+  - canvas-bound artefacts removed: islands render at their stored
+    dimensions and can live at any coord (positive or negative); atlas
+    cards are frozen at `item.width() × item.height()` world units — LOD
+    adjusts detail, never widget footprint
+- storage prototype Slice 2 partial (domain + server-side identity
+  machinery landed; claim RPC, UI button, atlas rendering, and
+  `populate-chests` helper still open — see
+  [plans/storage-prototype.md](plans/storage-prototype.md)). Key landing
+  points so far:
+  - `ClaimedChest(storageId, anchors, atlasX, atlasY, label)` +
+    `ClaimedChestMap` in `common/workflow/domain/`; events and projection
+    reducer wired through `WorkflowProjection.Snapshot`;
+    `ChestClaimWorkflowDomainService` exposes claim / move / updateAnchors
+    / removeAnchor / relabel / delete with server-authoritative anchor
+    collision checks
+  - `common/atlas/StorageZoneAutoPlacement`: pure-function neighbor-based
+    placement with world→atlas scaling, grid snap, collision bump, and
+    dimension isolation
+  - NeoForge-side identity: `AttachmentType<UUID>` keyed `slot:storage_id`
+    stored on block-entity NBT (survives chunk save/load); vanilla double
+    chests merge into one `ClaimedChest` with two anchors via
+    `ChestBlock.TYPE` + `getConnectedDirection`; shulker exclusion via
+    `BlockTags.SHULKER_BOXES`
+  - `ChestClaimServerService` orchestrator binds `ServerPlayer + BlockPos`
+    → capability check + anchor resolve + auto-placement + common service
+    claim + BE attachment write
+  - `BlockEvent.BreakEvent` listener removes anchors from the breaking
+    player's runtime (single-player first); cascades to claim delete
+    when last anchor is gone
+  - in-memory-only for Slice 2: claimed-chest events are not yet encoded
+    by `WorkflowDomainFileStore` (placeholder `return null` arms + null
+    filter on the encode pipeline). Full codec + load-time reconciliation
+    lands in Slice 7
+- persistence refactor: `WorkflowDomainFileStore` moved from
+  `neoforge/persistence` → `common/workflow/domain/persistence/` (zero
+  platform imports; lives with the domain types it serializes). Test
+  stays in neoforge because the test runtime needs Gson from the bundled
+  NeoForge jar. `SlotPlayerWorkflowRuntimeService` continues to own the
+  platform-specific file-path resolution and lifecycle triggers.
 
 Current prototype validation point:
 
@@ -51,21 +104,38 @@ Current prototype validation point:
 
 ## Current Focus
 
-Next work is the triage-first atlas loop. The previous string-match
-auto-home is being removed outright (no `Blocks` starter, no heuristic
-id classifier) before the new suggestion-chip layer is built on top.
-Chips come from a small set of class/tag/component-based templates and
-from rules learned from manual placements; nothing is homed without a
-player tap.
+Storage prototype is underway. **Slice 2 (Claim And Storage Zone Tile) is
+partially landed** — the common-side domain (`ClaimedChest`,
+`ClaimedChestMap`, events, projection, `ChestClaimWorkflowDomainService`,
+`StorageZoneAutoPlacement`) and the NeoForge-side server identity
+machinery (`storage_id` BE attachment, double-chest-aware anchor
+resolver, shulker exclusion, `ChestClaimServerService`, break-event
+anchor cleanup) are in. Still open in Slice 2:
 
-The full slice sequence lives in [plans/current.md](plans/current.md) —
-single source of truth. Near-term order: atlas readability cleanup →
-remove legacy auto-categorization → template predicate layer (headless)
-→ chips on Triage cards → home assignment + learned rules → undo toast
-→ island management basics → search spotlight → persisted homes and
-learned rules. Kit prototype
-([plans/kit-prototype.md](plans/kit-prototype.md)) follows after the
-triage/home loop proves out.
+- claim RPC + Claim button in the chest UI
+- storage-zone atlas region + chest tile rendering + drag-to-reposition
+- `/slot test populate-chests` helper command
+
+See [plans/storage-prototype.md](plans/storage-prototype.md) for the
+remaining exit criteria and the full slice sequence.
+
+The underlying triage/home loop (from [plans/current.md](plans/current.md))
+is landed enough to support storage work: template + learned chip
+suggestions, chip-accept + manual-assign, island management, persisted
+homes, and LDLib workspace transport all in place. Slice 3b (reversible
+assignment records) is partial; search spotlight (slice 5) has not
+started; neither blocks the storage prototype. Kit prototype
+([plans/kit-prototype.md](plans/kit-prototype.md)) follows after
+storage proves out; `+N since last open` newness indicators are
+tracked under "Later Feature Tracks" in `plans/current.md`.
+
+## Small known bugs to fix
+
+- Show item titles slightly sooner when zooming in (adjust lod switch point)
+- Show more than just title at lower LOD for differentiating/identifying things like enchanted books
+- Island rename loses focus on each keystroke, islands flicker
+- Min size of islands is too large and islands have a bit too much padding inside them
+
 
 ## Project Structure
 
@@ -101,7 +171,11 @@ Common module:
   builtin executor, compat provider contracts
 - `inventory/workspace`: UI-neutral workspace composition model
 - `workflow/domain`: collections, loadouts, protection, recents, activity,
-  persistence-facing workflow domain
+  visual homes, claimed chests, persistence-facing workflow domain
+- `workflow/domain/persistence`: JSON file-store codec for the workflow
+  domain snapshot (platform-neutral; no Minecraft/NeoForge imports)
+- `atlas`: pure-function atlas helpers (`FitCarriedCamera`,
+  `StorageZoneAutoPlacement`)
 - `compat`: shared compat helpers and provider-side integration support
 
 NeoForge module:
@@ -113,7 +187,11 @@ NeoForge module:
 - `neoforge/network`: narrow open-workspace payloads; not the old action
   request/outcome transport
 - `neoforge/compat`: loader-side integration registration
-- `neoforge/persistence`: platform persistence bridge
+- `neoforge/storage`: BE `storage_id` attachment, claimability/anchor
+  resolver, claim orchestrator, break-event anchor cleanup
+- `neoforge/workflow`: platform lifecycle wiring for the common
+  workflow runtime (per-player file-path resolution, login/logout /
+  server-stop save triggers)
 - `neoforge/config`: dedicated-test-instance config defaults
 
 Reference code:
@@ -143,13 +221,17 @@ Use this to find the right package quickly. Paths are under
 | Host resolution, mutation router, executors | `inventory/integration` |
 | Workspace composition (UI-neutral) | `inventory/workspace` |
 | Collections, loadouts, recents, protection | `workflow/domain` |
+| Visual homes, claimed chests, domain events | `workflow/domain` |
+| Workflow snapshot JSON codec | `workflow/domain/persistence` |
+| Atlas camera / storage-zone placement (pure) | `atlas` |
 | Host compat shared helpers | `compat` |
 | Screen/menu observation | `neoforge/client/host` |
 | Player inventory replacement trigger | `neoforge/client/screen` |
 | LDLib2 workspace menu, session, view-model, RPC | `neoforge/screen/ldlib` |
 | Atlas `GraphView`, item cards, camera preservation | `neoforge/screen/ldlib` (UI factory) |
 | Open-workspace network payloads | `neoforge/network` |
-| Persistence bridge | `neoforge/persistence` |
+| BE `storage_id` attachment + claim orchestrator | `neoforge/storage` |
+| Per-player workflow runtime lifecycle | `neoforge/workflow` |
 
 LDLib2 imports must stay out of `common/`. Inventory semantics stay out
 of `neoforge/` UI code.

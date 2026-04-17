@@ -368,6 +368,56 @@ Keep these deferred until the carried triage/home loop is proven:
 - equipment/offhand/cursor gestures (beyond the Belt offhand adjacency)
 - recipe viewer integrations
 - trash, void, sort, and recovery
+- **newness indicators (`+N` delta since last open)**: per
+  [atlas-prototype.md:534](atlas-prototype.md) a `+N` badge shows items
+  gained since the last inventory open, persists across close/reopen, and
+  is superseded when a newer batch forms (a fresh pickup after an open
+  clears the prior batch). Needs: a new workflow-domain
+  `NewItemsBatch` (identity → count) plus an `openedSinceBatchStart`
+  flag; events `NewItemAcquired` / `NewBatchAcknowledged`; NeoForge pickup
+  hook to fire acquire; workspace-open hook to fire acknowledge;
+  projection threads `newCount` through `SlotWorkspaceViewModel.AtlasItem`;
+  UI renders a corner pip at low zoom that expands to `+N` text at
+  `READ`+. Current UI has no corner pip at all — the old origin-based
+  marker was removed because it labeled every homed item indistinguishably.
+- **grid-snap on in-island drops**: placement inside islands stays
+  freeform (players can drop anywhere within the island; `fitIsland` grows
+  the island as needed), but drops snap to the nearest grid cell by
+  default so players don't have to pixel-align every card to keep islands
+  tidy. Grid step is the existing card geometry
+  (`CARD_WIDTH + CARD_GAP` = 36 world units on X, same on Y, offset by
+  `ISLAND_CONTENT_PADDING_X` / `ISLAND_CONTENT_TOP` from the island
+  origin). Apply inside
+  `SlotWorkspaceAtlasLayout.placementForDrop` after the floor clamp:
+  round `(localX - ISLAND_CONTENT_PADDING_X)` to the nearest `CARD_WIDTH
+  + CARD_GAP` multiple, same for Y against `ISLAND_CONTENT_TOP`. Leave a
+  modifier-key override (e.g. shift-drop skips snapping) for freeform
+  placement when the player wants it.
+- **Triage / Inbox as a docked panel, not an atlas island**: at scale
+  Triage-as-island becomes a drop-target problem — it moves with the
+  camera, fights pan/zoom, and gets hard to target when the atlas holds
+  thousands of homes. Future direction: render Triage as a fixed UI
+  panel (docked side or bottom of the workspace chrome) instead of a
+  world-space `AtlasIsland`. Drag source = panel rows; drop targets =
+  atlas islands (island→Triage "return to inbox" still works by drag
+  onto the panel). Consequences:
+  - `SlotWorkspaceAtlasLayout.ISLAND_TRIAGE` goes away as an atlas
+    island; `baseIslands` no longer emits it; view-model `AtlasItem`s
+    carrying `islandId == ISLAND_TRIAGE` are rerouted into a separate
+    `triageItems` list on `SlotWorkspaceViewModel`
+  - `applyInitialCamera` Triage-fallback branch is replaced — with an
+    empty carried set the fallback should center on the last camera or
+    on the player-island cluster, not on Triage
+  - drop targets reshape: `installIslandDropTarget` still fires for
+    player islands; a new `installTriagePanelDropTarget` handles drops
+    onto the docked panel (equivalent to the current "drop on empty
+    atlas background while dragged from non-Triage" path that today
+    sends to `ISLAND_TRIAGE`)
+  - chips still attach to Triage card entries in the panel; chip-accept
+    flow is unchanged
+  - tests: existing Triage-island tests in `SlotWorkspaceLdlibModelTest`
+    need updating to assert `triageItems` instead of
+    `AtlasItem.islandId == ISLAND_TRIAGE`
 - Kits prototype: camera-anchored Belt, toggleable Kit Rack, task-shaped Kit
   concept with multi-page belt switching and bring lists. See
   [../design/kits.md](../design/kits.md) for the concept and

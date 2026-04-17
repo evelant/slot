@@ -163,7 +163,7 @@ consistent visual grammar:
 - **stack count on icon** — familiar Minecraft convention, never duplicated
   in detail text
 - **border treatment** — selected, search-matched, special emphasis
-- **corner pip** — recent, changed, collection membership, protection
+- **corner pip** — recent (picked up siince last inventory open, only clears if inventory has been opened and new item acquired since then), changed, collection membership, protection
 - **bottom underline / tint band** — search match
 - **footer/side strip** — short text token
 
@@ -462,6 +462,12 @@ SLOT supports several map kinds, all built from the same home concept:
   navigation aid, not remote authority
 
 ## External Storage Memory
+
+For the current island-to-chest linking model, proximity-gated deposit and
+withdraw flows, and world-side wayfinding, see [storage.md](storage.md). The
+direction below is the earlier "physical source memory" framing; the storage
+design has since concretized around claimed chests, links, and Kit holdouts.
+This section remains for background on the underlying principles.
 
 The goal is not "every remembered chest is always drawn on the atlas."
 That implies terminal-like remote access and misleads players.

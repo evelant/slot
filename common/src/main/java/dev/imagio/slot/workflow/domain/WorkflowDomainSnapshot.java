@@ -52,4 +52,8 @@ public record WorkflowDomainSnapshot(
     public VisualHomeMap visualHomeMap() {
         return workflowProjection.visualHomeMap();
     }
+
+    public ClaimedChestMap claimedChestMap() {
+        return workflowProjection.claimedChestMap();
+    }
 }

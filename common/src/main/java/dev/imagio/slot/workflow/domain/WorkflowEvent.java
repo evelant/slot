@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public sealed interface WorkflowEvent permits
         WorkflowEvent.CollectionCreated,
@@ -35,7 +36,12 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.VisualIslandDeleted,
         WorkflowEvent.VisualHomeAssigned,
         WorkflowEvent.VisualHomeCleared,
-        WorkflowEvent.TemplateIslandDismissed {
+        WorkflowEvent.TemplateIslandDismissed,
+        WorkflowEvent.ClaimedChestCreated,
+        WorkflowEvent.ClaimedChestMoved,
+        WorkflowEvent.ClaimedChestAnchorsChanged,
+        WorkflowEvent.ClaimedChestRelabeled,
+        WorkflowEvent.ClaimedChestDeleted {
 
     record CollectionCreated(
             String collectionId,
@@ -258,5 +264,40 @@ public sealed interface WorkflowEvent permits
         public TemplateIslandDismissed {
             templateId = templateId == null ? "" : templateId;
         }
+    }
+
+    record ClaimedChestCreated(
+            ClaimedChest chest
+    ) implements WorkflowEvent {
+    }
+
+    record ClaimedChestMoved(
+            UUID storageId,
+            int atlasX,
+            int atlasY
+    ) implements WorkflowEvent {
+    }
+
+    record ClaimedChestAnchorsChanged(
+            UUID storageId,
+            Set<ChestAnchor> anchors
+    ) implements WorkflowEvent {
+        public ClaimedChestAnchorsChanged {
+            anchors = anchors == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(anchors));
+        }
+    }
+
+    record ClaimedChestRelabeled(
+            UUID storageId,
+            String label
+    ) implements WorkflowEvent {
+        public ClaimedChestRelabeled {
+            label = label == null ? "" : label;
+        }
+    }
+
+    record ClaimedChestDeleted(
+            UUID storageId
+    ) implements WorkflowEvent {
     }
 }

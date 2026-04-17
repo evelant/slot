@@ -39,6 +39,22 @@ This is a fast-moving experimental repo. Docs describe intent as of their
 - Unsupported host state must fail closed and log a useful diagnostic.
 - Keep LDLib2 imports out of `common/`. Keep inventory semantics out of
   `neoforge/` UI code.
+- NEVER GUESS - especially when it comes to APIs and library behavior. 
+  Always verify that apis and behavior are what you might assume they are.
+- ALWAYS check for upstream / downstream consequences of changes.
+- Core domain logic belongs in `common/`, even when invoked from a platform
+  RPC handler or UI widget. A good heuristic: if a file has zero
+  `net.minecraft.*` / `net.neoforged.*` / `com.lowdragmc.*` / `com.mojang.*`
+  imports, it should be in `common/`. Exceptions are rare and deliberate.
+  When a platform call is needed from inside domain logic (e.g., signal
+  extraction from an `ItemStack`), inject it as a functional parameter
+  (`Function<ItemStack, IslandSignalDescriptor>`) rather than pulling the
+  domain into the platform module.
+- When adding new domain types (e.g., a new `WorkflowEvent` subtype),
+  do not route them through platform-side exhaustive switches or
+  per-record NBT methods — those create a ratchet where every core
+  addition forces a platform edit. Keep codecs in a sibling class in the
+  same module as the data.
 
 ## When Direction Changes
 
@@ -105,6 +121,70 @@ writing new UI or action code.
   `TRASH`, `VOID`, `SORT_SOURCE`, `DISTRIBUTE`, `COLLECT_MATCHING`, and
   `SET_FILTER` are declared vocabulary but must fail closed until
   planners/executors land.
+- **`Button.setOnClick` fires on `MOUSE_DOWN`, not on release** — see
+  LDLib2 `Button.onMouseDown`. If the button also needs to be a drag
+  source, the `setOnClick` handler will run the moment the user presses
+  and pre-empts the drag-start flow (and if the handler calls
+  `rebuild()`, it destroys the drag source element outright). For
+  elements that must support both click and drag, register the click via
+  `addEventListener(UIEvents.CLICK, ...)` instead — LDLib dispatches
+  `CLICK` from `ModularUI` on `MOUSE_UP` after `DRAG_PERFORM`, and only
+  when release target equals press target.
+- **Atlas card widgets must not grow.** The widget's world-space
+  footprint is strictly `item.width() × item.height()`. LOD adjusts
+  detail (disclosure level) but never widget size. Everything rendered
+  inside a card — shell, inner panel, icon — must clamp to card bounds,
+  including caller-site `centeredWorld(...)` math.
+  `AtlasRenderBudget.forScreenBudget` has px floors (e.g. `shellPx` min
+  16) that translate to world units larger than the card at low zoom if
+  unclamped.
+- **LDLib2 `GraphView` has no pan bounds.** `offsetX` / `offsetY` are
+  unbounded `float`; content children render at arbitrary positive or
+  negative world coords. Do not impose artificial canvas-size clamps on
+  island coordinates — `VisualAtlasIsland.x`/`y` are unbounded `int` in
+  the domain for the same reason.
+- **`ItemStackTexture.setColor` only dims flat GUI-shader items.**
+  Internally it calls `RenderSystem.setShaderColor` before
+  `graphics.renderItem`. Block models, emissive items (torches), and
+  items with custom shaders ignore the shader color. For uniform
+  dimming across every item type, draw an `overlayTexture` rect on top
+  of the icon `UIElement` instead.
+- **View-model island projection must preserve stored `width`/`height`.**
+  `SlotWorkspaceAtlasLayout.baseIslands` previously hardcoded
+  `PLAYER_ISLAND_MIN_WIDTH` / `HEIGHT` onto every projected island,
+  discarding the stored dimensions. Downstream `clampPlacement` then
+  used the hardcoded size as the card-placement clamp ceiling, so any
+  item with a stored `localX`/`localY` past the min-size edge was
+  pulled onto the edge — producing piles of overlapping cards at the
+  island boundary.
+- **`worldX >= 0 && worldY >= 0` is not the right "coords provided"
+  check.** Use `worldX != null && worldY != null`. Negative world
+  coordinates are valid (islands can live at any `x`/`y`); sign carries
+  no "coords absent" meaning.
+- **Do not bury inventory semantics inside an RPC endpoint.** The LDLib
+  RPC surface (`SlotWorkspaceUiSession`) is platform-coupled only because
+  LDLib dispatches by method name; the method *bodies* belong in
+  `SlotWorkspaceCommandService` (common) and return a
+  `WorkspaceCommandOutcome` the adapter applies to session state. Same
+  pattern for any future RPC surface. If you find yourself writing
+  business rules ("chip-accept materializes a template island",
+  "dropping on Triage clears the home") inside an RPC handler, stop and
+  move them. Concrete markers that you are leaking:
+  - A method on the RPC handler reads from `WorkflowDomainRuntime` and
+    writes an `InventoryActionRequest`, `VisualAtlasIsland`,
+    `VisualHomeAssignment`, or other common type.
+  - A static helper in a neoforge file takes only common types as inputs
+    and outputs (e.g., `matchingTemplate(VisualAtlasIsland) →
+    IslandSuggestionTemplate`).
+  - A data record in `neoforge/` has `toTag(...)` / `fromTag(...)`
+    methods on it — split into a pure record (common) + a codec class
+    (neoforge). See `SlotWorkspaceViewModel` (common) +
+    `SlotWorkspaceViewModelCodec` (neoforge) for the canonical pattern.
+- **Do not put exhaustive `switch` over sealed domain types in a
+  platform file.** The compiler enforces coverage, which means every new
+  event type forces a platform edit. Keep the switch in the same module
+  as the sealed type — see `WorkflowDomainFileStore` (common) for the
+  reference placement of event encoders.
 
 ## Reference Material
 

@@ -1,4 +1,4 @@
-package dev.imagio.slot.neoforge.screen.ldlib;
+package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
@@ -9,10 +9,8 @@ import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionService;
-import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.triage.TriageIslandRef;
-import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.CollectionProjection;
 import dev.imagio.slot.workflow.domain.RecentView;
@@ -21,10 +19,6 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -35,6 +29,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 
 public record SlotWorkspaceViewModel(
         long revision,
@@ -92,7 +87,7 @@ public record SlotWorkspaceViewModel(
             int selectedQuickAccessSlot,
             long revision
     ) {
-        return project(authority, workflow, status, diagnostics, pendingCount, selectedQuickAccessSlot, revision, null);
+        return project(authority, workflow, status, diagnostics, pendingCount, selectedQuickAccessSlot, revision, null, null);
     }
 
     public static SlotWorkspaceViewModel project(
@@ -105,19 +100,33 @@ public record SlotWorkspaceViewModel(
             long revision,
             LearnedIslandRuleStore learnedRules
     ) {
+        return project(authority, workflow, status, diagnostics, pendingCount, selectedQuickAccessSlot, revision, learnedRules, null);
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor
+    ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         CollectionProjection collectionsProjection = resolvedWorkflow.collections();
         RecentView recents = resolvedWorkflow.recents();
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
 
-        List<MainAccumulator> accumulators = groupedMainEntries(resolvedAuthority);
+        List<AtlasItemAccumulator> accumulators = groupedAtlasEntries(resolvedAuthority, visualHomeMap);
         Map<ItemIdentity, Integer> recentRankByIdentity = recentRankByIdentity(recents);
         accumulators.sort(Comparator
-                .comparingInt((MainAccumulator accumulator) -> recentRankByIdentity.getOrDefault(accumulator.identity(), Integer.MAX_VALUE))
+                .comparingInt((AtlasItemAccumulator accumulator) -> recentRankByIdentity.getOrDefault(accumulator.identity(), Integer.MAX_VALUE))
                 .thenComparing(accumulator -> accumulator.name().toLowerCase(Locale.ROOT))
                 .thenComparing(accumulator -> accumulator.identity().itemId())
-                .thenComparingInt(MainAccumulator::firstSlotIndex));
+                .thenComparingInt(AtlasItemAccumulator::firstSlotIndex));
 
         List<AtlasIsland> layoutIslands = SlotWorkspaceAtlasLayout.baseIslands(visualHomeMap);
         ArrayList<AtlasItem> atlasItems = new ArrayList<>();
@@ -126,7 +135,7 @@ public record SlotWorkspaceViewModel(
         List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
         LearnedIslandRuleStore resolvedLearnedRules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
 
-        for (MainAccumulator accumulator : accumulators) {
+        for (AtlasItemAccumulator accumulator : accumulators) {
             VisualHomeAssignment assignment = visualHomeMap.assignment(accumulator.identity());
             String islandId = assignment == null
                     ? SlotWorkspaceAtlasLayout.ISLAND_TRIAGE
@@ -149,14 +158,16 @@ public record SlotWorkspaceViewModel(
                 islandId = placement.islandId();
             }
             List<ChipSuggestion> chipSuggestions = List.of();
-            if (assignment == null) {
-                IslandSignalDescriptor descriptor = IslandSignalExtractor.extract(accumulator.displayStack());
-                chipSuggestions = IslandSuggestionService.suggest(
-                        descriptor,
-                        resolvedLearnedRules,
-                        triageIslandRefs,
-                        visualHomeMap.dismissedTemplateIds()
-                );
+            if (assignment == null && accumulator.carried() && signalExtractor != null) {
+                IslandSignalDescriptor descriptor = signalExtractor.apply(accumulator.displayStack());
+                if (descriptor != null) {
+                    chipSuggestions = IslandSuggestionService.suggest(
+                            descriptor,
+                            resolvedLearnedRules,
+                            triageIslandRefs,
+                            visualHomeMap.dismissedTemplateIds()
+                    );
+                }
             }
             atlasItems.add(new AtlasItem(
                     IdentityRef.from(accumulator.identity()),
@@ -171,6 +182,7 @@ public record SlotWorkspaceViewModel(
                     SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                     recentIdentities.contains(accumulator.identity()),
                     playerPlaced,
+                    accumulator.carried(),
                     List.copyOf(collectionsProjection.memberships().getOrDefault(accumulator.identity(), Set.of())),
                     chipSuggestions
             ));
@@ -182,6 +194,9 @@ public record SlotWorkspaceViewModel(
                 .thenComparingInt(AtlasItem::x)
                 .thenComparing(item -> item.name().toLowerCase(Locale.ROOT)));
 
+        List<AtlasIsland> fittedIslands = SlotWorkspaceAtlasLayout.fittedIslands(layoutIslands, atlasItems);
+        List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(fittedIslands, atlasItems);
+
         List<CollectionEntry> collectionEntries = collections(collectionsProjection);
         return new SlotWorkspaceViewModel(
                 revision,
@@ -191,12 +206,29 @@ public record SlotWorkspaceViewModel(
                 selectedQuickAccessSlot,
                 SlotWorkspaceAtlasLayout.CANVAS_WIDTH,
                 SlotWorkspaceAtlasLayout.CANVAS_HEIGHT,
-                SlotWorkspaceAtlasLayout.fittedIslands(layoutIslands, atlasItems),
+                islandsWithCarriedCounts,
                 atlasItems,
                 collectionEntries,
                 hotbarSlots(resolvedAuthority, selectedQuickAccessSlot),
                 OffhandSlot.from(resolvedAuthority)
         );
+    }
+
+    private static List<AtlasIsland> withCarriedCounts(List<AtlasIsland> islands, List<AtlasItem> atlasItems) {
+        if (islands == null || islands.isEmpty()) {
+            return List.of();
+        }
+        Map<String, Integer> carriedByIsland = new LinkedHashMap<>();
+        for (AtlasItem item : atlasItems) {
+            if (item.carried()) {
+                carriedByIsland.merge(item.islandId(), 1, Integer::sum);
+            }
+        }
+        ArrayList<AtlasIsland> result = new ArrayList<>(islands.size());
+        for (AtlasIsland island : islands) {
+            result.add(island.withCarriedCount(carriedByIsland.getOrDefault(island.islandId(), 0)));
+        }
+        return List.copyOf(result);
     }
 
     public SlotWorkspaceViewModel withRevision(long nextRevision) {
@@ -241,109 +273,58 @@ public record SlotWorkspaceViewModel(
                 .orElse(collectionId);
     }
 
-    public CompoundTag toTag(HolderLookup.Provider provider) {
-        return toTag(provider, true);
-    }
+    private static final String[] CARRIED_LANE_IDS = new String[]{
+            BuiltinInventoryIds.PLAYER_MAIN,
+            BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+            BuiltinInventoryIds.PLAYER_OFFHAND
+    };
 
-    public CompoundTag toTag(HolderLookup.Provider provider, boolean includeRevision) {
-        CompoundTag tag = new CompoundTag();
-        if (includeRevision) {
-            tag.putLong("revision", revision);
-        }
-        tag.putString("status", status);
-        tag.putString("diagnostics", diagnostics);
-        tag.putInt("pendingCount", pendingCount);
-        tag.putInt("selectedQuickAccessSlot", selectedQuickAccessSlot);
-        tag.putInt("canvasWidth", canvasWidth);
-        tag.putInt("canvasHeight", canvasHeight);
-
-        ListTag islandTags = new ListTag();
-        for (AtlasIsland island : islands) {
-            islandTags.add(island.toTag());
-        }
-        tag.put("islands", islandTags);
-
-        ListTag itemTags = new ListTag();
-        for (AtlasItem atlasItem : atlasItems) {
-            itemTags.add(atlasItem.toTag(provider));
-        }
-        tag.put("atlasItems", itemTags);
-
-        ListTag collectionTags = new ListTag();
-        for (CollectionEntry collection : collections) {
-            collectionTags.add(collection.toTag());
-        }
-        tag.put("collections", collectionTags);
-
-        ListTag hotbarTags = new ListTag();
-        for (HotbarSlot slot : hotbarSlots) {
-            hotbarTags.add(slot.toTag(provider));
-        }
-        tag.put("hotbarSlots", hotbarTags);
-        tag.put("offhand", offhand.toTag(provider));
-        return tag;
-    }
-
-    public static SlotWorkspaceViewModel fromTag(HolderLookup.Provider provider, Tag tag) {
-        if (!(tag instanceof CompoundTag compoundTag)) {
-            return empty();
-        }
-
-        ArrayList<AtlasIsland> islands = new ArrayList<>();
-        ListTag islandTags = compoundTag.getList("islands", Tag.TAG_COMPOUND);
-        for (int index = 0; index < islandTags.size(); index++) {
-            islands.add(AtlasIsland.fromTag(islandTags.getCompound(index)));
-        }
-
-        ArrayList<AtlasItem> atlasItems = new ArrayList<>();
-        ListTag itemTags = compoundTag.getList("atlasItems", Tag.TAG_COMPOUND);
-        for (int index = 0; index < itemTags.size(); index++) {
-            atlasItems.add(AtlasItem.fromTag(provider, itemTags.getCompound(index)));
-        }
-
-        ArrayList<CollectionEntry> collections = new ArrayList<>();
-        ListTag collectionTags = compoundTag.getList("collections", Tag.TAG_COMPOUND);
-        for (int index = 0; index < collectionTags.size(); index++) {
-            collections.add(CollectionEntry.fromTag(collectionTags.getCompound(index)));
-        }
-
-        ArrayList<HotbarSlot> hotbarSlots = new ArrayList<>();
-        ListTag hotbarTags = compoundTag.getList("hotbarSlots", Tag.TAG_COMPOUND);
-        for (int index = 0; index < hotbarTags.size(); index++) {
-            hotbarSlots.add(HotbarSlot.fromTag(provider, hotbarTags.getCompound(index)));
-        }
-
-        return new SlotWorkspaceViewModel(
-                compoundTag.getLong("revision"),
-                compoundTag.getString("status"),
-                compoundTag.getString("diagnostics"),
-                compoundTag.getInt("pendingCount"),
-                compoundTag.getInt("selectedQuickAccessSlot"),
-                compoundTag.getInt("canvasWidth"),
-                compoundTag.getInt("canvasHeight"),
-                islands.isEmpty()
-                        ? SlotWorkspaceAtlasLayout.fittedIslands(
-                        SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
-                        List.of()
-                )
-                        : islands,
-                atlasItems,
-                collections,
-                hotbarSlots.isEmpty() ? emptyHotbar() : hotbarSlots,
-                OffhandSlot.fromTag(provider, compoundTag.getCompound("offhand"))
-        );
-    }
-
-    private static List<MainAccumulator> groupedMainEntries(InventoryAuthoritySnapshot authority) {
-        Map<ItemIdentity, MainAccumulator> byIdentity = new LinkedHashMap<>();
-        for (InventoryEntrySnapshot entry : authority.entries(BuiltinInventoryIds.PLAYER_MAIN)) {
-            if (entry == null || !entry.present()) {
-                continue;
+    private static List<AtlasItemAccumulator> groupedAtlasEntries(
+            InventoryAuthoritySnapshot authority,
+            VisualHomeMap visualHomeMap
+    ) {
+        LinkedHashMap<ItemIdentity, AtlasItemAccumulator> byIdentity = new LinkedHashMap<>();
+        for (String laneId : CARRIED_LANE_IDS) {
+            for (InventoryEntrySnapshot entry : authority.entries(laneId)) {
+                if (entry == null || !entry.present()) {
+                    continue;
+                }
+                ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
+                byIdentity.computeIfAbsent(identity, ignored -> new AtlasItemAccumulator(identity, entry)).add(entry);
             }
-            ItemIdentity identity = ItemIdentityMatcher.create(entry.stack());
-            byIdentity.computeIfAbsent(identity, ignored -> new MainAccumulator(identity, entry)).add(entry);
+        }
+        if (visualHomeMap != null) {
+            for (ItemIdentity identity : visualHomeMap.assignments().keySet()) {
+                if (identity == null || byIdentity.containsKey(identity)) {
+                    continue;
+                }
+                AtlasItemAccumulator ghost = ghostAccumulator(identity);
+                if (ghost != null) {
+                    byIdentity.put(identity, ghost);
+                }
+            }
         }
         return new ArrayList<>(byIdentity.values());
+    }
+
+    private static java.util.function.Function<String, ItemStack> ghostStackResolver = identity -> ItemStack.EMPTY;
+
+    public static void setGhostStackResolver(java.util.function.Function<String, ItemStack> resolver) {
+        ghostStackResolver = resolver == null ? id -> ItemStack.EMPTY : resolver;
+    }
+
+    private static AtlasItemAccumulator ghostAccumulator(ItemIdentity identity) {
+        ItemStack stack = ItemStack.EMPTY;
+        String name = identity.itemId();
+        try {
+            ItemStack resolved = ghostStackResolver.apply(identity.itemId());
+            if (resolved != null && !resolved.isEmpty()) {
+                stack = resolved;
+                name = resolved.getHoverName().getString();
+            }
+        } catch (RuntimeException | LinkageError ignored) {
+        }
+        return new AtlasItemAccumulator(identity, stack, name);
     }
 
     private static Map<ItemIdentity, Integer> recentRankByIdentity(RecentView recentView) {
@@ -401,7 +382,7 @@ public record SlotWorkspaceViewModel(
         return List.copyOf(slots);
     }
 
-    private static List<HotbarSlot> emptyHotbar() {
+    public static List<HotbarSlot> emptyHotbar() {
         ArrayList<HotbarSlot> slots = new ArrayList<>(9);
         for (int index = 0; index < 9; index++) {
             slots.add(new HotbarSlot(index, false, false, ItemStack.EMPTY, 0));
@@ -422,13 +403,13 @@ public record SlotWorkspaceViewModel(
             componentFingerprint = componentFingerprint == null ? "" : componentFingerprint;
         }
 
-        static IdentityRef from(ItemIdentity identity) {
+        public static IdentityRef from(ItemIdentity identity) {
             return identity == null
                     ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "")
                     : new IdentityRef(identity.itemId(), identity.comparisonMode().name(), identity.componentFingerprint());
         }
 
-        ItemIdentity toIdentity() {
+        public ItemIdentity toIdentity() {
             if (itemId.isBlank()) {
                 return null;
             }
@@ -438,22 +419,6 @@ public record SlotWorkspaceViewModel(
             } catch (IllegalArgumentException ignored) {
             }
             return new ItemIdentity(itemId, mode, componentFingerprint);
-        }
-
-        CompoundTag toTag() {
-            CompoundTag tag = new CompoundTag();
-            tag.putString("itemId", itemId);
-            tag.putString("comparisonMode", comparisonMode);
-            tag.putString("componentFingerprint", componentFingerprint);
-            return tag;
-        }
-
-        static IdentityRef fromTag(CompoundTag tag) {
-            return new IdentityRef(
-                    tag.getString("itemId"),
-                    tag.getString("comparisonMode"),
-                    tag.getString("componentFingerprint")
-            );
         }
     }
 
@@ -466,7 +431,8 @@ public record SlotWorkspaceViewModel(
             int width,
             int height,
             int color,
-            int itemCount
+            int itemCount,
+            int carriedCount
     ) {
         public AtlasIsland {
             islandId = islandId == null ? "" : islandId;
@@ -475,34 +441,25 @@ public record SlotWorkspaceViewModel(
             width = Math.max(96, width);
             height = Math.max(72, height);
             itemCount = Math.max(0, itemCount);
+            carriedCount = Math.max(0, carriedCount);
         }
 
-        private CompoundTag toTag() {
-            CompoundTag tag = new CompoundTag();
-            tag.putString("islandId", islandId);
-            tag.putString("label", label);
-            tag.putString("kind", kind.name());
-            tag.putInt("x", x);
-            tag.putInt("y", y);
-            tag.putInt("width", width);
-            tag.putInt("height", height);
-            tag.putInt("color", color);
-            tag.putInt("itemCount", itemCount);
-            return tag;
+        public AtlasIsland(
+                String islandId,
+                String label,
+                VisualAtlasIslandKind kind,
+                int x,
+                int y,
+                int width,
+                int height,
+                int color,
+                int itemCount
+        ) {
+            this(islandId, label, kind, x, y, width, height, color, itemCount, 0);
         }
 
-        private static AtlasIsland fromTag(CompoundTag tag) {
-            return new AtlasIsland(
-                    tag.getString("islandId"),
-                    tag.getString("label"),
-                    decodeIslandKind(tag.getString("kind")),
-                    tag.getInt("x"),
-                    tag.getInt("y"),
-                    tag.getInt("width"),
-                    tag.getInt("height"),
-                    tag.getInt("color"),
-                    tag.getInt("itemCount")
-            );
+        public AtlasIsland withCarriedCount(int newCarriedCount) {
+            return new AtlasIsland(islandId, label, kind, x, y, width, height, color, itemCount, newCarriedCount);
         }
     }
 
@@ -519,6 +476,7 @@ public record SlotWorkspaceViewModel(
             int height,
             boolean recent,
             boolean playerPlaced,
+            boolean carried,
             List<String> collectionIds,
             List<ChipSuggestion> chipSuggestions
     ) {
@@ -535,109 +493,24 @@ public record SlotWorkspaceViewModel(
             chipSuggestions = chipSuggestions == null ? List.of() : List.copyOf(chipSuggestions);
         }
 
-        private CompoundTag toTag(HolderLookup.Provider provider) {
-            CompoundTag tag = new CompoundTag();
-            tag.put("identity", identity.toTag());
-            tag.put("displayStack", displayStack.saveOptional(provider));
-            tag.putString("name", name);
-            tag.putInt("totalCount", totalCount);
-            tag.putInt("firstSlotIndex", firstSlotIndex);
-            tag.putString("islandId", islandId);
-            tag.putInt("x", x);
-            tag.putInt("y", y);
-            tag.putInt("width", width);
-            tag.putInt("height", height);
-            tag.putBoolean("recent", recent);
-            tag.putBoolean("playerPlaced", playerPlaced);
-            ListTag collectionTags = new ListTag();
-            for (String collectionId : collectionIds) {
-                CompoundTag collectionTag = new CompoundTag();
-                collectionTag.putString("collectionId", collectionId);
-                collectionTags.add(collectionTag);
-            }
-            tag.put("collectionIds", collectionTags);
-            ListTag chipTags = new ListTag();
-            for (ChipSuggestion chip : chipSuggestions) {
-                chipTags.add(chipToTag(chip));
-            }
-            tag.put("chipSuggestions", chipTags);
-            return tag;
-        }
-
-        private static AtlasItem fromTag(HolderLookup.Provider provider, CompoundTag tag) {
-            ArrayList<String> collectionIds = new ArrayList<>();
-            ListTag collectionTags = tag.getList("collectionIds", Tag.TAG_COMPOUND);
-            for (int index = 0; index < collectionTags.size(); index++) {
-                collectionIds.add(collectionTags.getCompound(index).getString("collectionId"));
-            }
-            ArrayList<ChipSuggestion> chipSuggestions = new ArrayList<>();
-            ListTag chipTags = tag.getList("chipSuggestions", Tag.TAG_COMPOUND);
-            for (int index = 0; index < chipTags.size(); index++) {
-                ChipSuggestion chip = chipFromTag(chipTags.getCompound(index));
-                if (chip != null) {
-                    chipSuggestions.add(chip);
-                }
-            }
-            return new AtlasItem(
-                    IdentityRef.fromTag(tag.getCompound("identity")),
-                    ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
-                    tag.getString("name"),
-                    tag.getInt("totalCount"),
-                    tag.getInt("firstSlotIndex"),
-                    tag.getString("islandId"),
-                    tag.getInt("x"),
-                    tag.getInt("y"),
-                    tag.getInt("width"),
-                    tag.getInt("height"),
-                    tag.getBoolean("recent"),
-                    tag.getBoolean("playerPlaced"),
-                    collectionIds,
-                    chipSuggestions
-            );
-        }
-
-        private static CompoundTag chipToTag(ChipSuggestion chip) {
-            CompoundTag tag = new CompoundTag();
-            tag.putString("kind", chip.kind().name());
-            tag.putString("template", chip.template() == null ? "" : chip.template().name());
-            tag.putString("islandId", chip.islandId());
-            tag.putString("label", chip.label());
-            tag.putInt("color", chip.color());
-            if (chip.iconIdentity() != null) {
-                tag.put("iconIdentity", IdentityRef.from(chip.iconIdentity()).toTag());
-            }
-            return tag;
-        }
-
-        private static ChipSuggestion chipFromTag(CompoundTag tag) {
-            ChipSuggestion.ChipKind kind;
-            try {
-                kind = ChipSuggestion.ChipKind.valueOf(tag.getString("kind"));
-            } catch (IllegalArgumentException ignored) {
-                return null;
-            }
-            IslandSuggestionTemplate template = null;
-            String templateName = tag.getString("template");
-            if (templateName != null && !templateName.isBlank()) {
-                try {
-                    template = IslandSuggestionTemplate.valueOf(templateName);
-                } catch (IllegalArgumentException ignored) {
-                }
-            }
-            ItemIdentity iconIdentity = null;
-            if (tag.contains("iconIdentity", Tag.TAG_COMPOUND)) {
-                iconIdentity = IdentityRef.fromTag(tag.getCompound("iconIdentity")).toIdentity();
-            }
-            String islandId = tag.getString("islandId");
-            String label = tag.getString("label");
-            int color = tag.getInt("color");
-            if (kind == ChipSuggestion.ChipKind.TEMPLATE && template == null) {
-                return null;
-            }
-            if (kind == ChipSuggestion.ChipKind.LEARNED && (islandId == null || islandId.isBlank())) {
-                return null;
-            }
-            return new ChipSuggestion(kind, template, islandId, label, color, iconIdentity);
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                int x,
+                int y,
+                int width,
+                int height,
+                boolean recent,
+                boolean playerPlaced,
+                List<String> collectionIds,
+                List<ChipSuggestion> chipSuggestions
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId, x, y, width, height,
+                    recent, playerPlaced, totalCount > 0, collectionIds, chipSuggestions);
         }
     }
 
@@ -650,22 +523,6 @@ public record SlotWorkspaceViewModel(
             collectionId = collectionId == null ? "" : collectionId;
             label = label == null || label.isBlank() ? collectionId : label;
             memberCount = Math.max(0, memberCount);
-        }
-
-        private CompoundTag toTag() {
-            CompoundTag tag = new CompoundTag();
-            tag.putString("collectionId", collectionId);
-            tag.putString("label", label);
-            tag.putInt("memberCount", memberCount);
-            return tag;
-        }
-
-        private static CollectionEntry fromTag(CompoundTag tag) {
-            return new CollectionEntry(
-                    tag.getString("collectionId"),
-                    tag.getString("label"),
-                    tag.getInt("memberCount")
-            );
         }
     }
 
@@ -682,26 +539,6 @@ public record SlotWorkspaceViewModel(
             count = Math.max(0, count);
             occupied = occupied && !displayStack.isEmpty();
         }
-
-        private CompoundTag toTag(HolderLookup.Provider provider) {
-            CompoundTag tag = new CompoundTag();
-            tag.putInt("hotbarIndex", hotbarIndex);
-            tag.putBoolean("selected", selected);
-            tag.putBoolean("occupied", occupied);
-            tag.put("displayStack", displayStack.saveOptional(provider));
-            tag.putInt("count", count);
-            return tag;
-        }
-
-        private static HotbarSlot fromTag(HolderLookup.Provider provider, CompoundTag tag) {
-            return new HotbarSlot(
-                    tag.getInt("hotbarIndex"),
-                    tag.getBoolean("selected"),
-                    tag.getBoolean("occupied"),
-                    ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
-                    tag.getInt("count")
-            );
-        }
     }
 
     public record OffhandSlot(
@@ -715,56 +552,41 @@ public record SlotWorkspaceViewModel(
             occupied = occupied && !displayStack.isEmpty();
         }
 
-        static OffhandSlot empty() {
+        public static OffhandSlot empty() {
             return new OffhandSlot(false, ItemStack.EMPTY, 0);
         }
 
-        static OffhandSlot from(InventoryAuthoritySnapshot authority) {
+        public static OffhandSlot from(InventoryAuthoritySnapshot authority) {
             InventoryEntrySnapshot entry = authority.slotEntry(BuiltinInventoryIds.PLAYER_OFFHAND, 0);
             boolean occupied = entry != null && entry.present();
             ItemStack stack = occupied ? entry.stack().copy() : ItemStack.EMPTY;
             return new OffhandSlot(occupied, stack, occupied ? entry.count() : 0);
         }
-
-        private CompoundTag toTag(HolderLookup.Provider provider) {
-            CompoundTag tag = new CompoundTag();
-            tag.putBoolean("occupied", occupied);
-            tag.put("displayStack", displayStack.saveOptional(provider));
-            tag.putInt("count", count);
-            return tag;
-        }
-
-        private static OffhandSlot fromTag(HolderLookup.Provider provider, CompoundTag tag) {
-            return new OffhandSlot(
-                    tag.getBoolean("occupied"),
-                    ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
-                    tag.getInt("count")
-            );
-        }
     }
 
-    private static VisualAtlasIslandKind decodeIslandKind(String raw) {
-        try {
-            return raw == null || raw.isBlank()
-                    ? VisualAtlasIslandKind.PLAYER
-                    : VisualAtlasIslandKind.valueOf(raw);
-        } catch (IllegalArgumentException ignored) {
-            return VisualAtlasIslandKind.PLAYER;
-        }
-    }
-
-    private static final class MainAccumulator {
+    private static final class AtlasItemAccumulator {
         private final ItemIdentity identity;
         private final ItemStack displayStack;
         private final String name;
         private int totalCount;
         private int firstSlotIndex;
+        private boolean carried;
 
-        private MainAccumulator(ItemIdentity identity, InventoryEntrySnapshot firstEntry) {
+        private AtlasItemAccumulator(ItemIdentity identity, InventoryEntrySnapshot firstEntry) {
             this.identity = identity;
             this.displayStack = firstEntry.stack().copy();
             this.name = firstEntry.stack().getHoverName().getString();
             this.firstSlotIndex = firstEntry.slotIndex();
+            this.carried = true;
+        }
+
+        private AtlasItemAccumulator(ItemIdentity identity, ItemStack ghostStack, String ghostName) {
+            this.identity = identity;
+            this.displayStack = ghostStack;
+            this.name = ghostName;
+            this.firstSlotIndex = Integer.MAX_VALUE;
+            this.totalCount = 0;
+            this.carried = false;
         }
 
         private void add(InventoryEntrySnapshot entry) {
@@ -772,6 +594,7 @@ public record SlotWorkspaceViewModel(
             if (entry.slotIndex() < firstSlotIndex) {
                 firstSlotIndex = entry.slotIndex();
             }
+            carried = true;
         }
 
         private ItemIdentity identity() {
@@ -791,7 +614,11 @@ public record SlotWorkspaceViewModel(
         }
 
         private int firstSlotIndex() {
-            return firstSlotIndex;
+            return firstSlotIndex == Integer.MAX_VALUE ? 0 : firstSlotIndex;
+        }
+
+        private boolean carried() {
+            return carried;
         }
     }
 }

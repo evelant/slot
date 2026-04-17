@@ -1,4 +1,4 @@
-package dev.imagio.slot.neoforge.screen.ldlib;
+package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.action.InventoryActionKind;
 import dev.imagio.slot.inventory.action.InventoryActionConflictPolicy;
@@ -18,11 +18,11 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.UUID;
 
-final class SlotWorkspaceTransferRequestFactory {
+public final class SlotWorkspaceTransferRequestFactory {
     private SlotWorkspaceTransferRequestFactory() {
     }
 
-    static BuildResult build(
+    public static BuildResult build(
             InventoryHostDescriptor host,
             InventoryAuthoritySnapshot authority,
             InventoryActionTarget source,
@@ -106,19 +106,19 @@ final class SlotWorkspaceTransferRequestFactory {
                 || target instanceof InventoryActionTarget.QuickAccessTarget;
     }
 
-    record BuildResult(
+    public record BuildResult(
             InventoryActionRequest request,
             String diagnostics
     ) {
-        static BuildResult dispatchable(InventoryActionRequest request) {
+        public static BuildResult dispatchable(InventoryActionRequest request) {
             return new BuildResult(request, "");
         }
 
-        static BuildResult rejected(String diagnostics) {
+        public static BuildResult rejected(String diagnostics) {
             return new BuildResult(null, diagnostics == null ? "rejected" : diagnostics);
         }
 
-        boolean dispatchable() {
+        public boolean dispatchable() {
             return request != null;
         }
     }
