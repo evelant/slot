@@ -4,20 +4,31 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public record VisualHomeMap(
         List<VisualAtlasIsland> playerIslands,
-        Map<ItemIdentity, VisualHomeAssignment> assignments
+        Map<ItemIdentity, VisualHomeAssignment> assignments,
+        Set<String> dismissedTemplateIds
 ) {
     public VisualHomeMap {
         playerIslands = copyIslands(playerIslands);
         assignments = copyAssignments(assignments);
+        dismissedTemplateIds = copyDismissedTemplates(dismissedTemplateIds);
+    }
+
+    public VisualHomeMap(
+            List<VisualAtlasIsland> playerIslands,
+            Map<ItemIdentity, VisualHomeAssignment> assignments
+    ) {
+        this(playerIslands, assignments, Set.of());
     }
 
     public static VisualHomeMap empty() {
-        return new VisualHomeMap(List.of(), Map.of());
+        return new VisualHomeMap(List.of(), Map.of(), Set.of());
     }
 
     public VisualAtlasIsland island(String islandId) {
@@ -32,6 +43,10 @@ public record VisualHomeMap(
 
     public VisualHomeAssignment assignment(ItemIdentity identity) {
         return identity == null ? null : assignments.get(identity);
+    }
+
+    public boolean templateDismissed(String templateId) {
+        return templateId != null && !templateId.isBlank() && dismissedTemplateIds.contains(templateId);
     }
 
     public static List<VisualAtlasIsland> copyIslands(List<VisualAtlasIsland> source) {
@@ -69,5 +84,18 @@ public record VisualHomeMap(
             ));
         });
         return Map.copyOf(copied);
+    }
+
+    public static Set<String> copyDismissedTemplates(Set<String> source) {
+        if (source == null || source.isEmpty()) {
+            return Set.of();
+        }
+        LinkedHashSet<String> copied = new LinkedHashSet<>();
+        for (String templateId : source) {
+            if (templateId != null && !templateId.isBlank()) {
+                copied.add(templateId);
+            }
+        }
+        return Set.copyOf(copied);
     }
 }

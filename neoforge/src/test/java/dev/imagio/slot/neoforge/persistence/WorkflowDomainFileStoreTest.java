@@ -118,4 +118,39 @@ class WorkflowDomainFileStoreTest {
         assertTrue(restored.workflowProjection().protection().protects(ItemIdentity.of("minecraft:shield"), null));
         assertTrue(restored.workflowProjection().protection().protectsPortableContainers());
     }
+
+    @Test
+    void fileStoreRoundTripsIslandManagementEvents() {
+        InMemoryWorkflowDomainStateRepository source = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
+
+        VisualAtlasIsland keeper = runtime.visualAtlasWorkflow().createIsland(
+                "Machines", 10, 20, 320, 196, 0xCC5A4A6E, ItemIdentity.of("minecraft:torch")
+        );
+        runtime.visualAtlasWorkflow().renameIsland(keeper.id(), "Workshop");
+        runtime.visualAtlasWorkflow().recolorIsland(keeper.id(), 0xFF112233);
+        runtime.visualAtlasWorkflow().setIslandIcon(keeper.id(), ItemIdentity.of("minecraft:anvil"));
+
+        VisualAtlasIsland doomed = runtime.visualAtlasWorkflow().createIsland(
+                "Scraps", 40, 60, 240, 120, 0xFF222222, null
+        );
+        runtime.visualAtlasWorkflow().deleteIsland(doomed.id());
+
+        runtime.visualAtlasWorkflow().dismissTemplate("template.food");
+
+        WorkflowDomainFileStore fileStore = new WorkflowDomainFileStore(tempDir.resolve("slot-island-mgmt.json"));
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(fileStore);
+        service.saveFrom(source);
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        service.loadInto(restored);
+
+        assertEquals(source.snapshot(), restored.snapshot());
+        VisualAtlasIsland restoredKeeper = restored.workflowProjection().visualHomeMap().island(keeper.id());
+        assertEquals("Workshop", restoredKeeper.label());
+        assertEquals(0xFF112233, restoredKeeper.color());
+        assertEquals(ItemIdentity.of("minecraft:anvil"), restoredKeeper.iconIdentity());
+        assertTrue(restored.workflowProjection().visualHomeMap().island(doomed.id()) == null);
+        assertTrue(restored.workflowProjection().visualHomeMap().templateDismissed("template.food"));
+    }
 }

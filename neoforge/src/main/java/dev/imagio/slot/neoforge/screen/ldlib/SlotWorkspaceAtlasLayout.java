@@ -25,8 +25,8 @@ final class SlotWorkspaceAtlasLayout {
     static final int ISLAND_CONTENT_TOP = 56;
     private static final int TRIAGE_MIN_WIDTH = 420;
     private static final int TRIAGE_MIN_HEIGHT = 260;
-    private static final int PLAYER_ISLAND_MIN_WIDTH = 260;
-    private static final int PLAYER_ISLAND_MIN_HEIGHT = 180;
+    static final int PLAYER_ISLAND_MIN_WIDTH = 260;
+    static final int PLAYER_ISLAND_MIN_HEIGHT = 180;
     private static final int ISLAND_TRAILING_BUFFER_X = CARD_WIDTH + CARD_GAP;
     private static final int ISLAND_TRAILING_BUFFER_Y = CARD_HEIGHT + CARD_GAP;
 

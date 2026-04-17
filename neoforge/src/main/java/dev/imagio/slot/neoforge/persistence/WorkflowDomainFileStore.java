@@ -361,7 +361,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         .toList(),
                 resolved.visualHomeMap().assignments().values().stream()
                         .map(WorkflowDomainFileStore::visualHome)
-                        .toList()
+                        .toList(),
+                List.copyOf(resolved.visualHomeMap().dismissedTemplateIds())
         );
     }
 
@@ -495,6 +496,15 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
 
+        LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>();
+        if (data.dismissedTemplateIds != null) {
+            for (String templateId : data.dismissedTemplateIds) {
+                if (templateId != null && !templateId.isBlank()) {
+                    dismissedTemplateIds.add(templateId);
+                }
+            }
+        }
+
         return new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
@@ -504,7 +514,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 junkTags,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
-                new VisualHomeMap(playerIslands, visualHomes)
+                new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds)
         );
     }
 
@@ -666,6 +676,29 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "VisualHomeCleared";
                 data.identity = identity(event.identity());
             }
+            case WorkflowEvent.VisualIslandRenamed event -> {
+                data.kind = "VisualIslandRenamed";
+                data.islandId = event.islandId();
+                data.label = event.label();
+            }
+            case WorkflowEvent.VisualIslandRecolored event -> {
+                data.kind = "VisualIslandRecolored";
+                data.islandId = event.islandId();
+                data.color = event.color();
+            }
+            case WorkflowEvent.VisualIslandIconChanged event -> {
+                data.kind = "VisualIslandIconChanged";
+                data.islandId = event.islandId();
+                data.iconIdentity = identity(event.iconIdentity());
+            }
+            case WorkflowEvent.VisualIslandDeleted event -> {
+                data.kind = "VisualIslandDeleted";
+                data.islandId = event.islandId();
+            }
+            case WorkflowEvent.TemplateIslandDismissed event -> {
+                data.kind = "TemplateIslandDismissed";
+                data.templateId = event.templateId();
+            }
         }
         return data;
     }
@@ -700,6 +733,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case "VisualIslandMoved" -> new WorkflowEvent.VisualIslandMoved(nonNull(data.islandId), data.x, data.y);
             case "VisualHomeAssigned" -> new WorkflowEvent.VisualHomeAssigned(decodeVisualHome(data.visualHome));
             case "VisualHomeCleared" -> new WorkflowEvent.VisualHomeCleared(decodeIdentity(data.identity));
+            case "VisualIslandRenamed" -> new WorkflowEvent.VisualIslandRenamed(nonNull(data.islandId), nonNull(data.label));
+            case "VisualIslandRecolored" -> new WorkflowEvent.VisualIslandRecolored(nonNull(data.islandId), data.color);
+            case "VisualIslandIconChanged" -> new WorkflowEvent.VisualIslandIconChanged(nonNull(data.islandId), decodeIdentity(data.iconIdentity));
+            case "VisualIslandDeleted" -> new WorkflowEvent.VisualIslandDeleted(nonNull(data.islandId));
+            case "TemplateIslandDismissed" -> new WorkflowEvent.TemplateIslandDismissed(nonNull(data.templateId));
             default -> null;
         };
         return event == null ? null : new WorkflowEventRecord(envelope, event);
@@ -1084,7 +1122,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             ProtectionData protection,
             List<RecentDismissalData> recentDismissals,
             List<VisualIslandData> visualIslands,
-            List<VisualHomeData> visualHomes
+            List<VisualHomeData> visualHomes,
+            List<String> dismissedTemplateIds
     ) {
     }
 
@@ -1113,6 +1152,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private List<LoadoutEntryData> loadoutEntries;
         private VisualIslandData visualIsland;
         private VisualHomeData visualHome;
+        private String label;
+        private int color;
+        private String templateId;
+        private IdentityData iconIdentity;
     }
 
     private static final class ActivityEventData {

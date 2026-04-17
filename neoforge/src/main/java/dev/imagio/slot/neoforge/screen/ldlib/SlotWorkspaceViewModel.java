@@ -6,9 +6,17 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
+import dev.imagio.slot.inventory.triage.IslandSuggestionService;
+import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
+import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.inventory.triage.TriageIslandRef;
+import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.CollectionProjection;
 import dev.imagio.slot.workflow.domain.RecentView;
+import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
@@ -84,6 +92,19 @@ public record SlotWorkspaceViewModel(
             int selectedQuickAccessSlot,
             long revision
     ) {
+        return project(authority, workflow, status, diagnostics, pendingCount, selectedQuickAccessSlot, revision, null);
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules
+    ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         CollectionProjection collectionsProjection = resolvedWorkflow.collections();
@@ -102,6 +123,8 @@ public record SlotWorkspaceViewModel(
         ArrayList<AtlasItem> atlasItems = new ArrayList<>();
         LinkedHashMap<String, Integer> fallbackOrdinalByIsland = new LinkedHashMap<>();
         Set<ItemIdentity> recentIdentities = new LinkedHashSet<>(recents.visibleItems());
+        List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
+        LearnedIslandRuleStore resolvedLearnedRules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
 
         for (MainAccumulator accumulator : accumulators) {
             VisualHomeAssignment assignment = visualHomeMap.assignment(accumulator.identity());
@@ -125,6 +148,16 @@ public record SlotWorkspaceViewModel(
                 placement = SlotWorkspaceAtlasLayout.placementForOrdinal(layoutIslands, islandId, ordinal);
                 islandId = placement.islandId();
             }
+            List<ChipSuggestion> chipSuggestions = List.of();
+            if (assignment == null) {
+                IslandSignalDescriptor descriptor = IslandSignalExtractor.extract(accumulator.displayStack());
+                chipSuggestions = IslandSuggestionService.suggest(
+                        descriptor,
+                        resolvedLearnedRules,
+                        triageIslandRefs,
+                        visualHomeMap.dismissedTemplateIds()
+                );
+            }
             atlasItems.add(new AtlasItem(
                     IdentityRef.from(accumulator.identity()),
                     accumulator.displayStack(),
@@ -138,7 +171,8 @@ public record SlotWorkspaceViewModel(
                     SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                     recentIdentities.contains(accumulator.identity()),
                     playerPlaced,
-                    List.copyOf(collectionsProjection.memberships().getOrDefault(accumulator.identity(), Set.of()))
+                    List.copyOf(collectionsProjection.memberships().getOrDefault(accumulator.identity(), Set.of())),
+                    chipSuggestions
             ));
         }
 
@@ -321,6 +355,20 @@ public record SlotWorkspaceViewModel(
         return Map.copyOf(ranks);
     }
 
+    private static List<TriageIslandRef> triageIslandRefs(VisualHomeMap visualHomeMap) {
+        if (visualHomeMap == null || visualHomeMap.playerIslands().isEmpty()) {
+            return List.of();
+        }
+        ArrayList<TriageIslandRef> refs = new ArrayList<>(visualHomeMap.playerIslands().size());
+        for (VisualAtlasIsland island : visualHomeMap.playerIslands()) {
+            if (island == null) {
+                continue;
+            }
+            refs.add(new TriageIslandRef(island.id(), island.label(), island.color(), island.iconIdentity()));
+        }
+        return List.copyOf(refs);
+    }
+
     private static List<CollectionEntry> collections(CollectionProjection projection) {
         if (projection == null || projection.userCollections().isEmpty()) {
             return List.of();
@@ -471,7 +519,8 @@ public record SlotWorkspaceViewModel(
             int height,
             boolean recent,
             boolean playerPlaced,
-            List<String> collectionIds
+            List<String> collectionIds,
+            List<ChipSuggestion> chipSuggestions
     ) {
         public AtlasItem {
             identity = identity == null ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "") : identity;
@@ -483,6 +532,7 @@ public record SlotWorkspaceViewModel(
             width = Math.max(SlotWorkspaceAtlasLayout.CARD_WIDTH, width);
             height = Math.max(SlotWorkspaceAtlasLayout.CARD_HEIGHT, height);
             collectionIds = collectionIds == null ? List.of() : List.copyOf(collectionIds);
+            chipSuggestions = chipSuggestions == null ? List.of() : List.copyOf(chipSuggestions);
         }
 
         private CompoundTag toTag(HolderLookup.Provider provider) {
@@ -506,6 +556,11 @@ public record SlotWorkspaceViewModel(
                 collectionTags.add(collectionTag);
             }
             tag.put("collectionIds", collectionTags);
+            ListTag chipTags = new ListTag();
+            for (ChipSuggestion chip : chipSuggestions) {
+                chipTags.add(chipToTag(chip));
+            }
+            tag.put("chipSuggestions", chipTags);
             return tag;
         }
 
@@ -514,6 +569,14 @@ public record SlotWorkspaceViewModel(
             ListTag collectionTags = tag.getList("collectionIds", Tag.TAG_COMPOUND);
             for (int index = 0; index < collectionTags.size(); index++) {
                 collectionIds.add(collectionTags.getCompound(index).getString("collectionId"));
+            }
+            ArrayList<ChipSuggestion> chipSuggestions = new ArrayList<>();
+            ListTag chipTags = tag.getList("chipSuggestions", Tag.TAG_COMPOUND);
+            for (int index = 0; index < chipTags.size(); index++) {
+                ChipSuggestion chip = chipFromTag(chipTags.getCompound(index));
+                if (chip != null) {
+                    chipSuggestions.add(chip);
+                }
             }
             return new AtlasItem(
                     IdentityRef.fromTag(tag.getCompound("identity")),
@@ -528,8 +591,53 @@ public record SlotWorkspaceViewModel(
                     tag.getInt("height"),
                     tag.getBoolean("recent"),
                     tag.getBoolean("playerPlaced"),
-                    collectionIds
+                    collectionIds,
+                    chipSuggestions
             );
+        }
+
+        private static CompoundTag chipToTag(ChipSuggestion chip) {
+            CompoundTag tag = new CompoundTag();
+            tag.putString("kind", chip.kind().name());
+            tag.putString("template", chip.template() == null ? "" : chip.template().name());
+            tag.putString("islandId", chip.islandId());
+            tag.putString("label", chip.label());
+            tag.putInt("color", chip.color());
+            if (chip.iconIdentity() != null) {
+                tag.put("iconIdentity", IdentityRef.from(chip.iconIdentity()).toTag());
+            }
+            return tag;
+        }
+
+        private static ChipSuggestion chipFromTag(CompoundTag tag) {
+            ChipSuggestion.ChipKind kind;
+            try {
+                kind = ChipSuggestion.ChipKind.valueOf(tag.getString("kind"));
+            } catch (IllegalArgumentException ignored) {
+                return null;
+            }
+            IslandSuggestionTemplate template = null;
+            String templateName = tag.getString("template");
+            if (templateName != null && !templateName.isBlank()) {
+                try {
+                    template = IslandSuggestionTemplate.valueOf(templateName);
+                } catch (IllegalArgumentException ignored) {
+                }
+            }
+            ItemIdentity iconIdentity = null;
+            if (tag.contains("iconIdentity", Tag.TAG_COMPOUND)) {
+                iconIdentity = IdentityRef.fromTag(tag.getCompound("iconIdentity")).toIdentity();
+            }
+            String islandId = tag.getString("islandId");
+            String label = tag.getString("label");
+            int color = tag.getInt("color");
+            if (kind == ChipSuggestion.ChipKind.TEMPLATE && template == null) {
+                return null;
+            }
+            if (kind == ChipSuggestion.ChipKind.LEARNED && (islandId == null || islandId.isBlank())) {
+                return null;
+            }
+            return new ChipSuggestion(kind, template, islandId, label, color, iconIdentity);
         }
     }
 

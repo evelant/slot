@@ -29,8 +29,13 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.RecentDismissedUpTo,
         WorkflowEvent.VisualIslandCreated,
         WorkflowEvent.VisualIslandMoved,
+        WorkflowEvent.VisualIslandRenamed,
+        WorkflowEvent.VisualIslandRecolored,
+        WorkflowEvent.VisualIslandIconChanged,
+        WorkflowEvent.VisualIslandDeleted,
         WorkflowEvent.VisualHomeAssigned,
-        WorkflowEvent.VisualHomeCleared {
+        WorkflowEvent.VisualHomeCleared,
+        WorkflowEvent.TemplateIslandDismissed {
 
     record CollectionCreated(
             String collectionId,
@@ -201,6 +206,42 @@ public sealed interface WorkflowEvent permits
         }
     }
 
+    record VisualIslandRenamed(
+            String islandId,
+            String label
+    ) implements WorkflowEvent {
+        public VisualIslandRenamed {
+            islandId = islandId == null ? "" : islandId;
+            label = label == null ? "" : label;
+        }
+    }
+
+    record VisualIslandRecolored(
+            String islandId,
+            int color
+    ) implements WorkflowEvent {
+        public VisualIslandRecolored {
+            islandId = islandId == null ? "" : islandId;
+        }
+    }
+
+    record VisualIslandIconChanged(
+            String islandId,
+            ItemIdentity iconIdentity
+    ) implements WorkflowEvent {
+        public VisualIslandIconChanged {
+            islandId = islandId == null ? "" : islandId;
+        }
+    }
+
+    record VisualIslandDeleted(
+            String islandId
+    ) implements WorkflowEvent {
+        public VisualIslandDeleted {
+            islandId = islandId == null ? "" : islandId;
+        }
+    }
+
     record VisualHomeAssigned(
             VisualHomeAssignment assignment
     ) implements WorkflowEvent {
@@ -209,5 +250,13 @@ public sealed interface WorkflowEvent permits
     record VisualHomeCleared(
             ItemIdentity identity
     ) implements WorkflowEvent {
+    }
+
+    record TemplateIslandDismissed(
+            String templateId
+    ) implements WorkflowEvent {
+        public TemplateIslandDismissed {
+            templateId = templateId == null ? "" : templateId;
+        }
     }
 }

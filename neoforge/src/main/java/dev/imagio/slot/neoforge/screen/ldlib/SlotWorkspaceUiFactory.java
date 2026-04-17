@@ -21,6 +21,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -79,14 +80,27 @@ final class SlotWorkspaceUiFactory {
         private SlotWorkspaceViewModel.IdentityRef selectedAtlasIdentity;
         private SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
         private int selectedHotbarIndex = -1;
+        private String editingIslandId = null;
+        private String islandLabelDraft = "";
+        private SlotWorkspaceViewModel.IdentityRef pendingCreateIdentity;
+        private int pendingCreateWorldX;
+        private int pendingCreateWorldY;
+        private String pendingCreateLabel = "";
+        private int pendingCreateColor = ISLAND_PALETTE[0];
+        private boolean pendingCreateFocusPending;
 
         private RPCEmitter transferEmitter;
         private RPCEmitter homeEmitter;
-        private RPCEmitter createIslandEmitter;
+        private RPCEmitter createNamedIslandEmitter;
         private RPCEmitter toggleCollectionEmitter;
         private RPCEmitter createCollectionEmitter;
         private RPCEmitter hotbarToAtlasEmitter;
         private RPCEmitter moveIslandEmitter;
+        private RPCEmitter renameIslandEmitter;
+        private RPCEmitter recolorIslandEmitter;
+        private RPCEmitter setIslandIconEmitter;
+        private RPCEmitter deleteIslandEmitter;
+        private RPCEmitter acceptChipEmitter;
         private AtlasCamera atlasCamera;
 
         private Controller(SlotWorkspaceUiSession session, Player player) {
@@ -178,11 +192,15 @@ final class SlotWorkspaceUiFactory {
                     Integer.class,
                     session::assignHome
             ));
-            createIslandEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+            createNamedIslandEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     String.class,
                     String.class,
                     String.class,
-                    session::createIslandForItem
+                    String.class,
+                    Integer.class,
+                    Integer.class,
+                    Integer.class,
+                    session::createNamedIslandForItem
             ));
             toggleCollectionEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     String.class,
@@ -207,6 +225,35 @@ final class SlotWorkspaceUiFactory {
                     Integer.class,
                     Integer.class,
                     session::moveIsland
+            ));
+            renameIslandEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    session::renameIsland
+            ));
+            recolorIslandEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    Integer.class,
+                    session::recolorIsland
+            ));
+            setIslandIconEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    String.class,
+                    String.class,
+                    session::setIslandIcon
+            ));
+            deleteIslandEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    session::deleteIsland
+            ));
+            acceptChipEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    String.class,
+                    String.class,
+                    String.class,
+                    session::acceptChip
             ));
         }
 
@@ -295,6 +342,14 @@ final class SlotWorkspaceUiFactory {
             installAtlasBackgroundDropTarget(atlas);
             buildAtlas(atlas);
             panel.addChildren(atlas, navigationCapsule(atlas));
+            UIElement editPopover = islandEditPopover();
+            if (editPopover != null) {
+                panel.addChild(editPopover);
+            }
+            UIElement createPopover = createIslandPopover();
+            if (createPopover != null) {
+                panel.addChild(createPopover);
+            }
             return panel;
         }
 
@@ -304,6 +359,7 @@ final class SlotWorkspaceUiFactory {
             }
             for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
                 atlas.addContentChild(atlasCardButton(atlas, item));
+                addAtlasItemChips(atlas, item);
             }
             if (viewModel.atlasItems().isEmpty()) {
                 UIElement empty = label("No main inventory stacks visible", MUTED)
@@ -353,6 +409,28 @@ final class SlotWorkspaceUiFactory {
             installIslandDragSource(header, atlas, island);
             installIslandDropTarget(panel, panel, atlas, island);
             installIslandDropTarget(header, panel, atlas, island);
+
+            if (island.kind() == VisualAtlasIslandKind.PLAYER) {
+                Button editButton = button("...", true, PANEL_ALT);
+                editButton.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .right(4)
+                        .top(4)
+                        .width(18)
+                        .height(14));
+                editButton.textStyle(style -> style
+                        .textColor(TEXT)
+                        .textShadow(false)
+                        .fontSize(8)
+                        .textAlignHorizontal(Horizontal.CENTER)
+                        .textAlignVertical(Vertical.CENTER));
+                editButton.style(style -> style.zIndex(4));
+                editButton.setOnClick(event -> {
+                    event.stopPropagation();
+                    beginIslandEdit(island);
+                });
+                panel.addChild(editButton);
+            }
 
             IslandRenderBudget[] lastBudget = new IslandRenderBudget[1];
             panel.addEventListener(UIEvents.TICK, event -> {
@@ -440,6 +518,71 @@ final class SlotWorkspaceUiFactory {
             return button;
         }
 
+        private void addAtlasItemChips(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
+            List<ChipSuggestion> chips = item.chipSuggestions();
+            if (chips.isEmpty()) {
+                return;
+            }
+            int chipHeight = 10;
+            int chipGap = 1;
+            for (int index = 0; index < chips.size(); index++) {
+                ChipSuggestion chip = chips.get(index);
+                int top = item.y() + item.height() + 2 + index * (chipHeight + chipGap);
+                Button chipButton = button("", true, chip.color());
+                chipButton.noText();
+                chipButton.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(item.x())
+                        .top(top)
+                        .width(item.width())
+                        .height(chipHeight)
+                        .paddingAll(1)
+                        .gapAll(2)
+                        .flexDirection(FlexDirection.ROW)
+                        .alignItems(AlignItems.CENTER));
+                chipButton.style(style -> style.zIndex(3));
+                chipButton.setOnClick(event -> {
+                    event.stopPropagation();
+                    sendChipAccept(item, chip);
+                });
+                Label chipLabel = label(chipLabelText(chip), TEXT);
+                chipLabel.layout(layout -> layout.flex(1).height(chipHeight - 2));
+                chipLabel.textStyle(style -> style
+                        .textColor(TEXT)
+                        .fontSize(6)
+                        .textShadow(false)
+                        .textAlignHorizontal(Horizontal.CENTER)
+                        .textAlignVertical(Vertical.CENTER));
+                chipLabel.setAllowHitTest(false);
+                chipButton.addChild(chipLabel);
+                atlas.addContentChild(chipButton);
+            }
+        }
+
+        private void sendChipAccept(SlotWorkspaceViewModel.AtlasItem item, ChipSuggestion chip) {
+            if (acceptChipEmitter == null) {
+                return;
+            }
+            selectedAtlasIdentity = item.identity();
+            String templateName = chip.template() == null ? "" : chip.template().name();
+            acceptChipEmitter.send(
+                    item.identity().itemId(),
+                    item.identity().comparisonMode(),
+                    item.identity().componentFingerprint(),
+                    chip.islandId(),
+                    templateName
+            );
+            localStatus = "accepting chip: " + chip.label();
+            rebuild();
+        }
+
+        private static String chipLabelText(ChipSuggestion chip) {
+            String label = chip.kind() == ChipSuggestion.ChipKind.TEMPLATE && chip.template() != null
+                    ? chip.template().defaultLabel()
+                    : chip.label();
+            return label == null ? "" : shorten(label, 10);
+        }
+
         private UIElement navigationCapsule(SlotAtlasGraphView atlas) {
             UIElement capsule = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
@@ -513,6 +656,328 @@ final class SlotWorkspaceUiFactory {
             return button;
         }
 
+        private static final int[] ISLAND_PALETTE = {
+                0xCC7D5A3A, 0xCC5A6E3D, 0xCC6E3D3D, 0xCC3D5A6E,
+                0xCC3D6E5A, 0xCC5A3D6E, 0xCC5A4A6E, 0xCC4E5A4A
+        };
+
+        private void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island) {
+            if (island == null) {
+                return;
+            }
+            editingIslandId = island.islandId();
+            islandLabelDraft = island.label();
+            localStatus = "editing " + island.label();
+            rebuild();
+        }
+
+        private void endIslandEdit() {
+            editingIslandId = null;
+            islandLabelDraft = "";
+            rebuild();
+        }
+
+        private UIElement islandEditPopover() {
+            if (editingIslandId == null) {
+                return null;
+            }
+            SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(editingIslandId);
+            if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
+                editingIslandId = null;
+                islandLabelDraft = "";
+                return null;
+            }
+
+            UIElement capsule = panel(GLASS).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .right(10)
+                    .top(10)
+                    .width(250)
+                    .paddingAll(8)
+                    .gapAll(6)
+                    .flexDirection(FlexDirection.COLUMN));
+            capsule.style(style -> style.zIndex(20));
+            capsule.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+
+            UIElement titleRow = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(16)
+                    .gapAll(6)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            Label title = label("Edit island", ACCENT);
+            title.layout(layout -> layout.flex(1).height(12));
+            Button close = button("x", true, PANEL_ALT);
+            close.layout(layout -> layout.width(18).height(14));
+            close.setOnClick(event -> {
+                event.stopPropagation();
+                endIslandEdit();
+            });
+            titleRow.addChildren(title, close);
+            capsule.addChild(titleRow);
+
+            TextField nameInput = new TextField();
+            nameInput.setAnyString();
+            nameInput.setText(islandLabelDraft, false);
+            nameInput.layout(layout -> layout.widthPercent(100).height(20));
+            nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
+            nameInput.textFieldStyle(style -> style
+                    .placeholder(Component.literal("Island name"))
+                    .textColor(TEXT)
+                    .cursorColor(ACCENT)
+                    .textShadow(false)
+                    .fontSize(10));
+            nameInput.setTextResponder(value -> {
+                String next = value == null ? "" : value;
+                islandLabelDraft = next;
+                String trimmed = next.trim();
+                if (trimmed.isBlank() || trimmed.equals(island.label())) {
+                    return;
+                }
+                if (renameIslandEmitter != null) {
+                    renameIslandEmitter.send(editingIslandId, trimmed);
+                }
+            });
+            capsule.addChild(nameInput);
+
+            capsule.addChild(label("Color", MUTED).layout(layout -> layout.height(10)));
+            UIElement paletteRow = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(18)
+                    .gapAll(4)
+                    .flexDirection(FlexDirection.ROW));
+            for (int color : ISLAND_PALETTE) {
+                boolean selected = color == island.color();
+                Button swatch = button("", true, color);
+                swatch.layout(layout -> layout.flex(1).height(18));
+                swatch.noText();
+                if (selected) {
+                    swatch.style(style -> style.zIndex(1));
+                }
+                int finalColor = color;
+                swatch.setOnClick(event -> {
+                    event.stopPropagation();
+                    if (finalColor == island.color()) {
+                        return;
+                    }
+                    boolean sent = recolorIslandEmitter != null && recolorIslandEmitter.send(editingIslandId, finalColor);
+                    localStatus = sent ? "recolor requested" : "recolor unavailable";
+                    rebuild();
+                });
+                paletteRow.addChild(swatch);
+            }
+            capsule.addChild(paletteRow);
+
+            SlotWorkspaceViewModel.AtlasItem selected = selectedAtlasItem();
+            boolean canSetIcon = selected != null;
+            Button setIcon = button(
+                    canSetIcon ? "Set icon: " + shorten(selected.name(), 16) : "Select an item to set icon",
+                    canSetIcon
+            );
+            setIcon.layout(layout -> layout.widthPercent(100).height(18));
+            setIcon.setOnClick(event -> {
+                event.stopPropagation();
+                if (selected == null) {
+                    localStatus = "select an atlas item first";
+                    rebuild();
+                    return;
+                }
+                boolean sent = setIslandIconEmitter != null && setIslandIconEmitter.send(
+                        editingIslandId,
+                        selected.identity().itemId(),
+                        selected.identity().comparisonMode(),
+                        selected.identity().componentFingerprint()
+                );
+                localStatus = sent ? "set icon requested" : "set icon unavailable";
+                rebuild();
+            });
+            capsule.addChild(setIcon);
+
+            Button clearIcon = button("Clear icon", true);
+            clearIcon.layout(layout -> layout.widthPercent(100).height(18));
+            clearIcon.setOnClick(event -> {
+                event.stopPropagation();
+                boolean sent = setIslandIconEmitter != null && setIslandIconEmitter.send(editingIslandId, "", "", "");
+                localStatus = sent ? "clear icon requested" : "clear icon unavailable";
+                rebuild();
+            });
+            capsule.addChild(clearIcon);
+
+            boolean empty = island.itemCount() == 0;
+            Button deleteButton = button(empty ? "Delete island" : "Delete (move items first)", empty);
+            deleteButton.layout(layout -> layout.widthPercent(100).height(18));
+            deleteButton.setOnClick(event -> {
+                event.stopPropagation();
+                if (!empty) {
+                    localStatus = "move all items off this island first";
+                    rebuild();
+                    return;
+                }
+                boolean sent = deleteIslandEmitter != null && deleteIslandEmitter.send(editingIslandId);
+                localStatus = sent ? "delete requested" : "delete unavailable";
+                if (sent) {
+                    endIslandEdit();
+                    return;
+                }
+                rebuild();
+            });
+            capsule.addChild(deleteButton);
+
+            return capsule;
+        }
+
+        private void beginCreateIsland(SlotWorkspaceViewModel.AtlasItem item, int worldX, int worldY) {
+            if (item == null) {
+                return;
+            }
+            pendingCreateIdentity = item.identity();
+            pendingCreateWorldX = worldX;
+            pendingCreateWorldY = worldY;
+            pendingCreateLabel = item.name();
+            pendingCreateColor = ISLAND_PALETTE[0];
+            pendingCreateFocusPending = true;
+            localStatus = "name the new island";
+            rebuild();
+        }
+
+        private void endCreateIsland() {
+            pendingCreateIdentity = null;
+            pendingCreateLabel = "";
+            pendingCreateColor = ISLAND_PALETTE[0];
+            pendingCreateFocusPending = false;
+            rebuild();
+        }
+
+        private UIElement createIslandPopover() {
+            if (pendingCreateIdentity == null) {
+                return null;
+            }
+            SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(pendingCreateIdentity);
+            if (item == null) {
+                pendingCreateIdentity = null;
+                return null;
+            }
+
+            UIElement capsule = panel(GLASS).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .right(10)
+                    .top(10)
+                    .width(260)
+                    .paddingAll(8)
+                    .gapAll(6)
+                    .flexDirection(FlexDirection.COLUMN));
+            capsule.style(style -> style.zIndex(20));
+            capsule.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+
+            UIElement titleRow = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(16)
+                    .gapAll(6)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            Label title = label("New island for " + shorten(item.name(), 18), ACCENT);
+            title.layout(layout -> layout.flex(1).height(12));
+            Button close = button("x", true, PANEL_ALT);
+            close.layout(layout -> layout.width(18).height(14));
+            close.setOnClick(event -> {
+                event.stopPropagation();
+                endCreateIsland();
+            });
+            titleRow.addChildren(title, close);
+            capsule.addChild(titleRow);
+
+            TextField nameInput = new TextField();
+            nameInput.setAnyString();
+            nameInput.setText(pendingCreateLabel, false);
+            nameInput.layout(layout -> layout.widthPercent(100).height(20));
+            nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
+            nameInput.textFieldStyle(style -> style
+                    .placeholder(Component.literal("Island name"))
+                    .textColor(TEXT)
+                    .cursorColor(ACCENT)
+                    .textShadow(false)
+                    .fontSize(10));
+            nameInput.setTextResponder(value -> pendingCreateLabel = value == null ? "" : value);
+            if (pendingCreateFocusPending) {
+                pendingCreateFocusPending = false;
+                nameInput.addEventListener(UIEvents.LAYOUT_CHANGED, event -> {
+                    nameInput.focus();
+                    String current = nameInput.getValue();
+                    int length = current == null ? 0 : current.length();
+                    nameInput.setCursor(length);
+                    nameInput.setSelection(0, length);
+                }, true);
+            }
+            capsule.addChild(nameInput);
+
+            capsule.addChild(label("Color", MUTED).layout(layout -> layout.height(10)));
+            UIElement paletteRow = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(18)
+                    .gapAll(4)
+                    .flexDirection(FlexDirection.ROW));
+            for (int color : ISLAND_PALETTE) {
+                boolean selected = color == pendingCreateColor;
+                Button swatch = button("", true, color);
+                swatch.layout(layout -> layout.flex(1).height(18));
+                swatch.noText();
+                if (selected) {
+                    swatch.style(style -> style.zIndex(1));
+                }
+                int finalColor = color;
+                swatch.setOnClick(event -> {
+                    event.stopPropagation();
+                    pendingCreateColor = finalColor;
+                    rebuild();
+                });
+                paletteRow.addChild(swatch);
+            }
+            capsule.addChild(paletteRow);
+
+            UIElement actionRow = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(20)
+                    .gapAll(6)
+                    .flexDirection(FlexDirection.ROW));
+            Button cancel = button("Cancel", true, PANEL_ALT);
+            cancel.layout(layout -> layout.flex(1).height(20));
+            cancel.setOnClick(event -> {
+                event.stopPropagation();
+                endCreateIsland();
+            });
+            boolean nameReady = pendingCreateLabel != null && !pendingCreateLabel.trim().isBlank();
+            Button create = button("Create", nameReady);
+            create.layout(layout -> layout.flex(1).height(20));
+            create.setOnClick(event -> {
+                event.stopPropagation();
+                String trimmed = pendingCreateLabel == null ? "" : pendingCreateLabel.trim();
+                if (trimmed.isBlank()) {
+                    localStatus = "enter an island name";
+                    rebuild();
+                    return;
+                }
+                boolean sent = createNamedIslandEmitter != null && createNamedIslandEmitter.send(
+                        pendingCreateIdentity.itemId(),
+                        pendingCreateIdentity.comparisonMode(),
+                        pendingCreateIdentity.componentFingerprint(),
+                        trimmed,
+                        pendingCreateColor,
+                        pendingCreateWorldX,
+                        pendingCreateWorldY
+                );
+                localStatus = sent ? "create island requested" : "create island unavailable";
+                if (sent) {
+                    endCreateIsland();
+                    return;
+                }
+                rebuild();
+            });
+            actionRow.addChildren(cancel, create);
+            capsule.addChild(actionRow);
+
+            return capsule;
+        }
+
         private UIElement inspectorPanel() {
             UIElement panel = panel(PANEL).layout(layout -> layout
                     .width(284)
@@ -523,7 +988,6 @@ final class SlotWorkspaceUiFactory {
             clearSelectionOnDirectClick(panel);
             panel.addChildren(
                     selectionPanel(),
-                    atlasActionsPanel(),
                     collectionsPanel()
             );
             return panel;
@@ -574,29 +1038,6 @@ final class SlotWorkspaceUiFactory {
                         wrappedLabel("Select an anchor or hotbar slot to inspect it. Rich detail lives here so atlas homes can stay compact.", MUTED)
                 );
             }
-            return panel;
-        }
-
-        private UIElement atlasActionsPanel() {
-            UIElement panel = panel(PANEL_ALT).layout(layout -> layout
-                    .widthPercent(100)
-                    .paddingAll(6)
-                    .gapAll(4)
-                    .flexDirection(FlexDirection.COLUMN));
-            SlotWorkspaceViewModel.AtlasItem atlasItem = selectedAtlasItem();
-            panel.addChildren(label("Atlas Actions", ACCENT).layout(layout -> layout.height(12)));
-            Button createButton = button(
-                    atlasItem == null ? "Select an item to create island" : "Create island from selected item",
-                    true
-            );
-            createButton.layout(layout -> layout.widthPercent(100).height(22));
-            createButton.setOnClick(event -> {
-                event.stopPropagation();
-                sendCreateIsland();
-            });
-            installCreateIslandDropTarget(createButton);
-            panel.addChildren(createButton);
-            panel.addChildren(wrappedLabel("Drag an atlas card onto an island to place it. Drop onto this action to forge a new island.", MUTED));
             return panel;
         }
 
@@ -871,33 +1312,6 @@ final class SlotWorkspaceUiFactory {
             rebuild();
         }
 
-        private void sendCreateIsland() {
-            SlotWorkspaceViewModel.AtlasItem item = selectedAtlasItem();
-            if (item == null) {
-                localStatus = "select an atlas item first";
-                rebuild();
-                return;
-            }
-            sendCreateIsland(item.identity());
-        }
-
-        private void sendCreateIsland(SlotWorkspaceViewModel.IdentityRef identity) {
-            if (identity == null) {
-                localStatus = "select an atlas item first";
-                rebuild();
-                return;
-            }
-            boolean sent = createIslandEmitter != null && createIslandEmitter.send(
-                    identity.itemId(),
-                    identity.comparisonMode(),
-                    identity.componentFingerprint()
-            );
-            localStatus = sent ? "create island requested" : "create island unavailable";
-            selectedAtlasIdentity = null;
-            selectedHotbarIndex = -1;
-            rebuild();
-        }
-
         private void sendToggleCollection(String collectionId) {
             SlotWorkspaceViewModel.AtlasItem item = selectedAtlasItem();
             if (item == null) {
@@ -949,7 +1363,7 @@ final class SlotWorkspaceUiFactory {
                     return;
                 }
                 source.startDrag(
-                        new AtlasItemDrag(item.identity(), item.displayStack().copy()),
+                        new AtlasItemDrag(item.identity(), item.displayStack().copy(), item.islandId()),
                         dragTexture(item.displayStack())
                 ).setDragTexture(-10, -10, 20, 20);
                 localStatus = "dragging " + item.name();
@@ -1055,12 +1469,25 @@ final class SlotWorkspaceUiFactory {
                 clearDropOverlay(atlas);
                 AtlasItemDrag atlasItem = atlasItemDrag(event);
                 if (atlasItem != null) {
-                    sendAssignHome(
-                            atlasItem.identity(),
-                            SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                            atlas.worldX(event.x),
-                            atlas.worldY(event.y)
-                    );
+                    int worldX = atlas.worldX(event.x);
+                    int worldY = atlas.worldY(event.y);
+                    if (wasDraggedFromTriage(atlasItem)) {
+                        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(atlasItem.identity());
+                        if (item == null) {
+                            localStatus = "dragged item is no longer visible";
+                            rebuild();
+                            event.stopPropagation();
+                            return;
+                        }
+                        beginCreateIsland(item, worldX, worldY);
+                    } else {
+                        sendAssignHome(
+                                atlasItem.identity(),
+                                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                                worldX,
+                                worldY
+                        );
+                    }
                     event.stopPropagation();
                     return;
                 }
@@ -1085,6 +1512,18 @@ final class SlotWorkspaceUiFactory {
                     event.stopPropagation();
                 }
             });
+        }
+
+        private boolean wasDraggedFromTriage(AtlasItemDrag drag) {
+            if (drag == null) {
+                return false;
+            }
+            String originIslandId = drag.originIslandId();
+            if (SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(originIslandId)) {
+                return true;
+            }
+            SlotWorkspaceViewModel.AtlasIsland origin = viewModel.island(originIslandId);
+            return origin != null && origin.kind() == VisualAtlasIslandKind.TRIAGE;
         }
 
         private void installAtlasCanvasDropTarget(UIElement target, SlotAtlasGraphView atlas) {
@@ -1156,20 +1595,6 @@ final class SlotWorkspaceUiFactory {
                     return;
                 }
                 if (atlas.beginViewportPan(event)) {
-                    event.stopPropagation();
-                }
-            });
-        }
-
-        private void installCreateIslandDropTarget(Button target) {
-            target.addEventListener(UIEvents.DRAG_ENTER, event -> updateGenericDropOverlay(target, atlasItemDrag(event) != null), true);
-            target.addEventListener(UIEvents.DRAG_UPDATE, event -> updateGenericDropOverlay(target, atlasItemDrag(event) != null));
-            target.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(target), true);
-            target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
-                clearDropOverlay(target);
-                AtlasItemDrag drag = atlasItemDrag(event);
-                if (drag != null) {
-                    sendCreateIsland(drag.identity());
                     event.stopPropagation();
                 }
             });
@@ -2068,7 +2493,8 @@ final class SlotWorkspaceUiFactory {
 
     private record AtlasItemDrag(
             SlotWorkspaceViewModel.IdentityRef identity,
-            ItemStack displayStack
+            ItemStack displayStack,
+            String originIslandId
     ) {
     }
 

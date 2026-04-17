@@ -18,6 +18,10 @@ import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
+import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
+import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
@@ -39,6 +43,7 @@ final class SlotWorkspaceUiSession {
     static final int TARGET_HOTBAR_SLOT = 3;
 
     private final Player player;
+    private final LearnedIslandRuleStore learnedRules = new LearnedIslandRuleStore();
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
     private CompoundTag lastContentTag = new CompoundTag();
     private CompoundTag lastViewTag;
@@ -102,7 +107,105 @@ final class SlotWorkspaceUiSession {
         broadcast(serverPlayer);
     }
 
-    void createIslandForItem(String itemId, String comparisonMode, String componentFingerprint) {
+    void acceptChip(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            String chipIslandId,
+            String templateName
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null || chipIslandId == null || chipIslandId.isBlank()) {
+            reject("invalid_chip_accept");
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem item = visibleAtlasItem(serverPlayer, identity);
+        if (item == null) {
+            reject("selected_item_not_visible");
+            return;
+        }
+        IslandSuggestionTemplate template = resolveTemplate(templateName);
+        String resolvedIslandId;
+        if (template != null) {
+            resolvedIslandId = resolveOrMaterializeTemplateIsland(serverPlayer, template, identity, item.name());
+            if (resolvedIslandId == null) {
+                reject("template_island_creation_failed");
+                return;
+            }
+            refreshServerView(serverPlayer);
+        } else {
+            WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+            if (runtime.visualAtlasWorkflow().visualHomeMap().island(chipIslandId) == null) {
+                reject("unknown_island");
+                return;
+            }
+            resolvedIslandId = chipIslandId;
+        }
+        applyHomeDrop(serverPlayer, identity, resolvedIslandId, null, null, "slot_workspace.ldlib.chip_accept");
+        broadcast(serverPlayer);
+    }
+
+    private String resolveOrMaterializeTemplateIsland(
+            ServerPlayer serverPlayer,
+            IslandSuggestionTemplate template,
+            ItemIdentity seedIdentity,
+            String seedLabel
+    ) {
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().stream()
+                .filter(island -> island != null && template.defaultLabel().equalsIgnoreCase(island.label()))
+                .findFirst()
+                .orElse(null);
+        if (existing != null) {
+            return existing.id();
+        }
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                template.defaultLabel(),
+                seedIdentity,
+                runtime.visualAtlasWorkflow().visualHomeMap()
+        );
+        VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIsland(
+                draft.label(),
+                draft.x(),
+                draft.y(),
+                draft.width(),
+                draft.height(),
+                template.defaultColor(),
+                seedIdentity,
+                DomainEventMetadata.origin("slot_workspace.ldlib.chip_accept.island_create")
+        );
+        SlotDebugLog.log(
+                "LDLib atlas template island materialized {} ({}) for chip accept seed={}",
+                created == null ? "null" : created.id(),
+                template.name(),
+                seedLabel
+        );
+        return created == null ? null : created.id();
+    }
+
+    private static IslandSuggestionTemplate resolveTemplate(String templateName) {
+        if (templateName == null || templateName.isBlank()) {
+            return null;
+        }
+        try {
+            return IslandSuggestionTemplate.valueOf(templateName);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+    }
+
+    void createNamedIslandForItem(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            String label,
+            Integer color,
+            Integer worldX,
+            Integer worldY
+    ) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
@@ -116,40 +219,48 @@ final class SlotWorkspaceUiSession {
             reject("selected_item_not_visible");
             return;
         }
+        String trimmedLabel = label == null ? "" : label.trim();
+        if (trimmedLabel.isBlank()) {
+            reject("invalid_island_label");
+            return;
+        }
+        if (color == null || worldX == null || worldY == null) {
+            reject("invalid_island_placement");
+            return;
+        }
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
-                item.name(),
-                identity,
-                runtime.visualAtlasWorkflow().visualHomeMap()
-        );
-        VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIsland(
-                draft.label(),
-                draft.x(),
-                draft.y(),
-                draft.width(),
-                draft.height(),
-                draft.color(),
-                identity,
-                DomainEventMetadata.origin("slot_workspace.ldlib.island_create")
-        );
-        SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
-                SlotWorkspaceAtlasLayout.baseIslands(runtime.visualAtlasWorkflow().visualHomeMap()),
-                created.id(),
-                0
-        );
-        runtime.visualAtlasWorkflow().assignHome(
-                identity,
-                created.id(),
-                placement.localX(),
-                placement.localY(),
-                VisualHomeOrigin.PLAYER_PLACED,
-                true,
-                DomainEventMetadata.origin("slot_workspace.ldlib.home_assign")
-        );
-        status = "island created";
-        diagnostics = created.label();
-        SlotDebugLog.log("LDLib atlas island created {} for {}", created.id(), identity.itemId());
-        broadcast(serverPlayer);
+        try {
+            VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIsland(
+                    trimmedLabel,
+                    worldX,
+                    worldY,
+                    SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_WIDTH,
+                    SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_HEIGHT,
+                    color,
+                    identity,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.island_create")
+            );
+            SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
+                    SlotWorkspaceAtlasLayout.baseIslands(runtime.visualAtlasWorkflow().visualHomeMap()),
+                    created.id(),
+                    0
+            );
+            runtime.visualAtlasWorkflow().assignHome(
+                    identity,
+                    created.id(),
+                    placement.localX(),
+                    placement.localY(),
+                    VisualHomeOrigin.PLAYER_PLACED,
+                    true,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.home_assign")
+            );
+            status = "island created";
+            diagnostics = created.label();
+            SlotDebugLog.log("LDLib atlas island created {} for {}", created.id(), identity.itemId());
+            broadcast(serverPlayer);
+        } catch (IllegalArgumentException exception) {
+            reject(exception.getMessage());
+        }
     }
 
     void moveIsland(String islandId, Integer worldX, Integer worldY) {
@@ -186,6 +297,135 @@ final class SlotWorkspaceUiSession {
         diagnostics = moved.label();
         SlotDebugLog.log("LDLib atlas island moved {} -> {},{}", islandId, origin.x(), origin.y());
         broadcast(serverPlayer);
+    }
+
+    void renameIsland(String islandId, String label) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        if (islandId == null || islandId.isBlank() || label == null || label.isBlank()) {
+            reject("invalid_island_rename");
+            return;
+        }
+        try {
+            VisualAtlasIsland renamed = workflowRuntime(serverPlayer).visualAtlasWorkflow().renameIsland(
+                    islandId,
+                    label,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.island_rename")
+            );
+            if (renamed == null) {
+                reject("island_rename_rejected");
+                return;
+            }
+            status = "island renamed";
+            diagnostics = renamed.label();
+            SlotDebugLog.log("LDLib atlas island renamed {} -> {}", islandId, renamed.label());
+            broadcast(serverPlayer);
+        } catch (IllegalArgumentException exception) {
+            reject(exception.getMessage());
+        }
+    }
+
+    void recolorIsland(String islandId, Integer color) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        if (islandId == null || islandId.isBlank() || color == null) {
+            reject("invalid_island_recolor");
+            return;
+        }
+        VisualAtlasIsland recolored = workflowRuntime(serverPlayer).visualAtlasWorkflow().recolorIsland(
+                islandId,
+                color,
+                DomainEventMetadata.origin("slot_workspace.ldlib.island_recolor")
+        );
+        if (recolored == null) {
+            reject("island_recolor_rejected");
+            return;
+        }
+        status = "island recolored";
+        diagnostics = Integer.toHexString(recolored.color());
+        SlotDebugLog.log("LDLib atlas island recolored {} -> {}", islandId, Integer.toHexString(recolored.color()));
+        broadcast(serverPlayer);
+    }
+
+    void setIslandIcon(String islandId, String itemId, String comparisonMode, String componentFingerprint) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        if (islandId == null || islandId.isBlank()) {
+            reject("invalid_island_icon");
+            return;
+        }
+        ItemIdentity iconIdentity = itemId == null || itemId.isBlank()
+                ? null
+                : resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (itemId != null && !itemId.isBlank() && iconIdentity == null) {
+            reject("invalid_icon_identity");
+            return;
+        }
+        VisualAtlasIsland updated = workflowRuntime(serverPlayer).visualAtlasWorkflow().setIslandIcon(
+                islandId,
+                iconIdentity,
+                DomainEventMetadata.origin("slot_workspace.ldlib.island_icon")
+        );
+        if (updated == null) {
+            reject("island_icon_rejected");
+            return;
+        }
+        status = iconIdentity == null ? "island icon cleared" : "island icon set";
+        diagnostics = iconIdentity == null ? "" : iconIdentity.itemId();
+        SlotDebugLog.log("LDLib atlas island icon {} -> {}", islandId, iconIdentity == null ? "<none>" : iconIdentity.itemId());
+        broadcast(serverPlayer);
+    }
+
+    void deleteIsland(String islandId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        if (islandId == null || islandId.isBlank()) {
+            reject("invalid_island_delete");
+            return;
+        }
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
+        if (existing == null || existing.kind() != dev.imagio.slot.workflow.domain.VisualAtlasIslandKind.PLAYER) {
+            reject("unknown_player_island");
+            return;
+        }
+        IslandSuggestionTemplate materializedTemplate = matchingTemplate(existing);
+        boolean deleted = runtime.visualAtlasWorkflow().deleteIsland(
+                islandId,
+                DomainEventMetadata.origin("slot_workspace.ldlib.island_delete")
+        );
+        if (!deleted) {
+            reject("island_not_empty");
+            return;
+        }
+        if (materializedTemplate != null) {
+            runtime.visualAtlasWorkflow().dismissTemplate(
+                    materializedTemplate.defaultIslandId(),
+                    DomainEventMetadata.origin("slot_workspace.ldlib.template_dismiss")
+            );
+        }
+        status = "island deleted";
+        diagnostics = existing.label();
+        SlotDebugLog.log("LDLib atlas island deleted {}{}", islandId,
+                materializedTemplate == null ? "" : " (template " + materializedTemplate.defaultIslandId() + " dismissed)");
+        broadcast(serverPlayer);
+    }
+
+    private static IslandSuggestionTemplate matchingTemplate(VisualAtlasIsland island) {
+        if (island == null) {
+            return null;
+        }
+        for (IslandSuggestionTemplate template : IslandSuggestionTemplate.values()) {
+            if (template.defaultLabel().equalsIgnoreCase(island.label())
+                    && template.defaultColor() == island.color()) {
+                return template;
+            }
+        }
+        return null;
     }
 
     void moveHotbarToAtlas(Integer hotbarIndex, String islandId, Integer worldX, Integer worldY) {
@@ -332,7 +572,8 @@ final class SlotWorkspaceUiSession {
                 combinedDiagnostics,
                 0,
                 selected,
-                0
+                0,
+                learnedRules
         );
         CompoundTag nextContent = projected.toTag(serverPlayer.registryAccess(), false);
         if (!nextContent.equals(lastContentTag)) {
@@ -452,6 +693,7 @@ final class SlotWorkspaceUiSession {
                 true,
                 DomainEventMetadata.origin(origin)
         );
+        recordLearnedAssignment(identity, islandId);
         status = "home assigned";
         diagnostics = island.label();
         SlotDebugLog.log(
@@ -463,6 +705,30 @@ final class SlotWorkspaceUiSession {
                 placement.x(),
                 placement.y()
         );
+    }
+
+    private void recordLearnedAssignment(ItemIdentity identity, String islandId) {
+        SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(identity));
+        net.minecraft.world.item.ItemStack displayStack = item == null ? null : item.displayStack();
+        IslandSignalDescriptor descriptor = IslandSignalExtractor.extract(displayStack);
+        if (descriptor.identity() == null || descriptor.identity().itemId() == null || descriptor.identity().itemId().isBlank()) {
+            descriptor = new IslandSignalDescriptor(
+                    identity,
+                    descriptor.classSignals(),
+                    descriptor.itemTags(),
+                    namespaceOf(identity.itemId()),
+                    ""
+            );
+        }
+        learnedRules.recordAssignment(descriptor, islandId, System.currentTimeMillis());
+    }
+
+    private static String namespaceOf(String itemId) {
+        if (itemId == null) {
+            return "";
+        }
+        int colon = itemId.indexOf(':');
+        return colon <= 0 ? "" : itemId.substring(0, colon);
     }
 
     private SlotWorkspaceAtlasLayout.Placement resolvePlacement(String islandId, Integer worldX, Integer worldY) {

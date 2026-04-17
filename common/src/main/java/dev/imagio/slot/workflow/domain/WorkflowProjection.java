@@ -36,6 +36,7 @@ public final class WorkflowProjection {
         LinkedHashMap<ItemIdentity, Long> recentDismissals = new LinkedHashMap<>(current.recentDismissedUpToByIdentity());
         ArrayList<VisualAtlasIsland> playerIslands = new ArrayList<>(current.visualHomeMap().playerIslands());
         LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>(current.visualHomeMap().assignments());
+        LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>(current.visualHomeMap().dismissedTemplateIds());
 
         switch (record.event()) {
             case WorkflowEvent.CollectionCreated event -> {
@@ -207,6 +208,76 @@ public final class WorkflowProjection {
                     }
                 }
             }
+            case WorkflowEvent.VisualIslandRenamed event -> {
+                if (event.islandId() != null && !event.islandId().isBlank() && !event.label().isBlank()) {
+                    for (int index = 0; index < playerIslands.size(); index++) {
+                        VisualAtlasIsland existing = playerIslands.get(index);
+                        if (existing.id().equals(event.islandId())) {
+                            playerIslands.set(index, new VisualAtlasIsland(
+                                    existing.id(),
+                                    event.label(),
+                                    existing.kind(),
+                                    existing.x(),
+                                    existing.y(),
+                                    existing.width(),
+                                    existing.height(),
+                                    existing.color(),
+                                    existing.iconIdentity()
+                            ));
+                            break;
+                        }
+                    }
+                }
+            }
+            case WorkflowEvent.VisualIslandRecolored event -> {
+                if (event.islandId() != null && !event.islandId().isBlank()) {
+                    for (int index = 0; index < playerIslands.size(); index++) {
+                        VisualAtlasIsland existing = playerIslands.get(index);
+                        if (existing.id().equals(event.islandId())) {
+                            playerIslands.set(index, new VisualAtlasIsland(
+                                    existing.id(),
+                                    existing.label(),
+                                    existing.kind(),
+                                    existing.x(),
+                                    existing.y(),
+                                    existing.width(),
+                                    existing.height(),
+                                    event.color(),
+                                    existing.iconIdentity()
+                            ));
+                            break;
+                        }
+                    }
+                }
+            }
+            case WorkflowEvent.VisualIslandIconChanged event -> {
+                if (event.islandId() != null && !event.islandId().isBlank()) {
+                    for (int index = 0; index < playerIslands.size(); index++) {
+                        VisualAtlasIsland existing = playerIslands.get(index);
+                        if (existing.id().equals(event.islandId())) {
+                            playerIslands.set(index, new VisualAtlasIsland(
+                                    existing.id(),
+                                    existing.label(),
+                                    existing.kind(),
+                                    existing.x(),
+                                    existing.y(),
+                                    existing.width(),
+                                    existing.height(),
+                                    existing.color(),
+                                    event.iconIdentity()
+                            ));
+                            break;
+                        }
+                    }
+                }
+            }
+            case WorkflowEvent.VisualIslandDeleted event -> {
+                if (event.islandId() != null && !event.islandId().isBlank()) {
+                    playerIslands.removeIf(island -> island.id().equals(event.islandId()));
+                    visualHomes.entrySet().removeIf(entry ->
+                            entry.getValue() != null && event.islandId().equals(entry.getValue().islandId()));
+                }
+            }
             case WorkflowEvent.VisualHomeAssigned event -> {
                 if (event.assignment() != null && event.assignment().identity() != null) {
                     visualHomes.put(event.assignment().identity(), event.assignment());
@@ -215,6 +286,11 @@ public final class WorkflowProjection {
             case WorkflowEvent.VisualHomeCleared event -> {
                 if (event.identity() != null) {
                     visualHomes.remove(event.identity());
+                }
+            }
+            case WorkflowEvent.TemplateIslandDismissed event -> {
+                if (event.templateId() != null && !event.templateId().isBlank()) {
+                    dismissedTemplateIds.add(event.templateId());
                 }
             }
         }
@@ -228,7 +304,7 @@ public final class WorkflowProjection {
                 junk,
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
-                new VisualHomeMap(playerIslands, visualHomes)
+                new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds)
         );
     }
 

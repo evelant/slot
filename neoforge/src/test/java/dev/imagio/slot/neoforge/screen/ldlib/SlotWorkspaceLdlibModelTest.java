@@ -21,9 +21,15 @@ import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.InventoryHostSession;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
+import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
+import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
+import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.core.HolderLookup;
@@ -377,6 +383,7 @@ class SlotWorkspaceLdlibModelTest {
                 SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                 false,
                 false,
+                List.of(),
                 List.of()
         );
 
@@ -537,6 +544,160 @@ class SlotWorkspaceLdlibModelTest {
 
         assertEquals("transfer rejected", feedback.status());
         assertEquals("destination_full_or_incompatible", feedback.diagnostics());
+    }
+
+    @Test
+    void chipAcceptPipelineCreatesIslandHomesIdentityAndRecordsLearnedRule() {
+        WorkflowDomainRuntime runtime = runtime();
+        LearnedIslandRuleStore store = new LearnedIslandRuleStore();
+
+        ItemIdentity seed = ItemIdentity.of("modded:iron_ingot");
+        acceptTemplateChip(runtime, store, IslandSuggestionTemplate.MATERIALS, seed);
+
+        VisualAtlasIsland materialized = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().stream()
+                .filter(island -> IslandSuggestionTemplate.MATERIALS.defaultLabel().equalsIgnoreCase(island.label()))
+                .findFirst()
+                .orElseThrow();
+        VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(seed);
+        assertEquals(materialized.id(), assignment.islandId());
+        assertEquals(1, store.allRules().stream()
+                .filter(rule -> rule.islandId().equals(materialized.id()))
+                .count());
+
+        ItemIdentity second = ItemIdentity.of("modded:gold_ingot");
+        applyManualAssignment(runtime, store, second, materialized.id());
+
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("modded:copper_ingot", 1, 64), 1))
+        ));
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority,
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1,
+                store
+        );
+
+        SlotWorkspaceViewModel.AtlasItem copper = viewModel.atlasItems().stream()
+                .filter(item -> item.identity().itemId().equals("modded:copper_ingot"))
+                .findFirst()
+                .orElseThrow();
+        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, copper.islandId());
+        assertFalse(copper.chipSuggestions().isEmpty());
+        ChipSuggestion learnedChip = copper.chipSuggestions().stream()
+                .filter(chip -> chip.kind() == ChipSuggestion.ChipKind.LEARNED)
+                .findFirst()
+                .orElseThrow();
+        assertEquals(materialized.id(), learnedChip.islandId());
+    }
+
+    @Test
+    void manualAssignPipelineProducesIdenticalStateToChipAccept() {
+        ItemIdentity first = ItemIdentity.of("modded:iron_ingot");
+        ItemIdentity second = ItemIdentity.of("modded:gold_ingot");
+
+        WorkflowDomainRuntime chipRuntime = runtime();
+        LearnedIslandRuleStore chipStore = new LearnedIslandRuleStore();
+        acceptTemplateChip(chipRuntime, chipStore, IslandSuggestionTemplate.MATERIALS, first);
+        String chipIslandId = chipRuntime.visualAtlasWorkflow().visualHomeMap().playerIslands().stream()
+                .filter(island -> IslandSuggestionTemplate.MATERIALS.defaultLabel().equalsIgnoreCase(island.label()))
+                .findFirst()
+                .orElseThrow()
+                .id();
+        applyManualAssignment(chipRuntime, chipStore, second, chipIslandId);
+
+        WorkflowDomainRuntime manualRuntime = runtime();
+        LearnedIslandRuleStore manualStore = new LearnedIslandRuleStore();
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                IslandSuggestionTemplate.MATERIALS.defaultLabel(),
+                first,
+                manualRuntime.visualAtlasWorkflow().visualHomeMap()
+        );
+        VisualAtlasIsland manualIsland = manualRuntime.visualAtlasWorkflow().createIsland(
+                draft.label(),
+                draft.x(),
+                draft.y(),
+                draft.width(),
+                draft.height(),
+                IslandSuggestionTemplate.MATERIALS.defaultColor(),
+                first
+        );
+        applyManualAssignment(manualRuntime, manualStore, first, manualIsland.id());
+        applyManualAssignment(manualRuntime, manualStore, second, manualIsland.id());
+
+        assertEquals(chipIslandId, manualIsland.id());
+        assertEquals(chipRuntime.visualAtlasWorkflow().visualHomeMap().playerIslands().size(),
+                manualRuntime.visualAtlasWorkflow().visualHomeMap().playerIslands().size());
+        assertEquals(chipRuntime.visualAtlasWorkflow().visualHomeMap().assignment(first).islandId(),
+                manualRuntime.visualAtlasWorkflow().visualHomeMap().assignment(first).islandId());
+        assertEquals(chipRuntime.visualAtlasWorkflow().visualHomeMap().assignment(second).islandId(),
+                manualRuntime.visualAtlasWorkflow().visualHomeMap().assignment(second).islandId());
+        assertEquals(chipStore.allRules().size(), manualStore.allRules().size());
+        assertEquals(chipStore.firingRulesFor(descriptorFor(ItemIdentity.of("modded:copper_ingot"))).size(),
+                manualStore.firingRulesFor(descriptorFor(ItemIdentity.of("modded:copper_ingot"))).size());
+    }
+
+    private static void acceptTemplateChip(
+            WorkflowDomainRuntime runtime,
+            LearnedIslandRuleStore store,
+            IslandSuggestionTemplate template,
+            ItemIdentity identity
+    ) {
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                template.defaultLabel(),
+                identity,
+                runtime.visualAtlasWorkflow().visualHomeMap()
+        );
+        VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIsland(
+                draft.label(),
+                draft.x(),
+                draft.y(),
+                draft.width(),
+                draft.height(),
+                template.defaultColor(),
+                identity
+        );
+        applyManualAssignment(runtime, store, identity, created.id());
+    }
+
+    private static void applyManualAssignment(
+            WorkflowDomainRuntime runtime,
+            LearnedIslandRuleStore store,
+            ItemIdentity identity,
+            String islandId
+    ) {
+        SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
+                SlotWorkspaceAtlasLayout.baseIslands(runtime.visualAtlasWorkflow().visualHomeMap()),
+                islandId,
+                0
+        );
+        runtime.visualAtlasWorkflow().assignHome(identity, islandId, placement.localX(), placement.localY());
+        store.recordAssignment(descriptorFor(identity), islandId, System.currentTimeMillis());
+    }
+
+    private static IslandSignalDescriptor descriptorFor(ItemIdentity identity) {
+        IslandSignalDescriptor base = IslandSignalExtractor.extract(null);
+        return new IslandSignalDescriptor(
+                identity,
+                base.classSignals(),
+                base.itemTags(),
+                namespaceOf(identity.itemId()),
+                ""
+        );
+    }
+
+    private static String namespaceOf(String itemId) {
+        if (itemId == null) {
+            return "";
+        }
+        int colon = itemId.indexOf(':');
+        return colon <= 0 ? "" : itemId.substring(0, colon);
     }
 
     private static InventoryAuthoritySnapshot authority(

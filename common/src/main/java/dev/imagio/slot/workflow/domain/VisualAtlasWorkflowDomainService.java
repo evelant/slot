@@ -184,6 +184,119 @@ public final class VisualAtlasWorkflowDomainService {
         return true;
     }
 
+    public VisualAtlasIsland renameIsland(String islandId, String label) {
+        return renameIsland(islandId, label, DomainEventMetadata.origin("workflow.visual.island.rename"));
+    }
+
+    public VisualAtlasIsland renameIsland(String islandId, String label, DomainEventMetadata metadata) {
+        VisualAtlasIsland existing = mutablePlayerIsland(islandId);
+        if (existing == null) {
+            return null;
+        }
+        String normalizedLabel = normalizeName(label, "Island label must not be blank");
+        if (existing.label().equals(normalizedLabel)) {
+            return existing;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.VisualIslandRenamed(islandId, normalizedLabel),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.island.rename")
+        );
+        mutationObserver.run();
+        return visualHomeMap().island(islandId);
+    }
+
+    public VisualAtlasIsland recolorIsland(String islandId, int color) {
+        return recolorIsland(islandId, color, DomainEventMetadata.origin("workflow.visual.island.recolor"));
+    }
+
+    public VisualAtlasIsland recolorIsland(String islandId, int color, DomainEventMetadata metadata) {
+        VisualAtlasIsland existing = mutablePlayerIsland(islandId);
+        if (existing == null) {
+            return null;
+        }
+        if (existing.color() == color) {
+            return existing;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.VisualIslandRecolored(islandId, color),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.island.recolor")
+        );
+        mutationObserver.run();
+        return visualHomeMap().island(islandId);
+    }
+
+    public VisualAtlasIsland setIslandIcon(String islandId, ItemIdentity iconIdentity) {
+        return setIslandIcon(islandId, iconIdentity, DomainEventMetadata.origin("workflow.visual.island.icon"));
+    }
+
+    public VisualAtlasIsland setIslandIcon(String islandId, ItemIdentity iconIdentity, DomainEventMetadata metadata) {
+        VisualAtlasIsland existing = mutablePlayerIsland(islandId);
+        if (existing == null) {
+            return null;
+        }
+        if (Objects.equals(existing.iconIdentity(), iconIdentity)) {
+            return existing;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.VisualIslandIconChanged(islandId, iconIdentity),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.island.icon")
+        );
+        mutationObserver.run();
+        return visualHomeMap().island(islandId);
+    }
+
+    public boolean deleteIsland(String islandId) {
+        return deleteIsland(islandId, DomainEventMetadata.origin("workflow.visual.island.delete"));
+    }
+
+    public boolean deleteIsland(String islandId, DomainEventMetadata metadata) {
+        VisualAtlasIsland existing = mutablePlayerIsland(islandId);
+        if (existing == null) {
+            return false;
+        }
+        boolean hasAssignments = visualHomeMap().assignments().values().stream()
+                .anyMatch(assignment -> assignment != null && islandId.equals(assignment.islandId()));
+        if (hasAssignments) {
+            return false;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.VisualIslandDeleted(islandId),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.island.delete")
+        );
+        mutationObserver.run();
+        return true;
+    }
+
+    public boolean dismissTemplate(String templateId) {
+        return dismissTemplate(templateId, DomainEventMetadata.origin("workflow.visual.template.dismiss"));
+    }
+
+    public boolean dismissTemplate(String templateId, DomainEventMetadata metadata) {
+        if (templateId == null || templateId.isBlank()) {
+            return false;
+        }
+        if (visualHomeMap().dismissedTemplateIds().contains(templateId)) {
+            return false;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.TemplateIslandDismissed(templateId),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.template.dismiss")
+        );
+        mutationObserver.run();
+        return true;
+    }
+
+    private VisualAtlasIsland mutablePlayerIsland(String islandId) {
+        if (islandId == null || islandId.isBlank()) {
+            return null;
+        }
+        VisualAtlasIsland existing = visualHomeMap().island(islandId);
+        if (existing == null || existing.kind() != VisualAtlasIslandKind.PLAYER) {
+            return null;
+        }
+        return existing;
+    }
+
     private static String normalizeName(String value, String message) {
         String normalized = value == null ? "" : value.trim();
         if (normalized.isBlank()) {

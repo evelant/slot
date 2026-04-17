@@ -102,7 +102,9 @@ Mitigation:
 - start with click-to-assign from `Triage` (chip tap or island-header click)
 - keep real stack movement on explicit hotbar/action targets
 - add precise drag-to-reposition only after the safer assignment flow is clear
-- every chip-accept shows a short-window undo toast
+- every home-assignment emits a structured reversible record so the future
+  general undo/redo system can unwind accidental chip taps; no per-action
+  timed undo toasts (those are easy to miss)
 
 ### 4. Dual-Pane And Compat Hosts Are Not Proven
 
@@ -266,25 +268,36 @@ Exit criteria:
   later shows a learned chip pointing at that island
 - chip-accept and manual-assign paths produce identical downstream state
 - home-assignment commands remain fully separate from transfer commands
+- home-assignment is reversible via a structured record consumed by a
+  general undo/redo system — not via per-action timed toasts
 
-### 3b. Undo Toast
+### 3b. Reversible Home-Assignment Records
 
 Goal:
 
-- make chip-accept safe enough to feel instant
+- make chip-accept and manual-assign safe enough to feel instant without
+  building per-action timed undo toasts (those are easy to miss and are the
+  wrong UX for this product)
 
 Deliverables:
 
-- 5-second "Undo" toast after any home-assignment
-- undo removes the home; if the island is empty **and** still at its
-  template-default name/color/icon, delete the island too
-- renamed, recolored, or non-empty islands stay on undo (the player has
-  already invested in them)
+- every home-assignment (chip accept, manual drop, materialized template
+  island) emits a structured reversible record capturing: the identity, the
+  previous assignment (or absence), the target island, whether the island
+  was newly created by this action, and whether that island is still at
+  template-default name/color/icon
+- records are stored on the workspace session in a bounded ring so a future
+  general undo stack can consume them without another migration
+- no UI toast and no per-action timer — surfacing these records is deferred
+  to the comprehensive undo/redo system
 
 Exit criteria:
 
-- accidental chip taps on a fresh map can be fully reversed inside the
-  undo window with no lingering empty islands
+- records round-trip through the session and carry enough information to
+  unwind the home assignment and, when appropriate, delete the island that
+  was materialized solely for that action
+- renamed, recolored, or non-empty islands are marked as "do not delete on
+  undo" in the record
 
 ### 4. Basic Island Management
 
@@ -376,8 +389,10 @@ Highest-value near-term coverage:
 - learned-rule threshold behavior (single placement does not fire; N≥2 does)
 - chip-accept creates island + homes identity + records rule, in one pipeline
 - manual-assign records rule identically to chip-accept
-- undo window: removes home and deletes default-state island; leaves
-  renamed/recolored/non-empty islands
+- reversible home-assignment record: captures prior assignment, whether the
+  island was newly materialized, and whether that island is still at
+  template-default name/color/icon (consumed later by the general undo/redo
+  system)
 - atlas camera/query/selection/home preservation across refresh
 - session refresh and stale menu rejection
 - common workspace composition output
