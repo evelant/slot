@@ -37,8 +37,10 @@ import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.function.Consumer;
 
 final class SlotWorkspaceUiFactory {
@@ -58,14 +60,28 @@ final class SlotWorkspaceUiFactory {
     private static final int WARNING = 0xFFFFC66D;
     private static final int COLLECTION = 0xFFBE8CFF;
     private static final int ISLAND_BORDER = 0xA04F6578;
+    private static final int STORAGE_ZONE_FILL = 0x501A2430;
+    private static final int STORAGE_TILE_FILL = 0xD02E3A48;
+    private static final int STORAGE_TILE_FILL_DIM = 0x602E3A48;
+    private static final int STORAGE_TILE_CELL_FILL = 0x801A2430;
+    private static final int STORAGE_TILE_CELL_FILL_DIM = 0x401A2430;
+    private static final int LINK_THREAD_COLOR = 0xC07AC7A7;
+    private static final int LINK_HIGHLIGHT_COLOR = 0xA07AC7A7;
+    private static final int LINK_HIGHLIGHT_THICKNESS = 2;
     private static final int BROWSE_CELL_PX = 32;
-    private static final int READ_CELL_PX = 58;
-    private static final int INSPECT_CELL_PX = 94;
+    private static final int READ_CELL_PX = 48;
+    private static final int INSPECT_CELL_PX = 72;
     private static final int DETAIL_CELL_PX = 124;
     private static final float CARRIED_FIT_MIN_SCALE = 0.20f;
     private static final float CARRIED_FIT_MAX_SCALE = 2.50f;
     private static final float CARRIED_FIT_READABILITY_MIN_SCALE = 1.00f;
     private static final float CARRIED_FIT_PADDING_PX = 72f;
+    private static final int BELT_HEIGHT = 24;
+    private static final int BELT_SLOT_SIZE = 20;
+    private static final int BELT_DIVIDER_HEIGHT = 16;
+    private static final float NAV_CAPSULE_INSET_PX = 96f;
+    private static final float BELT_CAMERA_INSET_PX = 44f;
+    private static final float SIDE_CAMERA_INSET_PX = 48f;
     private static final float GHOST_CARD_ALPHA = 0.18f;
     private static final int GHOST_ICON_OVERLAY_COLOR = 0xC8060A0E;
     private static final int DRAG_START_THRESHOLD_PX = 4;
@@ -86,11 +102,11 @@ final class SlotWorkspaceUiFactory {
         private SlotWorkspaceViewModel viewModel;
         private String localStatus = "";
         private String searchQuery = "";
-        private String collectionDraft = "";
         private SlotWorkspaceViewModel.IdentityRef selectedAtlasIdentity;
         private SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
         private int selectedHotbarIndex = -1;
         private String editingIslandId = null;
+        private String editingChestStorageId = null;
         private String islandLabelDraft = "";
         private SlotWorkspaceViewModel.IdentityRef pendingCreateIdentity;
         private int pendingCreateWorldX;
@@ -102,15 +118,24 @@ final class SlotWorkspaceUiFactory {
         private RPCEmitter transferEmitter;
         private RPCEmitter homeEmitter;
         private RPCEmitter createNamedIslandEmitter;
-        private RPCEmitter toggleCollectionEmitter;
-        private RPCEmitter createCollectionEmitter;
         private RPCEmitter hotbarToAtlasEmitter;
         private RPCEmitter moveIslandEmitter;
+        private RPCEmitter moveChestEmitter;
+        private RPCEmitter relabelChestEmitter;
+        private RPCEmitter linkChestEmitter;
+        private RPCEmitter unlinkChestEmitter;
+        private RPCEmitter depositEmitter;
+        private RPCEmitter takeAllEmitter;
         private RPCEmitter renameIslandEmitter;
         private RPCEmitter recolorIslandEmitter;
         private RPCEmitter setIslandIconEmitter;
         private RPCEmitter deleteIslandEmitter;
         private RPCEmitter acceptChipEmitter;
+        private RPCEmitter saveKitEmitter;
+        private RPCEmitter activateKitEmitter;
+        private RPCEmitter deactivateKitEmitter;
+        private RPCEmitter deleteKitEmitter;
+        private boolean kitRackOpen;
         private AtlasCamera atlasCamera;
 
         private Controller(SlotWorkspaceUiSession session, Player player) {
@@ -212,17 +237,6 @@ final class SlotWorkspaceUiFactory {
                     Integer.class,
                     session::createNamedIslandForItem
             ));
-            toggleCollectionEmitter = root.addRPCEvent(RPCEventBuilder.simple(
-                    String.class,
-                    String.class,
-                    String.class,
-                    String.class,
-                    session::toggleCollectionMembership
-            ));
-            createCollectionEmitter = root.addRPCEvent(RPCEventBuilder.simple(
-                    String.class,
-                    session::createCollection
-            ));
             hotbarToAtlasEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     Integer.class,
                     String.class,
@@ -235,6 +249,32 @@ final class SlotWorkspaceUiFactory {
                     Integer.class,
                     Integer.class,
                     session::moveIsland
+            ));
+            moveChestEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    Integer.class,
+                    Integer.class,
+                    session::moveChest
+            ));
+            relabelChestEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    session::relabelChest
+            ));
+            linkChestEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    session::linkIslandToChest
+            ));
+            unlinkChestEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    session::unlinkIslandFromChest
+            ));
+            depositEmitter = root.addRPCEvent(RPCEventBuilder.simple((Runnable) session::deposit));
+            takeAllEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    session::takeAllFromChest
             ));
             renameIslandEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     String.class,
@@ -265,6 +305,21 @@ final class SlotWorkspaceUiFactory {
                     String.class,
                     session::acceptChip
             ));
+            saveKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    session::saveBeltAsKit
+            ));
+            activateKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    session::activateKit
+            ));
+            deactivateKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    (Runnable) session::deactivateKit
+            ));
+            deleteKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    session::deleteKit
+            ));
         }
 
         private UIElement syncBinding() {
@@ -292,7 +347,6 @@ final class SlotWorkspaceUiFactory {
             content.addChildren(
                     header(),
                     body(),
-                    beltPanel(),
                     statusBar()
             );
             content.markTaffyStyleDirty();
@@ -306,9 +360,27 @@ final class SlotWorkspaceUiFactory {
                     .gapAll(8)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
+            boolean depositEnabled = anyChestProximate();
+            Button depositButton = button("Deposit", depositEnabled, depositEnabled ? ACCENT : PANEL_ALT);
+            depositButton.layout(layout -> layout.width(72).height(18));
+            depositButton.textStyle(style -> style
+                    .textColor(depositEnabled ? TEXT : MUTED)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            depositButton.setOnClick(event -> {
+                event.stopPropagation();
+                if (!depositEnabled) {
+                    localStatus = "no claimed chest nearby";
+                    rebuild();
+                    return;
+                }
+                sendDeposit();
+            });
             header.addChildren(
                     label("SLOT Atlas", ACCENT).layout(layout -> layout.flex(1).height(12)),
-                    label("Persistent carried inventory", MUTED).layout(layout -> layout.height(12))
+                    depositButton
             );
             clearSelectionOnDirectClick(header);
             return header;
@@ -350,7 +422,10 @@ final class SlotWorkspaceUiFactory {
             installAtlasCanvasDropTarget(panel, atlas);
             installAtlasBackgroundDropTarget(atlas);
             buildAtlas(atlas);
-            panel.addChildren(atlas, navigationCapsule(atlas));
+            panel.addChildren(atlas, navigationCapsule(atlas), beltOverlay());
+            if (kitRackOpen) {
+                panel.addChild(kitRackOverlay());
+            }
             UIElement editPopover = islandEditPopover();
             if (editPopover != null) {
                 panel.addChild(editPopover);
@@ -359,12 +434,57 @@ final class SlotWorkspaceUiFactory {
             if (createPopover != null) {
                 panel.addChild(createPopover);
             }
+            UIElement linkPopover = chestLinkPopover();
+            if (linkPopover != null) {
+                panel.addChild(linkPopover);
+            }
             return panel;
         }
 
+        private UIElement beltOverlay() {
+            UIElement overlay = beltPanel();
+            overlay.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(0)
+                    .right(0)
+                    .bottom(4)
+                    .height(BELT_HEIGHT));
+            overlay.style(style -> style.zIndex(6));
+            return overlay;
+        }
+
         private void buildAtlas(SlotAtlasGraphView atlas) {
+            UIElement storageZone = storageZoneBackdrop();
+            if (storageZone != null) {
+                atlas.addContentChild(storageZone);
+            }
+            Set<String> highlightedIslandIds = highlightedIslandIdsFromProximateTiles();
             for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
                 atlas.addContentChild(islandPanel(atlas, island));
+            }
+            for (String islandId : highlightedIslandIds) {
+                SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
+                if (island != null) {
+                    addIslandHighlightFrame(atlas, island);
+                }
+            }
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                atlas.addContentChild(chestTilePanel(atlas, tile));
+            }
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                if (!tile.proximate()) {
+                    continue;
+                }
+                for (String islandId : tile.linkedIslandIds()) {
+                    SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
+                    if (island == null) {
+                        continue;
+                    }
+                    UIElement thread = linkThread(tile, island);
+                    if (thread != null) {
+                        atlas.addContentChild(thread);
+                    }
+                }
             }
             for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
                 atlas.addContentChild(atlasCardButton(atlas, item));
@@ -471,11 +591,13 @@ final class SlotWorkspaceUiFactory {
             }
 
             IslandRenderBudget[] lastBudget = new IslandRenderBudget[1];
+            String[] lastSubtitleText = new String[]{""};
             panel.addEventListener(UIEvents.TICK, event -> {
                 IslandRenderBudget budget = IslandRenderBudget.forScreenBudget(
                         Math.max(1, atlas.screenPixelsForWorldUnits(island.width()))
                 );
-                if (!budget.equals(lastBudget[0])) {
+                boolean budgetChanged = !budget.equals(lastBudget[0]);
+                if (budgetChanged) {
                     header.layout(layout -> layout.widthPercent(100).height(atlas.worldUnitsForPixels(budget.headerHeightPx())));
                     header.textStyle(style -> style
                             .textColor(TEXT)
@@ -491,14 +613,275 @@ final class SlotWorkspaceUiFactory {
                             .textAlignHorizontal(Horizontal.LEFT)
                             .textAlignVertical(Vertical.CENTER));
                     line.layout(layout -> layout.widthPercent(100).height(atlas.worldUnitsForPixels(budget.ruleHeightPx())));
+                    subtitle.setDisplay(budget.showSubtitle());
+                    line.setDisplay(budget.showSubtitle());
                     lastBudget[0] = budget;
+                    panel.markTaffyStyleDirty();
                 }
-                subtitle.setDisplay(budget.showSubtitle());
-                line.setDisplay(budget.showSubtitle());
-                subtitle.setText(Component.literal(islandSubtitle(island)));
-                panel.markTaffyStyleDirty();
+                String nextSubtitle = islandSubtitle(island);
+                if (!nextSubtitle.equals(lastSubtitleText[0])) {
+                    subtitle.setText(Component.literal(nextSubtitle));
+                    lastSubtitleText[0] = nextSubtitle;
+                }
             });
             return panel;
+        }
+
+        private UIElement storageZoneBackdrop() {
+            List<SlotWorkspaceViewModel.ClaimedChestTile> tiles = viewModel.claimedChestTiles();
+            if (tiles.isEmpty()) {
+                return null;
+            }
+            int minX = Integer.MAX_VALUE;
+            int minY = Integer.MAX_VALUE;
+            int maxX = Integer.MIN_VALUE;
+            int maxY = Integer.MIN_VALUE;
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : tiles) {
+                minX = Math.min(minX, tile.atlasX());
+                minY = Math.min(minY, tile.atlasY());
+                maxX = Math.max(maxX, tile.atlasX() + tile.width());
+                maxY = Math.max(maxY, tile.atlasY() + tile.height());
+            }
+            int pad = SlotWorkspaceAtlasLayout.STORAGE_ZONE_PADDING;
+            int left = minX - pad;
+            int top = minY - pad;
+            int width = (maxX - minX) + pad * 2;
+            int height = (maxY - minY) + pad * 2;
+            UIElement backdrop = panel(STORAGE_ZONE_FILL).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(left)
+                    .top(top)
+                    .width(width)
+                    .height(height));
+            backdrop.style(style -> style.zIndex(0));
+            backdrop.setAllowHitTest(false);
+            return backdrop;
+        }
+
+        private UIElement chestTilePanel(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.ClaimedChestTile tile) {
+            int fill = tile.proximate() ? STORAGE_TILE_FILL : STORAGE_TILE_FILL_DIM;
+            int textColor = tile.proximate() ? TEXT : MUTED;
+            int cellSize = SlotWorkspaceAtlasLayout.CHEST_TILE_CELL;
+            int cols = SlotWorkspaceAtlasLayout.CHEST_TILE_COLUMNS;
+            int padding = SlotWorkspaceAtlasLayout.CHEST_TILE_PADDING;
+            int headerHeight = SlotWorkspaceAtlasLayout.CHEST_TILE_HEADER_HEIGHT;
+
+            UIElement panel = panel(fill).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(tile.atlasX())
+                    .top(tile.atlasY())
+                    .width(tile.width())
+                    .height(tile.height())
+                    .paddingAll(0));
+            panel.style(style -> style.zIndex(1));
+
+            Label header = label(tile.label(), textColor);
+            header.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(padding)
+                    .top(0)
+                    .width(tile.width() - padding * 2)
+                    .height(headerHeight));
+            header.textStyle(style -> style
+                    .textColor(textColor)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.CENTER));
+            panel.addChild(header);
+
+            int cellsToRender = tile.contents().size();
+            for (int index = 0; index < cellsToRender; index++) {
+                ItemStack stack = tile.contents().get(index);
+                int col = index % cols;
+                int row = index / cols;
+                int cellX = padding + col * cellSize;
+                int cellY = headerHeight + row * cellSize;
+                UIElement cell = chestTileCell(stack, tile.proximate(), cellSize);
+                cell.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(cellX)
+                        .top(cellY)
+                        .width(cellSize)
+                        .height(cellSize));
+                panel.addChild(cell);
+            }
+
+            Button linkButton = button("Link", true, tile.linkedIslandIds().isEmpty() ? PANEL_ALT : ACCENT);
+            linkButton.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .right(padding)
+                    .top(0)
+                    .width(28)
+                    .height(headerHeight));
+            linkButton.textStyle(style -> style
+                    .textColor(TEXT)
+                    .textShadow(false)
+                    .fontSize(7)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            linkButton.style(style -> style.zIndex(3));
+            linkButton.setOnClick(event -> {
+                event.stopPropagation();
+                beginChestLinkEdit(tile);
+            });
+            panel.addChild(linkButton);
+
+            boolean canTake = tile.proximate() && !tile.contents().isEmpty();
+            Button takeAllButton = button("Take", canTake, canTake ? ROW : PANEL_ALT);
+            takeAllButton.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .right(padding + 30)
+                    .top(0)
+                    .width(28)
+                    .height(headerHeight));
+            takeAllButton.textStyle(style -> style
+                    .textColor(canTake ? TEXT : MUTED)
+                    .textShadow(false)
+                    .fontSize(7)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            takeAllButton.style(style -> style.zIndex(3));
+            String takeStorageId = tile.storageId();
+            takeAllButton.setOnClick(event -> {
+                event.stopPropagation();
+                if (!canTake) {
+                    localStatus = tile.proximate() ? "chest is empty" : "chest is too far";
+                    rebuild();
+                    return;
+                }
+                sendTakeAll(takeStorageId);
+            });
+            panel.addChild(takeAllButton);
+
+            installViewportPanSurface(panel, atlas);
+            installChestTileDragSource(panel, atlas, tile);
+            return panel;
+        }
+
+        private Set<String> highlightedIslandIdsFromProximateTiles() {
+            LinkedHashSet<String> highlighted = new LinkedHashSet<>();
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                if (tile.proximate()) {
+                    highlighted.addAll(tile.linkedIslandIds());
+                }
+            }
+            return highlighted;
+        }
+
+        private void addIslandHighlightFrame(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
+            int thickness = LINK_HIGHLIGHT_THICKNESS;
+            int color = LINK_HIGHLIGHT_COLOR;
+            int x = island.x();
+            int y = island.y();
+            int w = island.width();
+            int h = island.height();
+            atlas.addContentChild(highlightFrameSegment(color, x - thickness, y - thickness, w + thickness * 2, thickness));
+            atlas.addContentChild(highlightFrameSegment(color, x - thickness, y + h, w + thickness * 2, thickness));
+            atlas.addContentChild(highlightFrameSegment(color, x - thickness, y, thickness, h));
+            atlas.addContentChild(highlightFrameSegment(color, x + w, y, thickness, h));
+        }
+
+        private UIElement highlightFrameSegment(int color, int x, int y, int w, int h) {
+            UIElement segment = panel(color).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(x)
+                    .top(y)
+                    .width(w)
+                    .height(h));
+            segment.style(style -> style.zIndex(5));
+            segment.setAllowHitTest(false);
+            return segment;
+        }
+
+        private UIElement linkThread(
+                SlotWorkspaceViewModel.ClaimedChestTile tile,
+                SlotWorkspaceViewModel.AtlasIsland island
+        ) {
+            int tileCenterX = tile.atlasX() + tile.width() / 2;
+            int tileCenterY = tile.atlasY() + tile.height() / 2;
+            int islandCenterX = island.x() + island.width() / 2;
+            int islandCenterY = island.y() + island.height() / 2;
+            int dx = islandCenterX - tileCenterX;
+            int dy = islandCenterY - tileCenterY;
+            double distance = Math.sqrt((double) dx * dx + (double) dy * dy);
+            if (distance < 1.0) {
+                return null;
+            }
+            int length = Math.max(1, (int) Math.round(distance));
+            int thickness = 2;
+            float angleDeg = (float) Math.toDegrees(Math.atan2(dy, dx));
+            UIElement thread = panel(LINK_THREAD_COLOR).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(tileCenterX)
+                    .top(tileCenterY - thickness / 2)
+                    .width(length)
+                    .height(thickness));
+            thread.style(style -> style.zIndex(0));
+            thread.transform(transform -> transform.pivot(0f, 0.5f).rotation(angleDeg));
+            thread.setAllowHitTest(false);
+            return thread;
+        }
+
+        private UIElement chestTileCell(ItemStack stack, boolean proximate, int cellSize) {
+            int chromeColor = proximate ? STORAGE_TILE_CELL_FILL : STORAGE_TILE_CELL_FILL_DIM;
+            UIElement cell = panel(chromeColor);
+            if (stack != null && !stack.isEmpty()) {
+                int iconSize = Math.max(8, cellSize - 2);
+                UIElement icon = itemIcon(stack, iconSize, proximate);
+                icon.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(1)
+                        .top(1));
+                cell.addChild(icon);
+            }
+            return cell;
+        }
+
+        private void installChestTileDragSource(
+                UIElement source,
+                SlotAtlasGraphView atlas,
+                SlotWorkspaceViewModel.ClaimedChestTile tile
+        ) {
+            int[] clickWorldX = {Integer.MIN_VALUE};
+            int[] clickWorldY = {Integer.MIN_VALUE};
+            source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button != 0) {
+                    return;
+                }
+                clickWorldX[0] = atlas.worldX(event.x);
+                clickWorldY[0] = atlas.worldY(event.y);
+            }, true);
+            source.addEventListener(UIEvents.MOUSE_UP, event -> {
+                clickWorldX[0] = Integer.MIN_VALUE;
+                clickWorldY[0] = Integer.MIN_VALUE;
+            }, true);
+            source.addEventListener(UIEvents.MOUSE_MOVE, event -> {
+                if (clickWorldX[0] == Integer.MIN_VALUE) {
+                    return;
+                }
+                if (!source.isMouseDown(0) || isDragging(source)) {
+                    return;
+                }
+                float scale = atlas.getScale();
+                float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
+                float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
+                if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
+                    return;
+                }
+                int grabOffsetX = Math.max(0, Math.min(tile.width(), clickWorldX[0] - tile.atlasX()));
+                int grabOffsetY = Math.max(0, Math.min(tile.height(), clickWorldY[0] - tile.atlasY()));
+                int widthPx = Math.max(48, atlas.screenPixelsForWorldUnits(tile.width()));
+                int heightPx = Math.max(20, atlas.screenPixelsForWorldUnits(tile.height()));
+                int dragOffsetX = Math.round(grabOffsetX * scale);
+                int dragOffsetY = Math.round(grabOffsetY * scale);
+                source.startDrag(
+                        new ChestTileDrag(tile.storageId(), grabOffsetX, grabOffsetY),
+                        rect((STORAGE_TILE_FILL & 0x00FFFFFF) | 0x70000000)
+                ).setDragTexture(-dragOffsetX, -dragOffsetY, widthPx, heightPx);
+                localStatus = "dragging " + tile.label();
+            }, true);
+            source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
         }
 
         private Button atlasCardButton(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
@@ -603,15 +986,43 @@ final class SlotWorkspaceUiFactory {
             }
             selectedAtlasIdentity = item.identity();
             String templateName = chip.template() == null ? "" : chip.template().name();
-            acceptChipEmitter.send(
-                    item.identity().itemId(),
-                    item.identity().comparisonMode(),
-                    item.identity().componentFingerprint(),
-                    chip.islandId(),
-                    templateName
-            );
-            localStatus = "accepting chip: " + chip.label();
+            int accepted = 0;
+            for (SlotWorkspaceViewModel.AtlasItem candidate : viewModel.atlasItems()) {
+                if (!chipMatches(candidate, chip)) {
+                    continue;
+                }
+                acceptChipEmitter.send(
+                        candidate.identity().itemId(),
+                        candidate.identity().comparisonMode(),
+                        candidate.identity().componentFingerprint(),
+                        chip.islandId(),
+                        templateName
+                );
+                accepted++;
+            }
+            localStatus = accepted <= 1
+                    ? "accepting chip: " + chip.label()
+                    : "accepting chip: " + chip.label() + " x" + accepted;
             rebuild();
+        }
+
+        private static boolean chipMatches(SlotWorkspaceViewModel.AtlasItem item, ChipSuggestion target) {
+            if (item == null || target == null) {
+                return false;
+            }
+            for (ChipSuggestion candidate : item.chipSuggestions()) {
+                if (candidate == null || candidate.kind() != target.kind()) {
+                    continue;
+                }
+                if (target.kind() == ChipSuggestion.ChipKind.TEMPLATE) {
+                    if (candidate.template() == target.template()) {
+                        return true;
+                    }
+                } else if (candidate.islandId().equals(target.islandId())) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private static String chipLabelText(ChipSuggestion chip) {
@@ -662,8 +1073,8 @@ final class SlotWorkspaceUiFactory {
                     clearSearchButton()
             );
 
-            Label summary = label(searchSummary(), MUTED);
-            summary.layout(layout -> layout.widthPercent(100).height(14));
+            Label summary = wrappedLabel(searchSummary(), MUTED);
+            summary.layout(layout -> layout.widthPercent(100).flex(1));
             summary.addEventListener(UIEvents.TICK, event -> summary.setText(Component.literal(searchSummary())));
 
             capsule.addChildren(topRow, summary);
@@ -675,7 +1086,12 @@ final class SlotWorkspaceUiFactory {
             button.layout(layout -> layout.width(52).height(22));
             button.setOnClick(event -> {
                 event.stopPropagation();
-                atlas.resetToOverview();
+                AtlasCamera camera = computeOverviewCamera(atlas.getContentWidth(), atlas.getContentHeight());
+                if (camera != null) {
+                    atlas.restoreCamera(camera);
+                } else {
+                    atlas.resetToOverview();
+                }
                 localStatus = "camera reset";
                 rebuild();
             });
@@ -691,46 +1107,69 @@ final class SlotWorkspaceUiFactory {
                 return;
             }
 
-            ArrayList<FitCarriedCamera.Rect> carriedRects = new ArrayList<>();
-            for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
-                if (item.carried()) {
-                    carriedRects.add(FitCarriedCamera.Rect.of(item.x(), item.y(), item.width(), item.height()));
-                }
-            }
-
-            FitCarriedCamera.Camera camera = null;
-            if (!carriedRects.isEmpty()) {
-                camera = FitCarriedCamera.fitOrFallback(
-                        carriedRects,
-                        viewportWidth,
-                        viewportHeight,
-                        CARRIED_FIT_MIN_SCALE,
-                        CARRIED_FIT_MAX_SCALE,
-                        CARRIED_FIT_READABILITY_MIN_SCALE,
-                        CARRIED_FIT_PADDING_PX
-                );
-            }
-
-            if (camera == null) {
-                SlotWorkspaceViewModel.AtlasIsland triage = viewModel.island(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE);
-                if (triage != null) {
-                    camera = FitCarriedCamera.fit(
-                            FitCarriedCamera.Rect.of(triage.x(), triage.y(), triage.width(), triage.height()),
-                            viewportWidth,
-                            viewportHeight,
-                            CARRIED_FIT_READABILITY_MIN_SCALE,
-                            CARRIED_FIT_MAX_SCALE,
-                            CARRIED_FIT_PADDING_PX
-                    );
-                }
-            }
-
+            AtlasCamera camera = computeOverviewCamera(viewportWidth, viewportHeight);
             if (camera == null) {
                 atlas.fitToChildren(CARRIED_FIT_PADDING_PX, 0.45f);
                 atlas.captureCamera();
                 return;
             }
-            atlas.restoreCamera(new AtlasCamera(camera.offsetX(), camera.offsetY(), camera.scale()));
+            atlas.restoreCamera(camera);
+        }
+
+        private AtlasCamera computeOverviewCamera(float viewportWidth, float viewportHeight) {
+            ArrayList<FitCarriedCamera.Rect> fitRects = new ArrayList<>();
+            for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
+                fitRects.add(FitCarriedCamera.Rect.of(island.x(), island.y(), island.width(), island.height()));
+            }
+            for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
+                if (item.carried()) {
+                    fitRects.add(FitCarriedCamera.Rect.of(item.x(), item.y(), item.width(), item.height()));
+                }
+            }
+            if (fitRects.isEmpty()) {
+                return null;
+            }
+            FitCarriedCamera.Rect bbox = FitCarriedCamera.union(fitRects);
+            if (bbox == null) {
+                return null;
+            }
+            // Reserve screen space for the nav capsule (top-left chrome) and the
+            // belt overlay (bottom chrome) so they do not occlude content at the
+            // default overview zoom.
+            float effectiveWidth = Math.max(1f, viewportWidth - 2f * SIDE_CAMERA_INSET_PX);
+            float effectiveHeight = Math.max(1f, viewportHeight - NAV_CAPSULE_INSET_PX - BELT_CAMERA_INSET_PX);
+            float scale = Math.min(
+                    effectiveWidth / Math.max(1f, bbox.width()),
+                    effectiveHeight / Math.max(1f, bbox.height())
+            );
+            scale = Math.max(CARRIED_FIT_MIN_SCALE, Math.min(CARRIED_FIT_MAX_SCALE, scale));
+            float centerScreenX = viewportWidth / 2f;
+            float centerScreenY = (NAV_CAPSULE_INSET_PX + viewportHeight - BELT_CAMERA_INSET_PX) / 2f;
+            float offsetX = bbox.centerX() - centerScreenX / scale;
+            float offsetY = bbox.centerY() - centerScreenY / scale;
+            return new AtlasCamera(offsetX, offsetY, scale);
+        }
+
+        private void panToChestTile(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.ClaimedChestTile tile) {
+            if (atlas == null || tile == null) {
+                return;
+            }
+            float viewportWidth = atlas.getContentWidth();
+            float viewportHeight = atlas.getContentHeight();
+            if (viewportWidth <= 0f || viewportHeight <= 0f) {
+                return;
+            }
+            FitCarriedCamera.Camera camera = FitCarriedCamera.fit(
+                    FitCarriedCamera.Rect.of(tile.atlasX(), tile.atlasY(), tile.width(), tile.height()),
+                    viewportWidth,
+                    viewportHeight,
+                    CARRIED_FIT_MIN_SCALE,
+                    CARRIED_FIT_MAX_SCALE,
+                    CARRIED_FIT_PADDING_PX
+            );
+            if (camera != null) {
+                atlas.restoreCamera(new AtlasCamera(camera.offsetX(), camera.offsetY(), camera.scale()));
+            }
         }
 
         private void panToIsland(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
@@ -771,6 +1210,124 @@ final class SlotWorkspaceUiFactory {
                 0xCC7D5A3A, 0xCC5A6E3D, 0xCC6E3D3D, 0xCC3D5A6E,
                 0xCC3D6E5A, 0xCC5A3D6E, 0xCC5A4A6E, 0xCC4E5A4A
         };
+
+        private void beginChestLinkEdit(SlotWorkspaceViewModel.ClaimedChestTile tile) {
+            if (tile == null) {
+                return;
+            }
+            editingChestStorageId = tile.storageId();
+            localStatus = "linking " + tile.label();
+            rebuild();
+        }
+
+        private void endChestLinkEdit() {
+            editingChestStorageId = null;
+            rebuild();
+        }
+
+        private UIElement chestLinkPopover() {
+            if (editingChestStorageId == null) {
+                return null;
+            }
+            SlotWorkspaceViewModel.ClaimedChestTile tile = viewModel.claimedChestTile(editingChestStorageId);
+            if (tile == null) {
+                editingChestStorageId = null;
+                return null;
+            }
+
+            UIElement capsule = panel(GLASS).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .right(10)
+                    .top(10)
+                    .width(250)
+                    .paddingAll(8)
+                    .gapAll(6)
+                    .flexDirection(FlexDirection.COLUMN));
+            capsule.style(style -> style.zIndex(20));
+            capsule.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+
+            UIElement titleRow = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(16)
+                    .gapAll(6)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            Label title = label("Manage chest", ACCENT);
+            title.layout(layout -> layout.flex(1).height(12));
+            Button close = button("x", true, PANEL_ALT);
+            close.layout(layout -> layout.width(18).height(14));
+            close.setOnClick(event -> {
+                event.stopPropagation();
+                endChestLinkEdit();
+            });
+            titleRow.addChildren(title, close);
+            capsule.addChild(titleRow);
+
+            TextField nameInput = new TextField();
+            nameInput.setAnyString();
+            nameInput.setText(tile.label(), false);
+            nameInput.layout(layout -> layout.widthPercent(100).height(20));
+            nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
+            nameInput.textFieldStyle(style -> style
+                    .placeholder(Component.literal("Chest name"))
+                    .textColor(TEXT)
+                    .cursorColor(ACCENT)
+                    .textShadow(false)
+                    .fontSize(10));
+            String currentStorageId = tile.storageId();
+            String currentLabel = tile.label();
+            nameInput.setTextResponder(value -> {
+                String next = value == null ? "" : value;
+                String trimmed = next.trim();
+                if (trimmed.equals(currentLabel)) {
+                    return;
+                }
+                if (relabelChestEmitter != null) {
+                    relabelChestEmitter.send(currentStorageId, trimmed);
+                }
+            });
+            capsule.addChild(nameInput);
+
+            List<SlotWorkspaceViewModel.AtlasIsland> playerIslands = new ArrayList<>();
+            for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
+                if (island.kind() == VisualAtlasIslandKind.PLAYER) {
+                    playerIslands.add(island);
+                }
+            }
+            if (playerIslands.isEmpty()) {
+                Label hint = label("No player islands yet — create one first", MUTED);
+                hint.layout(layout -> layout.widthPercent(100).height(14));
+                capsule.addChild(hint);
+                return capsule;
+            }
+
+            for (SlotWorkspaceViewModel.AtlasIsland island : playerIslands) {
+                boolean linked = tile.linkedIslandIds().contains(island.islandId());
+                UIElement row = new UIElement().layout(layout -> layout
+                        .widthPercent(100)
+                        .height(18)
+                        .gapAll(6)
+                        .alignItems(AlignItems.CENTER)
+                        .flexDirection(FlexDirection.ROW));
+                Label name = label(island.label(), linked ? ACCENT : TEXT);
+                name.layout(layout -> layout.flex(1).height(12));
+                Button action = button(linked ? "Unlink" : "Link", true, linked ? PANEL_ALT : ROW);
+                action.layout(layout -> layout.width(54).height(14));
+                String islandId = island.islandId();
+                String storageId = tile.storageId();
+                action.setOnClick(event -> {
+                    event.stopPropagation();
+                    if (linked) {
+                        sendUnlinkChest(islandId, storageId);
+                    } else {
+                        sendLinkChest(islandId, storageId);
+                    }
+                });
+                row.addChildren(name, action);
+                capsule.addChild(row);
+            }
+            return capsule;
+        }
 
         private void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island) {
             if (island == null) {
@@ -838,15 +1395,24 @@ final class SlotWorkspaceUiFactory {
                     .cursorColor(ACCENT)
                     .textShadow(false)
                     .fontSize(10));
-            nameInput.setTextResponder(value -> {
-                String next = value == null ? "" : value;
-                islandLabelDraft = next;
-                String trimmed = next.trim();
+            nameInput.setTextResponder(value -> islandLabelDraft = value == null ? "" : value);
+            Runnable commitRename = () -> {
+                if (editingIslandId == null) {
+                    return;
+                }
+                String trimmed = islandLabelDraft == null ? "" : islandLabelDraft.trim();
                 if (trimmed.isBlank() || trimmed.equals(island.label())) {
                     return;
                 }
                 if (renameIslandEmitter != null) {
                     renameIslandEmitter.send(editingIslandId, trimmed);
+                }
+            };
+            nameInput.addEventListener(UIEvents.BLUR, event -> commitRename.run());
+            nameInput.addEventListener(UIEvents.KEY_DOWN, event -> {
+                if (event.keyCode == GLFW.GLFW_KEY_ENTER || event.keyCode == GLFW.GLFW_KEY_KP_ENTER) {
+                    commitRename.run();
+                    event.stopPropagation();
                 }
             });
             capsule.addChild(nameInput);
@@ -1097,10 +1663,7 @@ final class SlotWorkspaceUiFactory {
                     .gapAll(6)
                     .flexDirection(FlexDirection.COLUMN));
             clearSelectionOnDirectClick(panel);
-            panel.addChildren(
-                    selectionPanel(),
-                    collectionsPanel()
-            );
+            panel.addChildren(selectionPanel());
             return panel;
         }
 
@@ -1133,7 +1696,6 @@ final class SlotWorkspaceUiFactory {
                 children.add(wrappedLabel("home: " + (island == null ? atlasItem.islandId() : island.label()), MUTED));
                 children.add(label(selectionHomeStatus(atlasItem), atlasItem.playerPlaced() ? ACCENT : island != null && island.kind() == VisualAtlasIslandKind.TRIAGE ? WARNING : ACCENT)
                         .layout(layout -> layout.height(12)));
-                children.add(wrappedLabel("collections: " + collectionSummary(atlasItem), MUTED));
                 children.add(wrappedLabel("Drag to move this home. Drop on a hotbar slot to assign quick access.", MUTED));
                 appendTooltipPreview(children, atlasItem);
                 panel.addChildren(children.toArray(UIElement[]::new));
@@ -1152,78 +1714,18 @@ final class SlotWorkspaceUiFactory {
             return panel;
         }
 
-        private UIElement collectionsPanel() {
-            UIElement panel = panel(PANEL_ALT).layout(layout -> layout
-                    .widthPercent(100)
-                    .paddingAll(6)
-                    .gapAll(4)
-                    .flexDirection(FlexDirection.COLUMN));
-            panel.addChildren(label("Collections", ACCENT).layout(layout -> layout.height(12)));
-
-            TextField input = new TextField();
-            input.setAnyString();
-            input.setText(collectionDraft, false);
-            input.layout(layout -> layout.widthPercent(100).height(20));
-            input.style(style -> style.backgroundTexture(rect(0xC60D1318)));
-            input.textFieldStyle(style -> style
-                    .placeholder(Component.literal("New collection"))
-                    .textColor(TEXT)
-                    .cursorColor(ACCENT)
-                    .textShadow(false)
-                    .fontSize(10));
-            input.setTextResponder(value -> collectionDraft = value == null ? "" : value);
-            panel.addChild(input);
-
-            Button create = button("Create collection", !collectionDraft.isBlank());
-            create.layout(layout -> layout.widthPercent(100).height(20));
-            create.setOnClick(event -> {
-                event.stopPropagation();
-                if (collectionDraft.isBlank()) {
-                    localStatus = "enter a collection name first";
-                    rebuild();
-                    return;
-                }
-                boolean sent = createCollectionEmitter != null && createCollectionEmitter.send(collectionDraft.trim());
-                localStatus = sent ? "collection create requested" : "collection create unavailable";
-                collectionDraft = "";
-                rebuild();
-            });
-            panel.addChild(create);
-
-            viewModel.collections().stream()
-                    .sorted(Comparator.comparing(entry -> entry.label().toLowerCase(Locale.ROOT)))
-                    .forEach(collection -> panel.addChild(collectionToggleButton(collection)));
-            return panel;
-        }
-
-        private Button collectionToggleButton(SlotWorkspaceViewModel.CollectionEntry collection) {
-            SlotWorkspaceViewModel.AtlasItem atlasItem = selectedAtlasItem();
-            boolean active = atlasItem != null;
-            boolean member = active && atlasItem.collectionIds().contains(collection.collectionId());
-            Button button = button((member ? "[x] " : "[ ] ") + shorten(collection.label(), 18) + " (" + collection.memberCount() + ")", active, member ? SELECTED : ROW);
-            button.layout(layout -> layout.widthPercent(100).height(20));
-            button.setOnClick(event -> {
-                event.stopPropagation();
-                if (selectedAtlasItem() == null) {
-                    localStatus = "select an atlas item first";
-                    rebuild();
-                    return;
-                }
-                sendToggleCollection(collection.collectionId());
-            });
-            return button;
-        }
-
         private UIElement beltPanel() {
             UIElement panel = panel(PANEL).layout(layout -> layout
                     .widthPercent(100)
-                    .height(44)
-                    .paddingAll(4)
-                    .gapAll(4)
+                    .height(BELT_HEIGHT)
+                    .paddingAll(2)
+                    .gapAll(2)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
             clearSelectionOnDirectClick(panel);
             panel.addChild(beltSpacer());
+            panel.addChild(kitsToggleButton());
+            panel.addChild(beltDivider());
             for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
                 panel.addChild(beltSlotButton(slot));
             }
@@ -1235,6 +1737,34 @@ final class SlotWorkspaceUiFactory {
             return panel;
         }
 
+        private Button kitsToggleButton() {
+            int kitCount = viewModel.kits().size();
+            SlotWorkspaceViewModel.KitCard activeCard = viewModel.activeKit();
+            String label = activeCard != null ? "Kit:" + shorten(activeCard.name(), 10) : "Kits";
+            int color = kitRackOpen ? ACCENT : activeCard != null ? ACTIVE_HOTBAR : PANEL_ALT;
+            Button button = button(label, true, color);
+            button.layout(layout -> layout
+                    .width(Math.max(40, label.length() * 5 + 8))
+                    .height(BELT_SLOT_SIZE)
+                    .paddingAll(2)
+                    .alignItems(AlignItems.CENTER));
+            button.textStyle(style -> style
+                    .textColor(activeCard != null && !kitRackOpen ? TEXT : MUTED)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            button.setOnClick(event -> {
+                event.stopPropagation();
+                kitRackOpen = !kitRackOpen;
+                localStatus = kitRackOpen
+                        ? "kit rack open (" + kitCount + " kit" + (kitCount == 1 ? "" : "s") + ")"
+                        : "kit rack closed";
+                rebuild();
+            });
+            return button;
+        }
+
         private UIElement beltSpacer() {
             UIElement spacer = new UIElement().layout(layout -> layout.flex(1).height(1));
             spacer.setAllowHitTest(false);
@@ -1242,7 +1772,7 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement beltDivider() {
-            UIElement divider = panel(ISLAND_BORDER).layout(layout -> layout.width(1).height(28));
+            UIElement divider = panel(ISLAND_BORDER).layout(layout -> layout.width(1).height(BELT_DIVIDER_HEIGHT));
             divider.setAllowHitTest(false);
             return divider;
         }
@@ -1252,10 +1782,9 @@ final class SlotWorkspaceUiFactory {
             int color = selected ? SELECTED : slot.selected() ? ACTIVE_HOTBAR : ROW;
             Button button = button("", true, color);
             button.layout(layout -> layout
-                    .width(34)
-                    .height(34)
-                    .paddingAll(2)
-                    .gapAll(1)
+                    .width(BELT_SLOT_SIZE)
+                    .height(BELT_SLOT_SIZE)
+                    .paddingAll(1)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.COLUMN));
             button.noText();
@@ -1286,49 +1815,305 @@ final class SlotWorkspaceUiFactory {
             installHotbarDropTarget(button, slot);
             installHotbarHoverTooltip(button, slot);
 
-            button.addChildren(
-                    label(Integer.toString(slot.hotbarIndex() + 1), slot.selected() ? WARNING : MUTED)
-                            .layout(layout -> layout.widthPercent(100).height(7)),
-                    slot.occupied() ? itemIcon(slot.displayStack(), 16) : emptyIcon(),
-                    label(slot.occupied() ? "x" + compactCount(slot.count()) : "", ACCENT)
-                            .layout(layout -> layout.widthPercent(100).height(7))
-            );
+            UIElement iconSlot = slot.occupied() ? itemIcon(slot.displayStack(), 16) : emptyIcon();
+            iconSlot.layout(layout -> layout.width(16).height(16));
+            button.addChild(iconSlot);
+            if (slot.occupied() && slot.count() > 1) {
+                Label countBadge = label(compactCount(slot.count()), ACCENT);
+                countBadge.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .right(1)
+                        .bottom(0)
+                        .height(6));
+                countBadge.textStyle(style -> style
+                        .textColor(ACCENT)
+                        .fontSize(6)
+                        .textShadow(true)
+                        .textAlignHorizontal(Horizontal.RIGHT)
+                        .textAlignVertical(Vertical.BOTTOM));
+                countBadge.setAllowHitTest(false);
+                button.addChild(countBadge);
+            }
+            Label indexBadge = label(Integer.toString(slot.hotbarIndex() + 1), slot.selected() ? WARNING : MUTED);
+            indexBadge.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(1)
+                    .top(0)
+                    .height(6));
+            indexBadge.textStyle(style -> style
+                    .textColor(slot.selected() ? WARNING : MUTED)
+                    .fontSize(6)
+                    .textShadow(true)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.TOP));
+            indexBadge.setAllowHitTest(false);
+            button.addChild(indexBadge);
             return button;
         }
 
         private UIElement offhandSlotButton(SlotWorkspaceViewModel.OffhandSlot offhand) {
             Button button = button("", false, ROW_DIM);
             button.layout(layout -> layout
-                    .width(34)
-                    .height(34)
-                    .paddingAll(2)
-                    .gapAll(1)
+                    .width(BELT_SLOT_SIZE)
+                    .height(BELT_SLOT_SIZE)
+                    .paddingAll(1)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.COLUMN));
             button.noText();
             button.setActive(false);
             installOffhandHoverTooltip(button, offhand);
-            button.addChildren(
-                    label("off", MUTED).layout(layout -> layout.widthPercent(100).height(7)),
-                    offhand.occupied() ? itemIcon(offhand.displayStack(), 16) : emptyIcon(),
-                    label(offhand.occupied() ? "x" + compactCount(offhand.count()) : "", MUTED)
-                            .layout(layout -> layout.widthPercent(100).height(7))
-            );
+            UIElement iconSlot = offhand.occupied() ? itemIcon(offhand.displayStack(), 16) : emptyIcon();
+            iconSlot.layout(layout -> layout.width(16).height(16));
+            button.addChild(iconSlot);
+            if (offhand.occupied() && offhand.count() > 1) {
+                Label countBadge = label(compactCount(offhand.count()), MUTED);
+                countBadge.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .right(1)
+                        .bottom(0)
+                        .height(6));
+                countBadge.textStyle(style -> style
+                        .textColor(MUTED)
+                        .fontSize(6)
+                        .textShadow(true)
+                        .textAlignHorizontal(Horizontal.RIGHT)
+                        .textAlignVertical(Vertical.BOTTOM));
+                countBadge.setAllowHitTest(false);
+                button.addChild(countBadge);
+            }
+            Label offLabel = label("off", MUTED);
+            offLabel.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(1)
+                    .top(0)
+                    .height(6));
+            offLabel.textStyle(style -> style
+                    .textColor(MUTED)
+                    .fontSize(6)
+                    .textShadow(true)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.TOP));
+            offLabel.setAllowHitTest(false);
+            button.addChild(offLabel);
             return button;
         }
 
         private Button equipmentToggleButton() {
             Button button = button("+", false, PANEL_ALT);
             button.layout(layout -> layout
-                    .width(34)
-                    .height(34)
-                    .paddingAll(2)
+                    .width(BELT_SLOT_SIZE)
+                    .height(BELT_SLOT_SIZE)
+                    .paddingAll(1)
                     .alignItems(AlignItems.CENTER));
             button.setActive(false);
-            button.textStyle(style -> style.textColor(MUTED).textShadow(false).fontSize(10)
+            button.textStyle(style -> style.textColor(MUTED).textShadow(false).fontSize(8)
                     .textAlignHorizontal(Horizontal.CENTER)
                     .textAlignVertical(Vertical.CENTER));
             return button;
+        }
+
+        private UIElement kitRackOverlay() {
+            UIElement overlay = panel(GLASS).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(16)
+                    .right(16)
+                    .bottom(BELT_HEIGHT + 10)
+                    .paddingAll(6)
+                    .gapAll(6)
+                    .flexDirection(FlexDirection.COLUMN));
+            overlay.style(style -> style.zIndex(7));
+            overlay.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+            overlay.addChild(kitRackHeader());
+            overlay.addChild(kitRackBody());
+            return overlay;
+        }
+
+        private UIElement kitRackHeader() {
+            UIElement row = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(16)
+                    .gapAll(6)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            int kitCount = viewModel.kits().size();
+            Label title = label("Kits (" + kitCount + ")", ACCENT);
+            title.layout(layout -> layout.flex(1).height(12));
+            title.textStyle(style -> style
+                    .textColor(ACCENT)
+                    .textShadow(false)
+                    .fontSize(9)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.CENTER));
+            Button save = button("Save Current Belt", true, ACCENT);
+            save.layout(layout -> layout.width(92).height(14));
+            save.textStyle(style -> style
+                    .textColor(TEXT)
+                    .textShadow(false)
+                    .fontSize(7)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            save.setOnClick(event -> {
+                event.stopPropagation();
+                sendSaveKit();
+            });
+            Button close = button("x", true, PANEL_ALT);
+            close.layout(layout -> layout.width(14).height(14));
+            close.textStyle(style -> style
+                    .textColor(MUTED)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            close.setOnClick(event -> {
+                event.stopPropagation();
+                kitRackOpen = false;
+                rebuild();
+            });
+            row.addChildren(title, save, close);
+            return row;
+        }
+
+        private UIElement kitRackBody() {
+            UIElement body = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(44)
+                    .gapAll(6)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            if (viewModel.kits().isEmpty()) {
+                Label empty = label("No kits yet. Load your belt, then Save Current Belt.", MUTED);
+                empty.layout(layout -> layout.flex(1).height(12));
+                empty.textStyle(style -> style
+                        .textColor(MUTED)
+                        .textShadow(false)
+                        .fontSize(8)
+                        .textAlignHorizontal(Horizontal.CENTER)
+                        .textAlignVertical(Vertical.CENTER));
+                body.addChild(empty);
+                return body;
+            }
+            for (SlotWorkspaceViewModel.KitCard card : viewModel.kits()) {
+                body.addChild(kitCardButton(card));
+            }
+            return body;
+        }
+
+        private UIElement kitCardButton(SlotWorkspaceViewModel.KitCard card) {
+            int color = card.active() ? ACTIVE_HOTBAR : ROW;
+            Button button = button("", true, color);
+            button.layout(layout -> layout
+                    .width(112)
+                    .height(40)
+                    .paddingAll(3)
+                    .gapAll(2)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.COLUMN));
+            button.noText();
+            button.setOnClick(event -> {
+                event.stopPropagation();
+                if (card.active()) {
+                    sendDeactivateKit();
+                } else {
+                    sendActivateKit(card.kitId());
+                }
+            });
+            button.addChild(kitCardHeader(card));
+            button.addChild(kitCardSlotStrip(card));
+            return button;
+        }
+
+        private UIElement kitCardHeader(SlotWorkspaceViewModel.KitCard card) {
+            UIElement row = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(10)
+                    .gapAll(2)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            Label name = label(shorten(card.name(), 12), card.active() ? TEXT : TEXT);
+            name.layout(layout -> layout.flex(1).height(9));
+            name.textStyle(style -> style
+                    .textColor(TEXT)
+                    .textShadow(false)
+                    .fontSize(7)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.CENTER));
+            name.setAllowHitTest(false);
+            Label readiness = label(card.readyCount() + "/" + card.slotCount(),
+                    card.readyCount() == card.slotCount() ? ACCENT : WARNING);
+            readiness.layout(layout -> layout.width(22).height(9));
+            readiness.textStyle(style -> style
+                    .textColor(card.readyCount() == card.slotCount() ? ACCENT : WARNING)
+                    .textShadow(false)
+                    .fontSize(7)
+                    .textAlignHorizontal(Horizontal.RIGHT)
+                    .textAlignVertical(Vertical.CENTER));
+            readiness.setAllowHitTest(false);
+            Button delete = button("x", true, PANEL_ALT);
+            delete.layout(layout -> layout.width(10).height(9));
+            delete.textStyle(style -> style
+                    .textColor(MUTED)
+                    .textShadow(false)
+                    .fontSize(7)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            delete.setOnClick(event -> {
+                event.stopPropagation();
+                sendDeleteKit(card.kitId());
+            });
+            row.addChildren(name, readiness, delete);
+            return row;
+        }
+
+        private UIElement kitCardSlotStrip(SlotWorkspaceViewModel.KitCard card) {
+            UIElement strip = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(12)
+                    .gapAll(1)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            strip.setAllowHitTest(false);
+            for (SlotWorkspaceViewModel.KitSlotState slot : card.slots()) {
+                strip.addChild(kitCardSlotCell(slot));
+            }
+            return strip;
+        }
+
+        private UIElement kitCardSlotCell(SlotWorkspaceViewModel.KitSlotState slot) {
+            int fill = !slot.filled() ? 0x60141B22 : slot.ready() ? ROW : ROW_DIM;
+            UIElement cell = panel(fill).layout(layout -> layout
+                    .width(11)
+                    .height(11)
+                    .paddingAll(1)
+                    .alignItems(AlignItems.CENTER));
+            cell.setAllowHitTest(false);
+            if (slot.filled() && !slot.displayStack().isEmpty()) {
+                cell.addChild(itemIcon(slot.displayStack(), 9, slot.ready()));
+            }
+            return cell;
+        }
+
+        private void sendSaveKit() {
+            boolean sent = saveKitEmitter != null && saveKitEmitter.send("");
+            localStatus = sent ? "saving kit..." : "save kit unavailable";
+            rebuild();
+        }
+
+        private void sendActivateKit(String kitId) {
+            boolean sent = activateKitEmitter != null && activateKitEmitter.send(kitId);
+            localStatus = sent ? "activating kit..." : "activate kit unavailable";
+            rebuild();
+        }
+
+        private void sendDeactivateKit() {
+            boolean sent = deactivateKitEmitter != null && deactivateKitEmitter.send();
+            localStatus = sent ? "deactivating kit..." : "deactivate kit unavailable";
+            rebuild();
+        }
+
+        private void sendDeleteKit(String kitId) {
+            boolean sent = deleteKitEmitter != null && deleteKitEmitter.send(kitId);
+            localStatus = sent ? "deleting kit..." : "delete kit unavailable";
+            rebuild();
         }
 
         private void installHotbarHoverTooltip(Button button, SlotWorkspaceViewModel.HotbarSlot slot) {
@@ -1423,23 +2208,6 @@ final class SlotWorkspaceUiFactory {
             rebuild();
         }
 
-        private void sendToggleCollection(String collectionId) {
-            SlotWorkspaceViewModel.AtlasItem item = selectedAtlasItem();
-            if (item == null) {
-                localStatus = "select an atlas item first";
-                rebuild();
-                return;
-            }
-            boolean sent = toggleCollectionEmitter != null && toggleCollectionEmitter.send(
-                    item.identity().itemId(),
-                    item.identity().comparisonMode(),
-                    item.identity().componentFingerprint(),
-                    collectionId
-            );
-            localStatus = sent ? "collection update requested" : "collection update unavailable";
-            rebuild();
-        }
-
         private void sendMoveHotbarToAtlas(int hotbarIndex, String islandId, int worldX, int worldY) {
             boolean sent = hotbarToAtlasEmitter != null && hotbarToAtlasEmitter.send(
                     hotbarIndex,
@@ -1468,6 +2236,64 @@ final class SlotWorkspaceUiFactory {
                     "[SLOT] sendMoveIsland id={} worldX={} worldY={} sent={}",
                     islandId, worldX, worldY, sent);
             localStatus = sent ? "island move requested" : "island move unavailable";
+            rebuild();
+        }
+
+        private void sendTakeAll(String storageId) {
+            boolean sent = takeAllEmitter != null && takeAllEmitter.send(storageId);
+            localStatus = sent ? "take-all requested" : "take-all unavailable";
+            rebuild();
+        }
+
+        private void sendDeposit() {
+            boolean sent = depositEmitter != null && depositEmitter.send();
+            localStatus = sent ? "deposit requested" : "deposit unavailable";
+            rebuild();
+        }
+
+        private boolean anyChestProximate() {
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                if (tile.proximate()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void sendLinkChest(String islandId, String storageId) {
+            if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
+                localStatus = "invalid chest link";
+                rebuild();
+                return;
+            }
+            boolean sent = linkChestEmitter != null && linkChestEmitter.send(islandId, storageId);
+            localStatus = sent ? "chest link requested" : "chest link unavailable";
+            rebuild();
+        }
+
+        private void sendUnlinkChest(String islandId, String storageId) {
+            if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
+                localStatus = "invalid chest unlink";
+                rebuild();
+                return;
+            }
+            boolean sent = unlinkChestEmitter != null && unlinkChestEmitter.send(islandId, storageId);
+            localStatus = sent ? "chest unlink requested" : "chest unlink unavailable";
+            rebuild();
+        }
+
+        private void sendMoveChest(String storageId, int atlasX, int atlasY) {
+            if (storageId == null || storageId.isBlank()) {
+                localStatus = "invalid chest move";
+                rebuild();
+                return;
+            }
+            boolean sent = moveChestEmitter != null && moveChestEmitter.send(
+                    storageId,
+                    atlasX,
+                    atlasY
+            );
+            localStatus = sent ? "chest move requested" : "chest move unavailable";
             rebuild();
         }
 
@@ -1643,6 +2469,16 @@ final class SlotWorkspaceUiFactory {
                     event.stopPropagation();
                     return;
                 }
+                ChestTileDrag chestDrag = chestTileDrag(event);
+                if (chestDrag != null) {
+                    sendMoveChest(
+                            chestDrag.storageId(),
+                            atlas.worldX(event.x) - chestDrag.grabOffsetX(),
+                            atlas.worldY(event.y) - chestDrag.grabOffsetY()
+                    );
+                    event.stopPropagation();
+                    return;
+                }
                 HotbarSlotDrag hotbarItem = hotbarSlotDrag(event);
                 if (hotbarItem != null) {
                     sendMoveHotbarToAtlas(
@@ -1671,18 +2507,30 @@ final class SlotWorkspaceUiFactory {
         private void installAtlasCanvasDropTarget(UIElement target, SlotAtlasGraphView atlas) {
             target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
                 IslandDrag islandDrag = islandDrag(event);
-                if (islandDrag == null) {
+                if (islandDrag != null) {
+                    if (event.target == atlas) {
+                        return;
+                    }
+                    sendMoveIsland(
+                            islandDrag.islandId(),
+                            atlas.worldX(event.x) - islandDrag.grabOffsetX(),
+                            atlas.worldY(event.y) - islandDrag.grabOffsetY()
+                    );
+                    event.stopPropagation();
                     return;
                 }
-                if (event.target == atlas) {
-                    return;
+                ChestTileDrag chestDrag = chestTileDrag(event);
+                if (chestDrag != null) {
+                    if (event.target == atlas) {
+                        return;
+                    }
+                    sendMoveChest(
+                            chestDrag.storageId(),
+                            atlas.worldX(event.x) - chestDrag.grabOffsetX(),
+                            atlas.worldY(event.y) - chestDrag.grabOffsetY()
+                    );
+                    event.stopPropagation();
                 }
-                sendMoveIsland(
-                        islandDrag.islandId(),
-                        atlas.worldX(event.x) - islandDrag.grabOffsetX(),
-                        atlas.worldY(event.y) - islandDrag.grabOffsetY()
-                );
-                event.stopPropagation();
             });
         }
 
@@ -1770,8 +2618,13 @@ final class SlotWorkspaceUiFactory {
                 return;
             }
             IslandDrag islandDrag = islandDrag(event);
-            boolean acceptable = atlasItemDrag(event) != null || hotbarSlotDrag(event) != null || islandDrag != null;
-            updateGenericDropOverlay(atlas, acceptable, islandDrag != null ? SELECTED : WARNING);
+            ChestTileDrag chestDrag = chestTileDrag(event);
+            boolean acceptable = atlasItemDrag(event) != null
+                    || hotbarSlotDrag(event) != null
+                    || islandDrag != null
+                    || chestDrag != null;
+            int color = islandDrag != null || chestDrag != null ? SELECTED : WARNING;
+            updateGenericDropOverlay(atlas, acceptable, color);
         }
 
         private void updateGenericDropOverlay(UIElement target, boolean active) {
@@ -1809,6 +2662,11 @@ final class SlotWorkspaceUiFactory {
         private IslandDrag islandDrag(UIEvent event) {
             Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
             return payload instanceof IslandDrag islandDrag ? islandDrag : null;
+        }
+
+        private ChestTileDrag chestTileDrag(UIEvent event) {
+            Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
+            return payload instanceof ChestTileDrag chestTileDrag ? chestTileDrag : null;
         }
 
         private boolean isDirectDragTarget(UIEvent event, UIElement element) {
@@ -2072,8 +2930,67 @@ final class SlotWorkspaceUiFactory {
                         .top(auxiliaryTop)
                         .width(item.width() - sidePad * 2f)
                         .height(auxLineHeight)));
+                cursorTop += auxLineHeight;
+            }
+            if (!item.presence().isEmpty()) {
+                cursorTop += gap;
+                UIElement strip = presenceStrip(atlas, item, budget);
+                if (strip != null) {
+                    float presenceTop = cursorTop;
+                    body.addChild(strip.layout(layout -> layout
+                            .positionType(TaffyPosition.ABSOLUTE)
+                            .left(sidePad)
+                            .top(presenceTop)
+                            .width(item.width() - sidePad * 2f)
+                            .height(auxLineHeight)));
+                }
             }
             return body;
+        }
+
+        private UIElement presenceStrip(
+                SlotAtlasGraphView atlas,
+                SlotWorkspaceViewModel.AtlasItem item,
+                AtlasRenderBudget budget
+        ) {
+            if (item.presence().isEmpty()) {
+                return null;
+            }
+            StringBuilder text = new StringBuilder("in: ");
+            int maxEntries = Math.min(item.presence().size(), 3);
+            for (int index = 0; index < maxEntries; index++) {
+                SlotWorkspaceViewModel.ChestPresenceEntry entry = item.presence().get(index);
+                if (index > 0) {
+                    text.append(" · ");
+                }
+                text.append(entry.label()).append(" · ").append(entry.count());
+            }
+            if (item.presence().size() > maxEntries) {
+                text.append(" · +").append(item.presence().size() - maxEntries);
+            }
+            int maxChars = Math.max(8, budget.secondaryMaxChars() + 12);
+            UIElement band = anchorTextBand(
+                    atlas,
+                    text.toString(),
+                    ACCENT,
+                    budget.secondaryFontPx() - 0.5f,
+                    maxChars,
+                    1,
+                    0x80121B1F,
+                    Horizontal.LEFT
+            );
+            band.setAllowHitTest(true);
+            String targetStorageId = item.presence().get(0).storageId();
+            band.addEventListener(UIEvents.CLICK, event -> {
+                SlotWorkspaceViewModel.ClaimedChestTile tile = viewModel.claimedChestTile(targetStorageId);
+                if (tile != null) {
+                    event.stopPropagation();
+                    panToChestTile(atlas, tile);
+                    localStatus = "panned to " + tile.label();
+                    rebuild();
+                }
+            });
+            return band;
         }
 
         private UIElement atlasBodyContainer() {
@@ -2155,14 +3072,6 @@ private void addCommonAtlasSignals(
                 AtlasRenderBudget budget,
                 boolean searchMatch
         ) {
-            if (item.collectionIds() != null && !item.collectionIds().isEmpty()) {
-                body.addChild(panel(COLLECTION).layout(layout -> layout
-                        .positionType(TaffyPosition.ABSOLUTE)
-                        .left(0)
-                        .top(atlas.worldUnitsForPixels(1f))
-                        .width(atlas.worldUnitsForPixels(budget.level().atLeast(DisclosureLevel.READ) ? 2f : 1f))
-                        .height(item.height() - atlas.worldUnitsForPixels(2f))));
-            }
             // Corner pip intentionally omitted — see docs/plans/current.md
             // "newness indicators (`+N` delta since last open)" for the
             // tracking slice that will re-introduce it with correct semantics.
@@ -2211,14 +3120,10 @@ private void addCommonAtlasSignals(
 
         private String preferredSecondaryLabel(SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
             String variant = tooltipVariantToken(item, budget.secondaryMaxChars());
-            String collection = collectionToken(item, budget.secondaryMaxChars());
             String mod = modToken(item, budget.secondaryMaxChars());
             String primary = preferredPrimaryLabel(item, budget);
             if (!variant.isBlank() && !normalizeTooltipText(variant).equals(normalizeTooltipText(primary))) {
                 return variant;
-            }
-            if (!collection.isBlank()) {
-                return collection;
             }
             if (item.recent()) {
                 return "new";
@@ -2231,28 +3136,11 @@ private void addCommonAtlasSignals(
 
         private String preferredAuxiliaryLabel(SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
             String secondary = preferredSecondaryLabel(item, budget);
-            String collection = collectionToken(item, budget.secondaryMaxChars());
             String mod = modToken(item, budget.secondaryMaxChars());
-            if (!collection.isBlank() && !normalizeTooltipText(collection).equals(normalizeTooltipText(secondary))) {
-                return collection;
-            }
             if (!mod.isBlank() && !normalizeTooltipText(mod).equals(normalizeTooltipText(secondary))) {
                 return mod;
             }
             return "";
-        }
-
-        private String collectionToken(SlotWorkspaceViewModel.AtlasItem item, int maxLength) {
-            if (item == null || item.collectionIds().isEmpty()) {
-                return "";
-            }
-            if (item.collectionIds().size() == 1) {
-                return compactAnchorText(viewModel.collectionLabel(item.collectionIds().getFirst()), maxLength);
-            }
-            String first = viewModel.collectionLabel(item.collectionIds().getFirst());
-            String suffix = "+" + (item.collectionIds().size() - 1);
-            int baseLength = Math.max(1, maxLength - suffix.length());
-            return compactAnchorText(first, baseLength) + suffix;
         }
 
         private String modToken(SlotWorkspaceViewModel.AtlasItem item, int maxLength) {
@@ -2403,20 +3291,6 @@ private void addCommonAtlasSignals(
             return Integer.toString(count);
         }
 
-        private String collectionSummary(SlotWorkspaceViewModel.AtlasItem item) {
-            if (item == null || item.collectionIds().isEmpty()) {
-                return "none";
-            }
-            StringBuilder summary = new StringBuilder();
-            for (String collectionId : item.collectionIds()) {
-                if (summary.length() > 0) {
-                    summary.append(", ");
-                }
-                summary.append(viewModel.collectionLabel(collectionId));
-            }
-            return summary.toString();
-        }
-
         private SlotWorkspaceViewModel.AtlasItem hoveredAtlasItem() {
             return viewModel.atlasItem(hoveredAtlasIdentity);
         }
@@ -2475,20 +3349,17 @@ private void addCommonAtlasSignals(
                 searchable.append(island.label().toLowerCase(Locale.ROOT)).append(' ');
                 searchable.append(island.kind().name().toLowerCase(Locale.ROOT)).append(' ');
             }
-            for (String collectionId : item.collectionIds()) {
-                searchable.append(viewModel.collectionLabel(collectionId).toLowerCase(Locale.ROOT)).append(' ');
-            }
             return searchable.toString().contains(query);
         }
 
         private String searchSummary() {
             String query = normalizedSearchQuery();
             if (query.isBlank()) {
-                return "Drag empty atlas or island surfaces to pan. Drag anchors between atlas and hotbar. Drag island titles to reposition them.";
+                return "Drag to pan. Drag anchors between atlas and belt. Drag island titles to move.";
             }
             long matches = viewModel.atlasItems().stream().filter(this::matchesSearch).count();
             return matches + " match" + (matches == 1 ? "" : "es")
-                    + " for \"" + searchQuery.trim() + "\". Non-matches stay dimmed in place.";
+                    + " for \"" + searchQuery.trim() + "\".";
         }
 
         private String normalizedSearchQuery() {
@@ -2684,6 +3555,13 @@ private void addCommonAtlasSignals(
 
     private record IslandDrag(
             String islandId,
+            int grabOffsetX,
+            int grabOffsetY
+    ) {
+    }
+
+    private record ChestTileDrag(
+            String storageId,
             int grabOffsetX,
             int grabOffsetY
     ) {

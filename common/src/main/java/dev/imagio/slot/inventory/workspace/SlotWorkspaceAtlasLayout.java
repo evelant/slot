@@ -15,18 +15,33 @@ public final class SlotWorkspaceAtlasLayout {
     public static final int CARD_WIDTH = 32;
     public static final int CARD_HEIGHT = 32;
     public static final int CARD_GAP = 4;
+    public static final int CHEST_TILE_CELL = 16;
+    public static final int CHEST_TILE_COLUMNS = 9;
+    public static final int CHEST_TILE_HEADER_HEIGHT = 14;
+    public static final int CHEST_TILE_PADDING = 4;
+    public static final int STORAGE_ZONE_PADDING = 32;
     public static final String ISLAND_TRIAGE = "triage";
+
+    public static int chestTileWidth() {
+        return CHEST_TILE_PADDING * 2 + CHEST_TILE_COLUMNS * CHEST_TILE_CELL;
+    }
+
+    public static int chestTileHeight(int filledStackCount) {
+        int bounded = Math.max(0, filledStackCount);
+        int rows = bounded == 0 ? 1 : (bounded - 1) / CHEST_TILE_COLUMNS + 1;
+        return CHEST_TILE_HEADER_HEIGHT + rows * CHEST_TILE_CELL + CHEST_TILE_PADDING;
+    }
     private static final int CANVAS_MARGIN = 24;
 
     private static final int TRIAGE_COLOR = 0xCC2D4455;
     private static final int PLAYER_COLOR = 0xCC5A4A6E;
-    public static final int ISLAND_CONTENT_PADDING_X = 14;
-    public static final int ISLAND_CONTENT_PADDING_Y = 14;
-    public static final int ISLAND_CONTENT_TOP = 56;
+    public static final int ISLAND_CONTENT_PADDING_X = 8;
+    public static final int ISLAND_CONTENT_PADDING_Y = 8;
+    public static final int ISLAND_CONTENT_TOP = 48;
     private static final int TRIAGE_MIN_WIDTH = 420;
     private static final int TRIAGE_MIN_HEIGHT = 260;
-    public static final int PLAYER_ISLAND_MIN_WIDTH = 260;
-    public static final int PLAYER_ISLAND_MIN_HEIGHT = 180;
+    public static final int PLAYER_ISLAND_MIN_WIDTH = 180;
+    public static final int PLAYER_ISLAND_MIN_HEIGHT = 120;
     private static final int ISLAND_TRAILING_BUFFER_X = CARD_WIDTH + CARD_GAP;
     private static final int ISLAND_TRAILING_BUFFER_Y = CARD_HEIGHT + CARD_GAP;
 

@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-17
+Last updated: 2026-04-19
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -52,11 +52,15 @@ Currently landed:
     dimensions and can live at any coord (positive or negative); atlas
     cards are frozen at `item.width() × item.height()` world units — LOD
     adjusts detail, never widget footprint
-- storage prototype Slice 2 partial (domain + server-side identity
-  machinery landed; claim RPC, UI button, atlas rendering, and
-  `populate-chests` helper still open — see
-  [plans/storage-prototype.md](plans/storage-prototype.md)). Key landing
-  points so far:
+- storage prototype Slices 2–3, 4a, 5 Take-All, 6, and 7 landed
+  (domain + server-side identity machinery, claim RPC + chest-screen
+  button, atlas storage-zone rendering + chest tile drag-to-reposition,
+  `populate-chests` helper, live chest-contents grid + proximity
+  activation, island↔chest link model with popover + proximity-driven
+  link threads, deposit verb, Take All verb, per-item chest presence
+  strip, chest naming, and workflow persistence — see
+  [plans/storage-prototype.md](plans/storage-prototype.md)).
+  Key landing points:
   - `ClaimedChest(storageId, anchors, atlasX, atlasY, label)` +
     `ClaimedChestMap` in `common/workflow/domain/`; events and projection
     reducer wired through `WorkflowProjection.Snapshot`;
@@ -77,10 +81,103 @@ Currently landed:
   - `BlockEvent.BreakEvent` listener removes anchors from the breaking
     player's runtime (single-player first); cascades to claim delete
     when last anchor is gone
-  - in-memory-only for Slice 2: claimed-chest events are not yet encoded
-    by `WorkflowDomainFileStore` (placeholder `return null` arms + null
-    filter on the encode pipeline). Full codec + load-time reconciliation
-    lands in Slice 7
+  - `SlotChestClaimPayload` (playToServer) + `ChestClaimButtonController`
+    on the client: captures the last right-clicked block within a
+    1.5s window, injects a "Claim" button into any non-shulker
+    `AbstractContainerScreen`, and dispatches the claim through
+    `ChestClaimServerService` after a server-side reach check
+  - `ClaimedChestTile` record on `SlotWorkspaceViewModel` (storage id,
+    atlas x/y, label with auto-fallback `Chest #xxxx`, anchor count) +
+    codec roundtrip; projection derives tiles directly from
+    `ClaimedChestMap` on every refresh
+  - storage-zone backdrop + chest tile rendering in `SlotWorkspaceUiFactory`
+    + drag-to-reposition via `moveChestEmitter` → `SlotWorkspaceUiSession`
+    → `SlotWorkspaceCommandService.moveChest` →
+    `ChestClaimWorkflowDomainService.moveChest`
+  - `/slot test populate-chests <count> [radius]` places a ring of
+    vanilla chests, fills each with a deterministic identity spread,
+    and claims each via the real `ChestClaimServerService` path
+  - chest contents grid: `ChestContentsReader` on neoforge reads the
+    live `IItemHandler` snapshot for each claim and strips empty slots
+    at the source (only filled stacks travel to the client);
+    `ChestProximityResolver` produces a `Set<storageId>` in-proximity
+    (default 8-block radius, same-dimension); both piped through
+    `SlotWorkspaceViewModel.project(..., chestContentsResolver,
+    proximateStorageIds)` into `ClaimedChestTile.contents` / `proximate`.
+    Chest tile renders a 9-col grid that auto-heights to
+    `ceil(filled / 9)` rows; non-proximate tiles + cells dim via the
+    established carried-vs-ghost vocabulary
+  - link model: `ChestLink(islandId, storageId)` + `ChestLinkMap` in
+    `common/workflow/domain/`; `WorkflowEvent.ChestLinkCreated` /
+    `ChestLinkRemoved` with projection reducer; cascade removal when
+    the owning chest or island is deleted;
+    `ChestLinkWorkflowDomainService.linkIslandToChest` /
+    `unlinkIslandFromChest` gates on claim + island existence;
+    `WorkflowDomainRuntime.chestLinkWorkflow()` accessor
+  - link UI: "Link" button on each chest tile header opens a popover
+    listing all non-Triage islands with per-row Link/Unlink; proximity-
+    driven link threads (rotated panels via LDLib2 `Transform2D`) fan
+    out from each proximate linked tile to island centers; linked
+    islands get a 2-world-unit accent frame when any linked chest is
+    in proximity
+  - deposit verb: `DepositPlanner` in common iterates carried stacks
+    (main + hotbar + offhand), resolves each stack's home island via
+    `VisualHomeMap`, filters to stacks whose island has a link to a
+    proximate chest, and returns a `DepositPlan` of `Assignment(laneId,
+    slotIndex, itemId, candidateStorageIds)` entries. Unit tests cover
+    the empty / no-home / triage / no-link / distant / happy-path /
+    multi-candidate / multi-lane cases
+  - deposit executor (`neoforge/storage/DepositExecutor`): for each
+    assignment, simulates `ItemHandlerHelper.insertItemStacked(handler,
+    stack, true)` on the first loaded-anchor `IItemHandler`, only
+    commits on whole-stack fit, leaves the stack untouched otherwise.
+    Triggered by a proximity-gated "Deposit" button in the SLOT
+    workspace header via a zero-arg RPC; status bar surfaces
+    `deposited / deposited_partial / rejected / nothing_to_deposit`
+  - Slice 5 Take All: `TakeAllExecutor` in `neoforge/storage/`
+    extracts each non-empty chest slot via the first loaded anchor's
+    `IItemHandler`, pushes through `player.getInventory().add(stack)`,
+    re-inserts any remainder back into the same chest slot, and falls
+    back to `player.drop(...)` so stacks are never silently lost.
+    Proximity-gated "Take" button on each chest tile header (enabled
+    only when the tile is proximate and non-empty). Status bar surfaces
+    `took_all / took_all_partial / nothing_to_take / rejected`
+  - chest naming: `ChestLinkWorkflowDomainService.linkIslandToChest`
+    auto-labels the chest with the island's label on first link when
+    the chest label is still blank; inline rename at the top of the
+    per-chest Link popover dispatches via `relabelChestEmitter` →
+    `SlotWorkspaceCommandService.relabelChest` →
+    `ChestClaimWorkflowDomainService.relabelChest`
+  - Slice 6 per-item presence:
+    `SlotWorkspaceViewModel.ChestPresenceEntry(storageId, label, count)`
+    record + `List<ChestPresenceEntry> presence` on `AtlasItem`,
+    codec-roundtripped. `project(...)` buckets each tile's `contents`
+    by `ItemIdentity.itemId()` + `storageId`, sums counts, sorts per
+    identity by descending count, and attaches the list to matching
+    `AtlasItem`s. `detailAtlasBody` renders a single-line
+    `in: <label> · <count> · …` strip (up to 3 entries + "+N" overflow)
+    using the existing `anchorTextBand` vocabulary in `ACCENT`; click
+    pans the camera to the first-ranked chest tile via the new
+    `panToChestTile` helper (mirrors `panToIsland`)
+  - Slice 7 persistence: `WorkflowCheckpointData` gained
+    `claimedChests` + `chestLinks` arrays (plus `ClaimedChestData` /
+    `ChestAnchorData` / `ChestLinkData` records) and round-trips every
+    chest claim (storage id, anchors, atlas coords, label) + every
+    `ChestLink(islandId, storageId)`. The seven previously null-stubbed
+    workflow events (`ClaimedChest{Created, Moved, AnchorsChanged,
+    Relabeled, Deleted}`, `ChestLink{Created, Removed}`) now encode +
+    decode via the existing event-log format (new `WorkflowEventData`
+    fields: `storageId`, `anchors`, `claimedChest`). Schema change is
+    additive — older save files load cleanly with empty chest / link
+    arrays
+  - `ChestPersistenceReconciliation.reconcile(server, runtime)` runs
+    right after `persistence.loadInto(...)` in
+    `SlotPlayerWorkflowRuntimeService.createRuntime`. Policy is
+    "unknown ≠ broken": anchors in unloaded chunks are kept; only
+    anchors whose BE is loaded and either missing or carrying a
+    mismatched `slot:storage_id` attachment are pruned. When every
+    surviving anchor is known-broken, the claim is deleted (cascades to
+    links via the projection reducer)
 - persistence refactor: `WorkflowDomainFileStore` moved from
   `neoforge/persistence` → `common/workflow/domain/persistence/` (zero
   platform imports; lives with the domain types it serializes). Test
@@ -104,38 +201,94 @@ Current prototype validation point:
 
 ## Current Focus
 
-Storage prototype is underway. **Slice 2 (Claim And Storage Zone Tile) is
-partially landed** — the common-side domain (`ClaimedChest`,
-`ClaimedChestMap`, events, projection, `ChestClaimWorkflowDomainService`,
-`StorageZoneAutoPlacement`) and the NeoForge-side server identity
-machinery (`storage_id` BE attachment, double-chest-aware anchor
-resolver, shulker exclusion, `ChestClaimServerService`, break-event
-anchor cleanup) are in. Still open in Slice 2:
+Kit prototype slices 1, 2, and 3 are landed. Slices 4–9 remain (see
+[plans/kit-prototype.md](plans/kit-prototype.md) for the arc and
+Definition Of Done).
 
-- claim RPC + Claim button in the chest UI
-- storage-zone atlas region + chest tile rendering + drag-to-reposition
-- `/slot test populate-chests` helper command
+Kit prototype landing points so far:
 
-See [plans/storage-prototype.md](plans/storage-prototype.md) for the
-remaining exit criteria and the full slice sequence.
+- **Slice 1**: the Belt is a camera-pinned overlay on the atlas panel
+  rather than a flex-row sibling below the atlas body. Pan/zoom leaves
+  it anchored. No semantics change — transfer RPC path is untouched
+- **Slice 2 (pragmatic scope)**: `KitDefinition(id, name, pages,
+  bring, offhand)` + `KitPage` + `KitMap` + `KitActivation` in
+  `common/workflow/domain/`. `KitWorkflowDomainService` exposes list,
+  create, rename, update, delete, snapshot-from-authority, activate,
+  deactivate, switch-page, plus `pageAsLoadout` and `planActivate`
+  bridges to `LoadoutApplyService`. Kit events
+  (`KitCreated`/`KitUpdated`/`KitDeleted`/`KitActivated`/
+  `KitDeactivated`/`KitPageSwitched`) flow through `WorkflowEvent`,
+  `WorkflowProjection.Snapshot`, and `WorkflowDomainRuntime`.
+  `KitWorkflowDomainServiceTest` covers CRUD, activation,
+  deactivation, page switching, and loadout-bridge. User-facing
+  collection surface is removed from the LDLib workspace (tags on
+  atlas cards, inspector panel, search tokens, RPC emitters, codec
+  entries, command-service handlers). **Deferred**: the internal
+  `CollectionWorkflowDomainService` and `Collection*` domain types
+  still exist as plumbing for `InventoryBrowseService` (itself dead
+  code from the retired sidebar prototype that needs its own
+  cleanup pass). Kit events intentionally do not persist yet —
+  Slice 8 adds that. Protection integration is Slice 5
+- **Slice 2 partial**: the plan's exit criterion "Kit activation
+  produces the same intent router requests a loadout activation
+  would have" is represented by `planActivate` returning a real
+  `LoadoutApplyPlan`. Actually dispatching the plan through the
+  executor is Slice 3 work (wired when the UI calls activate)
+- **Slice 3**: Kit Rack landed as a glass overlay pinned to the
+  camera above the Belt, toggled by a "Kits" button on the Belt.
+  Rack body shows one card per kit with: name, per-slot
+  `readyCount / slotCount` readiness, a 9-cell mini slot strip that
+  renders filled slots with their item icon (ghost-dimmed when the
+  identity is not carried), and an inline delete. The header has a
+  "Save Current Belt" button that calls `snapshotFromAuthority`
+  server-side. Activating a card runs the full
+  `KitWorkflowDomainService.planActivate` →
+  `LoadoutApplyExecutor.execute` path through `InventoryActionExecutor`
+  (same intent router as every other transfer); re-clicking the
+  active card deactivates. No new action semantics, no client-side
+  authority. View-model plumbing: `KitCard` +
+  `KitSlotState` records on `SlotWorkspaceViewModel`, populated by
+  `SlotWorkspaceViewModel.project(...)` from the authority snapshot
+  and `KitMap`; codec-roundtripped. Command surface
+  (`SlotWorkspaceCommandService.saveBeltAsKit / activateKit /
+  deactivateKit / deleteKit`) + session RPC handlers +
+  `SlotWorkspaceKitCommandServiceTest` covering save, activate,
+  deactivate, delete, unknown-id paths. `activateKit` appends the
+  plan's per-target reasons to the outcome diagnostics so future
+  plan rejections surface as `reasons=target_blocked_by_policy:...`
+  etc. in the status bar rather than a bare count.
+  Pinned-constant regression:
+  `KitWorkflowDomainService.pageAsLoadout` now builds
+  `QuickAccessLaneTarget` with `BuiltinInventoryIds.QUICK_ACCESS_LANE_0`
+  (the lane id) — earlier it used `PLAYER_QUICK_ACCESS_LANE_0` (the
+  source id) which made `InventoryActionPolicy.allows` fail every
+  target; `KitWorkflowDomainServiceTest.pageAsLoadoutUsesQuickAccessLaneId`
+  locks this down. **Deferred to later slices**:
+  multi-page editing (Slice 4), bring list + protection (Slice 5),
+  drag-to-edit (Slice 6), gather (Slice 7), persistence (Slice 8),
+  undo (Slice 9). **Known gap**: activation only scans
+  `authority.carriedSources()`, so items sitting in a linked chest
+  are not auto-withdrawn — Gather (Slice 7) and Storage Slice 5
+  withdraw will cover this
+
+**Slice 4b** (Kit-holdout deposit) and the withdraw half of storage
+**Slice 5** remain blocked on Kit prototype Slice 5 (Kit-active
+protection).
 
 The underlying triage/home loop (from [plans/current.md](plans/current.md))
-is landed enough to support storage work: template + learned chip
-suggestions, chip-accept + manual-assign, island management, persisted
-homes, and LDLib workspace transport all in place. Slice 3b (reversible
-assignment records) is partial; search spotlight (slice 5) has not
-started; neither blocks the storage prototype. Kit prototype
-([plans/kit-prototype.md](plans/kit-prototype.md)) follows after
-storage proves out; `+N since last open` newness indicators are
-tracked under "Later Feature Tracks" in `plans/current.md`.
+is landed enough to support the remaining Kit slices: template + learned
+chip suggestions, chip-accept + manual-assign, island management,
+persisted homes, and LDLib workspace transport all in place. Slice 3b
+(reversible assignment records) is partial; search spotlight (slice 5)
+has not started; neither blocks the Kit prototype.
+`+N since last open` newness indicators are tracked under
+"Later Feature Tracks" in `plans/current.md`.
 
 ## Small known bugs to fix
 
-- Show item titles slightly sooner when zooming in (adjust lod switch point)
-- Show more than just title at lower LOD for differentiating/identifying things like enchanted books
-- Island rename loses focus on each keystroke, islands flicker
-- Min size of islands is too large and islands have a bit too much padding inside them
-
+(none currently tracked — previous batch cleared 2026-04-17; needs playtest
+verification of the LOD thresholds, default-camera fit, and batch chip
+accept before declaring done)
 
 ## Project Structure
 
@@ -145,10 +298,12 @@ Top-level docs (see [../README.md](../README.md) for the full doc map):
 - architecture: [architecture/overview.md](architecture/overview.md),
   [architecture/action-taxonomy.md](architecture/action-taxonomy.md),
   [architecture/host-ui.md](architecture/host-ui.md)
-- design: [design/atlas.md](design/atlas.md), [design/kits.md](design/kits.md)
+- design: [design/atlas.md](design/atlas.md), [design/kits.md](design/kits.md),
+  [design/storage.md](design/storage.md)
 - plans: [plans/current.md](plans/current.md),
   [plans/atlas-prototype.md](plans/atlas-prototype.md),
-  [plans/kit-prototype.md](plans/kit-prototype.md)
+  [plans/kit-prototype.md](plans/kit-prototype.md),
+  [plans/storage-prototype.md](plans/storage-prototype.md)
 - decisions: [decisions/0001-core-rewrite.md](decisions/0001-core-rewrite.md),
   [decisions/0002-ldlib2-workspace.md](decisions/0002-ldlib2-workspace.md)
 - research: [research/ui-ux-brainstorm.md](research/ui-ux-brainstorm.md),
@@ -169,9 +324,11 @@ Common module:
   planner, pending action state
 - `inventory/integration`: host resolution, providers, mutation router,
   builtin executor, compat provider contracts
-- `inventory/workspace`: UI-neutral workspace composition model
+- `inventory/workspace`: UI-neutral workspace composition model,
+  deposit planner
 - `workflow/domain`: collections, loadouts, protection, recents, activity,
-  visual homes, claimed chests, persistence-facing workflow domain
+  visual homes, claimed chests, chest links, persistence-facing workflow
+  domain
 - `workflow/domain/persistence`: JSON file-store codec for the workflow
   domain snapshot (platform-neutral; no Minecraft/NeoForge imports)
 - `atlas`: pure-function atlas helpers (`FitCarriedCamera`,
@@ -188,7 +345,9 @@ NeoForge module:
   request/outcome transport
 - `neoforge/compat`: loader-side integration registration
 - `neoforge/storage`: BE `storage_id` attachment, claimability/anchor
-  resolver, claim orchestrator, break-event anchor cleanup
+  resolver, claim orchestrator, break-event anchor cleanup, chest
+  contents reader, proximity resolver, deposit / take-all executors,
+  load-time anchor reconciliation
 - `neoforge/workflow`: platform lifecycle wiring for the common
   workflow runtime (per-player file-path resolution, login/logout /
   server-stop save triggers)
@@ -220,17 +379,19 @@ Use this to find the right package quickly. Paths are under
 | Session coordinator, intent router, preflight | `inventory/session` |
 | Host resolution, mutation router, executors | `inventory/integration` |
 | Workspace composition (UI-neutral) | `inventory/workspace` |
+| Deposit planner (pure) | `inventory/workspace` |
 | Collections, loadouts, recents, protection | `workflow/domain` |
-| Visual homes, claimed chests, domain events | `workflow/domain` |
+| Visual homes, claimed chests, chest links, domain events | `workflow/domain` |
 | Workflow snapshot JSON codec | `workflow/domain/persistence` |
 | Atlas camera / storage-zone placement (pure) | `atlas` |
 | Host compat shared helpers | `compat` |
 | Screen/menu observation | `neoforge/client/host` |
-| Player inventory replacement trigger | `neoforge/client/screen` |
+| Player inventory replacement trigger + chest-claim button | `neoforge/client/screen` |
 | LDLib2 workspace menu, session, view-model, RPC | `neoforge/screen/ldlib` |
 | Atlas `GraphView`, item cards, camera preservation | `neoforge/screen/ldlib` (UI factory) |
-| Open-workspace network payloads | `neoforge/network` |
+| Open-workspace + chest-claim network payloads | `neoforge/network` |
 | BE `storage_id` attachment + claim orchestrator | `neoforge/storage` |
+| Chest contents reader, proximity resolver, deposit / take-all executors, load-time reconciliation | `neoforge/storage` |
 | Per-player workflow runtime lifecycle | `neoforge/workflow` |
 
 LDLib2 imports must stay out of `common/`. Inventory semantics stay out

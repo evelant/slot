@@ -57,11 +57,11 @@ public final class SlotWorkspaceViewModelCodec {
         }
         tag.put("atlasItems", itemTags);
 
-        ListTag collectionTags = new ListTag();
-        for (SlotWorkspaceViewModel.CollectionEntry collection : viewModel.collections()) {
-            collectionTags.add(encodeCollection(collection));
+        ListTag chestTileTags = new ListTag();
+        for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+            chestTileTags.add(encodeClaimedChestTile(tile, provider));
         }
-        tag.put("collections", collectionTags);
+        tag.put("claimedChestTiles", chestTileTags);
 
         ListTag hotbarTags = new ListTag();
         for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
@@ -69,6 +69,12 @@ public final class SlotWorkspaceViewModelCodec {
         }
         tag.put("hotbarSlots", hotbarTags);
         tag.put("offhand", encodeOffhand(viewModel.offhand(), provider));
+
+        ListTag kitTags = new ListTag();
+        for (SlotWorkspaceViewModel.KitCard card : viewModel.kits()) {
+            kitTags.add(encodeKitCard(card, provider));
+        }
+        tag.put("kits", kitTags);
         return tag;
     }
 
@@ -89,16 +95,22 @@ public final class SlotWorkspaceViewModelCodec {
             atlasItems.add(decodeItem(provider, itemTags.getCompound(index)));
         }
 
-        ArrayList<SlotWorkspaceViewModel.CollectionEntry> collections = new ArrayList<>();
-        ListTag collectionTags = compoundTag.getList("collections", Tag.TAG_COMPOUND);
-        for (int index = 0; index < collectionTags.size(); index++) {
-            collections.add(decodeCollection(collectionTags.getCompound(index)));
+        ArrayList<SlotWorkspaceViewModel.ClaimedChestTile> claimedChestTiles = new ArrayList<>();
+        ListTag chestTileTags = compoundTag.getList("claimedChestTiles", Tag.TAG_COMPOUND);
+        for (int index = 0; index < chestTileTags.size(); index++) {
+            claimedChestTiles.add(decodeClaimedChestTile(provider, chestTileTags.getCompound(index)));
         }
 
         ArrayList<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots = new ArrayList<>();
         ListTag hotbarTags = compoundTag.getList("hotbarSlots", Tag.TAG_COMPOUND);
         for (int index = 0; index < hotbarTags.size(); index++) {
             hotbarSlots.add(decodeHotbar(provider, hotbarTags.getCompound(index)));
+        }
+
+        ArrayList<SlotWorkspaceViewModel.KitCard> kits = new ArrayList<>();
+        ListTag kitTags = compoundTag.getList("kits", Tag.TAG_COMPOUND);
+        for (int index = 0; index < kitTags.size(); index++) {
+            kits.add(decodeKitCard(provider, kitTags.getCompound(index)));
         }
 
         return new SlotWorkspaceViewModel(
@@ -116,9 +128,67 @@ public final class SlotWorkspaceViewModelCodec {
                 )
                         : islands,
                 atlasItems,
-                collections,
+                claimedChestTiles,
                 hotbarSlots.isEmpty() ? SlotWorkspaceViewModel.emptyHotbar() : hotbarSlots,
-                decodeOffhand(provider, compoundTag.getCompound("offhand"))
+                decodeOffhand(provider, compoundTag.getCompound("offhand")),
+                kits
+        );
+    }
+
+    private static CompoundTag encodeKitCard(SlotWorkspaceViewModel.KitCard card, HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("kitId", card.kitId());
+        tag.putString("name", card.name());
+        tag.putInt("pageCount", card.pageCount());
+        tag.putInt("activePageIndex", card.activePageIndex());
+        tag.putBoolean("active", card.active());
+        tag.putInt("slotCount", card.slotCount());
+        tag.putInt("readyCount", card.readyCount());
+        ListTag slots = new ListTag();
+        for (SlotWorkspaceViewModel.KitSlotState slot : card.slots()) {
+            slots.add(encodeKitSlot(slot, provider));
+        }
+        tag.put("slots", slots);
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.KitCard decodeKitCard(HolderLookup.Provider provider, CompoundTag tag) {
+        ArrayList<SlotWorkspaceViewModel.KitSlotState> slots = new ArrayList<>();
+        ListTag slotTags = tag.getList("slots", Tag.TAG_COMPOUND);
+        for (int index = 0; index < slotTags.size(); index++) {
+            slots.add(decodeKitSlot(provider, slotTags.getCompound(index)));
+        }
+        return new SlotWorkspaceViewModel.KitCard(
+                tag.getString("kitId"),
+                tag.getString("name"),
+                tag.getInt("pageCount"),
+                tag.getInt("activePageIndex"),
+                tag.getBoolean("active"),
+                tag.getInt("slotCount"),
+                tag.getInt("readyCount"),
+                slots
+        );
+    }
+
+    private static CompoundTag encodeKitSlot(SlotWorkspaceViewModel.KitSlotState slot, HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("slotIndex", slot.slotIndex());
+        tag.putBoolean("filled", slot.filled());
+        tag.putBoolean("ready", slot.ready());
+        tag.put("identity", encodeIdentity(slot.identity()));
+        tag.put("displayStack", slot.displayStack().saveOptional(provider));
+        tag.putString("name", slot.name());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.KitSlotState decodeKitSlot(HolderLookup.Provider provider, CompoundTag tag) {
+        return new SlotWorkspaceViewModel.KitSlotState(
+                tag.getInt("slotIndex"),
+                tag.getBoolean("filled"),
+                tag.getBoolean("ready"),
+                decodeIdentity(tag.getCompound("identity")),
+                ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
+                tag.getString("name")
         );
     }
 
@@ -183,27 +253,36 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putBoolean("recent", item.recent());
         tag.putBoolean("playerPlaced", item.playerPlaced());
         tag.putBoolean("carried", item.carried());
-        ListTag collectionTags = new ListTag();
-        for (String collectionId : item.collectionIds()) {
-            CompoundTag collectionTag = new CompoundTag();
-            collectionTag.putString("collectionId", collectionId);
-            collectionTags.add(collectionTag);
-        }
-        tag.put("collectionIds", collectionTags);
         ListTag chipTags = new ListTag();
         for (ChipSuggestion chip : item.chipSuggestions()) {
             chipTags.add(encodeChip(chip));
         }
         tag.put("chipSuggestions", chipTags);
+        ListTag presenceTags = new ListTag();
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
+            presenceTags.add(encodeChestPresence(entry));
+        }
+        tag.put("presence", presenceTags);
         return tag;
     }
 
+    private static CompoundTag encodeChestPresence(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("storageId", entry.storageId());
+        tag.putString("label", entry.label());
+        tag.putInt("count", entry.count());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.ChestPresenceEntry decodeChestPresence(CompoundTag tag) {
+        return new SlotWorkspaceViewModel.ChestPresenceEntry(
+                tag.getString("storageId"),
+                tag.getString("label"),
+                tag.getInt("count")
+        );
+    }
+
     private static SlotWorkspaceViewModel.AtlasItem decodeItem(HolderLookup.Provider provider, CompoundTag tag) {
-        ArrayList<String> collectionIds = new ArrayList<>();
-        ListTag collectionTags = tag.getList("collectionIds", Tag.TAG_COMPOUND);
-        for (int index = 0; index < collectionTags.size(); index++) {
-            collectionIds.add(collectionTags.getCompound(index).getString("collectionId"));
-        }
         ArrayList<ChipSuggestion> chipSuggestions = new ArrayList<>();
         ListTag chipTags = tag.getList("chipSuggestions", Tag.TAG_COMPOUND);
         for (int index = 0; index < chipTags.size(); index++) {
@@ -211,6 +290,11 @@ public final class SlotWorkspaceViewModelCodec {
             if (chip != null) {
                 chipSuggestions.add(chip);
             }
+        }
+        ArrayList<SlotWorkspaceViewModel.ChestPresenceEntry> presence = new ArrayList<>();
+        ListTag presenceTags = tag.getList("presence", Tag.TAG_COMPOUND);
+        for (int index = 0; index < presenceTags.size(); index++) {
+            presence.add(decodeChestPresence(presenceTags.getCompound(index)));
         }
         return new SlotWorkspaceViewModel.AtlasItem(
                 decodeIdentity(tag.getCompound("identity")),
@@ -226,8 +310,8 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getBoolean("recent"),
                 tag.getBoolean("playerPlaced"),
                 tag.getBoolean("carried"),
-                collectionIds,
-                chipSuggestions
+                chipSuggestions,
+                presence
         );
     }
 
@@ -275,19 +359,67 @@ public final class SlotWorkspaceViewModelCodec {
         return new ChipSuggestion(kind, template, islandId, label, color, iconIdentity);
     }
 
-    private static CompoundTag encodeCollection(SlotWorkspaceViewModel.CollectionEntry collection) {
+    private static CompoundTag encodeClaimedChestTile(
+            SlotWorkspaceViewModel.ClaimedChestTile tile,
+            HolderLookup.Provider provider
+    ) {
         CompoundTag tag = new CompoundTag();
-        tag.putString("collectionId", collection.collectionId());
-        tag.putString("label", collection.label());
-        tag.putInt("memberCount", collection.memberCount());
+        tag.putString("storageId", tile.storageId());
+        tag.putString("dimensionId", tile.dimensionId());
+        tag.putInt("atlasX", tile.atlasX());
+        tag.putInt("atlasY", tile.atlasY());
+        tag.putInt("width", tile.width());
+        tag.putInt("height", tile.height());
+        tag.putString("label", tile.label());
+        tag.putInt("anchorCount", tile.anchorCount());
+        tag.putInt("slotCount", tile.slotCount());
+        tag.putBoolean("proximate", tile.proximate());
+        ListTag contentTags = new ListTag();
+        for (ItemStack stack : tile.contents()) {
+            CompoundTag entry = new CompoundTag();
+            entry.put("stack", stack == null ? new CompoundTag() : stack.saveOptional(provider));
+            contentTags.add(entry);
+        }
+        tag.put("contents", contentTags);
+        ListTag linkedIslandTags = new ListTag();
+        for (String islandId : tile.linkedIslandIds()) {
+            CompoundTag entry = new CompoundTag();
+            entry.putString("islandId", islandId);
+            linkedIslandTags.add(entry);
+        }
+        tag.put("linkedIslandIds", linkedIslandTags);
         return tag;
     }
 
-    private static SlotWorkspaceViewModel.CollectionEntry decodeCollection(CompoundTag tag) {
-        return new SlotWorkspaceViewModel.CollectionEntry(
-                tag.getString("collectionId"),
+    private static SlotWorkspaceViewModel.ClaimedChestTile decodeClaimedChestTile(
+            HolderLookup.Provider provider,
+            CompoundTag tag
+    ) {
+        ArrayList<ItemStack> contents = new ArrayList<>();
+        ListTag contentTags = tag.getList("contents", Tag.TAG_COMPOUND);
+        for (int index = 0; index < contentTags.size(); index++) {
+            CompoundTag entry = contentTags.getCompound(index);
+            ItemStack stack = ItemStack.parseOptional(provider, entry.getCompound("stack"));
+            contents.add(stack);
+        }
+        ArrayList<String> linkedIslandIds = new ArrayList<>();
+        ListTag linkedIslandTags = tag.getList("linkedIslandIds", Tag.TAG_COMPOUND);
+        for (int index = 0; index < linkedIslandTags.size(); index++) {
+            linkedIslandIds.add(linkedIslandTags.getCompound(index).getString("islandId"));
+        }
+        return new SlotWorkspaceViewModel.ClaimedChestTile(
+                tag.getString("storageId"),
+                tag.getString("dimensionId"),
+                tag.getInt("atlasX"),
+                tag.getInt("atlasY"),
+                tag.getInt("width"),
+                tag.getInt("height"),
                 tag.getString("label"),
-                tag.getInt("memberCount")
+                tag.getInt("anchorCount"),
+                tag.getInt("slotCount"),
+                contents,
+                tag.getBoolean("proximate"),
+                linkedIslandIds
         );
     }
 

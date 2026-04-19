@@ -5,6 +5,7 @@ import dev.imagio.slot.SlotDiagnostics;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
@@ -18,24 +19,36 @@ import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.inventory.workspace.DepositPlan;
+import dev.imagio.slot.inventory.workspace.DepositPlanner;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferExecution;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
+import dev.imagio.slot.neoforge.storage.ChestContentsReader;
+import dev.imagio.slot.neoforge.storage.ChestProximityResolver;
+import dev.imagio.slot.neoforge.storage.DepositExecutor;
+import dev.imagio.slot.neoforge.storage.TakeAllExecutor;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
 
 final class SlotWorkspaceUiSession {
     static final int TARGET_MAIN_SOURCE = 1;
@@ -184,6 +197,151 @@ final class SlotWorkspaceUiSession {
         applyOutcome(serverPlayer, outcome);
     }
 
+    void deposit() {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
+        Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
+        if (proximate.isEmpty()) {
+            status = "rejected";
+            diagnostics = "no_proximate_chest";
+            broadcast(serverPlayer);
+            return;
+        }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        InventoryAuthoritySnapshot authority = host == null
+                ? InventoryAuthoritySnapshot.empty()
+                : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        DepositPlan plan = DepositPlanner.plan(
+                authority,
+                runtime.snapshot().visualHomeMap(),
+                runtime.snapshot().chestLinkMap(),
+                proximate
+        );
+        DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(serverPlayer, plan, claimedChestMap);
+        if (outcome.deposited() == 0 && outcome.failed() == 0) {
+            status = "nothing_to_deposit";
+            diagnostics = "";
+        } else if (outcome.deposited() > 0 && outcome.failed() == 0) {
+            status = "deposited";
+            diagnostics = "deposited=" + outcome.deposited();
+        } else if (outcome.deposited() == 0) {
+            status = "rejected";
+            diagnostics = "deposit_failed=" + outcome.failed();
+        } else {
+            status = "deposited_partial";
+            diagnostics = "deposited=" + outcome.deposited() + " failed=" + outcome.failed();
+        }
+        broadcast(serverPlayer);
+    }
+
+    void linkIslandToChest(String islandId, String storageId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.linkIslandToChest(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                islandId,
+                storageId
+        ));
+    }
+
+    void unlinkIslandFromChest(String islandId, String storageId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.unlinkIslandFromChest(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                islandId,
+                storageId
+        ));
+    }
+
+    void takeAllFromChest(String storageIdRaw) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        if (storageIdRaw == null || storageIdRaw.isBlank()) {
+            status = "rejected";
+            diagnostics = "invalid_chest_storage_id";
+            broadcast(serverPlayer);
+            return;
+        }
+        UUID storageId;
+        try {
+            storageId = UUID.fromString(storageIdRaw);
+        } catch (IllegalArgumentException ignored) {
+            status = "rejected";
+            diagnostics = "invalid_chest_storage_id";
+            broadcast(serverPlayer);
+            return;
+        }
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        ClaimedChest chest = runtime.chestClaimWorkflow().claimedChestMap().chest(storageId);
+        if (chest == null) {
+            status = "rejected";
+            diagnostics = "unknown_chest_tile";
+            broadcast(serverPlayer);
+            return;
+        }
+        Set<String> proximate = ChestProximityResolver.proximateStorageIds(
+                serverPlayer, runtime.chestClaimWorkflow().claimedChestMap()
+        );
+        if (!proximate.contains(storageIdRaw)) {
+            status = "rejected";
+            diagnostics = "chest_not_proximate";
+            broadcast(serverPlayer);
+            return;
+        }
+        TakeAllExecutor.TakeAllOutcome outcome = TakeAllExecutor.execute(serverPlayer, chest);
+        if (outcome.movedStacks() == 0 && outcome.leftoverSlots() == 0) {
+            status = "nothing_to_take";
+            diagnostics = "";
+        } else if (outcome.leftoverSlots() == 0) {
+            status = "took_all";
+            diagnostics = "moved=" + outcome.movedStacks();
+        } else {
+            status = "took_all_partial";
+            diagnostics = "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots();
+        }
+        broadcast(serverPlayer);
+    }
+
+    void relabelChest(String storageId, String label) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.relabelChest(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                storageId,
+                label
+        ));
+    }
+
+    void moveChest(String storageId, Integer atlasX, Integer atlasY) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.moveChest(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                storageId,
+                atlasX,
+                atlasY
+        ));
+    }
+
     void renameIsland(String islandId, String label) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
@@ -228,6 +386,78 @@ final class SlotWorkspaceUiSession {
                 islandId
         ));
     }
+
+    void saveBeltAsKit(String name) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        InventoryAuthoritySnapshot authority = host == null
+                ? InventoryAuthoritySnapshot.empty()
+                : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.saveBeltAsKit(
+                workflowRuntime(serverPlayer),
+                authority,
+                KIT_IDENTITY_RESOLVER,
+                name
+        ));
+    }
+
+    void activateKit(String kitId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = request -> {
+            InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                    host,
+                    serverPlayer,
+                    request,
+                    ProtectionPolicy.allowAll()
+            );
+            workflowRuntime(serverPlayer).recordOutcome(outcome);
+            return outcome;
+        };
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.activateKit(
+                workflowRuntime(serverPlayer),
+                authority,
+                ProtectionPolicy.allowAll(),
+                KIT_IDENTITY_RESOLVER,
+                actionExecutor,
+                kitId
+        ));
+    }
+
+    void deactivateKit() {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.deactivateKit(
+                workflowRuntime(serverPlayer)
+        ));
+    }
+
+    void deleteKit(String kitId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.deleteKit(
+                workflowRuntime(serverPlayer),
+                kitId
+        ));
+    }
+
+    private static final Function<InventoryEntrySnapshot, ItemIdentity> KIT_IDENTITY_RESOLVER =
+            entry -> entry == null ? null : ItemIdentityMatcher.create(entry.stack());
 
     void moveHotbarToAtlas(Integer hotbarIndex, String islandId, Integer worldX, Integer worldY) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
@@ -274,31 +504,6 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
-    void toggleCollectionMembership(String itemId, String comparisonMode, String componentFingerprint, String collectionId) {
-        if (!(player instanceof ServerPlayer serverPlayer)) {
-            return;
-        }
-        refreshServerView(serverPlayer);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.toggleCollectionMembership(
-                workflowRuntime(serverPlayer),
-                viewModel,
-                itemId,
-                comparisonMode,
-                componentFingerprint,
-                collectionId
-        ));
-    }
-
-    void createCollection(String name) {
-        if (!(player instanceof ServerPlayer serverPlayer)) {
-            return;
-        }
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.createCollection(
-                workflowRuntime(serverPlayer),
-                name
-        ));
-    }
-
     private void applyOutcome(ServerPlayer serverPlayer, WorkspaceCommandOutcome outcome) {
         status = outcome.status();
         diagnostics = outcome.diagnostics();
@@ -321,16 +526,38 @@ final class SlotWorkspaceUiSession {
         String hostDiagnostics = host == null ? "host_resolution_failed" : "";
         String combinedDiagnostics = combineDiagnostics(hostDiagnostics, diagnostics);
         int selected = serverPlayer.getInventory().selected;
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
+        MinecraftServer server = serverPlayer.getServer();
+        Function<String, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsResolver = storageId -> {
+            if (server == null) {
+                return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
+            }
+            UUID uuid;
+            try {
+                uuid = UUID.fromString(storageId);
+            } catch (IllegalArgumentException ignored) {
+                return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
+            }
+            ClaimedChest chest = claimedChestMap.chest(uuid);
+            if (chest == null) {
+                return SlotWorkspaceViewModel.ChestContentsSnapshot.empty();
+            }
+            return ChestContentsReader.read(server, chest);
+        };
+        Set<String> proximateIds = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
         SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
                 authority,
-                workflowRuntime(serverPlayer).snapshot(),
+                runtime.snapshot(),
                 status,
                 combinedDiagnostics,
                 0,
                 selected,
                 0,
                 learnedRules,
-                IslandSignalExtractor::extract
+                IslandSignalExtractor::extract,
+                contentsResolver,
+                proximateIds
         );
         CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
         if (!nextContent.equals(lastContentTag)) {

@@ -11,8 +11,14 @@ import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionService;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.triage.TriageIslandRef;
-import dev.imagio.slot.workflow.domain.CollectionDefinition;
-import dev.imagio.slot.workflow.domain.CollectionProjection;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ChestLinkMap;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.KitActivation;
+import dev.imagio.slot.workflow.domain.KitDefinition;
+import dev.imagio.slot.workflow.domain.KitMap;
+import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.RecentView;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
@@ -41,9 +47,10 @@ public record SlotWorkspaceViewModel(
         int canvasHeight,
         List<AtlasIsland> islands,
         List<AtlasItem> atlasItems,
-        List<CollectionEntry> collections,
+        List<ClaimedChestTile> claimedChestTiles,
         List<HotbarSlot> hotbarSlots,
-        OffhandSlot offhand
+        OffhandSlot offhand,
+        List<KitCard> kits
 ) {
     public SlotWorkspaceViewModel {
         status = status == null || status.isBlank() ? "ready" : status;
@@ -53,9 +60,29 @@ public record SlotWorkspaceViewModel(
         canvasHeight = Math.max(1, canvasHeight);
         islands = islands == null ? List.of() : List.copyOf(islands);
         atlasItems = atlasItems == null ? List.of() : List.copyOf(atlasItems);
-        collections = collections == null ? List.of() : List.copyOf(collections);
+        claimedChestTiles = claimedChestTiles == null ? List.of() : List.copyOf(claimedChestTiles);
         hotbarSlots = hotbarSlots == null ? List.of() : List.copyOf(hotbarSlots);
         offhand = offhand == null ? OffhandSlot.empty() : offhand;
+        kits = kits == null ? List.of() : List.copyOf(kits);
+    }
+
+    public SlotWorkspaceViewModel(
+            long revision,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            int canvasWidth,
+            int canvasHeight,
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems,
+            List<ClaimedChestTile> claimedChestTiles,
+            List<HotbarSlot> hotbarSlots,
+            OffhandSlot offhand
+    ) {
+        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
+                canvasWidth, canvasHeight, islands, atlasItems, claimedChestTiles,
+                hotbarSlots, offhand, List.of());
     }
 
     public static SlotWorkspaceViewModel empty() {
@@ -74,7 +101,8 @@ public record SlotWorkspaceViewModel(
                 List.of(),
                 List.of(),
                 emptyHotbar(),
-                OffhandSlot.empty()
+                OffhandSlot.empty(),
+                List.of()
         );
     }
 
@@ -114,9 +142,26 @@ public record SlotWorkspaceViewModel(
             LearnedIslandRuleStore learnedRules,
             Function<ItemStack, IslandSignalDescriptor> signalExtractor
     ) {
+        return project(authority, workflow, status, diagnostics, pendingCount,
+                selectedQuickAccessSlot, revision, learnedRules, signalExtractor,
+                null, null);
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds
+    ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
-        CollectionProjection collectionsProjection = resolvedWorkflow.collections();
         RecentView recents = resolvedWorkflow.recents();
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
 
@@ -183,7 +228,6 @@ public record SlotWorkspaceViewModel(
                     recentIdentities.contains(accumulator.identity()),
                     playerPlaced,
                     accumulator.carried(),
-                    List.copyOf(collectionsProjection.memberships().getOrDefault(accumulator.identity(), Set.of())),
                     chipSuggestions
             ));
         }
@@ -197,7 +241,23 @@ public record SlotWorkspaceViewModel(
         List<AtlasIsland> fittedIslands = SlotWorkspaceAtlasLayout.fittedIslands(layoutIslands, atlasItems);
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(fittedIslands, atlasItems);
 
-        List<CollectionEntry> collectionEntries = collections(collectionsProjection);
+        List<ClaimedChestTile> tiles = claimedChestTiles(
+                resolvedWorkflow.claimedChestMap(),
+                resolvedWorkflow.chestLinkMap(),
+                chestContentsResolver,
+                proximateStorageIds
+        );
+        Map<String, List<ChestPresenceEntry>> presenceByItemId = presenceByItemId(tiles);
+        if (!presenceByItemId.isEmpty()) {
+            for (int index = 0; index < atlasItems.size(); index++) {
+                AtlasItem item = atlasItems.get(index);
+                List<ChestPresenceEntry> entries = presenceByItemId.get(item.identity().itemId());
+                if (entries != null && !entries.isEmpty()) {
+                    atlasItems.set(index, item.withPresence(entries));
+                }
+            }
+        }
+        List<KitCard> kitCards = kitCards(resolvedAuthority, resolvedWorkflow.kitMap());
         return new SlotWorkspaceViewModel(
                 revision,
                 status,
@@ -208,10 +268,90 @@ public record SlotWorkspaceViewModel(
                 SlotWorkspaceAtlasLayout.CANVAS_HEIGHT,
                 islandsWithCarriedCounts,
                 atlasItems,
-                collectionEntries,
+                tiles,
                 hotbarSlots(resolvedAuthority, selectedQuickAccessSlot),
-                OffhandSlot.from(resolvedAuthority)
+                OffhandSlot.from(resolvedAuthority),
+                kitCards
         );
+    }
+
+    private static List<KitCard> kitCards(InventoryAuthoritySnapshot authority, KitMap kitMap) {
+        if (kitMap == null || kitMap.kits().isEmpty()) {
+            return List.of();
+        }
+        Set<ItemIdentity> carried = carriedIdentities(authority);
+        KitActivation activation = kitMap.activation();
+        ArrayList<KitCard> result = new ArrayList<>(kitMap.kits().size());
+        for (KitDefinition kit : kitMap.kits()) {
+            if (kit == null || kit.id().isBlank()) {
+                continue;
+            }
+            boolean active = activation.isActive() && activation.kitId().equals(kit.id());
+            int renderedPage = active ? Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1)) : 0;
+            KitPage page = kit.page(renderedPage);
+            if (page == null) {
+                continue;
+            }
+            ArrayList<KitSlotState> slots = new ArrayList<>(KitPage.HOTBAR_SLOT_COUNT);
+            int ready = 0;
+            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
+                ItemIdentity identity = page.slot(slotIndex);
+                boolean filled = identity != null;
+                boolean present = filled && carried.contains(identity);
+                if (filled && present) {
+                    ready++;
+                }
+                ItemStack stack = filled ? resolveGhostStack(identity) : ItemStack.EMPTY;
+                String name = filled && !stack.isEmpty() ? stack.getHoverName().getString() : filled ? identity.itemId() : "";
+                slots.add(new KitSlotState(
+                        slotIndex,
+                        filled,
+                        present,
+                        IdentityRef.from(identity),
+                        stack,
+                        name
+                ));
+            }
+            result.add(new KitCard(
+                    kit.id(),
+                    kit.name(),
+                    kit.pageCount(),
+                    renderedPage,
+                    active,
+                    KitPage.HOTBAR_SLOT_COUNT,
+                    ready,
+                    List.copyOf(slots)
+            ));
+        }
+        return List.copyOf(result);
+    }
+
+    private static Set<ItemIdentity> carriedIdentities(InventoryAuthoritySnapshot authority) {
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        if (authority == null) {
+            return identities;
+        }
+        for (String laneId : CARRIED_LANE_IDS) {
+            for (InventoryEntrySnapshot entry : authority.entries(laneId)) {
+                if (entry == null || !entry.present()) {
+                    continue;
+                }
+                identities.add(ItemIdentityMatcher.create(entry.stack()));
+            }
+        }
+        return identities;
+    }
+
+    private static ItemStack resolveGhostStack(ItemIdentity identity) {
+        if (identity == null) {
+            return ItemStack.EMPTY;
+        }
+        try {
+            ItemStack stack = ghostStackResolver.apply(identity.itemId());
+            return stack == null ? ItemStack.EMPTY : stack;
+        } catch (RuntimeException | LinkageError ignored) {
+            return ItemStack.EMPTY;
+        }
     }
 
     private static List<AtlasIsland> withCarriedCounts(List<AtlasIsland> islands, List<AtlasItem> atlasItems) {
@@ -242,10 +382,141 @@ public record SlotWorkspaceViewModel(
                 canvasHeight,
                 islands,
                 atlasItems,
-                collections,
+                claimedChestTiles,
                 hotbarSlots,
-                offhand
+                offhand,
+                kits
         );
+    }
+
+    public KitCard kit(String kitId) {
+        if (kitId == null || kitId.isBlank()) {
+            return null;
+        }
+        for (KitCard card : kits) {
+            if (card.kitId().equals(kitId)) {
+                return card;
+            }
+        }
+        return null;
+    }
+
+    public KitCard activeKit() {
+        for (KitCard card : kits) {
+            if (card.active()) {
+                return card;
+            }
+        }
+        return null;
+    }
+
+    public ClaimedChestTile claimedChestTile(String storageId) {
+        if (storageId == null || storageId.isBlank()) {
+            return null;
+        }
+        for (ClaimedChestTile tile : claimedChestTiles) {
+            if (tile.storageId().equals(storageId)) {
+                return tile;
+            }
+        }
+        return null;
+    }
+
+    private static List<ClaimedChestTile> claimedChestTiles(
+            ClaimedChestMap map,
+            ChestLinkMap linkMap,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds
+    ) {
+        if (map == null || map.chests().isEmpty()) {
+            return List.of();
+        }
+        ChestLinkMap resolvedLinkMap = linkMap == null ? ChestLinkMap.empty() : linkMap;
+        ArrayList<ClaimedChestTile> tiles = new ArrayList<>(map.chests().size());
+        for (ClaimedChest chest : map.chests()) {
+            if (chest == null) {
+                continue;
+            }
+            ChestAnchor primary = chest.anchors().iterator().next();
+            String dimension = primary == null ? "" : primary.dimensionId();
+            String label = chest.label() == null || chest.label().isBlank()
+                    ? autoLabel(chest)
+                    : chest.label();
+            String storageId = chest.storageId().toString();
+            ChestContentsSnapshot snapshot = chestContentsResolver == null
+                    ? ChestContentsSnapshot.empty()
+                    : chestContentsResolver.apply(storageId);
+            if (snapshot == null) {
+                snapshot = ChestContentsSnapshot.empty();
+            }
+            boolean proximate = proximateStorageIds != null && proximateStorageIds.contains(storageId);
+            int width = SlotWorkspaceAtlasLayout.chestTileWidth();
+            int height = SlotWorkspaceAtlasLayout.chestTileHeight(snapshot.contents().size());
+            List<String> linkedIslandIds = List.copyOf(resolvedLinkMap.islandsLinkedTo(chest.storageId()));
+            tiles.add(new ClaimedChestTile(
+                    storageId,
+                    dimension,
+                    chest.atlasX(),
+                    chest.atlasY(),
+                    width,
+                    height,
+                    label,
+                    chest.anchors().size(),
+                    snapshot.slotCount(),
+                    snapshot.contents(),
+                    proximate,
+                    linkedIslandIds
+            ));
+        }
+        return List.copyOf(tiles);
+    }
+
+    private static Map<String, List<ChestPresenceEntry>> presenceByItemId(List<ClaimedChestTile> tiles) {
+        if (tiles == null || tiles.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<String, LinkedHashMap<String, int[]>> counts = new LinkedHashMap<>();
+        LinkedHashMap<String, String> labelByStorageId = new LinkedHashMap<>();
+        for (ClaimedChestTile tile : tiles) {
+            if (tile == null || tile.contents().isEmpty()) {
+                continue;
+            }
+            labelByStorageId.put(tile.storageId(), tile.label());
+            for (ItemStack stack : tile.contents()) {
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                String itemId = ItemIdentityMatcher.create(stack).itemId();
+                counts.computeIfAbsent(itemId, ignored -> new LinkedHashMap<>())
+                        .computeIfAbsent(tile.storageId(), ignored -> new int[]{0})[0] += stack.getCount();
+            }
+        }
+        LinkedHashMap<String, List<ChestPresenceEntry>> result = new LinkedHashMap<>();
+        for (Map.Entry<String, LinkedHashMap<String, int[]>> entry : counts.entrySet()) {
+            ArrayList<ChestPresenceEntry> list = new ArrayList<>(entry.getValue().size());
+            for (Map.Entry<String, int[]> chestEntry : entry.getValue().entrySet()) {
+                String storageId = chestEntry.getKey();
+                int count = chestEntry.getValue()[0];
+                if (count <= 0) {
+                    continue;
+                }
+                list.add(new ChestPresenceEntry(storageId, labelByStorageId.getOrDefault(storageId, storageId), count));
+            }
+            list.sort(Comparator.<ChestPresenceEntry>comparingInt(ChestPresenceEntry::count).reversed()
+                    .thenComparing(ChestPresenceEntry::label, String.CASE_INSENSITIVE_ORDER));
+            result.put(entry.getKey(), List.copyOf(list));
+        }
+        return Map.copyOf(result);
+    }
+
+    private static String autoLabel(ClaimedChest chest) {
+        String hex = chest.storageId().toString();
+        int dash = hex.indexOf('-');
+        String shortId = dash < 0 ? hex : hex.substring(0, dash);
+        if (shortId.length() > 4) {
+            shortId = shortId.substring(shortId.length() - 4);
+        }
+        return "Chest #" + shortId;
     }
 
     public AtlasItem atlasItem(IdentityRef identityRef) {
@@ -260,17 +531,6 @@ public record SlotWorkspaceViewModel(
 
     public AtlasIsland island(String islandId) {
         return SlotWorkspaceAtlasLayout.island(islands, islandId);
-    }
-
-    public String collectionLabel(String collectionId) {
-        if (collectionId == null || collectionId.isBlank()) {
-            return "";
-        }
-        return collections.stream()
-                .filter(collection -> collection.collectionId().equals(collectionId))
-                .map(CollectionEntry::label)
-                .findFirst()
-                .orElse(collectionId);
     }
 
     private static final String[] CARRIED_LANE_IDS = new String[]{
@@ -348,27 +608,6 @@ public record SlotWorkspaceViewModel(
             refs.add(new TriageIslandRef(island.id(), island.label(), island.color(), island.iconIdentity()));
         }
         return List.copyOf(refs);
-    }
-
-    private static List<CollectionEntry> collections(CollectionProjection projection) {
-        if (projection == null || projection.userCollections().isEmpty()) {
-            return List.of();
-        }
-        ArrayList<CollectionEntry> collections = new ArrayList<>();
-        for (CollectionDefinition definition : projection.userCollections()) {
-            if (definition == null) {
-                continue;
-            }
-            int memberCount = 0;
-            for (Set<String> collectionIds : projection.memberships().values()) {
-                if (collectionIds != null && collectionIds.contains(definition.id())) {
-                    memberCount++;
-                }
-            }
-            collections.add(new CollectionEntry(definition.id(), definition.name(), memberCount));
-        }
-        collections.sort(Comparator.comparing(entry -> entry.label().toLowerCase(Locale.ROOT)));
-        return List.copyOf(collections);
     }
 
     private static List<HotbarSlot> hotbarSlots(InventoryAuthoritySnapshot authority, int selectedQuickAccessSlot) {
@@ -477,8 +716,8 @@ public record SlotWorkspaceViewModel(
             boolean recent,
             boolean playerPlaced,
             boolean carried,
-            List<String> collectionIds,
-            List<ChipSuggestion> chipSuggestions
+            List<ChipSuggestion> chipSuggestions,
+            List<ChestPresenceEntry> presence
     ) {
         public AtlasItem {
             identity = identity == null ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "") : identity;
@@ -489,8 +728,8 @@ public record SlotWorkspaceViewModel(
             islandId = islandId == null ? "" : islandId;
             width = Math.max(SlotWorkspaceAtlasLayout.CARD_WIDTH, width);
             height = Math.max(SlotWorkspaceAtlasLayout.CARD_HEIGHT, height);
-            collectionIds = collectionIds == null ? List.of() : List.copyOf(collectionIds);
             chipSuggestions = chipSuggestions == null ? List.of() : List.copyOf(chipSuggestions);
+            presence = presence == null ? List.of() : List.copyOf(presence);
         }
 
         public AtlasItem(
@@ -506,23 +745,88 @@ public record SlotWorkspaceViewModel(
                 int height,
                 boolean recent,
                 boolean playerPlaced,
-                List<String> collectionIds,
+                boolean carried,
                 List<ChipSuggestion> chipSuggestions
         ) {
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId, x, y, width, height,
-                    recent, playerPlaced, totalCount > 0, collectionIds, chipSuggestions);
+                    recent, playerPlaced, carried, chipSuggestions, List.of());
+        }
+
+        public AtlasItem withPresence(List<ChestPresenceEntry> entries) {
+            return new AtlasItem(identity, displayStack, name, totalCount, firstSlotIndex, islandId, x, y, width, height,
+                    recent, playerPlaced, carried, chipSuggestions, entries);
         }
     }
 
-    public record CollectionEntry(
-            String collectionId,
+    public record ChestPresenceEntry(
+            String storageId,
             String label,
-            int memberCount
+            int count
     ) {
-        public CollectionEntry {
-            collectionId = collectionId == null ? "" : collectionId;
-            label = label == null || label.isBlank() ? collectionId : label;
-            memberCount = Math.max(0, memberCount);
+        public ChestPresenceEntry {
+            storageId = storageId == null ? "" : storageId;
+            label = label == null ? "" : label;
+            count = Math.max(0, count);
+        }
+    }
+
+    public record ClaimedChestTile(
+            String storageId,
+            String dimensionId,
+            int atlasX,
+            int atlasY,
+            int width,
+            int height,
+            String label,
+            int anchorCount,
+            int slotCount,
+            List<ItemStack> contents,
+            boolean proximate,
+            List<String> linkedIslandIds
+    ) {
+        public ClaimedChestTile {
+            storageId = storageId == null ? "" : storageId;
+            dimensionId = dimensionId == null ? "" : dimensionId;
+            width = Math.max(1, width);
+            height = Math.max(1, height);
+            label = label == null ? "" : label;
+            anchorCount = Math.max(1, anchorCount);
+            slotCount = Math.max(0, slotCount);
+            List<ItemStack> sourceContents = contents == null ? List.of() : contents;
+            ArrayList<ItemStack> copiedContents = new ArrayList<>(sourceContents.size());
+            for (ItemStack stack : sourceContents) {
+                if (stack != null && !stack.isEmpty()) {
+                    copiedContents.add(stack.copy());
+                }
+            }
+            contents = List.copyOf(copiedContents);
+            if (linkedIslandIds == null) {
+                linkedIslandIds = List.of();
+            } else {
+                LinkedHashSet<String> filtered = new LinkedHashSet<>();
+                for (String islandId : linkedIslandIds) {
+                    if (islandId != null && !islandId.isBlank()) {
+                        filtered.add(islandId);
+                    }
+                }
+                linkedIslandIds = List.copyOf(filtered);
+            }
+        }
+    }
+
+    public record ChestContentsSnapshot(int slotCount, List<ItemStack> contents) {
+        public ChestContentsSnapshot {
+            slotCount = Math.max(0, slotCount);
+            List<ItemStack> source = contents == null ? List.of() : contents;
+            ArrayList<ItemStack> copy = new ArrayList<>(source.size());
+            for (ItemStack stack : source) {
+                copy.add(stack == null ? ItemStack.EMPTY : stack.copy());
+            }
+            contents = List.copyOf(copy);
+        }
+
+        public static ChestContentsSnapshot empty() {
+            return new ChestContentsSnapshot(0, List.of());
         }
     }
 
@@ -538,6 +842,45 @@ public record SlotWorkspaceViewModel(
             displayStack = displayStack == null ? ItemStack.EMPTY : displayStack.copy();
             count = Math.max(0, count);
             occupied = occupied && !displayStack.isEmpty();
+        }
+    }
+
+    public record KitCard(
+            String kitId,
+            String name,
+            int pageCount,
+            int activePageIndex,
+            boolean active,
+            int slotCount,
+            int readyCount,
+            List<KitSlotState> slots
+    ) {
+        public KitCard {
+            kitId = kitId == null ? "" : kitId;
+            name = name == null || name.isBlank() ? kitId : name;
+            pageCount = Math.max(1, pageCount);
+            activePageIndex = Math.max(0, Math.min(activePageIndex, pageCount - 1));
+            slotCount = Math.max(0, slotCount);
+            readyCount = Math.max(0, Math.min(readyCount, slotCount));
+            slots = slots == null ? List.of() : List.copyOf(slots);
+        }
+    }
+
+    public record KitSlotState(
+            int slotIndex,
+            boolean filled,
+            boolean ready,
+            IdentityRef identity,
+            ItemStack displayStack,
+            String name
+    ) {
+        public KitSlotState {
+            slotIndex = Math.max(0, slotIndex);
+            identity = identity == null
+                    ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "")
+                    : identity;
+            displayStack = displayStack == null ? ItemStack.EMPTY : displayStack.copy();
+            name = name == null ? "" : name;
         }
     }
 

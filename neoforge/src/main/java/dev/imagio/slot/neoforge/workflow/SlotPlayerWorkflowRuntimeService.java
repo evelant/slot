@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.workflow;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.neoforge.storage.ChestPersistenceReconciliation;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
@@ -58,8 +59,10 @@ public final class SlotPlayerWorkflowRuntimeService {
                 new WorkflowDomainFileStore(path(server, player.getUUID()))
         );
         persistence.loadInto(repository);
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(repository, persistence);
+        ChestPersistenceReconciliation.reconcile(server, runtime);
         SlotCommon.LOGGER.info("[SLOT] Loaded workflow runtime for {}", player.getScoreboardName());
-        return new WorkflowDomainRuntime(repository, persistence);
+        return runtime;
     }
 
     private static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {

@@ -15,6 +15,8 @@ public final class WorkflowDomainRuntime {
     private final CollectionWorkflowDomainService collectionWorkflow;
     private final VisualAtlasWorkflowDomainService visualAtlasWorkflow;
     private final ChestClaimWorkflowDomainService chestClaimWorkflow;
+    private final ChestLinkWorkflowDomainService chestLinkWorkflow;
+    private final KitWorkflowDomainService kitWorkflow;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
 
@@ -29,6 +31,8 @@ public final class WorkflowDomainRuntime {
         this.collectionWorkflow = new CollectionWorkflowDomainService(repository, this::saveNow);
         this.visualAtlasWorkflow = new VisualAtlasWorkflowDomainService(repository, this::saveNow);
         this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this::saveNow);
+        this.chestLinkWorkflow = new ChestLinkWorkflowDomainService(repository, this::saveNow);
+        this.kitWorkflow = new KitWorkflowDomainService(repository, this::saveNow);
     }
 
     public CollectionWorkflowDomainService collectionWorkflow() {
@@ -41,6 +45,14 @@ public final class WorkflowDomainRuntime {
 
     public ChestClaimWorkflowDomainService chestClaimWorkflow() {
         return chestClaimWorkflow;
+    }
+
+    public ChestLinkWorkflowDomainService chestLinkWorkflow() {
+        return chestLinkWorkflow;
+    }
+
+    public KitWorkflowDomainService kitWorkflow() {
+        return kitWorkflow;
     }
 
     public WorkflowProjection.Snapshot workflowProjection() {

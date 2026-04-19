@@ -273,7 +273,6 @@ class SlotWorkspaceLdlibModelTest {
         assertEquals(17, stone.totalCount());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, stone.width());
         assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, stone.height());
-        assertTrue(stone.collectionIds().contains(buildKit));
         assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, torch.islandId());
         assertTrue(torch.carried());
         assertEquals(16, torch.totalCount());
@@ -398,7 +397,7 @@ class SlotWorkspaceLdlibModelTest {
                 SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                 false,
                 false,
-                List.of(),
+                false,
                 List.of()
         );
 
@@ -513,7 +512,6 @@ class SlotWorkspaceLdlibModelTest {
         assertEquals(original.diagnostics(), restored.diagnostics());
         assertEquals(original.atlasItems().size(), restored.atlasItems().size());
         assertEquals(original.atlasItems().getFirst().identity().itemId(), restored.atlasItems().getFirst().identity().itemId());
-        assertEquals(original.atlasItems().getFirst().collectionIds(), restored.atlasItems().getFirst().collectionIds());
         assertEquals(original.islands().size(), restored.islands().size());
         assertEquals(original.hotbarSlots().getFirst().displayStack().itemId(), restored.hotbarSlots().getFirst().displayStack().itemId());
         assertTrue(restored.hotbarSlots().getFirst().selected());

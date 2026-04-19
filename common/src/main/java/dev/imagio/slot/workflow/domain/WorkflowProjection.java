@@ -39,6 +39,8 @@ public final class WorkflowProjection {
         LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>(current.visualHomeMap().assignments());
         LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>(current.visualHomeMap().dismissedTemplateIds());
         LinkedHashMap<UUID, ClaimedChest> claimedChests = indexChests(current.claimedChestMap().chests());
+        LinkedHashSet<ChestLink> chestLinks = new LinkedHashSet<>(current.chestLinkMap().links());
+        KitMap kitMap = current.kitMap();
 
         switch (record.event()) {
             case WorkflowEvent.CollectionCreated event -> {
@@ -278,6 +280,7 @@ public final class WorkflowProjection {
                     playerIslands.removeIf(island -> island.id().equals(event.islandId()));
                     visualHomes.entrySet().removeIf(entry ->
                             entry.getValue() != null && event.islandId().equals(entry.getValue().islandId()));
+                    chestLinks.removeIf(link -> event.islandId().equals(link.islandId()));
                 }
             }
             case WorkflowEvent.VisualHomeAssigned event -> {
@@ -331,6 +334,52 @@ public final class WorkflowProjection {
             case WorkflowEvent.ClaimedChestDeleted event -> {
                 if (event.storageId() != null) {
                     claimedChests.remove(event.storageId());
+                    chestLinks.removeIf(link -> event.storageId().equals(link.storageId()));
+                }
+            }
+            case WorkflowEvent.ChestLinkCreated event -> {
+                if (!event.islandId().isBlank() && event.storageId() != null
+                        && claimedChests.containsKey(event.storageId())
+                        && playerIslands.stream().anyMatch(island -> island.id().equals(event.islandId()))) {
+                    chestLinks.add(new ChestLink(event.islandId(), event.storageId()));
+                }
+            }
+            case WorkflowEvent.ChestLinkRemoved event -> {
+                if (!event.islandId().isBlank() && event.storageId() != null) {
+                    chestLinks.removeIf(link -> link.islandId().equals(event.islandId())
+                            && link.storageId().equals(event.storageId()));
+                }
+            }
+            case WorkflowEvent.KitCreated event -> {
+                if (event.kit() != null && !event.kit().id().isBlank()) {
+                    kitMap = kitMap.withKit(event.kit());
+                }
+            }
+            case WorkflowEvent.KitUpdated event -> {
+                if (event.kit() != null && !event.kit().id().isBlank() && kitMap.kit(event.kit().id()) != null) {
+                    kitMap = kitMap.withKit(event.kit());
+                }
+            }
+            case WorkflowEvent.KitDeleted event -> {
+                if (!event.kitId().isBlank()) {
+                    kitMap = kitMap.withoutKit(event.kitId());
+                }
+            }
+            case WorkflowEvent.KitActivated event -> {
+                if (!event.kitId().isBlank() && kitMap.kit(event.kitId()) != null) {
+                    kitMap = kitMap.withActivation(new KitActivation(event.kitId(), event.pageIndex()));
+                }
+            }
+            case WorkflowEvent.KitDeactivated event -> {
+                kitMap = kitMap.withActivation(KitActivation.NONE);
+            }
+            case WorkflowEvent.KitPageSwitched event -> {
+                KitActivation activeAssignment = kitMap.activation();
+                if (activeAssignment.isActive()) {
+                    KitDefinition activeKit = kitMap.kit(activeAssignment.kitId());
+                    if (activeKit != null && event.pageIndex() < activeKit.pageCount()) {
+                        kitMap = kitMap.withActivation(new KitActivation(activeAssignment.kitId(), event.pageIndex()));
+                    }
                 }
             }
         }
@@ -345,7 +394,9 @@ public final class WorkflowProjection {
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
-                new ClaimedChestMap(new ArrayList<>(claimedChests.values()))
+                new ClaimedChestMap(new ArrayList<>(claimedChests.values())),
+                new ChestLinkMap(chestLinks),
+                kitMap
         );
     }
 
@@ -381,7 +432,9 @@ public final class WorkflowProjection {
             ProtectionSnapshotPolicy protection,
             Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
             VisualHomeMap visualHomeMap,
-            ClaimedChestMap claimedChestMap
+            ClaimedChestMap claimedChestMap,
+            ChestLinkMap chestLinkMap,
+            KitMap kitMap
     ) {
         public Snapshot {
             userCollections = userCollections == null ? List.of() : List.copyOf(userCollections);
@@ -394,6 +447,8 @@ public final class WorkflowProjection {
             recentDismissedUpToByIdentity = copyRecentDismissals(recentDismissedUpToByIdentity);
             visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
             claimedChestMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
+            chestLinkMap = chestLinkMap == null ? ChestLinkMap.empty() : chestLinkMap;
+            kitMap = kitMap == null ? KitMap.empty() : kitMap;
         }
 
         public static Snapshot empty() {
@@ -407,7 +462,9 @@ public final class WorkflowProjection {
                     new ProtectionSnapshotPolicy(Set.of(), Set.of(), false),
                     Map.of(),
                     VisualHomeMap.empty(),
-                    ClaimedChestMap.empty()
+                    ClaimedChestMap.empty(),
+                    ChestLinkMap.empty(),
+                    KitMap.empty()
             );
         }
 

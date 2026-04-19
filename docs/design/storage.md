@@ -191,6 +191,27 @@ these, they earn their way in via observed friction, not speculation.
 - this is the entire on-atlas link visibility story. No hover-based link
   rendering, no always-on link threads
 
+### Chest Tile Body Is The Chest's Contents
+
+The chest tile on the atlas is not an opaque label — its body renders the
+chest's **live contents as a grid** so the player sees at a glance what
+each claimed chest currently holds. The grid uses the same item-card
+vocabulary as the rest of the atlas (identity icons, counts).
+
+Proximity gates activation, not visibility:
+
+- when the player is outside world-proximity of the chest, the tile is
+  fully drawn but **dimmed** (ghost-style alpha on chrome and cells),
+  consistent with carried-vs-ghost treatment elsewhere on the atlas
+- when the player steps into proximity, the tile **activates / lights
+  up**: full brightness, a subtle glow on the border, and link threads
+  + linked-island highlights (see above) render
+
+This is the player's primary "what's in that chest" surface. The
+detail-zoom per-item "also in:" strip on homed items (see below) is a
+complementary inverse view ("which chests contain X") and remains a
+separate surface.
+
 ### Per-Item Chest Presence
 
 Players searching for "where is iron stored" don't need link lines for

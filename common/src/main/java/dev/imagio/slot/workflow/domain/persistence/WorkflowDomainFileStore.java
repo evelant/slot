@@ -19,7 +19,12 @@ import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.workflow.domain.ActivityProjection;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ChestLink;
+import dev.imagio.slot.workflow.domain.ChestLinkMap;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.KitMap;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.CollectionProjection;
 import dev.imagio.slot.workflow.domain.DomainEventEnvelope;
@@ -58,6 +63,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
@@ -295,7 +301,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 Map.of(),
                 VisualHomeMap.empty(),
-                ClaimedChestMap.empty()
+                ClaimedChestMap.empty(),
+                ChestLinkMap.empty(),
+                KitMap.empty()
         );
 
         ActivityProjection.Snapshot activityProjection = new ActivityProjection.Snapshot(
@@ -345,6 +353,14 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         });
 
+        ArrayList<ClaimedChestData> claimedChests = new ArrayList<>();
+        for (ClaimedChest chest : resolved.claimedChestMap().chests()) {
+            claimedChests.add(claimedChest(chest));
+        }
+        ArrayList<ChestLinkData> chestLinks = new ArrayList<>();
+        for (ChestLink link : resolved.chestLinkMap().links()) {
+            chestLinks.add(chestLink(link));
+        }
         return new WorkflowCheckpointData(
                 collections,
                 memberships,
@@ -366,7 +382,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 resolved.visualHomeMap().assignments().values().stream()
                         .map(WorkflowDomainFileStore::visualHome)
                         .toList(),
-                List.copyOf(resolved.visualHomeMap().dismissedTemplateIds())
+                List.copyOf(resolved.visualHomeMap().dismissedTemplateIds()),
+                claimedChests,
+                chestLinks
         );
     }
 
@@ -509,6 +527,25 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
 
+        ArrayList<ClaimedChest> claimedChests = new ArrayList<>();
+        if (data.claimedChests != null) {
+            for (ClaimedChestData chestData : data.claimedChests) {
+                ClaimedChest chest = decodeClaimedChest(chestData);
+                if (chest != null) {
+                    claimedChests.add(chest);
+                }
+            }
+        }
+        LinkedHashSet<ChestLink> chestLinks = new LinkedHashSet<>();
+        if (data.chestLinks != null) {
+            for (ChestLinkData linkData : data.chestLinks) {
+                ChestLink link = decodeChestLink(linkData);
+                if (link != null) {
+                    chestLinks.add(link);
+                }
+            }
+        }
+
         return new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
@@ -519,7 +556,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 new ProtectionSnapshotPolicy(protectedIdentities, protectedTargets, protectPortableContainers),
                 recentDismissals,
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
-                ClaimedChestMap.empty()
+                new ClaimedChestMap(claimedChests),
+                new ChestLinkMap(chestLinks),
+                KitMap.empty()
         );
     }
 
@@ -704,24 +743,70 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "TemplateIslandDismissed";
                 data.templateId = event.templateId();
             }
-            // Claimed-chest events are not yet persisted (storage prototype Slice 7 lands the
-            // full codec + ClaimedChestMap checkpoint + load-time reconciliation). Until then,
-            // these events are domain-only; encoding returns null so the caller drops them.
-            case WorkflowEvent.ClaimedChestCreated ignored -> {
-                return null;
+            case WorkflowEvent.ClaimedChestCreated event -> {
+                data.kind = "ClaimedChestCreated";
+                data.claimedChest = claimedChest(event.chest());
+                if (event.chest() != null) {
+                    data.storageId = event.chest().storageId().toString();
+                }
             }
-            case WorkflowEvent.ClaimedChestMoved ignored -> {
-                return null;
+            case WorkflowEvent.ClaimedChestMoved event -> {
+                data.kind = "ClaimedChestMoved";
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+                data.x = event.atlasX();
+                data.y = event.atlasY();
             }
-            case WorkflowEvent.ClaimedChestAnchorsChanged ignored -> {
-                return null;
+            case WorkflowEvent.ClaimedChestAnchorsChanged event -> {
+                data.kind = "ClaimedChestAnchorsChanged";
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+                ArrayList<ChestAnchorData> anchors = new ArrayList<>();
+                if (event.anchors() != null) {
+                    for (ChestAnchor anchor : event.anchors()) {
+                        anchors.add(chestAnchor(anchor));
+                    }
+                }
+                data.anchors = anchors;
             }
-            case WorkflowEvent.ClaimedChestRelabeled ignored -> {
-                return null;
+            case WorkflowEvent.ClaimedChestRelabeled event -> {
+                data.kind = "ClaimedChestRelabeled";
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+                data.label = event.label();
             }
-            case WorkflowEvent.ClaimedChestDeleted ignored -> {
-                return null;
+            case WorkflowEvent.ClaimedChestDeleted event -> {
+                data.kind = "ClaimedChestDeleted";
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
             }
+            case WorkflowEvent.ChestLinkCreated event -> {
+                data.kind = "ChestLinkCreated";
+                data.islandId = event.islandId();
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+            }
+            case WorkflowEvent.ChestLinkRemoved event -> {
+                data.kind = "ChestLinkRemoved";
+                data.islandId = event.islandId();
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+            }
+            case WorkflowEvent.KitCreated event -> {
+                data.kind = "KitCreated";
+            }
+            case WorkflowEvent.KitUpdated event -> {
+                data.kind = "KitUpdated";
+            }
+            case WorkflowEvent.KitDeleted event -> {
+                data.kind = "KitDeleted";
+            }
+            case WorkflowEvent.KitActivated event -> {
+                data.kind = "KitActivated";
+            }
+            case WorkflowEvent.KitDeactivated event -> {
+                data.kind = "KitDeactivated";
+            }
+            case WorkflowEvent.KitPageSwitched event -> {
+                data.kind = "KitPageSwitched";
+            }
+        }
+        if (data.kind != null && data.kind.startsWith("Kit")) {
+            return null;
         }
         return data;
     }
@@ -761,6 +846,48 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case "VisualIslandIconChanged" -> new WorkflowEvent.VisualIslandIconChanged(nonNull(data.islandId), decodeIdentity(data.iconIdentity));
             case "VisualIslandDeleted" -> new WorkflowEvent.VisualIslandDeleted(nonNull(data.islandId));
             case "TemplateIslandDismissed" -> new WorkflowEvent.TemplateIslandDismissed(nonNull(data.templateId));
+            case "ClaimedChestCreated" -> {
+                ClaimedChest chest = decodeClaimedChest(data.claimedChest);
+                yield chest == null ? null : new WorkflowEvent.ClaimedChestCreated(chest);
+            }
+            case "ClaimedChestMoved" -> {
+                UUID storageId = parseUuid(data.storageId);
+                yield storageId == null ? null : new WorkflowEvent.ClaimedChestMoved(storageId, data.x, data.y);
+            }
+            case "ClaimedChestAnchorsChanged" -> {
+                UUID storageId = parseUuid(data.storageId);
+                if (storageId == null) {
+                    yield null;
+                }
+                LinkedHashSet<ChestAnchor> anchors = new LinkedHashSet<>();
+                if (data.anchors != null) {
+                    for (ChestAnchorData anchorData : data.anchors) {
+                        ChestAnchor anchor = decodeChestAnchor(anchorData);
+                        if (anchor != null) {
+                            anchors.add(anchor);
+                        }
+                    }
+                }
+                yield new WorkflowEvent.ClaimedChestAnchorsChanged(storageId, anchors);
+            }
+            case "ClaimedChestRelabeled" -> {
+                UUID storageId = parseUuid(data.storageId);
+                yield storageId == null ? null : new WorkflowEvent.ClaimedChestRelabeled(storageId, nonNull(data.label));
+            }
+            case "ClaimedChestDeleted" -> {
+                UUID storageId = parseUuid(data.storageId);
+                yield storageId == null ? null : new WorkflowEvent.ClaimedChestDeleted(storageId);
+            }
+            case "ChestLinkCreated" -> {
+                UUID storageId = parseUuid(data.storageId);
+                yield storageId == null || blank(data.islandId) ? null
+                        : new WorkflowEvent.ChestLinkCreated(data.islandId, storageId);
+            }
+            case "ChestLinkRemoved" -> {
+                UUID storageId = parseUuid(data.storageId);
+                yield storageId == null || blank(data.islandId) ? null
+                        : new WorkflowEvent.ChestLinkRemoved(data.islandId, storageId);
+            }
             default -> null;
         };
         return event == null ? null : new WorkflowEventRecord(envelope, event);
@@ -974,6 +1101,89 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         );
     }
 
+    private static ClaimedChestData claimedChest(ClaimedChest chest) {
+        if (chest == null) {
+            return null;
+        }
+        ArrayList<ChestAnchorData> anchors = new ArrayList<>();
+        for (ChestAnchor anchor : chest.anchors()) {
+            ChestAnchorData anchorData = chestAnchor(anchor);
+            if (anchorData != null) {
+                anchors.add(anchorData);
+            }
+        }
+        return new ClaimedChestData(
+                chest.storageId().toString(),
+                anchors,
+                chest.atlasX(),
+                chest.atlasY(),
+                chest.label()
+        );
+    }
+
+    private static ClaimedChest decodeClaimedChest(ClaimedChestData data) {
+        if (data == null) {
+            return null;
+        }
+        UUID storageId = parseUuid(data.storageId);
+        if (storageId == null) {
+            return null;
+        }
+        LinkedHashSet<ChestAnchor> anchors = new LinkedHashSet<>();
+        if (data.anchors != null) {
+            for (ChestAnchorData anchorData : data.anchors) {
+                ChestAnchor anchor = decodeChestAnchor(anchorData);
+                if (anchor != null) {
+                    anchors.add(anchor);
+                }
+            }
+        }
+        if (anchors.isEmpty()) {
+            return null;
+        }
+        return new ClaimedChest(storageId, anchors, data.atlasX, data.atlasY, nonNull(data.label));
+    }
+
+    private static ChestAnchorData chestAnchor(ChestAnchor anchor) {
+        return anchor == null ? null : new ChestAnchorData(anchor.dimensionId(), anchor.x(), anchor.y(), anchor.z());
+    }
+
+    private static ChestAnchor decodeChestAnchor(ChestAnchorData data) {
+        if (data == null || blank(data.dimensionId)) {
+            return null;
+        }
+        return new ChestAnchor(data.dimensionId, data.x, data.y, data.z);
+    }
+
+    private static ChestLinkData chestLink(ChestLink link) {
+        if (link == null) {
+            return null;
+        }
+        return new ChestLinkData(link.islandId(), link.storageId().toString());
+    }
+
+    private static ChestLink decodeChestLink(ChestLinkData data) {
+        if (data == null || blank(data.islandId)) {
+            return null;
+        }
+        UUID storageId = parseUuid(data.storageId);
+        if (storageId == null) {
+            return null;
+        }
+        return new ChestLink(data.islandId, storageId);
+    }
+
+    private static UUID parseUuid(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return null;
+        }
+        try {
+            return UUID.fromString(raw);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+    }
+
     private static VisualHomeData visualHome(VisualHomeAssignment assignment) {
         if (assignment == null) {
             return null;
@@ -1146,7 +1356,32 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<RecentDismissalData> recentDismissals,
             List<VisualIslandData> visualIslands,
             List<VisualHomeData> visualHomes,
-            List<String> dismissedTemplateIds
+            List<String> dismissedTemplateIds,
+            List<ClaimedChestData> claimedChests,
+            List<ChestLinkData> chestLinks
+    ) {
+    }
+
+    private record ClaimedChestData(
+            String storageId,
+            List<ChestAnchorData> anchors,
+            int atlasX,
+            int atlasY,
+            String label
+    ) {
+    }
+
+    private record ChestAnchorData(
+            String dimensionId,
+            int x,
+            int y,
+            int z
+    ) {
+    }
+
+    private record ChestLinkData(
+            String islandId,
+            String storageId
     ) {
     }
 
@@ -1179,6 +1414,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private int color;
         private String templateId;
         private IdentityData iconIdentity;
+        private String storageId;
+        private List<ChestAnchorData> anchors;
+        private ClaimedChestData claimedChest;
     }
 
     private static final class ActivityEventData {

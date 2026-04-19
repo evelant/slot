@@ -3,10 +3,11 @@
 Last updated: 2026-04-17
 
 Status: near-term engineering plan for the first end-to-end prototype of the
-atlas scale features and island-to-chest storage integration. Slice 0 and
-Slice 1 landed; Slice 2 is in progress — the common-side domain and the
-NeoForge-side server identity machinery are in, UI/RPC/rendering still
-open. See per-slice status headers below.
+atlas scale features and island-to-chest storage integration. Slices 0–3,
+4a, 5 Take-All, 6, and 7 landed. The storage prototype's Kit-free
+surface is complete. Slice 4b (Kit-holdout deposit) and the withdraw
+half of Slice 5 wait on Kit prototype slice 5. See per-slice status
+headers below.
 
 For the storage concept and interaction model, see
 [../design/storage.md](../design/storage.md). For the atlas concept that this
@@ -268,7 +269,7 @@ Tests: `FitCarriedCameraTest` covers fit + fallback; new
 `ghostItemAppearsForHomedIdentityNotInCarried`,
 `islandCarriedCountEqualsCarriedHomesInThatIsland`.
 
-### Slice 2: Claim And Storage Zone Tile — IN PROGRESS
+### Slice 2: Claim And Storage Zone Tile — LANDED
 
 Goal:
 
@@ -302,6 +303,30 @@ Status (2026-04-17):
   `BlockEvent.BreakEvent` server-side and removes the anchor from the
   breaking player's runtime (cascades to claim delete when the last
   anchor is gone).
+- claim RPC landed: `SlotChestClaimPayload(dimension, pos)` registered
+  `playToServer`; `SlotChestClaimPayloadHandler` re-resolves the
+  dimension, enforces a server-side reach check, and routes through
+  `ChestClaimServerService.claim`.
+- Claim button landed: `ChestClaimButtonController` captures the last
+  `PlayerInteractEvent.RightClickBlock` on the client within a 1.5s
+  window, then on `ScreenEvent.Init.Post` for any non-shulker
+  `AbstractContainerScreen` (excluding `InventoryScreen`) injects a
+  "Claim" button that emits `SlotChestClaimPayload`.
+- view-model + rendering landed: `SlotWorkspaceViewModel.ClaimedChestTile`
+  (storage id, dimension, atlas coords, label with auto-fallback
+  `Chest #xxxx`, anchor count) + codec roundtrip; projection derives
+  tiles directly from `ClaimedChestMap` on every refresh.
+  `SlotWorkspaceUiFactory.storageZoneBackdrop` paints a translucent
+  region behind the tile cluster; `chestTilePanel` draws each tile
+  (label header + kind subtitle); drag-to-reposition routes through
+  `moveChestEmitter` → `SlotWorkspaceUiSession.moveChest` →
+  `SlotWorkspaceCommandService.moveChest` →
+  `ChestClaimWorkflowDomainService.moveChest`.
+- `/slot test populate-chests <count> [radius]` landed: places a ring
+  of vanilla chests at `radius` blocks (default 4), fills each with up
+  to 9 deterministic stacks sampled from the item registry, and claims
+  each through `ChestClaimServerService.claim` — no direct-to-repository
+  injection, per the helper-command rules.
 - persistence refactor bundled in this slice:
   `WorkflowDomainFileStore` moved from `neoforge/persistence` →
   `common/workflow/domain/persistence/` (zero platform imports).
@@ -315,18 +340,6 @@ Status (2026-04-17):
 - portable-chest detection limited to `BlockTags.SHULKER_BOXES`;
   modded portable-chest capability probes are deferred until we hit a
   concrete case.
-
-Still open in Slice 2:
-
-- claim RPC + Claim button in the SLOT chest UI (wraps any
-  `IItemHandler`-exposing menu; hidden for shulker / portable chests;
-  reuses `ChestClaimServerService`)
-- storage-zone atlas region in the view model; chest tile renderer with
-  auto-label header and drag-to-reposition (visual only; never mutates
-  world state)
-- `/slot test populate-chests <count>` debug helper using the same
-  `ChestClaimServerService` path (no direct-to-repository injection,
-  per the helper-command rules)
 
 Deliverables:
 
@@ -382,11 +395,13 @@ Tests:
 - claim RPC is server-authoritative (client-provided positions and storage
   ids are ignored)
 
-### Slice 3: Island-To-Chest Link
+### Slice 3: Island-To-Chest Link + Chest Contents Grid
 
 Goal:
 
 - land the link data model and its proximity-gated render behavior
+- render the chest tile body as a live grid of the chest's current
+  contents, with the same proximity gating that drives link visibility
 
 Deliverables:
 
@@ -394,19 +409,46 @@ Deliverables:
   yet
 - dropdown menu on chest tiles: "Link to island…" lists the player's
   non-Triage islands; "Unlink…" lists currently linked islands
+- server-side contents snapshot reader: walks a claim's anchors, reads
+  the live `IItemHandler` snapshot from the first resolvable anchor,
+  **filters empty slots out at the source** so only filled stacks are
+  transported; falls back to an empty list when no anchor resolves
+  (chunk unloaded, BE missing); cached per view-model refresh, not per
+  frame
+- server-side proximity check: same-dimension squared-distance from
+  `ServerPlayer.blockPosition()` to any of a claim's anchors, within a
+  configured radius (default 8 blocks); produces a `Set<storageId>`
+  consumed by projection
+- view-model extension: `ClaimedChestTile` carries `slotCount` (the
+  authoritative container capacity, for future features), `contents`
+  (the filled stacks only, not padded to capacity), and a `proximate`
+  flag; codec round-trips them
+- chest tile rendering: the tile body is a 9-column grid of item cells
+  (reuse `ItemStackTexture`); tile height auto-fits `ceil(filled / 9)`
+  rows; no per-chest cap, so a Sophisticated barrel with 500 filled
+  stacks renders as a ~56-row-tall tile the player can zoom to
+- proximity gating: when `proximate == false`, apply the same
+  carried-vs-ghost visual vocabulary (alpha-dim card chrome + icon
+  overlay) to the tile + cells; when proximate, full brightness and a
+  subtle glow on the tile border
 - on-atlas rendering: by default no link lines are drawn
-- proximity-driven render: while the player is in world within the configured
-  radius of a claimed chest, that chest's tile glows and its linked islands
-  highlight, and faint threads are drawn from the chest tile to each linked
-  island
+- proximity-driven link render: while the player is near a claimed
+  chest, that chest's linked islands highlight and faint threads render
+  from the chest tile to each linked island
 - threads and glow fade when proximity ends; no hover-based rendering
 
 Exit criteria:
 
-- linking an island to a chest via the dropdown produces a `ChestLink` record
-  on the server
-- walking toward a linked chest in world visibly glows its tile and draws
-  thread(s) to linked islands without the player opening any menu
+- claiming a chest near the player shows its live contents in the tile
+  grid immediately; walking away dims the tile, walking back reactivates
+  it (no workspace reopen required within the refresh cadence)
+- a Sophisticated Storage chest with a partial fill renders only the
+  filled stacks, not the empty capacity — empty slots are stripped at
+  the reader before they ever reach the view model
+- linking an island to a chest via the dropdown produces a `ChestLink`
+  record on the server
+- walking toward a linked chest in world visibly draws thread(s) to
+  linked islands and highlights them without the player opening any menu
 - walking away fades both
 
 Tests:
@@ -414,7 +456,13 @@ Tests:
 - link create/remove RPC is player-scoped and idempotent
 - proximity service returns the expected `storageId` set for a given
   player position (across multiple anchor blocks per storage)
-- view-model link overlay is driven by the proximity set, not by hover state
+- chest contents reader returns the expected slot snapshot for a loaded
+  BE, empty list for an unresolvable anchor
+- view-model tile `proximate` flag and contents list are driven by the
+  server resolvers, not by client state
+- grid height computed from `contents.size()` (filled-stack count),
+  not `slotCount` (capacity); empty-slot filtering happens at the
+  reader, not the renderer
 
 ### Slice 4: Deposit Verb
 
@@ -424,25 +472,43 @@ Goal:
 
 Two-phase implementation:
 
-- **4a: no-Kit-holdouts first pass** — can ship whenever slice 3 is done
+- **4a: no-Kit-holdouts first pass — LANDED**
 - **4b: Kit holdout integration** — layers on once Kit prototype slice 5
   (bring + Kit-active protection) lands
 
-Deliverables (4a):
+Deliverables (4a, landed):
 
-- deposit verb: hotkey + button in the SLOT workspace; fires only when the
-  player is within proximity of one or more claimed chests
-- deposit planner in common kernel:
-  - iterates carried stacks
-  - resolves each stack's home island
-  - filters to stacks whose island has a link to a nearby claimed chest
-  - destination per eligible stack is the nearest linked chest with space
-  - a stack that cannot fit nearby fails for that stack with a status-strip
-    diagnostic; deposit continues for the remaining stacks
-- real mutations go through the existing intent router; deposit does not
-  invent parallel action semantics
-- greybox feedback: a short flash on the destination tile per deposited
-  stack; skip the full particle trail until a later slice
+- deposit verb: button in the SLOT workspace header (proximity-gated;
+  disabled when no claimed chest is in range); hotkey TBD
+- `DepositPlanner` in `common/inventory/workspace/`:
+  - iterates carried stacks (main + hotbar + offhand)
+  - resolves each stack's home island via `VisualHomeMap`
+  - filters to stacks whose island has a link to a proximate claimed chest
+    (via `ChestLinkMap` + the server-provided `proximateStorageIds`)
+  - returns a `DepositPlan` of `Assignment(laneId, slotIndex, itemId,
+    candidateStorageIds)` entries
+- `DepositExecutor` in `neoforge/storage/`:
+  - for each assignment, iterates candidate chests in order, resolves the
+    `IItemHandler` capability on the first loaded anchor, simulates a full
+    stack insertion via `ItemHandlerHelper.insertItemStacked(handler,
+    stack, true)`, and only commits if the stack fits *whole*
+  - on fit: inserts to chest, clears the player's slot
+  - on no-fit for any candidate: records failure, leaves the stack
+    untouched (no partial splits, no fallback to distant chests)
+- session status-bar diagnostics: `deposited / deposited_partial /
+  rejected / nothing_to_deposit` with counts
+- greybox feedback: destination-tile flash is deferred to a later polish
+  pass (status-bar counts are enough to validate the flow)
+
+Prototype departures from the original plan:
+
+- mutations bypass the intent router and write directly to the player
+  inventory + chest handler on the server thread (atomic, no client
+  authority). The intent router's action taxonomy (`InventoryActionTarget`)
+  doesn't model external-block `IItemHandler` targets; rather than invent
+  a new target kind for slice 4a, the executor writes the split directly.
+  When Kit slice 5 lands we'll decide whether to route through the intent
+  router or keep the direct path.
 
 Deliverables (4b, once Kits are ready):
 
@@ -452,24 +518,25 @@ Deliverables (4b, once Kits are ready):
 
 Exit criteria:
 
-- near a base with two linked chests, pressing the deposit hotkey moves
+- near a base with two linked chests, pressing the deposit button moves
   eligible stacks to their destinations and leaves unlinked-island stacks
   untouched (4a); Kit-active stacks also untouched (4b)
-- a full nearby linked chest produces a clear per-stack failure message
-  without routing to a distant chest
-- no authority state is invented client-side; every mutation is a standard
-  intent router request
+- a full nearby linked chest leaves the affected stack untouched and
+  surfaces `deposit_failed=N` in the status bar rather than routing to a
+  distant chest
+- authority stays server-side: client sends only a zero-arg `deposit`
+  RPC; the server resolves proximity, the plan, and the mutation
 
 Tests:
 
-- deposit planner correctness against a fixture:
-  - every stack whose home has a nearby linked chest is selected (4a)
-  - active Kit with bring targets → targets held, above-targets eligible (4b)
-  - nearest-with-space selection when two linked chests are in range
-  - full-chest produces a failure row, not a routing attempt to a distant
-    chest
-- architecture test: deposit planner lives in common, proximity adapter
-  lives on the NeoForge side
+- `DepositPlannerTest` (common) covers: empty proximate set → empty plan;
+  no-home / triage-home / no-link cases ignored; proximate linked chest
+  assigned; multi-candidate ordering; main + hotbar + offhand coverage
+- 4b: active Kit with bring targets → targets held, above-targets
+  eligible (once Kit slice 5 lands)
+- future: full-chest behavior (currently validated via the executor's
+  `insertItemStacked` simulate step but not yet covered by an automated
+  test — needs a server-integration or IItemHandler stub fixture)
 
 ### Slice 5: Withdraw Verb + Take All
 
@@ -478,7 +545,23 @@ Goal:
 - round-trip the storage loop with explicit and Kit-implicit withdrawal, and
   add the chest-level Take All for manual reorganization
 
-Deliverables:
+Take All landed (standalone, no Kit dep):
+
+- `TakeAllExecutor` in `neoforge/storage/`: resolves the first loaded
+  anchor's `IItemHandler`, extracts each non-empty slot, pushes through
+  `player.getInventory().add(stack)`, re-inserts any remainder back into
+  the chest slot; anything that still doesn't fit is dropped at the
+  player's feet via `player.drop(...)` so stacks are never silently lost
+- "Take" button added to each chest tile header, enabled only when the
+  tile is both proximate and non-empty; zero-arg RPC routes through
+  `SlotWorkspaceUiSession.takeAllFromChest(storageId)`
+- session status bar surfaces `took_all / took_all_partial /
+  nothing_to_take / rejected (chest_not_proximate)`
+- chest-UI "Take All" button (alongside the Claim button in the vanilla
+  chest screen) deferred to a later polish pass
+
+Withdraw verbs (explicit + Kit-implicit) still waiting on Kit
+prototype slice 5 for bring-list targets; listed below for completeness:
 
 - explicit withdraw verb (hotkey + button): for each `bring` entry in the
   active Kit, pull from nearby linked chests until carried count reaches the
@@ -486,90 +569,129 @@ Deliverables:
 - implicit withdraw: Kit activation while within the proximity of linked
   chests auto-fires the withdraw flow; Kit activation far from base runs
   normally without withdraw
-- "Take all" verb on each claimed-chest tile and in the SLOT chest UI:
-  empties chest contents into carried inventory, respecting available space
 - greybox feedback: short flash on each carried target home per withdrawn
   stack
 
 Exit criteria:
 
-- activating a Kit at base pulls missing bring items into carried; activating
-  it far from base just activates
+- Take All empties a nearby claimed chest into carried up to available
+  space; any unsuccessful stack stays in the chest (or drops as a safety
+  fallback if the chest re-insert also fails) ✅
+- activating a Kit at base pulls missing bring items into carried;
+  activating it far from base just activates (deferred)
 - explicit withdraw produces only the items declared in the active Kit's
-  bring list
-- Take All empties a chest into carried up to available space; any
-  unsuccessful stack stays in the chest
+  bring list (deferred)
 
 Tests:
 
 - withdraw planner against a fixture produces the expected per-identity
-  target deltas
-- Kit-activation integration: implicit withdraw fires only when in proximity
-- Take All overflow behavior: with a near-full carried, leftover items
-  remain in the chest
+  target deltas (deferred)
+- Kit-activation integration: implicit withdraw fires only when in
+  proximity (deferred)
+- Take All overflow behavior needs a server-integration or
+  `IItemHandler` stub fixture; currently validated by manual playtest
 
-### Slice 6: Per-Item Chest Presence
+### Slice 6: Per-Item Chest Presence — LANDED
 
 Goal:
 
 - surface "where else is this item stored" without adding a second
   organization axis
 
-Deliverables:
+Status (landed):
 
-- detail-zoom widget on an item home shows a compact "also in:" strip listing
-  claimed chests currently holding the identity, with counts
-- entries are clickable; clicking pans the camera to that chest tile using
-  the existing camera-history path
-- presence data is derived server-side from live chest snapshots of
-  currently-claimed chests, rate-limited (e.g., refresh on view-model
-  refresh cycle, not per frame)
-- no stored per-item→chest links; presence is observation-only
+- `SlotWorkspaceViewModel.ChestPresenceEntry(storageId, label, count)`
+  record added alongside the view model; `AtlasItem` gained a
+  `List<ChestPresenceEntry> presence` field (codec-roundtripped, defaults
+  to empty)
+- presence is computed in `SlotWorkspaceViewModel.project(...)` from the
+  tile contents the session already resolves: iterate tiles, bucket each
+  stack by `ItemIdentity.itemId()` + `storageId`, sum counts, sort
+  per-identity by descending count; attach the list to every AtlasItem
+  that matches an identity key. Observation-only — no stored per-item
+  links
+- UI: `detailAtlasBody` renders a single-line "in: &lt;label&gt; ·
+  &lt;count&gt; · …" strip (up to 3 entries + "+N" overflow) using the
+  same `anchorTextBand` vocabulary as the secondary/auxiliary rows;
+  strip inherits `ACCENT` color so it reads as a navigation hint
+- click-to-pan on the strip routes to `panToChestTile`, which reuses
+  `FitCarriedCamera.fit` with the same band / padding as the existing
+  `panToIsland`; `event.stopPropagation()` keeps the atlas-card select
+  path intact
+- names feed the strip: chest tiles auto-label on first link to an
+  island via `ChestLinkWorkflowDomainService`, and the Link popover now
+  exposes a rename input at the top (`relabelChestEmitter` →
+  `SlotWorkspaceCommandService.relabelChest` →
+  `ChestClaimWorkflowDomainService.relabelChest`)
 
 Exit criteria:
 
-- zooming in on an item home whose identity exists in one or more claimed
-  chests shows the presence strip with accurate counts
-- clicking a presence entry pans to that chest tile
-- updating chest contents produces an updated strip within one workspace
-  refresh
+- zooming in on an item home whose identity exists in one or more
+  claimed chests shows the "in: …" strip with accurate counts ✅
+- clicking the strip pans the camera to the first-ranked chest tile ✅
+- updating chest contents produces an updated strip within one
+  workspace refresh ✅ (presence derives from the live
+  `ChestContentsReader` snapshot, which already refreshes per view
+  cycle)
 
 Tests:
 
-- presence derivation: given claimed-chest snapshots and an identity, the
-  strip lists the right chests with the right counts
-- click-to-pan dispatches the same camera-history event as region-label
-  clicks
+- current coverage relies on the view-model's existing snapshot round
+  trip + the tile contents path; a dedicated
+  `presenceByItemId` unit test is a good next addition but not yet
+  written. Deferred for a targeted fixture that builds a
+  `ClaimedChestMap` + contents + carries and asserts entries
 
-### Slice 7: Persistence
+### Slice 7: Persistence — LANDED
 
 Goal:
 
 - promote the new storage state from in-memory to workflow-domain persistence
 
-Deliverables:
+Status (landed):
 
-- `ClaimedChest`, `ChestLink`, and chest tile atlas coordinates persist in
-  the existing `WorkflowDomainSnapshot`
-- migration/versioning matches the `VisualHomeMap` approach
-- on world load, claimed storages whose anchor blocks no longer exist (or
-  whose remaining anchor blocks no longer carry the expected `storageId`
-  NBT) have their tiles deleted as part of load-time reconciliation (same
-  rule as runtime block-break); anchors that still resolve are retained
-- claimed chest player rename/label, if not already in slice 2, lands here
+- `WorkflowCheckpointData` gained `claimedChests` + `chestLinks` arrays
+  with `ClaimedChestData` / `ChestAnchorData` / `ChestLinkData` records;
+  checkpoint encode/decode round-trips every chest claim (storage id,
+  anchors, atlas coords, label) and every `ChestLink(islandId,
+  storageId)`
+- the seven previously null-stubbed workflow events —
+  `ClaimedChestCreated / Moved / AnchorsChanged / Relabeled / Deleted`
+  and `ChestLinkCreated / Removed` — now encode and decode via the
+  existing event-log format, sharing `WorkflowEventData` fields
+  (`storageId`, `anchors`, `claimedChest`, existing `x/y/label`)
+- schema is additive; old save files (which lack these arrays) load
+  with empty chests + links, so there's no migration step required
+- neoforge-side `ChestPersistenceReconciliation.reconcile(server,
+  runtime)` runs right after `persistence.loadInto(...)` in
+  `SlotPlayerWorkflowRuntimeService.createRuntime`. Policy: "unknown ≠
+  broken" — anchors in unloaded chunks are kept as-is; only anchors
+  whose BE is loaded and either missing or carrying a mismatched
+  `slot:storage_id` attachment get pruned. When every surviving anchor
+  of a claim is known-broken, the claim is deleted (cascades to links
+  via the projection reducer)
+- player-authored chest label already landed in Slice 2 via
+  `ChestClaimWorkflowDomainService.relabelChest`; persistence here just
+  round-trips it
 
 Exit criteria:
 
 - claimed chests, their links, and their atlas positions survive client
-  restart and world reload
-- a claimed chest whose block was broken while the world was last closed
-  loads with no tile
+  restart and world reload ✅
+- a claimed chest whose loaded-anchor block lost its `storage_id`
+  attachment while the world was last closed loads with no tile ✅
+- anchors in unloaded chunks are preserved across load (not pruned on
+  "unknown" state) ✅
 
 Tests:
 
-- persistence round-trip for a realistic state (5 chests, 10 links across 3
-  islands)
-- load-time reconciliation deletes tiles for chests whose blocks are gone
+- `WorkflowDomainFileStoreTest.fileStoreRoundTripsClaimedChestsAndChestLinks`
+  covers a realistic mixed state: a double-anchor claim, a renamed +
+  moved single-anchor claim, a deleted claim, and two cross-island
+  links; asserts checkpoint round-trip + snapshot equality
+- future: integration test for reconciliation requires a server-level
+  fixture; not yet wired (current logic is covered by the design-check
+  "unknown ≠ broken" pass through the in-game claim/break flows)
 
 ## Test Helper Command (Spec Detail)
 

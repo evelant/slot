@@ -1,13 +1,23 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.inventory.action.InventoryActionOutcome;
+import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
+import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
+import dev.imagio.slot.workflow.domain.KitDefinition;
+import dev.imagio.slot.workflow.domain.LoadoutApplyExecutor;
+import dev.imagio.slot.workflow.domain.LoadoutApplyResult;
+import dev.imagio.slot.workflow.domain.LoadoutApplyService;
+import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
@@ -15,6 +25,7 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
 
 /**
@@ -193,6 +204,136 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("island moved", moved.label());
     }
 
+    public static WorkspaceCommandOutcome linkIslandToChest(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            String islandId,
+            String storageId
+    ) {
+        if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_link");
+        }
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(storageId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
+        }
+        SlotWorkspaceViewModel.AtlasIsland island = viewModel == null ? null : viewModel.island(islandId);
+        if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
+            return WorkspaceCommandOutcome.rejected("unknown_player_island");
+        }
+        SlotWorkspaceViewModel.ClaimedChestTile tile = viewModel.claimedChestTile(storageId);
+        if (tile == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_chest_tile");
+        }
+        boolean linked = runtime.chestLinkWorkflow().linkIslandToChest(
+                islandId,
+                uuid,
+                DomainEventMetadata.origin("slot_workspace.ldlib.chest_link")
+        );
+        if (!linked) {
+            return WorkspaceCommandOutcome.rejected("chest_link_rejected");
+        }
+        SlotDebugLog.log("LDLib chest link created {} <-> {}", islandId, storageId);
+        return WorkspaceCommandOutcome.accepted("chest linked", island.label());
+    }
+
+    public static WorkspaceCommandOutcome unlinkIslandFromChest(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            String islandId,
+            String storageId
+    ) {
+        if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_unlink");
+        }
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(storageId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
+        }
+        boolean unlinked = runtime.chestLinkWorkflow().unlinkIslandFromChest(
+                islandId,
+                uuid,
+                DomainEventMetadata.origin("slot_workspace.ldlib.chest_unlink")
+        );
+        if (!unlinked) {
+            return WorkspaceCommandOutcome.rejected("chest_unlink_rejected");
+        }
+        String label = viewModel == null || viewModel.island(islandId) == null
+                ? islandId
+                : viewModel.island(islandId).label();
+        SlotDebugLog.log("LDLib chest link removed {} <-> {}", islandId, storageId);
+        return WorkspaceCommandOutcome.accepted("chest unlinked", label);
+    }
+
+    public static WorkspaceCommandOutcome relabelChest(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            String storageId,
+            String label
+    ) {
+        if (storageId == null || storageId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_relabel");
+        }
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(storageId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
+        }
+        SlotWorkspaceViewModel.ClaimedChestTile tile = viewModel == null ? null : viewModel.claimedChestTile(storageId);
+        if (tile == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_chest_tile");
+        }
+        String normalized = label == null ? "" : label.trim();
+        ClaimedChest relabeled = runtime.chestClaimWorkflow().relabelChest(
+                uuid,
+                normalized,
+                DomainEventMetadata.origin("slot_workspace.ldlib.chest_relabel")
+        );
+        if (relabeled == null) {
+            return WorkspaceCommandOutcome.rejected("chest_relabel_rejected");
+        }
+        SlotDebugLog.log("LDLib chest relabeled {} -> '{}'", storageId, normalized);
+        return WorkspaceCommandOutcome.accepted("chest renamed", normalized.isBlank() ? storageId : normalized);
+    }
+
+    public static WorkspaceCommandOutcome moveChest(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            String storageId,
+            Integer atlasX,
+            Integer atlasY
+    ) {
+        if (storageId == null || storageId.isBlank() || atlasX == null || atlasY == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_move");
+        }
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(storageId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
+        }
+        SlotWorkspaceViewModel.ClaimedChestTile tile = viewModel == null ? null : viewModel.claimedChestTile(storageId);
+        if (tile == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_chest_tile");
+        }
+        ClaimedChest moved = runtime.chestClaimWorkflow().moveChest(
+                uuid,
+                atlasX,
+                atlasY,
+                DomainEventMetadata.origin("slot_workspace.ldlib.chest_move")
+        );
+        if (moved == null) {
+            return WorkspaceCommandOutcome.rejected("chest_move_rejected");
+        }
+        SlotDebugLog.log("LDLib atlas chest moved {} -> {},{}", storageId, atlasX, atlasY);
+        return WorkspaceCommandOutcome.accepted("chest moved", storageId);
+    }
+
     public static WorkspaceCommandOutcome renameIsland(
             WorkflowDomainRuntime runtime,
             String islandId,
@@ -269,6 +410,121 @@ public final class SlotWorkspaceCommandService {
         );
     }
 
+    public static WorkspaceCommandOutcome saveBeltAsKit(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            String name
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        String trimmed = name == null ? "" : name.trim();
+        if (trimmed.isBlank()) {
+            trimmed = defaultKitName(runtime);
+        }
+        try {
+            KitDefinition created = runtime.kitWorkflow().snapshotFromAuthority(
+                    trimmed,
+                    authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                    identityResolver,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.kit_snapshot")
+            );
+            if (created == null) {
+                return WorkspaceCommandOutcome.rejected("kit_snapshot_rejected");
+            }
+            SlotDebugLog.log("LDLib kit snapshot created {} ({} slots filled)",
+                    created.id(), created.pages().get(0).filledSlotCount());
+            return WorkspaceCommandOutcome.accepted("kit saved", created.name());
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected(exception.getMessage());
+        }
+    }
+
+    public static WorkspaceCommandOutcome activateKit(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            ProtectionPolicy protectionPolicy,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
+            String kitId
+    ) {
+        if (runtime == null || actionExecutor == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_activation");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        KitDefinition kit = runtime.kitWorkflow().kit(kitId);
+        if (kit == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        LoadoutApplyService.LoadoutApplyPlan plan = runtime.kitWorkflow().planActivate(
+                kitId,
+                0,
+                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                protectionPolicy == null ? ProtectionPolicy.allowAll() : protectionPolicy,
+                identityResolver
+        );
+        LoadoutApplyResult result = new LoadoutApplyExecutor(actionExecutor).execute(plan);
+        runtime.kitWorkflow().activate(
+                kitId,
+                0,
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_activate")
+        );
+        int satisfied = result.satisfiedTargets().size();
+        int missing = result.missingTargets().size();
+        String planReasons = result.diagnostics().isEmpty() ? "" : String.join(",", result.diagnostics());
+        SlotDebugLog.log("LDLib kit activated {} satisfied={} missing={} reasons={}",
+                kitId, satisfied, missing, planReasons);
+        StringBuilder diagnostics = new StringBuilder()
+                .append("satisfied=").append(satisfied)
+                .append(" missing=").append(missing);
+        if (!planReasons.isBlank()) {
+            diagnostics.append(" reasons=").append(planReasons);
+        }
+        String status = missing == 0 ? "kit activated" : "kit activated (missing " + missing + ")";
+        return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
+    }
+
+    public static WorkspaceCommandOutcome deactivateKit(WorkflowDomainRuntime runtime) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (!runtime.kitWorkflow().activation().isActive()) {
+            return WorkspaceCommandOutcome.rejected("no_active_kit");
+        }
+        runtime.kitWorkflow().deactivate(
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_deactivate")
+        );
+        SlotDebugLog.log("LDLib kit deactivated");
+        return WorkspaceCommandOutcome.accepted("kit deactivated", "");
+    }
+
+    public static WorkspaceCommandOutcome deleteKit(WorkflowDomainRuntime runtime, String kitId) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        KitDefinition existing = runtime.kitWorkflow().kit(kitId);
+        if (existing == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        runtime.kitWorkflow().delete(
+                kitId,
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_delete")
+        );
+        SlotDebugLog.log("LDLib kit deleted {}", kitId);
+        return WorkspaceCommandOutcome.accepted("kit deleted", existing.name());
+    }
+
+    private static String defaultKitName(WorkflowDomainRuntime runtime) {
+        int count = runtime.kitWorkflow().kits().size();
+        return "Kit " + (count + 1);
+    }
+
     public static WorkspaceCommandOutcome deleteIsland(
             WorkflowDomainRuntime runtime,
             String islandId
@@ -299,56 +555,6 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("island deleted", existing.label());
     }
 
-    public static WorkspaceCommandOutcome toggleCollectionMembership(
-            WorkflowDomainRuntime runtime,
-            SlotWorkspaceViewModel viewModel,
-            String itemId,
-            String comparisonMode,
-            String componentFingerprint,
-            String collectionId
-    ) {
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null || collectionId == null || collectionId.isBlank()) {
-            return WorkspaceCommandOutcome.rejected("invalid_collection_toggle");
-        }
-        if (!visibleInAtlas(viewModel, identity)) {
-            return WorkspaceCommandOutcome.rejected("selected_item_not_visible");
-        }
-        if (viewModel == null
-                || viewModel.collections().stream().noneMatch(collection -> collection.collectionId().equals(collectionId))) {
-            return WorkspaceCommandOutcome.rejected("unknown_collection");
-        }
-        boolean currentlyMember = runtime.snapshot().collections().memberships().getOrDefault(identity, Set.of()).contains(collectionId);
-        boolean changed = runtime.collectionWorkflow().toggleCollectionMembership(
-                identity,
-                collectionId,
-                DomainEventMetadata.origin("slot_workspace.ldlib.collection_toggle")
-        );
-        if (!changed) {
-            return WorkspaceCommandOutcome.rejected("collection_toggle_rejected");
-        }
-        SlotDebugLog.log("LDLib collection toggle {} {} {}", identity.itemId(), collectionId, currentlyMember ? "removed" : "added");
-        return WorkspaceCommandOutcome.accepted(
-                currentlyMember ? "removed from collection" : "added to collection",
-                collectionId
-        );
-    }
-
-    public static WorkspaceCommandOutcome createCollection(
-            WorkflowDomainRuntime runtime,
-            String name
-    ) {
-        try {
-            CollectionDefinition definition = runtime.collectionWorkflow().createCollection(
-                    name,
-                    DomainEventMetadata.origin("slot_workspace.ldlib.collection_create")
-            );
-            SlotDebugLog.log("LDLib collection created {}", definition.id());
-            return WorkspaceCommandOutcome.accepted("collection created", definition.name());
-        } catch (IllegalArgumentException exception) {
-            return WorkspaceCommandOutcome.rejected(exception.getMessage());
-        }
-    }
 
     /**
      * Apply the "drop identity onto island" rule: triage target clears the home;

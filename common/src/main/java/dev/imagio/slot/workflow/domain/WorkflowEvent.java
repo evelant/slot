@@ -41,7 +41,15 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ClaimedChestMoved,
         WorkflowEvent.ClaimedChestAnchorsChanged,
         WorkflowEvent.ClaimedChestRelabeled,
-        WorkflowEvent.ClaimedChestDeleted {
+        WorkflowEvent.ClaimedChestDeleted,
+        WorkflowEvent.ChestLinkCreated,
+        WorkflowEvent.ChestLinkRemoved,
+        WorkflowEvent.KitCreated,
+        WorkflowEvent.KitUpdated,
+        WorkflowEvent.KitDeleted,
+        WorkflowEvent.KitActivated,
+        WorkflowEvent.KitDeactivated,
+        WorkflowEvent.KitPageSwitched {
 
     record CollectionCreated(
             String collectionId,
@@ -299,5 +307,51 @@ public sealed interface WorkflowEvent permits
     record ClaimedChestDeleted(
             UUID storageId
     ) implements WorkflowEvent {
+    }
+
+    record ChestLinkCreated(
+            String islandId,
+            UUID storageId
+    ) implements WorkflowEvent {
+        public ChestLinkCreated {
+            islandId = islandId == null ? "" : islandId.trim();
+        }
+    }
+
+    record ChestLinkRemoved(
+            String islandId,
+            UUID storageId
+    ) implements WorkflowEvent {
+        public ChestLinkRemoved {
+            islandId = islandId == null ? "" : islandId.trim();
+        }
+    }
+
+    record KitCreated(KitDefinition kit) implements WorkflowEvent {
+    }
+
+    record KitUpdated(KitDefinition kit) implements WorkflowEvent {
+    }
+
+    record KitDeleted(String kitId) implements WorkflowEvent {
+        public KitDeleted {
+            kitId = kitId == null ? "" : kitId;
+        }
+    }
+
+    record KitActivated(String kitId, int pageIndex) implements WorkflowEvent {
+        public KitActivated {
+            kitId = kitId == null ? "" : kitId;
+            pageIndex = Math.max(0, pageIndex);
+        }
+    }
+
+    record KitDeactivated() implements WorkflowEvent {
+    }
+
+    record KitPageSwitched(int pageIndex) implements WorkflowEvent {
+        public KitPageSwitched {
+            pageIndex = Math.max(0, pageIndex);
+        }
     }
 }

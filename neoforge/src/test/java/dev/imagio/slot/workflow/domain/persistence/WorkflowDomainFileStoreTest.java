@@ -12,6 +12,8 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
@@ -29,6 +31,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import java.nio.file.Path;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -152,5 +155,76 @@ class WorkflowDomainFileStoreTest {
         assertEquals(ItemIdentity.of("minecraft:anvil"), restoredKeeper.iconIdentity());
         assertTrue(restored.workflowProjection().visualHomeMap().island(doomed.id()) == null);
         assertTrue(restored.workflowProjection().visualHomeMap().templateDismissed("template.food"));
+    }
+
+    @Test
+    void fileStoreRoundTripsClaimedChestsAndChestLinks() {
+        InMemoryWorkflowDomainStateRepository source = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
+
+        VisualAtlasIsland machines = runtime.visualAtlasWorkflow().createIsland(
+                "Machines", 10, 20, 320, 196, 0xCC5A4A6E, ItemIdentity.of("minecraft:redstone")
+        );
+        VisualAtlasIsland food = runtime.visualAtlasWorkflow().createIsland(
+                "Food", 400, 20, 320, 196, 0xCC88AA44, ItemIdentity.of("minecraft:bread")
+        );
+
+        ChestAnchor primaryAnchor = new ChestAnchor("minecraft:overworld", 100, 64, 200);
+        ChestAnchor pairedAnchor = new ChestAnchor("minecraft:overworld", 101, 64, 200);
+        ClaimedChest kept = runtime.chestClaimWorkflow().claim(
+                Set.of(primaryAnchor, pairedAnchor),
+                2400,
+                0,
+                "Base Machines"
+        );
+        ClaimedChest alsoKept = runtime.chestClaimWorkflow().claim(
+                Set.of(new ChestAnchor("minecraft:overworld", 120, 64, 200)),
+                2560,
+                0,
+                ""
+        );
+        runtime.chestClaimWorkflow().relabelChest(alsoKept.storageId(), "Pantry");
+        runtime.chestClaimWorkflow().moveChest(alsoKept.storageId(), 2720, 160);
+
+        ClaimedChest doomed = runtime.chestClaimWorkflow().claim(
+                Set.of(new ChestAnchor("minecraft:overworld", 200, 64, 200)),
+                2600,
+                320,
+                "Scrap"
+        );
+        runtime.chestClaimWorkflow().deleteChest(doomed.storageId());
+
+        runtime.chestLinkWorkflow().linkIslandToChest(machines.id(), kept.storageId());
+        runtime.chestLinkWorkflow().linkIslandToChest(food.id(), alsoKept.storageId());
+
+        UUID keptId = kept.storageId();
+        UUID alsoKeptId = alsoKept.storageId();
+
+        WorkflowDomainFileStore fileStore = new WorkflowDomainFileStore(tempDir.resolve("slot-storage.json"));
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(fileStore);
+        service.saveFrom(source);
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        service.loadInto(restored);
+
+        assertEquals(source.snapshot(), restored.snapshot());
+
+        ClaimedChest restoredKept = restored.workflowProjection().claimedChestMap().chest(keptId);
+        assertEquals("Base Machines", restoredKept.label());
+        assertEquals(2400, restoredKept.atlasX());
+        assertEquals(2, restoredKept.anchors().size());
+        assertTrue(restoredKept.anchors().contains(primaryAnchor));
+        assertTrue(restoredKept.anchors().contains(pairedAnchor));
+
+        ClaimedChest restoredPantry = restored.workflowProjection().claimedChestMap().chest(alsoKeptId);
+        assertEquals("Pantry", restoredPantry.label());
+        assertEquals(2720, restoredPantry.atlasX());
+        assertEquals(160, restoredPantry.atlasY());
+
+        assertTrue(restored.workflowProjection().claimedChestMap().chest(doomed.storageId()) == null);
+
+        assertTrue(restored.workflowProjection().chestLinkMap().contains(machines.id(), keptId));
+        assertTrue(restored.workflowProjection().chestLinkMap().contains(food.id(), alsoKeptId));
+        assertEquals(2, restored.workflowProjection().chestLinkMap().links().size());
     }
 }
