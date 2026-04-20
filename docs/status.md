@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-19
+Last updated: 2026-04-20
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -201,9 +201,124 @@ Current prototype validation point:
 
 ## Current Focus
 
-Kit prototype slices 1, 2, and 3 are landed. Slices 4–9 remain (see
-[plans/kit-prototype.md](plans/kit-prototype.md) for the arc and
-Definition Of Done).
+Core-workflow UX pass is **landed** — all six slices from
+[plans/core-workflow-ux.md](plans/core-workflow-ux.md), plus several
+playtest-driven follow-ups (see "Core-workflow UX landing points"
+below). Next focus is resuming the Kit prototype (slices 4–9). Pick
+up at [plans/kit-prototype.md](plans/kit-prototype.md). Nothing in
+the UX pass touched Kit domain state, so resumption is a clean
+continuation.
+
+### Core-workflow UX landing points
+
+- **Slice 1 — Docked Triage Panel**: `triageItems` field on
+  `SlotWorkspaceViewModel` (codec-roundtripped); projection routes
+  unhomed identities here instead of into the gone `ISLAND_TRIAGE`
+  atlas island. Left-edge overlay (z=7) renders panel rows with
+  drag source + drop target, chip rendering preserved. Drop-on-panel
+  routes through the existing `clearHome` flow. Orphan assignments
+  (target island deleted) fall back to triage rather than rendering
+  unrooted. `applyHomeDrop` and `moveHotbarToAtlas` now allow
+  `ISLAND_TRIAGE` past their existence checks (regressions caught
+  during playtest).
+- **Slice 2 — Hotbar ↔ home shift+click**: new RPCs
+  `returnHotbarToHome(hotbarIndex)` and
+  `assignHomeToFreeHotbar(itemId, comparisonMode, fingerprint)`
+  in `SlotWorkspaceUiSession`. Server-side identity → first-main-slot
+  resolution via `firstMainSlotForIdentity`; first-free-hotbar slot
+  resolution via view-model scan. Status diagnostics:
+  `returned_to_home / returned_unhomed / no_free_main_slot /
+  nothing_to_return / assigned_to_hotbar_<n> / no_free_hotbar_slot /
+  nothing_to_assign`. **No path writes through `ASSIGN_HOME`** —
+  visual home position is read-only. Wired via `Screen.hasShiftDown()`
+  on atlas card / belt slot / triage row click handlers.
+- **Slice 3 — Bidirectional hover trails**: amber chrome-layer
+  trail (z=9) connects hovered hotbar slot to its home card (or
+  hovered home to its hotbar slot). Resolved per-tick via
+  `resolveHoverTrail()` from `hoveredHotbarIndex` and
+  `hoveredAtlasIdentity`. Endpoints update each tick from
+  `getPositionX/Y` on the slot element + new `screenX/screenY`
+  helpers on `SlotAtlasGraphView`. Also: hotbar slot accent and
+  triage panel row accent toggled per-tick when matching hover state.
+  Trail is always-displayed-zero-width when no hover (LDLib2 skips
+  TICK on display=NONE elements).
+- **Slice 4 — Chest tile drag-in + shift-take**: factored
+  `DepositExecutor.depositSingleStack(player, laneId, slotIndex,
+  chest)` and `TakeAllExecutor.takeSingleStack(player, chest,
+  chestSlotIndex)` from the bulk paths. New `slotIndices`/
+  `contentSlotIndices` parallel-list fields on
+  `ChestContentsSnapshot` and `ClaimedChestTile` thread real
+  IItemHandler slot indices to the UI cells (codec-roundtripped).
+  Three new RPCs (`depositCarriedToChest`,
+  `depositHotbarToChest`, `takeFromChest`) all gated through a
+  shared `resolveProximateChest` (UUID → claim → proximity);
+  return `not_proximate / unknown_chest_tile /
+  invalid_chest_storage_id` for boundary failures. Drop target
+  on each chest tile (proximate accent / non-proximate dim);
+  shift+click on a proximate non-empty cell extracts.
+- **Slice 5 — Shift-deposit to linked chest**:
+  `assignHomeToFreeHotbar` and `returnHotbarToHome` now try a
+  proximate-linked-chest deposit first via
+  `resolveProximateLinkedChestForIdentity(...)` before falling
+  through to the slice-2 hotbar/main path. Resolver iterates
+  `ChestLinkMap.chestsLinkedFrom(islandId)`, filters to proximate
+  chests with whole-stack room (simulate-then-commit; never
+  silently partial), tiebreak: free slots ASC → matching count
+  DESC → storage UUID ASC. Reuses `DepositExecutor.depositSingleStack`.
+- **Slice 6 — Right-click context menu on homes (and hotbar)**:
+  right-click opens a transient z=22 popover with a click-outside
+  catcher (z=21). Atlas home menu: Send to hotbar / Deposit to
+  linked chest / Re-home… / Cancel — each disabled with reason
+  when not applicable. The "Re-home…" command opens an island
+  picker (mirror popover) with all islands plus "Return to Triage";
+  selecting dispatches the existing `assignHome` RPC (deliberate
+  re-home path). Hotbar slot menu: Send to home / Cancel. Two new
+  explicit RPCs (`assignHomeToHotbarOnly`,
+  `depositHomeToLinkedChest`) bypass slice-5's auto-preference so
+  the menu items are unambiguous; shift+click continues to use the
+  preference path.
+
+### Follow-ups landed during playtest
+
+- **Inspector panel removed**: the right rail (~284 px) is gone;
+  atlas claims the full body width. `inspectorPanel`,
+  `selectionPanel`, `focusedAtlasItem`, `selectedHotbarSlot`
+  remain as dead code in `SlotWorkspaceUiFactory` for easy
+  reintroduction as a floating inspector if needed.
+- **Chest cell click + drag-extract**: non-shift left-click on a
+  proximate non-empty cell selects the identity (highlights any
+  matching home). Drag from a cell starts a `ChestStackDrag`;
+  any `DRAG_END` (cancel or drop) calls `takeFromChest` for that
+  cell's `(storageId, chestSlotIndex)`.
+- **Storage zone group drag**: new `StorageZoneBounds` record
+  computes the chests' bounding box. New `storageZoneHeader` (16 px
+  bar above the backdrop) is a draggable handle that starts a
+  `StorageZoneDrag(grabOffset, origin)` payload. Drop fires a new
+  `moveStorageZone(deltaX, deltaY)` RPC; server iterates all
+  claimed chests and applies the delta via the existing
+  `SlotWorkspaceCommandService.moveChest` per chest.
+- **Bug fixes**:
+  - `installChestTileDragSource` no longer uses capture-phase
+    `MOUSE_MOVE` (so cell drag-extract can preempt it via the
+    `isDragging` guard).
+  - Removed `installViewportPanSurface(panel, atlas)` from
+    `chestTilePanel` — atlas pan was racing chest tile drag and
+    winning in `MOUSE_DOWN`. Empty-atlas pan still works through
+    LDLib2's built-in `GraphView.onMouseDown`.
+  - Island label sizing now re-applies on atlas-scale change, not
+    just on `IslandRenderBudget` hash change. Clamped budget
+    fields could match identically across rebuilds at very
+    different scales, leaving fonts stuck huge or tiny.
+  - Slice-3 hotbar-slot `MOUSE_ENTER/LEAVE` no longer call
+    `rebuild()` (it tore down the drag source mid-drag); accent
+    overlay updates via per-slot TICK transition tracking.
+
+### Kit prototype: paused arc
+
+Kit prototype slices 1, 2, and 3 are landed (see Kit landing
+points below). Slices 4–9 remain paused; this is the natural
+resume point. See [plans/kit-prototype.md](plans/kit-prototype.md)
+for the original arc and Definition Of Done.
 
 Kit prototype landing points so far:
 

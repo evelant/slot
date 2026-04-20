@@ -244,19 +244,21 @@ class SlotWorkspaceLdlibModelTest {
                 9
         );
 
-        assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE)));
+        assertFalse(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE)),
+                "Triage is now a docked panel, not an atlas island");
         assertTrue(viewModel.islands().stream().anyMatch(island -> island.islandId().equals(machines.id())));
 
-        assertEquals(3, viewModel.atlasItems().size());
+        assertEquals(1, viewModel.atlasItems().size(), "only the homed apple lives on the atlas");
+        assertEquals(2, viewModel.triageItems().size(), "stone and torch are unhomed and go to triage");
         SlotWorkspaceViewModel.AtlasItem apple = viewModel.atlasItems().stream()
                 .filter(item -> item.identity().itemId().equals("minecraft:apple"))
                 .findFirst()
                 .orElseThrow();
-        SlotWorkspaceViewModel.AtlasItem stone = viewModel.atlasItems().stream()
+        SlotWorkspaceViewModel.AtlasItem stone = viewModel.triageItems().stream()
                 .filter(item -> item.identity().itemId().equals("minecraft:stone"))
                 .findFirst()
                 .orElseThrow();
-        SlotWorkspaceViewModel.AtlasItem torch = viewModel.atlasItems().stream()
+        SlotWorkspaceViewModel.AtlasItem torch = viewModel.triageItems().stream()
                 .filter(item -> item.identity().itemId().equals("minecraft:torch"))
                 .findFirst()
                 .orElseThrow();
@@ -317,70 +319,79 @@ class SlotWorkspaceLdlibModelTest {
 
     @Test
     void placementStartsBelowIslandHeaderReserve() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
+                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
         List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.fittedIslands(
-                SlotWorkspaceAtlasLayout.baseIslands(runtime().snapshot().visualHomeMap()),
+                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap()),
                 List.of()
         );
-        SlotWorkspaceViewModel.AtlasIsland triage = islands.stream()
-                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
+        SlotWorkspaceViewModel.AtlasIsland fixture = islands.stream()
+                .filter(island -> island.islandId().equals(materials.id()))
                 .findFirst()
                 .orElseThrow();
 
         SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
                 islands,
-                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                materials.id(),
                 0
         );
 
-        assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, placement.islandId());
+        assertEquals(materials.id(), placement.islandId());
         assertTrue(placement.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
         assertTrue(placement.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(placement.x() >= triage.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(placement.y() >= triage.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+        assertTrue(placement.x() >= fixture.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(placement.y() >= fixture.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
     }
 
     @Test
     void dropPlacementFloorsToContentMinimumButAllowsGrowthPastEdge() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
+                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
         List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.fittedIslands(
-                SlotWorkspaceAtlasLayout.baseIslands(runtime().snapshot().visualHomeMap()),
+                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap()),
                 List.of()
         );
-        SlotWorkspaceViewModel.AtlasIsland triage = islands.stream()
-                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
+        SlotWorkspaceViewModel.AtlasIsland fixture = islands.stream()
+                .filter(island -> island.islandId().equals(materials.id()))
                 .findFirst()
                 .orElseThrow();
 
         SlotWorkspaceAtlasLayout.Placement topLeft = SlotWorkspaceAtlasLayout.placementForDrop(
                 islands,
-                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                triage.x() - 200,
-                triage.y() - 200
+                materials.id(),
+                fixture.x() - 200,
+                fixture.y() - 200
         );
         SlotWorkspaceAtlasLayout.Placement beyondRight = SlotWorkspaceAtlasLayout.placementForDrop(
                 islands,
-                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                triage.x() + triage.width() + 200,
-                triage.y() + triage.height() + 200
+                materials.id(),
+                fixture.x() + fixture.width() + 200,
+                fixture.y() + fixture.height() + 200
         );
 
         assertTrue(topLeft.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
         assertTrue(topLeft.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(topLeft.x() >= triage.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(topLeft.y() >= triage.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(beyondRight.localX() > triage.width(),
+        assertTrue(topLeft.x() >= fixture.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
+        assertTrue(topLeft.y() >= fixture.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
+        assertTrue(beyondRight.localX() > fixture.width(),
                 "drop past right edge should preserve requested localX so fitIsland can grow the island");
-        assertTrue(beyondRight.localY() > triage.height(),
+        assertTrue(beyondRight.localY() > fixture.height(),
                 "drop past bottom edge should preserve requested localY so fitIsland can grow the island");
     }
 
     @Test
     void fittedIslandsGrowWhenContentsReachCurrentEdge() {
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
+                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
         List<SlotWorkspaceViewModel.AtlasIsland> base = SlotWorkspaceAtlasLayout.fittedIslands(
-                SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
+                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap()),
                 List.of()
         );
-        SlotWorkspaceViewModel.AtlasIsland triage = base.stream()
-                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
+        SlotWorkspaceViewModel.AtlasIsland fixture = base.stream()
+                .filter(island -> island.islandId().equals(materials.id()))
                 .findFirst()
                 .orElseThrow();
 
@@ -390,9 +401,9 @@ class SlotWorkspaceLdlibModelTest {
                 "Stone",
                 1,
                 0,
-                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                triage.x() + triage.width() - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X - SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                triage.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
+                materials.id(),
+                fixture.x() + fixture.width() - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X - SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                fixture.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
                 SlotWorkspaceAtlasLayout.CARD_WIDTH,
                 SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                 false,
@@ -403,11 +414,11 @@ class SlotWorkspaceLdlibModelTest {
 
         List<SlotWorkspaceViewModel.AtlasIsland> fitted = SlotWorkspaceAtlasLayout.fittedIslands(base, List.of(edgeItem));
         SlotWorkspaceViewModel.AtlasIsland grown = fitted.stream()
-                .filter(island -> island.islandId().equals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE))
+                .filter(island -> island.islandId().equals(materials.id()))
                 .findFirst()
                 .orElseThrow();
 
-        assertTrue(grown.width() > triage.width());
+        assertTrue(grown.width() > fixture.width());
         assertEquals(1, grown.itemCount());
     }
 
@@ -511,7 +522,8 @@ class SlotWorkspaceLdlibModelTest {
         assertEquals(original.status(), restored.status());
         assertEquals(original.diagnostics(), restored.diagnostics());
         assertEquals(original.atlasItems().size(), restored.atlasItems().size());
-        assertEquals(original.atlasItems().getFirst().identity().itemId(), restored.atlasItems().getFirst().identity().itemId());
+        assertEquals(original.triageItems().size(), restored.triageItems().size());
+        assertEquals(original.triageItems().getFirst().identity().itemId(), restored.triageItems().getFirst().identity().itemId());
         assertEquals(original.islands().size(), restored.islands().size());
         assertEquals(original.hotbarSlots().getFirst().displayStack().itemId(), restored.hotbarSlots().getFirst().displayStack().itemId());
         assertTrue(restored.hotbarSlots().getFirst().selected());
@@ -598,7 +610,7 @@ class SlotWorkspaceLdlibModelTest {
                 IslandSignalExtractor::extract
         );
 
-        SlotWorkspaceViewModel.AtlasItem copper = viewModel.atlasItems().stream()
+        SlotWorkspaceViewModel.AtlasItem copper = viewModel.triageItems().stream()
                 .filter(item -> item.identity().itemId().equals("modded:copper_ingot"))
                 .findFirst()
                 .orElseThrow();
@@ -671,10 +683,10 @@ class SlotWorkspaceLdlibModelTest {
         SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
                 authority, runtime.snapshot(), "ready", "", 0, 0, 1);
 
-        assertTrue(viewModel.atlasItems().stream()
+        assertTrue(viewModel.triageItems().stream()
                 .filter(item -> item.identity().itemId().equals("minecraft:stone"))
                 .findFirst().orElseThrow().carried());
-        assertTrue(viewModel.atlasItems().stream()
+        assertTrue(viewModel.triageItems().stream()
                 .filter(item -> item.identity().itemId().equals("minecraft:torch"))
                 .findFirst().orElseThrow().carried());
     }

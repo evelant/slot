@@ -1,9 +1,15 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-04-16
+Last updated: 2026-04-20
 
 This is the near-term engineering sequence from the current baseline. For the
 short operational handoff, read [../status.md](../status.md) first.
+
+**Active plan:** core-workflow UX pass landed (all six slices in
+[core-workflow-ux.md](core-workflow-ux.md), plus playtest follow-ups
+documented in [../status.md](../status.md)). Next focus is resuming
+the Kit prototype at slice 4 — see
+[kit-prototype.md](kit-prototype.md).
 
 For product goals, see [../product/direction.md](../product/direction.md).
 For current architecture, see [../architecture/overview.md](../architecture/overview.md).

@@ -41,13 +41,15 @@ public final class ChestContentsReader {
     private static ChestContentsSnapshot captureHandler(IItemHandler handler) {
         int slots = handler.getSlots();
         ArrayList<ItemStack> stacks = new ArrayList<>();
+        ArrayList<Integer> slotIndices = new ArrayList<>();
         for (int slot = 0; slot < slots; slot++) {
             ItemStack stack = handler.getStackInSlot(slot);
             if (stack != null && !stack.isEmpty()) {
                 stacks.add(stack.copy());
+                slotIndices.add(slot);
             }
         }
-        return new ChestContentsSnapshot(slots, stacks);
+        return new ChestContentsSnapshot(slots, stacks, slotIndices);
     }
 
     private static ServerLevel resolveLevel(MinecraftServer server, ChestAnchor anchor) {

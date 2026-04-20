@@ -57,6 +57,12 @@ public final class SlotWorkspaceViewModelCodec {
         }
         tag.put("atlasItems", itemTags);
 
+        ListTag triageTags = new ListTag();
+        for (SlotWorkspaceViewModel.AtlasItem triageItem : viewModel.triageItems()) {
+            triageTags.add(encodeItem(triageItem, provider));
+        }
+        tag.put("triageItems", triageTags);
+
         ListTag chestTileTags = new ListTag();
         for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
             chestTileTags.add(encodeClaimedChestTile(tile, provider));
@@ -95,6 +101,12 @@ public final class SlotWorkspaceViewModelCodec {
             atlasItems.add(decodeItem(provider, itemTags.getCompound(index)));
         }
 
+        ArrayList<SlotWorkspaceViewModel.AtlasItem> triageItems = new ArrayList<>();
+        ListTag triageTags = compoundTag.getList("triageItems", Tag.TAG_COMPOUND);
+        for (int index = 0; index < triageTags.size(); index++) {
+            triageItems.add(decodeItem(provider, triageTags.getCompound(index)));
+        }
+
         ArrayList<SlotWorkspaceViewModel.ClaimedChestTile> claimedChestTiles = new ArrayList<>();
         ListTag chestTileTags = compoundTag.getList("claimedChestTiles", Tag.TAG_COMPOUND);
         for (int index = 0; index < chestTileTags.size(); index++) {
@@ -128,6 +140,7 @@ public final class SlotWorkspaceViewModelCodec {
                 )
                         : islands,
                 atlasItems,
+                triageItems,
                 claimedChestTiles,
                 hotbarSlots.isEmpty() ? SlotWorkspaceViewModel.emptyHotbar() : hotbarSlots,
                 decodeOffhand(provider, compoundTag.getCompound("offhand")),
@@ -375,9 +388,13 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putInt("slotCount", tile.slotCount());
         tag.putBoolean("proximate", tile.proximate());
         ListTag contentTags = new ListTag();
-        for (ItemStack stack : tile.contents()) {
+        List<Integer> indices = tile.contentSlotIndices();
+        for (int i = 0; i < tile.contents().size(); i++) {
+            ItemStack stack = tile.contents().get(i);
             CompoundTag entry = new CompoundTag();
             entry.put("stack", stack == null ? new CompoundTag() : stack.saveOptional(provider));
+            int slotIndex = i < indices.size() ? indices.get(i) : i;
+            entry.putInt("slotIndex", slotIndex);
             contentTags.add(entry);
         }
         tag.put("contents", contentTags);
@@ -396,11 +413,13 @@ public final class SlotWorkspaceViewModelCodec {
             CompoundTag tag
     ) {
         ArrayList<ItemStack> contents = new ArrayList<>();
+        ArrayList<Integer> contentSlotIndices = new ArrayList<>();
         ListTag contentTags = tag.getList("contents", Tag.TAG_COMPOUND);
         for (int index = 0; index < contentTags.size(); index++) {
             CompoundTag entry = contentTags.getCompound(index);
             ItemStack stack = ItemStack.parseOptional(provider, entry.getCompound("stack"));
             contents.add(stack);
+            contentSlotIndices.add(entry.contains("slotIndex") ? entry.getInt("slotIndex") : index);
         }
         ArrayList<String> linkedIslandIds = new ArrayList<>();
         ListTag linkedIslandTags = tag.getList("linkedIslandIds", Tag.TAG_COMPOUND);
@@ -418,6 +437,7 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getInt("anchorCount"),
                 tag.getInt("slotCount"),
                 contents,
+                contentSlotIndices,
                 tag.getBoolean("proximate"),
                 linkedIslandIds
         );

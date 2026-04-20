@@ -50,17 +50,6 @@ public final class SlotWorkspaceAtlasLayout {
 
     public static List<SlotWorkspaceViewModel.AtlasIsland> baseIslands(VisualHomeMap visualHomeMap) {
         ArrayList<SlotWorkspaceViewModel.AtlasIsland> islands = new ArrayList<>();
-        islands.add(new SlotWorkspaceViewModel.AtlasIsland(
-                ISLAND_TRIAGE,
-                "Triage / Inbox",
-                VisualAtlasIslandKind.TRIAGE,
-                84,
-                148,
-                TRIAGE_MIN_WIDTH,
-                TRIAGE_MIN_HEIGHT,
-                TRIAGE_COLOR,
-                0
-        ));
         if (visualHomeMap != null) {
             visualHomeMap.playerIslands().stream()
                     .sorted(Comparator
@@ -208,8 +197,7 @@ public final class SlotWorkspaceAtlasLayout {
             List<SlotWorkspaceViewModel.AtlasIsland> islands,
             String islandId
     ) {
-        SlotWorkspaceViewModel.AtlasIsland island = island(islands, islandId);
-        return island != null ? island : island(islands, ISLAND_TRIAGE);
+        return island(islands, islandId);
     }
 
     public static PlayerIslandDraft createNextPlayerIslandDraft(

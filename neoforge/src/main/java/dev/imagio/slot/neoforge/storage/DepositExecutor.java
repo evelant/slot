@@ -179,6 +179,48 @@ public final class DepositExecutor {
         return null;
     }
 
+    public static SingleStackOutcome depositSingleStack(
+            ServerPlayer player,
+            String laneId,
+            int slotIndex,
+            ClaimedChest chest
+    ) {
+        if (player == null || chest == null) {
+            return SingleStackOutcome.failed("invalid_args");
+        }
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return SingleStackOutcome.failed("server_unavailable");
+        }
+        int rawSlot = translateToRawSlot(laneId, slotIndex);
+        if (rawSlot == Integer.MIN_VALUE) {
+            return SingleStackOutcome.failed("invalid_source");
+        }
+        ItemStack sourceStack = readStack(player, rawSlot);
+        if (sourceStack == null || sourceStack.isEmpty()) {
+            return SingleStackOutcome.failed("source_empty");
+        }
+        IItemHandler handler = resolveHandler(server, chest);
+        if (handler == null) {
+            return SingleStackOutcome.failed("chest_unloaded");
+        }
+        ItemStack remaining = ItemHandlerHelper.insertItemStacked(handler, sourceStack.copy(), true);
+        if (!remaining.isEmpty()) {
+            return SingleStackOutcome.failed("destination_full");
+        }
+        ItemStack postInsert = ItemHandlerHelper.insertItemStacked(handler, sourceStack.copy(), false);
+        if (!postInsert.isEmpty()) {
+            return SingleStackOutcome.failed("commit_partial");
+        }
+        writeStack(player, rawSlot, ItemStack.EMPTY);
+        player.getInventory().setChanged();
+        SlotCommon.LOGGER.info(
+                "[SLOT] deposit-single lane={} slot={} chest={}",
+                laneId, slotIndex, chest.storageId()
+        );
+        return SingleStackOutcome.deposited();
+    }
+
     public record DepositOutcome(int deposited, int failed, Set<UUID> destinations) {
         public DepositOutcome {
             deposited = Math.max(0, deposited);
@@ -188,6 +230,20 @@ public final class DepositExecutor {
 
         public static DepositOutcome empty() {
             return new DepositOutcome(0, 0, Set.of());
+        }
+    }
+
+    public record SingleStackOutcome(boolean success, String diagnostic) {
+        public SingleStackOutcome {
+            diagnostic = diagnostic == null ? "" : diagnostic;
+        }
+
+        public static SingleStackOutcome deposited() {
+            return new SingleStackOutcome(true, "");
+        }
+
+        public static SingleStackOutcome failed(String reason) {
+            return new SingleStackOutcome(false, reason);
         }
     }
 }

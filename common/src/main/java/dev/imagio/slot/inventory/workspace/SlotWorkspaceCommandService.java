@@ -576,17 +576,17 @@ public final class SlotWorkspaceCommandService {
         if (identity == null || islandId == null || islandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_home_assignment");
         }
-        SlotWorkspaceViewModel.AtlasIsland island = viewModel == null ? null : viewModel.island(islandId);
-        if (island == null) {
-            return WorkspaceCommandOutcome.rejected("unknown_island");
-        }
         if (SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId)) {
             runtime.visualAtlasWorkflow().clearHome(
                     identity,
                     DomainEventMetadata.origin(origin + ".clear")
             );
             SlotDebugLog.log("LDLib atlas home cleared {} -> {}", identity.itemId(), islandId);
-            return WorkspaceCommandOutcome.accepted("returned to inbox", island.label());
+            return WorkspaceCommandOutcome.accepted("returned to inbox", "Triage");
+        }
+        SlotWorkspaceViewModel.AtlasIsland island = viewModel == null ? null : viewModel.island(islandId);
+        if (island == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_island");
         }
 
         SlotWorkspaceAtlasLayout.Placement placement = resolvePlacement(viewModel, islandId, worldX, worldY);

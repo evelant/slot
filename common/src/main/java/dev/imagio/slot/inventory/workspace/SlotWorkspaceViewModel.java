@@ -47,6 +47,7 @@ public record SlotWorkspaceViewModel(
         int canvasHeight,
         List<AtlasIsland> islands,
         List<AtlasItem> atlasItems,
+        List<AtlasItem> triageItems,
         List<ClaimedChestTile> claimedChestTiles,
         List<HotbarSlot> hotbarSlots,
         OffhandSlot offhand,
@@ -60,6 +61,7 @@ public record SlotWorkspaceViewModel(
         canvasHeight = Math.max(1, canvasHeight);
         islands = islands == null ? List.of() : List.copyOf(islands);
         atlasItems = atlasItems == null ? List.of() : List.copyOf(atlasItems);
+        triageItems = triageItems == null ? List.of() : List.copyOf(triageItems);
         claimedChestTiles = claimedChestTiles == null ? List.of() : List.copyOf(claimedChestTiles);
         hotbarSlots = hotbarSlots == null ? List.of() : List.copyOf(hotbarSlots);
         offhand = offhand == null ? OffhandSlot.empty() : offhand;
@@ -81,8 +83,28 @@ public record SlotWorkspaceViewModel(
             OffhandSlot offhand
     ) {
         this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
-                canvasWidth, canvasHeight, islands, atlasItems, claimedChestTiles,
+                canvasWidth, canvasHeight, islands, atlasItems, List.of(), claimedChestTiles,
                 hotbarSlots, offhand, List.of());
+    }
+
+    public SlotWorkspaceViewModel(
+            long revision,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            int canvasWidth,
+            int canvasHeight,
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems,
+            List<ClaimedChestTile> claimedChestTiles,
+            List<HotbarSlot> hotbarSlots,
+            OffhandSlot offhand,
+            List<KitCard> kits
+    ) {
+        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
+                canvasWidth, canvasHeight, islands, atlasItems, List.of(), claimedChestTiles,
+                hotbarSlots, offhand, kits);
     }
 
     public static SlotWorkspaceViewModel empty() {
@@ -98,6 +120,7 @@ public record SlotWorkspaceViewModel(
                         SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
                         List.of()
                 ),
+                List.of(),
                 List.of(),
                 List.of(),
                 emptyHotbar(),
@@ -175,44 +198,72 @@ public record SlotWorkspaceViewModel(
 
         List<AtlasIsland> layoutIslands = SlotWorkspaceAtlasLayout.baseIslands(visualHomeMap);
         ArrayList<AtlasItem> atlasItems = new ArrayList<>();
-        LinkedHashMap<String, Integer> fallbackOrdinalByIsland = new LinkedHashMap<>();
+        ArrayList<AtlasItem> triageItems = new ArrayList<>();
         Set<ItemIdentity> recentIdentities = new LinkedHashSet<>(recents.visibleItems());
         List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
         LearnedIslandRuleStore resolvedLearnedRules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
 
         for (AtlasItemAccumulator accumulator : accumulators) {
             VisualHomeAssignment assignment = visualHomeMap.assignment(accumulator.identity());
-            String islandId = assignment == null
-                    ? SlotWorkspaceAtlasLayout.ISLAND_TRIAGE
-                    : assignment.islandId();
-            SlotWorkspaceAtlasLayout.Placement placement;
-            boolean playerPlaced = false;
-            if (assignment != null) {
-                placement = SlotWorkspaceAtlasLayout.resolvePlacement(
-                        layoutIslands,
-                        islandId,
-                        assignment.localX(),
-                        assignment.localY()
-                );
-                islandId = placement.islandId();
-                playerPlaced = assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
-            } else {
-                int ordinal = fallbackOrdinalByIsland.getOrDefault(islandId, 0);
-                fallbackOrdinalByIsland.put(islandId, ordinal + 1);
-                placement = SlotWorkspaceAtlasLayout.placementForOrdinal(layoutIslands, islandId, ordinal);
-                islandId = placement.islandId();
-            }
-            List<ChipSuggestion> chipSuggestions = List.of();
-            if (assignment == null && accumulator.carried() && signalExtractor != null) {
-                IslandSignalDescriptor descriptor = signalExtractor.apply(accumulator.displayStack());
-                if (descriptor != null) {
-                    chipSuggestions = IslandSuggestionService.suggest(
-                            descriptor,
-                            resolvedLearnedRules,
-                            triageIslandRefs,
-                            visualHomeMap.dismissedTemplateIds()
-                    );
+            if (assignment == null) {
+                List<ChipSuggestion> chipSuggestions = List.of();
+                if (accumulator.carried() && signalExtractor != null) {
+                    IslandSignalDescriptor descriptor = signalExtractor.apply(accumulator.displayStack());
+                    if (descriptor != null) {
+                        chipSuggestions = IslandSuggestionService.suggest(
+                                descriptor,
+                                resolvedLearnedRules,
+                                triageIslandRefs,
+                                visualHomeMap.dismissedTemplateIds()
+                        );
+                    }
                 }
+                triageItems.add(new AtlasItem(
+                        IdentityRef.from(accumulator.identity()),
+                        accumulator.displayStack(),
+                        accumulator.name(),
+                        accumulator.totalCount(),
+                        accumulator.firstSlotIndex(),
+                        SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                        0,
+                        0,
+                        SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                        SlotWorkspaceAtlasLayout.CARD_HEIGHT,
+                        recentIdentities.contains(accumulator.identity()),
+                        false,
+                        accumulator.carried(),
+                        chipSuggestions
+                ));
+                continue;
+            }
+            SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.resolvePlacement(
+                    layoutIslands,
+                    assignment.islandId(),
+                    assignment.localX(),
+                    assignment.localY()
+            );
+            String islandId = placement.islandId();
+            boolean playerPlaced = assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
+            // Orphaned assignment (target island deleted) — fall back to triage rather than render an unrooted card.
+            if (SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId)
+                    && SlotWorkspaceAtlasLayout.island(layoutIslands, islandId) == null) {
+                triageItems.add(new AtlasItem(
+                        IdentityRef.from(accumulator.identity()),
+                        accumulator.displayStack(),
+                        accumulator.name(),
+                        accumulator.totalCount(),
+                        accumulator.firstSlotIndex(),
+                        SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                        0,
+                        0,
+                        SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                        SlotWorkspaceAtlasLayout.CARD_HEIGHT,
+                        recentIdentities.contains(accumulator.identity()),
+                        false,
+                        accumulator.carried(),
+                        List.of()
+                ));
+                continue;
             }
             atlasItems.add(new AtlasItem(
                     IdentityRef.from(accumulator.identity()),
@@ -228,7 +279,7 @@ public record SlotWorkspaceViewModel(
                     recentIdentities.contains(accumulator.identity()),
                     playerPlaced,
                     accumulator.carried(),
-                    chipSuggestions
+                    List.of()
             ));
         }
 
@@ -237,6 +288,9 @@ public record SlotWorkspaceViewModel(
                 .thenComparingInt(AtlasItem::y)
                 .thenComparingInt(AtlasItem::x)
                 .thenComparing(item -> item.name().toLowerCase(Locale.ROOT)));
+        triageItems.sort(Comparator
+                .comparing((AtlasItem item) -> item.name().toLowerCase(Locale.ROOT))
+                .thenComparing(item -> item.identity().itemId()));
 
         List<AtlasIsland> fittedIslands = SlotWorkspaceAtlasLayout.fittedIslands(layoutIslands, atlasItems);
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(fittedIslands, atlasItems);
@@ -256,6 +310,13 @@ public record SlotWorkspaceViewModel(
                     atlasItems.set(index, item.withPresence(entries));
                 }
             }
+            for (int index = 0; index < triageItems.size(); index++) {
+                AtlasItem item = triageItems.get(index);
+                List<ChestPresenceEntry> entries = presenceByItemId.get(item.identity().itemId());
+                if (entries != null && !entries.isEmpty()) {
+                    triageItems.set(index, item.withPresence(entries));
+                }
+            }
         }
         List<KitCard> kitCards = kitCards(resolvedAuthority, resolvedWorkflow.kitMap());
         return new SlotWorkspaceViewModel(
@@ -268,6 +329,7 @@ public record SlotWorkspaceViewModel(
                 SlotWorkspaceAtlasLayout.CANVAS_HEIGHT,
                 islandsWithCarriedCounts,
                 atlasItems,
+                triageItems,
                 tiles,
                 hotbarSlots(resolvedAuthority, selectedQuickAccessSlot),
                 OffhandSlot.from(resolvedAuthority),
@@ -382,6 +444,7 @@ public record SlotWorkspaceViewModel(
                 canvasHeight,
                 islands,
                 atlasItems,
+                triageItems,
                 claimedChestTiles,
                 hotbarSlots,
                 offhand,
@@ -464,6 +527,7 @@ public record SlotWorkspaceViewModel(
                     chest.anchors().size(),
                     snapshot.slotCount(),
                     snapshot.contents(),
+                    snapshot.slotIndices(),
                     proximate,
                     linkedIslandIds
             ));
@@ -523,10 +587,17 @@ public record SlotWorkspaceViewModel(
         if (identityRef == null) {
             return null;
         }
-        return atlasItems.stream()
-                .filter(item -> item.identity().equals(identityRef))
-                .findFirst()
-                .orElse(null);
+        for (AtlasItem item : atlasItems) {
+            if (item.identity().equals(identityRef)) {
+                return item;
+            }
+        }
+        for (AtlasItem item : triageItems) {
+            if (item.identity().equals(identityRef)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public AtlasIsland island(String islandId) {
@@ -781,6 +852,7 @@ public record SlotWorkspaceViewModel(
             int anchorCount,
             int slotCount,
             List<ItemStack> contents,
+            List<Integer> contentSlotIndices,
             boolean proximate,
             List<String> linkedIslandIds
     ) {
@@ -793,13 +865,20 @@ public record SlotWorkspaceViewModel(
             anchorCount = Math.max(1, anchorCount);
             slotCount = Math.max(0, slotCount);
             List<ItemStack> sourceContents = contents == null ? List.of() : contents;
+            List<Integer> sourceIndices = contentSlotIndices == null ? List.of() : contentSlotIndices;
             ArrayList<ItemStack> copiedContents = new ArrayList<>(sourceContents.size());
-            for (ItemStack stack : sourceContents) {
-                if (stack != null && !stack.isEmpty()) {
-                    copiedContents.add(stack.copy());
+            ArrayList<Integer> copiedIndices = new ArrayList<>(sourceContents.size());
+            for (int i = 0; i < sourceContents.size(); i++) {
+                ItemStack stack = sourceContents.get(i);
+                if (stack == null || stack.isEmpty()) {
+                    continue;
                 }
+                copiedContents.add(stack.copy());
+                int slotIdx = i < sourceIndices.size() && sourceIndices.get(i) != null ? sourceIndices.get(i) : i;
+                copiedIndices.add(Math.max(0, slotIdx));
             }
             contents = List.copyOf(copiedContents);
+            contentSlotIndices = List.copyOf(copiedIndices);
             if (linkedIslandIds == null) {
                 linkedIslandIds = List.of();
             } else {
@@ -812,9 +891,27 @@ public record SlotWorkspaceViewModel(
                 linkedIslandIds = List.copyOf(filtered);
             }
         }
+
+        public ClaimedChestTile(
+                String storageId,
+                String dimensionId,
+                int atlasX,
+                int atlasY,
+                int width,
+                int height,
+                String label,
+                int anchorCount,
+                int slotCount,
+                List<ItemStack> contents,
+                boolean proximate,
+                List<String> linkedIslandIds
+        ) {
+            this(storageId, dimensionId, atlasX, atlasY, width, height, label, anchorCount,
+                    slotCount, contents, List.of(), proximate, linkedIslandIds);
+        }
     }
 
-    public record ChestContentsSnapshot(int slotCount, List<ItemStack> contents) {
+    public record ChestContentsSnapshot(int slotCount, List<ItemStack> contents, List<Integer> slotIndices) {
         public ChestContentsSnapshot {
             slotCount = Math.max(0, slotCount);
             List<ItemStack> source = contents == null ? List.of() : contents;
@@ -823,10 +920,21 @@ public record SlotWorkspaceViewModel(
                 copy.add(stack == null ? ItemStack.EMPTY : stack.copy());
             }
             contents = List.copyOf(copy);
+            List<Integer> sourceIndices = slotIndices == null ? List.of() : slotIndices;
+            ArrayList<Integer> indexCopy = new ArrayList<>(contents.size());
+            for (int i = 0; i < contents.size(); i++) {
+                int idx = i < sourceIndices.size() && sourceIndices.get(i) != null ? sourceIndices.get(i) : i;
+                indexCopy.add(Math.max(0, idx));
+            }
+            slotIndices = List.copyOf(indexCopy);
+        }
+
+        public ChestContentsSnapshot(int slotCount, List<ItemStack> contents) {
+            this(slotCount, contents, List.of());
         }
 
         public static ChestContentsSnapshot empty() {
-            return new ChestContentsSnapshot(0, List.of());
+            return new ChestContentsSnapshot(0, List.of(), List.of());
         }
     }
 
