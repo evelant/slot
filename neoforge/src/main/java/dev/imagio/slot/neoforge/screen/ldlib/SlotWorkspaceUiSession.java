@@ -8,6 +8,7 @@ import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
@@ -613,6 +614,81 @@ final class SlotWorkspaceUiSession {
             diagnostics = execution.feedback().diagnostics();
         }
         broadcast(serverPlayer);
+    }
+
+    // Identity-based hotbar slot assignment. Unlike the slot-index-based
+    // transfer path (TARGET_MAIN_SLOT + firstSlotIndex), this resolves the
+    // source on the server by scanning every source tagged as CARRIED — so
+    // an item that only lives in a Sophisticated Backpack is still reachable
+    // from digit-press / drag-to-hotbar / click-hotbar-while-selected.
+    void assignIdentityToHotbarSlot(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer hotbarIndexBoxed
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        int hotbarIndex = hotbarIndexBoxed == null ? -1 : hotbarIndexBoxed;
+        if (hotbarIndex < 0 || hotbarIndex >= 9) {
+            reject("invalid_hotbar_slot");
+            return;
+        }
+
+        refreshServerView(serverPlayer);
+        CarriedSlotRef source = firstCarriedSlotForIdentityAnySource(serverPlayer, identity);
+        if (source == null) {
+            status = "nothing_to_assign";
+            diagnostics = "identity not found in any carried source";
+            broadcast(serverPlayer);
+            return;
+        }
+
+        WorkspaceTransferExecution execution = executeTransfer(
+                serverPlayer,
+                new InventoryActionTarget.SourceSlotTarget(source.laneId(), source.slotIndex()),
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
+                "slot_workspace.ldlib.assign_identity_to_hotbar"
+        );
+
+        if (execution.appliedCompletely()) {
+            status = "assigned_to_hotbar_" + (hotbarIndex + 1);
+            diagnostics = "moved to hotbar " + (hotbarIndex + 1);
+        } else {
+            status = execution.feedback().status();
+            diagnostics = execution.feedback().diagnostics();
+        }
+        broadcast(serverPlayer);
+    }
+
+    // Matches firstCarriedSlotForIdentity's intent (locate a carried copy of
+    // an identity) but searches every CARRIED-pane source, not just a
+    // hardcoded player-lane list. Player-owned lanes sort first via the
+    // InventorySourceDescriptor stableOrder (main/hotbar/offhand come before
+    // backpack additions), so normal cases still prefer main inventory.
+    private CarriedSlotRef firstCarriedSlotForIdentityAnySource(ServerPlayer serverPlayer, ItemIdentity identity) {
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            return null;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.present()) {
+                    continue;
+                }
+                if (ItemIdentityMatcher.create(entry.stack()).equals(identity)) {
+                    return new CarriedSlotRef(source.id(), entry.slotIndex());
+                }
+            }
+        }
+        return null;
     }
 
     void depositHomeToLinkedChest(String itemId, String comparisonMode, String componentFingerprint) {

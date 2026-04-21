@@ -37,13 +37,22 @@ public final class SlotWorkspaceAtlasLayout {
     private static final int PLAYER_COLOR = 0xCC5A4A6E;
     public static final int ISLAND_CONTENT_PADDING_X = 8;
     public static final int ISLAND_CONTENT_PADDING_Y = 8;
-    public static final int ISLAND_CONTENT_TOP = 10;
+    // With the carriedBadge and edit control now living above the island (on
+    // the title-bar strip), the first row no longer has to leave room for
+    // them inside the panel. 4 px of breathing room from the panel border is
+    // enough.
+    public static final int ISLAND_CONTENT_TOP = 4;
     private static final int TRIAGE_MIN_WIDTH = 420;
     private static final int TRIAGE_MIN_HEIGHT = 260;
     public static final int PLAYER_ISLAND_MIN_WIDTH = 180;
-    public static final int PLAYER_ISLAND_MIN_HEIGHT = 120;
+    // Empty-island floor sized to ~2 rows so a single-row island reads as two
+    // rows tall rather than three. Fitted height takes over once content
+    // exceeds this (see fitIsland).
+    public static final int PLAYER_ISLAND_MIN_HEIGHT = 72;
     private static final int ISLAND_TRAILING_BUFFER_X = CARD_WIDTH + CARD_GAP;
-    private static final int ISLAND_TRAILING_BUFFER_Y = CARD_HEIGHT + CARD_GAP;
+    // Half a card of drop-buffer below the last row — enough to register a
+    // drop without inflating the island by a full extra row.
+    private static final int ISLAND_TRAILING_BUFFER_Y = CARD_HEIGHT / 2;
 
     private SlotWorkspaceAtlasLayout() {
     }

@@ -33,6 +33,10 @@ This is a fast-moving experimental repo. Docs describe intent as of their
   surrounding system create more bugs.
 - UI and LDLib code may own rendering, local focus, and transport; SLOT
   common owns inventory semantics.
+- Before editing LDLib2 workspace UI code, skim
+  [docs/architecture/ui-lifecycle-rules.md](docs/architecture/ui-lifecycle-rules.md)
+  for the rebuild/scale/animation rules we derived from real flicker
+  bugs.
 - Screens and client RPC commands must not provide authoritative stack,
   count, identity, host id, or menu ref for real mutations — build
   authoritative requests on the server from live authority.

@@ -18,6 +18,11 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 public final class SlotWorkspaceMountController {
     private static boolean registered;
+    // One-shot gate: when true, the next InventoryScreen.Opening is allowed
+    // through to vanilla instead of being redirected to the SLOT workspace.
+    // Used by the "open vanilla inventory" button/hotkey to escape to the
+    // plain inventory screen when needed (debugging, compat checks, etc.).
+    private static boolean bypassNextMount;
 
     private SlotWorkspaceMountController() {
     }
@@ -28,6 +33,26 @@ public final class SlotWorkspaceMountController {
         }
         NeoForge.EVENT_BUS.addListener(SlotWorkspaceMountController::onScreenOpening);
         registered = true;
+    }
+
+    public static void openVanillaInventory() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.player == null) {
+            return;
+        }
+        // setScreen() alone doesn't send a ServerboundContainerClosePacket for
+        // the active ModularUI menu; the server can be left with the SLOT
+        // workspace menu as the player's containerMenu while the client shows
+        // vanilla InventoryScreen. Slot clicks in the vanilla UI then resolve
+        // locally but miss the server, producing silent desync (items appear
+        // to move but revert on relog). closeContainer() on the client sends
+        // the close packet and resets the local containerMenu reference
+        // before we show the vanilla screen.
+        if (minecraft.player.containerMenu != minecraft.player.inventoryMenu) {
+            minecraft.player.closeContainer();
+        }
+        bypassNextMount = true;
+        minecraft.setScreen(new InventoryScreen(minecraft.player));
     }
 
     private static void onScreenOpening(ScreenEvent.Opening event) {
@@ -42,6 +67,11 @@ public final class SlotWorkspaceMountController {
         }
         if (!(candidate instanceof InventoryScreen)) {
             fail("only_player_inventory_enabled_for_first_slice", candidate);
+            return;
+        }
+        if (bypassNextMount) {
+            bypassNextMount = false;
+            SlotDebugLog.log("Vanilla inventory bypass requested; skipping SLOT mount for {}", candidate.getClass().getName());
             return;
         }
 

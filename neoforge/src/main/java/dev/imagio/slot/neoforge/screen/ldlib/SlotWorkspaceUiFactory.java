@@ -167,6 +167,7 @@ final class SlotWorkspaceUiFactory {
         private RPCEmitter takeFromChestEmitter;
         private RPCEmitter takeOneFromChestEmitter;
         private RPCEmitter assignHomeToHotbarOnlyEmitter;
+        private RPCEmitter assignIdentityToHotbarSlotEmitter;
         private RPCEmitter depositHomeToLinkedChestEmitter;
         private RPCEmitter depositOneHomeToLinkedChestEmitter;
         private boolean kitRackOpen;
@@ -178,6 +179,15 @@ final class SlotWorkspaceUiFactory {
         private UIElement statusBarElement;
         private Label statusBarLabel;
         private boolean atlasContentNeedsScreenTick;
+        // Deferred rebuild flag. Every server-sync round trip calls rebuild()
+        // via syncBinding's remoteSetter; during rapid bursts (e.g. scroll-
+        // wheel item transfer firing N RPCs) this used to destroy and recreate
+        // the entire atlas content subtree N times before a single TICK could
+        // warm up the new elements, which caused visible font-size, selection,
+        // and hotbar-highlight flicker. With this flag, rebuild() just marks
+        // the UI dirty; flushRebuildIfPending() in the per-frame tick
+        // collapses any number of requests into one actual rebuild per frame.
+        private boolean rebuildPending;
         private SlotWorkspaceViewModel.IdentityRef hoveredChestCellIdentity;
         private String hoveredChestCellStorageId;
         private boolean peekActive;
@@ -192,8 +202,6 @@ final class SlotWorkspaceUiFactory {
         private boolean searchCommitted;
         private List<AtlasSearchIndex.SearchRow> searchMatches = List.of();
         private int searchMatchIndex;
-        private long searchHintStartMs;
-        private static boolean searchHintShownThisSession;
         private static final long SEARCH_PREVIEW_DELAY_MS = 220L;
         private static final long SEARCH_COMMIT_DELAY_MS = 3500L;
 
@@ -219,7 +227,7 @@ final class SlotWorkspaceUiFactory {
             registerRpcs();
             installBeltHotkeys();
             root.addChildren(syncBinding(), content);
-            rebuild();
+            rebuildNow();
             return ModularUI.of(UI.of(root), player);
         }
 
@@ -239,9 +247,18 @@ final class SlotWorkspaceUiFactory {
                 }
             }, true);
             root.addEventListener(UIEvents.CHAR_TYPED, this::handleSearchCharTyped, true);
+            // Flush pending rebuilds FIRST thing each game tick, before any
+            // render can start. Running this from atlas.setPerFrameTick (inside
+            // drawBackgroundTexture) caused a visible 1-frame flash on
+            // server-driven rebuilds: by the time the flush ran, ancestors
+            // (content, body, atlasPanelElement) had already drawn this frame
+            // with the old tree, so newly rebuilt children rendered inside a
+            // momentarily stale parent layout. ModularUI.tick fires once per
+            // game tick before the next render, so the rebuild is complete
+            // before anything tries to draw.
+            root.addEventListener(UIEvents.TICK, event -> flushRebuildIfPending());
             root.addEventListener(UIEvents.TICK, event -> cameraController.tick());
             root.addEventListener(UIEvents.TICK, event -> tickSearchIdleTimer());
-            searchHintStartMs = System.currentTimeMillis();
         }
 
         private void handleBeltHotkey(UIEvent event) {
@@ -259,12 +276,7 @@ final class SlotWorkspaceUiFactory {
                 rebuild();
                 return;
             }
-            sendTransfer(
-                    SlotWorkspaceUiSession.TARGET_MAIN_SLOT,
-                    target.firstSlotIndex(),
-                    SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT,
-                    digit - 1
-            );
+            sendAssignToHotbarSlot(target, digit - 1);
         }
 
         private void handlePeekKeyDown(UIEvent event) {
@@ -439,7 +451,6 @@ final class SlotWorkspaceUiFactory {
             if (!cameraController.hasGraphView()) {
                 return;
             }
-            dismissFirstOpenSearchHint();
             searchModalActive = true;
             searchBuffer = "";
             searchOrigin = cameraController.currentCamera();
@@ -620,35 +631,17 @@ final class SlotWorkspaceUiFactory {
         }
 
         private void tickSearchIdleTimer() {
-            long now = System.currentTimeMillis();
-            if (searchModalActive) {
-                if (searchMatches.isEmpty()) {
-                    return;
-                }
-                long idleMs = now - searchLastKeystrokeMs;
-                if (!searchPreviewPanned && idleMs >= SEARCH_PREVIEW_DELAY_MS) {
-                    searchPreviewPanned = true;
-                    easeToCurrentSearchMatch();
-                }
-                if (!searchInteractionDisablesAutoDismiss && idleMs >= SEARCH_COMMIT_DELAY_MS) {
-                    commitSearch(AtlasCameraController.CommitSource.SEARCH_COMMIT, true);
-                }
-            } else if (!searchHintShownThisSession
-                    && now - searchHintStartMs > 10_000L) {
-                searchHintShownThisSession = true;
-                rebuild();
+            if (!searchModalActive || searchMatches.isEmpty()) {
+                return;
             }
-        }
-
-        private void dismissFirstOpenSearchHint() {
-            searchHintShownThisSession = true;
-        }
-
-        private boolean shouldShowFirstOpenSearchHint() {
-            if (searchHintShownThisSession) {
-                return false;
+            long idleMs = System.currentTimeMillis() - searchLastKeystrokeMs;
+            if (!searchPreviewPanned && idleMs >= SEARCH_PREVIEW_DELAY_MS) {
+                searchPreviewPanned = true;
+                easeToCurrentSearchMatch();
             }
-            return System.currentTimeMillis() - searchHintStartMs <= 10_000L;
+            if (!searchInteractionDisablesAutoDismiss && idleMs >= SEARCH_COMMIT_DELAY_MS) {
+                commitSearch(AtlasCameraController.CommitSource.SEARCH_COMMIT, true);
+            }
         }
 
         private AtlasCamera resolvePeekTarget() {
@@ -889,6 +882,13 @@ final class SlotWorkspaceUiFactory {
                     String.class,
                     session::assignHomeToHotbarOnly
             ));
+            assignIdentityToHotbarSlotEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    String.class,
+                    Integer.class,
+                    session::assignIdentityToHotbarSlot
+            ));
             depositHomeToLinkedChestEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     String.class,
                     String.class,
@@ -918,6 +918,17 @@ final class SlotWorkspaceUiFactory {
         }
 
         private void rebuild() {
+            rebuildPending = true;
+        }
+
+        private void flushRebuildIfPending() {
+            if (rebuildPending) {
+                rebuildNow();
+            }
+        }
+
+        private void rebuildNow() {
+            rebuildPending = false;
             if (selectedAtlasIdentity.get() != null && viewModel.atlasItem(selectedAtlasIdentity.get()) == null) {
                 selectedAtlasIdentity.set(null);
             }
@@ -930,14 +941,35 @@ final class SlotWorkspaceUiFactory {
                 hoveredHotbarIndex = -1;
             }
             hotbarSlotElements.clear();
-            content.clearAllChildren();
-            content.addChildren(
-                    header(),
-                    body(),
-                    statusBar()
-            );
+            if (!contentPopulated) {
+                // First build only: create the header/body/statusBar wrappers
+                // and add them to content. Subsequent rebuilds reuse the same
+                // wrappers — replacing them caused a blank-frame flash,
+                // because rebuildNow runs inside atlas.perFrameTick (i.e.
+                // inside atlas.drawBackgroundTexture), which is *after* the
+                // parent content element has already drawn this frame with
+                // the old children. Replacing the children means next frame
+                // renders NEW elements whose layout hasn't settled yet —
+                // visible as a 1-frame mismatch / flash.
+                content.clearAllChildren();
+                content.addChildren(
+                        header(),
+                        body(),
+                        statusBar()
+                );
+                contentPopulated = true;
+            } else {
+                // Incremental refresh: atlasPanel() is the persistent panel
+                // inside body, and calling it reruns repopulateAtlasPanel()
+                // which destroys+rebuilds just the atlas-content subtree
+                // (islands/cards/chest tiles). That subtree is what the
+                // server sync actually invalidates.
+                atlasPanel();
+            }
             content.markTaffyStyleDirty();
         }
+
+        private boolean contentPopulated;
 
         private UIElement header() {
             UIElement header = panel(PANEL_ALT).layout(layout -> layout
@@ -947,26 +979,54 @@ final class SlotWorkspaceUiFactory {
                     .gapAll(8)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
-            boolean depositEnabled = anyChestProximate();
-            Button depositButton = button("Deposit", depositEnabled, depositEnabled ? ACCENT : PANEL_ALT);
+            boolean initialDepositEnabled = anyChestProximate();
+            Button depositButton = button("Deposit", initialDepositEnabled, initialDepositEnabled ? ACCENT : PANEL_ALT);
             depositButton.layout(layout -> layout.width(72).height(18));
             depositButton.textStyle(style -> style
-                    .textColor(depositEnabled ? TEXT : MUTED)
+                    .textColor(initialDepositEnabled ? TEXT : MUTED)
                     .textShadow(false)
                     .fontSize(8)
                     .textAlignHorizontal(Horizontal.CENTER)
                     .textAlignVertical(Vertical.CENTER));
+            // Header is now persistent across rebuilds, so the button's
+            // enabled/color state can't be recomputed via wholesale recreation
+            // anymore. A per-TICK poll of anyChestProximate() keeps the
+            // button's appearance in sync as the player moves near/away from
+            // chests and as the server pushes viewModel updates.
+            boolean[] lastDepositEnabled = {initialDepositEnabled};
+            depositButton.addEventListener(UIEvents.TICK, event -> {
+                boolean enabled = anyChestProximate();
+                if (enabled == lastDepositEnabled[0]) {
+                    return;
+                }
+                lastDepositEnabled[0] = enabled;
+                depositButton.setActive(enabled);
+                applyButtonColors(depositButton, enabled, enabled ? ACCENT : PANEL_ALT);
+                depositButton.textStyle(style -> style.textColor(enabled ? TEXT : MUTED));
+            });
             depositButton.setOnClick(event -> {
                 event.stopPropagation();
-                if (!depositEnabled) {
+                if (!anyChestProximate()) {
                     localStatus.set("no claimed chest nearby");
-                    rebuild();
                     return;
                 }
                 sendDeposit();
             });
+            Button vanillaButton = button("Vanilla", true, PANEL_ALT);
+            vanillaButton.layout(layout -> layout.width(52).height(18));
+            vanillaButton.textStyle(style -> style
+                    .textColor(MUTED)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            vanillaButton.setOnClick(event -> {
+                event.stopPropagation();
+                dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController.openVanillaInventory();
+            });
             header.addChildren(
                     label("SLOT Atlas", ACCENT).layout(layout -> layout.flex(1).height(12)),
+                    vanillaButton,
                     depositButton
             );
             clearSelectionOnDirectClick(header);
@@ -1001,6 +1061,14 @@ final class SlotWorkspaceUiFactory {
             SlotAtlasGraphView atlas = new SlotAtlasGraphView();
             atlas.onCameraChanged(camera -> atlasCamera = camera);
             atlas.setPerFrameTick(() -> {
+                // Rebuild flushing used to live here, but running it mid-
+                // render (inside drawBackgroundTexture) let ancestors draw
+                // with stale trees for one frame. The flush is now in the
+                // game-tick TICK listener on root, which runs before any
+                // rendering. This hook keeps doing the animation-driven
+                // screenTick kick so cards keep receiving TICKs during
+                // camera animations even when the tick-rate screenTick
+                // already fired.
                 boolean wasAnimating = cameraController.isAnimating();
                 cameraController.tick();
                 if (atlas.getContentWidth() <= 0f) {
@@ -1052,11 +1120,11 @@ final class SlotWorkspaceUiFactory {
             atlas.clearAllContentChildren();
             buildAtlas(atlas);
 
-            panel.addChildren(atlas, navigationCapsule(atlas), triagePanelOverlay(), beltOverlay());
+            panel.addChildren(atlas, triagePanelOverlay(), beltOverlay());
             panel.addChild(hoverTrailOverlayElement);
             if (searchModalActive) {
                 panel.addChild(searchChipOverlay());
-            } else if (shouldShowFirstOpenSearchHint()) {
+            } else {
                 panel.addChild(searchHintOverlay());
             }
             if (kitRackOpen) {
@@ -1129,15 +1197,15 @@ final class SlotWorkspaceUiFactory {
         private UIElement searchHintOverlay() {
             UIElement hint = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
-                    .bottom(BELT_HEIGHT + 28)
-                    .right(16)
-                    .width(180)
-                    .paddingAll(6)
-                    .gapAll(3)
-                    .flexDirection(FlexDirection.COLUMN));
+                    .top(10)
+                    .left(10)
+                    .paddingHorizontal(8)
+                    .paddingVertical(4)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
             hint.style(style -> style.zIndex(11));
             hint.setAllowHitTest(false);
-            hint.addChild(label("Press / to search", ACCENT).layout(layout -> layout.height(12)));
+            hint.addChild(label("Press / to search", MUTED).layout(layout -> layout.height(10)));
             return hint;
         }
 
@@ -1355,6 +1423,12 @@ final class SlotWorkspaceUiFactory {
                 UIElement islandPanelEl = islandPanel(atlas, island);
                 atlas.addContentChild(islandPanelEl);
                 atlas.addContentChild(islandTitleBar(atlas, island, islandPanelEl));
+                if (island.carriedCount() > 0) {
+                    atlas.addContentChild(islandCarriedBadge(atlas, island));
+                }
+                if (island.kind() == VisualAtlasIslandKind.PLAYER) {
+                    atlas.addContentChild(islandEditControl(island));
+                }
             }
             for (String islandId : highlightedIslandIds) {
                 SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
@@ -1408,56 +1482,56 @@ final class SlotWorkspaceUiFactory {
             installViewportPanSurface(panel, atlas);
             installIslandDropTarget(panel, panel, atlas, island);
 
-            if (island.carriedCount() > 0) {
-                Button carriedBadge = button(
-                        island.carriedCount() + "●",
-                        true,
-                        ACTIVE_HOTBAR
-                );
-                carriedBadge.layout(layout -> layout
-                        .positionType(TaffyPosition.ABSOLUTE)
-                        .left(4)
-                        .top(4)
-                        .width(26)
-                        .height(12));
-                carriedBadge.textStyle(style -> style
-                        .textColor(TEXT)
-                        .textShadow(false)
-                        .fontSize(7)
-                        .textAlignHorizontal(Horizontal.CENTER)
-                        .textAlignVertical(Vertical.CENTER));
-                carriedBadge.style(style -> style.zIndex(4));
-                carriedBadge.setOnClick(event -> {
-                    event.stopPropagation();
-                    panToIsland(atlas, island);
-                    localStatus.set("panned to " + island.label());
-                });
-                panel.addChild(carriedBadge);
-            }
-
-            if (island.kind() == VisualAtlasIslandKind.PLAYER) {
-                Button editButton = button("...", true, PANEL_ALT);
-                editButton.layout(layout -> layout
-                        .positionType(TaffyPosition.ABSOLUTE)
-                        .right(4)
-                        .top(4)
-                        .width(18)
-                        .height(14));
-                editButton.textStyle(style -> style
-                        .textColor(TEXT)
-                        .textShadow(false)
-                        .fontSize(8)
-                        .textAlignHorizontal(Horizontal.CENTER)
-                        .textAlignVertical(Vertical.CENTER));
-                editButton.style(style -> style.zIndex(4));
-                editButton.setOnClick(event -> {
-                    event.stopPropagation();
-                    beginIslandEdit(island);
-                });
-                panel.addChild(editButton);
-            }
-
             return panel;
+        }
+
+        private UIElement islandCarriedBadge(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
+            // Positioned on the title-bar strip above the island panel so it
+            // doesn't overlap the first row of item cards. Uses world-unit
+            // absolute positioning against atlas content like every other
+            // atlas-level element.
+            Button badge = button(island.carriedCount() + "●", true, ACTIVE_HOTBAR);
+            badge.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(island.x() + 2)
+                    .top(island.y() - 14)
+                    .width(26)
+                    .height(12));
+            badge.textStyle(style -> style
+                    .textColor(TEXT)
+                    .textShadow(false)
+                    .fontSize(7)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            badge.style(style -> style.zIndex(4));
+            badge.setOnClick(event -> {
+                event.stopPropagation();
+                panToIsland(atlas, island);
+                localStatus.set("panned to " + island.label());
+            });
+            return badge;
+        }
+
+        private UIElement islandEditControl(SlotWorkspaceViewModel.AtlasIsland island) {
+            Button editButton = button("...", true, PANEL_ALT);
+            editButton.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(island.x() + island.width() - 20)
+                    .top(island.y() - 15)
+                    .width(18)
+                    .height(14));
+            editButton.textStyle(style -> style
+                    .textColor(TEXT)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            editButton.style(style -> style.zIndex(4));
+            editButton.setOnClick(event -> {
+                event.stopPropagation();
+                beginIslandEdit(island);
+            });
+            return editButton;
         }
 
         private UIElement islandTitleBar(
@@ -1488,32 +1562,40 @@ final class SlotWorkspaceUiFactory {
             installIslandDropTarget(header, islandPanelEl, atlas, island);
 
             float[] lastScale = {Float.NaN};
-            float[] lastScreenFontPx = {Float.NaN};
-            header.addEventListener(UIEvents.TICK, event -> {
-                float scale = animationTargetScale(atlas);
+            int[] lastWorldFontQuarter = {-1};
+            Runnable applyHeaderScale = () -> {
+                // Track the actual render scale (not animation target) so the
+                // header stays sized to the live view each frame. Using
+                // animationTargetScale caused the header to be sized for the
+                // final scale while the pose stack drew at the interpolated
+                // current scale — visible as a flash at animation boundaries.
+                float scale = Math.max(0.0001f, atlas.getScale());
                 if (scale == lastScale[0]) {
                     return;
                 }
                 lastScale[0] = scale;
                 float islandScreenWidth = island.width() * scale;
-                float requestedFontPx = Math.min(10f, islandScreenWidth * 0.13f);
-                float screenFontPx = clampScreenFontPx(Math.max(5f, requestedFontPx));
+                float requestedFontPx = Math.min(12f, islandScreenWidth * 0.13f);
+                float screenFontPx = clampScreenFontPx(Math.max(7f, requestedFontPx));
                 float worldFontPx = screenFontPx / Math.max(0.0001f, scale);
                 float screenHeaderHeight = screenFontPx + 3f;
                 float worldHeaderHeight = screenHeaderHeight / Math.max(0.0001f, scale);
                 float screenGap = 2f;
                 float worldGap = screenGap / Math.max(0.0001f, scale);
 
-                // Only re-apply textStyle when the snapped screen font size crosses
-                // a quantum boundary — LDLib runs a full formattedLines recompute on
-                // any fontSize write, even with the same value. Within a quantum the
-                // centered text stays centered as the layout box grows/shrinks.
-                if (screenFontPx != lastScreenFontPx[0]) {
-                    lastScreenFontPx[0] = screenFontPx;
+                // Re-apply textStyle whenever the quantized world fontSize
+                // changes. The previous gate on screenFontPx alone missed the
+                // case where scale shifts within a clamped range (min/max of
+                // screenFontPx), which left worldFontPx baked at the old scale
+                // and the rendered screen pixels drifting with zoom.
+                int worldFontQuarter = Math.max(1, Math.round(worldFontPx * 4f));
+                if (worldFontQuarter != lastWorldFontQuarter[0]) {
+                    lastWorldFontQuarter[0] = worldFontQuarter;
+                    float quantizedWorldFont = worldFontQuarter / 4f;
                     header.textStyle(style -> style
                             .textColor(TEXT)
                             .textShadow(true)
-                            .fontSize(worldFontPx)
+                            .fontSize(quantizedWorldFont)
                             .textAlignHorizontal(Horizontal.CENTER)
                             .textAlignVertical(Vertical.CENTER));
                 }
@@ -1524,7 +1606,14 @@ final class SlotWorkspaceUiFactory {
                         .width(island.width())
                         .height(Math.round(worldHeaderHeight)));
                 header.markTaffyStyleDirty();
-            });
+            };
+            // Prime at build time so the first rendered frame after a rebuild
+            // already has the scale-correct font/layout. Without this, the
+            // header renders at Button's default fontSize until the next
+            // screen tick fires — which, during rapid rebuilds from scroll-
+            // wheel transfer, could be several frames of flicker.
+            applyHeaderScale.run();
+            header.addEventListener(UIEvents.TICK, event -> applyHeaderScale.run());
             return header;
         }
 
@@ -2254,7 +2343,6 @@ final class SlotWorkspaceUiFactory {
                     openContextMenuForAtlas(item, event.x, event.y);
                 }
             });
-            long[] lastScrollActionMs = {0L};
             float[] scrollAccumulator = {0f};
             button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
                 if (!Screen.hasShiftDown()) {
@@ -2267,31 +2355,26 @@ final class SlotWorkspaceUiFactory {
                     return;
                 }
                 event.stopPropagation();
-                long now = System.currentTimeMillis();
-                if (now - lastScrollActionMs[0] > 150L) {
-                    scrollAccumulator[0] = 0f;
-                }
                 scrollAccumulator[0] += delta;
-                if (Math.abs(scrollAccumulator[0]) < 1f) {
+                int count = (int) scrollAccumulator[0];
+                if (count == 0) {
                     return;
                 }
-                if (now - lastScrollActionMs[0] < 50L) {
-                    return;
-                }
-                float effectiveDelta = scrollAccumulator[0];
-                scrollAccumulator[0] = 0f;
-                lastScrollActionMs[0] = now;
+                scrollAccumulator[0] -= count;
                 SlotWorkspaceViewModel.AtlasItem fresh = viewModel.atlasItem(item.identity());
                 if (fresh == null) {
                     return;
                 }
-                if (effectiveDelta > 0) {
+                int magnitude = Math.abs(count);
+                if (count > 0) {
                     ChestSlotRef source = firstProximateChestSlotFor(fresh);
                     if (source == null) {
                         localStatus.set("no nearby chest has " + fresh.name());
                         return;
                     }
-                    sendTakeOneFromChest(source.storageId(), source.chestSlotIndex());
+                    for (int i = 0; i < magnitude; i++) {
+                        sendTakeOneFromChest(source.storageId(), source.chestSlotIndex());
+                    }
                 } else {
                     boolean canPush = atlasItemHasDepositTarget(fresh)
                             || firstProximateChestSlotFor(fresh) != null;
@@ -2303,7 +2386,9 @@ final class SlotWorkspaceUiFactory {
                         localStatus.set(fresh.name() + " not carried");
                         return;
                     }
-                    sendDepositOneHomeToLinkedChest(fresh);
+                    for (int i = 0; i < magnitude; i++) {
+                        sendDepositOneHomeToLinkedChest(fresh);
+                    }
                 }
             });
             button.addEventListener(UIEvents.MOUSE_ENTER, event -> hoveredAtlasIdentity = item.identity(), true);
@@ -2320,16 +2405,25 @@ final class SlotWorkspaceUiFactory {
             rebuildAtlasBody(body, atlas, item, initialBudget, activeSearchMatch);
             button.addChild(body);
 
-            AtlasRenderBudget[] lastBudget = new AtlasRenderBudget[]{initialBudget};
+            long[] lastSignature = new long[]{atlasLayoutSignature(initialBudget)};
             button.addEventListener(UIEvents.TICK, event -> {
                 AtlasRenderBudget budget = atlasBudget(atlas, item);
                 boolean currentSelected = item.identity().equals(selectedAtlasIdentity.get());
                 boolean focused = isMapFocusItem(item);
-                if (lastBudget[0].level() != budget.level()) {
+                long signature = atlasLayoutSignature(budget);
+                // Skip LOD rebuilds while the camera is animating. atlasBudget
+                // uses animationTargetScale while rendering uses the live
+                // interpolated scale, so a rebuild mid-animation bakes labels
+                // for the target and draws them at the current scale — visible
+                // as a big-text flash at the start of a zoom-in peek. Letting
+                // cards stay at the pre-animation LOD means labels either
+                // scale with the zoom or stay absent until the camera settles;
+                // either way it's continuous, not a jump.
+                if (signature != lastSignature[0] && !cameraController.isAnimating()) {
                     rebuildAtlasBody(body, atlas, item, budget, activeSearchMatch);
                     body.markTaffyStyleDirty();
                     button.markTaffyStyleDirty();
-                    lastBudget[0] = budget;
+                    lastSignature[0] = signature;
                 }
                 button.style(style -> style.zIndex(focused ? 10 : currentSelected ? 7 : 2));
                 applyButtonColors(button, true, cardChromeColor(budget.level(), currentSelected, searchMatch, item.recent(), item.carried()));
@@ -2428,77 +2522,6 @@ final class SlotWorkspaceUiFactory {
                     ? chip.template().defaultLabel()
                     : chip.label();
             return label == null ? "" : shorten(label, 10);
-        }
-
-        private UIElement navigationCapsule(SlotAtlasGraphView atlas) {
-            UIElement capsule = panel(GLASS).layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(10)
-                    .top(10)
-                    .width(470)
-                    .height(72)
-                    .paddingAll(8)
-                    .gapAll(6)
-                    .flexDirection(FlexDirection.COLUMN));
-            capsule.style(style -> style.zIndex(10));
-            capsule.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
-
-            UIElement topRow = new UIElement().layout(layout -> layout
-                    .widthPercent(100)
-                    .height(24)
-                    .gapAll(6)
-                    .alignItems(AlignItems.CENTER)
-                    .flexDirection(FlexDirection.ROW));
-            TextField search = new TextField();
-            search.setAnyString();
-            search.setText(searchQuery, false);
-            search.layout(layout -> layout.flex(1).height(22));
-            search.style(style -> style.backgroundTexture(rect(0xD60B1117)));
-            search.textFieldStyle(style -> style
-                    .font(FONT_UI)
-                    .placeholder(Component.literal("Search homes, ids, islands, collections"))
-                    .textColor(TEXT)
-                    .cursorColor(ACCENT)
-                    .textShadow(false)
-                    .fontSize(10));
-            search.setTextResponder(value -> {
-                searchQuery = value == null ? "" : value;
-                localStatus.set(searchQuery.isBlank() ? "search cleared" : "searching: " + searchQuery.trim());
-            });
-            topRow.addChildren(
-                    label("Atlas", ACCENT).layout(layout -> layout.width(42).height(12)),
-                    search,
-                    homeButton(atlas),
-                    clearSearchButton()
-            );
-
-            Label summary = wrappedLabel(searchSummary(), MUTED);
-            summary.layout(layout -> layout.widthPercent(100).flex(1));
-            summary.addEventListener(UIEvents.TICK, event -> summary.setText(Component.literal(searchSummary())));
-
-            capsule.addChildren(topRow, summary);
-            return capsule;
-        }
-
-        private Button homeButton(SlotAtlasGraphView atlas) {
-            Button button = button("Home", true, PANEL_ALT);
-            button.layout(layout -> layout.width(52).height(22));
-            button.setOnClick(event -> {
-                event.stopPropagation();
-                AtlasCamera camera = computeOverviewCamera(atlas.getContentWidth(), atlas.getContentHeight());
-                if (camera != null) {
-                    cameraController.commit(
-                            camera,
-                            AtlasCameraController.CommitSource.HOME_RESET,
-                            AtlasCameraController.CUBIC_IN_OUT,
-                            AtlasCameraController.COMMIT_DURATION_MS);
-                } else {
-                    atlas.resetToOverview();
-                }
-                localStatus.set("camera reset");
-                rebuild();
-            });
-            return button;
         }
 
         private void applyInitialCamera(SlotAtlasGraphView atlas) {
@@ -2619,18 +2642,6 @@ final class SlotWorkspaceUiFactory {
                     CARRIED_FIT_PADDING_PX
             );
             return camera == null ? null : new AtlasCamera(camera.offsetX(), camera.offsetY(), camera.scale());
-        }
-
-        private Button clearSearchButton() {
-            Button button = button("Clear", true, PANEL_ALT);
-            button.layout(layout -> layout.width(52).height(22));
-            button.setOnClick(event -> {
-                event.stopPropagation();
-                searchQuery = "";
-                localStatus.set("search cleared");
-                rebuild();
-            });
-            return button;
         }
 
         private static final int[] ISLAND_PALETTE = {
@@ -3451,12 +3462,7 @@ final class SlotWorkspaceUiFactory {
                 }
                 SlotWorkspaceViewModel.AtlasItem atlasItem = selectedAtlasItem();
                 if (atlasItem != null) {
-                    sendTransfer(
-                            SlotWorkspaceUiSession.TARGET_MAIN_SLOT,
-                            atlasItem.firstSlotIndex(),
-                            SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT,
-                            slot.hotbarIndex()
-                    );
+                    sendAssignToHotbarSlot(atlasItem, slot.hotbarIndex());
                     return;
                 }
                 if (!slot.occupied()) {
@@ -3981,6 +3987,31 @@ final class SlotWorkspaceUiFactory {
             }
         }
 
+        // Identity-based hotbar assignment. Superseded the old sendTransfer
+        // path for atlas-item → hotbar-slot moves because slot-index-based
+        // transfers assumed PLAYER_MAIN, which isn't where the item lives
+        // when it's in a carried backpack.
+        private void sendAssignToHotbarSlot(SlotWorkspaceViewModel.AtlasItem item, int hotbarIndex) {
+            if (assignIdentityToHotbarSlotEmitter == null || item == null) {
+                return;
+            }
+            boolean sent = assignIdentityToHotbarSlotEmitter.send(
+                    item.identity().itemId(),
+                    item.identity().comparisonMode(),
+                    item.identity().componentFingerprint(),
+                    hotbarIndex
+            );
+            localStatus.set(sent ? "transfer requested" : "transfer unavailable");
+            selectedAtlasIdentity.set(null);
+            selectedHotbarIndex.set(-1);
+            // No explicit rebuild here — atlas-card TICK picks up the
+            // selection change next frame, and the server sync after the RPC
+            // triggers its own rebuild. Calling rebuild() now produced a
+            // noticeable blank-frame flash because the entire content tree
+            // (header, body, statusBar) got torn down between the local
+            // state update and the server's authoritative one.
+        }
+
         private void sendDepositHomeToLinkedChest(SlotWorkspaceViewModel.AtlasItem item) {
             if (depositHomeToLinkedChestEmitter == null || item == null) {
                 return;
@@ -4271,12 +4302,7 @@ final class SlotWorkspaceUiFactory {
                     event.stopPropagation();
                     return;
                 }
-                sendTransfer(
-                        SlotWorkspaceUiSession.TARGET_MAIN_SLOT,
-                        item.firstSlotIndex(),
-                        SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT,
-                        slot.hotbarIndex()
-                );
+                sendAssignToHotbarSlot(item, slot.hotbarIndex());
                 event.stopPropagation();
             });
         }
@@ -4602,6 +4628,19 @@ final class SlotWorkspaceUiFactory {
             return AtlasRenderBudget.forScreenBudget(screenBudget);
         }
 
+        // Rebuild key for atlas card bodies. Only true LOD transitions trigger
+        // a rebuild: disclosure level, READ's 1↔2 line flip at
+        // cellBudgetPx>=40, and INSPECT's secondary-reveal at >=58. Fine-
+        // grained scale tracking (keeping on-screen font px roughly constant
+        // inside a level) is handled per-label inside anchorTextBand via a
+        // TICK listener, which avoids thrashing the whole body subtree.
+        private long atlasLayoutSignature(AtlasRenderBudget budget) {
+            long signature = budget.level().ordinal() & 0x7L;
+            signature = (signature << 1) | (budget.cellBudgetPx() >= 40 ? 1L : 0L);
+            signature = (signature << 1) | (budget.cellBudgetPx() >= 58 ? 1L : 0L);
+            return signature;
+        }
+
         private static float clampScreenFontPx(float screenPx) {
             // Quantize to 0.5 screen-px steps. LDLib's TextElement runs a full
             // formattedLines recompute whenever fontSize changes, so a fully
@@ -4613,7 +4652,12 @@ final class SlotWorkspaceUiFactory {
         }
 
         private float worldFontSizeFor(SlotAtlasGraphView atlas, float screenPx) {
-            float scale = atlas == null ? 1f : Math.max(0.0001f, atlas.getScale());
+            // Use scaleForContent so that rebuilds done with a pinned scale
+            // (setPinnedContentScale) bake labels at the same scale everything
+            // else in the body uses via worldUnitsForPixels. getScale() is the
+            // raw interpolated scale during animations and leaves labels
+            // inconsistent with shell/icon sizing when the pin is active.
+            float scale = atlas == null ? 1f : Math.max(0.0001f, atlas.scaleForContent());
             return clampScreenFontPx(screenPx) / scale;
         }
 
@@ -5019,6 +5063,11 @@ private void addCommonAtlasSignals(
                         .top(inset)
                         .width(finalPipSize)
                         .height(finalPipSize));
+                // DrawerHelper.drawItemStack translates pose Z by +232 before
+                // rendering the item model and writes to the depth buffer, so a
+                // modest zIndex puts sibling overlays behind the item. Pick a
+                // value well above that push.
+                pip.style(style -> style.zIndex(260));
                 pip.setAllowHitTest(false);
                 if (budget.level() != DisclosureLevel.REGION) {
                     Label count = label(String.valueOf(Math.min(proximateCount, 999)), TEXT);
@@ -5087,15 +5136,38 @@ private void addCommonAtlasSignals(
                 SlotAtlasGraphView atlas,
                 String text,
                 int color,
-                float fontPx,
+                float screenFontPx,
                 int maxLength,
                 int lines,
                 int backgroundColor,
                 Horizontal align
         ) {
+            // Label rendering sits inside GraphView's scaled content transform,
+            // so a world-unit fontSize renders at (fontSize * atlas.getScale())
+            // screen pixels. Baking fontSize once at build-time makes the label
+            // drift as zoom changes (shrinks on zoom-out, grows on zoom-in).
+            // Instead, we install a TICK listener that recomputes
+            // world-fontSize = screenFontPx / currentScale each frame, keeping
+            // rendered screen pixels ~constant. This mirrors the island-header
+            // pattern.
+            // Use the actual render scale (getScale) instead of scaleForContent
+            // for sizing the label. During a camera animation rebuildAtlasBody
+            // pins scaleForContent to the animation *target* — so if we baked
+            // the world fontSize from that, the first rendered frame would
+            // draw fontSize×currentScale, and when target diverges strongly
+            // from current (e.g. zoom-out peek) the label flashes oversized
+            // for a frame before the TICK below corrects it. getScale() is
+            // always the real scale the pose stack will apply, so the initial
+            // value already matches what you see on screen.
+            float initialScale = Math.max(0.0001f, atlas.getScale());
+            float snappedScreenFont = clampScreenFontPx(screenFontPx);
+            float initialWorldFont = snappedScreenFont / initialScale;
+            float initialWorldPad = 1f / initialScale;
+            float initialLineSpacing = lines > 1 ? initialWorldPad : 0f;
+
             UIElement band = panel(backgroundColor).layout(layout -> layout
-                    .paddingHorizontal(atlas.worldUnitsForPixels(1f))
-                    .paddingVertical(atlas.worldUnitsForPixels(1f))
+                    .paddingHorizontal(initialWorldPad)
+                    .paddingVertical(initialWorldPad)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
             band.setAllowHitTest(false);
@@ -5103,16 +5175,51 @@ private void addCommonAtlasSignals(
                 band.setOverflowVisible(false);
             }
             String displayText = compactAnchorText(text, maxLength);
-            float snappedFont = worldFontSizeFor(atlas, fontPx);
-            Label token = anchorLabel(displayText, color, snappedFont);
+            Label token = anchorLabel(displayText, color, initialWorldFont);
             token.layout(layout -> layout.widthPercent(100).heightPercent(100));
             token.textStyle(style -> style
-                    .fontSize(snappedFont)
-                    .lineSpacing(lines > 1 ? atlas.worldUnitsForPixels(1f) : 0f)
+                    .fontSize(initialWorldFont)
+                    .lineSpacing(initialLineSpacing)
                     .textWrap(lines > 1 ? TextWrap.WRAP : TextWrap.NONE)
                     .textAlignVertical(lines > 1 ? Vertical.TOP : Vertical.CENTER)
                     .textAlignHorizontal(align));
             band.addChild(token);
+
+            // Quantize the *world* fontSize to quarter-unit steps so tiny zoom
+            // deltas don't trigger a TextElement.recompute every frame. That
+            // keeps rendered pixels within ~0.25 screen-px of the target while
+            // capping fontSize writes to a handful per zoom range.
+            int[] lastFontQuarter = {Math.round(initialWorldFont * 4f)};
+            float[] lastScale = {initialScale};
+            band.addEventListener(UIEvents.TICK, event -> {
+                // Track the actual render scale (not animation target) so the
+                // label stays sized correctly every frame during animations
+                // instead of flashing to the target-scale bake until the
+                // animation settles.
+                float scale = Math.max(0.0001f, atlas.getScale());
+                float worldFont = snappedScreenFont / scale;
+                int fontQuarter = Math.max(1, Math.round(worldFont * 4f));
+                boolean scaleChanged = scale != lastScale[0];
+                if (fontQuarter != lastFontQuarter[0]) {
+                    lastFontQuarter[0] = fontQuarter;
+                    float quantizedWorldFont = fontQuarter / 4f;
+                    float lineSpacing = lines > 1 ? 1f / scale : 0f;
+                    token.textStyle(style -> style
+                            .fontSize(quantizedWorldFont)
+                            .lineSpacing(lineSpacing));
+                }
+                if (scaleChanged) {
+                    lastScale[0] = scale;
+                    float pad = 1f / scale;
+                    band.layout(layout -> layout
+                            .paddingHorizontal(pad)
+                            .paddingVertical(pad)
+                            .alignItems(AlignItems.CENTER)
+                            .flexDirection(FlexDirection.ROW));
+                    band.markTaffyStyleDirty();
+                }
+            });
+
             return band;
         }
 
@@ -5356,16 +5463,6 @@ private void addCommonAtlasSignals(
                 searchable.append(island.kind().name().toLowerCase(Locale.ROOT)).append(' ');
             }
             return searchable.toString().contains(query);
-        }
-
-        private String searchSummary() {
-            String query = normalizedSearchQuery();
-            if (query.isBlank()) {
-                return "Drag to pan. Drag anchors between atlas and belt. Drag island titles to move.";
-            }
-            long matches = viewModel.atlasItems().stream().filter(this::matchesSearch).count();
-            return matches + " match" + (matches == 1 ? "" : "es")
-                    + " for \"" + searchQuery.trim() + "\".";
         }
 
         private String normalizedSearchQuery() {
@@ -5677,14 +5774,16 @@ private void addCommonAtlasSignals(
         static final long PEEK_DURATION_MS = 800L;
         static final long COMMIT_DURATION_MS = 800L;
         static final long SEARCH_PREVIEW_DURATION_MS = 320L;
-        static final long PEEK_TAP_THRESHOLD_MS = 100L;
+        // A typical human key-tap is ~100–200 ms, so 100 ms was too tight:
+        // most "tap to goto" presses came back longer than the threshold and
+        // were treated as a hold-then-snapback instead.
+        static final long PEEK_TAP_THRESHOLD_MS = 250L;
         static final long PEEK_SNAPBACK_DURATION_MS = 450L;
 
         enum CommitSource {
             HOVER_GOTO,
             SEARCH_COMMIT,
             SEARCH_ENTER,
-            HOME_RESET,
             PAN_TO_ISLAND,
             PAN_TO_CHEST,
             CHIP_ACCEPT,
@@ -5946,6 +6045,15 @@ private void addCommonAtlasSignals(
 
         @Override
         protected void onMouseWheel(com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent event) {
+            // If a child listener already consumed the wheel (e.g. shift-scroll
+            // transfer on an atlas card) we must not also zoom. The default
+            // GraphView early-returns unless event.target == this; the hack
+            // below rewrites target so super sees itself. Skip the rewrite
+            // when propagation was stopped so the zoom doesn't fire alongside
+            // the child handler's own action.
+            if (event.propagationStopped) {
+                return;
+            }
             UIElement target = event.target;
             if (target != this && isSelfOrChildHover()) {
                 event.target = this;
@@ -6015,10 +6123,10 @@ private void addCommonAtlasSignals(
                         clamp(clamped * 0.42f, 30f, 54f),
                         clamp(clamped * 0.36f, 24f, 48f),
                         4f,
-                        clamp(clamped * 0.064f, 6.25f, 7.25f),
-                        clamp(clamped * 0.051f, 5.5f, 6.25f),
-                        clamp(clamped * 0.083f, 9.0f, 11.0f),
-                        clamp(clamped * 0.062f, 7.0f, 8.5f),
+                        clamp(clamped * 0.078f, 7.75f, 9.0f),
+                        clamp(clamped * 0.062f, 6.75f, 7.5f),
+                        clamp(clamped * 0.100f, 11.0f, 13.0f),
+                        clamp(clamped * 0.076f, 8.5f, 10.0f),
                         38,
                         26
                 );
@@ -6030,10 +6138,10 @@ private void addCommonAtlasSignals(
                         clamp(clamped * 0.40f, 26f, 44f),
                         clamp(clamped * 0.34f, 20f, 38f),
                         4f,
-                        clamp(clamped * 0.055f, 5.0f, 6.5f),
-                        clamp(clamped * 0.044f, 4.5f, 5.5f),
-                        clamp(clamped * 0.070f, 7.0f, 9.0f),
-                        clamp(clamped * 0.054f, 6.0f, 7.5f),
+                        clamp(clamped * 0.072f, 7.25f, 8.5f),
+                        clamp(clamped * 0.058f, 6.5f, 7.25f),
+                        clamp(clamped * 0.090f, 10.0f, 12.0f),
+                        clamp(clamped * 0.068f, 8.0f, 9.25f),
                         32,
                         18
                 );
@@ -6045,9 +6153,9 @@ private void addCommonAtlasSignals(
                         clamp(clamped * 0.70f, 14f, 32f),
                         clamp(clamped * 0.62f, 12f, 28f),
                         4f,
-                        clamp(clamped * 0.050f, 4.5f, 5.5f),
+                        clamp(clamped * 0.066f, 6.75f, 7.75f),
                         0f,
-                        clamp(clamped * 0.064f, 5.5f, 8.5f),
+                        clamp(clamped * 0.086f, 9.0f, 11.0f),
                         0f,
                         28,
                         0

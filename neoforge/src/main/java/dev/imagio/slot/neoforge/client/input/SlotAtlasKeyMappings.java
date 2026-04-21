@@ -41,6 +41,17 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    // Escape hatch to the vanilla inventory screen — works both in a GUI and
+    // in-world. Unbound by default so it doesn't collide with anyone's setup;
+    // discoverable via the "Vanilla" button in the workspace header.
+    private static final KeyMapping OPEN_VANILLA_INVENTORY = new KeyMapping(
+            "key.slot.open_vanilla_inventory",
+            KeyConflictContext.UNIVERSAL,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     private SlotAtlasKeyMappings() {
     }
 
@@ -49,6 +60,11 @@ public final class SlotAtlasKeyMappings {
         event.register(CAMERA_FORWARD);
         event.register(CAMERA_BACK_MOUSE);
         event.register(CAMERA_FORWARD_MOUSE);
+        event.register(OPEN_VANILLA_INVENTORY);
+    }
+
+    public static KeyMapping openVanillaInventoryMapping() {
+        return OPEN_VANILLA_INVENTORY;
     }
 
     public static boolean matchesBackKey(int keyCode, int scanCode) {

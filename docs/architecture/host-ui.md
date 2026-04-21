@@ -13,6 +13,8 @@ For current core semantics, see [overview.md](overview.md).
 For the near-term execution sequence, see [../plans/current.md](../plans/current.md).
 For the accepted LDLib2 workspace transport decision, see
 [../decisions/0002-ldlib2-workspace.md](../decisions/0002-ldlib2-workspace.md).
+For tactical rendering/rebuild/scale rules derived from hitting real
+flicker bugs, see [ui-lifecycle-rules.md](ui-lifecycle-rules.md).
 
 ## Goals And Non-Goals
 

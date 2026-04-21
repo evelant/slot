@@ -10,6 +10,7 @@ import dev.imagio.slot.neoforge.screen.ldlib.GhostAtlasStackFactory;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotWorkspaceLdlibMenus;
 import dev.imagio.slot.neoforge.storage.ChestStorageBreakListener;
 import dev.imagio.slot.neoforge.storage.SlotAttachmentTypes;
+import dev.imagio.slot.neoforge.storage.SlotPickupRouter;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -30,6 +31,7 @@ public final class SlotNeoForge {
         SlotPlayerWorkflowRuntimeService.init();
         SlotTestCommands.init();
         ChestStorageBreakListener.init();
+        SlotPickupRouter.init();
 
         if (dist == Dist.CLIENT) {
             SlotNeoForgeClient.init(modBus);

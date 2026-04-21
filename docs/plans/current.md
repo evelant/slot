@@ -18,6 +18,8 @@ For action semantics, see
 For the LDLib2 workspace decision, see
 [../decisions/0002-ldlib2-workspace.md](../decisions/0002-ldlib2-workspace.md).
 For the triage/home design, see [../design/atlas.md](../design/atlas.md).
+For the carried-inventory fullness UI plan, see
+[inventory-fullness.md](inventory-fullness.md).
 
 ## Current Baseline
 

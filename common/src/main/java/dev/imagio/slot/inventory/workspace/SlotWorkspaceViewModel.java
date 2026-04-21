@@ -1,6 +1,7 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
@@ -393,8 +394,11 @@ public record SlotWorkspaceViewModel(
         if (authority == null) {
             return identities;
         }
-        for (String laneId : CARRIED_LANE_IDS) {
-            for (InventoryEntrySnapshot entry : authority.entries(laneId)) {
+        // Iterate every source flagged as the CARRIED pane (player main,
+        // hotbar, offhand, armor, *and* carried backpacks). A hardcoded
+        // player-only lane list used to miss Sophisticated Backpack contents.
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
                 if (entry == null || !entry.present()) {
                     continue;
                 }
@@ -604,19 +608,18 @@ public record SlotWorkspaceViewModel(
         return SlotWorkspaceAtlasLayout.island(islands, islandId);
     }
 
-    private static final String[] CARRIED_LANE_IDS = new String[]{
-            BuiltinInventoryIds.PLAYER_MAIN,
-            BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
-            BuiltinInventoryIds.PLAYER_OFFHAND
-    };
-
     private static List<AtlasItemAccumulator> groupedAtlasEntries(
             InventoryAuthoritySnapshot authority,
             VisualHomeMap visualHomeMap
     ) {
         LinkedHashMap<ItemIdentity, AtlasItemAccumulator> byIdentity = new LinkedHashMap<>();
-        for (String laneId : CARRIED_LANE_IDS) {
-            for (InventoryEntrySnapshot entry : authority.entries(laneId)) {
+        // Walk every CARRIED-pane source — includes carried backpacks that
+        // the Sophisticated Backpacks provider contributes via
+        // PlayerInventoryExtension.additionalSources(). Previously we only
+        // looped a hardcoded list of player lanes, which is why backpack
+        // contents never appeared in the atlas / triage.
+        for (InventorySourceDescriptor source : authority.carriedSources()) {
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
                 if (entry == null || !entry.present()) {
                     continue;
                 }
