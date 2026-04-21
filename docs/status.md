@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-21
+Last updated: 2026-04-21 (ember-text-api integration landed)
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -207,20 +207,55 @@ Atlas navigation (all four slices from
 atlas rendering path. See "Atlas navigation + QoL landing points"
 below for the current tuning.
 
-**Next slice: integrate embers-text-api** for MSDF label rendering.
-The bitmap font + pose-scale path LDLib2 uses goes fuzzy at any
-non-integer scale; we've applied an integer-pixel snap to every
-scale-dependent `fontSize` site (which stabilized wobble but can't
-fix bitmap-scaling fuzziness at fractional camera zooms). Embers
-gives crisp OTF/TTF glyphs at arbitrary scale, which is the right
-primitive for a continuous-zoom UI. Tradeoff: hard dependency that
-must ship with the mod / be required in modpacks.
+**Ember's Text API integration is landed.** MSDF vector-font
+rendering replaces the bitmap + pose-scale path that went fuzzy at
+fractional zoom. Every atlas label now uses `FONT_UI`
+(`slot:slot_ui`) which resolves to `assets/slot/font/slot_ui.json`
+with a single `emberstextapi:sdf` provider over
+`slot:inter_tight.ttf`. The integer-pixel snap
+(`clampScreenFontPx`, 0.5-px quantum) still ships — it's now
+cutting LDLib2 `formattedLines` recomputes within a quantum, not
+fighting bitmap fuzziness.
 
-When that lands, the natural next arc is resuming the Kit prototype
-(slices 4–9). Pick up at
+Key landing points:
+- `emberstextapi` is a required NeoForge-client dependency wired in
+  `neoforge/build.gradle` + `neoforge.mods.toml`; asset payload is
+  `common/src/main/resources/assets/slot/font/` (`slot_ui.json` +
+  `inter_tight.ttf`)
+- Vanilla FontManager logs a `JsonParseException: Unknown element
+  name:emberstextapi:sdf` warning for `slot:slot_ui` (and for
+  Ember's own bundled fonts) once per resource reload. **This is
+  cosmetic.** Ember's `FontManagerMixin` scans fonts.json at reload
+  `HEAD`, registers MSDF providers into a static
+  `SDFProviderRegistry`, and `FontSetMixin` injects them via
+  `@ModifyVariable` into the vanilla `FontSet` provider list.
+  Vanilla's codec doesn't learn about the custom type; the side
+  channel bypasses it.
+- `rebuildAtlasBody` now gates on
+  `lastBudget[0].level() != budget.level()` instead of record-value
+  equality. `AtlasRenderBudget` derives ~10 continuous floats from
+  `cellBudgetPx`, so record equality changed on every 1-px zoom
+  delta, tearing down and rebuilding every atlas item's label tree
+  per tick during zoom. Level-only snapping holds item bodies
+  stable within `REGION/BROWSE/READ/INSPECT/DETAIL` and lets
+  Ember's MSDF renderer do the smooth-scaling work instead. See
+  [SlotWorkspaceUiFactory.java:2328](../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/SlotWorkspaceUiFactory.java).
+- License reviewed (EML v1.2). We're the §5a "Addon that
+  interoperates" case — dependency only, no code/asset copying, no
+  permission needed. §9 forbids commercial distribution without
+  explicit permission from TysonTheEmber; worth remembering if
+  monetization ever comes up. §6 forbids forks without permission;
+  not a concern. DIY MSDF (msdfgen + our own atlas/shader pipeline,
+  ~2–4 weeks) is the known escape hatch if §9 becomes a problem.
+- ModernUI-MC was evaluated as an alternative (LGPL, vanilla `ttf`
+  provider, no parse warnings) and rejected — it replaces
+  Minecraft's `Font.drawInBatch` globally via mixin, which is too
+  invasive for users who only want crisp text in our mod's UI.
+
+**Next arc: resume the Kit prototype** (slices 4–9). Pick up at
 [plans/kit-prototype.md](plans/kit-prototype.md). Nothing in the
-atlas-navigation work touched Kit domain state, so resumption is a
-clean continuation.
+atlas-navigation or font work touched Kit domain state, so
+resumption is a clean continuation.
 
 ### Atlas navigation + QoL landing points
 

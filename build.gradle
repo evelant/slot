@@ -46,5 +46,12 @@ subprojects {
             name = 'FirstDark'
             url = uri('https://maven.firstdark.dev/snapshots')
         }
+        maven {
+            name = 'Modrinth'
+            url = uri('https://api.modrinth.com/maven')
+            content {
+                includeGroup 'maven.modrinth'
+            }
+        }
     }
 }

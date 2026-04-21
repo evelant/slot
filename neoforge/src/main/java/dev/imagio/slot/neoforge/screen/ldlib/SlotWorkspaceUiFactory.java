@@ -35,6 +35,7 @@ import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
@@ -49,6 +50,8 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 final class SlotWorkspaceUiFactory {
+    private static final ResourceLocation FONT_UI =
+            ResourceLocation.fromNamespaceAndPath("slot", "slot_ui");
     private static final int BACKGROUND = 0x96060A0E;
     private static final int PANEL = 0xC8162029;
     private static final int PANEL_ALT = 0xD01E2933;
@@ -1485,6 +1488,7 @@ final class SlotWorkspaceUiFactory {
             installIslandDropTarget(header, islandPanelEl, atlas, island);
 
             float[] lastScale = {Float.NaN};
+            float[] lastScreenFontPx = {Float.NaN};
             header.addEventListener(UIEvents.TICK, event -> {
                 float scale = animationTargetScale(atlas);
                 if (scale == lastScale[0]) {
@@ -1493,19 +1497,26 @@ final class SlotWorkspaceUiFactory {
                 lastScale[0] = scale;
                 float islandScreenWidth = island.width() * scale;
                 float requestedFontPx = Math.min(10f, islandScreenWidth * 0.13f);
-                int screenFontPx = snapScreenFontPx(Math.max(5f, requestedFontPx));
+                float screenFontPx = clampScreenFontPx(Math.max(5f, requestedFontPx));
                 float worldFontPx = screenFontPx / Math.max(0.0001f, scale);
-                int screenHeaderHeight = screenFontPx + 3;
+                float screenHeaderHeight = screenFontPx + 3f;
                 float worldHeaderHeight = screenHeaderHeight / Math.max(0.0001f, scale);
                 float screenGap = 2f;
                 float worldGap = screenGap / Math.max(0.0001f, scale);
 
-                header.textStyle(style -> style
-                        .textColor(TEXT)
-                        .textShadow(true)
-                        .fontSize(worldFontPx)
-                        .textAlignHorizontal(Horizontal.CENTER)
-                        .textAlignVertical(Vertical.CENTER));
+                // Only re-apply textStyle when the snapped screen font size crosses
+                // a quantum boundary — LDLib runs a full formattedLines recompute on
+                // any fontSize write, even with the same value. Within a quantum the
+                // centered text stays centered as the layout box grows/shrinks.
+                if (screenFontPx != lastScreenFontPx[0]) {
+                    lastScreenFontPx[0] = screenFontPx;
+                    header.textStyle(style -> style
+                            .textColor(TEXT)
+                            .textShadow(true)
+                            .fontSize(worldFontPx)
+                            .textAlignHorizontal(Horizontal.CENTER)
+                            .textAlignVertical(Vertical.CENTER));
+                }
                 header.layout(layout -> layout
                         .positionType(TaffyPosition.ABSOLUTE)
                         .left(island.x())
@@ -2314,7 +2325,7 @@ final class SlotWorkspaceUiFactory {
                 AtlasRenderBudget budget = atlasBudget(atlas, item);
                 boolean currentSelected = item.identity().equals(selectedAtlasIdentity.get());
                 boolean focused = isMapFocusItem(item);
-                if (!lastBudget[0].equals(budget)) {
+                if (lastBudget[0].level() != budget.level()) {
                     rebuildAtlasBody(body, atlas, item, budget, activeSearchMatch);
                     body.markTaffyStyleDirty();
                     button.markTaffyStyleDirty();
@@ -2444,6 +2455,7 @@ final class SlotWorkspaceUiFactory {
             search.layout(layout -> layout.flex(1).height(22));
             search.style(style -> style.backgroundTexture(rect(0xD60B1117)));
             search.textFieldStyle(style -> style
+                    .font(FONT_UI)
                     .placeholder(Component.literal("Search homes, ids, islands, collections"))
                     .textColor(TEXT)
                     .cursorColor(ACCENT)
@@ -2684,6 +2696,7 @@ final class SlotWorkspaceUiFactory {
             nameInput.layout(layout -> layout.widthPercent(100).height(20));
             nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
             nameInput.textFieldStyle(style -> style
+                    .font(FONT_UI)
                     .placeholder(Component.literal("Chest name"))
                     .textColor(TEXT)
                     .cursorColor(ACCENT)
@@ -3021,6 +3034,7 @@ final class SlotWorkspaceUiFactory {
             nameInput.layout(layout -> layout.widthPercent(100).height(20));
             nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
             nameInput.textFieldStyle(style -> style
+                    .font(FONT_UI)
                     .placeholder(Component.literal("Island name"))
                     .textColor(TEXT)
                     .cursorColor(ACCENT)
@@ -3200,6 +3214,7 @@ final class SlotWorkspaceUiFactory {
             nameInput.layout(layout -> layout.widthPercent(100).height(20));
             nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
             nameInput.textFieldStyle(style -> style
+                    .font(FONT_UI)
                     .placeholder(Component.literal("Island name"))
                     .textColor(TEXT)
                     .cursorColor(ACCENT)
@@ -4587,13 +4602,19 @@ final class SlotWorkspaceUiFactory {
             return AtlasRenderBudget.forScreenBudget(screenBudget);
         }
 
-        private static int snapScreenFontPx(float screenPx) {
-            return Math.max(4, Math.round(screenPx));
+        private static float clampScreenFontPx(float screenPx) {
+            // Quantize to 0.5 screen-px steps. LDLib's TextElement runs a full
+            // formattedLines recompute whenever fontSize changes, so a fully
+            // continuous font size thrashes layout every zoom frame. Half-px
+            // keeps MSDF's sub-pixel crispness at small sizes while cutting
+            // recompute frequency in half vs. continuous.
+            float clamped = Math.max(3f, screenPx);
+            return Math.round(clamped * 2f) / 2f;
         }
 
         private float worldFontSizeFor(SlotAtlasGraphView atlas, float screenPx) {
             float scale = atlas == null ? 1f : Math.max(0.0001f, atlas.getScale());
-            return snapScreenFontPx(screenPx) / scale;
+            return clampScreenFontPx(screenPx) / scale;
         }
 
         private float animationTargetScale(SlotAtlasGraphView atlas) {
@@ -5004,7 +5025,7 @@ private void addCommonAtlasSignals(
                     count.layout(layout -> layout.widthPercent(100).heightPercent(100));
                     count.setAllowHitTest(false);
                     float requestedPipFontPx = finalPipSize * 0.7f * atlas.getScale();
-                    float pipFontWorld = snapScreenFontPx(requestedPipFontPx) / Math.max(0.0001f, atlas.getScale());
+                    float pipFontWorld = clampScreenFontPx(requestedPipFontPx) / Math.max(0.0001f, atlas.getScale());
                     count.textStyle(style -> style
                             .textColor(TEXT)
                             .textShadow(false)
@@ -5601,7 +5622,7 @@ private void addCommonAtlasSignals(
             style.hoverTexture(rect(active ? hoverColor(color) : color));
             style.pressedTexture(rect(active ? SELECTED : color));
         });
-        button.textStyle(style -> style.textColor(active ? TEXT : MUTED).textShadow(false).fontSize(8));
+        button.textStyle(style -> style.font(FONT_UI).textColor(active ? TEXT : MUTED).textShadow(false).fontSize(8));
     }
 
     private static int hoverColor(int color) {
@@ -5621,6 +5642,7 @@ private void addCommonAtlasSignals(
         Label label = new Label();
         label.setText(Component.literal(text == null ? "" : text));
         label.textStyle(style -> style
+                .font(FONT_UI)
                 .textColor(color)
                 .fontSize(8)
                 .textShadow(false)

@@ -35,3 +35,10 @@ type = "required"
 versionRange = "[${ldlib2_version},)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "emberstextapi"
+type = "required"
+versionRange = "[2.9,)"
+ordering = "BEFORE"
+side = "CLIENT"
