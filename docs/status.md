@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-20
+Last updated: 2026-04-21
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -201,13 +201,263 @@ Current prototype validation point:
 
 ## Current Focus
 
+Atlas navigation (all four slices from
+[plans/atlas-navigation.md](plans/atlas-navigation.md)) is
+**landed**, plus a substantial QoL pass that touched almost every
+atlas rendering path. See "Atlas navigation + QoL landing points"
+below for the current tuning.
+
+**Next slice: integrate embers-text-api** for MSDF label rendering.
+The bitmap font + pose-scale path LDLib2 uses goes fuzzy at any
+non-integer scale; we've applied an integer-pixel snap to every
+scale-dependent `fontSize` site (which stabilized wobble but can't
+fix bitmap-scaling fuzziness at fractional camera zooms). Embers
+gives crisp OTF/TTF glyphs at arbitrary scale, which is the right
+primitive for a continuous-zoom UI. Tradeoff: hard dependency that
+must ship with the mod / be required in modpacks.
+
+When that lands, the natural next arc is resuming the Kit prototype
+(slices 4–9). Pick up at
+[plans/kit-prototype.md](plans/kit-prototype.md). Nothing in the
+atlas-navigation work touched Kit domain state, so resumption is a
+clean continuation.
+
+### Atlas navigation + QoL landing points
+
+All numeric tunings below are live and can be redialed freely.
+
+**Slice 1 — Camera controller primitive** (`neoforge/screen/ldlib/SlotWorkspaceUiFactory.java` —
+nested `AtlasCameraController`):
+- `ease / snap / commit / commitFrom / back / forward / recordOrigin /
+  clearOrigin` API, `CommitSource` enum, `Easing` interface with
+  `LINEAR` and `CUBIC_IN_OUT`
+- Bounded back/forward history extracted as
+  [common/atlas/CameraHistory.java](../common/src/main/java/dev/imagio/slot/atlas/CameraHistory.java)
+  (LDLib2-free, generic, 20-entry ring buffer). Test at
+  `common/src/test/java/dev/imagio/slot/atlas/CameraHistoryTest.java`
+- Tick driven per-frame from `SlotAtlasGraphView.drawBackgroundTexture`
+  (not per-tick) for smooth animation at render rate
+- Interpolation: **viewport center lerp + log-space scale lerp**
+  (not raw offset/scale lerp). Makes zoom+pan moves go in a straight
+  line to the target rather than wobbling sideways
+- All existing programmatic jumps (`panToIsland`, `panToChestTile`,
+  `homeButton`) and the chip-accept / island-create focus paths route
+  through `commit(...)` with a typed `CommitSource`; initial camera
+  on screen open uses `snap(...)` (no push)
+- Current durations (wall-clock ms): `PEEK_DURATION_MS = 800`,
+  `COMMIT_DURATION_MS = 800`, `SEARCH_PREVIEW_DURATION_MS = 320`,
+  `PEEK_SNAPBACK_DURATION_MS = 450`, `PEEK_TAP_THRESHOLD_MS = 100`
+
+**Slice 2 — Hover peek + hover goto**:
+- Space-hold (> 100 ms) peeks to the home of the hovered element
+  (hotbar slot → home card; atlas card → its own rect; triage row
+  → home; chest cell → identity's home with chest-tile fallback).
+  Release snaps back via an eased animation (not instant) so the
+  motion feels continuous
+- Space-tap (≤ 100 ms) commits + pushes history via `commitFrom`
+  so `back` returns to the pre-peek origin, not the interpolated
+  preview camera
+- Refused while a `TextField` is focused, while search modal is
+  active, while a drag is in flight, or if no peek target resolves
+
+**Slice 3 — History UI**:
+- Four `KeyMapping`s registered under "SLOT Atlas Navigation"
+  (see [SlotAtlasKeyMappings.java](../neoforge/src/main/java/dev/imagio/slot/neoforge/client/input/SlotAtlasKeyMappings.java)):
+  `[` back, `]` forward, mouse 4 back, mouse 5 forward — all
+  user-rebindable via the Controls menu
+- Handlers live in the workspace screen's root KEY_DOWN /
+  MOUSE_DOWN listeners, so navigation only fires while the atlas
+  is open. Status bar shows "no further camera history" /
+  "at latest camera" on empty-stack no-ops
+
+**Slice 4 — Quick search modal**:
+- `/` opens a modal chip pinned below the nav capsule (disabled
+  when a TextField is focused). Shares `searchQuery` with the
+  existing in-place search so card dimming stays consistent
+- Pure ranking in
+  [common/atlas/AtlasSearchIndex.java](../common/src/main/java/dev/imagio/slot/atlas/AtlasSearchIndex.java)
+  (2-char min, case-insensitive substring match, word-boundary
+  matches rank before mid-word, primary pool = atlas item names,
+  secondary = island labels, stable tiebreakers). Test at
+  `AtlasSearchIndexTest.java`
+- Typing debounced: 220 ms idle → live preview ease, 3500 ms idle
+  → auto-commit (bumped repeatedly from original 800 ms). Tab /
+  Enter **disables auto-dismiss**, so the modal stays open for
+  continued browsing until explicit Escape. Enter commits (pushes
+  history from the pre-search origin) and keeps modal open. Once
+  locked in (Tab/Enter pressed), further typing is ignored; `/`
+  starts a fresh search
+- Escape dismisses the modal only (not the screen): open-modal
+  toggles `ModularUI.shouldCloseOnEsc(false)` and restores on
+  close so Minecraft's default screen-close behavior still works
+  when no modal is open
+- Digits 0–9 excluded from the buffer so belt hotbar hotkeys keep
+  working. Tab cycles. Escape snaps back to origin if no Enter
+  commit happened yet; if Enter committed, closes without reverting
+- First-atlas-open-per-session toast: "Press / to search" for 10 s
+
+**Observable state pattern** (non-rebuild UI refresh):
+- `Observable<T>` at
+  [util/Observable.java](../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/util/Observable.java)
+  — tiny pub-sub with `get/set/subscribe/subscribeLater` and
+  `Subscription` for cleanup. No MobX-style auto-tracked computeds;
+  explicit subscribers
+- Three hot-path fields migrated: `selectedAtlasIdentity`,
+  `selectedHotbarIndex`, `localStatus`
+- Subscribers: status bar Label (persistent + subscribes to
+  localStatus), triage rows (subscribe to selectedAtlasIdentity for
+  chrome color), belt slots (subscribe to selectedHotbarIndex).
+  Atlas cards still read selection in their TICK handler — TICK
+  fires per frame during animation via `atlas.screenTick()` in the
+  per-frame hook, so the visual lag is negligible
+- Subscriptions tracked in `atlasContentSubscriptions` list and
+  unsubscribed before the next atlas content rebuild. No leaked
+  listeners firing on detached elements
+- `rebuild()` removed from selection click paths (atlas card,
+  triage row, belt slot, chest cell, `clearSelectionOnDirectClick`).
+  RPC-triggered paths still call `rebuild()` because the server
+  refresh triggers a full view-model swap anyway
+
+**Persistent UI chrome** (avoid full teardown on rebuild):
+- `SlotAtlasGraphView atlasView`, `UIElement atlasPanelElement`,
+  `UIElement hoverTrailOverlayElement`, `UIElement statusBarElement`,
+  `Label statusBarLabel` are now Controller fields, created once
+  via `createPersistentAtlasPanel()`, reparented across rebuilds via
+  LDLib2's auto-detach in `addChild`
+- `repopulateAtlasPanel()` re-renders only the view-model-dependent
+  children (atlas contentRoot, navCapsule, triagePanel, belt,
+  popovers); panel, atlas instance, atlas event listeners,
+  camera-controller attach, drop targets all survive
+- Fixes the 1-frame scale=1 flicker on click (new `SlotAtlasGraphView`
+  no longer created per click) and removes ~half the per-click
+  allocation cost
+
+**Island title bar repositioned**:
+- Title is now a separate atlas-content child, positioned above the
+  island rect at `(island.x, island.y − worldHeaderHeight − gap)`,
+  width = island width. Subtitle + rule line removed entirely
+- Font scales with zoom: screen px clamped to
+  `min(10, islandScreenWidth × 0.13)` with a 5 px floor, then snapped
+  to integer; text shadow enabled
+- Drag source and drop target moved to the title bar; highlight
+  target is still the island panel so drop feedback maps to the body
+- `ISLAND_CONTENT_TOP = 10` (from 48). Old placements at y=48 render
+  low in their islands until re-dragged
+
+**Hotbar drag stays-home**: dragging a hotbar item that already has
+a home now always returns it to its existing home via
+`sendReturnHotbarToHome` regardless of where you drop (empty atlas,
+island, triage panel). Re-home is only via explicit right-click menu
+"Move to {Island}" shortcuts or direct atlas card drag. Helper:
+`hotbarDragHasHome(drag)`.
+
+**Right-click context menu**:
+- `anchorPopover(...)` now subtracts `atlasPanelElement.getPositionX/Y`
+  from click event coords, so the popover anchors at the actual
+  cursor instead of being offset by body chrome
+- "Send to hotbar" only shown when item is carried AND hotbar has a
+  free slot. "Deposit to linked chest" only shown when item is
+  carried AND home island has a proximate linked chest. Both hidden
+  (not disabled) otherwise
+- Deposit availability check fixed: was checking `item.presence()`
+  (chests currently containing the identity); now checks home
+  island's linked proximate chests via
+  `viewModel.claimedChestTiles()` + `linkedIslandIds`
+- Old island-picker "Re-home…" removed. Replaced by 1–3 dynamic
+  "Move to {Island}" shortcuts drawn from `recentRehomeIslandIds`
+  (MRU deque, capped at 6 raw / 3 displayed), filtered to exclude
+  the item's current home. Populated every time
+  `sendAssignHome(identity, islandId, ...)` succeeds (non-triage)
+
+**Atlas card features**:
+- **Grid snap on drop** — `SlotWorkspaceAtlasLayout.placementForDrop`
+  now rounds requested drop coords to the nearest
+  `(CARD_WIDTH + CARD_GAP) = 36` world-unit grid cell, origin
+  `(ISLAND_CONTENT_PADDING_X, ISLAND_CONTENT_TOP)`. Same origin as
+  `placementForOrdinal` so manual drops and auto-placed items share
+  a grid
+- **Proximate-chest presence pip** — green square anchored top-right
+  of each card when `proximateChestCount(item) > 0`. Shows the count
+  inside at LOD levels above REGION. Scales with card (4–22% width)
+- **Shift+scroll single-item push/pull** — scroll up pulls 1 item
+  from the first proximate chest holding the identity; scroll down
+  pushes 1 item to the home island's linked proximate chest (or
+  falls back to an already-containing proximate chest). Accumulator
+  (≥ 1.0 threshold) + 50 ms rate limit handles macOS high-resolution
+  scroll. Dedicated server RPCs:
+  `TakeAllExecutor.takeSingleItem(...)` and
+  `DepositExecutor.depositSingleItem(...)` (new single-item variants
+  alongside the existing single-stack methods); session methods
+  `takeOneFromChest` and `depositOneHomeToLinkedChest`;
+  client emitters `takeOneFromChestEmitter` and
+  `depositOneHomeToLinkedChestEmitter`. MC swaps `scrollX ↔ scrollY`
+  when shift is held — the handler reads
+  `event.deltaY != 0 ? event.deltaY : event.deltaX` to catch both
+- **Link navigation arrows** — for each proximate island↔chest link,
+  two `▶` chevron buttons (z=4, transparent bg, subtle hover tint)
+  sit just outside each endpoint along the line. Click on the
+  tile-end arrow pans to the island; click on the island-end arrow
+  pans to the chest. `rectEdgeAlongDirection(w, h, cosA, sinA)`
+  computes the boundary exit point; arrows placed 6 world units
+  beyond it along the line direction
+
+**LOD + font tuning**:
+- LOD thresholds (screen cell-budget px): `BROWSE_CELL_PX = 16`,
+  `READ_CELL_PX = 22`, `INSPECT_CELL_PX = 44`, `DETAIL_CELL_PX = 96`.
+  Text labels appear at much smaller on-screen cell sizes than
+  before (was 48 / 72 / 124)
+- `AtlasRenderBudget` clamps lowered to support tiny cells:
+  READ shell 0.70×cell (10 floor), READ icon 0.62×cell (12 floor),
+  READ primary font 0.050×cell (4.5 floor → snaps to 5 px)
+- INSPECT: shell 0.48×cell w/ secondary, 0.60×cell w/o;
+  secondary only shown when `cellBudgetPx ≥ 58` so the bottom of
+  INSPECT tier has room for a 2-line primary name. Primary label
+  is 2-line here (packing longer names into 2 lines helps)
+- `readAtlasBody` uses `budget.shellPx/iconPx` directly, centers
+  shell horizontally, 1-line primary below `cellBudgetPx < 40`,
+  2-line above
+- **Integer font snap** — helper `snapScreenFontPx(px) = max(4,
+  round(px))` and `worldFontSizeFor(atlas, screenPx) = snapped /
+  scale`. Used in `anchorTextBand`, `islandTitleBar`, and the
+  presence pip count. Ensures `fontSize × atlas.scale` is a whole
+  number on screen, stabilizing text during camera animation
+- **Hard character truncation, no ellipsis** — `compactAnchorText`
+  now `substring(0, maxLength)` instead of appending `...`. More
+  signal in the same char budget
+- **`TextWrap.NONE` + scissor clip** for single-line labels — was
+  `TextWrap.HIDE` which word-wrapped first and showed only the
+  first wrapped line ("Blue Shulker Box" → "Blue"). Now renders on
+  one line with `setOverflowVisible(false)` scissoring at the
+  container's pixel edge — character-level cutoff, no word snapping
+- **Ghost card hover preservation** — `hoverColor(color)` now
+  preserves the base color's alpha when it's dim (< 0x80). Ghost
+  (non-carried) cards previously popped to full-opacity ROW_HOVER
+  on mouse hover, making them look as prominent as carried match
+  highlights. They now stay within their ghost alpha envelope
+
+**Animation smoothness fixes landed along the way**:
+- Per-frame tick in `drawBackgroundTexture` (not TICK event at 20 TPS)
+- `atlas.screenTick()` fired per frame during animation so island
+  font budgets + atlas card LOD stay synced with the live interpolated
+  scale (was lagging behind by 50 ms, causing text / LOD pops)
+- LOD "pinned content scale" on `SlotAtlasGraphView` —
+  `worldUnitsForPixels` and `screenPixelsForWorldUnits` use the
+  pinned scale while rebuilding atlas card bodies, so card internals
+  are sized against the animation **target** scale. Prevents
+  threshold-crossing LOD rebuilds during animation
+- `animationTargetScale(atlas)` returns `cameraController.animTarget()
+  .scale()` when animating, else `atlasCamera.scale()` (persisted),
+  else `atlas.getScale()`. Budget computation in island title bar
+  and atlas card TICK uses this to avoid using the default scale=1
+  after a fresh `SlotAtlasGraphView` is created (that was the
+  1-frame "giant text" glitch on click)
+
+### Previous focus — core-workflow UX pass
+
 Core-workflow UX pass is **landed** — all six slices from
 [plans/core-workflow-ux.md](plans/core-workflow-ux.md), plus several
 playtest-driven follow-ups (see "Core-workflow UX landing points"
-below). Next focus is resuming the Kit prototype (slices 4–9). Pick
-up at [plans/kit-prototype.md](plans/kit-prototype.md). Nothing in
-the UX pass touched Kit domain state, so resumption is a clean
-continuation.
+below).
 
 ### Core-workflow UX landing points
 

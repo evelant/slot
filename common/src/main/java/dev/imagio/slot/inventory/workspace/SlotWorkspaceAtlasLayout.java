@@ -37,7 +37,7 @@ public final class SlotWorkspaceAtlasLayout {
     private static final int PLAYER_COLOR = 0xCC5A4A6E;
     public static final int ISLAND_CONTENT_PADDING_X = 8;
     public static final int ISLAND_CONTENT_PADDING_Y = 8;
-    public static final int ISLAND_CONTENT_TOP = 48;
+    public static final int ISLAND_CONTENT_TOP = 10;
     private static final int TRIAGE_MIN_WIDTH = 420;
     private static final int TRIAGE_MIN_HEIGHT = 260;
     public static final int PLAYER_ISLAND_MIN_WIDTH = 180;

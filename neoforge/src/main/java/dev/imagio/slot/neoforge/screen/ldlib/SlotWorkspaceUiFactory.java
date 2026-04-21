@@ -78,10 +78,10 @@ final class SlotWorkspaceUiFactory {
     private static final int HOVER_TRAIL_COLOR = 0xD0FFC66D;
     private static final int HOVER_TRAIL_THICKNESS = 2;
     private static final int HOVER_ACCENT_OVERLAY = 0x60FFC66D;
-    private static final int BROWSE_CELL_PX = 32;
-    private static final int READ_CELL_PX = 48;
-    private static final int INSPECT_CELL_PX = 72;
-    private static final int DETAIL_CELL_PX = 124;
+    private static final int BROWSE_CELL_PX = 16;
+    private static final int READ_CELL_PX = 22;
+    private static final int INSPECT_CELL_PX = 44;
+    private static final int DETAIL_CELL_PX = 96;
     private static final float CARRIED_FIT_MIN_SCALE = 0.20f;
     private static final float CARRIED_FIT_MAX_SCALE = 2.50f;
     private static final float CARRIED_FIT_READABILITY_MIN_SCALE = 1.00f;
@@ -4654,15 +4654,17 @@ final class SlotWorkspaceUiFactory {
                 boolean searchMatch
         ) {
             UIElement body = atlasBodyContainer();
-            float sidePad = atlas.worldUnitsForPixels(2f);
-            float gap = atlas.worldUnitsForPixels(2f);
-            float shellPx = Math.min(budget.cellBudgetPx() * 0.56f, budget.shellPx() + 4f);
-            float iconPx = Math.max(12f, shellPx - 6f);
+            float sidePad = atlas.worldUnitsForPixels(1f);
+            float gap = atlas.worldUnitsForPixels(1f);
+            float shellPx = budget.shellPx();
+            float iconPx = budget.iconPx();
             float shell = atlas.worldUnitsForPixels(shellPx);
-            float shellLeft = sidePad;
-            float shellTop = atlas.worldUnitsForPixels(2f);
-            float labelHeight = atlas.worldUnitsForPixels(budget.primaryLineHeightPx() * 2f + 1f);
+            float shellTop = atlas.worldUnitsForPixels(1f);
+            int labelLines = budget.cellBudgetPx() >= 40 ? 2 : 1;
+            float labelScreenHeight = budget.primaryLineHeightPx() * labelLines + (labelLines > 1 ? 1f : 0f);
+            float labelHeight = atlas.worldUnitsForPixels(labelScreenHeight);
             addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
+            float shellLeft = (item.width() - shell) / 2f;
             body.addChild(slotPreview(atlas, item, shellPx, iconPx).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(shellLeft)
@@ -4673,9 +4675,9 @@ final class SlotWorkspaceUiFactory {
                     searchMatch ? ACCENT : TEXT,
                     budget.primaryFontPx(),
                     budget.primaryMaxChars(),
-                    2,
+                    labelLines,
                     0xB4111921,
-                    Horizontal.LEFT
+                    Horizontal.CENTER
             ).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(sidePad)
@@ -4692,26 +4694,25 @@ final class SlotWorkspaceUiFactory {
                 boolean searchMatch
         ) {
             UIElement body = atlasBodyContainer();
-            float sidePad = atlas.worldUnitsForPixels(2f);
-            float gap = atlas.worldUnitsForPixels(2f);
+            float sidePad = atlas.worldUnitsForPixels(1f);
+            float gap = atlas.worldUnitsForPixels(1f);
             String secondary = preferredSecondaryLabel(item, budget);
-            boolean hasSecondary = !secondary.isBlank();
-            float shellPx = hasSecondary
-                    ? Math.min(budget.cellBudgetPx() * 0.50f, budget.shellPx() + 2f)
+            boolean showSecondary = !secondary.isBlank() && budget.cellBudgetPx() >= 58;
+            float shellPx = showSecondary
+                    ? Math.min(budget.cellBudgetPx() * 0.48f, budget.shellPx() + 4f)
                     : Math.min(budget.cellBudgetPx() * 0.60f, budget.shellPx() + 10f);
-            float iconPx = Math.max(12f, shellPx - 6f);
+            float iconPx = Math.max(10f, shellPx - 4f);
             float shell = atlas.worldUnitsForPixels(shellPx);
-            float shellLeft = sidePad;
-            float topPad = atlas.worldUnitsForPixels(2f);
-            float nameHeight = atlas.worldUnitsForPixels(budget.primaryLineHeightPx() * 2f + 1f);
+            float topPad = atlas.worldUnitsForPixels(1f);
+            float primaryHeight = atlas.worldUnitsForPixels(budget.primaryLineHeightPx() * 2f + 1f);
             float secondaryHeight = atlas.worldUnitsForPixels(budget.secondaryLineHeightPx());
-            float shellTop = topPad;
             addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
+            float shellLeft = (item.width() - shell) / 2f;
             body.addChild(slotPreview(atlas, item, shellPx, iconPx).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(shellLeft)
-                    .top(shellTop)));
-            float cursorTop = shellTop + shell + gap;
+                    .top(topPad)));
+            float cursorTop = topPad + shell + gap;
             body.addChild(anchorTextBand(
                     atlas,
                     preferredPrimaryLabel(item, budget),
@@ -4726,8 +4727,8 @@ final class SlotWorkspaceUiFactory {
                     .left(sidePad)
                     .top(cursorTop)
                     .width(item.width() - sidePad * 2f)
-                    .height(nameHeight)));
-            if (hasSecondary) {
+                    .height(primaryHeight)));
+            if (showSecondary) {
                 body.addChild(anchorTextBand(
                         atlas,
                         secondary,
@@ -4740,7 +4741,7 @@ final class SlotWorkspaceUiFactory {
                 ).layout(layout -> layout
                         .positionType(TaffyPosition.ABSOLUTE)
                         .left(sidePad)
-                        .top(cursorTop + nameHeight + gap)
+                        .top(cursorTop + primaryHeight + gap)
                         .width(item.width() - sidePad * 2f)
                         .height(secondaryHeight)));
             }
@@ -5077,6 +5078,9 @@ private void addCommonAtlasSignals(
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
             band.setAllowHitTest(false);
+            if (lines <= 1) {
+                band.setOverflowVisible(false);
+            }
             String displayText = compactAnchorText(text, maxLength);
             float snappedFont = worldFontSizeFor(atlas, fontPx);
             Label token = anchorLabel(displayText, color, snappedFont);
@@ -5084,7 +5088,7 @@ private void addCommonAtlasSignals(
             token.textStyle(style -> style
                     .fontSize(snappedFont)
                     .lineSpacing(lines > 1 ? atlas.worldUnitsForPixels(1f) : 0f)
-                    .textWrap(lines > 1 ? TextWrap.WRAP : TextWrap.HIDE)
+                    .textWrap(lines > 1 ? TextWrap.WRAP : TextWrap.NONE)
                     .textAlignVertical(lines > 1 ? Vertical.TOP : Vertical.CENTER)
                     .textAlignHorizontal(align));
             band.addChild(token);
@@ -5202,7 +5206,10 @@ private void addCommonAtlasSignals(
             if (normalized.isBlank()) {
                 return "";
             }
-            return shorten(normalized, maxLength);
+            if (maxLength <= 0 || normalized.length() <= maxLength) {
+                return normalized;
+            }
+            return normalized.substring(0, maxLength);
         }
 
         private String compactItemLabel(String text, int maxLength) {
@@ -6001,10 +6008,10 @@ private void addCommonAtlasSignals(
                         clamp(clamped * 0.40f, 26f, 44f),
                         clamp(clamped * 0.34f, 20f, 38f),
                         4f,
-                        clamp(clamped * 0.060f, 6.0f, 7.0f),
-                        clamp(clamped * 0.048f, 5.25f, 6.0f),
-                        clamp(clamped * 0.077f, 8.25f, 10.0f),
-                        clamp(clamped * 0.058f, 6.75f, 8.0f),
+                        clamp(clamped * 0.055f, 5.0f, 6.5f),
+                        clamp(clamped * 0.044f, 4.5f, 5.5f),
+                        clamp(clamped * 0.070f, 7.0f, 9.0f),
+                        clamp(clamped * 0.054f, 6.0f, 7.5f),
                         32,
                         18
                 );
@@ -6013,12 +6020,12 @@ private void addCommonAtlasSignals(
                 return new AtlasRenderBudget(
                         DisclosureLevel.READ,
                         clamped,
-                        clamp(clamped * 0.46f, 24f, 36f),
-                        clamp(clamped * 0.40f, 18f, 30f),
+                        clamp(clamped * 0.70f, 14f, 32f),
+                        clamp(clamped * 0.62f, 12f, 28f),
                         4f,
-                        clamp(clamped * 0.056f, 5.5f, 6.25f),
+                        clamp(clamped * 0.050f, 4.5f, 5.5f),
                         0f,
-                        clamp(clamped * 0.074f, 8.0f, 9.5f),
+                        clamp(clamped * 0.064f, 5.5f, 8.5f),
                         0f,
                         28,
                         0

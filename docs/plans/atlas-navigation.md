@@ -2,11 +2,14 @@
 
 Last updated: 2026-04-20
 
-Status: **design locked, not started**. Four related client-only,
-camera-only navigation features layered onto the existing LDLib2
-`GraphView` atlas. Per-slice Deliverables + Exit criteria below. The
-live state this builds on is in [../status.md](../status.md) under
-"Core-workflow UX landing points" and "storage prototype" sections.
+Status: **all four slices landed**, plus an extended QoL pass on top
+(observable state, persistent UI chrome, single-item push/pull, link
+navigation arrows, grid snap, presence pip, LOD tuning, integer font
+snap, etc.). Landing points and current tuning live in
+[../status.md](../status.md) under "Atlas navigation + QoL landing
+points." This plan stays here as the historical spec for the original
+four slices. Next focus: integrate embers-text-api for crisp MSDF
+glyphs at any atlas scale.
 
 This plan extends the atlas UI that landed under
 [atlas-prototype.md](atlas-prototype.md) and the hover-trail vocabulary
