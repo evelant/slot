@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.client;
 
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.client.screen.ChestClaimButtonController;
 import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
@@ -19,6 +20,7 @@ public final class SlotNeoForgeClient {
             return;
         }
         modBus.addListener(SlotNeoForgeClient::onClientSetup);
+        modBus.addListener(SlotAtlasKeyMappings::register);
         setupListenerRegistered = true;
     }
 

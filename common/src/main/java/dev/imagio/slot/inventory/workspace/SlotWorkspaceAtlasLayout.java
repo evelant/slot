@@ -119,8 +119,8 @@ public final class SlotWorkspaceAtlasLayout {
         }
         int requestedX = worldX - island.x() - CARD_WIDTH / 2;
         int requestedY = worldY - island.y() - CARD_HEIGHT / 2;
-        int localX = Math.max(ISLAND_CONTENT_PADDING_X, requestedX);
-        int localY = Math.max(ISLAND_CONTENT_TOP, requestedY);
+        int localX = snapToGrid(requestedX, ISLAND_CONTENT_PADDING_X, CARD_WIDTH + CARD_GAP);
+        int localY = snapToGrid(requestedY, ISLAND_CONTENT_TOP, CARD_HEIGHT + CARD_GAP);
         return new Placement(
                 island.islandId(),
                 localX,
@@ -128,6 +128,15 @@ public final class SlotWorkspaceAtlasLayout {
                 island.x() + localX,
                 island.y() + localY
         );
+    }
+
+    private static int snapToGrid(int value, int origin, int step) {
+        if (step <= 0) {
+            return Math.max(origin, value);
+        }
+        int offset = value - origin;
+        int cells = Math.max(0, Math.round(offset / (float) step));
+        return origin + cells * step;
     }
 
     public static Placement clampPlacement(

@@ -179,6 +179,52 @@ public final class DepositExecutor {
         return null;
     }
 
+    public static SingleStackOutcome depositSingleItem(
+            ServerPlayer player,
+            String laneId,
+            int slotIndex,
+            ClaimedChest chest
+    ) {
+        if (player == null || chest == null) {
+            return SingleStackOutcome.failed("invalid_args");
+        }
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return SingleStackOutcome.failed("server_unavailable");
+        }
+        int rawSlot = translateToRawSlot(laneId, slotIndex);
+        if (rawSlot == Integer.MIN_VALUE) {
+            return SingleStackOutcome.failed("invalid_source");
+        }
+        ItemStack sourceStack = readStack(player, rawSlot);
+        if (sourceStack == null || sourceStack.isEmpty()) {
+            return SingleStackOutcome.failed("source_empty");
+        }
+        IItemHandler handler = resolveHandler(server, chest);
+        if (handler == null) {
+            return SingleStackOutcome.failed("chest_unloaded");
+        }
+        ItemStack single = sourceStack.copy();
+        single.setCount(1);
+        ItemStack remaining = ItemHandlerHelper.insertItemStacked(handler, single.copy(), true);
+        if (!remaining.isEmpty()) {
+            return SingleStackOutcome.failed("destination_full");
+        }
+        ItemStack postInsert = ItemHandlerHelper.insertItemStacked(handler, single.copy(), false);
+        if (!postInsert.isEmpty()) {
+            return SingleStackOutcome.failed("commit_partial");
+        }
+        ItemStack newSource = sourceStack.copy();
+        newSource.shrink(1);
+        writeStack(player, rawSlot, newSource);
+        player.getInventory().setChanged();
+        SlotCommon.LOGGER.info(
+                "[SLOT] deposit-one lane={} slot={} chest={}",
+                laneId, slotIndex, chest.storageId()
+        );
+        return SingleStackOutcome.deposited();
+    }
+
     public static SingleStackOutcome depositSingleStack(
             ServerPlayer player,
             String laneId,

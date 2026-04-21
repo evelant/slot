@@ -696,6 +696,64 @@ final class SlotWorkspaceUiSession {
         applyChestDepositOutcome(serverPlayer, outcome, resolved.chest);
     }
 
+    void takeOneFromChest(String storageIdRaw, Integer chestSlotIndex) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        int slotIndex = chestSlotIndex == null ? -1 : chestSlotIndex;
+        if (slotIndex < 0) {
+            reject("invalid_chest_slot");
+            return;
+        }
+        ChestProximityResult resolved = resolveProximateChest(serverPlayer, storageIdRaw);
+        if (resolved.outcome != null) {
+            applyChestDepositRejection(serverPlayer, resolved.outcome);
+            return;
+        }
+        TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeSingleItem(
+                serverPlayer, resolved.chest, slotIndex);
+        if (!outcome.tookAnything()) {
+            status = "nothing_to_take";
+            diagnostics = "";
+        } else {
+            status = "took_one";
+            diagnostics = "moved=" + outcome.moved();
+        }
+        broadcast(serverPlayer);
+    }
+
+    void depositOneHomeToLinkedChest(String itemId, String comparisonMode, String componentFingerprint) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        refreshServerView(serverPlayer);
+        CarriedSlotRef source = firstCarriedSlotForIdentity(serverPlayer, identity);
+        if (source == null) {
+            status = "rejected";
+            diagnostics = "nothing_to_deposit";
+            broadcast(serverPlayer);
+            return;
+        }
+        ItemStack sourceStack = readSourceStack(serverPlayer, source);
+        ClaimedChest depositTarget = sourceStack.isEmpty()
+                ? null
+                : resolveProximateLinkedChestForIdentity(serverPlayer, identity, sourceStack);
+        if (depositTarget == null) {
+            status = "rejected";
+            diagnostics = "no_linked_proximate_chest_with_room";
+            broadcast(serverPlayer);
+            return;
+        }
+        DepositExecutor.SingleStackOutcome outcome = DepositExecutor.depositSingleItem(
+                serverPlayer, source.laneId(), source.slotIndex(), depositTarget);
+        applyChestDepositOutcome(serverPlayer, outcome, depositTarget);
+    }
+
     void takeFromChest(String storageIdRaw, Integer chestSlotIndex) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;

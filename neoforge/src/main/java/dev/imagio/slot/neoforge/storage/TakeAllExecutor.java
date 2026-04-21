@@ -97,6 +97,51 @@ public final class TakeAllExecutor {
         return null;
     }
 
+    public static TakeSingleOutcome takeSingleItem(
+            ServerPlayer player,
+            ClaimedChest chest,
+            int chestSlotIndex
+    ) {
+        if (player == null || chest == null) {
+            return TakeSingleOutcome.empty();
+        }
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return TakeSingleOutcome.empty();
+        }
+        IItemHandler handler = resolveHandler(server, chest);
+        if (handler == null) {
+            return TakeSingleOutcome.empty();
+        }
+        if (chestSlotIndex < 0 || chestSlotIndex >= handler.getSlots()) {
+            return TakeSingleOutcome.empty();
+        }
+        ItemStack contents = handler.getStackInSlot(chestSlotIndex);
+        if (contents == null || contents.isEmpty()) {
+            return TakeSingleOutcome.empty();
+        }
+        ItemStack working = handler.extractItem(chestSlotIndex, 1, false);
+        if (working.isEmpty()) {
+            return TakeSingleOutcome.empty();
+        }
+        int beforeTransfer = working.getCount();
+        boolean fullyInserted = player.getInventory().add(working);
+        int remaining = working.getCount();
+        int moved = beforeTransfer - remaining;
+        if (!fullyInserted && remaining > 0) {
+            ItemStack leftoverItem = handler.insertItem(chestSlotIndex, working, false);
+            if (!leftoverItem.isEmpty()) {
+                player.drop(leftoverItem, false);
+            }
+        }
+        player.getInventory().setChanged();
+        SlotCommon.LOGGER.info(
+                "[SLOT] take-one chest={} slot={} moved={} leftover={}",
+                chest.storageId(), chestSlotIndex, moved, remaining
+        );
+        return new TakeSingleOutcome(moved, remaining);
+    }
+
     public static TakeSingleOutcome takeSingleStack(
             ServerPlayer player,
             ClaimedChest chest,
