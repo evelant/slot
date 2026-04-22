@@ -43,7 +43,7 @@ public final class SlotAtlasKeyMappings {
 
     // Escape hatch to the vanilla inventory screen — works both in a GUI and
     // in-world. Unbound by default so it doesn't collide with anyone's setup;
-    // discoverable via the "Vanilla" button in the workspace header.
+    // discoverable via the "Vanilla" pill in the atlas top-right action cluster.
     private static final KeyMapping OPEN_VANILLA_INVENTORY = new KeyMapping(
             "key.slot.open_vanilla_inventory",
             KeyConflictContext.UNIVERSAL,

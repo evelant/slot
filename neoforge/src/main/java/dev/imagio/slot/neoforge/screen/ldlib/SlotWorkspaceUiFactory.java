@@ -66,6 +66,10 @@ final class SlotWorkspaceUiFactory {
     private static final int MUTED = 0xFFA0AAB3;
     private static final int ACCENT = 0xFF7AC7A7;
     private static final int WARNING = 0xFFFFC66D;
+    private static final int CARRIED_CHIP_OK = 0xCC4A8B5E;
+    private static final int CARRIED_CHIP_WARN = 0xCCB48A3A;
+    private static final int CARRIED_CHIP_DANGER = 0xCCB44A3A;
+    private static final int CARRIED_CONTAINER_PIP = 0xCC5A7DB4;
     private static final int COLLECTION = 0xFFBE8CFF;
     private static final int ISLAND_BORDER = 0xA04F6578;
     private static final int STORAGE_ZONE_FILL = 0x501A2430;
@@ -176,6 +180,8 @@ final class SlotWorkspaceUiFactory {
         private SlotAtlasGraphView atlasView;
         private UIElement atlasPanelElement;
         private UIElement hoverTrailOverlayElement;
+        private UIElement carriedFreeSlotsChipElement;
+        private UIElement topRightActionsElement;
         private UIElement statusBarElement;
         private Label statusBarLabel;
         private boolean atlasContentNeedsScreenTick;
@@ -942,18 +948,17 @@ final class SlotWorkspaceUiFactory {
             }
             hotbarSlotElements.clear();
             if (!contentPopulated) {
-                // First build only: create the header/body/statusBar wrappers
-                // and add them to content. Subsequent rebuilds reuse the same
-                // wrappers — replacing them caused a blank-frame flash,
-                // because rebuildNow runs inside atlas.perFrameTick (i.e.
-                // inside atlas.drawBackgroundTexture), which is *after* the
-                // parent content element has already drawn this frame with
-                // the old children. Replacing the children means next frame
-                // renders NEW elements whose layout hasn't settled yet —
-                // visible as a 1-frame mismatch / flash.
+                // First build only: create the body/statusBar wrappers and add
+                // them to content. Subsequent rebuilds reuse the same wrappers
+                // — replacing them caused a blank-frame flash, because
+                // rebuildNow runs inside atlas.perFrameTick (i.e. inside
+                // atlas.drawBackgroundTexture), which is *after* the parent
+                // content element has already drawn this frame with the old
+                // children. Replacing the children means next frame renders
+                // NEW elements whose layout hasn't settled yet — visible as a
+                // 1-frame mismatch / flash.
                 content.clearAllChildren();
                 content.addChildren(
-                        header(),
                         body(),
                         statusBar()
                 );
@@ -971,66 +976,64 @@ final class SlotWorkspaceUiFactory {
 
         private boolean contentPopulated;
 
-        private UIElement header() {
-            UIElement header = panel(PANEL_ALT).layout(layout -> layout
-                    .widthPercent(100)
-                    .height(34)
-                    .paddingAll(8)
-                    .gapAll(8)
+        private UIElement topRightActionsOverlay() {
+            // Floating action cluster pinned to the atlas panel's top-right
+            // corner. Replaces the former persistent header strip. Vanilla is
+            // always visible (primary escape hatch, also bound to a keymap).
+            // Deposit only reveals itself when a claimed chest is proximate —
+            // the same TICK-poll pattern the old header used, kept here so
+            // the chip stays in sync as the player moves.
+            UIElement overlay = new UIElement().layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .top(10)
+                    .right(10)
+                    .gapAll(6)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
+            overlay.style(style -> style.zIndex(11));
+
             boolean initialDepositEnabled = anyChestProximate();
-            Button depositButton = button("Deposit", initialDepositEnabled, initialDepositEnabled ? ACCENT : PANEL_ALT);
-            depositButton.layout(layout -> layout.width(72).height(18));
+            Button depositButton = button("Deposit", true, ACCENT);
+            depositButton.layout(layout -> layout.width(60).height(16));
             depositButton.textStyle(style -> style
-                    .textColor(initialDepositEnabled ? TEXT : MUTED)
+                    .textColor(TEXT)
                     .textShadow(false)
-                    .fontSize(8)
+                    .fontSize(7)
                     .textAlignHorizontal(Horizontal.CENTER)
                     .textAlignVertical(Vertical.CENTER));
-            // Header is now persistent across rebuilds, so the button's
-            // enabled/color state can't be recomputed via wholesale recreation
-            // anymore. A per-TICK poll of anyChestProximate() keeps the
-            // button's appearance in sync as the player moves near/away from
-            // chests and as the server pushes viewModel updates.
-            boolean[] lastDepositEnabled = {initialDepositEnabled};
+            depositButton.setVisible(initialDepositEnabled);
+            boolean[] lastDepositVisible = {initialDepositEnabled};
             depositButton.addEventListener(UIEvents.TICK, event -> {
-                boolean enabled = anyChestProximate();
-                if (enabled == lastDepositEnabled[0]) {
+                boolean proximate = anyChestProximate();
+                if (proximate == lastDepositVisible[0]) {
                     return;
                 }
-                lastDepositEnabled[0] = enabled;
-                depositButton.setActive(enabled);
-                applyButtonColors(depositButton, enabled, enabled ? ACCENT : PANEL_ALT);
-                depositButton.textStyle(style -> style.textColor(enabled ? TEXT : MUTED));
+                lastDepositVisible[0] = proximate;
+                depositButton.setVisible(proximate);
             });
             depositButton.setOnClick(event -> {
                 event.stopPropagation();
                 if (!anyChestProximate()) {
-                    localStatus.set("no claimed chest nearby");
                     return;
                 }
                 sendDeposit();
             });
-            Button vanillaButton = button("Vanilla", true, PANEL_ALT);
-            vanillaButton.layout(layout -> layout.width(52).height(18));
+
+            Button vanillaButton = button("Vanilla", true, GLASS);
+            vanillaButton.layout(layout -> layout.width(48).height(16));
             vanillaButton.textStyle(style -> style
                     .textColor(MUTED)
                     .textShadow(false)
-                    .fontSize(8)
+                    .fontSize(7)
                     .textAlignHorizontal(Horizontal.CENTER)
                     .textAlignVertical(Vertical.CENTER));
             vanillaButton.setOnClick(event -> {
                 event.stopPropagation();
                 dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController.openVanillaInventory();
             });
-            header.addChildren(
-                    label("SLOT Atlas", ACCENT).layout(layout -> layout.flex(1).height(12)),
-                    vanillaButton,
-                    depositButton
-            );
-            clearSelectionOnDirectClick(header);
-            return header;
+
+            overlay.addChildren(depositButton, vanillaButton);
+            return overlay;
         }
 
         private UIElement body() {
@@ -1099,6 +1102,8 @@ final class SlotWorkspaceUiFactory {
 
             atlasView = atlas;
             hoverTrailOverlayElement = hoverTrailOverlay(atlas);
+            carriedFreeSlotsChipElement = carriedFreeSlotsChip();
+            topRightActionsElement = topRightActionsOverlay();
             atlasPanelElement = panel;
             atlasContentNeedsScreenTick = true;
         }
@@ -1122,6 +1127,8 @@ final class SlotWorkspaceUiFactory {
 
             panel.addChildren(atlas, triagePanelOverlay(), beltOverlay());
             panel.addChild(hoverTrailOverlayElement);
+            panel.addChild(carriedFreeSlotsChipElement);
+            panel.addChild(topRightActionsElement);
             if (searchModalActive) {
                 panel.addChild(searchChipOverlay());
             } else {
@@ -1207,6 +1214,106 @@ final class SlotWorkspaceUiFactory {
             hint.setAllowHitTest(false);
             hint.addChild(label("Press / to search", MUTED).layout(layout -> layout.height(10)));
             return hint;
+        }
+
+        private static final int CARRIED_CHIP_WIDTH = 96;
+        private static final int CARRIED_CHIP_HEIGHT = 20;
+        private static final int CARRIED_CHIP_BAR_HEIGHT = 3;
+
+        private UIElement carriedFreeSlotsChip() {
+            int initialFree = viewModel == null ? 0 : viewModel.carriedFreeSlotCount();
+            int initialCapacity = viewModel == null ? 0 : viewModel.carriedSlotCapacity();
+            UIElement chip = panel(GLASS).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .top(10)
+                    .width(CARRIED_CHIP_WIDTH)
+                    .height(CARRIED_CHIP_HEIGHT)
+                    .paddingHorizontal(8)
+                    .paddingTop(3)
+                    .paddingBottom(CARRIED_CHIP_BAR_HEIGHT + 3)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            chip.style(style -> style.zIndex(11));
+            chip.setAllowHitTest(false);
+            Label valueLabel = label(formatFreeSlots(initialFree), TEXT);
+            valueLabel.layout(layout -> layout.widthPercent(100).flex(1));
+            valueLabel.textStyle(style -> style.textAlignHorizontal(Horizontal.CENTER));
+            chip.addChild(valueLabel);
+            // Fullness bar pinned to the bottom edge of the chip: the width
+            // is the *filled* portion (capacity - free), so the bar grows
+            // toward a warning state as the player's inventory fills up.
+            int initialFilled = Math.max(0, initialCapacity - initialFree);
+            int initialBarColor = fullnessColor(initialFilled, initialCapacity);
+            float initialBarWidth = fullnessBarWidth(initialFilled, initialCapacity,
+                    CARRIED_CHIP_WIDTH);
+            UIElement bar = panel(initialBarColor).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(0)
+                    .bottom(0)
+                    .width(initialBarWidth)
+                    .height(CARRIED_CHIP_BAR_HEIGHT));
+            bar.style(style -> style.zIndex(12));
+            bar.setAllowHitTest(false);
+            chip.addChild(bar);
+            int[] lastFree = {initialFree};
+            int[] lastBarColor = {initialBarColor};
+            float[] lastBarWidth = {initialBarWidth};
+            float[] lastLeft = {-1f};
+            chip.addEventListener(UIEvents.TICK, event -> {
+                int free = viewModel == null ? 0 : viewModel.carriedFreeSlotCount();
+                int capacity = viewModel == null ? 0 : viewModel.carriedSlotCapacity();
+                if (free != lastFree[0]) {
+                    lastFree[0] = free;
+                    valueLabel.setText(Component.literal(formatFreeSlots(free)));
+                }
+                int filled = Math.max(0, capacity - free);
+                int barColor = fullnessColor(filled, capacity);
+                if (barColor != lastBarColor[0]) {
+                    lastBarColor[0] = barColor;
+                    bar.style(style -> style.backgroundTexture(rect(barColor)));
+                }
+                float barWidth = fullnessBarWidth(filled, capacity, CARRIED_CHIP_WIDTH);
+                if (Math.abs(barWidth - lastBarWidth[0]) > 0.5f) {
+                    lastBarWidth[0] = barWidth;
+                    bar.layout(layout -> layout.width(barWidth));
+                }
+                float panelWidth = atlasPanelElement == null ? 0f : atlasPanelElement.getContentWidth();
+                if (panelWidth <= 0f) {
+                    return;
+                }
+                float desiredLeft = Math.max(0f, (panelWidth - CARRIED_CHIP_WIDTH) / 2f);
+                if (Math.abs(desiredLeft - lastLeft[0]) > 0.5f) {
+                    lastLeft[0] = desiredLeft;
+                    chip.layout(layout -> layout.left(desiredLeft));
+                }
+            });
+            return chip;
+        }
+
+        private static String formatFreeSlots(int count) {
+            return Component.translatable("slot.screen.inventory.free_slots", count).getString();
+        }
+
+        private static int fullnessColor(int filled, int capacity) {
+            if (capacity <= 0) {
+                return CARRIED_CHIP_WARN;
+            }
+            float ratio = Math.min(1f, Math.max(0f, (float) filled / capacity));
+            if (ratio >= 1f) {
+                return CARRIED_CHIP_DANGER;
+            }
+            if (ratio >= 0.75f) {
+                return CARRIED_CHIP_WARN;
+            }
+            return CARRIED_CHIP_OK;
+        }
+
+        private static float fullnessBarWidth(int filled, int capacity, float total) {
+            if (capacity <= 0 || filled <= 0) {
+                return 0f;
+            }
+            float ratio = Math.min(1f, (float) filled / capacity);
+            return Math.max(0f, total * ratio);
         }
 
         private UIElement triagePanelOverlay() {
@@ -4690,6 +4797,7 @@ final class SlotWorkspaceUiFactory {
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(shellLeft)
                     .top(shellTop)));
+            addOverlaySignals(body, atlas, item, budget);
             return body;
         }
 
@@ -4709,6 +4817,7 @@ final class SlotWorkspaceUiFactory {
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(shellLeft)
                     .top(shellTop)));
+            addOverlaySignals(body, atlas, item, budget);
             return body;
         }
 
@@ -4749,6 +4858,7 @@ final class SlotWorkspaceUiFactory {
                     .top(shellTop + shell + gap)
                     .width(item.width() - sidePad * 2f)
                     .height(labelHeight)));
+            addOverlaySignals(body, atlas, item, budget);
             return body;
         }
 
@@ -4810,6 +4920,7 @@ final class SlotWorkspaceUiFactory {
                         .width(item.width() - sidePad * 2f)
                         .height(secondaryHeight)));
             }
+            addOverlaySignals(body, atlas, item, budget);
             return body;
         }
 
@@ -4899,6 +5010,26 @@ final class SlotWorkspaceUiFactory {
                         .height(auxLineHeight)));
                 cursorTop += auxLineHeight;
             }
+            if (item.isCarriedContainer()) {
+                cursorTop += gap;
+                float containerTop = cursorTop;
+                body.addChild(anchorTextBand(
+                        atlas,
+                        formatFreeSlots(item.containerFreeSlotCount()),
+                        item.containerFreeSlotCount() == 0 ? WARNING : ACCENT,
+                        budget.secondaryFontPx(),
+                        budget.secondaryMaxChars(),
+                        1,
+                        0x90111921,
+                        Horizontal.LEFT
+                ).layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(sidePad)
+                        .top(containerTop)
+                        .width(item.width() - sidePad * 2f)
+                        .height(auxLineHeight)));
+                cursorTop += auxLineHeight;
+            }
             if (!item.presence().isEmpty()) {
                 cursorTop += gap;
                 UIElement strip = presenceStrip(atlas, item, budget);
@@ -4912,6 +5043,7 @@ final class SlotWorkspaceUiFactory {
                             .height(auxLineHeight)));
                 }
             }
+            addOverlaySignals(body, atlas, item, budget);
             return body;
         }
 
@@ -5039,6 +5171,10 @@ private void addCommonAtlasSignals(
                 AtlasRenderBudget budget,
                 boolean searchMatch
         ) {
+            // Signals drawn *below* the item icon. LDLib2's drawContents paints
+            // children in insertion order (zIndex only affects pose Z, not
+            // paint order within a parent), so addOverlaySignals must be
+            // called AFTER the slotPreview is added to keep overlays on top.
             if (searchMatch) {
                 float sideInset = Math.min(item.width() * 0.04f, atlas.worldUnitsForPixels(2f));
                 float bottomInset = Math.min(item.height() * 0.04f, atlas.worldUnitsForPixels(1f));
@@ -5050,6 +5186,22 @@ private void addCommonAtlasSignals(
                         .bottom(bottomInset)
                         .width(barWidth)
                         .height(barHeight)));
+            }
+        }
+
+        private void addOverlaySignals(
+                UIElement body,
+                SlotAtlasGraphView atlas,
+                SlotWorkspaceViewModel.AtlasItem item,
+                AtlasRenderBudget budget
+        ) {
+            // Must be invoked AFTER slotPreview is added to body so these paint
+            // over the item icon. DrawerHelper.drawItemStack translates pose Z
+            // by +232, but that only matters for depth testing — within a
+            // single parent, sibling paint order is the list order, not the
+            // zIndex order.
+            if (item.isCarriedContainer()) {
+                addContainerFullnessBar(body, atlas, item);
             }
             int proximateCount = proximateChestCount(item);
             if (proximateCount > 0) {
@@ -5063,10 +5215,9 @@ private void addCommonAtlasSignals(
                         .top(inset)
                         .width(finalPipSize)
                         .height(finalPipSize));
-                // DrawerHelper.drawItemStack translates pose Z by +232 before
-                // rendering the item model and writes to the depth buffer, so a
-                // modest zIndex puts sibling overlays behind the item. Pick a
-                // value well above that push.
+                // zIndex pushes pose Z above the +232 item-icon depth so the
+                // pip survives the icon's depth-write before the shader clears
+                // the depth buffer.
                 pip.style(style -> style.zIndex(260));
                 pip.setAllowHitTest(false);
                 if (budget.level() != DisclosureLevel.REGION) {
@@ -5084,6 +5235,52 @@ private void addCommonAtlasSignals(
                     pip.addChild(count);
                 }
                 body.addChild(pip);
+            }
+        }
+
+        private void addContainerFullnessBar(
+                UIElement body,
+                SlotAtlasGraphView atlas,
+                SlotWorkspaceViewModel.AtlasItem item
+        ) {
+            float inset = Math.min(item.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+            float trackWidth = item.width() - inset * 2f;
+            if (trackWidth <= 0f) {
+                return;
+            }
+            float barHeight = Math.max(
+                    atlas.worldUnitsForPixels(2f),
+                    Math.min(item.height() * 0.06f, atlas.worldUnitsForPixels(4f)));
+            int capacity = Math.max(0, item.containerSlotCapacity());
+            int free = Math.max(0, item.containerFreeSlotCount());
+            int filled = Math.max(0, capacity - free);
+            // Dim track keeps the bar visible even on an empty container, so the
+            // bar itself is the "this is a carried container" signal.
+            UIElement track = panel(CARRIED_CONTAINER_PIP & 0x66FFFFFF).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(inset)
+                    .top(inset)
+                    .width(trackWidth)
+                    .height(barHeight));
+            // zIndex > DrawerHelper.drawItemStack's +232 Z push so the bar stays
+            // visible when it overlaps the item icon (which can happen at large
+            // LODs where the icon spans most of the card).
+            track.style(style -> style.zIndex(260));
+            track.setAllowHitTest(false);
+            body.addChild(track);
+            if (capacity > 0 && filled > 0) {
+                float ratio = Math.min(1f, (float) filled / capacity);
+                float fillWidth = Math.max(0f, trackWidth * ratio);
+                int fillColor = fullnessColor(filled, capacity);
+                UIElement fill = panel(fillColor).layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(inset)
+                        .top(inset)
+                        .width(fillWidth)
+                        .height(barHeight));
+                fill.style(style -> style.zIndex(261));
+                fill.setAllowHitTest(false);
+                body.addChild(fill);
             }
         }
 

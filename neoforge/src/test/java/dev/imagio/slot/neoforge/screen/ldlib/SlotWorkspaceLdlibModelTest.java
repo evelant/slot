@@ -713,6 +713,165 @@ class SlotWorkspaceLdlibModelTest {
     }
 
     @Test
+    void carriedFreeSlotCountEmptyMainIsFullPlayerCapacity() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of());
+        WorkflowDomainRuntime runtime = runtime();
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
+
+        assertEquals(36, viewModel.carriedFreeSlotCount(),
+                "empty main (27) + hotbar (9) with no backpacks = 36 free slots");
+        assertEquals(36, viewModel.carriedSlotCapacity(),
+                "capacity is the full 36 across the two carried sources");
+    }
+
+    @Test
+    void carriedFreeSlotCountFullMainAndHotbarIsZero() {
+        InventoryHostDescriptor host = host();
+        java.util.List<InventoryStackSnapshot> mainSlots = new java.util.ArrayList<>();
+        for (int i = 0; i < 27; i++) {
+            mainSlots.add(new InventoryStackSnapshot(i, new ItemStack("minecraft:stone", 1, 64), 1));
+        }
+        java.util.List<InventoryStackSnapshot> hotbarSlots = new java.util.ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            hotbarSlots.add(new InventoryStackSnapshot(i, new ItemStack("minecraft:stone", 1, 64), 1));
+        }
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN, mainSlots,
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0, hotbarSlots
+        ));
+        WorkflowDomainRuntime runtime = runtime();
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
+
+        assertEquals(0, viewModel.carriedFreeSlotCount(),
+                "every main + hotbar slot occupied = 0 free slots");
+    }
+
+    @Test
+    void carriedFreeSlotCountExcludesOccupiedSlotsOnly() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(
+                        new InventoryStackSnapshot(0, new ItemStack("minecraft:stone", 12, 64), 12),
+                        new InventoryStackSnapshot(3, new ItemStack("minecraft:apple", 3, 64), 3)
+                ),
+                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:torch", 16, 64), 16))
+        ));
+        WorkflowDomainRuntime runtime = runtime();
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
+
+        assertEquals(33, viewModel.carriedFreeSlotCount(),
+                "3 occupied (2 main + 1 hotbar) = 33 free of 36");
+    }
+
+    @Test
+    void carriedFreeSlotCountRoundTripsThroughCodec() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("minecraft:stone", 1, 64), 1))
+        ));
+        HolderLookup.Provider provider = new HolderLookup.Provider() {
+        };
+
+        SlotWorkspaceViewModel original = SlotWorkspaceViewModel.project(
+                authority, runtime().snapshot(), "ready", "", 0, 0, 1);
+        SlotWorkspaceViewModel restored = SlotWorkspaceViewModelCodec.decode(
+                provider, SlotWorkspaceViewModelCodec.encode(original, provider));
+
+        assertEquals(original.carriedFreeSlotCount(), restored.carriedFreeSlotCount());
+    }
+
+    @Test
+    void carriedContainerFlagSetByResolverAndHomedCarriersKeepIt() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(
+                        new InventoryStackSnapshot(0, new ItemStack("sophisticatedbackpacks:backpack", 1, 1), 1),
+                        new InventoryStackSnapshot(1, new ItemStack("minecraft:stone", 1, 64), 1)
+                )
+        ));
+        WorkflowDomainRuntime runtime = runtime();
+        VisualAtlasIsland gear = runtime.visualAtlasWorkflow().createIsland(
+                "Gear", 500, 200, 260, 180, 0xCC6E5A3C,
+                ItemIdentity.of("sophisticatedbackpacks:backpack"));
+        runtime.visualAtlasWorkflow().assignHome(
+                ItemIdentity.of("sophisticatedbackpacks:backpack"), gear.id(), 16, 60);
+
+        java.util.function.Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver = identity ->
+                "sophisticatedbackpacks:backpack".equals(identity.itemId())
+                        ? new SlotWorkspaceViewModel.CarriedContainerInfo(7, 27)
+                        : null;
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1,
+                null, null, null, null, containerResolver);
+
+        SlotWorkspaceViewModel.AtlasItem backpack = viewModel.atlasItems().stream()
+                .filter(item -> "sophisticatedbackpacks:backpack".equals(item.identity().itemId()))
+                .findFirst().orElseThrow();
+        SlotWorkspaceViewModel.AtlasItem stone = viewModel.triageItems().stream()
+                .filter(item -> "minecraft:stone".equals(item.identity().itemId()))
+                .findFirst().orElseThrow();
+        assertTrue(backpack.isCarriedContainer());
+        assertEquals(7, backpack.containerFreeSlotCount());
+        assertFalse(stone.isCarriedContainer());
+        assertEquals(0, stone.containerFreeSlotCount());
+    }
+
+    @Test
+    void atlasItemCarriedContainerFlagsRoundTripThroughCodec() {
+        InventoryHostDescriptor host = host();
+        InventoryAuthoritySnapshot authority = authority(host, Map.of(
+                BuiltinInventoryIds.PLAYER_MAIN,
+                List.of(new InventoryStackSnapshot(0, new ItemStack("sophisticatedbackpacks:backpack", 1, 1), 1))
+        ));
+        WorkflowDomainRuntime runtime = runtime();
+        HolderLookup.Provider provider = new HolderLookup.Provider() {
+        };
+
+        java.util.function.Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver = identity ->
+                "sophisticatedbackpacks:backpack".equals(identity.itemId())
+                        ? new SlotWorkspaceViewModel.CarriedContainerInfo(11, 27)
+                        : null;
+        SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1,
+                null, null, null, null, containerResolver);
+        SlotWorkspaceViewModel restored = SlotWorkspaceViewModelCodec.decode(
+                provider, SlotWorkspaceViewModelCodec.encode(projected, provider));
+
+        SlotWorkspaceViewModel.AtlasItem projectedItem = projected.triageItems().stream()
+                .filter(item -> "sophisticatedbackpacks:backpack".equals(item.identity().itemId()))
+                .findFirst().orElseThrow();
+        SlotWorkspaceViewModel.AtlasItem restoredItem = restored.triageItems().stream()
+                .filter(item -> "sophisticatedbackpacks:backpack".equals(item.identity().itemId()))
+                .findFirst().orElseThrow();
+        assertTrue(projectedItem.isCarriedContainer());
+        assertEquals(11, projectedItem.containerFreeSlotCount());
+        assertEquals(27, projectedItem.containerSlotCapacity());
+        assertTrue(restoredItem.isCarriedContainer());
+        assertEquals(11, restoredItem.containerFreeSlotCount());
+        assertEquals(27, restoredItem.containerSlotCapacity());
+
+        SlotWorkspaceViewModel withoutResolver = SlotWorkspaceViewModel.project(
+                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
+        SlotWorkspaceViewModel.AtlasItem withoutItem = withoutResolver.triageItems().stream()
+                .filter(item -> "sophisticatedbackpacks:backpack".equals(item.identity().itemId()))
+                .findFirst().orElseThrow();
+        assertFalse(withoutItem.isCarriedContainer(),
+                "Sophisticated Backpacks unavailable (no resolver) must not flag the item");
+        assertEquals(0, withoutItem.containerFreeSlotCount());
+    }
+
+    @Test
     void islandCarriedCountEqualsCarriedHomesInThatIsland() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(

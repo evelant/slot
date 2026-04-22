@@ -13,6 +13,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
 import dev.imagio.slot.inventory.integration.InventoryHostContext;
+import dev.imagio.slot.inventory.integration.SophisticatedBackpackInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.InventoryHostResolver;
@@ -1200,6 +1201,10 @@ final class SlotWorkspaceUiSession {
             return ChestContentsReader.read(server, chest);
         };
         Set<String> proximateIds = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
+        Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerInfo =
+                SophisticatedBackpackInventoryIntegrationProvider.carriedContainerInfoByIdentity(serverPlayer);
+        Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver =
+                containerInfo.isEmpty() ? identity -> null : containerInfo::get;
         SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
                 authority,
                 runtime.snapshot(),
@@ -1211,7 +1216,8 @@ final class SlotWorkspaceUiSession {
                 learnedRules,
                 IslandSignalExtractor::extract,
                 contentsResolver,
-                proximateIds
+                proximateIds,
+                containerResolver
         );
         CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
         if (!nextContent.equals(lastContentTag)) {

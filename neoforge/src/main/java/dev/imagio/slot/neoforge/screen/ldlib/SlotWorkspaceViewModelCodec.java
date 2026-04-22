@@ -44,6 +44,8 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putInt("selectedQuickAccessSlot", viewModel.selectedQuickAccessSlot());
         tag.putInt("canvasWidth", viewModel.canvasWidth());
         tag.putInt("canvasHeight", viewModel.canvasHeight());
+        tag.putInt("carriedFreeSlotCount", viewModel.carriedFreeSlotCount());
+        tag.putInt("carriedSlotCapacity", viewModel.carriedSlotCapacity());
 
         ListTag islandTags = new ListTag();
         for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
@@ -133,6 +135,8 @@ public final class SlotWorkspaceViewModelCodec {
                 compoundTag.getInt("selectedQuickAccessSlot"),
                 compoundTag.getInt("canvasWidth"),
                 compoundTag.getInt("canvasHeight"),
+                compoundTag.getInt("carriedFreeSlotCount"),
+                compoundTag.getInt("carriedSlotCapacity"),
                 islands.isEmpty()
                         ? SlotWorkspaceAtlasLayout.fittedIslands(
                         SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
@@ -266,6 +270,9 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putBoolean("recent", item.recent());
         tag.putBoolean("playerPlaced", item.playerPlaced());
         tag.putBoolean("carried", item.carried());
+        tag.putBoolean("isCarriedContainer", item.isCarriedContainer());
+        tag.putInt("containerFreeSlotCount", item.containerFreeSlotCount());
+        tag.putInt("containerSlotCapacity", item.containerSlotCapacity());
         ListTag chipTags = new ListTag();
         for (ChipSuggestion chip : item.chipSuggestions()) {
             chipTags.add(encodeChip(chip));
@@ -324,7 +331,10 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getBoolean("playerPlaced"),
                 tag.getBoolean("carried"),
                 chipSuggestions,
-                presence
+                presence,
+                tag.getBoolean("isCarriedContainer"),
+                tag.getInt("containerFreeSlotCount"),
+                tag.getInt("containerSlotCapacity")
         );
     }
 

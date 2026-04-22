@@ -22,6 +22,8 @@ import dev.imagio.slot.inventory.core.InventoryToolKind;
 import dev.imagio.slot.inventory.core.InventoryToolToggle;
 import dev.imagio.slot.inventory.core.InventoryToolToggleId;
 import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.PortableContainerClassifiers;
 import dev.imagio.slot.inventory.core.ToolActivationToken;
 import dev.imagio.slot.inventory.core.ToolPresentationHints;
@@ -30,6 +32,7 @@ import dev.imagio.slot.inventory.core.ToolRegionRole;
 import dev.imagio.slot.inventory.query.InventoryEntryKey;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.registry.ProviderResult;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
@@ -230,6 +233,56 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                 return applied ? ToolActionResult.success() : ToolActionResult.blocked("tool_toggle_failed");
             }
         });
+    }
+
+    /**
+     * Returns a map from the {@link ItemIdentity} of each carried backpack's
+     * carrier stack to a {@link SlotWorkspaceViewModel.CarriedContainerInfo}
+     * describing that backpack's empty-slot count and total capacity. Returns
+     * an empty map when the mod is absent. When two carriers share an
+     * identity (same type, same NBT), their counts are summed — the "combined
+     * count" resolution documented in the inventory-fullness plan's risk
+     * register.
+     */
+    public static Map<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo>
+            carriedContainerInfoByIdentity(Player player) {
+        if (player == null || !SophisticatedBackpackSupport.isAvailable()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, int[]> byIdentity = new LinkedHashMap<>();
+        for (SophisticatedBackpackSupport.BackpackInventorySnapshot snapshot :
+                SophisticatedBackpackSupport.readPlayerBackpacks(player, null)) {
+            if (snapshot == null) {
+                continue;
+            }
+            ItemStack carrierStack = carrierStackFor(player, snapshot);
+            if (carrierStack == null || carrierStack.isEmpty()) {
+                continue;
+            }
+            int freeSlots = Math.max(0, snapshot.slotCount() - snapshot.entries().size());
+            int capacity = Math.max(0, snapshot.slotCount());
+            ItemIdentity identity = ItemIdentityMatcher.create(carrierStack);
+            int[] running = byIdentity.computeIfAbsent(identity, ignored -> new int[2]);
+            running[0] += freeSlots;
+            running[1] += capacity;
+        }
+        LinkedHashMap<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> result =
+                new LinkedHashMap<>(byIdentity.size());
+        byIdentity.forEach((identity, counts) -> result.put(
+                identity, new SlotWorkspaceViewModel.CarriedContainerInfo(counts[0], counts[1])));
+        return Map.copyOf(result);
+    }
+
+    private static ItemStack carrierStackFor(
+            Player player,
+            SophisticatedBackpackSupport.BackpackInventorySnapshot snapshot
+    ) {
+        int rawSlot = snapshot.carrier().carrierSlotIndex();
+        if (rawSlot < 0 || rawSlot >= player.getInventory().items.size()) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack stack = player.getInventory().getItem(rawSlot);
+        return SophisticatedBackpackSupport.isBackpackItem(stack) ? stack : ItemStack.EMPTY;
     }
 
     @Override
