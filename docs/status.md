@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-22 (kit prototype slices 4–8 landed)
+Last updated: 2026-04-24 (executor fallback rework + backpack-first routing restored)
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -252,13 +252,64 @@ Key landing points:
   Minecraft's `Font.drawInBatch` globally via mixin, which is too
   invasive for users who only want crisp text in our mod's UI.
 
-**Kit prototype slices 4–8 landed** (multi-page, bring list +
-Kit-active protection, drag-to-edit, gather, persistence). Slice 9
+**Kit prototype is end-to-end usable.** Slices 1–8 are landed (Belt,
+Kit domain, Kit Rack UI, multi-page + page switching, bring list +
+Kit-active protection, drag-to-edit, gather, persistence) plus a
+playtest polish pass (right-click card menu with rename/duplicate/
+delete-confirm, hotbar↔hotbar swap, kit-page drag-rearrange within a
+page, active-kit save-current-belt updates the active page instead of
+forking a new kit, cross-source ASSIGN fixes, clear-targets on page
+activation so empty kit slots actually empty the belt). Slice 9
 (Kit-specific undo) is intentionally deferred per the general-undo
 memory note — activate/switch-page should plug into the comprehensive
-undo stack when that lands, not spawn a Kit-only path. Pick up at
-[plans/kit-prototype.md](plans/kit-prototype.md) for arc detail and at
-"Kit prototype landing points" below for the current tuning.
+undo stack when that lands, not spawn a Kit-only path. See "Kit
+prototype landing points" below for the current tuning.
+
+**Executor fallback rework landed** ([`InventoryActionExecutor.executeTransfer`](../common/src/main/java/dev/imagio/slot/inventory/integration/InventoryActionExecutor.java)).
+Transfer now decouples extract + insert so every combination of the
+two layers works: `(builtin/provider)` on the source × `(builtin/
+provider)` on the destination. Previously only `(builtin+builtin)`,
+`(provider+builtin)`, and `(provider+provider)` were covered — the
+`(builtin+provider)` case (e.g., `hotbar → backpack` staging) silently
+failed with `non_builtin_target_route | provider:source_is_not_provider_backed`.
+Diagnostic surfacing was also reworked so "boundary skip" markers
+from either layer no longer mask the real error. See
+[architecture/overview.md → Transfer routing layers](architecture/overview.md)
+for the full layer-fallback chain.
+
+**Backpack-first routing rule restored** (was dropped in the legacy→
+new-kernel rewrite). `stableOrder` is now: backpack (15+) < main (100)
+< hotbar (110) < armor (120) < offhand (130). Previously main (10)
+came before backpacks (15+), so every auto-destination picked main
+first even when backpacks had room. Affects displacement staging,
+deposit planning, and auto-allocation in `ProjectedTransferDestinationAllocator`.
+`LoadoutApplyService` stage-rollback also now uses `TRANSFER +
+INSERT_ONLY` (was `ASSIGN + ASSIGN_WITH_DISPLACE`), so rollback
+works for any staging source — including backpack.
+
+**Transfer coverage matrix**: [`InventoryActionExecutorTest`](../common/src/test/java/dev/imagio/slot/inventory/integration/InventoryActionExecutorTest.java)
+now has explicit tests for every source×destination layer pairing:
+main↔hotbar, offhand→hotbar, main→backpack, backpack→main, hotbar→
+backpack, backpack→hotbar, backpack→backpack, plus the existing
+hotbar↔hotbar ASSIGN swap. Any future refactor that breaks one of
+these combinations will surface in CI immediately.
+
+**Open Kit follow-up**: drag-to-edit an *active* kit updates only the
+kit definition, not the live belt. Design says the belt should sync
+when the edit hits the active page — not yet wired. Small, scoped
+follow-up for when someone touches this area next.
+
+**Suggested next arcs**:
+- **Comprehensive undo/redo stack** (per the general-undo memory
+  note). Kit activate, kit page switch, home assignment, chip accept,
+  and chest deposit/take should all emit undoable records against a
+  single stack. Unblocks the deferred Kit slice 9 and retires the
+  "should we add a timed toast here?" question for every new action.
+- **Storage prototype Slice 5 withdraw half** — now unblocked by Kit
+  slice 5's `KitActiveProtection`. Gather would become a one-click
+  pull from linked chests for missing kit items.
+- **Active-kit edit sync** (the follow-up above) — cheap to knock out
+  if someone has the Kit code page open.
 
 ### Atlas navigation + QoL landing points
 
@@ -603,11 +654,12 @@ below).
 
 ### Kit prototype landing points
 
-Kit prototype slices 1–8 are landed. Slice 9 (per-activate undo) is
-deferred pending the comprehensive undo/redo stack. See
+Kit prototype slices 1–8 are landed plus a substantial playtest
+polish pass. Slice 9 (per-activate undo) is deferred pending the
+comprehensive undo/redo stack. See
 [plans/kit-prototype.md](plans/kit-prototype.md) for the arc.
 
-Kit prototype landing points so far:
+Kit prototype landing points:
 
 - **Slice 1**: the Belt is a camera-pinned overlay on the atlas panel
   rather than a flex-row sibling below the atlas body. Pan/zoom leaves
@@ -728,6 +780,109 @@ Kit prototype landing points so far:
   are not auto-withdrawn — Gather (Slice 7) and Storage Slice 5
   withdraw will cover this
 
+**Playtest polish pass** (2026-04-23):
+
+- **Right-click kit card** opens a glass popover with Rename…
+  (inline `TextField`, Enter commits, Escape/click-outside cancels),
+  Duplicate (slug-deduped copy with `" (copy)"` name suffix), and
+  Delete… (confirm row with explicit Delete/Cancel buttons). The bare
+  `x` on the kit header was removed — delete always flows through
+  the confirm to prevent fat-finger loss of multi-page kits. Uses the
+  existing `contextMenuOverlay` plumbing and shares the catcher /
+  menuButton helpers with the atlas and hotbar context menus.
+- **Hotbar → hotbar swap via drag**.
+  `installHotbarDropTarget` now handles `HotbarSlotDrag`; drop on a
+  different hotbar slot dispatches `sendTransfer(TARGET_HOTBAR_SLOT,
+  sourceIdx, TARGET_HOTBAR_SLOT, destIdx)`. The factory's
+  `quickAccessAssignment` detection turns this into
+  `ASSIGN + ASSIGN_WITH_DISPLACE`, which `BuiltinInventoryActionExecutor.assign`
+  resolves as an atomic swap between two player-bound slots. Drop
+  overlay shows accent for cross-slot drags, clears when dragging
+  onto self. Drop on self is a no-op, not a rebuild thrash.
+- **Kit card slot rearrange within a page**.
+  `KitWorkflowDomainService.swapSlots(kitId, pageIndex, from, to)`
+  emits a `KitUpdated` with the two slot identities swapped.
+  `installKitSlotDropTarget` detects `KitSlotDrag` from the
+  same kit + same page and dispatches swap; cross-kit or cross-page
+  `KitSlotDrag` still falls through to the copy-identity path from
+  slice 6. Covered by `swapSlotsExchangesTwoIdentitiesOnAPage` and
+  `swapSlotsIsNoOpWhenIndicesMatch`.
+- **Belt drop-leak plugged**. `beltPanel()` installs a panel-level
+  `DRAG_PERFORM` + `MOUSE_DOWN` catcher that calls `stopPropagation`,
+  so clicks / drops that land in the belt chrome (gaps between
+  slots, dividers, spacers) no longer bubble through to atlas card
+  handlers underneath. Individual slot handlers fire first and stop
+  propagation themselves; the catcher only sees un-consumed events.
+  `installHotbarDropTarget` also now stops propagation on
+  unrecognized drags for the same reason.
+- **Save Current Belt updates active kit's page** (instead of
+  forking a new kit). When a kit is active,
+  `SlotWorkspaceCommandService.saveBeltAsKit` captures the belt +
+  offhand and calls `withPageReplaced(activePageIndex, ...)` →
+  `update(...)`. Rack header button re-labels to "Update Page N" /
+  "Update Active Kit" / "Save Current Belt as Kit" based on state.
+  Shared `KitSnapshotSupport.capturePageFromAuthority /
+  captureOffhandIdentity` helpers sit alongside the existing
+  `snapshotFromAuthority` use.
+- **LoadoutApplyService robustness passes** (three separate plan-
+  state bugs that surfaced under belt page swaps). See
+  [LoadoutApplyService.java](../common/src/main/java/dev/imagio/slot/workflow/domain/LoadoutApplyService.java)
+  and its regression tests:
+  - *Cross-source ASSIGN fix*: apply step detects non-`PLAYER`-bound
+    candidates (e.g., Sophisticated Backpack) and emits
+    `TRANSFER + INSERT_ONLY` instead of `ASSIGN + ASSIGN_WITH_DISPLACE`.
+    ASSIGN's in-place swap path requires both ends player-bound and
+    was hard-rejecting any backpack-source kit entry with
+    `assign_requires_player_bound_targets`.
+  - *Reorder stale-state fix*: three interacting patches — clear the
+    candidate slot's tracked-target entry after apply so the next
+    entry doesn't stage from an already-emptied slot; reserve the
+    target's source key so later `findCandidateSource` calls don't
+    pick a slot we just overwrote; track items moved to staging slots
+    in a `stagedCandidates` list that `findCandidateSource` consults
+    first. Without these, a 2-page kit that reordered belt items (A:
+    `[pick, sword]` → B: `[sword, pick]`) failed with
+    `player_slot_identity_mismatch` / `player_slot_not_insertable`
+    on the second entry. Regression test:
+    `planReorderingBeltItemsDoesNotProduceStaleStagingFromEmptiedCandidateSlot`.
+  - *Self-transfer guard + staging preference*: `findStagingTarget`
+    now prefers player-backed non-quick-access sources (main
+    inventory) and falls back to any `INSERT`-capable carried source
+    only if main is exhausted; `stagedCandidateIsAtTarget` detects
+    the edge case where a staged identity happens to already be at a
+    later entry's target slot and short-circuits to `satisfied`
+    instead of building a `source == target` self-transfer.
+- **Clear-targets on page activation**. `LoadoutApplyService.plan`
+  gained a `Set<LoadoutTarget> clearTargets` parameter.
+  `KitWorkflowDomainService.planActivate` walks all 9 hotbar slots
+  of the target page and passes every `null` slot as a clear target.
+  For each clear target with a current occupant, the plan emits a
+  `workflow:loadout_clear TRANSFER / INSERT_ONLY` request from the
+  target to a free staging slot — so "slot 5 explicitly empty on
+  page 2" now means slot 5 is actually emptied on activation.
+  Regression tests:
+  `planClearTargetsStageCurrentOccupantOutOfTheHotbar`,
+  `planClearTargetsIsNoOpWhenSlotAlreadyEmpty`.
+- **Digit-press / click-hotbar / drag-to-hotbar from backpack**.
+  Fixed in [SlotWorkspaceUiSession.applyLoadoutSingleTarget](../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/SlotWorkspaceUiSession.java):
+  when `firstCarriedSlotForIdentityAnySource` returns a non-player
+  source id, the session routes through a one-entry
+  `QuickAccessLoadoutDefinition` + `LoadoutApplyService.plan`
+  instead of the single-request factory path so the cross-source
+  TRANSFER fix above kicks in.
+- **UI readability / sizing tweaks**: Belt Kit label uses
+  `PANEL_ALT` bg + `ACCENT` text when rack is open, `ACTIVE_HOTBAR`
+  bg + `TEXT` + shadow when a kit is active; kit card widened to
+  `KIT_CARD_WIDTH = 180` with `KIT_CELL_SIZE = 14` / icons `11`; per-
+  page remove `-` no longer overflows the 9-cell strip; `gather N`
+  footer button uses `PANEL_ALT` bg + `WARNING` text for readable
+  contrast on both active and inactive cards; removed the inert
+  hotbar-right `+` toggle (was a stub for the unscoped equipment
+  rack slice).
+- **Key binding**: `key.slot.cycle_kit_page` (GUI context, unbound
+  default) cycles the active kit's pages; shift-hold cycles
+  backward. Lang string: `"Cycle Kit page"`.
+
 **Slice 4b** (Kit-holdout deposit) and the withdraw half of storage
 **Slice 5** no longer block on the Kit prototype — Slice 5's
 `KitActiveProtection` gives them the identity-protected view they
@@ -744,9 +899,15 @@ has not started; neither blocks the Kit prototype.
 
 ## Small known bugs to fix
 
-(none currently tracked — previous batch cleared 2026-04-17; needs playtest
-verification of the LOD thresholds, default-camera fit, and batch chip
-accept before declaring done)
+- Drag a home onto an *active* kit's slot only updates the kit
+  definition — the belt doesn't auto-apply the change. Per
+  [design/kits.md](design/kits.md) "Edit a Kit" the edit should also
+  apply the belt change immediately when the target page is active.
+  Scoped follow-up for the next person touching kit drag-to-edit.
+
+(previous batch cleared 2026-04-17; needs playtest verification of
+the LOD thresholds, default-camera fit, and batch chip accept before
+declaring done)
 
 ## Project Structure
 

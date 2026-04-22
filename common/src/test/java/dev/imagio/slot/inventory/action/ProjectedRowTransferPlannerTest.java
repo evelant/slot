@@ -73,14 +73,18 @@ class ProjectedRowTransferPlannerTest {
                 "test"
         ));
 
+        // BEST_SINGLE_SOURCE picks the first backing entry in stableOrder. Per the
+        // "backpack-first overflow" routing rule, carried.backpack.one (stableOrder 40)
+        // is tried before PLAYER_MAIN (stableOrder 100), so the planner picks the
+        // backpack copy instead of the main-inventory copy.
         assertEquals(1, plan.operations().size());
         assertEquals(1, plan.requests().size());
         InventoryActionRequest request = plan.requests().getFirst();
-        assertEquals(new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0), request.primaryTarget());
+        assertEquals(new InventoryActionTarget.SourceSlotTarget("carried.backpack.one", 0), request.primaryTarget());
         assertEquals(new InventoryActionTarget.SourceTarget("external.chest"), request.secondaryTarget());
-        assertEquals(3, request.requestedCount());
-        assertEquals(3, plan.requestedTotalCount());
-        assertEquals(3, plan.plannedTotalCount());
+        assertEquals(2, request.requestedCount());
+        assertEquals(2, plan.requestedTotalCount());
+        assertEquals(2, plan.plannedTotalCount());
     }
 
     @Test
@@ -116,12 +120,15 @@ class ProjectedRowTransferPlannerTest {
                 "test"
         ));
 
+        // Backpack-first ordering: carried.backpack.one (40) → carried.backpack.two (50)
+        // → PLAYER_MAIN (100). Backpacks act as overflow so depositing empties them
+        // before tapping main.
         assertEquals(List.of(
-                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0),
                 new InventoryActionTarget.SourceSlotTarget("carried.backpack.one", 0),
-                new InventoryActionTarget.SourceSlotTarget("carried.backpack.two", 0)
+                new InventoryActionTarget.SourceSlotTarget("carried.backpack.two", 0),
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0)
         ), plan.requests().stream().map(InventoryActionRequest::primaryTarget).toList());
-        assertEquals(List.of(3, 2, 5), plan.requests().stream().map(InventoryActionRequest::requestedCount).toList());
+        assertEquals(List.of(2, 5, 3), plan.requests().stream().map(InventoryActionRequest::requestedCount).toList());
         assertEquals(10, plan.requestedTotalCount());
         assertEquals(10, plan.plannedTotalCount());
         assertEquals(InventoryActionStatus.SUCCESS, plan.status());
@@ -169,10 +176,13 @@ class ProjectedRowTransferPlannerTest {
                 "test"
         ));
 
+        // Per-row ordering is preserved at the top level (beetroot row first, apple row
+        // second), and within each row the backpack (stableOrder 40) is tried before
+        // PLAYER_MAIN (stableOrder 100).
         assertEquals(List.of(
                 new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 1),
-                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0),
-                new InventoryActionTarget.SourceSlotTarget("carried.backpack", 0)
+                new InventoryActionTarget.SourceSlotTarget("carried.backpack", 0),
+                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, 0)
         ), plan.requests().stream().map(InventoryActionRequest::primaryTarget).toList());
     }
 

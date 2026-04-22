@@ -1,10 +1,17 @@
 # Kit Prototype Plan
 
-Last updated: 2026-04-22
+Last updated: 2026-04-23
 
-Status: slices 1–8 landed; slice 9 (Kit-specific undo) deferred into
-the general undo/redo stack. See [../status.md](../status.md) for the
-current tuning and landing points.
+Status: slices 1–8 landed plus a playtest polish pass (right-click
+card menu, hotbar↔hotbar swap, kit-page drag rearrange, active-kit
+save-to-page, `LoadoutApplyService` cross-source ASSIGN /
+belt-reorder / clear-target fixes, and UI readability polish).
+Slice 9 (Kit-specific undo) is deferred into the general undo/redo
+stack. One remaining follow-up: drag-to-edit on an *active* kit
+currently only updates the kit definition; per design it should
+also sync to the live belt when the edit hits the active page. See
+[../status.md](../status.md) → "Kit prototype landing points" for
+the full landed detail and the active-kit-edit follow-up note.
 
 For the Kit concept and interaction model, see [../design/kits.md](../design/kits.md).
 For the broader near-term engineering sequence, see [current.md](current.md).

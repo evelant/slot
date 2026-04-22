@@ -71,6 +71,18 @@ public final class BuiltinInventoryDescriptors {
         );
     }
 
+    // Carried-source stableOrder ordering: lower = tried first.
+    //
+    // Intent: "backpack is overflow, main is workspace." Insertion / displacement
+    // prefers the overflow area so the player's main-inventory layout stays intact.
+    // Extraction follows the same order — if an identity sits in both backpack and
+    // main, pull from the backpack first to preserve the visible main layout.
+    //
+    //   Sophisticated Backpack sources:  15 + carrierSlotIndex  (15–50 range)
+    //   PLAYER_MAIN:                     100
+    //   PLAYER_QUICK_ACCESS_LANE_0:      110   (hotbar — last resort, actively used)
+    //   PLAYER_ARMOR:                    120
+    //   PLAYER_OFFHAND:                  130
     public static InventorySourceDescriptor playerMain(InventoryTopologyDescriptor topology) {
         boolean menuBacked = topology.menuBacksSource(BuiltinInventoryIds.PLAYER_MAIN);
         return InventorySourceDescriptor.builder(BuiltinInventoryIds.PLAYER_MAIN)
@@ -87,7 +99,7 @@ public final class BuiltinInventoryDescriptors {
                 ))
                 .actionRoute(menuBacked ? InventoryActionRoute.MENU_MUTATION : InventoryActionRoute.PLAYER_MUTATION)
                 .paneMembership(InventoryPaneMembership.CARRIED)
-                .stableOrder(10)
+                .stableOrder(100)
                 .build();
     }
 
@@ -110,7 +122,7 @@ public final class BuiltinInventoryDescriptors {
                 ))
                 .actionRoute(menuBacked ? InventoryActionRoute.MENU_MUTATION : InventoryActionRoute.PLAYER_MUTATION)
                 .paneMembership(InventoryPaneMembership.CARRIED)
-                .stableOrder(20)
+                .stableOrder(110)
                 .build();
     }
 
@@ -131,7 +143,7 @@ public final class BuiltinInventoryDescriptors {
                 ))
                 .actionRoute(menuBacked ? InventoryActionRoute.MENU_MUTATION : InventoryActionRoute.PLAYER_MUTATION)
                 .paneMembership(InventoryPaneMembership.CARRIED)
-                .stableOrder(25)
+                .stableOrder(120)
                 .build();
     }
 
@@ -154,7 +166,7 @@ public final class BuiltinInventoryDescriptors {
                 ))
                 .actionRoute(menuBacked ? InventoryActionRoute.MENU_MUTATION : InventoryActionRoute.PLAYER_MUTATION)
                 .paneMembership(InventoryPaneMembership.CARRIED)
-                .stableOrder(30)
+                .stableOrder(130)
                 .build();
     }
 }

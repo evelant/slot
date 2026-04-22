@@ -428,6 +428,100 @@ Important types:
 Tool regions are presentation and routing aliases over linked source slots.
 They are not independent inventory authority.
 
+## Transfer Routing Layers
+
+`InventoryActionExecutor` is a two-layer orchestrator over the primitives in
+`BuiltinInventoryActionExecutor` (direct `MENU` / `PLAYER` slot manipulation) and
+`InventoryMutationRouter` (dispatch to `PlayerInventoryExtension.mutate` for
+`PROVIDER` / `TOOL` sources). Every action verb is funnelled through the
+executor — integrations and session code must never call the builtin layer
+directly.
+
+### Layer responsibilities
+
+- **`BuiltinInventoryActionExecutor`** owns the fast path for vanilla-style
+  inventories. It resolves `SourceSlotTarget` / `QuickAccessTarget` /
+  `EquipmentTarget` against `host.topology()` and reads/writes the
+  `AbstractContainerMenu` slot or the `Inventory` player-slot array directly.
+  `PROVIDER` and `TOOL` bindings intentionally fall through — the executor
+  returns `non_builtin_target_route` / `unsupported_builtin_extract_route`
+  / `unresolved_target`. These diagnostics are **boundary-skip markers**, not
+  real failures; they signal "not my layer, try the other one."
+- **`InventoryMutationRouter`** receives a fully-resolved
+  `InventoryMutationRequest` (sourceId + optional slot + identity + stack) and
+  dispatches by ownership: `host.ownsHostSource(...)` → `hostSession.mutate`,
+  otherwise `host.extensionOwningSource(...)` → `extension.mutate`, otherwise
+  fall back to `BuiltinInventoryActionExecutor.mutateSource` (for
+  `PLAYER_MUTATION` / `MENU_MUTATION` action routes). If the source declares
+  `PROVIDER_MUTATION` action route and no owner is found, the router reports
+  `provider_route_missing_owner`. Extensions are the canonical way to plug a
+  provider-backed carried container (e.g., Sophisticated Backpacks) into SLOT.
+- **`InventoryActionExecutor.executeTransfer`** is the hinge. It tries
+  `BuiltinInventoryActionExecutor.transfer` first (fast path when both ends
+  are builtin-handleable); on failure it decouples extract + insert and tries
+  both layers on each side independently. All four combinations must work:
+
+    | Source binding | Destination binding | Path |
+    | --- | --- | --- |
+    | `MENU`/`PLAYER` | `MENU`/`PLAYER` | builtin ext + builtin ins |
+    | `PROVIDER`/`TOOL` | `MENU`/`PLAYER` | provider ext + builtin ins |
+    | `MENU`/`PLAYER` | `PROVIDER`/`TOOL` | builtin ext + provider ins |
+    | `PROVIDER`/`TOOL` | `PROVIDER`/`TOOL` | provider ext + provider ins |
+
+  Every combination has explicit coverage in
+  [`InventoryActionExecutorTest`](../../common/src/test/java/dev/imagio/slot/inventory/integration/InventoryActionExecutorTest.java).
+
+### Diagnostic surfacing
+
+When a transfer fails, the outcome's diagnostic message should point at the
+real reason, not a layer-boundary marker. `preferProviderDiagnostic` in the
+executor recognizes both classes of boundary marker — builtin's
+`non_builtin_target_route` / `unresolved_target` / `unsupported_builtin_*`
+and provider's `source_is_not_provider_backed` /
+`target_is_not_provider_backed` / `provider_source_missing_from_host` — and
+prefers whichever layer emitted a *meaningful* diagnostic. When both layers
+only emitted boundary markers, they're joined with `" | provider:"` so the
+operator can see the full shape of the failure. Provider-layer diagnostics
+carry a `:sourceId=bindingRoute` suffix so host-topology drift is obvious
+from the outcome alone.
+
+### ASSIGN has no provider fallback
+
+`ASSIGN`'s in-place swap semantics require both ends to be `PLAYER`-bound
+(see `BuiltinInventoryActionExecutor.assign` — `assign_requires_player_bound_targets`).
+`executeAssign` does not fall back to the provider layer because the
+semantics don't translate. Any code that needs to move an identity from a
+provider-backed source (e.g., a backpack) into a quick-access slot must emit
+`TRANSFER` + `INSERT_ONLY`, not `ASSIGN`. `LoadoutApplyService` follows this
+rule automatically: when the candidate source isn't player-bound, the apply
+request is emitted as `TRANSFER` + `INSERT_ONLY` + `STACK` and the prior
+stage step guarantees the target slot is empty by apply time.
+
+### Restore-via-same-layer invariant
+
+When a transfer partially succeeds (insert returns a remainder) or fails
+entirely after a successful extract, the un-inserted portion must be
+restored through **the same layer that performed the original extract**.
+Using the wrong layer silently loses items — e.g., writing a provider-
+extracted stack back via `BuiltinInventoryActionExecutor.insert` on a
+`PROVIDER`-bound source just returns `non_builtin_target_route` and the
+stack vanishes. `ExtractionResult.viaProvider()` tracks the layer so
+`restoreExtracted` routes through `InventoryMutationRouter.mutate` when
+appropriate.
+
+### Routing preference (`stableOrder`)
+
+Sources are ranked by `stableOrder` (lower = tried first) for both
+extraction-candidate search and insertion-destination allocation. The
+invariant is **overflow-to-backpack**: backpack sources (stableOrder
+15–50, varies by carrier slot) come before `PLAYER_MAIN` (100) come before
+`PLAYER_QUICK_ACCESS_LANE_0` (110) come before armor (120) and offhand
+(130). The ordering applies consistently everywhere `stableOrder` is
+consulted — `PlacementPolicy.orderedInsertionSources`,
+`ProjectedTransferDestinationAllocator.paneSources`, `LoadoutApplyService`'s
+`findCandidateSource` and `findStagingTarget` — so the user's main
+inventory only fills once overflow storage is exhausted.
+
 ## Integration Boundaries
 
 Integrations should convert foreign systems into SLOT-owned descriptors and

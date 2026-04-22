@@ -30,6 +30,7 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.vfyjxf.taffy.style.AlignContent;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -63,6 +64,11 @@ final class SlotWorkspaceUiFactory {
     private static final int ROW_MATCH = 0xED345749;
     private static final int SELECTED = 0xF0507E6B;
     private static final int ACTIVE_HOTBAR = 0xF0665B33;
+    // Brightened amber for kit-card hover so the active card stays recognizable.
+    private static final int ACTIVE_HOTBAR_HOVER = 0xF08A7A4D;
+    private static final int ACTIVE_HOTBAR_PRESSED = 0xF0524830;
+    // Subtle amber fill behind the active page row inside a kit card.
+    private static final int ACTIVE_PAGE_ROW = 0x40A08544;
     private static final int TEXT = 0xFFE8EEF2;
     private static final int MUTED = 0xFFA0AAB3;
     private static final int ACCENT = 0xFF7AC7A7;
@@ -96,6 +102,11 @@ final class SlotWorkspaceUiFactory {
     private static final float CARRIED_FIT_PADDING_PX = 72f;
     private static final int BELT_HEIGHT = 24;
     private static final int BELT_SLOT_SIZE = 20;
+    // Fixed-width holding area for the Kit toggle + page cycle button. Wide enough
+    // for "Longname 3/3" (≈10 name chars + " N/M" + padding) plus the ">" cycle
+    // button. Changes to the kit label grow LEFT inside this slot instead of
+    // shoving the hotbar.
+    private static final int KIT_CLUSTER_WIDTH = 130;
     private static final int BELT_DIVIDER_HEIGHT = 16;
     private static final int TRIAGE_PANEL_WIDTH = 152;
     private static final float NAV_CAPSULE_INSET_PX = 96f;
@@ -1254,10 +1265,13 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement searchChipOverlay() {
+            // Anchor at the same top-left location as searchHintOverlay so opening
+            // search doesn't feel like the UI jumped — the hint slides seamlessly
+            // into the live modal.
             UIElement chip = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
-                    .top(54)
-                    .left(8)
+                    .top(10)
+                    .left(10)
                     .width(280)
                     .paddingAll(6)
                     .gapAll(3)
@@ -1403,11 +1417,19 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement triagePanelOverlay() {
+            // Clear whichever top-left overlay is showing: the compact "Press / to search"
+            // hint (~20 px tall) or the full search modal (~60 px tall at top 10, left 10).
+            // Kit rack, when open, docks above the belt and extends rightward from x=16;
+            // triage at (x=8, width=152) horizontally overlaps it — lift the bottom above
+            // the rack so the two don't visually stack.
+            int triageTop = searchModalActive ? 78 : 36;
+            int baseBottom = BELT_HEIGHT + 12;
+            int rackBottom = kitRackOpen ? baseBottom + kitRackHeight() + 4 : baseBottom;
             UIElement overlay = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(8)
-                    .top(94)
-                    .bottom(BELT_HEIGHT + 12)
+                    .top(triageTop)
+                    .bottom(rackBottom)
                     .width(TRIAGE_PANEL_WIDTH)
                     .paddingAll(6)
                     .gapAll(4)
@@ -3755,11 +3777,7 @@ final class SlotWorkspaceUiFactory {
             panel.addEventListener(UIEvents.MOUSE_DOWN, UIEvent::stopPropagation);
             panel.addEventListener(UIEvents.DRAG_PERFORM, UIEvent::stopPropagation);
             panel.addChild(beltSpacer());
-            panel.addChild(kitsToggleButton());
-            SlotWorkspaceViewModel.KitCard activeCard = viewModel.activeKit();
-            if (activeCard != null && activeCard.pageCount() > 1) {
-                panel.addChild(kitPageCycleButton(activeCard));
-            }
+            panel.addChild(kitCluster());
             panel.addChild(beltDivider());
             for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
                 panel.addChild(beltSlotButton(slot));
@@ -3768,6 +3786,26 @@ final class SlotWorkspaceUiFactory {
             panel.addChild(offhandSlotButton(viewModel.offhand()));
             panel.addChild(beltSpacer());
             return panel;
+        }
+
+        private UIElement kitCluster() {
+            // Fixed-width container with right-aligned children so changes to the kit
+            // toggle's label (kit name / page indicator) grow LEFT into the cluster's own
+            // whitespace instead of pushing the hotbar. Sized to fit the widest reasonable
+            // label ("longname 3/3") plus the page-cycle button without truncation.
+            UIElement cluster = new UIElement().layout(layout -> layout
+                    .width(KIT_CLUSTER_WIDTH)
+                    .height(BELT_SLOT_SIZE)
+                    .gapAll(2)
+                    .alignItems(AlignItems.CENTER)
+                    .justifyContent(AlignContent.FLEX_END)
+                    .flexDirection(FlexDirection.ROW));
+            cluster.addChild(kitsToggleButton());
+            SlotWorkspaceViewModel.KitCard activeCard = viewModel.activeKit();
+            if (activeCard != null && activeCard.pageCount() > 1) {
+                cluster.addChild(kitPageCycleButton(activeCard));
+            }
+            return cluster;
         }
 
         private Button kitsToggleButton() {
@@ -4005,11 +4043,14 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement kitRackOverlay() {
+            // Dock flush with the belt top (belt sits at bottom(4) with height BELT_HEIGHT)
+            // so the rack feels like an extension of the belt rather than a floating panel.
             UIElement overlay = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(16)
                     .right(16)
-                    .bottom(BELT_HEIGHT + 10)
+                    .bottom(BELT_HEIGHT + 4)
+                    .height(kitRackHeight())
                     .paddingAll(6)
                     .gapAll(6)
                     .flexDirection(FlexDirection.COLUMN));
@@ -4074,7 +4115,7 @@ final class SlotWorkspaceUiFactory {
             return row;
         }
 
-        private UIElement kitRackBody() {
+        private int kitRackBodyHeight() {
             int maxPageCount = 1;
             int maxBringCount = 0;
             for (SlotWorkspaceViewModel.KitCard card : viewModel.kits()) {
@@ -4085,7 +4126,18 @@ final class SlotWorkspaceUiFactory {
                     maxBringCount = card.bringSlotCount();
                 }
             }
-            int bodyHeight = Math.max(44, kitCardHeight(maxPageCount, maxBringCount) + 6);
+            return Math.max(44, kitCardHeight(maxPageCount, maxBringCount) + 6);
+        }
+
+        private int kitRackHeight() {
+            // padding (6 top + 6 bottom) + header row (14) + gap to body (6) + body height.
+            // Kept as a single computation so triagePanelOverlay can lift itself above the
+            // rack when it's open.
+            return 12 + 14 + 6 + kitRackBodyHeight();
+        }
+
+        private UIElement kitRackBody() {
+            int bodyHeight = kitRackBodyHeight();
             UIElement body = new UIElement().layout(layout -> layout
                     .widthPercent(100)
                     .height(bodyHeight)
@@ -4122,8 +4174,20 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement kitCardButton(SlotWorkspaceViewModel.KitCard card) {
-            int color = card.active() ? ACTIVE_HOTBAR : ROW;
-            Button button = button("", true, color);
+            int baseColor = card.active() ? ACTIVE_HOTBAR : ROW;
+            // Active card uses a brighter amber on hover so it stays visually distinct from
+            // the inactive hover (which is slate). The default applyButtonColors hover path
+            // maps any full-alpha base to ROW_HOVER — that makes active cards look inactive
+            // on hover, which confuses "click to deactivate".
+            int hoverColor = card.active() ? ACTIVE_HOTBAR_HOVER : ROW_HOVER;
+            int pressedColor = card.active() ? ACTIVE_HOTBAR_PRESSED : SELECTED;
+            Button button = new Button();
+            button.setActive(true);
+            button.buttonStyle(style -> style
+                    .baseTexture(rect(baseColor))
+                    .hoverTexture(rect(hoverColor))
+                    .pressedTexture(rect(pressedColor)));
+            button.textStyle(style -> style.font(FONT_UI).textColor(TEXT).textShadow(false).fontSize(8));
             button.layout(layout -> layout
                     .width(KIT_CARD_WIDTH)
                     .height(kitCardHeight(card.pageCount(), card.bringSlotCount()))
@@ -4196,13 +4260,17 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement kitCardPageRow(SlotWorkspaceViewModel.KitCard card, SlotWorkspaceViewModel.KitPageView page) {
-            UIElement row = new UIElement().layout(layout -> layout
+            boolean isActivePage = card.active() && card.activePageIndex() == page.pageIndex();
+            UIElement row = isActivePage
+                    ? panel(ACTIVE_PAGE_ROW)
+                    : new UIElement();
+            row.layout(layout -> layout
                     .widthPercent(100)
                     .height(KIT_CELL_SIZE + 2)
+                    .paddingHorizontal(2)
                     .gapAll(2)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
-            boolean isActivePage = card.active() && card.activePageIndex() == page.pageIndex();
             Label pageLabel = label(String.valueOf(page.pageIndex() + 1), isActivePage ? ACCENT : MUTED);
             pageLabel.layout(layout -> layout.width(8).height(12));
             pageLabel.textStyle(style -> style
@@ -4401,6 +4469,10 @@ final class SlotWorkspaceUiFactory {
                 );
             });
             cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button == 0) {
+                    event.stopPropagation();
+                    return;
+                }
                 if (event.button == 1) {
                     event.stopPropagation();
                     sendRemoveKitBring(card.kitId(), item.identity());
@@ -4515,10 +4587,19 @@ final class SlotWorkspaceUiFactory {
                 cell.addEventListener(UIEvents.DRAG_END, this::handleDragEnd);
             }
             cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button == 0) {
+                    // Stop left-click mouse-down so the surrounding kit-card Button doesn't
+                    // arm its click tracker. Otherwise a drag-rearrange gesture that ends
+                    // with mouse-up back inside the card fires activate/deactivate.
+                    event.stopPropagation();
+                    return;
+                }
                 if (event.button == 1 && slot.filled()) {
                     event.stopPropagation();
                     sendSetKitSlotIdentity(card.kitId(), page.pageIndex(), slot.slotIndex(), null);
                 }
+                // Right-click on an empty slot: let it bubble so the card context menu
+                // still opens for rename / duplicate / delete.
             });
             installKitSlotDropTarget(cell, card, page, slot);
             return cell;

@@ -189,6 +189,62 @@ writing new UI or action code.
   event type forces a platform edit. Keep the switch in the same module
   as the sealed type — see `WorkflowDomainFileStore` (common) for the
   reference placement of event encoders.
+- **Never call `BuiltinInventoryActionExecutor.*` directly from
+  session / integration code.** Use `InventoryActionExecutor.execute`.
+  The builtin layer's PROVIDER/TOOL diagnostics
+  (`non_builtin_target_route`, `unresolved_target`,
+  `unsupported_builtin_extract_route`, `unsupported_builtin_insert_route`)
+  are **boundary-skip markers**, not real failures — they tell the outer
+  executor to try the provider layer. Calling the builtin directly means
+  any backpack / terminal / tool source silently fails. The *only*
+  legitimate direct caller is `InventoryActionExecutor` itself. See
+  [architecture/overview.md → Transfer routing layers](docs/architecture/overview.md).
+- **`ASSIGN` requires both source and destination to be `PLAYER`-bound.**
+  The in-place swap path in `BuiltinInventoryActionExecutor.assign`
+  rejects `MENU` / `PROVIDER` / `TOOL` bindings with
+  `assign_requires_player_bound_targets`. There is **no provider
+  fallback for `executeAssign`**. If you need to move an identity from a
+  backpack (or any provider source) onto a quick-access slot, emit
+  `TRANSFER + INSERT_ONLY + STACK` and guarantee the destination is
+  empty first (stage the current occupant out via TRANSFER). This is
+  what `LoadoutApplyService` does automatically via `isPlayerBoundSource`
+  + `applyKind`.
+- **Restore must use the same layer that extracted.** When an
+  `InventoryActionExecutor.executeTransfer` partially succeeds (insert
+  returns a remainder) or fails after extract, the un-inserted portion
+  must be re-inserted through the layer that owned the original extract.
+  Writing a provider-extracted stack back via
+  `BuiltinInventoryActionExecutor.insert` against a `PROVIDER` source
+  returns `non_builtin_target_route` and the stack silently vanishes.
+  `ExtractionResult.viaProvider()` tracks the original layer;
+  `restoreExtracted` consults it.
+- **When an outcome is blocked, both layers' diagnostics matter.** Do
+  not surface *only* `builtin.diagnostics()` or *only*
+  `extraction.diagnostics()` — that masks the real failure behind a
+  boundary-skip marker. Use `preferProviderDiagnostic(builtin, provider)`:
+  it prefers whichever layer emitted a *meaningful* diagnostic, falls
+  back to joining both boundary markers when both layers only said
+  "not my concern." Provider-layer `source_is_not_provider_backed`
+  diagnostics carry a `:sourceId=bindingRoute` suffix so host-topology
+  drift is debuggable.
+- **`stableOrder` is the routing preference, and it's backpack-first.**
+  Lower rank = tried first, for both extraction candidate search and
+  insertion destination allocation. Canonical ranks: backpack 15–50 <
+  `PLAYER_MAIN` 100 < `PLAYER_QUICK_ACCESS_LANE_0` 110 < armor 120 <
+  offhand 130. Main only fills when every backpack slot is taken. Do
+  not silently re-rank without updating the docs — the invariant is
+  "backpacks are overflow storage; main is workspace; hotbar is
+  actively-used space," and users notice when overflow rules flip. If a
+  new integration adds a carried source, give it a rank that sits in
+  the correct bucket (overflow: small numbers; workspace: 100-range;
+  active use: 110+).
+- **`LoadoutApplyService` stage rollback must use `TRANSFER +
+  INSERT_ONLY`, not `ASSIGN`.** The staging slot is always empty at
+  rollback time (we just moved something out of it), so `INSERT_ONLY`
+  is sufficient — and `TRANSFER` goes through the mixed-layer executor
+  so rollback from a backpack staging slot works. `ASSIGN` would
+  reject the backpack-bound source with
+  `assign_requires_player_bound_targets`.
 
 ## Reference Material
 

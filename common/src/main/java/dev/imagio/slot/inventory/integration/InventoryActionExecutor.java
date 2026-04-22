@@ -124,6 +124,7 @@ public final class InventoryActionExecutor {
             ServerPlayer player,
             InventoryActionRequest request
     ) {
+        // Fast path: builtin-only (MENU/PLAYER on both source and destination).
         BuiltinInventoryActionExecutor.ExecutionResult builtin = BuiltinInventoryActionExecutor.transfer(host, player, request);
         if (builtin.successful()) {
             return successful(
@@ -134,48 +135,171 @@ public final class InventoryActionExecutor {
             );
         }
 
-        ProviderExtraction extraction = providerExtract(host, player, request);
+        // General path: decouple extract + insert so every combination of
+        // (builtin, provider) layers works. This matters most for the mixed cases —
+        // e.g., hotbar → backpack staging when main inventory is full during a kit
+        // page switch, which is (builtin extract + provider insert).
+        ExtractionResult extraction = extractViaEitherLayer(host, player, request);
         if (!extraction.successful()) {
-            return blocked(host, request, builtin.diagnostics().isBlank() ? extraction.diagnostics() : builtin.diagnostics(), ItemStack.EMPTY);
+            return blocked(host, request,
+                    preferProviderDiagnostic(extraction.builtinDiagnostic(), extraction.providerDiagnostic()),
+                    ItemStack.EMPTY);
         }
+        ItemStack extracted = extraction.stack();
 
-        ItemStack extracted = extraction.extracted();
-        BuiltinInventoryActionExecutor.StackResult builtinInsert = BuiltinInventoryActionExecutor.insert(
-                host,
-                player,
-                request.secondaryTarget(),
-                request,
-                extracted
-        );
-        if (builtinInsert.successful()) {
-            if (request.mode() == dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE && !builtinInsert.stack().isEmpty()) {
-                restoreProvider(host, player, request, builtinInsert.stack(), extraction);
-            }
-            return successful(
-                    host,
-                    request,
-                    builtinInsert.stack(),
-                    explicitActivityEvents(host, request, extracted, builtinInsert.stack())
-            );
-        }
-
-        ProviderInsertion insertion = providerInsert(host, player, request, extracted);
+        InsertionResult insertion = insertViaEitherLayer(host, player, request, extracted);
         if (insertion.successful()) {
-            if (request.mode() == dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE && !insertion.remainder().isEmpty()) {
-                restoreProvider(host, player, request, insertion.remainder(), extraction);
+            ItemStack remainder = insertion.remainder();
+            if (request.mode() == dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE
+                    && !remainder.isEmpty()) {
+                restoreExtracted(host, player, request, remainder, extraction);
             }
             return successful(
                     host,
                     request,
-                    insertion.remainder(),
-                    explicitActivityEvents(host, request, extracted, insertion.remainder())
+                    remainder,
+                    explicitActivityEvents(host, request, extracted, remainder)
             );
         }
 
+        // Insert failed on both layers — put the extracted stack back where it came from.
         if (request.mode() == dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE) {
-            restoreProvider(host, player, request, extracted, extraction);
+            restoreExtracted(host, player, request, extracted, extraction);
         }
-        return blocked(host, request, insertion.diagnostics().isBlank() ? builtinInsert.diagnostics() : insertion.diagnostics(), ItemStack.EMPTY);
+        return blocked(host, request,
+                preferProviderDiagnostic(insertion.builtinDiagnostic(), insertion.providerDiagnostic()),
+                ItemStack.EMPTY);
+    }
+
+    private static ExtractionResult extractViaEitherLayer(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            InventoryActionRequest request
+    ) {
+        BuiltinInventoryActionExecutor.StackResult builtin = BuiltinInventoryActionExecutor.extract(
+                host, player, request.primaryTarget(), request);
+        if (builtin.successful() && !builtin.stack().isEmpty()) {
+            return ExtractionResult.viaBuiltin(builtin.stack(), builtin.diagnostics());
+        }
+        ProviderExtraction provider = providerExtract(host, player, request);
+        if (provider.successful() && !provider.extracted().isEmpty()) {
+            return ExtractionResult.viaProvider(provider.extracted(), provider.identity(),
+                    builtin.diagnostics(), provider.diagnostics());
+        }
+        return ExtractionResult.failed(builtin.diagnostics(), provider.diagnostics());
+    }
+
+    private static InsertionResult insertViaEitherLayer(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            InventoryActionRequest request,
+            ItemStack extracted
+    ) {
+        BuiltinInventoryActionExecutor.StackResult builtin = BuiltinInventoryActionExecutor.insert(
+                host, player, request.secondaryTarget(), request, extracted);
+        if (builtin.successful()) {
+            return InsertionResult.viaBuiltin(builtin.stack(), builtin.diagnostics());
+        }
+        ProviderInsertion provider = providerInsert(host, player, request, extracted);
+        if (provider.successful()) {
+            return InsertionResult.viaProvider(provider.remainder(),
+                    builtin.diagnostics(), provider.diagnostics());
+        }
+        return InsertionResult.failed(builtin.diagnostics(), provider.diagnostics());
+    }
+
+    /**
+     * Restore an un-inserted (or remainder) stack back to whichever layer handled
+     * the original extraction. Using the wrong layer here silently loses items — e.g.,
+     * we must restore via provider if we extracted from a backpack, not via builtin.
+     */
+    private static void restoreExtracted(
+            InventoryHostDescriptor host,
+            ServerPlayer player,
+            InventoryActionRequest request,
+            ItemStack remainder,
+            ExtractionResult extraction
+    ) {
+        if (remainder == null || remainder.isEmpty()) {
+            return;
+        }
+        if (extraction.viaProvider()) {
+            InventoryMutationRouter.mutate(
+                    host,
+                    restoreRequest(host, player, request.primaryTarget(), remainder),
+                    InventoryMutationMode.EXECUTE
+            );
+        } else {
+            BuiltinInventoryActionExecutor.insert(host, player, request.primaryTarget(), request, remainder);
+        }
+    }
+
+    /**
+     * Two fallback layers each emit their own "this path didn't apply" markers:
+     * builtin reports `non_builtin_target_route` / `unresolved_target` when the source
+     * or target isn't in its MENU/PLAYER remit; provider reports
+     * `source_is_not_provider_backed` / `target_is_not_provider_backed` when the
+     * source/target isn't PROVIDER-bound. Neither marker is the real failure reason —
+     * they're just "not my concern." When both layers ran and both only emitted
+     * such markers, we join them so the caller can see the full picture. Otherwise we
+     * surface whichever layer emitted a meaningful diagnostic.
+     */
+    private static String preferProviderDiagnostic(String builtinDiagnostic, String providerDiagnostic) {
+        boolean builtinIsMeaningful = isMeaningfulDiagnostic(builtinDiagnostic);
+        boolean providerIsMeaningful = isMeaningfulDiagnostic(providerDiagnostic);
+        if (builtinIsMeaningful && providerIsMeaningful) {
+            return builtinDiagnostic + " | provider:" + providerDiagnostic;
+        }
+        if (builtinIsMeaningful) {
+            return builtinDiagnostic;
+        }
+        if (providerIsMeaningful) {
+            return providerDiagnostic;
+        }
+        // Both sides only emitted "not my concern" markers — surface them together so
+        // the real issue (usually "neither layer owns this target") is visible.
+        String safeBuiltin = builtinDiagnostic == null ? "" : builtinDiagnostic;
+        String safeProvider = providerDiagnostic == null ? "" : providerDiagnostic;
+        if (safeBuiltin.isBlank()) {
+            return safeProvider;
+        }
+        if (safeProvider.isBlank()) {
+            return safeBuiltin;
+        }
+        return safeBuiltin + " | provider:" + safeProvider;
+    }
+
+    private static boolean isMeaningfulDiagnostic(String diagnostic) {
+        if (diagnostic == null || diagnostic.isBlank()) {
+            return false;
+        }
+        return !isBoundarySkipDiagnostic(diagnostic);
+    }
+
+    /**
+     * "I don't own this target" markers from either layer. These are not reasons for
+     * the overall action to fail — they're an expected signal that the other layer
+     * should handle the request.
+     */
+    private static boolean isBoundarySkipDiagnostic(String diagnostic) {
+        if (diagnostic == null) {
+            return false;
+        }
+        // Builtin layer markers (MENU/PLAYER-only).
+        if (diagnostic.equals("non_builtin_target_route")
+                || diagnostic.equals("unsupported_builtin_extract_route")
+                || diagnostic.equals("unsupported_builtin_insert_route")
+                || diagnostic.equals("unresolved_target")) {
+            return true;
+        }
+        // Provider layer markers (PROVIDER-only). The ":sourceId=ROUTE" suffix is an
+        // optional diagnostic hint — treat prefixes as equivalent.
+        return diagnostic.startsWith("source_is_not_provider_backed")
+                || diagnostic.startsWith("target_is_not_provider_backed")
+                || diagnostic.startsWith("provider_source_missing_from_host")
+                || diagnostic.startsWith("provider_target_missing_from_host")
+                || diagnostic.equals("provider_source_unavailable")
+                || diagnostic.equals("provider_target_unavailable");
     }
 
     private static InventoryActionOutcome executeAssign(
@@ -206,7 +330,9 @@ public final class InventoryActionExecutor {
             }
             return successful(host, request, ItemStack.EMPTY, List.of());
         }
-        return blocked(host, request, builtin.diagnostics().isBlank() ? extraction.diagnostics() : builtin.diagnostics(), ItemStack.EMPTY);
+        return blocked(host, request,
+                preferProviderDiagnostic(builtin.diagnostics(), extraction.diagnostics()),
+                ItemStack.EMPTY);
     }
 
     private static InventoryActionOutcome executeUse(
@@ -259,7 +385,9 @@ public final class InventoryActionExecutor {
                     explicitActivityEvents(host, request, extraction.extracted(), ItemStack.EMPTY)
             );
         }
-        return blocked(host, request, builtin.diagnostics().isBlank() ? extraction.diagnostics() : builtin.diagnostics(), ItemStack.EMPTY);
+        return blocked(host, request,
+                preferProviderDiagnostic(builtin.diagnostics(), extraction.diagnostics()),
+                ItemStack.EMPTY);
     }
 
     private static InventoryActionOutcome executePlace(
@@ -276,7 +404,9 @@ public final class InventoryActionExecutor {
         if (insertion.successful()) {
             return successful(host, request, insertion.remainder(), List.of());
         }
-        return blocked(host, request, builtin.diagnostics().isBlank() ? insertion.diagnostics() : builtin.diagnostics(), MenuCursorAccess.get(host.menu()));
+        return blocked(host, request,
+                preferProviderDiagnostic(builtin.diagnostics(), insertion.diagnostics()),
+                MenuCursorAccess.get(host.menu()));
     }
 
     private static InventoryActionOutcome executeSwap(
@@ -321,8 +451,11 @@ public final class InventoryActionExecutor {
         }
 
         InventorySourceDescriptor source = host.source(sourceId);
-        if (source == null || !source.providerBacked()) {
-            return ProviderExtraction.blocked("source_is_not_provider_backed");
+        if (source == null) {
+            return ProviderExtraction.blocked("provider_source_missing_from_host:" + sourceId);
+        }
+        if (!source.providerBacked()) {
+            return ProviderExtraction.blocked("source_is_not_provider_backed:" + sourceId + "=" + source.bindingRoute());
         }
 
         MutationResult result = InventoryMutationRouter.mutate(
@@ -349,8 +482,11 @@ public final class InventoryActionExecutor {
         }
 
         InventorySourceDescriptor source = host.source(sourceId);
-        if (source == null || !source.providerBacked()) {
-            return ProviderInsertion.blocked("target_is_not_provider_backed");
+        if (source == null) {
+            return ProviderInsertion.blocked("provider_target_missing_from_host:" + sourceId);
+        }
+        if (!source.providerBacked()) {
+            return ProviderInsertion.blocked("target_is_not_provider_backed:" + sourceId + "=" + source.bindingRoute());
         }
 
         ItemStack requestedStack = requestedInsertStack(request, stack);
@@ -366,27 +502,6 @@ public final class InventoryActionExecutor {
             return ProviderInsertion.blocked(result.diagnostics());
         }
         return ProviderInsertion.success(mergeUnattemptedRemainder(stack, requestedStack, result.stackRemainder()));
-    }
-
-    private static void restoreProvider(
-            InventoryHostDescriptor host,
-            ServerPlayer player,
-            InventoryActionRequest request,
-            ItemStack remainder,
-            ProviderExtraction extraction
-    ) {
-        if (remainder == null || remainder.isEmpty()) {
-            return;
-        }
-        String sourceId = InventoryAuthorityReadService.sourceId(host, request.primaryTarget());
-        if (sourceId == null || sourceId.isBlank()) {
-            return;
-        }
-        InventoryMutationRouter.mutate(
-                host,
-                restoreRequest(host, player, request.primaryTarget(), remainder),
-                InventoryMutationMode.EXECUTE
-        );
     }
 
     private static InventoryMutationRequest extractionRequest(
@@ -929,6 +1044,74 @@ public final class InventoryActionExecutor {
 
         private static ProviderInsertion blocked(String diagnostics) {
             return new ProviderInsertion(false, ItemStack.EMPTY, diagnostics == null ? "" : diagnostics);
+        }
+    }
+
+    /**
+     * Layer-agnostic result of "extract a stack from request.primaryTarget()". Records
+     * which layer actually owned the extraction so the restore path can put the stack
+     * back through the same layer (using the wrong layer silently loses items).
+     */
+    private record ExtractionResult(
+            boolean successful,
+            boolean viaProvider,
+            ItemStack stack,
+            String builtinDiagnostic,
+            String providerDiagnostic
+    ) {
+        private static ExtractionResult viaBuiltin(ItemStack stack, String builtinDiagnostic) {
+            return new ExtractionResult(true, false,
+                    stack == null ? ItemStack.EMPTY : stack,
+                    builtinDiagnostic == null ? "" : builtinDiagnostic, "");
+        }
+
+        private static ExtractionResult viaProvider(
+                ItemStack stack,
+                dev.imagio.slot.inventory.core.ItemIdentity identity,
+                String builtinDiagnostic,
+                String providerDiagnostic
+        ) {
+            // identity is unused here but kept in the signature in case restore needs
+            // it later — parity with ProviderExtraction.success(...).
+            return new ExtractionResult(true, true,
+                    stack == null ? ItemStack.EMPTY : stack,
+                    builtinDiagnostic == null ? "" : builtinDiagnostic,
+                    providerDiagnostic == null ? "" : providerDiagnostic);
+        }
+
+        private static ExtractionResult failed(String builtinDiagnostic, String providerDiagnostic) {
+            return new ExtractionResult(false, false, ItemStack.EMPTY,
+                    builtinDiagnostic == null ? "" : builtinDiagnostic,
+                    providerDiagnostic == null ? "" : providerDiagnostic);
+        }
+    }
+
+    /** Layer-agnostic result of "insert a stack into request.secondaryTarget()." */
+    private record InsertionResult(
+            boolean successful,
+            ItemStack remainder,
+            String builtinDiagnostic,
+            String providerDiagnostic
+    ) {
+        private static InsertionResult viaBuiltin(ItemStack remainder, String builtinDiagnostic) {
+            return new InsertionResult(true,
+                    remainder == null ? ItemStack.EMPTY : remainder,
+                    builtinDiagnostic == null ? "" : builtinDiagnostic, "");
+        }
+
+        private static InsertionResult viaProvider(
+                ItemStack remainder, String builtinDiagnostic, String providerDiagnostic
+        ) {
+            return new InsertionResult(true,
+                    remainder == null ? ItemStack.EMPTY : remainder,
+                    builtinDiagnostic == null ? "" : builtinDiagnostic,
+                    providerDiagnostic == null ? "" : providerDiagnostic);
+        }
+
+        private static InsertionResult failed(String builtinDiagnostic, String providerDiagnostic) {
+            return new InsertionResult(false, ItemStack.EMPTY,
+                    builtinDiagnostic == null ? "" : builtinDiagnostic,
+                    providerDiagnostic == null ? "" : providerDiagnostic);
         }
     }
 

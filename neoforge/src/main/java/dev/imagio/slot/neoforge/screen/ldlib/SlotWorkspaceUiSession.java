@@ -736,27 +736,39 @@ final class SlotWorkspaceUiSession {
             broadcast(serverPlayer);
             return;
         }
-        int sourceMainSlot = firstMainSlotForIdentity(serverPlayer, identity);
-        if (sourceMainSlot < 0) {
+        // Route through the same identity-based hotbar assignment that digit-press
+        // uses so items living in backpacks / other non-player carried sources can
+        // reach the hotbar (firstMainSlotForIdentity only scans PLAYER_MAIN).
+        assignIdentityToHotbarIndex(serverPlayer, identity, freeHotbarIndex);
+    }
+
+    private void assignIdentityToHotbarIndex(ServerPlayer serverPlayer, ItemIdentity identity, int hotbarIndex) {
+        CarriedSlotRef source = firstCarriedSlotForIdentityAnySource(serverPlayer, identity);
+        if (source == null) {
             status = "nothing_to_assign";
-            diagnostics = "identity not in main inventory";
+            diagnostics = "identity not found in any carried source";
             broadcast(serverPlayer);
             return;
         }
-        WorkspaceTransferExecution execution = executeTransfer(
-                serverPlayer,
-                new InventoryActionTarget.SourceSlotTarget(BuiltinInventoryIds.PLAYER_MAIN, sourceMainSlot),
-                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, freeHotbarIndex),
-                "slot_workspace.ldlib.assign_home_to_free_hotbar"
-        );
-        if (execution.appliedCompletely()) {
-            status = "assigned_to_hotbar_" + (freeHotbarIndex + 1);
-            diagnostics = "moved to hotbar " + (freeHotbarIndex + 1);
-        } else {
-            status = execution.feedback().status();
-            diagnostics = execution.feedback().diagnostics();
+        if (BuiltinInventoryIds.PLAYER_MAIN.equals(source.laneId())
+                || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(source.laneId())) {
+            WorkspaceTransferExecution execution = executeTransfer(
+                    serverPlayer,
+                    new InventoryActionTarget.SourceSlotTarget(source.laneId(), source.slotIndex()),
+                    new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
+                    "slot_workspace.ldlib.assign_identity_to_hotbar"
+            );
+            if (execution.appliedCompletely()) {
+                status = "assigned_to_hotbar_" + (hotbarIndex + 1);
+                diagnostics = "moved to hotbar " + (hotbarIndex + 1);
+            } else {
+                status = execution.feedback().status();
+                diagnostics = execution.feedback().diagnostics();
+            }
+            broadcast(serverPlayer);
+            return;
         }
-        broadcast(serverPlayer);
+        applyLoadoutSingleTarget(serverPlayer, hotbarIndex, identity);
     }
 
     // Identity-based hotbar slot assignment. Unlike the slot-index-based
@@ -785,40 +797,13 @@ final class SlotWorkspaceUiSession {
         }
 
         refreshServerView(serverPlayer);
-        CarriedSlotRef source = firstCarriedSlotForIdentityAnySource(serverPlayer, identity);
-        if (source == null) {
-            status = "nothing_to_assign";
-            diagnostics = "identity not found in any carried source";
-            broadcast(serverPlayer);
-            return;
-        }
-
         // If the source is a player slot (main or hotbar) the factory builds a single ASSIGN
         // request and the in-place swap path handles displacement. If it lives in a backpack
         // (or any other non-player carried source) the in-place swap path rejects with
-        // `assign_requires_player_bound_targets`, so we route through LoadoutApplyService's
-        // staging flow — TRANSFER source→hotbar, with an automatic staging step that moves
-        // any current hotbar occupant into a free main slot.
-        if (BuiltinInventoryIds.PLAYER_MAIN.equals(source.laneId())
-                || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(source.laneId())) {
-            WorkspaceTransferExecution execution = executeTransfer(
-                    serverPlayer,
-                    new InventoryActionTarget.SourceSlotTarget(source.laneId(), source.slotIndex()),
-                    new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
-                    "slot_workspace.ldlib.assign_identity_to_hotbar"
-            );
-            if (execution.appliedCompletely()) {
-                status = "assigned_to_hotbar_" + (hotbarIndex + 1);
-                diagnostics = "moved to hotbar " + (hotbarIndex + 1);
-            } else {
-                status = execution.feedback().status();
-                diagnostics = execution.feedback().diagnostics();
-            }
-            broadcast(serverPlayer);
-            return;
-        }
-
-        applyLoadoutSingleTarget(serverPlayer, hotbarIndex, identity);
+        // `assign_requires_player_bound_targets`, so assignIdentityToHotbarIndex routes
+        // through LoadoutApplyService's staging flow — TRANSFER source→hotbar, with an
+        // automatic staging step that moves any current hotbar occupant into a free main slot.
+        assignIdentityToHotbarIndex(serverPlayer, identity, hotbarIndex);
     }
 
     private void applyLoadoutSingleTarget(ServerPlayer serverPlayer, int hotbarIndex, ItemIdentity identity) {

@@ -390,6 +390,9 @@ final class BuiltinInventoryActionExecutor {
         return switch (resolved.bindingRoute()) {
             case MENU -> extractMenuBound(host.menu(), player, resolved, request);
             case PLAYER -> extractPlayerBound(player.getInventory(), resolved, request);
+            // PROVIDER / TOOL sources aren't handled by the builtin executor; the outer
+            // InventoryActionExecutor.executeTransfer catches this diagnostic and routes
+            // through InventoryMutationRouter → PlayerInventoryExtension.mutate.
             case PROVIDER, TOOL -> StackResult.blocked("non_builtin_target_route");
         };
     }

@@ -190,15 +190,20 @@ public final class LoadoutApplyService {
                         false,
                         ""
                 ));
+                // Rollback uses TRANSFER + INSERT_ONLY (not ASSIGN) so it works for any
+                // staging source — ASSIGN's in-place swap requires PLAYER-bound ends, and
+                // backpack staging makes the staging slot PROVIDER-bound. The staged
+                // slot will be empty by the time rollback runs (we just moved something
+                // out of it), so INSERT_ONLY succeeds without needing displacement.
                 rollbackRequest = new InventoryActionRequest(
                         host.hostId(),
                         host.serverMenuRef(),
                         UUID.randomUUID().toString(),
-                        targetKind,
+                        InventoryActionKind.TRANSFER,
                         resolvedMode,
-                        quantityFor(targetKind),
-                        InventoryActionScope.LOADOUT,
-                        conflictPolicyFor(targetKind),
+                        InventoryActionQuantity.STACK,
+                        InventoryActionScope.SINGLE_TARGET,
+                        InventoryActionConflictPolicy.INSERT_ONLY,
                         "workflow:loadout_stage_rollback",
                         new InventoryActionTarget.SourceSlotTarget(stagingTarget.sourceId(), stagingTarget.slotIndex()),
                         target,
@@ -555,30 +560,21 @@ public final class LoadoutApplyService {
             ProtectionPolicy protectionPolicy,
             Set<String> reservedSourceSlots
     ) {
+        // Staging = "park displaced target occupant somewhere carried." We exclude
+        // quick-access + equipment sources because they are the loadout's own target
+        // surfaces (parking into one would collide with a later entry and produce a
+        // self-transfer). Otherwise we follow the general carried stableOrder — which
+        // per BuiltinInventoryDescriptors is backpack → main → hotbar. The "backpack
+        // first" order matches the design rule that overflow lands in backpacks so
+        // the main inventory's layout stays intact across kit switches.
         InventoryHostDescriptor host = authority.host();
-        // Prefer staging into player-backed sources that aren't themselves quick-access /
-        // equipment lanes (i.e., main inventory). A staged item parked inside a quick-access
-        // slot works — stagedCandidateIsAtTarget catches the self-transfer case — but main
-        // is a cleaner holding area and keeps the rollback path viable (rollback emits
-        // ASSIGN which only supports PLAYER-bound source + destination). Fall back to any
-        // INSERT-capable source if no preferred slot is available.
-        StagingTarget preferred = findStagingTarget(
+        return findStagingTarget(
                 authority,
                 reservedSourceSlots,
                 protectionPolicy,
                 source -> source != null
                         && source.supports(InventoryCapability.INSERT)
-                        && source.playerBacked()
                         && !isQuickAccessOrEquipmentSource(host, source.id())
-        );
-        if (preferred != null) {
-            return preferred;
-        }
-        return findStagingTarget(
-                authority,
-                reservedSourceSlots,
-                protectionPolicy,
-                source -> source != null && source.supports(InventoryCapability.INSERT)
         );
     }
 
