@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-21 (ember-text-api integration landed)
+Last updated: 2026-04-22 (kit prototype slices 4–8 landed)
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -252,10 +252,13 @@ Key landing points:
   Minecraft's `Font.drawInBatch` globally via mixin, which is too
   invasive for users who only want crisp text in our mod's UI.
 
-**Next arc: resume the Kit prototype** (slices 4–9). Pick up at
-[plans/kit-prototype.md](plans/kit-prototype.md). Nothing in the
-atlas-navigation or font work touched Kit domain state, so
-resumption is a clean continuation.
+**Kit prototype slices 4–8 landed** (multi-page, bring list +
+Kit-active protection, drag-to-edit, gather, persistence). Slice 9
+(Kit-specific undo) is intentionally deferred per the general-undo
+memory note — activate/switch-page should plug into the comprehensive
+undo stack when that lands, not spawn a Kit-only path. Pick up at
+[plans/kit-prototype.md](plans/kit-prototype.md) for arc detail and at
+"Kit prototype landing points" below for the current tuning.
 
 ### Atlas navigation + QoL landing points
 
@@ -598,12 +601,11 @@ below).
     `rebuild()` (it tore down the drag source mid-drag); accent
     overlay updates via per-slot TICK transition tracking.
 
-### Kit prototype: paused arc
+### Kit prototype landing points
 
-Kit prototype slices 1, 2, and 3 are landed (see Kit landing
-points below). Slices 4–9 remain paused; this is the natural
-resume point. See [plans/kit-prototype.md](plans/kit-prototype.md)
-for the original arc and Definition Of Done.
+Kit prototype slices 1–8 are landed. Slice 9 (per-activate undo) is
+deferred pending the comprehensive undo/redo stack. See
+[plans/kit-prototype.md](plans/kit-prototype.md) for the arc.
 
 Kit prototype landing points so far:
 
@@ -634,6 +636,61 @@ Kit prototype landing points so far:
   would have" is represented by `planActivate` returning a real
   `LoadoutApplyPlan`. Actually dispatching the plan through the
   executor is Slice 3 work (wired when the UI calls activate)
+- **Slice 4**: multi-page kits + page cycling. `KitDefinition` gained
+  `MAX_CARRIED_CAPACITY = 36`, `carriedSlotCount()`,
+  `fitsCarriedCapacity()`, `withPageAppended()`, `withPageRemoved(i)`.
+  `KitWorkflowDomainService` gained `addPage / removePage` with
+  capacity validation and automatic activation reindex when the active
+  page is removed. `SlotWorkspaceCommandService.switchKitPage(direction)`
+  plans via `KitWorkflowDomainService.planActivate(targetPage, ...)` and
+  applies through `LoadoutApplyExecutor` — staging path handles the
+  belt→main displacement naturally. UI: Kit Cards render every page as
+  a sub-row with a per-page remove `-`; an `+ page` footer row disables
+  when `carriedSlotCount + 9 > 36`. Belt's Kit toggle button appends
+  `N/M` page indicator when active. A `>` cycle button sits next to the
+  Kit toggle (left-click next, right-click/shift back) when the active
+  kit has >1 page. New `key.slot.cycle_kit_page` key mapping (unbound
+  default, GUI context) cycles the page; shift inverts direction
+- **Slice 5**: bring list + Kit-active protection.
+  `KitWorkflowDomainService.addBring / removeBring / setSlotIdentity`
+  emit `KitUpdated`. `KitActiveProtection` is a `ProtectionPolicy`
+  that unions active-kit identities (belt + offhand + bring) with the
+  base `ProtectionSnapshotPolicy` and protects them against `TRASH /
+  VOID / DROP_TO_WORLD`. `WorkflowDomainRuntime.protection()` now
+  returns the composed policy (still `ProtectionSnapshotPolicy` via
+  `baseProtection()` for legacy callers). Kit Cards render a bring
+  row under the pages with a `bring R/T` readiness label and cells
+  that accept atlas-home/hotbar drops (add) and right-click / drag-off
+  (remove)
+- **Slice 6**: drag-to-edit. Kit slot cells and bring cells are
+  drop targets (accept `AtlasItemDrag`, `HotbarSlotDrag`, sibling
+  `KitSlotDrag`, sibling `KitBringDrag`) and drag sources (dragging
+  off triggers removal via atlas-background `DRAG_PERFORM`).
+  Right-click a filled slot clears it; right-click a bring cell
+  removes it. Command service: `setKitSlotIdentity / addKitBring /
+  removeKitBring` dispatch to domain service ops. Empty itemId on
+  `setKitSlotIdentity` clears the slot
+- **Slice 7**: gather missing. Kit cards show a `gather N` footer
+  button (next to `+ page`) when any filled slot identity or bring
+  identity is absent from carried. Click advances through the
+  missing list, panning the camera to each identity's visual home
+  via `panToIsland`. Status bar shows `gather k/N: <item>` progress.
+  Gather is a read-only UI walkthrough — no auto-withdraw, no
+  inventory mutation. Reset on switching to a different kit
+- **Slice 8**: persistence. `WorkflowCheckpointData` gained `kits`
+  (ordered list of `KitDefinitionData(id, name, pages, bring,
+  offhand)`) and `kitActivation` (`KitActivationData(kitId,
+  pageIndex)` or null). Kit events (`KitCreated / KitUpdated /
+  KitDeleted / KitActivated / KitDeactivated / KitPageSwitched`)
+  now encode + decode through the existing event-log format. Load
+  drops activation referencing an unknown kit and falls back to
+  `KitActivation.NONE`. Schema change is additive — older save
+  files load cleanly with empty `kits` arrays. Covered by a new
+  `WorkflowDomainFileStoreTest.fileStoreRoundTripsKitsAndActivation`
+- **Slice 9 (Kit undo): deferred** pending the comprehensive
+  undo/redo stack. Per the general-undo memory note, do not ship a
+  Kit-only undo toast; activate/switch-page should emit records
+  compatible with the future undo stack when it lands
 - **Slice 3**: Kit Rack landed as a glass overlay pinned to the
   camera above the Belt, toggled by a "Kits" button on the Belt.
   Rack body shows one card per kit with: name, per-slot
@@ -672,8 +729,9 @@ Kit prototype landing points so far:
   withdraw will cover this
 
 **Slice 4b** (Kit-holdout deposit) and the withdraw half of storage
-**Slice 5** remain blocked on Kit prototype Slice 5 (Kit-active
-protection).
+**Slice 5** no longer block on the Kit prototype — Slice 5's
+`KitActiveProtection` gives them the identity-protected view they
+need. Remaining work is on the storage side.
 
 The underlying triage/home loop (from [plans/current.md](plans/current.md))
 is landed enough to support the remaining Kit slices: template + learned

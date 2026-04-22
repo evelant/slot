@@ -28,6 +28,7 @@ import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -128,6 +129,10 @@ final class SlotWorkspaceUiFactory {
         private final java.util.Map<Integer, UIElement> hotbarSlotElements = new java.util.HashMap<>();
         private SlotWorkspaceViewModel.IdentityRef contextMenuAtlasIdentity;
         private int contextMenuHotbarIndex = -1;
+        private String contextMenuKitId;
+        private String renamingKitId;
+        private String renameKitDraft = "";
+        private String confirmDeleteKitId;
         private float contextMenuScreenX;
         private float contextMenuScreenY;
         private final java.util.ArrayDeque<String> recentRehomeIslandIds = new java.util.ArrayDeque<>();
@@ -164,6 +169,15 @@ final class SlotWorkspaceUiFactory {
         private RPCEmitter activateKitEmitter;
         private RPCEmitter deactivateKitEmitter;
         private RPCEmitter deleteKitEmitter;
+        private RPCEmitter switchKitPageEmitter;
+        private RPCEmitter addKitPageEmitter;
+        private RPCEmitter removeKitPageEmitter;
+        private RPCEmitter addKitBringEmitter;
+        private RPCEmitter removeKitBringEmitter;
+        private RPCEmitter setKitSlotIdentityEmitter;
+        private RPCEmitter renameKitEmitter;
+        private RPCEmitter duplicateKitEmitter;
+        private RPCEmitter swapKitSlotsEmitter;
         private RPCEmitter returnHotbarToHomeEmitter;
         private RPCEmitter assignHomeToFreeHotbarEmitter;
         private RPCEmitter depositCarriedToChestEmitter;
@@ -210,6 +224,8 @@ final class SlotWorkspaceUiFactory {
         private int searchMatchIndex;
         private static final long SEARCH_PREVIEW_DELAY_MS = 220L;
         private static final long SEARCH_COMMIT_DELAY_MS = 3500L;
+        private String gatherKitId = "";
+        private int gatherStep = 0;
 
         private Controller(SlotWorkspaceUiSession session, Player player) {
             this.session = session;
@@ -246,6 +262,7 @@ final class SlotWorkspaceUiFactory {
             root.addEventListener(UIEvents.KEY_DOWN, this::handlePeekKeyDown, true);
             root.addEventListener(UIEvents.KEY_UP, this::handlePeekKeyUp, true);
             root.addEventListener(UIEvents.KEY_DOWN, this::handleCameraHistoryKey, true);
+            root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
             root.addEventListener(UIEvents.MOUSE_DOWN, this::handleCameraHistoryMouse, true);
             root.addEventListener(UIEvents.CHAR_TYPED, event -> {
                 if (event.codePoint >= '1' && event.codePoint <= '9') {
@@ -361,6 +378,23 @@ final class SlotWorkspaceUiFactory {
                 event.stopPropagation();
                 performCameraForward();
             }
+        }
+
+        private void handleCycleKitPageKey(UIEvent event) {
+            if (isTextInputFocused() || searchModalActive) {
+                return;
+            }
+            if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                    .matchesCycleKitPage(event.keyCode, event.scanCode)) {
+                return;
+            }
+            SlotWorkspaceViewModel.KitCard active = viewModel.activeKit();
+            if (active == null || active.pageCount() <= 1) {
+                return;
+            }
+            event.stopPropagation();
+            int direction = Screen.hasShiftDown() ? -1 : 1;
+            sendSwitchKitPage(direction);
         }
 
         private void handleCameraHistoryMouse(UIEvent event) {
@@ -849,6 +883,58 @@ final class SlotWorkspaceUiFactory {
             deleteKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     String.class,
                     session::deleteKit
+            ));
+            switchKitPageEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    Integer.class,
+                    session::switchKitPage
+            ));
+            addKitPageEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    session::addKitPage
+            ));
+            removeKitPageEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    Integer.class,
+                    session::removeKitPage
+            ));
+            addKitBringEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    String.class,
+                    String.class,
+                    session::addKitBring
+            ));
+            removeKitBringEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    String.class,
+                    String.class,
+                    session::removeKitBring
+            ));
+            setKitSlotIdentityEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    Integer.class,
+                    Integer.class,
+                    String.class,
+                    String.class,
+                    String.class,
+                    session::setKitSlotIdentity
+            ));
+            renameKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    String.class,
+                    session::renameKit
+            ));
+            duplicateKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    session::duplicateKit
+            ));
+            swapKitSlotsEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    String.class,
+                    Integer.class,
+                    Integer.class,
+                    Integer.class,
+                    session::swapKitSlots
             ));
             returnHotbarToHomeEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     Integer.class,
@@ -2892,6 +2978,22 @@ final class SlotWorkspaceUiFactory {
             }
             contextMenuHotbarIndex = slot.hotbarIndex();
             contextMenuAtlasIdentity = null;
+            contextMenuKitId = null;
+            contextMenuScreenX = screenX;
+            contextMenuScreenY = screenY;
+            rebuild();
+        }
+
+        private void openContextMenuForKit(String kitId, float screenX, float screenY) {
+            if (kitId == null || kitId.isBlank()) {
+                return;
+            }
+            contextMenuKitId = kitId;
+            contextMenuAtlasIdentity = null;
+            contextMenuHotbarIndex = -1;
+            renamingKitId = null;
+            renameKitDraft = "";
+            confirmDeleteKitId = null;
             contextMenuScreenX = screenX;
             contextMenuScreenY = screenY;
             rebuild();
@@ -2900,6 +3002,10 @@ final class SlotWorkspaceUiFactory {
         private void closeContextMenu() {
             contextMenuAtlasIdentity = null;
             contextMenuHotbarIndex = -1;
+            contextMenuKitId = null;
+            renamingKitId = null;
+            renameKitDraft = "";
+            confirmDeleteKitId = null;
             rebuild();
         }
 
@@ -2919,6 +3025,14 @@ final class SlotWorkspaceUiFactory {
                     return null;
                 }
                 return buildHotbarContextMenu(slot);
+            }
+            if (contextMenuKitId != null) {
+                SlotWorkspaceViewModel.KitCard card = viewModel.kit(contextMenuKitId);
+                if (card == null) {
+                    closeContextMenu();
+                    return null;
+                }
+                return buildKitContextMenu(card);
             }
             return null;
         }
@@ -3034,6 +3148,153 @@ final class SlotWorkspaceUiFactory {
                     .left(0).right(0).top(0).bottom(0));
             wrapper.addChildren(catcher, menu);
             return wrapper;
+        }
+
+        private UIElement buildKitContextMenu(SlotWorkspaceViewModel.KitCard card) {
+            UIElement catcher = contextMenuCatcher(this::closeContextMenu);
+            UIElement menu = panel(GLASS).layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .width(180)
+                    .paddingAll(6)
+                    .gapAll(4)
+                    .flexDirection(FlexDirection.COLUMN));
+            int approxHeight = 80;
+            if (card.kitId().equals(renamingKitId)) {
+                approxHeight = 70;
+            } else if (card.kitId().equals(confirmDeleteKitId)) {
+                approxHeight = 64;
+            }
+            anchorPopover(menu, contextMenuScreenX, contextMenuScreenY, 180, approxHeight);
+            menu.style(style -> style.zIndex(22));
+            menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+
+            menu.addChild(label(shorten(card.name(), 22), ACCENT)
+                    .layout(layout -> layout.widthPercent(100).height(12)));
+
+            if (card.kitId().equals(renamingKitId)) {
+                appendKitRenameBody(menu, card);
+            } else if (card.kitId().equals(confirmDeleteKitId)) {
+                appendKitDeleteConfirmBody(menu, card);
+            } else {
+                menu.addChild(menuButton("Rename\u2026", true, null, () -> {
+                    renamingKitId = card.kitId();
+                    renameKitDraft = card.name();
+                    rebuild();
+                }));
+                menu.addChild(menuButton("Duplicate", true, null, () -> {
+                    sendDuplicateKit(card.kitId());
+                    closeContextMenu();
+                }));
+                menu.addChild(menuButton("Delete\u2026", true, null, () -> {
+                    confirmDeleteKitId = card.kitId();
+                    rebuild();
+                }));
+            }
+
+            UIElement wrapper = new UIElement().layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(0).right(0).top(0).bottom(0));
+            wrapper.addChildren(catcher, menu);
+            return wrapper;
+        }
+
+        private void appendKitRenameBody(UIElement menu, SlotWorkspaceViewModel.KitCard card) {
+            TextField nameInput = new TextField();
+            nameInput.setAnyString();
+            nameInput.setText(renameKitDraft, false);
+            nameInput.layout(layout -> layout.widthPercent(100).height(18));
+            nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
+            nameInput.textFieldStyle(style -> style
+                    .font(FONT_UI)
+                    .placeholder(Component.literal("Kit name"))
+                    .textColor(TEXT)
+                    .cursorColor(ACCENT)
+                    .textShadow(false)
+                    .fontSize(9));
+            nameInput.setTextResponder(value -> renameKitDraft = value == null ? "" : value);
+            Runnable commit = () -> {
+                String trimmed = renameKitDraft == null ? "" : renameKitDraft.trim();
+                if (trimmed.isBlank() || trimmed.equals(card.name())) {
+                    closeContextMenu();
+                    return;
+                }
+                if (renameKitEmitter != null) {
+                    renameKitEmitter.send(card.kitId(), trimmed);
+                }
+                closeContextMenu();
+            };
+            nameInput.addEventListener(UIEvents.KEY_DOWN, event -> {
+                if (event.keyCode == GLFW.GLFW_KEY_ENTER || event.keyCode == GLFW.GLFW_KEY_KP_ENTER) {
+                    commit.run();
+                    event.stopPropagation();
+                } else if (event.keyCode == GLFW.GLFW_KEY_ESCAPE) {
+                    closeContextMenu();
+                    event.stopPropagation();
+                }
+            });
+            menu.addChild(nameInput);
+            UIElement row = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(14)
+                    .gapAll(4)
+                    .flexDirection(FlexDirection.ROW));
+            Button save = button("Save", true, ACCENT);
+            save.layout(layout -> layout.flex(1).height(14));
+            save.textStyle(style -> style.textColor(TEXT).textShadow(false).fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER).textAlignVertical(Vertical.CENTER));
+            save.setOnClick(event -> {
+                event.stopPropagation();
+                commit.run();
+            });
+            Button cancel = button("Cancel", true, PANEL_ALT);
+            cancel.layout(layout -> layout.flex(1).height(14));
+            cancel.textStyle(style -> style.textColor(MUTED).textShadow(false).fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER).textAlignVertical(Vertical.CENTER));
+            cancel.setOnClick(event -> {
+                event.stopPropagation();
+                closeContextMenu();
+            });
+            row.addChildren(save, cancel);
+            menu.addChild(row);
+        }
+
+        private void appendKitDeleteConfirmBody(UIElement menu, SlotWorkspaceViewModel.KitCard card) {
+            Label prompt = label("Delete " + shorten(card.name(), 18) + "?", WARNING);
+            prompt.layout(layout -> layout.widthPercent(100).height(12));
+            prompt.textStyle(style -> style.textColor(WARNING).textShadow(false).fontSize(8)
+                    .textAlignHorizontal(Horizontal.LEFT).textAlignVertical(Vertical.CENTER));
+            prompt.setAllowHitTest(false);
+            menu.addChild(prompt);
+            UIElement row = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(14)
+                    .gapAll(4)
+                    .flexDirection(FlexDirection.ROW));
+            Button confirm = button("Delete", true, WARNING);
+            confirm.layout(layout -> layout.flex(1).height(14));
+            confirm.textStyle(style -> style.textColor(TEXT).textShadow(true).fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER).textAlignVertical(Vertical.CENTER));
+            confirm.setOnClick(event -> {
+                event.stopPropagation();
+                sendDeleteKit(card.kitId());
+                closeContextMenu();
+            });
+            Button cancel = button("Cancel", true, PANEL_ALT);
+            cancel.layout(layout -> layout.flex(1).height(14));
+            cancel.textStyle(style -> style.textColor(MUTED).textShadow(false).fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER).textAlignVertical(Vertical.CENTER));
+            cancel.setOnClick(event -> {
+                event.stopPropagation();
+                closeContextMenu();
+            });
+            row.addChildren(confirm, cancel);
+            menu.addChild(row);
+        }
+
+        private void sendDuplicateKit(String kitId) {
+            boolean sent = duplicateKitEmitter != null && duplicateKitEmitter.send(kitId);
+            localStatus.set(sent ? "duplicating kit..." : "duplicate unavailable");
+            rebuild();
         }
 
         private Button menuButton(String text, boolean enabled, String disabledHint, Runnable onClick) {
@@ -3487,16 +3748,24 @@ final class SlotWorkspaceUiFactory {
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
             clearSelectionOnDirectClick(panel);
+            // Swallow mouse and drag events that land on the belt chrome (gaps between
+            // slots, dividers, spacers) so they don't bubble to the atlas underneath.
+            // Individual slot handlers fire first and call stopPropagation() themselves;
+            // this catcher only sees events that missed a slot.
+            panel.addEventListener(UIEvents.MOUSE_DOWN, UIEvent::stopPropagation);
+            panel.addEventListener(UIEvents.DRAG_PERFORM, UIEvent::stopPropagation);
             panel.addChild(beltSpacer());
             panel.addChild(kitsToggleButton());
+            SlotWorkspaceViewModel.KitCard activeCard = viewModel.activeKit();
+            if (activeCard != null && activeCard.pageCount() > 1) {
+                panel.addChild(kitPageCycleButton(activeCard));
+            }
             panel.addChild(beltDivider());
             for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
                 panel.addChild(beltSlotButton(slot));
             }
             panel.addChild(beltDivider());
             panel.addChild(offhandSlotButton(viewModel.offhand()));
-            panel.addChild(beltDivider());
-            panel.addChild(equipmentToggleButton());
             panel.addChild(beltSpacer());
             return panel;
         }
@@ -3504,17 +3773,30 @@ final class SlotWorkspaceUiFactory {
         private Button kitsToggleButton() {
             int kitCount = viewModel.kits().size();
             SlotWorkspaceViewModel.KitCard activeCard = viewModel.activeKit();
-            String label = activeCard != null ? "Kit:" + shorten(activeCard.name(), 10) : "Kits";
-            int color = kitRackOpen ? ACCENT : activeCard != null ? ACTIVE_HOTBAR : PANEL_ALT;
-            Button button = button(label, true, color);
+            String label;
+            if (activeCard != null) {
+                String suffix = activeCard.pageCount() > 1
+                        ? " " + (activeCard.activePageIndex() + 1) + "/" + activeCard.pageCount()
+                        : "";
+                label = shorten(activeCard.name(), 10) + suffix;
+            } else {
+                label = "Kits";
+            }
+            int bgColor = kitRackOpen
+                    ? PANEL_ALT
+                    : activeCard != null ? ACTIVE_HOTBAR : PANEL_ALT;
+            int textColor = kitRackOpen
+                    ? ACCENT
+                    : activeCard != null ? TEXT : MUTED;
+            Button button = button(label, true, bgColor);
             button.layout(layout -> layout
-                    .width(Math.max(40, label.length() * 5 + 8))
+                    .width(Math.max(44, label.length() * 5 + 12))
                     .height(BELT_SLOT_SIZE)
                     .paddingAll(2)
                     .alignItems(AlignItems.CENTER));
             button.textStyle(style -> style
-                    .textColor(activeCard != null && !kitRackOpen ? TEXT : MUTED)
-                    .textShadow(false)
+                    .textColor(textColor)
+                    .textShadow(activeCard != null)
                     .fontSize(8)
                     .textAlignHorizontal(Horizontal.CENTER)
                     .textAlignVertical(Vertical.CENTER));
@@ -3525,6 +3807,33 @@ final class SlotWorkspaceUiFactory {
                         ? "kit rack open (" + kitCount + " kit" + (kitCount == 1 ? "" : "s") + ")"
                         : "kit rack closed");
                 rebuild();
+            });
+            return button;
+        }
+
+        private Button kitPageCycleButton(SlotWorkspaceViewModel.KitCard activeCard) {
+            Button button = button(">", true, ACTIVE_HOTBAR);
+            button.layout(layout -> layout
+                    .width(16)
+                    .height(BELT_SLOT_SIZE)
+                    .paddingAll(1)
+                    .alignItems(AlignItems.CENTER));
+            button.textStyle(style -> style
+                    .textColor(TEXT)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> event.hoverTooltips = new HoverTooltips(
+                    List.of(Component.literal("Next Kit page (" + activeCard.pageCount() + " total)")),
+                    null,
+                    null,
+                    ItemStack.EMPTY
+            ));
+            button.setOnClick(event -> {
+                event.stopPropagation();
+                int direction = (event.button == 1 || Screen.hasShiftDown()) ? -1 : 1;
+                sendSwitchKitPage(direction);
             });
             return button;
         }
@@ -3695,20 +4004,6 @@ final class SlotWorkspaceUiFactory {
             return button;
         }
 
-        private Button equipmentToggleButton() {
-            Button button = button("+", false, PANEL_ALT);
-            button.layout(layout -> layout
-                    .width(BELT_SLOT_SIZE)
-                    .height(BELT_SLOT_SIZE)
-                    .paddingAll(1)
-                    .alignItems(AlignItems.CENTER));
-            button.setActive(false);
-            button.textStyle(style -> style.textColor(MUTED).textShadow(false).fontSize(8)
-                    .textAlignHorizontal(Horizontal.CENTER)
-                    .textAlignVertical(Vertical.CENTER));
-            return button;
-        }
-
         private UIElement kitRackOverlay() {
             UIElement overlay = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
@@ -3741,12 +4036,21 @@ final class SlotWorkspaceUiFactory {
                     .fontSize(9)
                     .textAlignHorizontal(Horizontal.LEFT)
                     .textAlignVertical(Vertical.CENTER));
-            Button save = button("Save Current Belt", true, ACCENT);
-            save.layout(layout -> layout.width(92).height(14));
+            SlotWorkspaceViewModel.KitCard activeCard = viewModel.activeKit();
+            String saveLabel;
+            if (activeCard != null) {
+                saveLabel = activeCard.pageCount() > 1
+                        ? "Update Page " + (activeCard.activePageIndex() + 1)
+                        : "Update Active Kit";
+            } else {
+                saveLabel = "Save Current Belt as Kit";
+            }
+            Button save = button(saveLabel, true, PANEL_ALT);
+            save.layout(layout -> layout.width(Math.max(110, saveLabel.length() * 6 + 10)).height(14));
             save.textStyle(style -> style
-                    .textColor(TEXT)
+                    .textColor(ACCENT)
                     .textShadow(false)
-                    .fontSize(7)
+                    .fontSize(8)
                     .textAlignHorizontal(Horizontal.CENTER)
                     .textAlignVertical(Vertical.CENTER));
             save.setOnClick(event -> {
@@ -3771,11 +4075,22 @@ final class SlotWorkspaceUiFactory {
         }
 
         private UIElement kitRackBody() {
+            int maxPageCount = 1;
+            int maxBringCount = 0;
+            for (SlotWorkspaceViewModel.KitCard card : viewModel.kits()) {
+                if (card.pageCount() > maxPageCount) {
+                    maxPageCount = card.pageCount();
+                }
+                if (card.bringSlotCount() > maxBringCount) {
+                    maxBringCount = card.bringSlotCount();
+                }
+            }
+            int bodyHeight = Math.max(44, kitCardHeight(maxPageCount, maxBringCount) + 6);
             UIElement body = new UIElement().layout(layout -> layout
                     .widthPercent(100)
-                    .height(44)
+                    .height(bodyHeight)
                     .gapAll(6)
-                    .alignItems(AlignItems.CENTER)
+                    .alignItems(AlignItems.FLEX_START)
                     .flexDirection(FlexDirection.ROW));
             if (viewModel.kits().isEmpty()) {
                 Label empty = label("No kits yet. Load your belt, then Save Current Belt.", MUTED);
@@ -3795,13 +4110,24 @@ final class SlotWorkspaceUiFactory {
             return body;
         }
 
+        private static final int KIT_CARD_WIDTH = 180;
+        private static final int KIT_CELL_SIZE = 14;
+        private static final int KIT_CELL_ICON_SIZE = 11;
+
+        private static int kitCardHeight(int pageCount, int bringCount) {
+            int pages = Math.max(1, pageCount);
+            // header + per-page rows + add-page footer + bring row + bring label
+            int bringHeight = bringCount > 0 ? 28 : 16;
+            return 12 + pages * 18 + 14 + bringHeight;
+        }
+
         private UIElement kitCardButton(SlotWorkspaceViewModel.KitCard card) {
             int color = card.active() ? ACTIVE_HOTBAR : ROW;
             Button button = button("", true, color);
             button.layout(layout -> layout
-                    .width(112)
-                    .height(40)
-                    .paddingAll(3)
+                    .width(KIT_CARD_WIDTH)
+                    .height(kitCardHeight(card.pageCount(), card.bringSlotCount()))
+                    .paddingAll(4)
                     .gapAll(2)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.COLUMN));
@@ -3814,79 +4140,425 @@ final class SlotWorkspaceUiFactory {
                     sendActivateKit(card.kitId());
                 }
             });
+            button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button == 1) {
+                    event.stopPropagation();
+                    openContextMenuForKit(card.kitId(), event.x, event.y);
+                }
+            });
             button.addChild(kitCardHeader(card));
-            button.addChild(kitCardSlotStrip(card));
+            for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
+                button.addChild(kitCardPageRow(card, page));
+            }
+            button.addChild(kitCardAddPageRow(card));
+            button.addChild(kitCardBringRow(card));
             return button;
         }
 
         private UIElement kitCardHeader(SlotWorkspaceViewModel.KitCard card) {
             UIElement row = new UIElement().layout(layout -> layout
                     .widthPercent(100)
-                    .height(10)
+                    .height(12)
                     .gapAll(2)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
-            Label name = label(shorten(card.name(), 12), card.active() ? TEXT : TEXT);
-            name.layout(layout -> layout.flex(1).height(9));
+            Label name = label(shorten(card.name(), 18), card.active() ? TEXT : TEXT);
+            name.layout(layout -> layout.flex(1).height(10));
             name.textStyle(style -> style
                     .textColor(TEXT)
                     .textShadow(false)
-                    .fontSize(7)
+                    .fontSize(8)
                     .textAlignHorizontal(Horizontal.LEFT)
                     .textAlignVertical(Vertical.CENTER));
             name.setAllowHitTest(false);
-            Label readiness = label(card.readyCount() + "/" + card.slotCount(),
-                    card.readyCount() == card.slotCount() ? ACCENT : WARNING);
-            readiness.layout(layout -> layout.width(22).height(9));
+            int aggregateSlots = 0;
+            int aggregateReady = 0;
+            for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
+                aggregateSlots += page.slotCount();
+                aggregateReady += page.readyCount();
+            }
+            final int totalSlots = aggregateSlots;
+            final int totalReady = aggregateReady;
+            Label readiness = label(totalReady + "/" + totalSlots,
+                    totalReady == totalSlots ? ACCENT : WARNING);
+            readiness.layout(layout -> layout.width(26).height(10));
             readiness.textStyle(style -> style
-                    .textColor(card.readyCount() == card.slotCount() ? ACCENT : WARNING)
+                    .textColor(totalReady == totalSlots ? ACCENT : WARNING)
                     .textShadow(false)
-                    .fontSize(7)
+                    .fontSize(8)
                     .textAlignHorizontal(Horizontal.RIGHT)
                     .textAlignVertical(Vertical.CENTER));
             readiness.setAllowHitTest(false);
-            Button delete = button("x", true, PANEL_ALT);
-            delete.layout(layout -> layout.width(10).height(9));
-            delete.textStyle(style -> style
-                    .textColor(MUTED)
-                    .textShadow(false)
-                    .fontSize(7)
-                    .textAlignHorizontal(Horizontal.CENTER)
-                    .textAlignVertical(Vertical.CENTER));
-            delete.setOnClick(event -> {
-                event.stopPropagation();
-                sendDeleteKit(card.kitId());
-            });
-            row.addChildren(name, readiness, delete);
+            // Delete moved to the right-click menu with confirm to prevent
+            // fat-finger loss of a 10-minute kit setup.
+            row.addChildren(name, readiness);
             return row;
         }
 
-        private UIElement kitCardSlotStrip(SlotWorkspaceViewModel.KitCard card) {
-            UIElement strip = new UIElement().layout(layout -> layout
+        private UIElement kitCardPageRow(SlotWorkspaceViewModel.KitCard card, SlotWorkspaceViewModel.KitPageView page) {
+            UIElement row = new UIElement().layout(layout -> layout
                     .widthPercent(100)
-                    .height(12)
+                    .height(KIT_CELL_SIZE + 2)
+                    .gapAll(2)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            boolean isActivePage = card.active() && card.activePageIndex() == page.pageIndex();
+            Label pageLabel = label(String.valueOf(page.pageIndex() + 1), isActivePage ? ACCENT : MUTED);
+            pageLabel.layout(layout -> layout.width(8).height(12));
+            pageLabel.textStyle(style -> style
+                    .textColor(isActivePage ? ACCENT : MUTED)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            pageLabel.setAllowHitTest(false);
+            row.addChild(pageLabel);
+            UIElement strip = new UIElement().layout(layout -> layout
+                    .flex(1)
+                    .height(KIT_CELL_SIZE)
                     .gapAll(1)
                     .alignItems(AlignItems.CENTER)
                     .flexDirection(FlexDirection.ROW));
-            strip.setAllowHitTest(false);
-            for (SlotWorkspaceViewModel.KitSlotState slot : card.slots()) {
-                strip.addChild(kitCardSlotCell(slot));
+            for (SlotWorkspaceViewModel.KitSlotState slot : page.slots()) {
+                strip.addChild(kitCardSlotCell(card, page, slot));
             }
-            return strip;
+            row.addChild(strip);
+            if (card.pageCount() > 1) {
+                Button remove = button("-", true, PANEL_ALT);
+                remove.layout(layout -> layout.width(12).height(12));
+                remove.textStyle(style -> style
+                        .textColor(MUTED)
+                        .textShadow(false)
+                        .fontSize(8)
+                        .textAlignHorizontal(Horizontal.CENTER)
+                        .textAlignVertical(Vertical.CENTER));
+                remove.setOnClick(event -> {
+                    event.stopPropagation();
+                    sendRemoveKitPage(card.kitId(), page.pageIndex());
+                });
+                row.addChild(remove);
+            }
+            return row;
         }
 
-        private UIElement kitCardSlotCell(SlotWorkspaceViewModel.KitSlotState slot) {
-            int fill = !slot.filled() ? 0x60141B22 : slot.ready() ? ROW : ROW_DIM;
+        private UIElement kitCardAddPageRow(SlotWorkspaceViewModel.KitCard card) {
+            UIElement row = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(14)
+                    .gapAll(2)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            boolean canAdd = (card.carriedSlotCount() + KitPage.HOTBAR_SLOT_COUNT) <= card.carriedSlotCapacity();
+            Button add = button(canAdd ? "+ page" : "+ page (full)", true, canAdd ? PANEL_ALT : 0x40202020);
+            add.layout(layout -> layout.flex(1).height(12));
+            add.textStyle(style -> style
+                    .textColor(canAdd ? MUTED : 0x80808080)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            if (canAdd) {
+                add.setOnClick(event -> {
+                    event.stopPropagation();
+                    sendAddKitPage(card.kitId());
+                });
+            } else {
+                add.setOnClick(event -> event.stopPropagation());
+            }
+            row.addChild(add);
+            int missing = kitMissingIdentityCount(card);
+            if (missing > 0) {
+                // Dark background + amber text keeps the button readable against
+                // both the card's active-kit olive tint and the inactive ROW bg.
+                Button gather = button("gather " + missing, true, PANEL_ALT);
+                gather.layout(layout -> layout.flex(1).height(12));
+                gather.textStyle(style -> style
+                        .textColor(WARNING)
+                        .textShadow(false)
+                        .fontSize(8)
+                        .textAlignHorizontal(Horizontal.CENTER)
+                        .textAlignVertical(Vertical.CENTER));
+                gather.setOnClick(event -> {
+                    event.stopPropagation();
+                    advanceGather(card);
+                });
+                row.addChild(gather);
+            }
+            return row;
+        }
+
+        private int kitMissingIdentityCount(SlotWorkspaceViewModel.KitCard card) {
+            int count = 0;
+            for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
+                for (SlotWorkspaceViewModel.KitSlotState slot : page.slots()) {
+                    if (slot.filled() && !slot.ready()) {
+                        count++;
+                    }
+                }
+            }
+            for (SlotWorkspaceViewModel.KitBringItem item : card.bring()) {
+                if (!item.ready()) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        private List<SlotWorkspaceViewModel.IdentityRef> kitMissingIdentities(SlotWorkspaceViewModel.KitCard card) {
+            java.util.LinkedHashSet<SlotWorkspaceViewModel.IdentityRef> missing = new java.util.LinkedHashSet<>();
+            for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
+                for (SlotWorkspaceViewModel.KitSlotState slot : page.slots()) {
+                    if (slot.filled() && !slot.ready()) {
+                        missing.add(slot.identity());
+                    }
+                }
+            }
+            for (SlotWorkspaceViewModel.KitBringItem item : card.bring()) {
+                if (!item.ready()) {
+                    missing.add(item.identity());
+                }
+            }
+            return List.copyOf(missing);
+        }
+
+        private void advanceGather(SlotWorkspaceViewModel.KitCard card) {
+            List<SlotWorkspaceViewModel.IdentityRef> missing = kitMissingIdentities(card);
+            if (missing.isEmpty()) {
+                localStatus.set("nothing to gather");
+                rebuild();
+                return;
+            }
+            if (!card.kitId().equals(gatherKitId)) {
+                gatherKitId = card.kitId();
+                gatherStep = 0;
+            }
+            int step = Math.floorMod(gatherStep, missing.size());
+            SlotWorkspaceViewModel.IdentityRef identity = missing.get(step);
+            SlotWorkspaceViewModel.AtlasItem atlasItem = viewModel.atlasItem(identity);
+            if (atlasItem != null) {
+                SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(atlasItem.islandId());
+                if (island != null && atlasView != null) {
+                    panToIsland(atlasView, island);
+                }
+                localStatus.set("gather " + (step + 1) + "/" + missing.size() + ": " + atlasItem.name());
+            } else {
+                localStatus.set("gather " + (step + 1) + "/" + missing.size() + ": " + identity.itemId() + " (no home)");
+            }
+            gatherStep = (step + 1) % missing.size();
+            rebuild();
+        }
+
+        private UIElement kitCardBringRow(SlotWorkspaceViewModel.KitCard card) {
+            UIElement column = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(card.bringSlotCount() > 0 ? 28 : 16)
+                    .gapAll(2)
+                    .alignItems(AlignItems.FLEX_START)
+                    .flexDirection(FlexDirection.COLUMN));
+            String header = "bring " + card.bringReadyCount() + "/" + card.bringSlotCount();
+            Label title = label(header, card.bringSlotCount() == 0 ? MUTED
+                    : card.bringReadyCount() == card.bringSlotCount() ? ACCENT : WARNING);
+            title.layout(layout -> layout.widthPercent(100).height(10));
+            title.textStyle(style -> style
+                    .textColor(card.bringSlotCount() == 0 ? MUTED
+                            : card.bringReadyCount() == card.bringSlotCount() ? ACCENT : WARNING)
+                    .textShadow(false)
+                    .fontSize(8)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.CENTER));
+            title.setAllowHitTest(false);
+            column.addChild(title);
+            UIElement strip = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(KIT_CELL_SIZE)
+                    .gapAll(1)
+                    .alignItems(AlignItems.CENTER)
+                    .flexDirection(FlexDirection.ROW));
+            for (SlotWorkspaceViewModel.KitBringItem item : card.bring()) {
+                strip.addChild(kitCardBringCell(card, item));
+            }
+            installKitBringDropTarget(strip, card);
+            column.addChild(strip);
+            return column;
+        }
+
+        private UIElement kitCardBringCell(SlotWorkspaceViewModel.KitCard card, SlotWorkspaceViewModel.KitBringItem item) {
+            int fill = item.ready() ? ROW : ROW_DIM;
             UIElement cell = panel(fill).layout(layout -> layout
-                    .width(11)
-                    .height(11)
+                    .width(KIT_CELL_SIZE)
+                    .height(KIT_CELL_SIZE)
                     .paddingAll(1)
                     .alignItems(AlignItems.CENTER));
-            cell.setAllowHitTest(false);
-            if (slot.filled() && !slot.displayStack().isEmpty()) {
-                cell.addChild(itemIcon(slot.displayStack(), 9, slot.ready()));
+            cell.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
+                if (item.displayStack().isEmpty()) {
+                    return;
+                }
+                event.hoverTooltips = new HoverTooltips(
+                        List.copyOf(DrawerHelper.getItemToolTip(item.displayStack())),
+                        item.displayStack().getTooltipImage().orElse(null),
+                        null,
+                        item.displayStack()
+                );
+            });
+            cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button == 1) {
+                    event.stopPropagation();
+                    sendRemoveKitBring(card.kitId(), item.identity());
+                }
+            });
+            cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+                if (!cell.isMouseDown(0) || isDragging(cell)) {
+                    return;
+                }
+                cell.startDrag(
+                        new KitBringDrag(card.kitId(), item.identity(), item.displayStack().copy()),
+                        dragTexture(item.displayStack())
+                ).setDragTexture(-10, -10, 20, 20);
+                localStatus.set("dragging kit bring");
+            }, true);
+            cell.addEventListener(UIEvents.DRAG_END, this::handleDragEnd);
+            if (!item.displayStack().isEmpty()) {
+                UIElement icon = itemIcon(item.displayStack(), KIT_CELL_ICON_SIZE, item.ready());
+                icon.setAllowHitTest(false);
+                cell.addChild(icon);
             }
             return cell;
+        }
+
+        private void installKitBringDropTarget(UIElement target, SlotWorkspaceViewModel.KitCard card) {
+            target.addEventListener(UIEvents.DRAG_ENTER, event -> updateKitBringDropOverlay(target, event), true);
+            target.addEventListener(UIEvents.DRAG_UPDATE, event -> updateKitBringDropOverlay(target, event));
+            target.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(target), true);
+            target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
+                clearDropOverlay(target);
+                SlotWorkspaceViewModel.IdentityRef identity = kitDropIdentity(event);
+                if (identity == null) {
+                    return;
+                }
+                sendAddKitBring(card.kitId(), identity);
+                event.stopPropagation();
+            });
+        }
+
+        private void updateKitBringDropOverlay(UIElement target, UIEvent event) {
+            SlotWorkspaceViewModel.IdentityRef identity = kitDropIdentity(event);
+            updateGenericDropOverlay(target, identity != null, ACCENT);
+        }
+
+        private SlotWorkspaceViewModel.IdentityRef kitDropIdentity(UIEvent event) {
+            AtlasItemDrag atlasItem = atlasItemDrag(event);
+            if (atlasItem != null) {
+                return atlasItem.identity();
+            }
+            HotbarSlotDrag hotbar = hotbarSlotDrag(event);
+            if (hotbar != null && !hotbar.displayStack().isEmpty()) {
+                return SlotWorkspaceViewModel.IdentityRef.from(
+                        dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(hotbar.displayStack()));
+            }
+            KitSlotDrag slotDrag = kitSlotDrag(event);
+            if (slotDrag != null && slotDrag.identity() != null && !slotDrag.identity().itemId().isBlank()) {
+                return slotDrag.identity();
+            }
+            KitBringDrag bringDrag = kitBringDrag(event);
+            if (bringDrag != null) {
+                return bringDrag.identity();
+            }
+            return null;
+        }
+
+        private KitSlotDrag kitSlotDrag(UIEvent event) {
+            Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
+            return payload instanceof KitSlotDrag slotDrag ? slotDrag : null;
+        }
+
+        private KitBringDrag kitBringDrag(UIEvent event) {
+            Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
+            return payload instanceof KitBringDrag bringDrag ? bringDrag : null;
+        }
+
+        private UIElement kitCardSlotCell(
+                SlotWorkspaceViewModel.KitCard card,
+                SlotWorkspaceViewModel.KitPageView page,
+                SlotWorkspaceViewModel.KitSlotState slot
+        ) {
+            int fill = !slot.filled() ? 0x60141B22 : slot.ready() ? ROW : ROW_DIM;
+            UIElement cell = panel(fill).layout(layout -> layout
+                    .width(KIT_CELL_SIZE)
+                    .height(KIT_CELL_SIZE)
+                    .paddingAll(1)
+                    .alignItems(AlignItems.CENTER));
+            if (slot.filled() && !slot.displayStack().isEmpty()) {
+                UIElement icon = itemIcon(slot.displayStack(), KIT_CELL_ICON_SIZE, slot.ready());
+                icon.setAllowHitTest(false);
+                cell.addChild(icon);
+                cell.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
+                    if (slot.displayStack().isEmpty()) {
+                        return;
+                    }
+                    event.hoverTooltips = new HoverTooltips(
+                            List.copyOf(DrawerHelper.getItemToolTip(slot.displayStack())),
+                            slot.displayStack().getTooltipImage().orElse(null),
+                            null,
+                            slot.displayStack()
+                    );
+                });
+                cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+                    if (!cell.isMouseDown(0) || isDragging(cell)) {
+                        return;
+                    }
+                    cell.startDrag(
+                            new KitSlotDrag(card.kitId(), page.pageIndex(), slot.slotIndex(), slot.identity(), slot.displayStack().copy()),
+                            dragTexture(slot.displayStack())
+                    ).setDragTexture(-10, -10, 20, 20);
+                    localStatus.set("dragging kit slot");
+                }, true);
+                cell.addEventListener(UIEvents.DRAG_END, this::handleDragEnd);
+            }
+            cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button == 1 && slot.filled()) {
+                    event.stopPropagation();
+                    sendSetKitSlotIdentity(card.kitId(), page.pageIndex(), slot.slotIndex(), null);
+                }
+            });
+            installKitSlotDropTarget(cell, card, page, slot);
+            return cell;
+        }
+
+        private void installKitSlotDropTarget(
+                UIElement target,
+                SlotWorkspaceViewModel.KitCard card,
+                SlotWorkspaceViewModel.KitPageView page,
+                SlotWorkspaceViewModel.KitSlotState slot
+        ) {
+            target.addEventListener(UIEvents.DRAG_ENTER, event -> updateKitSlotDropOverlay(target, event), true);
+            target.addEventListener(UIEvents.DRAG_UPDATE, event -> updateKitSlotDropOverlay(target, event));
+            target.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(target), true);
+            target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
+                clearDropOverlay(target);
+                // Drag within the same kit page: rearrange via swap so the source cell
+                // also updates, not just the drop target.
+                KitSlotDrag slotDrag = kitSlotDrag(event);
+                if (slotDrag != null
+                        && card.kitId().equals(slotDrag.kitId())
+                        && page.pageIndex() == slotDrag.pageIndex()) {
+                    if (slotDrag.slotIndex() != slot.slotIndex()) {
+                        sendSwapKitSlots(card.kitId(), page.pageIndex(), slotDrag.slotIndex(), slot.slotIndex());
+                    }
+                    event.stopPropagation();
+                    return;
+                }
+                SlotWorkspaceViewModel.IdentityRef identity = kitDropIdentity(event);
+                if (identity == null) {
+                    return;
+                }
+                sendSetKitSlotIdentity(card.kitId(), page.pageIndex(), slot.slotIndex(), identity);
+                event.stopPropagation();
+            });
+        }
+
+        private void updateKitSlotDropOverlay(UIElement target, UIEvent event) {
+            SlotWorkspaceViewModel.IdentityRef identity = kitDropIdentity(event);
+            updateGenericDropOverlay(target, identity != null, ACCENT);
         }
 
         private void sendSaveKit() {
@@ -3910,6 +4582,61 @@ final class SlotWorkspaceUiFactory {
         private void sendDeleteKit(String kitId) {
             boolean sent = deleteKitEmitter != null && deleteKitEmitter.send(kitId);
             localStatus.set(sent ? "deleting kit..." : "delete kit unavailable");
+            rebuild();
+        }
+
+        private void sendSwitchKitPage(int direction) {
+            boolean sent = switchKitPageEmitter != null && switchKitPageEmitter.send(direction);
+            localStatus.set(sent ? "switching kit page..." : "page switch unavailable");
+            rebuild();
+        }
+
+        private void sendAddKitPage(String kitId) {
+            boolean sent = addKitPageEmitter != null && addKitPageEmitter.send(kitId);
+            localStatus.set(sent ? "adding kit page..." : "add page unavailable");
+            rebuild();
+        }
+
+        private void sendRemoveKitPage(String kitId, int pageIndex) {
+            boolean sent = removeKitPageEmitter != null && removeKitPageEmitter.send(kitId, pageIndex);
+            localStatus.set(sent ? "removing kit page..." : "remove page unavailable");
+            rebuild();
+        }
+
+        private void sendAddKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
+            if (identity == null) {
+                return;
+            }
+            boolean sent = addKitBringEmitter != null && addKitBringEmitter.send(
+                    kitId, identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+            localStatus.set(sent ? "adding to bring..." : "add bring unavailable");
+            rebuild();
+        }
+
+        private void sendRemoveKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
+            if (identity == null) {
+                return;
+            }
+            boolean sent = removeKitBringEmitter != null && removeKitBringEmitter.send(
+                    kitId, identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+            localStatus.set(sent ? "removing from bring..." : "remove bring unavailable");
+            rebuild();
+        }
+
+        private void sendSwapKitSlots(String kitId, int pageIndex, int fromIndex, int toIndex) {
+            boolean sent = swapKitSlotsEmitter != null
+                    && swapKitSlotsEmitter.send(kitId, pageIndex, fromIndex, toIndex);
+            localStatus.set(sent ? "swapping kit slots..." : "swap slots unavailable");
+            rebuild();
+        }
+
+        private void sendSetKitSlotIdentity(String kitId, int pageIndex, int slotIndex, SlotWorkspaceViewModel.IdentityRef identity) {
+            String itemId = identity == null ? "" : identity.itemId();
+            String comparisonMode = identity == null ? "" : identity.comparisonMode();
+            String fingerprint = identity == null ? "" : identity.componentFingerprint();
+            boolean sent = setKitSlotIdentityEmitter != null && setKitSlotIdentityEmitter.send(
+                    kitId, pageIndex, slotIndex, itemId, comparisonMode, fingerprint);
+            localStatus.set(sent ? "updating kit slot..." : "update slot unavailable");
             rebuild();
         }
 
@@ -4393,14 +5120,30 @@ final class SlotWorkspaceUiFactory {
             target.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(target), true);
             target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
                 clearDropOverlay(target);
+                HotbarSlotDrag hotbarDrag = hotbarSlotDrag(event);
+                if (hotbarDrag != null) {
+                    // Drag between two hotbar slots = swap. ASSIGN against two player-bound
+                    // quick-access slots swaps their contents atomically.
+                    if (hotbarDrag.hotbarIndex() != slot.hotbarIndex()) {
+                        sendTransfer(
+                                SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT, hotbarDrag.hotbarIndex(),
+                                SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT, slot.hotbarIndex());
+                    }
+                    event.stopPropagation();
+                    return;
+                }
                 AtlasItemDrag drag = atlasItemDrag(event);
                 if (drag == null) {
+                    // No recognized drag type: still stop propagation so the drop doesn't
+                    // fall through to an atlas card positioned behind the belt.
+                    event.stopPropagation();
                     return;
                 }
                 SlotWorkspaceViewModel.AtlasItem item = viewModel.atlasItem(drag.identity());
                 if (item == null) {
                     localStatus.set("dragged item is no longer visible");
                     rebuild();
+                    event.stopPropagation();
                     return;
                 }
                 if (!item.carried()) {
@@ -4487,6 +5230,18 @@ final class SlotWorkspaceUiFactory {
                                 atlas.worldY(event.y)
                         );
                     }
+                    event.stopPropagation();
+                    return;
+                }
+                KitSlotDrag kitSlot = kitSlotDrag(event);
+                if (kitSlot != null) {
+                    sendSetKitSlotIdentity(kitSlot.kitId(), kitSlot.pageIndex(), kitSlot.slotIndex(), null);
+                    event.stopPropagation();
+                    return;
+                }
+                KitBringDrag kitBring = kitBringDrag(event);
+                if (kitBring != null) {
+                    sendRemoveKitBring(kitBring.kitId(), kitBring.identity());
                     event.stopPropagation();
                 }
             });
@@ -4606,6 +5361,15 @@ final class SlotWorkspaceUiFactory {
         }
 
         private void updateHotbarDropOverlay(Button target, SlotWorkspaceViewModel.HotbarSlot slot, UIEvent event) {
+            HotbarSlotDrag hotbarDrag = hotbarSlotDrag(event);
+            if (hotbarDrag != null) {
+                if (hotbarDrag.hotbarIndex() == slot.hotbarIndex()) {
+                    clearDropOverlay(target);
+                } else {
+                    updateGenericDropOverlay(target, true, ACCENT);
+                }
+                return;
+            }
             AtlasItemDrag drag = atlasItemDrag(event);
             if (drag == null) {
                 clearDropOverlay(target);
@@ -5881,6 +6645,22 @@ private void addCommonAtlasSignals(
             int grabOffsetY,
             int originX,
             int originY
+    ) {
+    }
+
+    private record KitSlotDrag(
+            String kitId,
+            int pageIndex,
+            int slotIndex,
+            SlotWorkspaceViewModel.IdentityRef identity,
+            ItemStack displayStack
+    ) {
+    }
+
+    private record KitBringDrag(
+            String kitId,
+            SlotWorkspaceViewModel.IdentityRef identity,
+            ItemStack displayStack
     ) {
     }
 

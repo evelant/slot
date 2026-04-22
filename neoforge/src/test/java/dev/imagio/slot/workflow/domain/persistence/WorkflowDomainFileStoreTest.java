@@ -15,6 +15,8 @@ import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
+import dev.imagio.slot.workflow.domain.KitDefinition;
+import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityEvent;
@@ -226,5 +228,51 @@ class WorkflowDomainFileStoreTest {
         assertTrue(restored.workflowProjection().chestLinkMap().contains(machines.id(), keptId));
         assertTrue(restored.workflowProjection().chestLinkMap().contains(food.id(), alsoKeptId));
         assertEquals(2, restored.workflowProjection().chestLinkMap().links().size());
+    }
+
+    @Test
+    void fileStoreRoundTripsKitsAndActivation() {
+        InMemoryWorkflowDomainStateRepository source = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
+
+        KitDefinition mining = runtime.kitWorkflow().create("Mining");
+        KitPage page0 = KitPage.empty()
+                .withSlot(0, ItemIdentity.of("minecraft:iron_pickaxe"))
+                .withSlot(1, ItemIdentity.of("minecraft:torch"));
+        KitPage page1 = KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:iron_shovel"));
+        runtime.kitWorkflow().update(mining.withPages(java.util.List.of(page0, page1))
+                .withBring(java.util.List.of(
+                        ItemIdentity.of("minecraft:cobblestone"),
+                        ItemIdentity.of("minecraft:bread")
+                ))
+                .withOffhand(ItemIdentity.of("minecraft:shield"))
+        );
+        KitDefinition combat = runtime.kitWorkflow().create("Combat");
+        runtime.kitWorkflow().update(combat.withPages(java.util.List.of(
+                KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:iron_sword"))
+        )));
+        runtime.kitWorkflow().activate(mining.id());
+        runtime.kitWorkflow().switchPage(1);
+
+        WorkflowDomainFileStore fileStore = new WorkflowDomainFileStore(tempDir.resolve("slot-kits.json"));
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(fileStore);
+        service.saveFrom(source);
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        service.loadInto(restored);
+
+        assertEquals(source.snapshot(), restored.snapshot());
+        assertEquals(2, restored.workflowProjection().kitMap().kits().size());
+        KitDefinition restoredMining = restored.workflowProjection().kitMap().kit(mining.id());
+        assertEquals(2, restoredMining.pageCount());
+        assertEquals(ItemIdentity.of("minecraft:iron_pickaxe"), restoredMining.page(0).slot(0));
+        assertEquals(ItemIdentity.of("minecraft:iron_shovel"), restoredMining.page(1).slot(0));
+        assertEquals(ItemIdentity.of("minecraft:shield"), restoredMining.offhand());
+        assertEquals(java.util.List.of(
+                ItemIdentity.of("minecraft:cobblestone"),
+                ItemIdentity.of("minecraft:bread")
+        ), restoredMining.bring());
+        assertEquals(mining.id(), restored.workflowProjection().kitMap().activation().kitId());
+        assertEquals(1, restored.workflowProjection().kitMap().activation().pageIndex());
     }
 }

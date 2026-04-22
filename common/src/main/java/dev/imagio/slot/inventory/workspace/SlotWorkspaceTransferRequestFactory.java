@@ -96,6 +96,8 @@ public final class SlotWorkspaceTransferRequestFactory {
         }
         String sourceId = InventoryAuthorityReadService.sourceId(authority.host(), source);
         String destinationId = InventoryAuthorityReadService.sourceId(authority.host(), destination);
+        // ASSIGN's in-place swap path only supports PLAYER-bound slots (main or hotbar).
+        // Backpack → hotbar has to route through LoadoutApplyService's staging path instead.
         return (BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)
                 || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId))
                 && BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(destinationId);

@@ -133,6 +133,159 @@ class LoadoutApplyAuthoritySnapshotTest {
         assertInstanceOf(InventoryActionTarget.QuickAccessTarget.class, applyRequest.secondaryTarget());
     }
 
+    @Test
+    void planClearTargetsStageCurrentOccupantOutOfTheHotbar() {
+        InventoryTopologyDescriptor topology = InventoryTopologyDescriptor.empty();
+        InventorySourceDescriptor quickAccess = BuiltinInventoryDescriptors.quickAccessLane0Source(topology);
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(topology);
+        InventoryHostDescriptor host = host(List.of(quickAccess, main));
+
+        ItemStack sword = new ItemStack("minecraft:iron_sword", 1, 1);
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                host,
+                Map.of(
+                        quickAccess.id(), new InventorySourceSnapshot(
+                                quickAccess.id(),
+                                9,
+                                List.of(new InventoryEntrySnapshot(
+                                        InventoryEntryKey.slot(quickAccess.id(), 3), sword, 1, "")),
+                                ""
+                        ),
+                        main.id(), new InventorySourceSnapshot(main.id(), 27, List.of(), "")
+                ),
+                CursorStateSnapshot.empty()
+        );
+
+        QuickAccessLoadoutDefinition loadout = new QuickAccessLoadoutDefinition("empty-page", "Empty", Set.of());
+        Set<LoadoutTarget> clearTargets = Set.of(
+                new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 3)
+        );
+
+        LoadoutApplyService.LoadoutApplyPlan plan = LoadoutApplyService.plan(
+                loadout,
+                clearTargets,
+                authority,
+                ProtectionPolicy.allowAll(),
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                entry -> identity(entry.stack())
+        );
+
+        assertEquals(1, plan.operations().size());
+        LoadoutApplyService.PlannedTargetOperation op = plan.operations().getFirst();
+        assertEquals(1, op.requests().size());
+        InventoryActionRequest clearRequest = op.requests().getFirst();
+        assertEquals("workflow:loadout_clear", clearRequest.origin());
+        assertInstanceOf(InventoryActionTarget.QuickAccessTarget.class, clearRequest.primaryTarget());
+        assertInstanceOf(InventoryActionTarget.SourceSlotTarget.class, clearRequest.secondaryTarget());
+        InventoryActionTarget.SourceSlotTarget stagingTarget =
+                (InventoryActionTarget.SourceSlotTarget) clearRequest.secondaryTarget();
+        assertEquals(main.id(), stagingTarget.sourceId());
+    }
+
+    @Test
+    void planClearTargetsIsNoOpWhenSlotAlreadyEmpty() {
+        InventoryTopologyDescriptor topology = InventoryTopologyDescriptor.empty();
+        InventorySourceDescriptor quickAccess = BuiltinInventoryDescriptors.quickAccessLane0Source(topology);
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(topology);
+        InventoryHostDescriptor host = host(List.of(quickAccess, main));
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                host,
+                Map.of(
+                        quickAccess.id(), new InventorySourceSnapshot(quickAccess.id(), 9, List.of(), ""),
+                        main.id(), new InventorySourceSnapshot(main.id(), 27, List.of(), "")
+                ),
+                CursorStateSnapshot.empty()
+        );
+
+        Set<LoadoutTarget> clearTargets = Set.of(
+                new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 0)
+        );
+        LoadoutApplyService.LoadoutApplyPlan plan = LoadoutApplyService.plan(
+                new QuickAccessLoadoutDefinition("empty", "Empty", Set.of()),
+                clearTargets,
+                authority,
+                ProtectionPolicy.allowAll(),
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                entry -> identity(entry.stack())
+        );
+
+        org.junit.jupiter.api.Assertions.assertTrue(plan.operations().isEmpty());
+        assertEquals(1, plan.satisfiedTargets().size());
+    }
+
+    @Test
+    void planReorderingBeltItemsDoesNotProduceStaleStagingFromEmptiedCandidateSlot() {
+        InventoryTopologyDescriptor topology = InventoryTopologyDescriptor.empty();
+        InventorySourceDescriptor quickAccess = BuiltinInventoryDescriptors.quickAccessLane0Source(topology);
+        InventorySourceDescriptor main = BuiltinInventoryDescriptors.playerMain(topology);
+        InventoryHostDescriptor host = host(List.of(quickAccess, main));
+
+        ItemStack pickaxe = new ItemStack("minecraft:iron_pickaxe", 1, 1);
+        ItemStack sword = new ItemStack("minecraft:iron_sword", 1, 1);
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                host,
+                Map.of(
+                        quickAccess.id(), new InventorySourceSnapshot(
+                                quickAccess.id(),
+                                9,
+                                List.of(
+                                        new InventoryEntrySnapshot(
+                                                InventoryEntryKey.slot(quickAccess.id(), 0), pickaxe, 1, ""),
+                                        new InventoryEntrySnapshot(
+                                                InventoryEntryKey.slot(quickAccess.id(), 1), sword, 1, "")
+                                ),
+                                ""
+                        ),
+                        main.id(), new InventorySourceSnapshot(main.id(), 27, List.of(), "")
+                ),
+                CursorStateSnapshot.empty()
+        );
+
+        // Target: swap sword and pickaxe positions on the belt
+        QuickAccessLoadoutDefinition loadout = new QuickAccessLoadoutDefinition(
+                "swap",
+                "Swap",
+                Set.of(
+                        new QuickAccessLoadoutEntry(
+                                new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 0),
+                                identity(sword)
+                        ),
+                        new QuickAccessLoadoutEntry(
+                                new LoadoutTarget.QuickAccessLaneTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, 1),
+                                identity(pickaxe)
+                        )
+                )
+        );
+
+        LoadoutApplyService.LoadoutApplyPlan plan = LoadoutApplyService.plan(
+                loadout,
+                authority,
+                ProtectionPolicy.allowAll(),
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                entry -> identity(entry.stack())
+        );
+
+        // Both operations should be planned; neither should appear in missing.
+        assertEquals(2, plan.operations().size());
+        org.junit.jupiter.api.Assertions.assertTrue(plan.missingTargets().isEmpty(),
+                "reorder should not produce missing targets: " + plan.diagnostics());
+
+        // Second op must not stage from slot 1 expecting a sword — that slot is empty
+        // after op 1 moves the sword to slot 0.
+        LoadoutApplyService.PlannedTargetOperation secondOp = plan.operations().get(1);
+        for (InventoryActionRequest request : secondOp.requests()) {
+            if ("workflow:loadout_stage".equals(request.origin())
+                    && request.primaryTarget() instanceof InventoryActionTarget.QuickAccessTarget qat
+                    && qat.slotIndex() == 1) {
+                org.junit.jupiter.api.Assertions.fail(
+                        "second op should not stage from slot 1 after slot 1 was emptied by op 1");
+            }
+        }
+    }
+
     private static ItemIdentity identity(ItemStack stack) {
         return new ItemIdentity(stack.itemId(), ItemComparisonMode.ITEM_ID, stack.componentFingerprint());
     }

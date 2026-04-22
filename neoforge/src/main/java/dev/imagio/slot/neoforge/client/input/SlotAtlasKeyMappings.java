@@ -52,6 +52,16 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    // Unbound by default. Cycles the active Kit's pages while the atlas is open.
+    // Shift+key cycles backward. Only fires when a Kit is active and has >1 page.
+    private static final KeyMapping CYCLE_KIT_PAGE = new KeyMapping(
+            "key.slot.cycle_kit_page",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     private SlotAtlasKeyMappings() {
     }
 
@@ -61,6 +71,7 @@ public final class SlotAtlasKeyMappings {
         event.register(CAMERA_BACK_MOUSE);
         event.register(CAMERA_FORWARD_MOUSE);
         event.register(OPEN_VANILLA_INVENTORY);
+        event.register(CYCLE_KIT_PAGE);
     }
 
     public static KeyMapping openVanillaInventoryMapping() {
@@ -81,6 +92,10 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesForwardMouse(int button) {
         return mouseMatches(CAMERA_FORWARD_MOUSE, button);
+    }
+
+    public static boolean matchesCycleKitPage(int keyCode, int scanCode) {
+        return keyMatches(CYCLE_KIT_PAGE, keyCode, scanCode);
     }
 
     private static boolean keyMatches(KeyMapping mapping, int keyCode, int scanCode) {

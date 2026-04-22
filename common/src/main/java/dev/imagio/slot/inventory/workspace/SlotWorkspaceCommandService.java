@@ -14,6 +14,8 @@ import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.KitDefinition;
+import dev.imagio.slot.workflow.domain.KitPage;
+import dev.imagio.slot.workflow.domain.KitSnapshotSupport;
 import dev.imagio.slot.workflow.domain.LoadoutApplyExecutor;
 import dev.imagio.slot.workflow.domain.LoadoutApplyResult;
 import dev.imagio.slot.workflow.domain.LoadoutApplyService;
@@ -419,6 +421,36 @@ public final class SlotWorkspaceCommandService {
         if (runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
         }
+        InventoryAuthoritySnapshot resolvedAuthority = authority == null
+                ? InventoryAuthoritySnapshot.empty() : authority;
+        // If a kit is active, treat "Save Current Belt" as "update active kit's current page"
+        // so the button stays in-place instead of silently forking a new kit.
+        var activation = runtime.kitWorkflow().activation();
+        if (activation.isActive()) {
+            KitDefinition activeKit = runtime.kitWorkflow().kit(activation.kitId());
+            if (activeKit != null) {
+                try {
+                    int pageIndex = Math.max(0, Math.min(activation.pageIndex(), activeKit.pageCount() - 1));
+                    KitPage capturedPage = KitSnapshotSupport.capturePageFromAuthority(
+                            resolvedAuthority, identityResolver);
+                    ItemIdentity offhand = KitSnapshotSupport.captureOffhandIdentity(
+                            resolvedAuthority, identityResolver);
+                    KitDefinition next = activeKit
+                            .withPageReplaced(pageIndex, capturedPage)
+                            .withOffhand(offhand);
+                    if (!runtime.kitWorkflow().update(next,
+                            DomainEventMetadata.origin("slot_workspace.ldlib.kit_page_update"))) {
+                        return WorkspaceCommandOutcome.accepted("kit page unchanged", activeKit.name());
+                    }
+                    SlotDebugLog.log("LDLib kit page updated {} page={}", activeKit.id(), pageIndex);
+                    return WorkspaceCommandOutcome.accepted(
+                            "kit page updated",
+                            activeKit.name() + " (page " + (pageIndex + 1) + ")");
+                } catch (IllegalArgumentException exception) {
+                    return WorkspaceCommandOutcome.rejected(exception.getMessage());
+                }
+            }
+        }
         String trimmed = name == null ? "" : name.trim();
         if (trimmed.isBlank()) {
             trimmed = defaultKitName(runtime);
@@ -426,7 +458,7 @@ public final class SlotWorkspaceCommandService {
         try {
             KitDefinition created = runtime.kitWorkflow().snapshotFromAuthority(
                     trimmed,
-                    authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                    resolvedAuthority,
                     identityResolver,
                     DomainEventMetadata.origin("slot_workspace.ldlib.kit_snapshot")
             );
@@ -487,6 +519,242 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
     }
 
+    public static WorkspaceCommandOutcome switchKitPage(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            ProtectionPolicy protectionPolicy,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
+            int direction
+    ) {
+        if (runtime == null || actionExecutor == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_page_switch");
+        }
+        var activation = runtime.kitWorkflow().activation();
+        if (!activation.isActive()) {
+            return WorkspaceCommandOutcome.rejected("no_active_kit");
+        }
+        KitDefinition kit = runtime.kitWorkflow().kit(activation.kitId());
+        if (kit == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        if (kit.pageCount() <= 1) {
+            return WorkspaceCommandOutcome.rejected("kit_has_one_page");
+        }
+        int step = Integer.signum(direction);
+        if (step == 0) {
+            step = 1;
+        }
+        int pageCount = kit.pageCount();
+        int nextPage = Math.floorMod(activation.pageIndex() + step, pageCount);
+        LoadoutApplyService.LoadoutApplyPlan plan = runtime.kitWorkflow().planActivate(
+                kit.id(),
+                nextPage,
+                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                protectionPolicy == null ? ProtectionPolicy.allowAll() : protectionPolicy,
+                identityResolver
+        );
+        LoadoutApplyResult result = new LoadoutApplyExecutor(actionExecutor).execute(plan);
+        runtime.kitWorkflow().switchPage(
+                nextPage,
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_switch_page")
+        );
+        int satisfied = result.satisfiedTargets().size();
+        int missing = result.missingTargets().size();
+        String planReasons = result.diagnostics().isEmpty() ? "" : String.join(",", result.diagnostics());
+        SlotDebugLog.log("LDLib kit page switched {} page={} satisfied={} missing={} reasons={}",
+                kit.id(), nextPage, satisfied, missing, planReasons);
+        String status = "kit page " + (nextPage + 1) + "/" + pageCount;
+        StringBuilder diagnostics = new StringBuilder()
+                .append("satisfied=").append(satisfied)
+                .append(" missing=").append(missing);
+        if (!planReasons.isBlank()) {
+            diagnostics.append(" reasons=").append(planReasons);
+        }
+        return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
+    }
+
+    public static WorkspaceCommandOutcome addKitPage(WorkflowDomainRuntime runtime, String kitId) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        KitDefinition existing = runtime.kitWorkflow().kit(kitId);
+        if (existing == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        try {
+            runtime.kitWorkflow().addPage(
+                    kitId,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.kit_add_page")
+            );
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("kit_capacity_exceeded");
+        }
+        KitDefinition updated = runtime.kitWorkflow().kit(kitId);
+        SlotDebugLog.log("LDLib kit page added {} pages={}", kitId, updated.pageCount());
+        return WorkspaceCommandOutcome.accepted("kit page added", existing.name());
+    }
+
+    public static WorkspaceCommandOutcome addKitBring(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        try {
+            boolean added = runtime.kitWorkflow().addBring(
+                    kitId,
+                    identity,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.kit_add_bring")
+            );
+            if (!added) {
+                return WorkspaceCommandOutcome.rejected("bring_already_present");
+            }
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("kit_capacity_exceeded");
+        }
+        SlotDebugLog.log("LDLib kit bring added {} identity={}", kitId, identity.itemId());
+        return WorkspaceCommandOutcome.accepted("bring added", identity.itemId());
+    }
+
+    public static WorkspaceCommandOutcome removeKitBring(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        boolean removed = runtime.kitWorkflow().removeBring(
+                kitId,
+                identity,
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_remove_bring")
+        );
+        if (!removed) {
+            return WorkspaceCommandOutcome.rejected("bring_not_present");
+        }
+        SlotDebugLog.log("LDLib kit bring removed {} identity={}", kitId, identity.itemId());
+        return WorkspaceCommandOutcome.accepted("bring removed", identity.itemId());
+    }
+
+    public static WorkspaceCommandOutcome setKitSlotIdentity(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            int pageIndex,
+            int slotIndex,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        // identity may be null to clear the slot
+        ItemIdentity identity = (itemId == null || itemId.isBlank())
+                ? null
+                : resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        boolean changed = runtime.kitWorkflow().setSlotIdentity(
+                kitId, pageIndex, slotIndex, identity,
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_set_slot")
+        );
+        if (!changed) {
+            return WorkspaceCommandOutcome.rejected("kit_slot_unchanged");
+        }
+        SlotDebugLog.log("LDLib kit slot updated {} page={} slot={} identity={}", kitId,
+                pageIndex, slotIndex, identity == null ? "" : identity.itemId());
+        return WorkspaceCommandOutcome.accepted("kit slot updated",
+                (identity == null ? "cleared" : identity.itemId()));
+    }
+
+    public static WorkspaceCommandOutcome swapKitSlots(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            int pageIndex,
+            int fromIndex,
+            int toIndex
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        boolean swapped = runtime.kitWorkflow().swapSlots(
+                kitId, pageIndex, fromIndex, toIndex,
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_swap_slots")
+        );
+        if (!swapped) {
+            return WorkspaceCommandOutcome.rejected("kit_slot_swap_noop");
+        }
+        SlotDebugLog.log("LDLib kit slots swapped {} page={} from={} to={}",
+                kitId, pageIndex, fromIndex, toIndex);
+        return WorkspaceCommandOutcome.accepted("kit slots swapped", kitId);
+    }
+
+    public static WorkspaceCommandOutcome removeKitPage(WorkflowDomainRuntime runtime, String kitId, int pageIndex) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        KitDefinition existing = runtime.kitWorkflow().kit(kitId);
+        if (existing == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        if (existing.pageCount() <= 1) {
+            return WorkspaceCommandOutcome.rejected("kit_last_page");
+        }
+        boolean removed = runtime.kitWorkflow().removePage(
+                kitId,
+                pageIndex,
+                DomainEventMetadata.origin("slot_workspace.ldlib.kit_remove_page")
+        );
+        if (!removed) {
+            return WorkspaceCommandOutcome.rejected("invalid_page_index");
+        }
+        SlotDebugLog.log("LDLib kit page removed {} page={}", kitId, pageIndex);
+        return WorkspaceCommandOutcome.accepted("kit page removed", existing.name());
+    }
+
     public static WorkspaceCommandOutcome deactivateKit(WorkflowDomainRuntime runtime) {
         if (runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
@@ -499,6 +767,63 @@ public final class SlotWorkspaceCommandService {
         );
         SlotDebugLog.log("LDLib kit deactivated");
         return WorkspaceCommandOutcome.accepted("kit deactivated", "");
+    }
+
+    public static WorkspaceCommandOutcome renameKit(WorkflowDomainRuntime runtime, String kitId, String newName) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        KitDefinition existing = runtime.kitWorkflow().kit(kitId);
+        if (existing == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        String trimmed = newName == null ? "" : newName.trim();
+        if (trimmed.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("kit_name_blank");
+        }
+        try {
+            boolean renamed = runtime.kitWorkflow().rename(
+                    kitId,
+                    trimmed,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.kit_rename")
+            );
+            if (!renamed) {
+                return WorkspaceCommandOutcome.accepted("kit name unchanged", existing.name());
+            }
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected(exception.getMessage());
+        }
+        SlotDebugLog.log("LDLib kit renamed {} -> {}", kitId, trimmed);
+        return WorkspaceCommandOutcome.accepted("kit renamed", trimmed);
+    }
+
+    public static WorkspaceCommandOutcome duplicateKit(WorkflowDomainRuntime runtime, String kitId) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        KitDefinition existing = runtime.kitWorkflow().kit(kitId);
+        if (existing == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        try {
+            KitDefinition copy = runtime.kitWorkflow().duplicate(
+                    kitId,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.kit_duplicate")
+            );
+            if (copy == null) {
+                return WorkspaceCommandOutcome.rejected("kit_duplicate_rejected");
+            }
+            SlotDebugLog.log("LDLib kit duplicated {} -> {}", kitId, copy.id());
+            return WorkspaceCommandOutcome.accepted("kit duplicated", copy.name());
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected(exception.getMessage());
+        }
     }
 
     public static WorkspaceCommandOutcome deleteKit(WorkflowDomainRuntime runtime, String kitId) {

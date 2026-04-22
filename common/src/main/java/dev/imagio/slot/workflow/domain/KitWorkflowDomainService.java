@@ -104,12 +104,202 @@ public final class KitWorkflowDomainService {
         if (existing.equals(next)) {
             return false;
         }
+        if (!next.fitsCarriedCapacity()) {
+            throw new IllegalArgumentException(
+                    "Kit exceeds carried capacity: " + next.carriedSlotCount()
+                            + " > " + KitDefinition.MAX_CARRIED_CAPACITY);
+        }
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitUpdated(next),
                 resolveMetadata(metadata, "workflow.kit.update")
         );
         notifyMutated();
         return true;
+    }
+
+    public boolean addPage(String kitId) {
+        return addPage(kitId, DomainEventMetadata.origin("workflow.kit.add_page"));
+    }
+
+    public boolean addPage(String kitId, DomainEventMetadata metadata) {
+        KitDefinition existing = requireKit(kitId);
+        KitDefinition next = existing.withPageAppended(KitPage.empty());
+        if (!next.fitsCarriedCapacity()) {
+            throw new IllegalArgumentException(
+                    "Adding a page would exceed carried capacity: " + next.carriedSlotCount()
+                            + " > " + KitDefinition.MAX_CARRIED_CAPACITY);
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(next),
+                resolveMetadata(metadata, "workflow.kit.add_page")
+        );
+        notifyMutated();
+        return true;
+    }
+
+    public boolean removePage(String kitId, int pageIndex) {
+        return removePage(kitId, pageIndex, DomainEventMetadata.origin("workflow.kit.remove_page"));
+    }
+
+    public boolean addBring(String kitId, ItemIdentity identity) {
+        return addBring(kitId, identity, DomainEventMetadata.origin("workflow.kit.add_bring"));
+    }
+
+    public boolean addBring(String kitId, ItemIdentity identity, DomainEventMetadata metadata) {
+        if (identity == null) {
+            return false;
+        }
+        KitDefinition existing = requireKit(kitId);
+        if (existing.bring().contains(identity)) {
+            return false;
+        }
+        ArrayList<ItemIdentity> nextBring = new ArrayList<>(existing.bring());
+        nextBring.add(identity);
+        KitDefinition next = existing.withBring(nextBring);
+        if (!next.fitsCarriedCapacity()) {
+            throw new IllegalArgumentException(
+                    "Adding bring item would exceed carried capacity: " + next.carriedSlotCount()
+                            + " > " + KitDefinition.MAX_CARRIED_CAPACITY);
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(next),
+                resolveMetadata(metadata, "workflow.kit.add_bring")
+        );
+        notifyMutated();
+        return true;
+    }
+
+    public boolean removeBring(String kitId, ItemIdentity identity) {
+        return removeBring(kitId, identity, DomainEventMetadata.origin("workflow.kit.remove_bring"));
+    }
+
+    public boolean removeBring(String kitId, ItemIdentity identity, DomainEventMetadata metadata) {
+        if (identity == null) {
+            return false;
+        }
+        KitDefinition existing = requireKit(kitId);
+        if (!existing.bring().contains(identity)) {
+            return false;
+        }
+        ArrayList<ItemIdentity> nextBring = new ArrayList<>(existing.bring());
+        nextBring.remove(identity);
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(existing.withBring(nextBring)),
+                resolveMetadata(metadata, "workflow.kit.remove_bring")
+        );
+        notifyMutated();
+        return true;
+    }
+
+    public boolean setSlotIdentity(String kitId, int pageIndex, int slotIndex, ItemIdentity identity) {
+        return setSlotIdentity(kitId, pageIndex, slotIndex, identity,
+                DomainEventMetadata.origin("workflow.kit.set_slot"));
+    }
+
+    public boolean setSlotIdentity(String kitId, int pageIndex, int slotIndex, ItemIdentity identity, DomainEventMetadata metadata) {
+        KitDefinition existing = requireKit(kitId);
+        KitPage page = existing.page(pageIndex);
+        if (page == null || slotIndex < 0 || slotIndex >= KitPage.HOTBAR_SLOT_COUNT) {
+            return false;
+        }
+        ItemIdentity currentIdentity = page.slot(slotIndex);
+        if (Objects.equals(currentIdentity, identity)) {
+            return false;
+        }
+        KitPage nextPage = page.withSlot(slotIndex, identity);
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(existing.withPageReplaced(pageIndex, nextPage)),
+                resolveMetadata(metadata, "workflow.kit.set_slot")
+        );
+        notifyMutated();
+        return true;
+    }
+
+    public boolean swapSlots(String kitId, int pageIndex, int fromIndex, int toIndex) {
+        return swapSlots(kitId, pageIndex, fromIndex, toIndex,
+                DomainEventMetadata.origin("workflow.kit.swap_slots"));
+    }
+
+    public boolean swapSlots(String kitId, int pageIndex, int fromIndex, int toIndex, DomainEventMetadata metadata) {
+        if (fromIndex == toIndex) {
+            return false;
+        }
+        KitDefinition existing = requireKit(kitId);
+        KitPage page = existing.page(pageIndex);
+        if (page == null
+                || fromIndex < 0 || fromIndex >= KitPage.HOTBAR_SLOT_COUNT
+                || toIndex < 0 || toIndex >= KitPage.HOTBAR_SLOT_COUNT) {
+            return false;
+        }
+        ItemIdentity fromIdentity = page.slot(fromIndex);
+        ItemIdentity toIdentity = page.slot(toIndex);
+        if (Objects.equals(fromIdentity, toIdentity)) {
+            return false;
+        }
+        KitPage nextPage = page.withSlot(fromIndex, toIdentity).withSlot(toIndex, fromIdentity);
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(existing.withPageReplaced(pageIndex, nextPage)),
+                resolveMetadata(metadata, "workflow.kit.swap_slots")
+        );
+        notifyMutated();
+        return true;
+    }
+
+    public boolean removePage(String kitId, int pageIndex, DomainEventMetadata metadata) {
+        KitDefinition existing = requireKit(kitId);
+        if (existing.pageCount() <= 1) {
+            return false;
+        }
+        if (pageIndex < 0 || pageIndex >= existing.pageCount()) {
+            return false;
+        }
+        KitDefinition next = existing.withPageRemoved(pageIndex);
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitUpdated(next),
+                resolveMetadata(metadata, "workflow.kit.remove_page")
+        );
+        // if the active page was at or beyond the removed index, slide activation back to a valid index
+        KitActivation current = activation();
+        if (current.isActive() && current.kitId().equals(kitId)) {
+            int currentPage = current.pageIndex();
+            int newPage = currentPage;
+            if (currentPage == pageIndex) {
+                newPage = Math.max(0, pageIndex - 1);
+            } else if (currentPage > pageIndex) {
+                newPage = currentPage - 1;
+            }
+            if (newPage != currentPage) {
+                repository.appendWorkflowEvent(
+                        new WorkflowEvent.KitPageSwitched(newPage),
+                        resolveMetadata(metadata, "workflow.kit.remove_page.reindex")
+                );
+            }
+        }
+        notifyMutated();
+        return true;
+    }
+
+    public KitDefinition duplicate(String kitId) {
+        return duplicate(kitId, DomainEventMetadata.origin("workflow.kit.duplicate"));
+    }
+
+    public KitDefinition duplicate(String kitId, DomainEventMetadata metadata) {
+        KitDefinition source = requireKit(kitId);
+        String baseName = source.name() + " (copy)";
+        String newId = uniqueSlug(baseName, existingIds());
+        KitDefinition copy = new KitDefinition(
+                newId,
+                baseName,
+                source.pages(),
+                source.bring(),
+                source.offhand()
+        );
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.KitCreated(copy),
+                resolveMetadata(metadata, "workflow.kit.duplicate")
+        );
+        notifyMutated();
+        return kit(newId);
     }
 
     public boolean delete(String kitId) {
@@ -147,8 +337,8 @@ public final class KitWorkflowDomainService {
     ) {
         String normalizedName = normalizeName(name);
         String id = uniqueSlug(normalizedName, existingIds());
-        KitPage page = capturePageFromAuthority(authority, identityResolver);
-        ItemIdentity offhand = captureOffhandIdentity(authority, identityResolver);
+        KitPage page = KitSnapshotSupport.capturePageFromAuthority(authority, identityResolver);
+        ItemIdentity offhand = KitSnapshotSupport.captureOffhandIdentity(authority, identityResolver);
         KitDefinition kit = new KitDefinition(id, normalizedName, List.of(page), List.of(), offhand);
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitCreated(kit),
@@ -253,8 +443,22 @@ public final class KitWorkflowDomainService {
         if (loadout == null) {
             return LoadoutApplyService.LoadoutApplyPlan.empty("");
         }
+        // Page slots with a null identity encode "this belt slot should be empty" —
+        // pass them as clearTargets so any existing occupant gets staged out to main
+        // rather than lingering on the belt under the new layout.
+        KitPage page = kit.page(pageIndex);
+        LinkedHashSet<LoadoutTarget> clearTargets = new LinkedHashSet<>();
+        if (page != null) {
+            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
+                if (page.slot(slotIndex) == null) {
+                    clearTargets.add(new LoadoutTarget.QuickAccessLaneTarget(
+                            BuiltinInventoryIds.QUICK_ACCESS_LANE_0, slotIndex));
+                }
+            }
+        }
         return LoadoutApplyService.plan(
                 loadout,
+                clearTargets,
                 authority,
                 protectionPolicy,
                 InventoryActionMode.EXECUTE,
@@ -262,52 +466,6 @@ public final class KitWorkflowDomainService {
                         ? entry -> ItemIdentityMatcher.create(entry.stack())
                         : identityResolver
         );
-    }
-
-    private KitPage capturePageFromAuthority(
-            InventoryAuthoritySnapshot authority,
-            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver
-    ) {
-        if (authority == null || identityResolver == null) {
-            return KitPage.empty();
-        }
-        List<ItemIdentity> slots = new ArrayList<>();
-        for (int index = 0; index < KitPage.HOTBAR_SLOT_COUNT; index++) {
-            slots.add(null);
-        }
-        for (InventoryEntrySnapshot entry : authority.entries(BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0)) {
-            int slotIndex = entry.slotIndex();
-            if (slotIndex < 0 || slotIndex >= KitPage.HOTBAR_SLOT_COUNT) {
-                continue;
-            }
-            if (!entry.present()) {
-                continue;
-            }
-            ItemIdentity identity = identityResolver.apply(entry);
-            if (identity != null) {
-                slots.set(slotIndex, identity);
-            }
-        }
-        return new KitPage(slots);
-    }
-
-    private ItemIdentity captureOffhandIdentity(
-            InventoryAuthoritySnapshot authority,
-            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver
-    ) {
-        if (authority == null || identityResolver == null) {
-            return null;
-        }
-        for (InventoryEntrySnapshot entry : authority.entries(BuiltinInventoryIds.PLAYER_OFFHAND)) {
-            if (!entry.present()) {
-                continue;
-            }
-            ItemIdentity identity = identityResolver.apply(entry);
-            if (identity != null) {
-                return identity;
-            }
-        }
-        return null;
     }
 
     private Set<String> existingIds() {

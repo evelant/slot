@@ -148,6 +148,181 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
+    void duplicateClonesPagesAndBringWithUniqueId() {
+        KitWorkflowDomainService kits = kits();
+        ItemIdentity pick = ItemIdentity.of("minecraft:iron_pickaxe");
+        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
+        KitPage page = KitPage.empty().withSlot(0, pick);
+        KitDefinition original = kits.create("Mining")
+                .withPages(List.of(page))
+                .withBring(List.of(torch))
+                .withOffhand(ItemIdentity.of("minecraft:shield"));
+        kits.update(original);
+
+        KitDefinition copy = kits.duplicate(original.id());
+
+        assertNotNull(copy);
+        assertEquals("mining-copy", copy.id());
+        assertEquals("Mining (copy)", copy.name());
+        assertEquals(pick, copy.page(0).slot(0));
+        assertEquals(List.of(torch), copy.bring());
+        assertEquals(ItemIdentity.of("minecraft:shield"), copy.offhand());
+        assertEquals(2, kits.kits().size());
+    }
+
+    @Test
+    void addPageAppendsEmptyPageAndPreservesExisting() {
+        KitWorkflowDomainService kits = kits();
+        KitPage first = KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:pickaxe"));
+        KitDefinition kit = kits.create("Multi").withPages(List.of(first));
+        kits.update(kit);
+
+        assertTrue(kits.addPage(kit.id()));
+
+        KitDefinition stored = kits.kit(kit.id());
+        assertEquals(2, stored.pageCount());
+        assertEquals(first, stored.page(0));
+        assertEquals(0, stored.page(1).filledSlotCount());
+    }
+
+    @Test
+    void addPageRejectsWhenCapacityExceeded() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Big");
+        // 4 pages * 9 = 36 is the cap, so a 5th page would bust it
+        kits.update(kit.withPages(List.of(KitPage.empty(), KitPage.empty(), KitPage.empty(), KitPage.empty())));
+        assertThrows(IllegalArgumentException.class, () -> kits.addPage(kit.id()));
+    }
+
+    @Test
+    void removePageSlidesActivationBackWhenRemovingActivePage() {
+        KitWorkflowDomainService kits = kits();
+        KitPage p0 = KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:pickaxe"));
+        KitPage p1 = KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:sword"));
+        KitPage p2 = KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:bow"));
+        KitDefinition kit = kits.create("Multi").withPages(List.of(p0, p1, p2));
+        kits.update(kit);
+        kits.activate(kit.id());
+        kits.switchPage(2);
+        assertEquals(2, kits.activation().pageIndex());
+
+        assertTrue(kits.removePage(kit.id(), 2));
+
+        KitDefinition after = kits.kit(kit.id());
+        assertEquals(2, after.pageCount());
+        assertEquals(1, kits.activation().pageIndex());
+    }
+
+    @Test
+    void removePageIsNoOpOnLastPage() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Single");
+        assertFalse(kits.removePage(kit.id(), 0));
+        assertEquals(1, kits.kit(kit.id()).pageCount());
+    }
+
+    @Test
+    void addBringAppendsIdentity() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Mining");
+        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
+
+        assertTrue(kits.addBring(kit.id(), torch));
+        assertEquals(List.of(torch), kits.kit(kit.id()).bring());
+    }
+
+    @Test
+    void addBringSkipsDuplicates() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Mining");
+        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
+        kits.addBring(kit.id(), torch);
+        assertFalse(kits.addBring(kit.id(), torch));
+    }
+
+    @Test
+    void removeBringDropsIdentity() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Mining");
+        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
+        kits.addBring(kit.id(), torch);
+
+        assertTrue(kits.removeBring(kit.id(), torch));
+        assertTrue(kits.kit(kit.id()).bring().isEmpty());
+    }
+
+    @Test
+    void swapSlotsExchangesTwoIdentitiesOnAPage() {
+        KitWorkflowDomainService kits = kits();
+        ItemIdentity pick = ItemIdentity.of("minecraft:iron_pickaxe");
+        ItemIdentity sword = ItemIdentity.of("minecraft:iron_sword");
+        KitPage page = KitPage.empty().withSlot(0, pick).withSlot(3, sword);
+        KitDefinition kit = kits.create("Mix").withPages(List.of(page));
+        kits.update(kit);
+
+        assertTrue(kits.swapSlots(kit.id(), 0, 0, 3));
+
+        KitDefinition stored = kits.kit(kit.id());
+        assertEquals(sword, stored.page(0).slot(0));
+        assertEquals(pick, stored.page(0).slot(3));
+    }
+
+    @Test
+    void swapSlotsIsNoOpWhenIndicesMatch() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Mix");
+        assertFalse(kits.swapSlots(kit.id(), 0, 1, 1));
+    }
+
+    @Test
+    void setSlotIdentityUpdatesPageSlot() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Mining");
+        ItemIdentity pick = ItemIdentity.of("minecraft:iron_pickaxe");
+
+        assertTrue(kits.setSlotIdentity(kit.id(), 0, 3, pick));
+        assertEquals(pick, kits.kit(kit.id()).page(0).slot(3));
+    }
+
+    @Test
+    void kitActiveProtectionProtectsBeltAndBringIdentitiesFromTrash() {
+        KitWorkflowDomainService kits = kits();
+        ItemIdentity pick = ItemIdentity.of("minecraft:iron_pickaxe");
+        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
+        KitPage page = KitPage.empty().withSlot(0, pick);
+        KitDefinition kit = kits.create("Mining").withPages(List.of(page)).withBring(List.of(torch));
+        kits.update(kit);
+        kits.activate(kit.id());
+
+        dev.imagio.slot.workflow.domain.KitActiveProtection protection =
+                new dev.imagio.slot.workflow.domain.KitActiveProtection(
+                        ProtectionPolicy.allowAll(),
+                        dev.imagio.slot.workflow.domain.KitActiveProtection.identitiesFor(kits.kitMap())
+                );
+
+        assertTrue(protection.protects(pick, dev.imagio.slot.inventory.action.InventoryActionKind.TRASH));
+        assertTrue(protection.protects(torch, dev.imagio.slot.inventory.action.InventoryActionKind.VOID));
+        assertFalse(protection.protects(pick, dev.imagio.slot.inventory.action.InventoryActionKind.TRANSFER));
+    }
+
+    @Test
+    void kitActiveProtectionIsEmptyWhenNoneActive() {
+        KitWorkflowDomainService kits = kits();
+        kits.create("Mining");
+        assertTrue(dev.imagio.slot.workflow.domain.KitActiveProtection.identitiesFor(kits.kitMap()).isEmpty());
+    }
+
+    @Test
+    void updateRejectsCapacityOverflow() {
+        KitWorkflowDomainService kits = kits();
+        KitDefinition kit = kits.create("Big");
+        List<KitPage> fivePages = List.of(
+                KitPage.empty(), KitPage.empty(), KitPage.empty(), KitPage.empty(), KitPage.empty()
+        );
+        assertThrows(IllegalArgumentException.class, () -> kits.update(kit.withPages(fivePages)));
+    }
+
+    @Test
     void pageAsLoadoutUsesQuickAccessLaneId() {
         KitWorkflowDomainService kits = kits();
         ItemIdentity pickaxe = ItemIdentity.of("minecraft:iron_pickaxe");

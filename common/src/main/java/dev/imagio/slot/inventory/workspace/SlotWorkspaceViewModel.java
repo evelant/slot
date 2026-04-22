@@ -451,26 +451,57 @@ public record SlotWorkspaceViewModel(
             }
             boolean active = activation.isActive() && activation.kitId().equals(kit.id());
             int renderedPage = active ? Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1)) : 0;
-            KitPage page = kit.page(renderedPage);
-            if (page == null) {
-                continue;
-            }
-            ArrayList<KitSlotState> slots = new ArrayList<>(KitPage.HOTBAR_SLOT_COUNT);
-            int ready = 0;
-            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
-                ItemIdentity identity = page.slot(slotIndex);
-                boolean filled = identity != null;
-                boolean present = filled && carried.contains(identity);
-                if (filled && present) {
-                    ready++;
+            ArrayList<KitPageView> pages = new ArrayList<>(kit.pageCount());
+            for (int pageIndex = 0; pageIndex < kit.pageCount(); pageIndex++) {
+                KitPage page = kit.page(pageIndex);
+                if (page == null) {
+                    continue;
                 }
-                ItemStack stack = filled ? resolveGhostStack(identity) : ItemStack.EMPTY;
-                String name = filled && !stack.isEmpty() ? stack.getHoverName().getString() : filled ? identity.itemId() : "";
-                slots.add(new KitSlotState(
-                        slotIndex,
-                        filled,
-                        present,
+                ArrayList<KitSlotState> pageSlots = new ArrayList<>(KitPage.HOTBAR_SLOT_COUNT);
+                int pageReady = 0;
+                for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
+                    ItemIdentity identity = page.slot(slotIndex);
+                    boolean filled = identity != null;
+                    boolean present = filled && carried.contains(identity);
+                    if (filled && present) {
+                        pageReady++;
+                    }
+                    ItemStack stack = filled ? resolveGhostStack(identity) : ItemStack.EMPTY;
+                    String name = filled && !stack.isEmpty() ? stack.getHoverName().getString() : filled ? identity.itemId() : "";
+                    pageSlots.add(new KitSlotState(
+                            slotIndex,
+                            filled,
+                            present,
+                            IdentityRef.from(identity),
+                            stack,
+                            name
+                    ));
+                }
+                pages.add(new KitPageView(
+                        pageIndex,
+                        KitPage.HOTBAR_SLOT_COUNT,
+                        pageReady,
+                        List.copyOf(pageSlots)
+                ));
+            }
+            KitPageView renderedPageView = pages.isEmpty() ? null : pages.get(Math.min(renderedPage, pages.size() - 1));
+            List<KitSlotState> renderedSlots = renderedPageView == null ? List.of() : renderedPageView.slots();
+            int renderedReady = renderedPageView == null ? 0 : renderedPageView.readyCount();
+            ArrayList<KitBringItem> bringItems = new ArrayList<>(kit.bring().size());
+            int bringReady = 0;
+            for (ItemIdentity identity : kit.bring()) {
+                if (identity == null) {
+                    continue;
+                }
+                boolean present = carried.contains(identity);
+                if (present) {
+                    bringReady++;
+                }
+                ItemStack stack = resolveGhostStack(identity);
+                String name = !stack.isEmpty() ? stack.getHoverName().getString() : identity.itemId();
+                bringItems.add(new KitBringItem(
                         IdentityRef.from(identity),
+                        present,
                         stack,
                         name
                 ));
@@ -482,8 +513,14 @@ public record SlotWorkspaceViewModel(
                     renderedPage,
                     active,
                     KitPage.HOTBAR_SLOT_COUNT,
-                    ready,
-                    List.copyOf(slots)
+                    renderedReady,
+                    kit.carriedSlotCount(),
+                    KitDefinition.MAX_CARRIED_CAPACITY,
+                    kit.bring().size(),
+                    bringReady,
+                    renderedSlots,
+                    List.copyOf(pages),
+                    List.copyOf(bringItems)
             ));
         }
         return List.copyOf(result);
@@ -1100,13 +1137,62 @@ public record SlotWorkspaceViewModel(
             boolean active,
             int slotCount,
             int readyCount,
-            List<KitSlotState> slots
+            int carriedSlotCount,
+            int carriedSlotCapacity,
+            int bringSlotCount,
+            int bringReadyCount,
+            List<KitSlotState> slots,
+            List<KitPageView> pages,
+            List<KitBringItem> bring
     ) {
         public KitCard {
             kitId = kitId == null ? "" : kitId;
             name = name == null || name.isBlank() ? kitId : name;
             pageCount = Math.max(1, pageCount);
             activePageIndex = Math.max(0, Math.min(activePageIndex, pageCount - 1));
+            slotCount = Math.max(0, slotCount);
+            readyCount = Math.max(0, Math.min(readyCount, slotCount));
+            carriedSlotCount = Math.max(0, carriedSlotCount);
+            carriedSlotCapacity = Math.max(carriedSlotCount, carriedSlotCapacity);
+            bringSlotCount = Math.max(0, bringSlotCount);
+            bringReadyCount = Math.max(0, Math.min(bringReadyCount, bringSlotCount));
+            slots = slots == null ? List.of() : List.copyOf(slots);
+            pages = pages == null ? List.of() : List.copyOf(pages);
+            bring = bring == null ? List.of() : List.copyOf(bring);
+        }
+
+        public KitPageView activePage() {
+            if (pages.isEmpty()) {
+                return null;
+            }
+            int index = Math.max(0, Math.min(activePageIndex, pages.size() - 1));
+            return pages.get(index);
+        }
+    }
+
+    public record KitBringItem(
+            IdentityRef identity,
+            boolean ready,
+            ItemStack displayStack,
+            String name
+    ) {
+        public KitBringItem {
+            identity = identity == null
+                    ? new IdentityRef("", ItemComparisonMode.ITEM_ID.name(), "")
+                    : identity;
+            displayStack = displayStack == null ? ItemStack.EMPTY : displayStack.copy();
+            name = name == null ? "" : name;
+        }
+    }
+
+    public record KitPageView(
+            int pageIndex,
+            int slotCount,
+            int readyCount,
+            List<KitSlotState> slots
+    ) {
+        public KitPageView {
+            pageIndex = Math.max(0, pageIndex);
             slotCount = Math.max(0, slotCount);
             readyCount = Math.max(0, Math.min(readyCount, slotCount));
             slots = slots == null ? List.of() : List.copyOf(slots);

@@ -12,6 +12,8 @@ public record KitDefinition(
         List<ItemIdentity> bring,
         ItemIdentity offhand
 ) {
+    public static final int MAX_CARRIED_CAPACITY = 36;
+
     public KitDefinition {
         id = id == null ? "" : id;
         name = name == null ? "" : name;
@@ -30,6 +32,14 @@ public record KitDefinition(
             return null;
         }
         return pages.get(index);
+    }
+
+    public int carriedSlotCount() {
+        return pages.size() * KitPage.HOTBAR_SLOT_COUNT + bring.size();
+    }
+
+    public boolean fitsCarriedCapacity() {
+        return carriedSlotCount() <= MAX_CARRIED_CAPACITY;
     }
 
     public KitDefinition withName(String nextName) {
@@ -54,6 +64,21 @@ public record KitDefinition(
         }
         ArrayList<KitPage> next = new ArrayList<>(pages);
         next.set(index, page);
+        return withPages(next);
+    }
+
+    public KitDefinition withPageAppended(KitPage page) {
+        ArrayList<KitPage> next = new ArrayList<>(pages);
+        next.add(page == null ? KitPage.empty() : page);
+        return withPages(next);
+    }
+
+    public KitDefinition withPageRemoved(int index) {
+        if (index < 0 || index >= pages.size() || pages.size() <= 1) {
+            return this;
+        }
+        ArrayList<KitPage> next = new ArrayList<>(pages);
+        next.remove(index);
         return withPages(next);
     }
 }

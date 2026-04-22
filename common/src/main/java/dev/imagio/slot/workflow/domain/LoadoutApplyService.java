@@ -58,6 +58,17 @@ public final class LoadoutApplyService {
             InventoryActionMode mode,
             Function<InventoryEntrySnapshot, ItemIdentity> identityResolver
     ) {
+        return plan(loadout, Set.of(), authority, protectionPolicy, mode, identityResolver);
+    }
+
+    public static LoadoutApplyPlan plan(
+            QuickAccessLoadoutDefinition loadout,
+            Set<LoadoutTarget> clearTargets,
+            InventoryAuthoritySnapshot authority,
+            ProtectionPolicy protectionPolicy,
+            InventoryActionMode mode,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver
+    ) {
         if (loadout == null
                 || authority == null
                 || authority.host() == null
@@ -70,6 +81,11 @@ public final class LoadoutApplyService {
         InventoryActionMode resolvedMode = mode == null ? InventoryActionMode.EXECUTE : mode;
         Map<String, TargetOccupant> currentTargets = new LinkedHashMap<>(currentTargetOccupants(authority, identityResolver));
         Set<String> reservedSourceSlots = new LinkedHashSet<>();
+        // Items moved by an earlier stage step still physically exist — their new home is
+        // the staging slot. Track them here so a later entry that happens to want the same
+        // identity can fetch it from the staging slot (bypassing the reservedSourceSlots
+        // exclusion that keeps authority-based candidate search from double-consuming).
+        List<CandidateSource> stagedCandidates = new ArrayList<>();
         List<PlannedTargetOperation> operations = new ArrayList<>();
         List<LoadoutTarget> satisfiedTargets = new ArrayList<>();
         List<LoadoutTarget> missingTargets = new ArrayList<>();
@@ -100,14 +116,28 @@ public final class LoadoutApplyService {
                 continue;
             }
 
-            CandidateSource candidate = findCandidateSource(
-                    authority,
-                    identityResolver,
-                    entry.identity(),
-                    targetKind,
-                    resolvedProtection,
-                    reservedSourceSlots
-            );
+            CandidateSource candidate = findStagedCandidate(stagedCandidates, entry.identity());
+            if (candidate != null) {
+                stagedCandidates.remove(candidate);
+                // If a prior stage put the identity at the exact target slot (can happen when
+                // findStagingTarget had to use a quick-access slot because main was full),
+                // the target is already satisfied — emitting a self-transfer would be a no-op
+                // at best and fail-closed at worst. Skip the apply step entirely.
+                if (stagedCandidateIsAtTarget(host, candidate, entry.target())) {
+                    satisfiedTargets.add(entry.target());
+                    currentTargets.put(targetKey, new TargetOccupant(entry.identity(), candidate.stack()));
+                    continue;
+                }
+            } else {
+                candidate = findCandidateSource(
+                        authority,
+                        identityResolver,
+                        entry.identity(),
+                        targetKind,
+                        resolvedProtection,
+                        reservedSourceSlots
+                );
+            }
             if (candidate == null) {
                 missingTargets.add(entry.target());
                 diagnostics.add("no_candidate_source_for_target:" + targetKey);
@@ -181,19 +211,39 @@ public final class LoadoutApplyService {
                         ""
                 );
                 reservedSourceSlots.add(stagingTarget.stableKey());
+                stagedCandidates.add(new CandidateSource(
+                        stagingTarget.sourceId(),
+                        stagingTarget.slotIndex(),
+                        "",
+                        currentOccupant.stack(),
+                        currentOccupant.identity()
+                ));
                 currentTargets.remove(targetKey);
             }
 
             reservedSourceSlots.add(candidate.stableKey());
+            // ASSIGN's in-place swap path requires both ends be player-bound (main/hotbar/
+            // equipment). If the candidate lives in a non-player carried source like a
+            // Sophisticated Backpack, use TRANSFER + INSERT_ONLY (stage above guarantees
+            // the target is empty when we reach this point) so the extract/insert path
+            // runs through the source's capability handler.
+            boolean candidateIsPlayerBound = isPlayerBoundSource(host, candidate.sourceId());
+            InventoryActionKind applyKind = candidateIsPlayerBound ? targetKind : InventoryActionKind.TRANSFER;
+            InventoryActionConflictPolicy applyPolicy = candidateIsPlayerBound
+                    ? conflictPolicyFor(targetKind)
+                    : InventoryActionConflictPolicy.INSERT_ONLY;
+            InventoryActionQuantity applyQuantity = candidateIsPlayerBound
+                    ? quantityFor(targetKind)
+                    : InventoryActionQuantity.STACK;
             requests.add(new InventoryActionRequest(
                     host.hostId(),
                     host.serverMenuRef(),
                     UUID.randomUUID().toString(),
-                    targetKind,
+                    applyKind,
                     resolvedMode,
-                    quantityFor(targetKind),
+                    applyQuantity,
                     InventoryActionScope.LOADOUT,
-                    conflictPolicyFor(targetKind),
+                    applyPolicy,
                     "workflow:loadout_apply",
                     candidate.actionTarget(),
                     target,
@@ -206,7 +256,113 @@ public final class LoadoutApplyService {
                     ""
             ));
             currentTargets.put(targetKey, new TargetOccupant(entry.identity(), candidate.stack()));
+            // The candidate slot is now empty. If it's a tracked quick-access / equipment
+            // lane, drop its stale currentTargets entry so a later entry doesn't try to
+            // stage from it. Without this, page swaps that reorder two belt items produce
+            // stale stage requests and fail with player_slot_identity_mismatch.
+            String candidateTargetKey = targetKeyForSourceSlot(host, candidate.sourceId(), candidate.slotIndex());
+            if (candidateTargetKey != null) {
+                currentTargets.remove(candidateTargetKey);
+            }
+            // Reserve the target's source slot so later findCandidateSource calls do not
+            // pick it up as a source (the target now holds the identity we just assigned,
+            // not the identity authority's pre-plan snapshot claims is there).
+            String targetSourceKey = sourceKeyForTarget(host, target);
+            if (targetSourceKey != null) {
+                reservedSourceSlots.add(targetSourceKey);
+            }
             operations.add(new PlannedTargetOperation(entry.target(), requests, rollbackRequest));
+        }
+
+        // Pass 2: targets the loadout explicitly asks to be empty (kit page slots with a
+        // null identity). Skip any target already satisfied / missing / planned above.
+        // Semantics: if the target has an occupant, stage it out to a free carried slot;
+        // if it's already empty, mark satisfied and do nothing.
+        Set<String> plannedKeys = new LinkedHashSet<>();
+        for (LoadoutTarget t : satisfiedTargets) {
+            plannedKeys.add(InventoryTargetCanonicalizer.canonicalKey(t));
+        }
+        for (LoadoutTarget t : missingTargets) {
+            plannedKeys.add(InventoryTargetCanonicalizer.canonicalKey(t));
+        }
+        for (PlannedTargetOperation op : operations) {
+            if (op != null && op.target() != null) {
+                plannedKeys.add(InventoryTargetCanonicalizer.canonicalKey(op.target()));
+            }
+        }
+        if (clearTargets != null) {
+            List<LoadoutTarget> orderedClearTargets = clearTargets.stream()
+                    .filter(Objects::nonNull)
+                    .sorted(Comparator.comparing(InventoryTargetCanonicalizer::canonicalKey))
+                    .toList();
+            for (LoadoutTarget clearTarget : orderedClearTargets) {
+                String clearKey = InventoryTargetCanonicalizer.canonicalKey(clearTarget);
+                if (plannedKeys.contains(clearKey)) {
+                    continue;
+                }
+                TargetOccupant occupant = currentTargets.get(clearKey);
+                if (occupant == null || !occupant.present()) {
+                    satisfiedTargets.add(clearTarget);
+                    continue;
+                }
+                InventoryActionTarget actionTarget = toActionTarget(clearTarget);
+                InventoryActionKind targetKind = actionKindFor(clearTarget);
+                if (InventoryActionPolicy.blockedByProtection(
+                        targetKind,
+                        occupant.identity(),
+                        occupant.stack(),
+                        resolvedProtection
+                )) {
+                    missingTargets.add(clearTarget);
+                    diagnostics.add("clear_blocked_by_protection:" + clearKey);
+                    continue;
+                }
+                StagingTarget stagingTarget = findStagingTarget(
+                        authority,
+                        resolvedProtection,
+                        reservedSourceSlots
+                );
+                if (stagingTarget == null) {
+                    missingTargets.add(clearTarget);
+                    diagnostics.add("no_staging_slot_for_clear:" + clearKey);
+                    continue;
+                }
+                InventoryActionRequest clearRequest = new InventoryActionRequest(
+                        host.hostId(),
+                        host.serverMenuRef(),
+                        UUID.randomUUID().toString(),
+                        InventoryActionKind.TRANSFER,
+                        resolvedMode,
+                        InventoryActionQuantity.STACK,
+                        InventoryActionScope.SINGLE_TARGET,
+                        InventoryActionConflictPolicy.INSERT_ONLY,
+                        "workflow:loadout_clear",
+                        actionTarget,
+                        new InventoryActionTarget.SourceSlotTarget(stagingTarget.sourceId(), stagingTarget.slotIndex()),
+                        0,
+                        occupant.identity(),
+                        occupant.stack(),
+                        InventoryToolActionId.PROVIDER_DEFINED,
+                        InventoryToolToggleId.PROVIDER_DEFINED,
+                        false,
+                        ""
+                );
+                reservedSourceSlots.add(stagingTarget.stableKey());
+                stagedCandidates.add(new CandidateSource(
+                        stagingTarget.sourceId(),
+                        stagingTarget.slotIndex(),
+                        "",
+                        occupant.stack(),
+                        occupant.identity()
+                ));
+                currentTargets.remove(clearKey);
+                satisfiedTargets.add(clearTarget);
+                operations.add(new PlannedTargetOperation(
+                        clearTarget,
+                        List.of(clearRequest),
+                        null
+                ));
+            }
         }
 
         return new LoadoutApplyPlan(
@@ -399,8 +555,41 @@ public final class LoadoutApplyService {
             ProtectionPolicy protectionPolicy,
             Set<String> reservedSourceSlots
     ) {
+        InventoryHostDescriptor host = authority.host();
+        // Prefer staging into player-backed sources that aren't themselves quick-access /
+        // equipment lanes (i.e., main inventory). A staged item parked inside a quick-access
+        // slot works — stagedCandidateIsAtTarget catches the self-transfer case — but main
+        // is a cleaner holding area and keeps the rollback path viable (rollback emits
+        // ASSIGN which only supports PLAYER-bound source + destination). Fall back to any
+        // INSERT-capable source if no preferred slot is available.
+        StagingTarget preferred = findStagingTarget(
+                authority,
+                reservedSourceSlots,
+                protectionPolicy,
+                source -> source != null
+                        && source.supports(InventoryCapability.INSERT)
+                        && source.playerBacked()
+                        && !isQuickAccessOrEquipmentSource(host, source.id())
+        );
+        if (preferred != null) {
+            return preferred;
+        }
+        return findStagingTarget(
+                authority,
+                reservedSourceSlots,
+                protectionPolicy,
+                source -> source != null && source.supports(InventoryCapability.INSERT)
+        );
+    }
+
+    private static StagingTarget findStagingTarget(
+            InventoryAuthoritySnapshot authority,
+            Set<String> reservedSourceSlots,
+            ProtectionPolicy protectionPolicy,
+            java.util.function.Predicate<InventorySourceDescriptor> sourceFilter
+    ) {
         for (InventorySourceDescriptor source : authority.carriedSources().stream()
-                .filter(candidate -> candidate != null && candidate.supports(InventoryCapability.INSERT))
+                .filter(sourceFilter)
                 .sorted(Comparator.comparingInt(InventorySourceDescriptor::stableOrder))
                 .toList()) {
             InventorySourceSnapshot sourceSnapshot = authority.sourceSnapshot(source.id());
@@ -434,6 +623,103 @@ public final class LoadoutApplyService {
                 }
                 return target;
             }
+        }
+        return null;
+    }
+
+    private static CandidateSource findStagedCandidate(List<CandidateSource> staged, ItemIdentity identity) {
+        if (identity == null || staged == null || staged.isEmpty()) {
+            return null;
+        }
+        for (CandidateSource candidate : staged) {
+            if (ItemIdentityMatcher.matchesMovable(candidate.identity(), identity)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    private static boolean stagedCandidateIsAtTarget(
+            InventoryHostDescriptor host,
+            CandidateSource candidate,
+            LoadoutTarget target
+    ) {
+        if (host == null || candidate == null || target == null) {
+            return false;
+        }
+        return switch (target) {
+            case LoadoutTarget.QuickAccessLaneTarget quickAccessLaneTarget -> {
+                var lane = host.quickAccessLane(quickAccessLaneTarget.laneId());
+                yield lane != null
+                        && candidate.sourceId() != null
+                        && candidate.sourceId().equals(lane.sourceId())
+                        && candidate.slotIndex() == quickAccessLaneTarget.slotIndex();
+            }
+            case LoadoutTarget.EquipmentSlotTarget equipmentSlotTarget -> {
+                var group = host.equipmentGroup(equipmentSlotTarget.groupId());
+                yield group != null
+                        && candidate.sourceId() != null
+                        && candidate.sourceId().equals(group.sourceId())
+                        && candidate.slotIndex() == equipmentSlotTarget.slotIndex();
+            }
+        };
+    }
+
+    private static boolean isQuickAccessOrEquipmentSource(InventoryHostDescriptor host, String sourceId) {
+        if (host == null || sourceId == null || sourceId.isBlank()) {
+            return false;
+        }
+        for (var lane : host.quickAccessLanes()) {
+            if (lane != null && sourceId.equals(lane.sourceId())) {
+                return true;
+            }
+        }
+        for (var group : host.equipmentGroups()) {
+            if (group != null && sourceId.equals(group.sourceId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isPlayerBoundSource(InventoryHostDescriptor host, String sourceId) {
+        if (host == null || sourceId == null || sourceId.isBlank()) {
+            return false;
+        }
+        InventorySourceDescriptor descriptor = host.source(sourceId);
+        return descriptor != null && descriptor.playerBacked();
+    }
+
+    private static String targetKeyForSourceSlot(InventoryHostDescriptor host, String sourceId, int slotIndex) {
+        if (host == null || sourceId == null || sourceId.isBlank() || slotIndex < 0) {
+            return null;
+        }
+        for (var lane : host.quickAccessLanes()) {
+            if (lane != null && sourceId.equals(lane.sourceId())) {
+                return InventoryTargetCanonicalizer.canonicalKey(
+                        new LoadoutTarget.QuickAccessLaneTarget(lane.id(), slotIndex));
+            }
+        }
+        for (var group : host.equipmentGroups()) {
+            if (group != null && sourceId.equals(group.sourceId())) {
+                return InventoryTargetCanonicalizer.canonicalKey(
+                        new LoadoutTarget.EquipmentSlotTarget(group.id(), slotIndex));
+            }
+        }
+        return null;
+    }
+
+    private static String sourceKeyForTarget(InventoryHostDescriptor host, InventoryActionTarget target) {
+        if (host == null || target == null) {
+            return null;
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget quickAccessTarget) {
+            var lane = host.quickAccessLane(quickAccessTarget.laneId());
+            return lane == null ? null : lane.sourceId() + "#" + Math.max(0, quickAccessTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            var group = host.equipmentGroup(equipmentTarget.groupId());
+            return group == null ? null : group.sourceId() + "#" + Math.max(0, equipmentTarget.slotIndex());
         }
         return null;
     }

@@ -161,11 +161,25 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putBoolean("active", card.active());
         tag.putInt("slotCount", card.slotCount());
         tag.putInt("readyCount", card.readyCount());
+        tag.putInt("carriedSlotCount", card.carriedSlotCount());
+        tag.putInt("carriedSlotCapacity", card.carriedSlotCapacity());
+        tag.putInt("bringSlotCount", card.bringSlotCount());
+        tag.putInt("bringReadyCount", card.bringReadyCount());
         ListTag slots = new ListTag();
         for (SlotWorkspaceViewModel.KitSlotState slot : card.slots()) {
             slots.add(encodeKitSlot(slot, provider));
         }
         tag.put("slots", slots);
+        ListTag pages = new ListTag();
+        for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
+            pages.add(encodeKitPage(page, provider));
+        }
+        tag.put("pages", pages);
+        ListTag bring = new ListTag();
+        for (SlotWorkspaceViewModel.KitBringItem item : card.bring()) {
+            bring.add(encodeKitBring(item, provider));
+        }
+        tag.put("bring", bring);
         return tag;
     }
 
@@ -175,12 +189,73 @@ public final class SlotWorkspaceViewModelCodec {
         for (int index = 0; index < slotTags.size(); index++) {
             slots.add(decodeKitSlot(provider, slotTags.getCompound(index)));
         }
+        ArrayList<SlotWorkspaceViewModel.KitPageView> pages = new ArrayList<>();
+        ListTag pageTags = tag.getList("pages", Tag.TAG_COMPOUND);
+        for (int index = 0; index < pageTags.size(); index++) {
+            pages.add(decodeKitPage(provider, pageTags.getCompound(index)));
+        }
+        ArrayList<SlotWorkspaceViewModel.KitBringItem> bring = new ArrayList<>();
+        ListTag bringTags = tag.getList("bring", Tag.TAG_COMPOUND);
+        for (int index = 0; index < bringTags.size(); index++) {
+            bring.add(decodeKitBring(provider, bringTags.getCompound(index)));
+        }
         return new SlotWorkspaceViewModel.KitCard(
                 tag.getString("kitId"),
                 tag.getString("name"),
                 tag.getInt("pageCount"),
                 tag.getInt("activePageIndex"),
                 tag.getBoolean("active"),
+                tag.getInt("slotCount"),
+                tag.getInt("readyCount"),
+                tag.getInt("carriedSlotCount"),
+                tag.getInt("carriedSlotCapacity"),
+                tag.getInt("bringSlotCount"),
+                tag.getInt("bringReadyCount"),
+                slots,
+                pages,
+                bring
+        );
+    }
+
+    private static CompoundTag encodeKitBring(SlotWorkspaceViewModel.KitBringItem item, HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.putBoolean("ready", item.ready());
+        tag.put("identity", encodeIdentity(item.identity()));
+        tag.put("displayStack", item.displayStack().saveOptional(provider));
+        tag.putString("name", item.name());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.KitBringItem decodeKitBring(HolderLookup.Provider provider, CompoundTag tag) {
+        return new SlotWorkspaceViewModel.KitBringItem(
+                decodeIdentity(tag.getCompound("identity")),
+                tag.getBoolean("ready"),
+                ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
+                tag.getString("name")
+        );
+    }
+
+    private static CompoundTag encodeKitPage(SlotWorkspaceViewModel.KitPageView page, HolderLookup.Provider provider) {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("pageIndex", page.pageIndex());
+        tag.putInt("slotCount", page.slotCount());
+        tag.putInt("readyCount", page.readyCount());
+        ListTag slots = new ListTag();
+        for (SlotWorkspaceViewModel.KitSlotState slot : page.slots()) {
+            slots.add(encodeKitSlot(slot, provider));
+        }
+        tag.put("slots", slots);
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.KitPageView decodeKitPage(HolderLookup.Provider provider, CompoundTag tag) {
+        ArrayList<SlotWorkspaceViewModel.KitSlotState> slots = new ArrayList<>();
+        ListTag slotTags = tag.getList("slots", Tag.TAG_COMPOUND);
+        for (int index = 0; index < slotTags.size(); index++) {
+            slots.add(decodeKitSlot(provider, slotTags.getCompound(index)));
+        }
+        return new SlotWorkspaceViewModel.KitPageView(
+                tag.getInt("pageIndex"),
                 tag.getInt("slotCount"),
                 tag.getInt("readyCount"),
                 slots

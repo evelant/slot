@@ -63,7 +63,12 @@ public final class WorkflowDomainRuntime {
         return repository.activityProjection();
     }
 
-    public ProtectionSnapshotPolicy protection() {
+    public ProtectionPolicy protection() {
+        WorkflowProjection.Snapshot projection = repository.workflowProjection();
+        return KitActiveProtection.compose(projection.protection(), projection.kitMap());
+    }
+
+    public ProtectionSnapshotPolicy baseProtection() {
         return repository.workflowProjection().protection();
     }
 

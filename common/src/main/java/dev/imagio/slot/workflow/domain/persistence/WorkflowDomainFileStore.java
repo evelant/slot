@@ -24,7 +24,10 @@ import dev.imagio.slot.workflow.domain.ChestLink;
 import dev.imagio.slot.workflow.domain.ChestLinkMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.KitActivation;
+import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.KitMap;
+import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.CollectionProjection;
 import dev.imagio.slot.workflow.domain.DomainEventEnvelope;
@@ -361,6 +364,14 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         for (ChestLink link : resolved.chestLinkMap().links()) {
             chestLinks.add(chestLink(link));
         }
+        ArrayList<KitDefinitionData> kitDefinitions = new ArrayList<>();
+        for (KitDefinition kit : resolved.kitMap().kits()) {
+            kitDefinitions.add(kitDefinition(kit));
+        }
+        KitActivation activation = resolved.kitMap().activation();
+        KitActivationData activationData = activation.isActive()
+                ? new KitActivationData(activation.kitId(), activation.pageIndex())
+                : null;
         return new WorkflowCheckpointData(
                 collections,
                 memberships,
@@ -384,7 +395,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         .toList(),
                 List.copyOf(resolved.visualHomeMap().dismissedTemplateIds()),
                 claimedChests,
-                chestLinks
+                chestLinks,
+                kitDefinitions,
+                activationData
         );
     }
 
@@ -546,6 +559,35 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
 
+        ArrayList<KitDefinition> kits = new ArrayList<>();
+        if (data.kits != null) {
+            for (KitDefinitionData kitData : data.kits) {
+                KitDefinition kit = decodeKitDefinition(kitData);
+                if (kit != null) {
+                    kits.add(kit);
+                }
+            }
+        }
+        KitActivation kitActivation = data.kitActivation == null
+                ? KitActivation.NONE
+                : new KitActivation(
+                        data.kitActivation.kitId == null ? "" : data.kitActivation.kitId,
+                        Math.max(0, data.kitActivation.pageIndex));
+        // if activation references an unknown kit after decode, fall back to none
+        if (kitActivation.isActive()) {
+            boolean found = false;
+            for (KitDefinition kit : kits) {
+                if (kit.id().equals(kitActivation.kitId())) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                kitActivation = KitActivation.NONE;
+            }
+        }
+        KitMap kitMap = new KitMap(kits, kitActivation);
+
         return new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
@@ -558,8 +600,77 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
                 new ClaimedChestMap(claimedChests),
                 new ChestLinkMap(chestLinks),
-                KitMap.empty()
+                kitMap
         );
+    }
+
+    private static KitDefinitionData kitDefinition(KitDefinition kit) {
+        if (kit == null) {
+            return null;
+        }
+        ArrayList<KitPageData> pages = new ArrayList<>();
+        for (KitPage page : kit.pages()) {
+            pages.add(kitPage(page));
+        }
+        ArrayList<IdentityData> bring = new ArrayList<>();
+        for (ItemIdentity identity : kit.bring()) {
+            bring.add(identity(identity));
+        }
+        IdentityData offhand = kit.offhand() == null ? null : identity(kit.offhand());
+        return new KitDefinitionData(kit.id(), kit.name(), pages, bring, offhand);
+    }
+
+    private static KitPageData kitPage(KitPage page) {
+        if (page == null) {
+            return new KitPageData(List.of());
+        }
+        ArrayList<IdentityData> identities = new ArrayList<>();
+        for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
+            ItemIdentity slotIdentity = page.slot(slotIndex);
+            identities.add(slotIdentity == null ? null : identity(slotIdentity));
+        }
+        return new KitPageData(identities);
+    }
+
+    private static KitDefinition decodeKitDefinition(KitDefinitionData data) {
+        if (data == null || blank(data.id) || blank(data.name)) {
+            return null;
+        }
+        ArrayList<KitPage> pages = new ArrayList<>();
+        if (data.pages != null) {
+            for (KitPageData pageData : data.pages) {
+                pages.add(decodeKitPage(pageData));
+            }
+        }
+        if (pages.isEmpty()) {
+            pages.add(KitPage.empty());
+        }
+        ArrayList<ItemIdentity> bring = new ArrayList<>();
+        if (data.bring != null) {
+            for (IdentityData identityData : data.bring) {
+                ItemIdentity identity = decodeIdentity(identityData);
+                if (identity != null) {
+                    bring.add(identity);
+                }
+            }
+        }
+        ItemIdentity offhand = decodeIdentity(data.offhand);
+        return new KitDefinition(data.id, data.name, pages, bring, offhand);
+    }
+
+    private static KitPage decodeKitPage(KitPageData data) {
+        if (data == null || data.hotbarIdentities == null) {
+            return KitPage.empty();
+        }
+        ArrayList<ItemIdentity> identities = new ArrayList<>();
+        for (int index = 0; index < KitPage.HOTBAR_SLOT_COUNT; index++) {
+            if (index < data.hotbarIdentities.size()) {
+                identities.add(decodeIdentity(data.hotbarIdentities.get(index)));
+            } else {
+                identities.add(null);
+            }
+        }
+        return new KitPage(identities);
     }
 
     private static ActivityCheckpointData encodeActivityCheckpoint(ActivityProjection.Snapshot snapshot) {
@@ -788,25 +899,30 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
             case WorkflowEvent.KitCreated event -> {
                 data.kind = "KitCreated";
+                data.kit = kitDefinition(event.kit());
+                data.kitId = event.kit() == null ? "" : event.kit().id();
             }
             case WorkflowEvent.KitUpdated event -> {
                 data.kind = "KitUpdated";
+                data.kit = kitDefinition(event.kit());
+                data.kitId = event.kit() == null ? "" : event.kit().id();
             }
             case WorkflowEvent.KitDeleted event -> {
                 data.kind = "KitDeleted";
+                data.kitId = event.kitId();
             }
             case WorkflowEvent.KitActivated event -> {
                 data.kind = "KitActivated";
+                data.kitId = event.kitId();
+                data.pageIndex = event.pageIndex();
             }
             case WorkflowEvent.KitDeactivated event -> {
                 data.kind = "KitDeactivated";
             }
             case WorkflowEvent.KitPageSwitched event -> {
                 data.kind = "KitPageSwitched";
+                data.pageIndex = event.pageIndex();
             }
-        }
-        if (data.kind != null && data.kind.startsWith("Kit")) {
-            return null;
         }
         return data;
     }
@@ -888,6 +1004,19 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 yield storageId == null || blank(data.islandId) ? null
                         : new WorkflowEvent.ChestLinkRemoved(data.islandId, storageId);
             }
+            case "KitCreated" -> {
+                KitDefinition kit = decodeKitDefinition(data.kit);
+                yield kit == null ? null : new WorkflowEvent.KitCreated(kit);
+            }
+            case "KitUpdated" -> {
+                KitDefinition kit = decodeKitDefinition(data.kit);
+                yield kit == null ? null : new WorkflowEvent.KitUpdated(kit);
+            }
+            case "KitDeleted" -> blank(data.kitId) ? null : new WorkflowEvent.KitDeleted(data.kitId);
+            case "KitActivated" -> blank(data.kitId) ? null
+                    : new WorkflowEvent.KitActivated(data.kitId, Math.max(0, data.pageIndex));
+            case "KitDeactivated" -> new WorkflowEvent.KitDeactivated();
+            case "KitPageSwitched" -> new WorkflowEvent.KitPageSwitched(Math.max(0, data.pageIndex));
             default -> null;
         };
         return event == null ? null : new WorkflowEventRecord(envelope, event);
@@ -1358,7 +1487,29 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<VisualHomeData> visualHomes,
             List<String> dismissedTemplateIds,
             List<ClaimedChestData> claimedChests,
-            List<ChestLinkData> chestLinks
+            List<ChestLinkData> chestLinks,
+            List<KitDefinitionData> kits,
+            KitActivationData kitActivation
+    ) {
+    }
+
+    private record KitDefinitionData(
+            String id,
+            String name,
+            List<KitPageData> pages,
+            List<IdentityData> bring,
+            IdentityData offhand
+    ) {
+    }
+
+    private record KitPageData(
+            List<IdentityData> hotbarIdentities
+    ) {
+    }
+
+    private record KitActivationData(
+            String kitId,
+            int pageIndex
     ) {
     }
 
@@ -1417,6 +1568,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private String storageId;
         private List<ChestAnchorData> anchors;
         private ClaimedChestData claimedChest;
+        private String kitId;
+        private int pageIndex;
+        private KitDefinitionData kit;
     }
 
     private static final class ActivityEventData {

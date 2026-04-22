@@ -1,8 +1,10 @@
 # Kit Prototype Plan
 
-Last updated: 2026-04-16
+Last updated: 2026-04-22
 
-Status: near-term engineering plan for the first end-to-end Kit prototype.
+Status: slices 1–8 landed; slice 9 (Kit-specific undo) deferred into
+the general undo/redo stack. See [../status.md](../status.md) for the
+current tuning and landing points.
 
 For the Kit concept and interaction model, see [../design/kits.md](../design/kits.md).
 For the broader near-term engineering sequence, see [current.md](current.md).

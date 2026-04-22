@@ -488,6 +488,29 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void renameKit(String kitId, String newName) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.renameKit(
+                workflowRuntime(serverPlayer),
+                kitId,
+                newName
+        ));
+    }
+
+    void duplicateKit(String kitId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.duplicateKit(
+                workflowRuntime(serverPlayer),
+                kitId
+        ));
+    }
+
     void deleteKit(String kitId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
@@ -496,6 +519,125 @@ final class SlotWorkspaceUiSession {
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.deleteKit(
                 workflowRuntime(serverPlayer),
                 kitId
+        ));
+    }
+
+    void switchKitPage(Integer direction) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = request -> {
+            InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                    host,
+                    serverPlayer,
+                    request,
+                    ProtectionPolicy.allowAll()
+            );
+            workflowRuntime(serverPlayer).recordOutcome(outcome);
+            return outcome;
+        };
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.switchKitPage(
+                workflowRuntime(serverPlayer),
+                authority,
+                ProtectionPolicy.allowAll(),
+                KIT_IDENTITY_RESOLVER,
+                actionExecutor,
+                direction == null ? 1 : direction
+        ));
+    }
+
+    void addKitPage(String kitId) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.addKitPage(
+                workflowRuntime(serverPlayer),
+                kitId
+        ));
+    }
+
+    void removeKitPage(String kitId, Integer pageIndex) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.removeKitPage(
+                workflowRuntime(serverPlayer),
+                kitId,
+                pageIndex == null ? -1 : pageIndex
+        ));
+    }
+
+    void addKitBring(String kitId, String itemId, String comparisonMode, String componentFingerprint) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.addKitBring(
+                workflowRuntime(serverPlayer),
+                kitId,
+                itemId,
+                comparisonMode,
+                componentFingerprint
+        ));
+    }
+
+    void removeKitBring(String kitId, String itemId, String comparisonMode, String componentFingerprint) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.removeKitBring(
+                workflowRuntime(serverPlayer),
+                kitId,
+                itemId,
+                comparisonMode,
+                componentFingerprint
+        ));
+    }
+
+    void swapKitSlots(String kitId, Integer pageIndex, Integer fromIndex, Integer toIndex) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.swapKitSlots(
+                workflowRuntime(serverPlayer),
+                kitId,
+                pageIndex == null ? -1 : pageIndex,
+                fromIndex == null ? -1 : fromIndex,
+                toIndex == null ? -1 : toIndex
+        ));
+    }
+
+    void setKitSlotIdentity(
+            String kitId,
+            Integer pageIndex,
+            Integer slotIndex,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.setKitSlotIdentity(
+                workflowRuntime(serverPlayer),
+                kitId,
+                pageIndex == null ? -1 : pageIndex,
+                slotIndex == null ? -1 : slotIndex,
+                itemId,
+                comparisonMode,
+                componentFingerprint
         ));
     }
 
@@ -651,19 +793,79 @@ final class SlotWorkspaceUiSession {
             return;
         }
 
-        WorkspaceTransferExecution execution = executeTransfer(
-                serverPlayer,
-                new InventoryActionTarget.SourceSlotTarget(source.laneId(), source.slotIndex()),
-                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
-                "slot_workspace.ldlib.assign_identity_to_hotbar"
-        );
+        // If the source is a player slot (main or hotbar) the factory builds a single ASSIGN
+        // request and the in-place swap path handles displacement. If it lives in a backpack
+        // (or any other non-player carried source) the in-place swap path rejects with
+        // `assign_requires_player_bound_targets`, so we route through LoadoutApplyService's
+        // staging flow — TRANSFER source→hotbar, with an automatic staging step that moves
+        // any current hotbar occupant into a free main slot.
+        if (BuiltinInventoryIds.PLAYER_MAIN.equals(source.laneId())
+                || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(source.laneId())) {
+            WorkspaceTransferExecution execution = executeTransfer(
+                    serverPlayer,
+                    new InventoryActionTarget.SourceSlotTarget(source.laneId(), source.slotIndex()),
+                    new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
+                    "slot_workspace.ldlib.assign_identity_to_hotbar"
+            );
+            if (execution.appliedCompletely()) {
+                status = "assigned_to_hotbar_" + (hotbarIndex + 1);
+                diagnostics = "moved to hotbar " + (hotbarIndex + 1);
+            } else {
+                status = execution.feedback().status();
+                diagnostics = execution.feedback().diagnostics();
+            }
+            broadcast(serverPlayer);
+            return;
+        }
 
-        if (execution.appliedCompletely()) {
+        applyLoadoutSingleTarget(serverPlayer, hotbarIndex, identity);
+    }
+
+    private void applyLoadoutSingleTarget(ServerPlayer serverPlayer, int hotbarIndex, ItemIdentity identity) {
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        var entry = new dev.imagio.slot.workflow.domain.QuickAccessLoadoutEntry(
+                new dev.imagio.slot.workflow.domain.LoadoutTarget.QuickAccessLaneTarget(
+                        BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
+                identity
+        );
+        var loadout = new dev.imagio.slot.workflow.domain.QuickAccessLoadoutDefinition(
+                "assign_identity_" + hotbarIndex,
+                identity.itemId() + " -> hotbar " + (hotbarIndex + 1),
+                java.util.Set.of(entry)
+        );
+        var plan = dev.imagio.slot.workflow.domain.LoadoutApplyService.plan(
+                loadout,
+                authority,
+                ProtectionPolicy.allowAll(),
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                e -> ItemIdentityMatcher.create(e.stack())
+        );
+        java.util.function.Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = request -> {
+            InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                    host,
+                    serverPlayer,
+                    request,
+                    ProtectionPolicy.allowAll()
+            );
+            workflowRuntime(serverPlayer).recordOutcome(outcome);
+            return outcome;
+        };
+        var result = new dev.imagio.slot.workflow.domain.LoadoutApplyExecutor(actionExecutor).execute(plan);
+        if (result.satisfiedTargets().stream().anyMatch(t ->
+                t instanceof dev.imagio.slot.workflow.domain.LoadoutTarget.QuickAccessLaneTarget q
+                        && q.slotIndex() == hotbarIndex)) {
             status = "assigned_to_hotbar_" + (hotbarIndex + 1);
             diagnostics = "moved to hotbar " + (hotbarIndex + 1);
         } else {
-            status = execution.feedback().status();
-            diagnostics = execution.feedback().diagnostics();
+            status = "rejected";
+            diagnostics = result.diagnostics().isEmpty()
+                    ? "assign failed"
+                    : String.join(",", result.diagnostics());
         }
         broadcast(serverPlayer);
     }
