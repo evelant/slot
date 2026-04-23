@@ -119,6 +119,11 @@ final class SlotWorkspaceUiFactory {
     private static final float SIDE_CAMERA_INSET_PX = 48f;
     private static final float GHOST_CARD_ALPHA = 0.18f;
     private static final int GHOST_ICON_OVERLAY_COLOR = 0xC8060A0E;
+    // Ghost (non-carried) atlas cards render at this fraction of their
+    // allocated cell size at every disclosure level EXCEPT DETAIL. Keeps
+    // the close-up view showing 1:1 "this is the home slot" while pushed-
+    // out zooms de-emphasise homes the player doesn't currently hold.
+    private static final float GHOST_SHRINK_SCALE = 0.6f;
     private static final int DRAG_START_THRESHOLD_PX = 4;
 
     private SlotWorkspaceUiFactory() {
@@ -1761,6 +1766,46 @@ final class SlotWorkspaceUiFactory {
                 atlas.addContentChild(storageZoneBackdrop(bounds));
                 atlas.addContentChild(storageZoneHeader(bounds, atlas));
             }
+            // Link threads + arrows go in FIRST. LDLib's draw order is
+            // child-insertion order (UIElement.drawContents iterates the
+            // children list, not getSortedChildren — zIndex only affects
+            // hit testing). So anything drawn later sits visually on top.
+            // Adding threads before islands/chests/items ensures the line's
+            // middle section is visible over atlas backdrop while the
+            // portion that passes through a chest or island body is hidden
+            // behind that body — exactly the intended "connected but not
+            // overlapping" look. Arrows sit just outside the tile/island
+            // edges, so they never overlap those bodies anyway.
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                if (!tile.proximate()) {
+                    continue;
+                }
+                for (String islandId : tile.linkedIslandIds()) {
+                    SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
+                    if (island == null) {
+                        continue;
+                    }
+                    addLinkAffordances(atlas, tile, island);
+                }
+            }
+            // Hover preview: if the player is hovering an island, draw dim link
+            // threads to any of its NON-proximate linked chests so the relationship
+            // is discoverable without walking to the chest. Also added before
+            // islands so the dim line gets obscured by the island body.
+            if (hoveredIslandId != null) {
+                SlotWorkspaceViewModel.AtlasIsland hovered = viewModel.island(hoveredIslandId);
+                if (hovered != null) {
+                    for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                        if (tile.proximate() || !tile.linkedIslandIds().contains(hoveredIslandId)) {
+                            continue;
+                        }
+                        UIElement dimThread = dimLinkThread(tile, hovered);
+                        if (dimThread != null) {
+                            atlas.addContentChild(dimThread);
+                        }
+                    }
+                }
+            }
             Set<String> highlightedIslandIds = highlightedIslandIdsFromProximateTiles();
             for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
                 UIElement islandPanelEl = islandPanel(atlas, island);
@@ -1778,35 +1823,6 @@ final class SlotWorkspaceUiFactory {
             }
             for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
                 atlas.addContentChild(chestTilePanel(atlas, tile));
-            }
-            for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
-                if (!tile.proximate()) {
-                    continue;
-                }
-                for (String islandId : tile.linkedIslandIds()) {
-                    SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
-                    if (island == null) {
-                        continue;
-                    }
-                    addLinkAffordances(atlas, tile, island);
-                }
-            }
-            // Hover preview: if the player is hovering an island, draw dim link
-            // threads to any of its NON-proximate linked chests so the relationship
-            // is discoverable without walking to the chest.
-            if (hoveredIslandId != null) {
-                SlotWorkspaceViewModel.AtlasIsland hovered = viewModel.island(hoveredIslandId);
-                if (hovered != null) {
-                    for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
-                        if (tile.proximate() || !tile.linkedIslandIds().contains(hoveredIslandId)) {
-                            continue;
-                        }
-                        UIElement dimThread = dimLinkThread(tile, hovered);
-                        if (dimThread != null) {
-                            atlas.addContentChild(dimThread);
-                        }
-                    }
-                }
             }
             for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
                 atlas.addContentChild(atlasCardButton(atlas, item));
@@ -1835,10 +1851,11 @@ final class SlotWorkspaceUiFactory {
                     .paddingAll(8)
                     .gapAll(3)
                     .flexDirection(FlexDirection.COLUMN));
-            // Island panel sits above link threads (z=0) and matches chest
-            // tile panels (z=1) so nothing renders over the island body.
-            // Headers (z=3), badges/edit affordances (z=4), and item cards
-            // (z=2) still stack above.
+            // zIndex in LDLib2 only affects hit-test priority (see
+            // UIElement.getSortedChildren, used by UIEventDispatcher) — the
+            // draw order is child-insertion order. Give the panel a zIndex
+            // matching the chest tile panel (1) so a right-click lands on
+            // the island body before falling through to the atlas viewport.
             panel.style(style -> style.zIndex(1));
 
             installViewportPanSurface(panel, atlas);
@@ -2458,9 +2475,11 @@ final class SlotWorkspaceUiFactory {
                 style.hoverTexture(rect(0x40FFFFFF));
                 style.pressedTexture(rect(0x60FFFFFF));
             });
-            // Match the thread's z=0 so the arrow sits above atlas backdrop but below
-            // island item cards (z=2+) and chest tile content (z=1–3). Previously at
-            // z=4 it rendered on top of chest cells and item widgets.
+            // Draw order is controlled by insertion order in buildAtlas
+            // (threads/arrows added before islands/chests). zIndex only
+            // influences hit-testing priority; leaving it at 0 keeps island
+            // and chest bodies (zIndex 1) ahead for clicks while still
+            // letting the arrow receive clicks where nothing else overlaps.
             arrow.style(style -> style.zIndex(0));
             arrow.transform(transform -> transform.pivot(0.5f, 0.5f).rotation(rotationDeg));
             arrow.setOnClick(event -> {
@@ -2754,12 +2773,33 @@ final class SlotWorkspaceUiFactory {
             });
         }
 
-        private Button atlasCardButton(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
-            boolean selected = item.identity().equals(selectedAtlasIdentity.get());
-            boolean searchMatch = matchesSearch(item);
-            boolean activeSearchMatch = !normalizedSearchQuery().isBlank() && searchMatch;
-            AtlasRenderBudget initialBudget = atlasBudget(atlas, item);
-            Button button = button("", true, cardChromeColor(initialBudget.level(), selected, searchMatch, item.recent(), item.carried()));
+        /**
+         * Resolve the ghost-shrink scale factor for an atlas card based on
+         * its carried state and the current disclosure level. Returns 1.0
+         * for carried items (always full size) and for ghost items at
+         * DETAIL zoom (where we want 1:1 clarity on the home slot); returns
+         * {@link #GHOST_SHRINK_SCALE} otherwise so pushed-out zooms
+         * de-emphasise items the player doesn't currently hold.
+         */
+        private static float ghostScaleFor(SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
+            if (item == null || budget == null || item.carried()) {
+                return 1f;
+            }
+            return budget.level() == DisclosureLevel.DETAIL ? 1f : GHOST_SHRINK_SCALE;
+        }
+
+        /**
+         * Apply the atlas card's outer button layout at its full
+         * cell-allocated size. Ghost-shrink is done via a render-time
+         * transform in {@link #applyAtlasCardGhostScale} so taffy sees the
+         * card at full size — the card's inner widgets (shell, icon,
+         * chips, accent bars, etc.) position themselves absolutely using
+         * {@code item.width()}/{@code item.height()}-derived offsets, so
+         * shrinking via layout would leave them anchored to the scaled
+         * button's top-left and drift. {@code Transform2D} scales
+         * rendering + hit-testing around a pivot without touching layout.
+         */
+        private void applyAtlasCardLayout(Button button, SlotWorkspaceViewModel.AtlasItem item) {
             button.layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(item.x())
@@ -2767,6 +2807,30 @@ final class SlotWorkspaceUiFactory {
                     .width(item.width())
                     .height(item.height())
                     .paddingAll(0));
+        }
+
+        /**
+         * Ghost cards render at {@link #GHOST_SHRINK_SCALE} × their full
+         * layout size, scaled around the element centre so neighbours stay
+         * aligned with the original cell grid. Non-ghosts / DETAIL zoom
+         * reset the transform to identity.
+         */
+        private void applyAtlasCardGhostScale(Button button, SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
+            float scale = ghostScaleFor(item, budget);
+            button.transform(transform -> {
+                transform.pivot(0.5f, 0.5f);
+                transform.scale(scale);
+            });
+        }
+
+        private Button atlasCardButton(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
+            boolean selected = item.identity().equals(selectedAtlasIdentity.get());
+            boolean searchMatch = matchesSearch(item);
+            boolean activeSearchMatch = !normalizedSearchQuery().isBlank() && searchMatch;
+            AtlasRenderBudget initialBudget = atlasBudget(atlas, item);
+            Button button = button("", true, cardChromeColor(initialBudget.level(), selected, searchMatch, item.recent(), item.carried()));
+            applyAtlasCardLayout(button, item);
+            applyAtlasCardGhostScale(button, item, initialBudget);
             button.noText();
             button.style(style -> style.zIndex(2));
             button.setOnClick(event -> {
@@ -2865,6 +2929,12 @@ final class SlotWorkspaceUiFactory {
                 // either way it's continuous, not a jump.
                 if (signature != lastSignature[0] && !cameraController.isAnimating()) {
                     rebuildAtlasBody(body, atlas, item, budget, activeSearchMatch);
+                    // Refresh the ghost-shrink transform too — scale only
+                    // changes at the DETAIL↔INSPECT boundary, which the
+                    // budget signature already tracks. Layout stays at
+                    // full cell size; only the transform pivot/scale
+                    // change.
+                    applyAtlasCardGhostScale(button, item, budget);
                     body.markTaffyStyleDirty();
                     button.markTaffyStyleDirty();
                     lastSignature[0] = signature;
