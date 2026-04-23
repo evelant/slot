@@ -231,6 +231,12 @@ final class SlotWorkspaceUiFactory {
         private boolean rebuildPending;
         private SlotWorkspaceViewModel.IdentityRef hoveredChestCellIdentity;
         private String hoveredChestCellStorageId;
+        // Set by drop targets that handle a ChestStackDrag for something OTHER
+        // than "take the item into inventory" (e.g. island assign-home is a
+        // pure metadata op — item stays in the chest). The chest cell's
+        // DRAG_END reads this to decide whether its default sendTakeFromChest
+        // should fire. Reset in DRAG_END regardless.
+        private boolean chestDragDropConsumed;
         private boolean peekActive;
         private long peekPressTimeMs;
         private AtlasCamera peekTarget;
@@ -1763,9 +1769,6 @@ final class SlotWorkspaceUiFactory {
                 if (island.carriedCount() > 0) {
                     atlas.addContentChild(islandCarriedBadge(atlas, island));
                 }
-                if (island.kind() == VisualAtlasIslandKind.PLAYER) {
-                    atlas.addContentChild(islandEditControl(island));
-                }
             }
             for (String islandId : highlightedIslandIds) {
                 SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
@@ -1832,6 +1835,11 @@ final class SlotWorkspaceUiFactory {
                     .paddingAll(8)
                     .gapAll(3)
                     .flexDirection(FlexDirection.COLUMN));
+            // Island panel sits above link threads (z=0) and matches chest
+            // tile panels (z=1) so nothing renders over the island body.
+            // Headers (z=3), badges/edit affordances (z=4), and item cards
+            // (z=2) still stack above.
+            panel.style(style -> style.zIndex(1));
 
             installViewportPanSurface(panel, atlas);
             installIslandDropTarget(panel, panel, atlas, island);
@@ -1848,26 +1856,42 @@ final class SlotWorkspaceUiFactory {
                 }, true);
             }
 
-            // Hovering the island shows dim link threads to any non-proximate chests
-            // it's linked to (useful to see off-screen relationships without walking
-            // over to the chest). Enter/leave triggers a rebuild so the threads
-            // appear/disappear; the preview is built inline in buildAtlas().
-            if (island.kind() == VisualAtlasIslandKind.PLAYER && islandHasNonProximateLinks(island.islandId())) {
-                panel.addEventListener(UIEvents.MOUSE_ENTER, event -> {
-                    if (!island.islandId().equals(hoveredIslandId)) {
-                        hoveredIslandId = island.islandId();
-                        rebuild();
-                    }
-                }, true);
-                panel.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-                    if (island.islandId().equals(hoveredIslandId)) {
-                        hoveredIslandId = null;
-                        rebuild();
-                    }
-                }, true);
-            }
+            attachIslandHoverListeners(panel, island);
 
             return panel;
+        }
+
+        /**
+         * Install MOUSE_ENTER/LEAVE listeners on any atlas-level element that
+         * belongs visually to an island (panel, header, item cards, badge)
+         * so hovering ANY of them surfaces the dim non-proximate link threads.
+         * Atlas content is flat — these elements are siblings, not nested —
+         * so each one needs its own listener to flip {@code hoveredIslandId}.
+         * No-op for non-player islands and islands without non-proximate links.
+         */
+        private void attachIslandHoverListeners(UIElement element, SlotWorkspaceViewModel.AtlasIsland island) {
+            if (element == null || island == null) {
+                return;
+            }
+            if (island.kind() != VisualAtlasIslandKind.PLAYER) {
+                return;
+            }
+            if (!islandHasNonProximateLinks(island.islandId())) {
+                return;
+            }
+            String islandId = island.islandId();
+            element.addEventListener(UIEvents.MOUSE_ENTER, event -> {
+                if (!islandId.equals(hoveredIslandId)) {
+                    hoveredIslandId = islandId;
+                    rebuild();
+                }
+            }, true);
+            element.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+                if (islandId.equals(hoveredIslandId)) {
+                    hoveredIslandId = null;
+                    rebuild();
+                }
+            }, true);
         }
 
         private boolean islandHasNonProximateLinks(String islandId) {
@@ -1912,28 +1936,6 @@ final class SlotWorkspaceUiFactory {
             return badge;
         }
 
-        private UIElement islandEditControl(SlotWorkspaceViewModel.AtlasIsland island) {
-            Button editButton = button("...", true, PANEL_ALT);
-            editButton.layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(island.x() + island.width() - 20)
-                    .top(island.y() - 15)
-                    .width(18)
-                    .height(14));
-            editButton.textStyle(style -> style
-                    .textColor(TEXT)
-                    .textShadow(false)
-                    .fontSize(8)
-                    .textAlignHorizontal(Horizontal.CENTER)
-                    .textAlignVertical(Vertical.CENTER));
-            editButton.style(style -> style.zIndex(4));
-            editButton.setOnClick(event -> {
-                event.stopPropagation();
-                beginIslandEdit(island);
-            });
-            return editButton;
-        }
-
         private UIElement islandTitleBar(
                 SlotAtlasGraphView atlas,
                 SlotWorkspaceViewModel.AtlasIsland island,
@@ -1958,8 +1960,23 @@ final class SlotWorkspaceUiFactory {
                 }
                 sendAssignHome(island.islandId());
             });
+            // Right-click on the header opens the edit popover, matching the
+            // island body's behaviour. Without this, right-click on the
+            // header would fall through to the atlas viewport (which pans on
+            // right-drag) instead of surfacing the context menu the user
+            // expects when targeting the island by its label.
+            if (island.kind() == VisualAtlasIslandKind.PLAYER) {
+                header.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                    if (event.button != 1) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    beginIslandEdit(island, event.x, event.y);
+                }, true);
+            }
             installIslandDragSource(header, atlas, island);
             installIslandDropTarget(header, islandPanelEl, atlas, island);
+            attachIslandHoverListeners(header, island);
 
             float[] lastScale = {Float.NaN};
             int[] lastWorldFontQuarter = {-1};
@@ -1976,10 +1993,16 @@ final class SlotWorkspaceUiFactory {
                 lastScale[0] = scale;
                 float islandScreenWidth = island.width() * scale;
                 float requestedFontPx = Math.min(12f, islandScreenWidth * 0.13f);
-                float screenFontPx = clampScreenFontPx(Math.max(7f, requestedFontPx));
+                float screenFontPx = headerBreakpointFontPx(Math.max(7f, requestedFontPx));
                 float worldFontPx = screenFontPx / Math.max(0.0001f, scale);
                 float screenHeaderHeight = screenFontPx + 3f;
-                float worldHeaderHeight = screenHeaderHeight / Math.max(0.0001f, scale);
+                // Floor the world height at the carried-count badge's world
+                // size (12 world units plus a 2-unit margin = 14) so the badge
+                // never overflows the header background. Without this, at
+                // scale > ~1 the screen-fixed header shrinks in world space
+                // below the badge's world size and the counter visibly
+                // escapes its backdrop.
+                float worldHeaderHeight = Math.max(14f, screenHeaderHeight / Math.max(0.0001f, scale));
                 float screenGap = 2f;
                 float worldGap = screenGap / Math.max(0.0001f, scale);
 
@@ -2719,7 +2742,10 @@ final class SlotWorkspaceUiFactory {
             });
             cell.addEventListener(UIEvents.DRAG_END, event -> {
                 Object payload = event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
-                if (payload instanceof ChestStackDrag drag
+                boolean consumed = chestDragDropConsumed;
+                chestDragDropConsumed = false;
+                if (!consumed
+                        && payload instanceof ChestStackDrag drag
                         && drag.storageId().equals(storageId)
                         && drag.chestSlotIndex() == chestSlotIndex) {
                     sendTakeFromChest(storageId, chestSlotIndex);
@@ -2846,6 +2872,13 @@ final class SlotWorkspaceUiFactory {
                 button.style(style -> style.zIndex(focused ? 10 : currentSelected ? 7 : 2));
                 applyButtonColors(button, true, cardChromeColor(budget.level(), currentSelected, searchMatch, item.recent(), item.carried()));
             });
+            // Items sit on top of their island panel (z=2 vs z=1) and receive
+            // their own mouse enter/leave, so hovering an item inside an
+            // island must also flip hoveredIslandId — otherwise the dim
+            // link-thread preview only shows when the cursor happens to hit
+            // empty island background between cards.
+            SlotWorkspaceViewModel.AtlasIsland hoverIsland = viewModel.island(item.islandId());
+            attachIslandHoverListeners(button, hoverIsland);
             return button;
         }
 
@@ -3588,10 +3621,6 @@ final class SlotWorkspaceUiFactory {
             return false;
         }
 
-        private void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island) {
-            beginIslandEdit(island, Float.NaN, Float.NaN);
-        }
-
         private void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island, float screenX, float screenY) {
             if (island == null) {
                 return;
@@ -3623,39 +3652,26 @@ final class SlotWorkspaceUiFactory {
                 return null;
             }
 
+            // Fullscreen catcher dismisses the popover when the user clicks
+            // anywhere outside the capsule — matches the context-menu pattern
+            // (buildAtlasContextMenu at ~3298) and replaces the old dedicated
+            // "x" close button. Catcher sits just below the capsule's zIndex
+            // so the capsule's own MOUSE_DOWN (stopPropagation) wins inside.
+            UIElement catcher = contextMenuCatcher(this::endIslandEdit);
+
             UIElement capsule = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .width(250)
                     .paddingAll(8)
                     .gapAll(6)
                     .flexDirection(FlexDirection.COLUMN));
-            if (!Float.isNaN(islandEditScreenX) && !Float.isNaN(islandEditScreenY)) {
-                // Right-click path: anchor the popover near the click so it
-                // floats by the island. The "..." button path leaves the coords
-                // as NaN and falls back to the fixed top-right position below.
-                anchorPopover(capsule, islandEditScreenX, islandEditScreenY, 250, 240);
-            } else {
-                capsule.layout(layout -> layout.right(10).top(10));
-            }
-            capsule.style(style -> style.zIndex(20));
+            anchorPopover(capsule, islandEditScreenX, islandEditScreenY, 250, 240);
+            capsule.style(style -> style.zIndex(22));
             capsule.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
-            UIElement titleRow = new UIElement().layout(layout -> layout
-                    .widthPercent(100)
-                    .height(16)
-                    .gapAll(6)
-                    .alignItems(AlignItems.CENTER)
-                    .flexDirection(FlexDirection.ROW));
             Label title = label("Edit island", ACCENT);
-            title.layout(layout -> layout.flex(1).height(12));
-            Button close = button("x", true, PANEL_ALT);
-            close.layout(layout -> layout.width(18).height(14));
-            close.setOnClick(event -> {
-                event.stopPropagation();
-                endIslandEdit();
-            });
-            titleRow.addChildren(title, close);
-            capsule.addChild(titleRow);
+            title.layout(layout -> layout.widthPercent(100).height(12));
+            capsule.addChild(title);
 
             TextField nameInput = new TextField();
             nameInput.setAnyString();
@@ -3774,7 +3790,11 @@ final class SlotWorkspaceUiFactory {
             });
             capsule.addChild(deleteButton);
 
-            return capsule;
+            UIElement wrapper = new UIElement().layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(0).right(0).top(0).bottom(0));
+            wrapper.addChildren(catcher, capsule);
+            return wrapper;
         }
 
         private void beginCreateIsland(SlotWorkspaceViewModel.AtlasItem item, int worldX, int worldY) {
@@ -5665,6 +5685,24 @@ final class SlotWorkspaceUiFactory {
                         );
                     }
                     event.stopPropagation();
+                    return;
+                }
+                ChestStackDrag chestDrag = chestStackDrag(event);
+                if (chestDrag != null) {
+                    // Pure metadata assign — the item stays in the chest, we
+                    // only record the island as the visual home for this
+                    // identity. Mark the drag as consumed so the chest cell's
+                    // DRAG_END skips its default take-into-inventory path.
+                    SlotWorkspaceViewModel.IdentityRef identity = SlotWorkspaceViewModel.IdentityRef.from(
+                            dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(chestDrag.displayStack()));
+                    sendAssignHome(
+                            identity,
+                            island.islandId(),
+                            atlas.worldX(event.x),
+                            atlas.worldY(event.y)
+                    );
+                    chestDragDropConsumed = true;
+                    event.stopPropagation();
                 }
             });
         }
@@ -5768,6 +5806,11 @@ final class SlotWorkspaceUiFactory {
             return payload instanceof ChestTileDrag chestTileDrag ? chestTileDrag : null;
         }
 
+        private ChestStackDrag chestStackDrag(UIEvent event) {
+            Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
+            return payload instanceof ChestStackDrag chestStackDrag ? chestStackDrag : null;
+        }
+
         private StorageZoneDrag storageZoneDrag(UIEvent event) {
             Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
             return payload instanceof StorageZoneDrag storageZoneDrag ? storageZoneDrag : null;
@@ -5840,6 +5883,23 @@ final class SlotWorkspaceUiFactory {
             // recompute frequency in half vs. continuous.
             float clamped = Math.max(3f, screenPx);
             return Math.round(clamped * 2f) / 2f;
+        }
+
+        /**
+         * Discrete zoom breakpoints for the island header font. 0.5-px
+         * quantization (clampScreenFontPx) is effectively continuous — the
+         * header visibly shrinks frame-by-frame as the atlas zooms and the
+         * carried-count badge (fixed world size = 12) drifts outside the
+         * header's world bounds. Breakpoints keep the header's on-screen
+         * size at four discrete tiers so the badge either clearly fits or
+         * clearly doesn't; combined with the world-height floor enforced
+         * below, the badge never overflows.
+         */
+        private static float headerBreakpointFontPx(float screenPx) {
+            if (screenPx < 8f) return 7f;
+            if (screenPx < 10f) return 9f;
+            if (screenPx < 12f) return 11f;
+            return 12f;
         }
 
         private float worldFontSizeFor(SlotAtlasGraphView atlas, float screenPx) {
