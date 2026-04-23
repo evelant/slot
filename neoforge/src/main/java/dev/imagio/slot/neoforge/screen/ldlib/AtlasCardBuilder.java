@@ -16,6 +16,8 @@ import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.world.item.ItemStack;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import net.minecraft.client.gui.screens.Screen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,8 +102,8 @@ final class AtlasCardBuilder {
         UIElement body = atlasBodyContainer();
         float cardBound = Math.min(item.width(), item.height());
         float shell = Math.min(cardBound, atlas.worldUnitsForPixels(budget.shellPx()));
-        float shellLeft = host.centeredWorld(item.width(), shell);
-        float shellTop = host.centeredWorld(item.height(), shell);
+        float shellLeft = centeredWorld(item.width(), shell);
+        float shellTop = centeredWorld(item.height(), shell);
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
         body.addChild(slotPreview(atlas, item, budget).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -120,8 +122,8 @@ final class AtlasCardBuilder {
         UIElement body = atlasBodyContainer();
         float cardBound = Math.min(item.width(), item.height());
         float shell = Math.min(cardBound, atlas.worldUnitsForPixels(budget.shellPx()));
-        float shellLeft = host.centeredWorld(item.width(), shell);
-        float shellTop = host.centeredWorld(item.height(), shell);
+        float shellLeft = centeredWorld(item.width(), shell);
+        float shellTop = centeredWorld(item.height(), shell);
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
         body.addChild(slotPreview(atlas, item, budget).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -394,7 +396,7 @@ final class AtlasCardBuilder {
             SlotWorkspaceViewModel.ClaimedChestTile tile = host.viewModel.claimedChestTile(targetStorageId);
             if (tile != null) {
                 event.stopPropagation();
-                host.panToChestTile(atlas, tile);
+                host.camera.panToChestTile(atlas, tile);
                 host.localStatus.set("panned to " + tile.label());
                 host.rebuild();
             }
@@ -437,10 +439,10 @@ final class AtlasCardBuilder {
                 .top(inset)
                 .width(shell - inset * 2f)
                 .height(shell - inset * 2f)));
-        shellElement.addChild(host.itemIcon(item.displayStack(), icon, carried).layout(layout -> layout
+        shellElement.addChild(itemIcon(item.displayStack(), icon, carried).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(host.centeredWorld(shell, icon))
-                .top(host.centeredWorld(shell, icon))));
+                .left(centeredWorld(shell, icon))
+                .top(centeredWorld(shell, icon))));
         return shellElement;
     }
 
@@ -459,10 +461,10 @@ final class AtlasCardBuilder {
                 .top(inset)
                 .width(shell - inset * 2f)
                 .height(shell - inset * 2f)));
-        shellElement.addChild(host.itemIcon(item.displayStack(), icon, carried).layout(layout -> layout
+        shellElement.addChild(itemIcon(item.displayStack(), icon, carried).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(host.centeredWorld(shell, icon))
-                .top(host.centeredWorld(shell, icon))));
+                .left(centeredWorld(shell, icon))
+                .top(centeredWorld(shell, icon))));
         if (showMarker) {
             shellElement.addChild(panel(itemMarkerColor(item, host.viewModel.island(item.islandId()))).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
@@ -682,7 +684,7 @@ private void addCommonAtlasSignals(
             band.setOverflowVisible(false);
         }
         String displayText = compactAnchorText(text, maxLength);
-        Label token = host.anchorLabel(displayText, color, initialWorldFont);
+        Label token = anchorLabel(displayText, color, initialWorldFont);
         token.layout(layout -> layout.widthPercent(100).heightPercent(100));
         token.textStyle(style -> style
                 .fontSize(initialWorldFont)
@@ -729,4 +731,193 @@ private void addCommonAtlasSignals(
 
         return band;
     }
+
+    void applyAtlasCardLayout(Button button, SlotWorkspaceViewModel.AtlasItem item) {
+        button.layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(item.x())
+                .top(item.y())
+                .width(item.width())
+                .height(item.height())
+                .paddingAll(0));
+    }
+
+    void applyAtlasCardGhostScale(Button button, SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
+        float scale = host.ghostScaleFor(item, budget);
+        button.transform(transform -> {
+            transform.pivot(0.5f, 0.5f);
+            transform.scale(scale);
+        });
+    }
+
+    Button atlasCardButton(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
+        boolean selected = item.identity().equals(host.selectedAtlasIdentity.get());
+        boolean searchMatch = host.searchController.matchesItem(item);
+        boolean activeSearchMatch = !host.searchController.normalizedQuery().isBlank() && searchMatch;
+        AtlasRenderBudget initialBudget = atlasBudget(atlas, item);
+        Button button = button("", true, cardChromeColor(initialBudget.level(), selected, searchMatch, item.recent(), item.carried(), !host.searchController.normalizedQuery().isBlank()));
+        applyAtlasCardLayout(button, item);
+        applyAtlasCardGhostScale(button, item, initialBudget);
+        button.noText();
+        button.style(style -> style.zIndex(2));
+        button.setOnClick(event -> {
+            event.stopPropagation();
+            if (Screen.hasShiftDown()) {
+                host.rpc.sendAssignHomeToFreeHotbar(item);
+                return;
+            }
+            host.selectedAtlasIdentity.set(item.identity());
+            host.selectedHotbarIndex.set(-1);
+            host.localStatus.set(item.playerPlaced()
+                    ? "selected homed item: drag to hotbar or another island"
+                    : "selected inbox item: drag to an island or create one");
+        });
+        button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (event.button == 1) {
+                event.stopPropagation();
+                host.menu.openContextMenuForAtlas(item, event.x, event.y);
+            }
+        });
+        float[] scrollAccumulator = {0f};
+        button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
+            if (!Screen.hasShiftDown()) {
+                return;
+            }
+            // Minecraft swaps scrollX ↔ scrollY when shift is held, so the
+            // scroll magnitude lands in deltaX under our shift-scroll gesture.
+            float delta = event.deltaY != 0f ? event.deltaY : event.deltaX;
+            if (delta == 0f) {
+                return;
+            }
+            event.stopPropagation();
+            scrollAccumulator[0] += delta;
+            int count = (int) scrollAccumulator[0];
+            if (count == 0) {
+                return;
+            }
+            scrollAccumulator[0] -= count;
+            SlotWorkspaceViewModel.AtlasItem fresh = host.viewModel.atlasItem(item.identity());
+            if (fresh == null) {
+                return;
+            }
+            int magnitude = Math.abs(count);
+            if (count > 0) {
+                AtlasCardBuilder.ChestSlotRef source = firstProximateChestSlotFor(fresh);
+                if (source == null) {
+                    host.localStatus.set("no nearby chest has " + fresh.name());
+                    return;
+                }
+                for (int i = 0; i < magnitude; i++) {
+                    host.rpc.sendTakeOneFromChest(source.storageId(), source.chestSlotIndex());
+                }
+            } else {
+                boolean canPush = host.atlasItemHasDepositTarget(fresh)
+                        || firstProximateChestSlotFor(fresh) != null;
+                if (!canPush) {
+                    host.localStatus.set("no nearby chest to push " + fresh.name());
+                    return;
+                }
+                if (!fresh.carried()) {
+                    host.localStatus.set(fresh.name() + " not carried");
+                    return;
+                }
+                for (int i = 0; i < magnitude; i++) {
+                    host.rpc.sendDepositOneHomeToLinkedChest(fresh);
+                }
+            }
+        });
+        button.addEventListener(UIEvents.MOUSE_ENTER, event -> host.hoveredAtlasIdentity = item.identity(), true);
+        button.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            if (item.identity().equals(host.hoveredAtlasIdentity)) {
+                host.hoveredAtlasIdentity = null;
+            }
+        }, true);
+        host.drag.installAtlasHoverTooltip(button, item);
+        host.drag.installAtlasItemDragSource(button, item);
+
+        UIElement body = new UIElement().layout(layout -> layout.widthPercent(100).heightPercent(100));
+        body.setAllowHitTest(false);
+        rebuildAtlasBody(body, atlas, item, initialBudget, activeSearchMatch);
+        button.addChild(body);
+
+        long[] lastSignature = new long[]{atlasLayoutSignature(initialBudget)};
+        button.addEventListener(UIEvents.TICK, event -> {
+            AtlasRenderBudget budget = atlasBudget(atlas, item);
+            boolean currentSelected = item.identity().equals(host.selectedAtlasIdentity.get());
+            boolean focused = host.isMapFocusItem(item);
+            long signature = atlasLayoutSignature(budget);
+            // Skip LOD rebuilds while the camera is animating. atlasBudget
+            // uses animationTargetScale while rendering uses the live
+            // interpolated scale, so a host.rebuild mid-animation bakes labels
+            // for the target and draws them at the current scale — visible
+            // as a big-text flash at the start of a zoom-in peek. Letting
+            // cards stay at the pre-animation LOD means labels either
+            // scale with the zoom or stay absent until the camera settles;
+            // either way it's continuous, not a jump.
+            if (signature != lastSignature[0] && !host.cameraController.isAnimating()) {
+                rebuildAtlasBody(body, atlas, item, budget, activeSearchMatch);
+                // Refresh the ghost-shrink transform too — scale only
+                // changes at the DETAIL↔INSPECT boundary, which the
+                // budget signature already tracks. Layout stays at
+                // full cell size; only the transform pivot/scale
+                // change.
+                applyAtlasCardGhostScale(button, item, budget);
+                body.markTaffyStyleDirty();
+                button.markTaffyStyleDirty();
+                lastSignature[0] = signature;
+            }
+            button.style(style -> style.zIndex(focused ? 10 : currentSelected ? 7 : 2));
+            applyButtonColors(button, true, cardChromeColor(budget.level(), currentSelected, searchMatch, item.recent(), item.carried(), !host.searchController.normalizedQuery().isBlank()));
+        });
+        // Items sit on top of their island panel (z=2 vs z=1) and receive
+        // their own mouse enter/leave, so hovering an item inside an
+        // island must also flip host.hoveredIslandId — otherwise the dim
+        // link-thread preview only shows when the cursor happens to hit
+        // empty island background between cards.
+        SlotWorkspaceViewModel.AtlasIsland hoverIsland = host.viewModel.island(item.islandId());
+        host.islandChest.attachIslandHoverListeners(button, hoverIsland);
+        return button;
+    }
+
+    void addAtlasItemChips(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
+        List<ChipSuggestion> chips = item.chipSuggestions();
+        if (chips.isEmpty()) {
+            return;
+        }
+        int chipHeight = 10;
+        int chipGap = 1;
+        for (int index = 0; index < chips.size(); index++) {
+            ChipSuggestion chip = chips.get(index);
+            int top = item.y() + item.height() + 2 + index * (chipHeight + chipGap);
+            Button chipButton = button("", true, chip.color());
+            chipButton.noText();
+            chipButton.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(item.x())
+                    .top(top)
+                    .width(item.width())
+                    .height(chipHeight)
+                    .paddingAll(1)
+                    .gapAll(2)
+                    .flexDirection(FlexDirection.ROW)
+                    .alignItems(AlignItems.CENTER));
+            chipButton.style(style -> style.zIndex(3));
+            chipButton.setOnClick(event -> {
+                event.stopPropagation();
+                host.rpc.sendChipAccept(item, chip);
+            });
+            Label chipLabel = label(SlotWorkspaceUiController.chipLabelText(chip), TEXT);
+            chipLabel.layout(layout -> layout.flex(1).height(chipHeight - 2));
+            chipLabel.textStyle(style -> style
+                    .textColor(TEXT)
+                    .fontSize(6)
+                    .textShadow(false)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            chipLabel.setAllowHitTest(false);
+            chipButton.addChild(chipLabel);
+            atlas.addContentChild(chipButton);
+        }
+    }
+
 }

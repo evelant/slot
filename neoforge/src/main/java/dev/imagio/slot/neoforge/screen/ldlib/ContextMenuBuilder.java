@@ -143,9 +143,9 @@ final class ContextMenuBuilder {
             action.setOnClick(event -> {
                 event.stopPropagation();
                 if (linked) {
-                    host.sendUnlinkChest(islandId, storageId);
+                    host.rpc.sendUnlinkChest(islandId, storageId);
                 } else {
-                    host.sendLinkChest(islandId, storageId);
+                    host.rpc.sendLinkChest(islandId, storageId);
                 }
             });
             row.addChildren(name, action);
@@ -264,7 +264,7 @@ final class ContextMenuBuilder {
                     true,
                     null,
                     () -> {
-                        host.sendAssignHomeToHotbarOnly(item);
+                        host.rpc.sendAssignHomeToHotbarOnly(item);
                         closeContextMenu();
                     }
             ));
@@ -276,7 +276,7 @@ final class ContextMenuBuilder {
                     true,
                     null,
                     () -> {
-                        host.sendDepositHomeToLinkedChest(item);
+                        host.rpc.sendDepositHomeToLinkedChest(item);
                         closeContextMenu();
                     }
             ));
@@ -290,7 +290,7 @@ final class ContextMenuBuilder {
                     true,
                     null,
                     () -> {
-                        host.sendAssignHome(item.identity(), targetIslandId, 0, 0);
+                        host.rpc.sendAssignHome(item.identity(), targetIslandId, 0, 0);
                         closeContextMenu();
                     }
             ));
@@ -329,7 +329,7 @@ final class ContextMenuBuilder {
                 true,
                 null,
                 () -> {
-                    host.sendReturnHotbarToHome(hotbarIdx);
+                    host.rpc.sendReturnHotbarToHome(hotbarIdx);
                     closeContextMenu();
                 }
         ));
@@ -375,7 +375,7 @@ final class ContextMenuBuilder {
                 host.rebuild();
             }));
             menu.addChild(menuButton("Duplicate", true, null, () -> {
-                host.sendDuplicateKit(card.kitId());
+                host.rpc.sendDuplicateKit(card.kitId());
                 closeContextMenu();
             }));
             menu.addChild(menuButton("Delete\u2026", true, null, () -> {
@@ -469,7 +469,7 @@ final class ContextMenuBuilder {
                 .textAlignHorizontal(Horizontal.CENTER).textAlignVertical(Vertical.CENTER));
         confirm.setOnClick(event -> {
             event.stopPropagation();
-            host.sendDeleteKit(card.kitId());
+            host.rpc.sendDeleteKit(card.kitId());
             closeContextMenu();
         });
         Button cancel = button("Cancel", true, PANEL_ALT);

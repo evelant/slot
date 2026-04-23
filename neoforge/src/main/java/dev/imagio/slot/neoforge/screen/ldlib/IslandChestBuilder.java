@@ -148,7 +148,7 @@ final class IslandChestBuilder {
         badge.style(style -> style.zIndex(4));
         badge.setOnClick(event -> {
             event.stopPropagation();
-            host.panToIsland(atlas, island);
+            host.camera.panToIsland(atlas, island);
             host.localStatus.set("panned to " + island.label());
         });
         return badge;
@@ -176,7 +176,7 @@ final class IslandChestBuilder {
                 host.localStatus.set("select a triage or homed item first");
                 return;
             }
-            host.sendAssignHome(island.islandId());
+            host.rpc.sendAssignHome(island.islandId());
         });
         // Right-click on the header opens the edit popover, matching the
         // island body's behaviour. Without this, right-click on the
@@ -435,7 +435,7 @@ final class IslandChestBuilder {
                     }
                     event.stopPropagation();
                     if (Screen.hasShiftDown()) {
-                        host.sendTakeFromChest(storageId, chestSlotIndex);
+                        host.rpc.sendTakeFromChest(storageId, chestSlotIndex);
                         return;
                     }
                     SlotWorkspaceViewModel.IdentityRef identityRef = SlotWorkspaceViewModel.IdentityRef.from(
@@ -444,7 +444,7 @@ final class IslandChestBuilder {
                     host.selectedHotbarIndex.set(-1);
                     host.localStatus.set("selected " + cellStack.getHoverName().getString());
                 });
-                host.installChestStackDragSource(cell, atlas, storageId, chestSlotIndex, cellStack, tile.label());
+                host.drag.installChestStackDragSource(cell, atlas, storageId, chestSlotIndex, cellStack, tile.label());
             }
             panel.addChild(cell);
         }
@@ -492,11 +492,11 @@ final class IslandChestBuilder {
                 host.rebuild();
                 return;
             }
-            host.sendTakeAll(takeStorageId);
+            host.rpc.sendTakeAll(takeStorageId);
         });
         panel.addChild(takeAllButton);
 
-        host.installChestTileDragSource(panel, atlas, tile);
+        host.drag.installChestTileDragSource(panel, atlas, tile);
         installChestTileDropTarget(panel, tile);
         return panel;
     }
@@ -521,9 +521,9 @@ final class IslandChestBuilder {
                 return;
             }
             if (atlasDrag != null) {
-                host.sendDepositCarriedToChest(atlasDrag.identity(), storageId);
+                host.rpc.sendDepositCarriedToChest(atlasDrag.identity(), storageId);
             } else {
-                host.sendDepositHotbarToChest(hotbarDrag.hotbarIndex(), storageId);
+                host.rpc.sendDepositHotbarToChest(hotbarDrag.hotbarIndex(), storageId);
             }
             event.stopPropagation();
         });
@@ -598,7 +598,7 @@ final class IslandChestBuilder {
         float tileArrowX = tileCx + (tileEdge + 6f) * cosA;
         float tileArrowY = tileCy + (tileEdge + 6f) * sinA;
         atlas.addContentChild(linkArrow(tileArrowX, tileArrowY, angleDeg, () -> {
-            host.panToIsland(atlas, island);
+            host.camera.panToIsland(atlas, island);
             host.localStatus.set("linked island: " + island.label());
         }));
 
@@ -606,7 +606,7 @@ final class IslandChestBuilder {
         float islandArrowX = islandCx - (islandEdge + 6f) * cosA;
         float islandArrowY = islandCy - (islandEdge + 6f) * sinA;
         atlas.addContentChild(linkArrow(islandArrowX, islandArrowY, angleDeg + 180f, () -> {
-            host.panToChestTile(atlas, tile);
+            host.camera.panToChestTile(atlas, tile);
             host.localStatus.set("linked chest: " + tile.label());
         }));
     }
@@ -806,7 +806,7 @@ final class IslandChestBuilder {
         UIElement cell = panel(chromeColor);
         if (stack != null && !stack.isEmpty()) {
             int iconSize = Math.max(8, cellSize - 2);
-            UIElement icon = host.itemIcon(stack, iconSize, proximate);
+            UIElement icon = itemIcon(stack, iconSize, proximate);
             icon.layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(1)

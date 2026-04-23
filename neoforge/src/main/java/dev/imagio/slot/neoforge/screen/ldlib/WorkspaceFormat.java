@@ -267,18 +267,6 @@ final class WorkspaceFormat {
         return Integer.toString(count);
     }
 
-    static String itemMarker(SlotWorkspaceViewModel.AtlasItem item, SlotWorkspaceViewModel.AtlasIsland island) {
-        if (item.recent()) {
-            return "new";
-        }
-        if (item.playerPlaced()) {
-            return "set";
-        }
-        if (island != null && island.kind() != VisualAtlasIslandKind.TRIAGE) {
-            return "auto";
-        }
-        return "inbox";
-    }
 
     static String selectionHomeStatus(SlotWorkspaceViewModel.AtlasItem item, SlotWorkspaceViewModel.AtlasIsland island) {
         if (item.playerPlaced()) {
@@ -290,14 +278,6 @@ final class WorkspaceFormat {
         return "awaiting placement";
     }
 
-    static String islandSubtitle(SlotWorkspaceViewModel.AtlasIsland island) {
-        String count = island.itemCount() + " item" + (island.itemCount() == 1 ? "" : "s");
-        String carriedBadge = island.carriedCount() > 0 ? "  ·  " + island.carriedCount() + " carried" : "";
-        return switch (island.kind()) {
-            case TRIAGE -> count + " awaiting placement" + carriedBadge;
-            case PLAYER -> count + " player-authored homes" + carriedBadge;
-        };
-    }
 
     static int cardChromeColor(
             DisclosureLevel level,

@@ -2,6 +2,8 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 
 import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEmitter;
 import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEventBuilder;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 
 final class WorkspaceRpcDispatcher {
     private final SlotWorkspaceUiController host;
@@ -285,4 +287,423 @@ final class WorkspaceRpcDispatcher {
                 host.session::depositOneHomeToLinkedChest
         ));
     }
+
+    void sendUndo() {
+        if (undoEmitter != null) {
+            host.localStatus.set("undo");
+            undoEmitter.send();
+        }
+    }
+
+    void sendRedo() {
+        if (redoEmitter != null) {
+            host.localStatus.set("redo");
+            redoEmitter.send();
+        }
+    }
+
+    void sendDepositCarriedToChest(SlotWorkspaceViewModel.IdentityRef identity, String storageId) {
+        if (depositCarriedToChestEmitter == null || identity == null || storageId == null || storageId.isBlank()) {
+            return;
+        }
+        boolean sent = depositCarriedToChestEmitter.send(
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                storageId
+        );
+        if (!sent) {
+            host.localStatus.set("deposit unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendDepositHotbarToChest(int hotbarIndex, String storageId) {
+        if (depositHotbarToChestEmitter == null || storageId == null || storageId.isBlank()) {
+            return;
+        }
+        boolean sent = depositHotbarToChestEmitter.send(hotbarIndex, storageId);
+        if (!sent) {
+            host.localStatus.set("deposit unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendTakeFromChest(String storageId, int chestSlotIndex) {
+        if (takeFromChestEmitter == null || storageId == null || storageId.isBlank()) {
+            return;
+        }
+        boolean sent = takeFromChestEmitter.send(storageId, chestSlotIndex);
+        if (!sent) {
+            host.localStatus.set("take unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendChipAccept(SlotWorkspaceViewModel.AtlasItem item, ChipSuggestion chip) {
+        if (acceptChipEmitter == null) {
+            return;
+        }
+        host.selectedAtlasIdentity.set(item.identity());
+        String templateName = chip.template() == null ? "" : chip.template().name();
+        int accepted = 0;
+        // Triage items carry their own chips but live in host.viewModel.triageItems(),
+        // so we need to walk both lists. Walk atlas items first (the batch-apply
+        // semantic: accept the same template for every matching homed card) then
+        // also include triage items — this fires for the single clicked inbox
+        // item that triggered the chip even when no homed cards match.
+        java.util.LinkedHashSet<SlotWorkspaceViewModel.AtlasItem> candidates = new java.util.LinkedHashSet<>();
+        candidates.addAll(host.viewModel.atlasItems());
+        candidates.addAll(host.viewModel.triageItems());
+        // Always include the clicked item so a chip click on an item the view model
+        // no longer returns (e.g., a momentary projection race) still fires.
+        candidates.add(item);
+        for (SlotWorkspaceViewModel.AtlasItem candidate : candidates) {
+            if (!SlotWorkspaceUiController.chipMatches(candidate, chip)) {
+                continue;
+            }
+            acceptChipEmitter.send(
+                    candidate.identity().itemId(),
+                    candidate.identity().comparisonMode(),
+                    candidate.identity().componentFingerprint(),
+                    chip.islandId(),
+                    templateName
+            );
+            accepted++;
+        }
+        host.localStatus.set(accepted <= 1
+                ? "accepting chip: " + chip.label()
+                : "accepting chip: " + chip.label() + " x" + accepted);
+        host.rebuild();
+    }
+
+    void sendDuplicateKit(String kitId) {
+        boolean sent = duplicateKitEmitter != null && duplicateKitEmitter.send(kitId);
+        host.localStatus.set(sent ? "duplicating kit..." : "duplicate unavailable");
+        host.rebuild();
+    }
+
+    void sendSaveKit() {
+        boolean sent = saveKitEmitter != null && saveKitEmitter.send("");
+        host.localStatus.set(sent ? "saving kit..." : "save kit unavailable");
+        host.rebuild();
+    }
+
+    void sendActivateKit(String kitId) {
+        boolean sent = activateKitEmitter != null && activateKitEmitter.send(kitId);
+        host.localStatus.set(sent ? "activating kit..." : "activate kit unavailable");
+        host.rebuild();
+    }
+
+    void sendDeactivateKit() {
+        boolean sent = deactivateKitEmitter != null && deactivateKitEmitter.send();
+        host.localStatus.set(sent ? "deactivating kit..." : "deactivate kit unavailable");
+        host.rebuild();
+    }
+
+    void sendDeleteKit(String kitId) {
+        boolean sent = deleteKitEmitter != null && deleteKitEmitter.send(kitId);
+        host.localStatus.set(sent ? "deleting kit..." : "delete kit unavailable");
+        host.rebuild();
+    }
+
+    void sendSwitchKitPage(int direction) {
+        boolean sent = switchKitPageEmitter != null && switchKitPageEmitter.send(direction);
+        host.localStatus.set(sent ? "switching kit page..." : "page switch unavailable");
+        host.rebuild();
+    }
+
+    void sendAddKitPage(String kitId) {
+        boolean sent = addKitPageEmitter != null && addKitPageEmitter.send(kitId);
+        host.localStatus.set(sent ? "adding kit page..." : "add page unavailable");
+        host.rebuild();
+    }
+
+    void sendRemoveKitPage(String kitId, int pageIndex) {
+        boolean sent = removeKitPageEmitter != null && removeKitPageEmitter.send(kitId, pageIndex);
+        host.localStatus.set(sent ? "removing kit page..." : "remove page unavailable");
+        host.rebuild();
+    }
+
+    void sendAddKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
+        if (identity == null) {
+            return;
+        }
+        boolean sent = addKitBringEmitter != null && addKitBringEmitter.send(
+                kitId, identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+        host.localStatus.set(sent ? "adding to bring..." : "add bring unavailable");
+        host.rebuild();
+    }
+
+    void sendRemoveKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
+        if (identity == null) {
+            return;
+        }
+        boolean sent = removeKitBringEmitter != null && removeKitBringEmitter.send(
+                kitId, identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+        host.localStatus.set(sent ? "removing from bring..." : "remove bring unavailable");
+        host.rebuild();
+    }
+
+    void sendSwapKitSlots(String kitId, int pageIndex, int fromIndex, int toIndex) {
+        boolean sent = swapKitSlotsEmitter != null
+                && swapKitSlotsEmitter.send(kitId, pageIndex, fromIndex, toIndex);
+        host.localStatus.set(sent ? "swapping kit slots..." : "swap slots unavailable");
+        host.rebuild();
+    }
+
+    void sendSetKitSlotIdentity(String kitId, int pageIndex, int slotIndex, SlotWorkspaceViewModel.IdentityRef identity) {
+        String itemId = identity == null ? "" : identity.itemId();
+        String comparisonMode = identity == null ? "" : identity.comparisonMode();
+        String fingerprint = identity == null ? "" : identity.componentFingerprint();
+        boolean sent = setKitSlotIdentityEmitter != null && setKitSlotIdentityEmitter.send(
+                kitId, pageIndex, slotIndex, itemId, comparisonMode, fingerprint);
+        host.localStatus.set(sent ? "updating kit slot..." : "update slot unavailable");
+        host.rebuild();
+    }
+
+    void sendTransfer(int sourceKind, int sourceIndex, int destinationKind, int destinationIndex) {
+        boolean sent = transferEmitter != null && transferEmitter.send(
+                sourceKind,
+                sourceIndex,
+                destinationKind,
+                destinationIndex,
+                "slot_workspace.ldlib.hotbar_transfer"
+        );
+        host.localStatus.set(sent ? "transfer requested" : "transfer unavailable");
+        host.selectedAtlasIdentity.set(null);
+        host.selectedHotbarIndex.set(-1);
+        host.rebuild();
+    }
+
+    void sendAssignHome(String islandId) {
+        SlotWorkspaceViewModel.AtlasItem item = host.selectedAtlasItem();
+        if (item == null) {
+            host.localStatus.set("select an atlas item first");
+            host.rebuild();
+            return;
+        }
+        sendAssignHome(item.identity(), islandId, -1, -1);
+    }
+
+    void sendAssignHome(
+            SlotWorkspaceViewModel.IdentityRef identity,
+            String islandId,
+            int worldX,
+            int worldY
+    ) {
+        if (identity == null || islandId == null || islandId.isBlank()) {
+            host.localStatus.set("invalid home target");
+            host.rebuild();
+            return;
+        }
+        boolean sent = homeEmitter != null && homeEmitter.send(
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                islandId,
+                worldX,
+                worldY
+        );
+        if (sent) {
+            host.rememberRehomeTarget(islandId);
+        }
+        host.localStatus.set(sent ? "home assignment requested" : "home assignment unavailable");
+        host.selectedAtlasIdentity.set(null);
+        host.selectedHotbarIndex.set(-1);
+        host.rebuild();
+    }
+
+    void sendReturnHotbarToHome(int hotbarIndex) {
+        if (returnHotbarToHomeEmitter == null) {
+            return;
+        }
+        boolean sent = returnHotbarToHomeEmitter.send(hotbarIndex);
+        if (!sent) {
+            host.localStatus.set("return-to-home unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendAssignHomeToFreeHotbar(SlotWorkspaceViewModel.AtlasItem item) {
+        if (assignHomeToFreeHotbarEmitter == null || item == null) {
+            return;
+        }
+        boolean sent = assignHomeToFreeHotbarEmitter.send(
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint()
+        );
+        if (!sent) {
+            host.localStatus.set("assign-to-hotbar unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendAssignHomeToHotbarOnly(SlotWorkspaceViewModel.AtlasItem item) {
+        if (assignHomeToHotbarOnlyEmitter == null || item == null) {
+            return;
+        }
+        boolean sent = assignHomeToHotbarOnlyEmitter.send(
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint()
+        );
+        if (!sent) {
+            host.localStatus.set("assign-to-hotbar unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendAssignToHotbarSlot(SlotWorkspaceViewModel.AtlasItem item, int hotbarIndex) {
+        if (assignIdentityToHotbarSlotEmitter == null || item == null) {
+            return;
+        }
+        boolean sent = assignIdentityToHotbarSlotEmitter.send(
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint(),
+                hotbarIndex
+        );
+        host.localStatus.set(sent ? "transfer requested" : "transfer unavailable");
+        host.selectedAtlasIdentity.set(null);
+        host.selectedHotbarIndex.set(-1);
+        // No explicit host.rebuild here — atlas-card TICK picks up the
+        // selection change next frame, and the server sync after the RPC
+        // triggers its own host.rebuild. Calling host.rebuild() now produced a
+        // noticeable blank-frame flash because the entire content tree
+        // (header, body, statusBar) got torn down between the local
+        // state update and the server's authoritative one.
+    }
+
+    void sendDepositHomeToLinkedChest(SlotWorkspaceViewModel.AtlasItem item) {
+        if (depositHomeToLinkedChestEmitter == null || item == null) {
+            return;
+        }
+        boolean sent = depositHomeToLinkedChestEmitter.send(
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint()
+        );
+        if (!sent) {
+            host.localStatus.set("deposit unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendDepositOneHomeToLinkedChest(SlotWorkspaceViewModel.AtlasItem item) {
+        if (depositOneHomeToLinkedChestEmitter == null || item == null) {
+            return;
+        }
+        boolean sent = depositOneHomeToLinkedChestEmitter.send(
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint()
+        );
+        if (!sent) {
+            host.localStatus.set("deposit unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendTakeOneFromChest(String storageId, int chestSlotIndex) {
+        if (takeOneFromChestEmitter == null || storageId == null || storageId.isBlank()) {
+            return;
+        }
+        boolean sent = takeOneFromChestEmitter.send(storageId, chestSlotIndex);
+        if (!sent) {
+            host.localStatus.set("take unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendMoveHotbarToAtlas(int hotbarIndex, String islandId, int worldX, int worldY) {
+        boolean sent = hotbarToAtlasEmitter != null && hotbarToAtlasEmitter.send(
+                hotbarIndex,
+                islandId,
+                worldX,
+                worldY
+        );
+        host.localStatus.set(sent ? "return to atlas requested" : "return to atlas unavailable");
+        host.selectedAtlasIdentity.set(null);
+        host.selectedHotbarIndex.set(-1);
+        host.rebuild();
+    }
+
+    void sendMoveIsland(String islandId, int worldX, int worldY) {
+        if (islandId == null || islandId.isBlank()) {
+            host.localStatus.set("invalid island move");
+            host.rebuild();
+            return;
+        }
+        boolean sent = moveIslandEmitter != null && moveIslandEmitter.send(
+                islandId,
+                worldX,
+                worldY
+        );
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] sendMoveIsland id={} worldX={} worldY={} sent={}",
+                islandId, worldX, worldY, sent);
+        host.localStatus.set(sent ? "island move requested" : "island move unavailable");
+        host.rebuild();
+    }
+
+    void sendTakeAll(String storageId) {
+        boolean sent = takeAllEmitter != null && takeAllEmitter.send(storageId);
+        host.localStatus.set(sent ? "take-all requested" : "take-all unavailable");
+        host.rebuild();
+    }
+
+    void sendDeposit() {
+        boolean sent = depositEmitter != null && depositEmitter.send();
+        host.localStatus.set(sent ? "deposit requested" : "deposit unavailable");
+        host.rebuild();
+    }
+
+    void sendLinkChest(String islandId, String storageId) {
+        if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
+            host.localStatus.set("invalid chest link");
+            host.rebuild();
+            return;
+        }
+        boolean sent = linkChestEmitter != null && linkChestEmitter.send(islandId, storageId);
+        host.localStatus.set(sent ? "chest link requested" : "chest link unavailable");
+        host.rebuild();
+    }
+
+    void sendUnlinkChest(String islandId, String storageId) {
+        if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
+            host.localStatus.set("invalid chest unlink");
+            host.rebuild();
+            return;
+        }
+        boolean sent = unlinkChestEmitter != null && unlinkChestEmitter.send(islandId, storageId);
+        host.localStatus.set(sent ? "chest unlink requested" : "chest unlink unavailable");
+        host.rebuild();
+    }
+
+    void sendMoveStorageZone(int deltaX, int deltaY) {
+        if (deltaX == 0 && deltaY == 0) {
+            return;
+        }
+        boolean sent = moveStorageZoneEmitter != null && moveStorageZoneEmitter.send(deltaX, deltaY);
+        host.localStatus.set(sent ? "storage zone moved" : "storage zone move unavailable");
+        host.rebuild();
+    }
+
+    void sendMoveChest(String storageId, int atlasX, int atlasY) {
+        if (storageId == null || storageId.isBlank()) {
+            host.localStatus.set("invalid chest move");
+            host.rebuild();
+            return;
+        }
+        boolean sent = moveChestEmitter != null && moveChestEmitter.send(
+                storageId,
+                atlasX,
+                atlasY
+        );
+        host.localStatus.set(sent ? "chest move requested" : "chest move unavailable");
+        host.rebuild();
+    }
+
 }

@@ -168,7 +168,7 @@ final class DragDropWiring {
                 // Drag between two hotbar slots = swap. ASSIGN against two host.player-bound
                 // quick-access slots swaps their contents atomically.
                 if (hotbarDrag.hotbarIndex() != slot.hotbarIndex()) {
-                    host.sendTransfer(
+                    host.rpc.sendTransfer(
                             SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT, hotbarDrag.hotbarIndex(),
                             SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT, slot.hotbarIndex());
                 }
@@ -195,7 +195,7 @@ final class DragDropWiring {
                 event.stopPropagation();
                 return;
             }
-            host.sendAssignToHotbarSlot(item, slot.hotbarIndex());
+            host.rpc.sendAssignToHotbarSlot(item, slot.hotbarIndex());
             event.stopPropagation();
         });
     }
@@ -223,7 +223,7 @@ final class DragDropWiring {
                     }
                     host.menu.beginCreateIsland(item, worldX, worldY);
                 } else {
-                    host.sendAssignHome(
+                    host.rpc.sendAssignHome(
                             atlasItem.identity(),
                             SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
                             worldX,
@@ -235,7 +235,7 @@ final class DragDropWiring {
             }
             IslandDrag islandDrag = islandDrag(event);
             if (islandDrag != null) {
-                host.sendMoveIsland(
+                host.rpc.sendMoveIsland(
                         islandDrag.islandId(),
                         atlas.worldX(event.x) - islandDrag.grabOffsetX(),
                         atlas.worldY(event.y) - islandDrag.grabOffsetY()
@@ -245,7 +245,7 @@ final class DragDropWiring {
             }
             ChestTileDrag chestDrag = chestTileDrag(event);
             if (chestDrag != null) {
-                host.sendMoveChest(
+                host.rpc.sendMoveChest(
                         chestDrag.storageId(),
                         atlas.worldX(event.x) - chestDrag.grabOffsetX(),
                         atlas.worldY(event.y) - chestDrag.grabOffsetY()
@@ -257,16 +257,16 @@ final class DragDropWiring {
             if (zoneDrag != null) {
                 int newLeft = atlas.worldX(event.x) - zoneDrag.grabOffsetX();
                 int newTop = atlas.worldY(event.y) - zoneDrag.grabOffsetY();
-                host.sendMoveStorageZone(newLeft - zoneDrag.originX(), newTop - zoneDrag.originY());
+                host.rpc.sendMoveStorageZone(newLeft - zoneDrag.originX(), newTop - zoneDrag.originY());
                 event.stopPropagation();
                 return;
             }
             HotbarSlotDrag hotbarItem = hotbarSlotDrag(event);
             if (hotbarItem != null) {
                 if (hotbarDragHasHome(hotbarItem)) {
-                    host.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
+                    host.rpc.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
                 } else {
-                    host.sendMoveHotbarToAtlas(
+                    host.rpc.sendMoveHotbarToAtlas(
                             hotbarItem.hotbarIndex(),
                             SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
                             atlas.worldX(event.x),
@@ -278,13 +278,13 @@ final class DragDropWiring {
             }
             KitSlotDrag kitSlot = host.kit.kitSlotDrag(event);
             if (kitSlot != null) {
-                host.sendSetKitSlotIdentity(kitSlot.kitId(), kitSlot.pageIndex(), kitSlot.slotIndex(), null);
+                host.rpc.sendSetKitSlotIdentity(kitSlot.kitId(), kitSlot.pageIndex(), kitSlot.slotIndex(), null);
                 event.stopPropagation();
                 return;
             }
             KitBringDrag kitBring = host.kit.kitBringDrag(event);
             if (kitBring != null) {
-                host.sendRemoveKitBring(kitBring.kitId(), kitBring.identity());
+                host.rpc.sendRemoveKitBring(kitBring.kitId(), kitBring.identity());
                 event.stopPropagation();
             }
         });
@@ -309,7 +309,7 @@ final class DragDropWiring {
                 if (event.target == atlas) {
                     return;
                 }
-                host.sendMoveIsland(
+                host.rpc.sendMoveIsland(
                         islandDrag.islandId(),
                         atlas.worldX(event.x) - islandDrag.grabOffsetX(),
                         atlas.worldY(event.y) - islandDrag.grabOffsetY()
@@ -322,7 +322,7 @@ final class DragDropWiring {
                 if (event.target == atlas) {
                     return;
                 }
-                host.sendMoveChest(
+                host.rpc.sendMoveChest(
                         chestDrag.storageId(),
                         atlas.worldX(event.x) - chestDrag.grabOffsetX(),
                         atlas.worldY(event.y) - chestDrag.grabOffsetY()
@@ -337,7 +337,7 @@ final class DragDropWiring {
                 }
                 int newLeft = atlas.worldX(event.x) - zoneDrag.grabOffsetX();
                 int newTop = atlas.worldY(event.y) - zoneDrag.grabOffsetY();
-                host.sendMoveStorageZone(newLeft - zoneDrag.originX(), newTop - zoneDrag.originY());
+                host.rpc.sendMoveStorageZone(newLeft - zoneDrag.originX(), newTop - zoneDrag.originY());
                 event.stopPropagation();
             }
         });
@@ -356,7 +356,7 @@ final class DragDropWiring {
             clearDropOverlay(highlightTarget);
             IslandDrag islandDrag = islandDrag(event);
             if (islandDrag != null) {
-                host.sendMoveIsland(
+                host.rpc.sendMoveIsland(
                         islandDrag.islandId(),
                         atlas.worldX(event.x) - islandDrag.grabOffsetX(),
                         atlas.worldY(event.y) - islandDrag.grabOffsetY()
@@ -366,7 +366,7 @@ final class DragDropWiring {
             }
             AtlasItemDrag atlasItem = atlasItemDrag(event);
             if (atlasItem != null) {
-                host.sendAssignHome(
+                host.rpc.sendAssignHome(
                         atlasItem.identity(),
                         island.islandId(),
                         atlas.worldX(event.x),
@@ -378,9 +378,9 @@ final class DragDropWiring {
             HotbarSlotDrag hotbarItem = hotbarSlotDrag(event);
             if (hotbarItem != null) {
                 if (hotbarDragHasHome(hotbarItem)) {
-                    host.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
+                    host.rpc.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
                 } else {
-                    host.sendMoveHotbarToAtlas(
+                    host.rpc.sendMoveHotbarToAtlas(
                             hotbarItem.hotbarIndex(),
                             island.islandId(),
                             atlas.worldX(event.x),
@@ -398,7 +398,7 @@ final class DragDropWiring {
                 // DRAG_END skips its default take-into-inventory path.
                 SlotWorkspaceViewModel.IdentityRef identity = SlotWorkspaceViewModel.IdentityRef.from(
                         dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(chestDrag.displayStack()));
-                host.sendAssignHome(
+                host.rpc.sendAssignHome(
                         identity,
                         island.islandId(),
                         atlas.worldX(event.x),
@@ -525,6 +525,107 @@ final class DragDropWiring {
 
     IGuiTexture dragTexture(ItemStack stack) {
         return new ItemStackTexture(stack == null ? ItemStack.EMPTY : stack.copy());
+    }
+
+
+    void installChestTileDragSource(
+            UIElement source,
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.ClaimedChestTile tile
+    ) {
+        int[] clickWorldX = {Integer.MIN_VALUE};
+        int[] clickWorldY = {Integer.MIN_VALUE};
+        source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (event.button != 0) {
+                return;
+            }
+            clickWorldX[0] = atlas.worldX(event.x);
+            clickWorldY[0] = atlas.worldY(event.y);
+        }, true);
+        source.addEventListener(UIEvents.MOUSE_UP, event -> {
+            clickWorldX[0] = Integer.MIN_VALUE;
+            clickWorldY[0] = Integer.MIN_VALUE;
+        }, true);
+        source.addEventListener(UIEvents.MOUSE_MOVE, event -> {
+            if (clickWorldX[0] == Integer.MIN_VALUE) {
+                return;
+            }
+            if (!source.isMouseDown(0) || isDragging(source)) {
+                return;
+            }
+            float scale = atlas.getScale();
+            float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
+            float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
+            if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
+                return;
+            }
+            int grabOffsetX = Math.max(0, Math.min(tile.width(), clickWorldX[0] - tile.atlasX()));
+            int grabOffsetY = Math.max(0, Math.min(tile.height(), clickWorldY[0] - tile.atlasY()));
+            int widthPx = Math.max(48, atlas.screenPixelsForWorldUnits(tile.width()));
+            int heightPx = Math.max(20, atlas.screenPixelsForWorldUnits(tile.height()));
+            int dragOffsetX = Math.round(grabOffsetX * scale);
+            int dragOffsetY = Math.round(grabOffsetY * scale);
+            source.startDrag(
+                    new ChestTileDrag(tile.storageId(), grabOffsetX, grabOffsetY),
+                    rect((STORAGE_TILE_FILL & 0x00FFFFFF) | 0x70000000)
+            ).setDragTexture(-dragOffsetX, -dragOffsetY, widthPx, heightPx);
+            host.localStatus.set("dragging " + tile.label());
+        });
+        source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
+    }
+
+    void installChestStackDragSource(
+            UIElement cell,
+            SlotAtlasGraphView atlas,
+            String storageId,
+            int chestSlotIndex,
+            ItemStack stack,
+            String chestLabel
+    ) {
+        int[] clickWorldX = {Integer.MIN_VALUE};
+        int[] clickWorldY = {Integer.MIN_VALUE};
+        cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (event.button != 0) {
+                return;
+            }
+            clickWorldX[0] = atlas.worldX(event.x);
+            clickWorldY[0] = atlas.worldY(event.y);
+        });
+        cell.addEventListener(UIEvents.MOUSE_UP, event -> {
+            clickWorldX[0] = Integer.MIN_VALUE;
+            clickWorldY[0] = Integer.MIN_VALUE;
+        });
+        cell.addEventListener(UIEvents.MOUSE_MOVE, event -> {
+            if (clickWorldX[0] == Integer.MIN_VALUE) {
+                return;
+            }
+            if (!cell.isMouseDown(0) || isDragging(cell)) {
+                return;
+            }
+            float scale = atlas.getScale();
+            float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
+            float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
+            if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
+                return;
+            }
+            cell.startDrag(
+                    new ChestStackDrag(storageId, chestSlotIndex, stack.copy()),
+                    dragTexture(stack)
+            ).setDragTexture(-10, -10, 20, 20);
+            host.localStatus.set("dragging " + stack.getHoverName().getString() + " from " + chestLabel);
+        });
+        cell.addEventListener(UIEvents.DRAG_END, event -> {
+            Object payload = event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
+            boolean consumed = host.chestDragDropConsumed;
+            host.chestDragDropConsumed = false;
+            if (!consumed
+                    && payload instanceof ChestStackDrag drag
+                    && drag.storageId().equals(storageId)
+                    && drag.chestSlotIndex() == chestSlotIndex) {
+                host.rpc.sendTakeFromChest(storageId, chestSlotIndex);
+            }
+            handleDragEnd(event);
+        });
     }
 
 }

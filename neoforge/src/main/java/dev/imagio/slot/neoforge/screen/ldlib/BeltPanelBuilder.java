@@ -1,7 +1,6 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.compactCount;
-import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.islandSubtitle;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.itemName;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.selectionHomeStatus;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
@@ -153,12 +152,12 @@ final class BeltPanelBuilder {
         button.setOnClick(event -> {
             event.stopPropagation();
             if (Screen.hasShiftDown() && slot.occupied()) {
-                host.sendReturnHotbarToHome(slot.hotbarIndex());
+                host.rpc.sendReturnHotbarToHome(slot.hotbarIndex());
                 return;
             }
             SlotWorkspaceViewModel.AtlasItem atlasItem = host.selectedAtlasItem();
             if (atlasItem != null) {
-                host.sendAssignToHotbarSlot(atlasItem, slot.hotbarIndex());
+                host.rpc.sendAssignToHotbarSlot(atlasItem, slot.hotbarIndex());
                 return;
             }
             if (!slot.occupied()) {
@@ -201,7 +200,7 @@ final class BeltPanelBuilder {
             });
         }
 
-        UIElement iconSlot = slot.occupied() ? host.itemIcon(slot.displayStack(), 16) : host.emptyIcon();
+        UIElement iconSlot = slot.occupied() ? itemIcon(slot.displayStack(), 16) : emptyIcon();
         iconSlot.layout(layout -> layout.width(16).height(16));
         button.addChild(iconSlot);
         if (slot.occupied() && slot.count() > 1) {
@@ -248,7 +247,7 @@ final class BeltPanelBuilder {
         button.noText();
         button.setActive(false);
         host.installOffhandHoverTooltip(button, offhand);
-        UIElement iconSlot = offhand.occupied() ? host.itemIcon(offhand.displayStack(), 16) : host.emptyIcon();
+        UIElement iconSlot = offhand.occupied() ? itemIcon(offhand.displayStack(), 16) : emptyIcon();
         iconSlot.layout(layout -> layout.width(16).height(16));
         button.addChild(iconSlot);
         if (offhand.occupied() && offhand.count() > 1) {

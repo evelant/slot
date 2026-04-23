@@ -130,7 +130,7 @@ final class KitRackBuilder {
         button.setOnClick(event -> {
             event.stopPropagation();
             int direction = (event.button == 1 || Screen.hasShiftDown()) ? -1 : 1;
-            host.sendSwitchKitPage(direction);
+            host.rpc.sendSwitchKitPage(direction);
         });
         return button;
     }
@@ -189,7 +189,7 @@ final class KitRackBuilder {
                 .textAlignVertical(Vertical.CENTER));
         save.setOnClick(event -> {
             event.stopPropagation();
-            host.sendSaveKit();
+            host.rpc.sendSaveKit();
         });
         Button close = button("x", true, PANEL_ALT);
         close.layout(layout -> layout.width(14).height(14));
@@ -281,9 +281,9 @@ final class KitRackBuilder {
         button.setOnClick(event -> {
             event.stopPropagation();
             if (card.active()) {
-                host.sendDeactivateKit();
+                host.rpc.sendDeactivateKit();
             } else {
-                host.sendActivateKit(card.kitId());
+                host.rpc.sendActivateKit(card.kitId());
             }
         });
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
@@ -384,7 +384,7 @@ final class KitRackBuilder {
                     .textAlignVertical(Vertical.CENTER));
             remove.setOnClick(event -> {
                 event.stopPropagation();
-                host.sendRemoveKitPage(card.kitId(), page.pageIndex());
+                host.rpc.sendRemoveKitPage(card.kitId(), page.pageIndex());
             });
             row.addChild(remove);
         }
@@ -410,7 +410,7 @@ final class KitRackBuilder {
         if (canAdd) {
             add.setOnClick(event -> {
                 event.stopPropagation();
-                host.sendAddKitPage(card.kitId());
+                host.rpc.sendAddKitPage(card.kitId());
             });
         } else {
             add.setOnClick(event -> event.stopPropagation());
@@ -488,7 +488,7 @@ final class KitRackBuilder {
         if (atlasItem != null) {
             SlotWorkspaceViewModel.AtlasIsland island = host.viewModel.island(atlasItem.islandId());
             if (island != null && host.atlasView != null) {
-                host.panToIsland(host.atlasView, island);
+                host.camera.panToIsland(host.atlasView, island);
             }
             host.localStatus.set("gather " + (step + 1) + "/" + missing.size() + ": " + atlasItem.name());
         } else {
@@ -557,7 +557,7 @@ final class KitRackBuilder {
             }
             if (event.button == 1) {
                 event.stopPropagation();
-                host.sendRemoveKitBring(card.kitId(), item.identity());
+                host.rpc.sendRemoveKitBring(card.kitId(), item.identity());
             }
         });
         cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
@@ -572,7 +572,7 @@ final class KitRackBuilder {
         }, true);
         cell.addEventListener(UIEvents.DRAG_END, host.drag::handleDragEnd);
         if (!item.displayStack().isEmpty()) {
-            UIElement icon = host.itemIcon(item.displayStack(), KIT_CELL_ICON_SIZE, item.ready());
+            UIElement icon = itemIcon(item.displayStack(), KIT_CELL_ICON_SIZE, item.ready());
             icon.setAllowHitTest(false);
             cell.addChild(icon);
         }
@@ -589,7 +589,7 @@ final class KitRackBuilder {
             if (identity == null) {
                 return;
             }
-            host.sendAddKitBring(card.kitId(), identity);
+            host.rpc.sendAddKitBring(card.kitId(), identity);
             event.stopPropagation();
         });
     }
@@ -642,7 +642,7 @@ final class KitRackBuilder {
                 .paddingAll(1)
                 .alignItems(AlignItems.CENTER));
         if (slot.filled() && !slot.displayStack().isEmpty()) {
-            UIElement icon = host.itemIcon(slot.displayStack(), KIT_CELL_ICON_SIZE, slot.ready());
+            UIElement icon = itemIcon(slot.displayStack(), KIT_CELL_ICON_SIZE, slot.ready());
             icon.setAllowHitTest(false);
             cell.addChild(icon);
             cell.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
@@ -678,7 +678,7 @@ final class KitRackBuilder {
             }
             if (event.button == 1 && slot.filled()) {
                 event.stopPropagation();
-                host.sendSetKitSlotIdentity(card.kitId(), page.pageIndex(), slot.slotIndex(), null);
+                host.rpc.sendSetKitSlotIdentity(card.kitId(), page.pageIndex(), slot.slotIndex(), null);
             }
             // Right-click on an empty slot: let it bubble so the card context menu
             // still opens for rename / duplicate / delete.
@@ -705,7 +705,7 @@ final class KitRackBuilder {
                     && card.kitId().equals(slotDrag.kitId())
                     && page.pageIndex() == slotDrag.pageIndex()) {
                 if (slotDrag.slotIndex() != slot.slotIndex()) {
-                    host.sendSwapKitSlots(card.kitId(), page.pageIndex(), slotDrag.slotIndex(), slot.slotIndex());
+                    host.rpc.sendSwapKitSlots(card.kitId(), page.pageIndex(), slotDrag.slotIndex(), slot.slotIndex());
                 }
                 event.stopPropagation();
                 return;
@@ -714,7 +714,7 @@ final class KitRackBuilder {
             if (identity == null) {
                 return;
             }
-            host.sendSetKitSlotIdentity(card.kitId(), page.pageIndex(), slot.slotIndex(), identity);
+            host.rpc.sendSetKitSlotIdentity(card.kitId(), page.pageIndex(), slot.slotIndex(), identity);
             event.stopPropagation();
         });
     }

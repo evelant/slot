@@ -78,7 +78,7 @@ final class SearchController {
 
     void handleCharTyped(UIEvent event) {
         char codePoint = event.codePoint;
-        if (codePoint == '/' && !searchModalActive && !host.peekActive && !host.isTextInputFocused()) {
+        if (codePoint == '/' && !searchModalActive && !host.peekActive && !host.hotkeys.isTextInputFocused()) {
             event.stopPropagation();
             openModal();
             return;

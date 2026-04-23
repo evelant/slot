@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.FONT_UI;
+import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.GHOST_ICON_OVERLAY_COLOR;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.MUTED;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.PANEL_ALT;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.ROW;
@@ -10,6 +11,7 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.SELECTED;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.TEXT;
 
 import com.lowdragmc.lowdraglib2.gui.texture.ColorRectTexture;
+import com.lowdragmc.lowdraglib2.gui.texture.ItemStackTexture;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.TextWrap;
@@ -17,6 +19,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 
 final class WorkspaceUi {
     private WorkspaceUi() {
@@ -93,5 +96,42 @@ final class WorkspaceUi {
 
     static ColorRectTexture rect(int color) {
         return new ColorRectTexture(color);
+    }
+
+    static UIElement itemIcon(ItemStack stack, float size) {
+        return itemIcon(stack, size, true);
+    }
+
+    static UIElement itemIcon(ItemStack stack, float size, boolean carried) {
+        ItemStack iconStack = stack == null ? ItemStack.EMPTY : stack.copy();
+        ItemStackTexture texture = new ItemStackTexture(iconStack);
+        UIElement icon = new UIElement().layout(layout -> layout.width(size).height(size))
+                .style(style -> {
+                    style.backgroundTexture(texture);
+                    if (!carried) {
+                        style.overlayTexture(rect(GHOST_ICON_OVERLAY_COLOR));
+                    }
+                });
+        icon.setAllowHitTest(false);
+        return icon;
+    }
+
+    static UIElement emptyIcon() {
+        UIElement icon = panel(0x80323B44).layout(layout -> layout.width(16).height(16));
+        icon.setAllowHitTest(false);
+        return icon;
+    }
+
+    static Label anchorLabel(String text, int color, float fontSize) {
+        Label label = label(text, color);
+        label.textStyle(style -> style
+                .fontSize(fontSize)
+                .textAlignVertical(Vertical.CENTER)
+                .textAlignHorizontal(Horizontal.LEFT));
+        return label;
+    }
+
+    static float centeredWorld(float container, float child) {
+        return Math.max(0f, (container - child) / 2f);
     }
 }

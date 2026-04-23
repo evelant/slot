@@ -145,7 +145,7 @@ final class TriagePanelBuilder {
             if (event.button == 0 && Screen.hasShiftDown()) {
                 int hotbarIndex = host.hotbarSlotForIdentity(item.identity());
                 if (hotbarIndex >= 0) {
-                    host.sendReturnHotbarToHome(hotbarIndex);
+                    host.rpc.sendReturnHotbarToHome(hotbarIndex);
                 } else {
                     host.localStatus.set(item.name() + " is not in the hotbar");
                     host.rebuild();
@@ -165,7 +165,7 @@ final class TriagePanelBuilder {
         host.drag.installAtlasItemDragSource(row, item);
         host.drag.installAtlasHoverTooltip(row, item);
 
-        UIElement icon = host.itemIcon(item.displayStack(), 16, item.carried());
+        UIElement icon = itemIcon(item.displayStack(), 16, item.carried());
         icon.layout(layout -> layout.width(16).height(16));
         row.addChild(icon);
 
@@ -207,7 +207,7 @@ final class TriagePanelBuilder {
                 .flexDirection(FlexDirection.ROW));
         chipButton.setOnClick(event -> {
             event.stopPropagation();
-            host.sendChipAccept(item, chip);
+            host.rpc.sendChipAccept(item, chip);
         });
         // Leading glyph signals "assign to" direction and visually anchors the
         // chip to the item row above. Plain ASCII so it renders in the Inter
@@ -234,7 +234,7 @@ final class TriagePanelBuilder {
             host.drag.clearDropOverlay(target);
             AtlasItemDrag atlasItem = host.drag.atlasItemDrag(event);
             if (atlasItem != null) {
-                host.sendAssignHome(
+                host.rpc.sendAssignHome(
                         atlasItem.identity(),
                         SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
                         0,
@@ -246,9 +246,9 @@ final class TriagePanelBuilder {
             HotbarSlotDrag hotbarItem = host.drag.hotbarSlotDrag(event);
             if (hotbarItem != null) {
                 if (host.drag.hotbarDragHasHome(hotbarItem)) {
-                    host.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
+                    host.rpc.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
                 } else {
-                    host.sendMoveHotbarToAtlas(
+                    host.rpc.sendMoveHotbarToAtlas(
                             hotbarItem.hotbarIndex(),
                             SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
                             0,
