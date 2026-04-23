@@ -5,6 +5,7 @@ import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEmitter;
 import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEventBuilder;
 import com.lowdragmc.lowdraglib2.gui.texture.ColorRectTexture;
 import com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
+import com.lowdragmc.lowdraglib2.gui.texture.Icons;
 import com.lowdragmc.lowdraglib2.gui.texture.ItemStackTexture;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import com.lowdragmc.lowdraglib2.gui.ui.UI;
@@ -16,6 +17,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.BindableValue;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.GraphView;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
+import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.TextField;
 import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
@@ -87,6 +89,9 @@ final class SlotWorkspaceUiFactory {
     private static final int STORAGE_TILE_CELL_FILL = 0x801A2430;
     private static final int STORAGE_TILE_CELL_FILL_DIM = 0x401A2430;
     private static final int LINK_THREAD_COLOR = 0xC07AC7A7;
+    // Dimmed thread color used on island hover to preview links to non-proximate
+    // chests without competing visually with the full-color proximate threads.
+    private static final int LINK_THREAD_DIM_COLOR = 0x407AC7A7;
     private static final int LINK_HIGHLIGHT_COLOR = 0xA07AC7A7;
     private static final int LINK_HIGHLIGHT_THICKNESS = 2;
     private static final int HOVER_TRAIL_COLOR = 0xD0FFC66D;
@@ -134,6 +139,7 @@ final class SlotWorkspaceUiFactory {
         private String searchQuery = "";
         private final Observable<SlotWorkspaceViewModel.IdentityRef> selectedAtlasIdentity = new Observable<>(null);
         private SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
+        private String hoveredIslandId;
         private final Observable<Integer> selectedHotbarIndex = new Observable<>(-1);
         private int hoveredHotbarIndex = -1;
         private final List<Observable.Subscription> atlasContentSubscriptions = new ArrayList<>();
@@ -152,6 +158,8 @@ final class SlotWorkspaceUiFactory {
         private String editingIslandId = null;
         private String editingChestStorageId = null;
         private String islandLabelDraft = "";
+        private float islandEditScreenX = Float.NaN;
+        private float islandEditScreenY = Float.NaN;
         private SlotWorkspaceViewModel.IdentityRef pendingCreateIdentity;
         private int pendingCreateWorldX;
         private int pendingCreateWorldY;
@@ -179,6 +187,8 @@ final class SlotWorkspaceUiFactory {
         private RPCEmitter saveKitEmitter;
         private RPCEmitter activateKitEmitter;
         private RPCEmitter deactivateKitEmitter;
+        private RPCEmitter undoEmitter;
+        private RPCEmitter redoEmitter;
         private RPCEmitter deleteKitEmitter;
         private RPCEmitter switchKitPageEmitter;
         private RPCEmitter addKitPageEmitter;
@@ -274,6 +284,7 @@ final class SlotWorkspaceUiFactory {
             root.addEventListener(UIEvents.KEY_UP, this::handlePeekKeyUp, true);
             root.addEventListener(UIEvents.KEY_DOWN, this::handleCameraHistoryKey, true);
             root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
+            root.addEventListener(UIEvents.KEY_DOWN, this::handleUndoRedoKey, true);
             root.addEventListener(UIEvents.MOUSE_DOWN, this::handleCameraHistoryMouse, true);
             root.addEventListener(UIEvents.CHAR_TYPED, event -> {
                 if (event.codePoint >= '1' && event.codePoint <= '9') {
@@ -406,6 +417,35 @@ final class SlotWorkspaceUiFactory {
             event.stopPropagation();
             int direction = Screen.hasShiftDown() ? -1 : 1;
             sendSwitchKitPage(direction);
+        }
+
+        private void handleUndoRedoKey(UIEvent event) {
+            if (isTextInputFocused() || searchModalActive) {
+                return;
+            }
+            if (dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                    .matchesUndo(event.keyCode, event.scanCode)) {
+                event.stopPropagation();
+                sendUndo();
+            } else if (dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                    .matchesRedo(event.keyCode, event.scanCode)) {
+                event.stopPropagation();
+                sendRedo();
+            }
+        }
+
+        private void sendUndo() {
+            if (undoEmitter != null) {
+                localStatus.set("undo");
+                undoEmitter.send();
+            }
+        }
+
+        private void sendRedo() {
+            if (redoEmitter != null) {
+                localStatus.set("redo");
+                redoEmitter.send();
+            }
         }
 
         private void handleCameraHistoryMouse(UIEvent event) {
@@ -891,6 +931,12 @@ final class SlotWorkspaceUiFactory {
             deactivateKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     (Runnable) session::deactivateKit
             ));
+            undoEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    (Runnable) session::performUndo
+            ));
+            redoEmitter = root.addRPCEvent(RPCEventBuilder.simple(
+                    (Runnable) session::performRedo
+            ));
             deleteKitEmitter = root.addRPCEvent(RPCEventBuilder.simple(
                     String.class,
                     session::deleteKit
@@ -1116,6 +1162,35 @@ final class SlotWorkspaceUiFactory {
                 sendDeposit();
             });
 
+            // HISTORY is a counter-clockwise curved arrow (classic undo);
+            // ROTATION is a clockwise curved arrow (matches redo convention).
+            // LEFT/RIGHT would read as paging, not undo/redo, so avoid those.
+            Button undoButton = button("", true, GLASS).noText();
+            undoButton.addPreIcon(Icons.HISTORY);
+            undoButton.layout(layout -> layout.width(16).height(16));
+            undoButton.setOnClick(event -> {
+                event.stopPropagation();
+                sendUndo();
+            });
+            installKeybindTooltip(
+                    undoButton,
+                    "Undo",
+                    dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings::undoKeyLabel
+            );
+
+            Button redoButton = button("", true, GLASS).noText();
+            redoButton.addPreIcon(Icons.ROTATION);
+            redoButton.layout(layout -> layout.width(16).height(16));
+            redoButton.setOnClick(event -> {
+                event.stopPropagation();
+                sendRedo();
+            });
+            installKeybindTooltip(
+                    redoButton,
+                    "Redo",
+                    dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings::redoKeyLabel
+            );
+
             Button vanillaButton = button("Vanilla", true, GLASS);
             vanillaButton.layout(layout -> layout.width(48).height(16));
             vanillaButton.textStyle(style -> style
@@ -1129,8 +1204,31 @@ final class SlotWorkspaceUiFactory {
                 dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController.openVanillaInventory();
             });
 
-            overlay.addChildren(depositButton, vanillaButton);
+            overlay.addChildren(depositButton, undoButton, redoButton, vanillaButton);
             return overlay;
+        }
+
+        private void installKeybindTooltip(
+                Button button,
+                String action,
+                java.util.function.Supplier<String> keyLabelSupplier
+        ) {
+            button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
+                String binding = "";
+                try {
+                    binding = keyLabelSupplier.get();
+                } catch (RuntimeException ignored) {
+                }
+                String tooltipText = binding == null || binding.isBlank()
+                        ? action
+                        : action + " (" + binding + ")";
+                event.hoverTooltips = new HoverTooltips(
+                        List.of(Component.literal(tooltipText)),
+                        null,
+                        null,
+                        null
+                );
+            });
         }
 
         private UIElement body() {
@@ -1451,6 +1549,17 @@ final class SlotWorkspaceUiFactory {
             headerRow.setAllowHitTest(false);
             overlay.addChild(headerRow);
 
+            Label sortHint = label("most recent first \u2193", MUTED);
+            sortHint.layout(layout -> layout.widthPercent(100).height(8));
+            sortHint.textStyle(style -> style
+                    .textColor(MUTED)
+                    .fontSize(6)
+                    .textShadow(false)
+                    .textAlignHorizontal(Horizontal.LEFT)
+                    .textAlignVertical(Vertical.CENTER));
+            sortHint.setAllowHitTest(false);
+            overlay.addChild(sortHint);
+
             UIElement divider = panel(ISLAND_BORDER).layout(layout -> layout.widthPercent(100).height(1));
             divider.setAllowHitTest(false);
             overlay.addChild(divider);
@@ -1467,12 +1576,21 @@ final class SlotWorkspaceUiFactory {
                 empty.setAllowHitTest(false);
                 overlay.addChild(empty);
             } else {
+                ScrollerView scroller = new ScrollerView();
+                scroller.layout(layout -> layout.flex(1).widthPercent(100).gapAll(2));
+                // LDLib's default per-tick wheel cap is 7px; at our 20px row height that
+                // feels glacial. Bump both min + max so each wheel tick scrolls roughly
+                // 3 rows.
+                scroller.scrollerStyle(style -> style
+                        .minScrollPixel(30f)
+                        .maxScrollPixel(80f));
                 for (SlotWorkspaceViewModel.AtlasItem item : viewModel.triageItems()) {
-                    overlay.addChild(triagePanelRow(item));
+                    scroller.addScrollViewChild(triagePanelRow(item));
                     for (ChipSuggestion chip : item.chipSuggestions()) {
-                        overlay.addChild(triagePanelChip(item, chip));
+                        scroller.addScrollViewChild(triagePanelChip(item, chip));
                     }
                 }
+                overlay.addChild(scroller);
             }
 
             installTriagePanelDropTarget(overlay);
@@ -1536,7 +1654,10 @@ final class SlotWorkspaceUiFactory {
             icon.layout(layout -> layout.width(16).height(16));
             row.addChild(icon);
 
-            Label name = label(shorten(item.name(), 14), TEXT);
+            // Item count is already drawn on the icon corner by the vanilla item
+            // renderer, so we only need the name. Let LDLib handle any soft clip via
+            // the flex(1) layout — we were over-shortening with a hard 22-char cap.
+            Label name = label(item.name(), TEXT);
             name.layout(layout -> layout.flex(1).height(12));
             name.textStyle(style -> style
                     .textColor(item.carried() ? TEXT : MUTED)
@@ -1546,27 +1667,24 @@ final class SlotWorkspaceUiFactory {
                     .textAlignVertical(Vertical.CENTER));
             name.setAllowHitTest(false);
             row.addChild(name);
-
-            if (item.totalCount() > 0) {
-                Label count = label("x" + item.totalCount(), MUTED);
-                count.layout(layout -> layout.width(28).height(12));
-                count.textStyle(style -> style
-                        .textColor(MUTED)
-                        .fontSize(7)
-                        .textShadow(false)
-                        .textAlignHorizontal(Horizontal.RIGHT)
-                        .textAlignVertical(Vertical.CENTER));
-                count.setAllowHitTest(false);
-                row.addChild(count);
-            }
             return row;
         }
 
         private UIElement triagePanelChip(SlotWorkspaceViewModel.AtlasItem item, ChipSuggestion chip) {
+            // Wrapper with a left indent so the chip visibly nests under its parent
+            // item instead of spanning the full panel width like a divider.
+            UIElement wrapper = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .height(11)
+                    .paddingLeft(20)
+                    .flexDirection(FlexDirection.ROW)
+                    .alignItems(AlignItems.CENTER));
+            wrapper.setAllowHitTest(false);
+
             Button chipButton = button("", true, chip.color());
             chipButton.noText();
             chipButton.layout(layout -> layout
-                    .widthPercent(100)
+                    .flex(1)
                     .height(11)
                     .paddingHorizontal(4)
                     .gapAll(2)
@@ -1576,7 +1694,10 @@ final class SlotWorkspaceUiFactory {
                 event.stopPropagation();
                 sendChipAccept(item, chip);
             });
-            Label chipLabel = label(chipLabelText(chip), TEXT);
+            // Leading glyph signals "assign to" direction and visually anchors the
+            // chip to the item row above. Plain ASCII so it renders in the Inter
+            // Tight font without the Unicode-arrow fallback issues.
+            Label chipLabel = label("> " + chipLabelText(chip), TEXT);
             chipLabel.layout(layout -> layout.flex(1).height(9));
             chipLabel.textStyle(style -> style
                     .textColor(TEXT)
@@ -1586,7 +1707,8 @@ final class SlotWorkspaceUiFactory {
                     .textAlignVertical(Vertical.CENTER));
             chipLabel.setAllowHitTest(false);
             chipButton.addChild(chipLabel);
-            return chipButton;
+            wrapper.addChild(chipButton);
+            return wrapper;
         }
 
         private void installTriagePanelDropTarget(UIElement target) {
@@ -1666,6 +1788,23 @@ final class SlotWorkspaceUiFactory {
                     addLinkAffordances(atlas, tile, island);
                 }
             }
+            // Hover preview: if the player is hovering an island, draw dim link
+            // threads to any of its NON-proximate linked chests so the relationship
+            // is discoverable without walking to the chest.
+            if (hoveredIslandId != null) {
+                SlotWorkspaceViewModel.AtlasIsland hovered = viewModel.island(hoveredIslandId);
+                if (hovered != null) {
+                    for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                        if (tile.proximate() || !tile.linkedIslandIds().contains(hoveredIslandId)) {
+                            continue;
+                        }
+                        UIElement dimThread = dimLinkThread(tile, hovered);
+                        if (dimThread != null) {
+                            atlas.addContentChild(dimThread);
+                        }
+                    }
+                }
+            }
             for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
                 atlas.addContentChild(atlasCardButton(atlas, item));
                 addAtlasItemChips(atlas, item);
@@ -1697,7 +1836,53 @@ final class SlotWorkspaceUiFactory {
             installViewportPanSurface(panel, atlas);
             installIslandDropTarget(panel, panel, atlas, island);
 
+            // Right-click opens the island edit popover anchored near the click,
+            // matching how item cards and kit cards surface their context menu.
+            if (island.kind() == VisualAtlasIslandKind.PLAYER) {
+                panel.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                    if (event.button != 1) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    beginIslandEdit(island, event.x, event.y);
+                }, true);
+            }
+
+            // Hovering the island shows dim link threads to any non-proximate chests
+            // it's linked to (useful to see off-screen relationships without walking
+            // over to the chest). Enter/leave triggers a rebuild so the threads
+            // appear/disappear; the preview is built inline in buildAtlas().
+            if (island.kind() == VisualAtlasIslandKind.PLAYER && islandHasNonProximateLinks(island.islandId())) {
+                panel.addEventListener(UIEvents.MOUSE_ENTER, event -> {
+                    if (!island.islandId().equals(hoveredIslandId)) {
+                        hoveredIslandId = island.islandId();
+                        rebuild();
+                    }
+                }, true);
+                panel.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+                    if (island.islandId().equals(hoveredIslandId)) {
+                        hoveredIslandId = null;
+                        rebuild();
+                    }
+                }, true);
+            }
+
             return panel;
+        }
+
+        private boolean islandHasNonProximateLinks(String islandId) {
+            if (islandId == null || islandId.isBlank()) {
+                return false;
+            }
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
+                if (tile.proximate()) {
+                    continue;
+                }
+                if (tile.linkedIslandIds().contains(islandId)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private UIElement islandCarriedBadge(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
@@ -2250,7 +2435,10 @@ final class SlotWorkspaceUiFactory {
                 style.hoverTexture(rect(0x40FFFFFF));
                 style.pressedTexture(rect(0x60FFFFFF));
             });
-            arrow.style(style -> style.zIndex(4));
+            // Match the thread's z=0 so the arrow sits above atlas backdrop but below
+            // island item cards (z=2+) and chest tile content (z=1–3). Previously at
+            // z=4 it rendered on top of chest cells and item widgets.
+            arrow.style(style -> style.zIndex(0));
             arrow.transform(transform -> transform.pivot(0.5f, 0.5f).rotation(rotationDeg));
             arrow.setOnClick(event -> {
                 if (event.button != 0) {
@@ -2266,6 +2454,22 @@ final class SlotWorkspaceUiFactory {
                 SlotWorkspaceViewModel.ClaimedChestTile tile,
                 SlotWorkspaceViewModel.AtlasIsland island
         ) {
+            return buildThread(tile, island, LINK_THREAD_COLOR, 2);
+        }
+
+        private UIElement dimLinkThread(
+                SlotWorkspaceViewModel.ClaimedChestTile tile,
+                SlotWorkspaceViewModel.AtlasIsland island
+        ) {
+            return buildThread(tile, island, LINK_THREAD_DIM_COLOR, 1);
+        }
+
+        private UIElement buildThread(
+                SlotWorkspaceViewModel.ClaimedChestTile tile,
+                SlotWorkspaceViewModel.AtlasIsland island,
+                int color,
+                int thickness
+        ) {
             int tileCenterX = tile.atlasX() + tile.width() / 2;
             int tileCenterY = tile.atlasY() + tile.height() / 2;
             int islandCenterX = island.x() + island.width() / 2;
@@ -2277,9 +2481,8 @@ final class SlotWorkspaceUiFactory {
                 return null;
             }
             int length = Math.max(1, (int) Math.round(distance));
-            int thickness = 2;
             float angleDeg = (float) Math.toDegrees(Math.atan2(dy, dx));
-            UIElement thread = panel(LINK_THREAD_COLOR).layout(layout -> layout
+            UIElement thread = panel(color).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(tileCenterX)
                     .top(tileCenterY - thickness / 2)
@@ -2694,7 +2897,18 @@ final class SlotWorkspaceUiFactory {
             selectedAtlasIdentity.set(item.identity());
             String templateName = chip.template() == null ? "" : chip.template().name();
             int accepted = 0;
-            for (SlotWorkspaceViewModel.AtlasItem candidate : viewModel.atlasItems()) {
+            // Triage items carry their own chips but live in viewModel.triageItems(),
+            // so we need to walk both lists. Walk atlas items first (the batch-apply
+            // semantic: accept the same template for every matching homed card) then
+            // also include triage items — this fires for the single clicked inbox
+            // item that triggered the chip even when no homed cards match.
+            java.util.LinkedHashSet<SlotWorkspaceViewModel.AtlasItem> candidates = new java.util.LinkedHashSet<>();
+            candidates.addAll(viewModel.atlasItems());
+            candidates.addAll(viewModel.triageItems());
+            // Always include the clicked item so a chip click on an item the view model
+            // no longer returns (e.g., a momentary projection race) still fires.
+            candidates.add(item);
+            for (SlotWorkspaceViewModel.AtlasItem candidate : candidates) {
                 if (!chipMatches(candidate, chip)) {
                     continue;
                 }
@@ -3375,11 +3589,17 @@ final class SlotWorkspaceUiFactory {
         }
 
         private void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island) {
+            beginIslandEdit(island, Float.NaN, Float.NaN);
+        }
+
+        private void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island, float screenX, float screenY) {
             if (island == null) {
                 return;
             }
             editingIslandId = island.islandId();
             islandLabelDraft = island.label();
+            islandEditScreenX = screenX;
+            islandEditScreenY = screenY;
             localStatus.set("editing " + island.label());
             rebuild();
         }
@@ -3387,6 +3607,8 @@ final class SlotWorkspaceUiFactory {
         private void endIslandEdit() {
             editingIslandId = null;
             islandLabelDraft = "";
+            islandEditScreenX = Float.NaN;
+            islandEditScreenY = Float.NaN;
             rebuild();
         }
 
@@ -3403,12 +3625,18 @@ final class SlotWorkspaceUiFactory {
 
             UIElement capsule = panel(GLASS).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
-                    .right(10)
-                    .top(10)
                     .width(250)
                     .paddingAll(8)
                     .gapAll(6)
                     .flexDirection(FlexDirection.COLUMN));
+            if (!Float.isNaN(islandEditScreenX) && !Float.isNaN(islandEditScreenY)) {
+                // Right-click path: anchor the popover near the click so it
+                // floats by the island. The "..." button path leaves the coords
+                // as NaN and falls back to the fixed top-right position below.
+                anchorPopover(capsule, islandEditScreenX, islandEditScreenY, 250, 240);
+            } else {
+                capsule.layout(layout -> layout.right(10).top(10));
+            }
             capsule.style(style -> style.zIndex(20));
             capsule.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
@@ -5132,17 +5360,28 @@ final class SlotWorkspaceUiFactory {
                 }
                 int grabOffsetX = Math.max(0, Math.min(island.width(), clickWorldX[0] - island.x()));
                 int grabOffsetY = Math.max(0, Math.min(island.height(), clickWorldY[0] - island.y()));
-                int actualWidthPx = Math.max(48, atlas.screenPixelsForWorldUnits(island.width()));
-                int actualHeightPx = Math.max(24, atlas.screenPixelsForWorldUnits(island.height()));
-                float dragScale = Math.min(1f, Math.min(260f / actualWidthPx, 180f / actualHeightPx));
-                int dragWidthPx = Math.max(72, Math.round(actualWidthPx * dragScale));
-                int dragHeightPx = Math.max(22, Math.round(actualHeightPx * dragScale));
+                // Render the ghost at the actual island screen size (no minimum
+                // clamp — small islands got spuriously wide ghosts). Cap at a
+                // reasonable maximum so huge islands don't occlude the viewport.
+                int actualWidthPx = atlas.screenPixelsForWorldUnits(island.width());
+                int actualHeightPx = atlas.screenPixelsForWorldUnits(island.height());
+                float dragScale = Math.min(1f, Math.min(260f / Math.max(1, actualWidthPx), 180f / Math.max(1, actualHeightPx)));
+                int dragWidthPx = Math.max(1, Math.round(actualWidthPx * dragScale));
+                int dragHeightPx = Math.max(1, Math.round(actualHeightPx * dragScale));
+                // The island title bar lives above the island rect; include a
+                // proportional strip in the ghost so it represents the whole
+                // island shape the player sees.
+                int headerHeightPx = Math.max(6, Math.round(14f * dragScale));
                 int dragOffsetX = Math.round(grabOffsetX * scale * dragScale);
                 int dragOffsetY = Math.round(grabOffsetY * scale * dragScale);
                 source.startDrag(
                         new IslandDrag(island.islandId(), grabOffsetX, grabOffsetY),
                         rect((island.color() & 0x00FFFFFF) | 0x5A000000)
-                ).setDragTexture(-dragOffsetX, -dragOffsetY, dragWidthPx, dragHeightPx);
+                ).setDragTexture(
+                        -dragOffsetX,
+                        -(dragOffsetY + headerHeightPx),
+                        dragWidthPx,
+                        dragHeightPx + headerHeightPx);
                 localStatus.set("dragging island " + island.label());
             }, true);
             source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));

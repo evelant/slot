@@ -5,12 +5,17 @@ import dev.imagio.slot.neoforge.client.SlotNeoForgeClient;
 import dev.imagio.slot.neoforge.command.SlotTestCommands;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.network.SlotNetworking;
+import dev.imagio.slot.inventory.storage.CarriedProviderRegistry;
+import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.GhostAtlasStackFactory;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotWorkspaceLdlibMenus;
 import dev.imagio.slot.neoforge.storage.ChestStorageBreakListener;
+import dev.imagio.slot.neoforge.storage.NeoForgeCarriedSourceAccess;
+import dev.imagio.slot.neoforge.storage.NeoForgeWorldStorageAccess;
 import dev.imagio.slot.neoforge.storage.SlotAttachmentTypes;
 import dev.imagio.slot.neoforge.storage.SlotPickupRouter;
+import dev.imagio.slot.neoforge.storage.SophisticatedBackpacksCarriedProvider;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -25,6 +30,9 @@ public final class SlotNeoForge {
 
         container.registerConfig(ModConfig.Type.CLIENT, SlotClientConfig.CLIENT_SPEC);
         SlotWorkspaceViewModel.setGhostStackResolver(GhostAtlasStackFactory::resolve);
+        CarriedProviderRegistry.register(new SophisticatedBackpacksCarriedProvider());
+        StorageAccessRegistry.installCarriedSourceAccess(new NeoForgeCarriedSourceAccess());
+        StorageAccessRegistry.installWorldStorageAccess(new NeoForgeWorldStorageAccess());
         SlotWorkspaceLdlibMenus.init();
         SlotNetworking.init(modBus);
         SlotAttachmentTypes.register(modBus);

@@ -1,26 +1,25 @@
 package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.SlotDebugLog;
-import dev.imagio.slot.compat.sophisticated.SophisticatedBackpackTransferSupport;
-import net.minecraft.nbt.CompoundTag;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
+import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.UUID;
-
 // Server-side pickup interceptor. Runs after vanilla pickup finishes — items
 // have landed in the main inventory, which is where we want them briefly:
 // vanilla pickup animation/sounds fire, quests and advancements trigger,
-// pickup-tooltip mods see the event. We then transfer as much as fits into
-// the player's carried Sophisticated Backpacks so the main inventory doesn't
-// fill up. The Sophisticated Backpacks magnet upgrade intercepts items
-// pre-pickup (bypassing those sibling side-effects), which is a usability
-// loss we explicitly avoid here.
+// pickup-tooltip mods see the event. We then route the picked items out of
+// vanilla lanes into any registered CarriedProvider (Sophisticated Backpacks
+// today, Curios/others in future) via CarriedSourceAccess.insertIntoProviders
+// so main doesn't fill up. The Sophisticated Backpacks magnet upgrade
+// intercepts items pre-pickup (bypassing those sibling side-effects), which
+// is a usability loss we explicitly avoid here.
 public final class SlotPickupRouter {
     private static boolean registered;
 
@@ -39,7 +38,7 @@ public final class SlotPickupRouter {
         if (!(event.getPlayer() instanceof ServerPlayer player)) {
             return;
         }
-        if (!SophisticatedBackpackTransferSupport.isAvailable()) {
+        if (!StorageAccessRegistry.isInstalled()) {
             return;
         }
 
@@ -50,45 +49,52 @@ public final class SlotPickupRouter {
             return;
         }
 
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
         ItemStack toRoute = original.copy();
         toRoute.setCount(pickedCount);
 
-        Map<UUID, CompoundTag> syncedContents = new LinkedHashMap<>();
         ItemStack remainder;
         try {
-            remainder = SophisticatedBackpackTransferSupport.insertIntoPlayerBackpacks(player, toRoute, syncedContents);
+            remainder = carried.insertIntoProviders(player, toRoute, false);
         } catch (RuntimeException failure) {
             SlotDebugLog.log(
-                    "SlotPickupRouter insertIntoPlayerBackpacks threw {}; leaving pickup in main inventory",
+                    "SlotPickupRouter insertIntoProviders threw {}; leaving pickup in main inventory",
                     failure.toString()
             );
             return;
         }
-        int absorbed = pickedCount - remainder.getCount();
+        int absorbed = pickedCount - (remainder == null ? 0 : remainder.getCount());
         if (absorbed <= 0) {
             return;
         }
 
-        shrinkMatchingStacks(player.getInventory(), original, absorbed);
+        ItemIdentity identity = ItemIdentityMatcher.create(original);
+        shrinkVanillaLanes(carried, player, identity, absorbed);
     }
 
-    // Remove `count` items matching `pattern` from the player's inventory.
-    // We don't track which slot vanilla pickup landed into — pickup may merge
-    // across multiple existing stacks — so iterate and shrink matching stacks
-    // until the absorbed count is accounted for. Hotbar/main/offhand are
-    // covered by the default Inventory.getContainerSize() iteration.
-    private static void shrinkMatchingStacks(Inventory inventory, ItemStack pattern, int count) {
+    // Remove `count` items matching `identity` from the player's vanilla lanes
+    // (main/hotbar/offhand). We don't track which slot vanilla pickup landed
+    // in — pickup may merge across multiple existing stacks — so walk every
+    // match on builtin lanes and extract until the absorbed count is covered.
+    // We explicitly skip provider-owned source ids: those are where the items
+    // were just routed to.
+    private static void shrinkVanillaLanes(CarriedSourceAccess carried, ServerPlayer player, ItemIdentity identity, int count) {
         int remaining = count;
-        int size = inventory.getContainerSize();
-        for (int slot = 0; slot < size && remaining > 0; slot++) {
-            ItemStack stack = inventory.getItem(slot);
-            if (stack.isEmpty() || !ItemStack.isSameItemSameComponents(stack, pattern)) {
+        for (CarriedSourceAccess.CarriedLocation loc : carried.findAllMatching(player, identity)) {
+            if (remaining <= 0) {
+                break;
+            }
+            if (!isBuiltinLane(loc.sourceId())) {
                 continue;
             }
-            int take = Math.min(stack.getCount(), remaining);
-            stack.shrink(take);
-            remaining -= take;
+            ItemStack taken = carried.extract(player, loc.sourceId(), loc.slotIndex(), remaining, false);
+            remaining -= taken.getCount();
         }
-        inventory.setChanged();
+    }
+
+    private static boolean isBuiltinLane(String sourceId) {
+        return BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)
+                || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId)
+                || BuiltinInventoryIds.PLAYER_OFFHAND.equals(sourceId);
     }
 }

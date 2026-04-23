@@ -304,6 +304,45 @@ backpack, backpack→hotbar, backpack→backpack, plus the existing
 hotbar↔hotbar ASSIGN swap. Any future refactor that breaks one of
 these combinations will surface in CI immediately.
 
+**Undo/redo phase 1 landed.** Per-player in-memory undo stack
+([common/workflow/domain/undo/](../common/src/main/java/dev/imagio/slot/workflow/domain/undo/))
+with ring-buffer capacity 32, session-scoped (lost on server
+restart). Commands at the `SlotWorkspaceCommandService` level
+capture pre/post state and push matched (undo, redo) closures onto
+`runtime.undoStack()` after a successful mutation. The stack sets a
+`suppressed` flag while executing a record so inverse mutations
+don't themselves push new entries.
+
+Phase 1 ops covered:
+
+- **home assign / clear** — captures previous `VisualHomeAssignment`
+  and restores on undo
+- **chip accept** — composite undo: clears the assignment AND
+  deletes the template island if this accept materialized a new one
+- **create named island** — composite undo (delete island + restore
+  prior home assignment)
+- **move / rename / recolor island, set island icon** — restores
+  prior coord / label / color / icon
+- **delete island** — snapshots pre-delete island and re-creates on
+  undo with same id
+
+UX: RPC endpoints `performUndo` / `performRedo` in
+[SlotWorkspaceUiSession](../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/SlotWorkspaceUiSession.java),
+driven by two new keybinds (`Z` undo, `Y` redo by default,
+user-rebindable via Controls menu — KeyConflictContext.GUI so they
+only fire while the atlas is open) **and** a pair of `↶` / `↷`
+icon-buttons in the atlas top-right action cluster next to Deposit
+/ Vanilla. Hover tooltips surface "Undo (Z)" / "Redo (Y)" using the
+user's current binding via
+`KeyMapping.getTranslatedKeyMessage()`, so tooltips stay accurate
+after rebinding. Status line surfaces `undid: <label>` / `redid:
+<label>` / `nothing_to_undo` / `nothing_to_redo`.
+
+Phase 2 (kit activation/page-switch, chest deposit/take-all, hotbar
+transfers, kit definition edits) needs inventory-snapshot
+scaffolding and partial-restore diagnostics — held for a follow-up
+round so we can validate phase 1 end-to-end first.
+
 **Realistic populate seeder landed.** The old
 `/slot test populate-atlas {triage|homed}` + `/slot test populate-chests`
 commands are replaced by `/slot test populate <profile>` with three
@@ -417,10 +456,28 @@ layout + chest-linking logic is testable in common without a
 Minecraft bootstrap. Non-deterministic per run — no seed argument,
 regenerate with `/slot test clear` then re-run.
 
-**Open Kit follow-up**: drag-to-edit an *active* kit updates only the
-kit definition, not the live belt. Design says the belt should sync
-when the edit hits the active page — not yet wired. Small, scoped
-follow-up for when someone touches this area next.
+**Active-kit belt sync landed.** Drag-to-edit on an active kit's
+active page now re-plans + executes that page via the usual
+`LoadoutApplyService` + `LoadoutApplyExecutor` path, so the live
+belt mirrors definition changes immediately. Edits on inactive kits
+or on inactive pages of the active kit stay definition-only (no belt
+movement). The session ([SlotWorkspaceUiSession.setKitSlotIdentity](../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/SlotWorkspaceUiSession.java))
+resolves host + authority + action executor the same way
+`activateKit` does and passes them into
+[SlotWorkspaceCommandService.setKitSlotIdentity](../common/src/main/java/dev/imagio/slot/inventory/workspace/SlotWorkspaceCommandService.java);
+on host-resolution failure the command falls back to
+definition-only. Status line surfaces `kit slot updated (belt
+synced)` / `(belt synced, missing N)` when sync runs.
+
+**Triage panel scrolls + sort indicator landed.** The triage overlay
+now wraps its row list in an LDLib2 `ScrollerView` so atlases with
+30+ triage items stay navigable — previously everything past the
+visible height was silently clipped. A small "most recent first ↓"
+subtitle sits between the "Triage" header and the divider so the
+sort direction is explicit. Header + subtitle + divider stay outside
+the scroll region; only the rows + chips scroll. Scroll position
+resets on every `rebuild()` for now — if that proves janky we can
+hoist the scroller into the persistent atlas chrome.
 
 **Suggested next arcs**:
 - **Comprehensive undo/redo stack** (per the general-undo memory

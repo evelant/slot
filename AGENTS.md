@@ -245,6 +245,83 @@ writing new UI or action code.
   so rollback from a backpack staging slot works. `ASSIGN` would
   reject the backpack-bound source with
   `assign_requires_player_bound_targets`.
+### Storage abstraction — rules for adding or editing storage code
+
+**Read this before writing any code that reads, mutates, or iterates
+storage.** The full architecture + recipes live in
+[docs/architecture/storage-integration.md](docs/architecture/storage-integration.md);
+the rules below are the terse reminder list.
+
+**Why it exists.** Every "operation X silently ignores backpacks" bug
+we've ever shipped came from the same shape: a caller hardcoded a list
+of known sources (or called a specific mod's transfer support directly)
+instead of routing through the storage abstraction. The abstraction
+makes the provider set open-ended; the rules below keep it that way.
+
+**Adding a new storage mod.** See
+[storage-integration.md](docs/architecture/storage-integration.md) for
+full recipes. Short version:
+
+- Minimal carried mod (Curios, generic backpack): implement
+  `CarriedProvider`, register in `CarriedProviderRegistry`. Done.
+  `DefaultCarriedProviderIntegration` synthesises the
+  `PlayerInventoryExtension` for you.
+- Rich carried mod (SB-class — openable UI, tool upgrades, custom
+  labels): implement `CarriedProvider` **and** a bespoke
+  `InventoryIntegrationProvider`, override
+  `CarriedProvider.autoSynthesizeExtension()` → `false` to avoid
+  double-registration.
+- World-block storage that exposes `Capabilities.ItemHandler.BLOCK`:
+  nothing to do.
+- Virtual / aggregated storage (AE2, Create): implement
+  `WorldStorageAccess.Delegate`, register it.
+- Non-chest claimed storage (drawers, barrels as first-class targets):
+  **not supported today**; requires `Target` variant + claim-model
+  generalisation. Talk to the architect before starting.
+
+**Hard don'ts when writing higher-level code.** Each of these
+re-introduces the exact bug class the abstraction was built to prevent:
+
+- Don't hardcode `{PLAYER_MAIN, PLAYER_QUICK_ACCESS_LANE_0,
+  PLAYER_OFFHAND}` (or any subset) as "the carried sources." Use
+  `CarriedSourceAccess.findIdentity` / `findAllMatching`, or iterate
+  `authority.carriedSources()`.
+- Don't call `player.getInventory().add(…)` / `setItem(…)` /
+  `offhand.set(…)` directly. Route through `CarriedSourceAccess`.
+  Direct vanilla `Inventory` mutation is reserved for
+  `NeoForgeCarriedSourceAccess` itself.
+- Don't call `level.getCapability(Capabilities.ItemHandler.BLOCK, …)`
+  or `stack.getCapability(Capabilities.ItemHandler.ITEM)` from outside
+  the platform impls. Use `WorldStorageAccess` / `CarriedProvider`.
+- Don't import a specific provider's name in higher-level code
+  (`SophisticatedBackpackTransferSupport`, `CuriosApi`, …). Executors,
+  UI sessions, pickup routing, and the action router must not know
+  which mod owns a source — the provider set is open-ended by design.
+- Don't write per-caller "find → peek → extract → insert →
+  restore-on-failure" loops. That's a symptom — use the action
+  pipeline or the direct access APIs and let the abstraction handle
+  restore-via-same-layer.
+- For pickup / push-out-of-vanilla flows, use
+  `CarriedSourceAccess.insertIntoProviders` (walks providers only,
+  skipping vanilla lanes). Never name SB's `insertIntoPlayerBackpacks`
+  or similar provider-specific helpers from routing code.
+
+**Which mutation API to use.** Three layered entry points — they are
+not redundant:
+
+- `InventoryActionExecutor` for UI-triggered verbs (ASSIGN, TRANSFER)
+  that need policy + canonicalization + multi-source planning.
+- `InventoryMutationRouter` when you already have an
+  `InventoryMutationRequest` and need to dispatch to the owning
+  extension / host session. Usually only called from inside the
+  executor.
+- `CarriedSourceAccess` / `WorldStorageAccess` for workflow-level ops
+  that don't need policy (DepositExecutor, TakeAllExecutor,
+  SlotPickupRouter, UI session handlers).
+
+If you find yourself reaching across layers (e.g. `executeTransfer`
+calling `CarriedSourceAccess.extract` directly), stop — pick the right
+entry point instead.
 
 ## Reference Material
 

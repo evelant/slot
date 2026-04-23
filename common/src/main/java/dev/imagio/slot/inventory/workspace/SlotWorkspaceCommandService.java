@@ -22,10 +22,14 @@ import dev.imagio.slot.workflow.domain.LoadoutApplyService;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeOrigin;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import dev.imagio.slot.workflow.domain.undo.UndoContext;
+import dev.imagio.slot.workflow.domain.undo.UndoRecord;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
@@ -60,7 +64,9 @@ public final class SlotWorkspaceCommandService {
         if (!visibleInAtlas(viewModel, identity)) {
             return WorkspaceCommandOutcome.rejected("selected_item_not_visible");
         }
-        return applyHomeDrop(
+        final ItemIdentity targetIdentity = identity;
+        VisualHomeAssignment before = runtime.visualAtlasWorkflow().visualHomeMap().assignment(targetIdentity);
+        WorkspaceCommandOutcome outcome = applyHomeDrop(
                 runtime,
                 viewModel,
                 learnedRules,
@@ -71,6 +77,16 @@ public final class SlotWorkspaceCommandService {
                 worldY,
                 "slot_workspace.ldlib.home_assign"
         );
+        if (outcome.success()) {
+            VisualHomeAssignment after = runtime.visualAtlasWorkflow().visualHomeMap().assignment(targetIdentity);
+            String label = after == null ? "return to inbox" : "move home";
+            runtime.undoStack().record(
+                    label,
+                    ctx -> restoreHomeAssignment(ctx.runtime(), targetIdentity, before),
+                    ctx -> restoreHomeAssignment(ctx.runtime(), targetIdentity, after)
+            );
+        }
+        return outcome;
     }
 
     public static WorkspaceCommandOutcome acceptChip(
@@ -95,18 +111,28 @@ public final class SlotWorkspaceCommandService {
         }
         IslandSuggestionTemplate template = resolveTemplate(templateName);
         String resolvedIslandId;
+        boolean materializedNewIsland = false;
         if (template != null) {
+            VisualAtlasIsland templateIslandBefore = runtime.visualAtlasWorkflow().visualHomeMap()
+                    .playerIslands().stream()
+                    .filter(isl -> isl != null && template.defaultLabel().equalsIgnoreCase(isl.label()))
+                    .findFirst()
+                    .orElse(null);
             resolvedIslandId = resolveOrMaterializeTemplateIsland(runtime, template, identity, item.name());
             if (resolvedIslandId == null) {
                 return WorkspaceCommandOutcome.rejected("template_island_creation_failed");
             }
+            materializedNewIsland = (templateIslandBefore == null);
         } else {
             if (runtime.visualAtlasWorkflow().visualHomeMap().island(chipIslandId) == null) {
                 return WorkspaceCommandOutcome.rejected("unknown_island");
             }
             resolvedIslandId = chipIslandId;
         }
-        return applyHomeDrop(
+        final ItemIdentity targetIdentity = identity;
+        final String targetIslandId = resolvedIslandId;
+        VisualHomeAssignment before = runtime.visualAtlasWorkflow().visualHomeMap().assignment(targetIdentity);
+        WorkspaceCommandOutcome outcome = applyHomeDrop(
                 runtime,
                 viewModel,
                 learnedRules,
@@ -117,6 +143,32 @@ public final class SlotWorkspaceCommandService {
                 null,
                 "slot_workspace.ldlib.chip_accept"
         );
+        if (outcome.success()) {
+            VisualHomeAssignment after = runtime.visualAtlasWorkflow().visualHomeMap().assignment(targetIdentity);
+            VisualAtlasIsland createdIslandSnapshot = materializedNewIsland
+                    ? runtime.visualAtlasWorkflow().visualHomeMap().island(targetIslandId)
+                    : null;
+            String label = materializedNewIsland ? "accept suggestion" : "accept chip";
+            runtime.undoStack().record(
+                    label,
+                    ctx -> {
+                        restoreHomeAssignment(ctx.runtime(), targetIdentity, before);
+                        if (createdIslandSnapshot != null) {
+                            ctx.runtime().visualAtlasWorkflow().deleteIsland(
+                                    targetIslandId,
+                                    DomainEventMetadata.origin("workflow.undo.chip_accept.delete_island")
+                            );
+                        }
+                    },
+                    ctx -> {
+                        if (createdIslandSnapshot != null) {
+                            recreateIslandFromSnapshot(ctx.runtime(), createdIslandSnapshot);
+                        }
+                        restoreHomeAssignment(ctx.runtime(), targetIdentity, after);
+                    }
+            );
+        }
+        return outcome;
     }
 
     public static WorkspaceCommandOutcome createNamedIslandForItem(
@@ -146,6 +198,8 @@ public final class SlotWorkspaceCommandService {
         if (color == null || worldX == null || worldY == null) {
             return WorkspaceCommandOutcome.rejected("invalid_island_placement");
         }
+        final ItemIdentity targetIdentity = identity;
+        VisualHomeAssignment before = runtime.visualAtlasWorkflow().visualHomeMap().assignment(targetIdentity);
         try {
             VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIsland(
                     trimmedLabel,
@@ -173,6 +227,23 @@ public final class SlotWorkspaceCommandService {
             );
             SlotDebugLog.log("LDLib atlas island created {} for {}", created.id(), identity.itemId());
             recordLearnedAssignment(viewModel, learnedRules, signalExtractor, identity, created.id());
+            VisualAtlasIsland createdSnapshot = runtime.visualAtlasWorkflow().visualHomeMap().island(created.id());
+            VisualHomeAssignment after = runtime.visualAtlasWorkflow().visualHomeMap().assignment(targetIdentity);
+            final String createdId = created.id();
+            runtime.undoStack().record(
+                    "create island",
+                    ctx -> {
+                        restoreHomeAssignment(ctx.runtime(), targetIdentity, before);
+                        ctx.runtime().visualAtlasWorkflow().deleteIsland(
+                                createdId,
+                                DomainEventMetadata.origin("workflow.undo.island_create.delete")
+                        );
+                    },
+                    ctx -> {
+                        recreateIslandFromSnapshot(ctx.runtime(), createdSnapshot);
+                        restoreHomeAssignment(ctx.runtime(), targetIdentity, after);
+                    }
+            );
             return WorkspaceCommandOutcome.accepted("island created", created.label());
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
@@ -193,6 +264,7 @@ public final class SlotWorkspaceCommandService {
         if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
             return WorkspaceCommandOutcome.rejected("unknown_player_island");
         }
+        VisualAtlasIsland before = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
         VisualAtlasIsland moved = runtime.visualAtlasWorkflow().moveIsland(
                 islandId,
                 worldX,
@@ -203,6 +275,24 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("island_move_rejected");
         }
         SlotDebugLog.log("LDLib atlas island moved {} -> {},{}", islandId, worldX, worldY);
+        if (before != null && (before.x() != moved.x() || before.y() != moved.y())) {
+            final String targetId = islandId;
+            final int beforeX = before.x();
+            final int beforeY = before.y();
+            final int afterX = moved.x();
+            final int afterY = moved.y();
+            runtime.undoStack().record(
+                    "move island",
+                    ctx -> ctx.runtime().visualAtlasWorkflow().moveIsland(
+                            targetId, beforeX, beforeY,
+                            DomainEventMetadata.origin("workflow.undo.island_move.restore")
+                    ),
+                    ctx -> ctx.runtime().visualAtlasWorkflow().moveIsland(
+                            targetId, afterX, afterY,
+                            DomainEventMetadata.origin("workflow.undo.island_move.replay")
+                    )
+            );
+        }
         return WorkspaceCommandOutcome.accepted("island moved", moved.label());
     }
 
@@ -344,6 +434,7 @@ public final class SlotWorkspaceCommandService {
         if (islandId == null || islandId.isBlank() || label == null || label.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_island_rename");
         }
+        VisualAtlasIsland before = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
         try {
             VisualAtlasIsland renamed = runtime.visualAtlasWorkflow().renameIsland(
                     islandId,
@@ -354,6 +445,22 @@ public final class SlotWorkspaceCommandService {
                 return WorkspaceCommandOutcome.rejected("island_rename_rejected");
             }
             SlotDebugLog.log("LDLib atlas island renamed {} -> {}", islandId, renamed.label());
+            if (before != null && !before.label().equals(renamed.label())) {
+                final String targetId = islandId;
+                final String beforeLabel = before.label();
+                final String afterLabel = renamed.label();
+                runtime.undoStack().record(
+                        "rename island",
+                        ctx -> ctx.runtime().visualAtlasWorkflow().renameIsland(
+                                targetId, beforeLabel,
+                                DomainEventMetadata.origin("workflow.undo.island_rename.restore")
+                        ),
+                        ctx -> ctx.runtime().visualAtlasWorkflow().renameIsland(
+                                targetId, afterLabel,
+                                DomainEventMetadata.origin("workflow.undo.island_rename.replay")
+                        )
+                );
+            }
             return WorkspaceCommandOutcome.accepted("island renamed", renamed.label());
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected(exception.getMessage());
@@ -368,6 +475,7 @@ public final class SlotWorkspaceCommandService {
         if (islandId == null || islandId.isBlank() || color == null) {
             return WorkspaceCommandOutcome.rejected("invalid_island_recolor");
         }
+        VisualAtlasIsland before = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
         VisualAtlasIsland recolored = runtime.visualAtlasWorkflow().recolorIsland(
                 islandId,
                 color,
@@ -378,6 +486,22 @@ public final class SlotWorkspaceCommandService {
         }
         String hex = Integer.toHexString(recolored.color());
         SlotDebugLog.log("LDLib atlas island recolored {} -> {}", islandId, hex);
+        if (before != null && before.color() != recolored.color()) {
+            final String targetId = islandId;
+            final int beforeColor = before.color();
+            final int afterColor = recolored.color();
+            runtime.undoStack().record(
+                    "recolor island",
+                    ctx -> ctx.runtime().visualAtlasWorkflow().recolorIsland(
+                            targetId, beforeColor,
+                            DomainEventMetadata.origin("workflow.undo.island_recolor.restore")
+                    ),
+                    ctx -> ctx.runtime().visualAtlasWorkflow().recolorIsland(
+                            targetId, afterColor,
+                            DomainEventMetadata.origin("workflow.undo.island_recolor.replay")
+                    )
+            );
+        }
         return WorkspaceCommandOutcome.accepted("island recolored", hex);
     }
 
@@ -397,6 +521,7 @@ public final class SlotWorkspaceCommandService {
         if (itemId != null && !itemId.isBlank() && iconIdentity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_icon_identity");
         }
+        VisualAtlasIsland before = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
         VisualAtlasIsland updated = runtime.visualAtlasWorkflow().setIslandIcon(
                 islandId,
                 iconIdentity,
@@ -406,6 +531,22 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("island_icon_rejected");
         }
         SlotDebugLog.log("LDLib atlas island icon {} -> {}", islandId, iconIdentity == null ? "<none>" : iconIdentity.itemId());
+        if (before != null && !Objects.equals(before.iconIdentity(), updated.iconIdentity())) {
+            final String targetId = islandId;
+            final ItemIdentity beforeIcon = before.iconIdentity();
+            final ItemIdentity afterIcon = updated.iconIdentity();
+            runtime.undoStack().record(
+                    iconIdentity == null ? "clear island icon" : "set island icon",
+                    ctx -> ctx.runtime().visualAtlasWorkflow().setIslandIcon(
+                            targetId, beforeIcon,
+                            DomainEventMetadata.origin("workflow.undo.island_icon.restore")
+                    ),
+                    ctx -> ctx.runtime().visualAtlasWorkflow().setIslandIcon(
+                            targetId, afterIcon,
+                            DomainEventMetadata.origin("workflow.undo.island_icon.replay")
+                    )
+            );
+        }
         return WorkspaceCommandOutcome.accepted(
                 iconIdentity == null ? "island icon cleared" : "island icon set",
                 iconIdentity == null ? "" : iconIdentity.itemId()
@@ -668,6 +809,10 @@ public final class SlotWorkspaceCommandService {
 
     public static WorkspaceCommandOutcome setKitSlotIdentity(
             WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            ProtectionPolicy protectionPolicy,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor,
             String kitId,
             int pageIndex,
             int slotIndex,
@@ -697,8 +842,43 @@ public final class SlotWorkspaceCommandService {
         }
         SlotDebugLog.log("LDLib kit slot updated {} page={} slot={} identity={}", kitId,
                 pageIndex, slotIndex, identity == null ? "" : identity.itemId());
-        return WorkspaceCommandOutcome.accepted("kit slot updated",
-                (identity == null ? "cleared" : identity.itemId()));
+
+        // If this edit landed on the active kit's active page, re-plan + apply so the
+        // live belt mirrors the definition change. Only possible when the platform
+        // adapter supplies an actionExecutor (i.e. a server context with host access);
+        // without it we fall back to definition-only update.
+        boolean beltSynced = false;
+        int beltMissing = 0;
+        if (actionExecutor != null) {
+            var activation = runtime.kitWorkflow().activation();
+            if (activation.isActive()
+                    && kitId.equals(activation.kitId())
+                    && activation.pageIndex() == pageIndex) {
+                LoadoutApplyService.LoadoutApplyPlan plan = runtime.kitWorkflow().planActivate(
+                        kitId,
+                        pageIndex,
+                        authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                        protectionPolicy == null ? ProtectionPolicy.allowAll() : protectionPolicy,
+                        identityResolver
+                );
+                LoadoutApplyResult result = new LoadoutApplyExecutor(actionExecutor).execute(plan);
+                beltSynced = true;
+                beltMissing = result.missingTargets().size();
+                SlotDebugLog.log("LDLib kit active-page belt sync {} page={} satisfied={} missing={}",
+                        kitId, pageIndex, result.satisfiedTargets().size(), beltMissing);
+            }
+        }
+
+        String status;
+        if (beltSynced && beltMissing == 0) {
+            status = "kit slot updated (belt synced)";
+        } else if (beltSynced) {
+            status = "kit slot updated (belt synced, missing " + beltMissing + ")";
+        } else {
+            status = "kit slot updated";
+        }
+        String detail = (identity == null ? "cleared" : identity.itemId());
+        return WorkspaceCommandOutcome.accepted(status, detail);
     }
 
     public static WorkspaceCommandOutcome swapKitSlots(
@@ -877,6 +1057,19 @@ public final class SlotWorkspaceCommandService {
         }
         SlotDebugLog.log("LDLib atlas island deleted {}{}", islandId,
                 materializedTemplate == null ? "" : " (template " + materializedTemplate.defaultIslandId() + " dismissed)");
+        // Delete only succeeds when the island has no assignments — so undo just
+        // recreates the exact pre-delete island snapshot. Template dismissal is not
+        // separately reversible; we accept that minor wrinkle.
+        final VisualAtlasIsland preDeleteSnapshot = existing;
+        final String targetId = islandId;
+        runtime.undoStack().record(
+                "delete island",
+                ctx -> recreateIslandFromSnapshot(ctx.runtime(), preDeleteSnapshot),
+                ctx -> ctx.runtime().visualAtlasWorkflow().deleteIsland(
+                        targetId,
+                        DomainEventMetadata.origin("workflow.undo.island_delete.replay")
+                )
+        );
         return WorkspaceCommandOutcome.accepted("island deleted", existing.label());
     }
 
@@ -1082,5 +1275,92 @@ public final class SlotWorkspaceCommandService {
         }
         int colon = itemId.indexOf(':');
         return colon <= 0 ? "" : itemId.substring(0, colon);
+    }
+
+    // --- Undo support ---
+    //
+    // Workspace commands that mutate snapshot "before" and "after" states and push a
+    // matched pair of closures onto the runtime's UndoStack. Workflow-only mutations
+    // (home moves, island CRUD) only need the runtime; inventory-affecting ops (Kit
+    // activation, chest deposit/take, hotbar transfers) will layer on top in phase 2
+    // with a full UndoContext (authority + action executor).
+
+    static void restoreHomeAssignment(
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity,
+            VisualHomeAssignment target
+    ) {
+        if (target == null) {
+            runtime.visualAtlasWorkflow().clearHome(
+                    identity,
+                    DomainEventMetadata.origin("workflow.undo.home.restore")
+            );
+        } else {
+            runtime.visualAtlasWorkflow().assignHome(
+                    target.identity(),
+                    target.islandId(),
+                    target.localX(),
+                    target.localY(),
+                    target.origin(),
+                    target.locked(),
+                    DomainEventMetadata.origin("workflow.undo.home.restore")
+            );
+        }
+    }
+
+    static void recreateIslandFromSnapshot(
+            WorkflowDomainRuntime runtime,
+            VisualAtlasIsland snapshot
+    ) {
+        if (snapshot == null) {
+            return;
+        }
+        runtime.visualAtlasWorkflow().createIslandWithId(
+                snapshot.id(),
+                snapshot.label(),
+                snapshot.x(),
+                snapshot.y(),
+                snapshot.width(),
+                snapshot.height(),
+                snapshot.color(),
+                snapshot.iconIdentity(),
+                DomainEventMetadata.origin("workflow.undo.island.recreate")
+        );
+    }
+
+    public static WorkspaceCommandOutcome performUndo(WorkflowDomainRuntime runtime) {
+        return performUndo(runtime, UndoContext.workflowOnly(runtime));
+    }
+
+    public static WorkspaceCommandOutcome performUndo(WorkflowDomainRuntime runtime, UndoContext context) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_undo_runtime");
+        }
+        UndoContext resolved = context == null ? UndoContext.workflowOnly(runtime) : context;
+        return runtime.undoStack().undo(resolved)
+                .map(UndoRecord::label)
+                .map(label -> {
+                    SlotDebugLog.log("LDLib undo {}", label);
+                    return WorkspaceCommandOutcome.accepted("undid: " + label, label);
+                })
+                .orElseGet(() -> WorkspaceCommandOutcome.rejected("nothing_to_undo"));
+    }
+
+    public static WorkspaceCommandOutcome performRedo(WorkflowDomainRuntime runtime) {
+        return performRedo(runtime, UndoContext.workflowOnly(runtime));
+    }
+
+    public static WorkspaceCommandOutcome performRedo(WorkflowDomainRuntime runtime, UndoContext context) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_redo_runtime");
+        }
+        UndoContext resolved = context == null ? UndoContext.workflowOnly(runtime) : context;
+        return runtime.undoStack().redo(resolved)
+                .map(UndoRecord::label)
+                .map(label -> {
+                    SlotDebugLog.log("LDLib redo {}", label);
+                    return WorkspaceCommandOutcome.accepted("redid: " + label, label);
+                })
+                .orElseGet(() -> WorkspaceCommandOutcome.rejected("nothing_to_redo"));
     }
 }

@@ -6,6 +6,7 @@ import dev.imagio.slot.inventory.integration.MenuBackedInventoryIntegrationProvi
 import dev.imagio.slot.inventory.integration.SophisticatedBackpackInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.integration.TomsStorageInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.integration.VanillaCraftingInventoryIntegrationProvider;
+import dev.imagio.slot.inventory.storage.DefaultCarriedProviderIntegration;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
@@ -24,6 +25,11 @@ public final class SlotCommon {
         InventoryIntegrationRegistry.register(new VanillaCraftingInventoryIntegrationProvider());
         InventoryIntegrationRegistry.register(new TomsStorageInventoryIntegrationProvider());
         InventoryIntegrationRegistry.register(new SophisticatedBackpackInventoryIntegrationProvider());
+        // Auto-synthesises PlayerInventoryExtensions from CarriedProviderRegistry
+        // so minimal carried mods (Curios, future providers) get snapshot +
+        // mutate routing for free. Providers that ship their own bespoke
+        // InventoryIntegrationProvider opt out via CarriedProvider.autoSynthesizeExtension.
+        InventoryIntegrationRegistry.register(new DefaultCarriedProviderIntegration());
         InventoryIntegrationRegistry.markBootstrapped();
     }
 

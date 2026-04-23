@@ -13,7 +13,7 @@ public final class SlotAtlasKeyMappings {
             "key.slot.camera_back",
             KeyConflictContext.GUI,
             InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_LEFT_BRACKET,
+            GLFW.GLFW_KEY_Q,
             CATEGORY
     );
 
@@ -21,7 +21,7 @@ public final class SlotAtlasKeyMappings {
             "key.slot.camera_forward",
             KeyConflictContext.GUI,
             InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_RIGHT_BRACKET,
+            GLFW.GLFW_KEY_E,
             CATEGORY
     );
 
@@ -62,6 +62,29 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    // Undo/redo for workspace mutations (home moves, island CRUD, chip accepts,
+    // eventually kit activations + chest deposit/take). Active while the atlas
+    // is open; user-rebindable through the Controls menu. Default Z / Y chosen
+    // because Ctrl-chords in GUI context aren't natively supported by
+    // KeyMapping — we handle modifiers on the event side if needed. These
+    // single-key defaults are safe because the atlas opens into a GUI where
+    // movement keys don't fire.
+    private static final KeyMapping UNDO = new KeyMapping(
+            "key.slot.undo",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_Z,
+            CATEGORY
+    );
+
+    private static final KeyMapping REDO = new KeyMapping(
+            "key.slot.redo",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_Y,
+            CATEGORY
+    );
+
     private SlotAtlasKeyMappings() {
     }
 
@@ -72,6 +95,8 @@ public final class SlotAtlasKeyMappings {
         event.register(CAMERA_FORWARD_MOUSE);
         event.register(OPEN_VANILLA_INVENTORY);
         event.register(CYCLE_KIT_PAGE);
+        event.register(UNDO);
+        event.register(REDO);
     }
 
     public static KeyMapping openVanillaInventoryMapping() {
@@ -96,6 +121,24 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesCycleKitPage(int keyCode, int scanCode) {
         return keyMatches(CYCLE_KIT_PAGE, keyCode, scanCode);
+    }
+
+    public static boolean matchesUndo(int keyCode, int scanCode) {
+        return keyMatches(UNDO, keyCode, scanCode);
+    }
+
+    public static boolean matchesRedo(int keyCode, int scanCode) {
+        return keyMatches(REDO, keyCode, scanCode);
+    }
+
+    /** Returns the user's current display label for the undo binding (e.g. "Z", "Ctrl+Z"). */
+    public static String undoKeyLabel() {
+        return UNDO.getTranslatedKeyMessage().getString();
+    }
+
+    /** Returns the user's current display label for the redo binding. */
+    public static String redoKeyLabel() {
+        return REDO.getTranslatedKeyMessage().getString();
     }
 
     private static boolean keyMatches(KeyMapping mapping, int keyCode, int scanCode) {

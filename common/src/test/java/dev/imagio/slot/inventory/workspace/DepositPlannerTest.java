@@ -134,6 +134,28 @@ class DepositPlannerTest {
     }
 
     @Test
+    void plansIncludeBackpackCarriedSources() {
+        // Regression guard against the "hardcoded vanilla-lane scan" anti-pattern
+        // that caused Deposit to silently ignore items living in backpacks. A
+        // provider-registered carried source (namespaced like SB does its
+        // backpacks) must be walked by the planner just like main/hotbar/offhand.
+        String backpackSourceId = "sophisticatedbackpacks:carried/test-backpack-uuid";
+        DepositPlan plan = DepositPlanner.plan(
+                authority(Map.of(backpackSourceId,
+                        List.of(entry(backpackSourceId, 7, stack("minecraft:redstone", 16))))),
+                homeMap(Map.of(ItemIdentity.of("minecraft:redstone"), assignment(MACHINES_ID))),
+                linkMap(List.of(new ChestLink(MACHINES_ID, CHEST_MACHINES))),
+                Set.of(CHEST_MACHINES.toString())
+        );
+        assertEquals(1, plan.assignments().size());
+        DepositPlan.Assignment assignment = plan.assignments().get(0);
+        assertEquals(backpackSourceId, assignment.laneId(),
+                "assignment.laneId must be the backpack source id, not a builtin lane");
+        assertEquals(7, assignment.slotIndex());
+        assertEquals("minecraft:redstone", assignment.itemId());
+    }
+
+    @Test
     void plansSpanMainHotbarAndOffhandLanes() {
         DepositPlan plan = DepositPlanner.plan(
                 authority(Map.of(

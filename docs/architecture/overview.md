@@ -537,6 +537,27 @@ Current rules:
 - bridge failures are explicit diagnostics, not silent fallback into guessed
   behavior
 
+### Storage abstraction layer
+
+Beneath the integration provider layer sits a smaller, more prescriptive
+layer that unifies *how we actually read and mutate storage*:
+
+- `CarriedSourceAccess` + `CarriedProvider` + `CarriedProviderRegistry` for
+  player-adjacent storage (vanilla, backpacks, curios, future mods)
+- `WorldStorageAccess` + `WorldStorageAccess.Delegate` for block-bound and
+  virtual/aggregated storage (chests, drawers, AE2 networks)
+- `DefaultCarriedProviderIntegration` auto-synthesises a minimal
+  `PlayerInventoryExtension` from every registered `CarriedProvider`, so
+  simple carried mods never need to hand-write integration code
+
+This is the layer to edit when adding a new storage mod — not the
+executors, not the UI sessions. See
+[storage-integration.md](storage-integration.md) for SPI shapes, concrete
+recipes for Carried / World / virtual storage, the `Player` vs
+`ServerPlayer` convention, the opt-out flag for rich (SB-class)
+providers, and the invariants that prevent the "executor-is-blind-to-
+storage-X" bug class from returning.
+
 ## Current Open Architectural Work
 
 The main authority/projection/action/session/workspace primitives are now

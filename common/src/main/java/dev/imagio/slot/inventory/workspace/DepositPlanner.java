@@ -1,6 +1,6 @@
 package dev.imagio.slot.inventory.workspace;
 
-import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
+import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
@@ -16,12 +16,6 @@ import java.util.Set;
 import java.util.UUID;
 
 public final class DepositPlanner {
-    private static final String[] CARRIED_LANE_IDS = new String[]{
-            BuiltinInventoryIds.PLAYER_MAIN,
-            BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
-            BuiltinInventoryIds.PLAYER_OFFHAND
-    };
-
     private DepositPlanner() {
     }
 
@@ -40,8 +34,22 @@ public final class DepositPlanner {
         }
 
         ArrayList<DepositPlan.Assignment> assignments = new ArrayList<>();
-        for (String laneId : CARRIED_LANE_IDS) {
-            for (InventoryEntrySnapshot entry : authority.entries(laneId)) {
+        // Walk every carried source (main, hotbar, offhand, backpacks, curios,
+        // any future provider) in stableOrder. Previously this iterated a
+        // hardcoded vanilla-lane list and silently skipped backpacks, which
+        // was the "bulk Deposit ignores backpacks" bug class.
+        //
+        // When a host descriptor is present (production path) we use
+        // carriedSources() to respect pane membership. When host is absent
+        // (test fixtures that construct an authority from raw source
+        // snapshots) we fall back to iterating every source id — the caller
+        // is responsible for only including carried sources in the snapshot.
+        List<InventorySourceDescriptor> declaredCarried = authority.carriedSources();
+        Iterable<String> sourceIds = declaredCarried.isEmpty()
+                ? authority.sourcesById().keySet()
+                : declaredCarried.stream().map(InventorySourceDescriptor::id).toList();
+        for (String sourceId : sourceIds) {
+            for (InventoryEntrySnapshot entry : authority.entries(sourceId)) {
                 if (entry == null || !entry.present()) {
                     continue;
                 }
@@ -73,7 +81,7 @@ public final class DepositPlanner {
                 }
 
                 assignments.add(new DepositPlan.Assignment(
-                        laneId,
+                        sourceId,
                         entry.slotIndex(),
                         identity.itemId(),
                         new ArrayList<>(candidates)

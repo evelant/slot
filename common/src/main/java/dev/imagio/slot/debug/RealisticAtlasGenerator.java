@@ -2,6 +2,7 @@ package dev.imagio.slot.debug;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -22,12 +23,15 @@ import java.util.function.Function;
 public final class RealisticAtlasGenerator {
     public static final String SYNTHETIC_ISLAND_ID_PREFIX = "slot-test-island-";
 
-    private static final int CARD_WIDTH = 32;
-    private static final int CARD_HEIGHT = 32;
-    private static final int CARD_GAP = 4;
-    private static final int ISLAND_PADDING_X = 14;
-    private static final int ISLAND_PADDING_Y = 14;
-    private static final int ISLAND_CONTENT_TOP = 56;
+    // Mirror the real atlas layout so generated assignments land on the same invisible
+    // grid the UI uses for clamp + snap — otherwise every card shows up misaligned and
+    // needs a drag to snap into place.
+    private static final int CARD_WIDTH = SlotWorkspaceAtlasLayout.CARD_WIDTH;
+    private static final int CARD_HEIGHT = SlotWorkspaceAtlasLayout.CARD_HEIGHT;
+    private static final int CARD_GAP = SlotWorkspaceAtlasLayout.CARD_GAP;
+    private static final int ISLAND_PADDING_X = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X;
+    private static final int ISLAND_PADDING_Y = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_Y;
+    private static final int ISLAND_CONTENT_TOP = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP;
     private static final int ISLAND_GAP = 120;
     private static final int ISLAND_PARENT_GROUP_GAP = 220;
     private static final int ATLAS_ORIGIN_X = 64;

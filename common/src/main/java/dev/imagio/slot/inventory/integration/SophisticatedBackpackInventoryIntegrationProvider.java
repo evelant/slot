@@ -424,7 +424,7 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                             || (request.identity() != null && !dev.imagio.slot.inventory.core.ItemIdentityMatcher.matchesMovable(preview, request.identity()))) {
                         return MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
                     }
-                    int amount = requestedExtractAmount(request, preview.getCount());
+                    int amount = request.requestedAmount(preview.getCount());
                     if (mode == InventoryMutationMode.SIMULATE) {
                         preview.setCount(Math.min(amount, preview.getCount()));
                         return MutationResult.success(preview);
@@ -449,7 +449,7 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                     if (preview.isEmpty()) {
                         return MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
                     }
-                    preview.setCount(requestedExtractAmount(request, preview.getCount()));
+                    preview.setCount(request.requestedAmount(preview.getCount()));
                     return MutationResult.success(preview);
                 }
 
@@ -458,31 +458,13 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
                         request.player(),
                         carrier,
                         request.identity(),
-                        request.requestedCount() > 0
-                                ? request.requestedCount()
-                                : switch (request.transferMode()) {
-                            case ONE -> 1;
-                            case STACK, ALL -> Integer.MAX_VALUE;
-                        },
+                        request.requestedAmount(Integer.MAX_VALUE),
                         capture::capture,
                         new LinkedHashMap<java.util.UUID, CompoundTag>()
                 );
                 return moved ? MutationResult.success(capture.result()) : MutationResult.blocked("no_matching_stack", ItemStack.EMPTY);
             }
         });
-    }
-
-    private static int requestedExtractAmount(
-            InventoryMutationRequest request,
-            int available
-    ) {
-        if (request != null && request.requestedCount() > 0) {
-            return Math.min(request.requestedCount(), Math.max(1, available));
-        }
-        return switch (request == null ? InventoryTransferMode.ONE : request.transferMode()) {
-            case ONE -> 1;
-            case STACK, ALL -> Math.max(1, available);
-        };
     }
 
     private static ResolvedToolArtifacts resolveToolArtifacts(

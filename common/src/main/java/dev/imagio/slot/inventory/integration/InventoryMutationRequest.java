@@ -181,4 +181,28 @@ public record InventoryMutationRequest(
     public boolean targetsProviderEntry() {
         return !entryId.isBlank();
     }
+
+    /**
+     * Translate this request's {@code requestedCount} + {@code transferMode}
+     * into a concrete extract amount, clamped to what's actually {@code available}
+     * in the source slot. Used by extensions implementing
+     * {@link PlayerInventoryExtension#mutate} to size EXTRACT operations
+     * consistently across providers.
+     *
+     * <ul>
+     *   <li>Explicit {@code requestedCount > 0} wins: clamped to
+     *       {@code min(requestedCount, max(1, available))}.</li>
+     *   <li>Otherwise falls back to {@link #transferMode()}: {@code ONE}→1,
+     *       {@code STACK}/{@code ALL}→{@code max(1, available)}.</li>
+     * </ul>
+     */
+    public int requestedAmount(int available) {
+        if (requestedCount > 0) {
+            return Math.min(requestedCount, Math.max(1, available));
+        }
+        return switch (transferMode) {
+            case ONE -> 1;
+            case STACK, ALL -> Math.max(1, available);
+        };
+    }
 }

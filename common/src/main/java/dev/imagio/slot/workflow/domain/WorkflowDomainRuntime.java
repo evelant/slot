@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSessionState;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.workflow.domain.undo.UndoStack;
 
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,7 @@ public final class WorkflowDomainRuntime {
     private final KitWorkflowDomainService kitWorkflow;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
+    private final UndoStack undoStack;
 
     public WorkflowDomainRuntime(
             WorkflowDomainStateRepository repository,
@@ -33,6 +35,11 @@ public final class WorkflowDomainRuntime {
         this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this::saveNow);
         this.chestLinkWorkflow = new ChestLinkWorkflowDomainService(repository, this::saveNow);
         this.kitWorkflow = new KitWorkflowDomainService(repository, this::saveNow);
+        this.undoStack = new UndoStack();
+    }
+
+    public UndoStack undoStack() {
+        return undoStack;
     }
 
     public CollectionWorkflowDomainService collectionWorkflow() {

@@ -8,7 +8,6 @@ import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
-import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.integration.InventoryActionExecutor;
@@ -18,6 +17,9 @@ import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
 import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
+import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
+import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
@@ -36,19 +38,13 @@ import dev.imagio.slot.neoforge.storage.DepositExecutor;
 import dev.imagio.slot.neoforge.storage.TakeAllExecutor;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
-import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestLinkMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -58,6 +54,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
@@ -488,6 +485,26 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void performUndo() {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.performUndo(
+                workflowRuntime(serverPlayer)
+        ));
+    }
+
+    void performRedo() {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.performRedo(
+                workflowRuntime(serverPlayer)
+        ));
+    }
+
     void renameKit(String kitId, String newName) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
@@ -630,8 +647,31 @@ final class SlotWorkspaceUiSession {
             return;
         }
         refreshServerView(serverPlayer);
+        // Belt sync only fires when the edit lands on the active kit's active page, and
+        // only when we can resolve an inventory host to execute live mutations through.
+        // On host-resolution failure the command falls back to definition-only update.
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        InventoryAuthoritySnapshot authority = host == null
+                ? InventoryAuthoritySnapshot.empty()
+                : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor = host == null
+                ? null
+                : request -> {
+                    InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                            host,
+                            serverPlayer,
+                            request,
+                            ProtectionPolicy.allowAll()
+                    );
+                    workflowRuntime(serverPlayer).recordOutcome(outcome);
+                    return outcome;
+                };
         applyOutcome(serverPlayer, SlotWorkspaceCommandService.setKitSlotIdentity(
                 workflowRuntime(serverPlayer),
+                authority,
+                ProtectionPolicy.allowAll(),
+                KIT_IDENTITY_RESOLVER,
+                actionExecutor,
                 kitId,
                 pageIndex == null ? -1 : pageIndex,
                 slotIndex == null ? -1 : slotIndex,
@@ -708,20 +748,10 @@ final class SlotWorkspaceUiSession {
             return;
         }
         refreshServerView(serverPlayer);
-        if (!suppressChestPreference) {
-            CarriedSlotRef chestSource = firstCarriedSlotForIdentity(serverPlayer, identity);
-            if (chestSource != null) {
-                ItemStack sourceStack = readSourceStack(serverPlayer, chestSource);
-                ClaimedChest depositTarget = sourceStack.isEmpty()
-                        ? null
-                        : resolveProximateLinkedChestForIdentity(serverPlayer, identity, sourceStack);
-                if (depositTarget != null) {
-                    DepositExecutor.SingleStackOutcome outcome = DepositExecutor.depositSingleStack(
-                            serverPlayer, chestSource.laneId(), chestSource.slotIndex(), depositTarget);
-                    applyChestDepositOutcome(serverPlayer, outcome, depositTarget);
-                    return;
-                }
-            }
+        if (!suppressChestPreference
+                && tryDepositIdentityToLinkedChest(serverPlayer, identity, DepositQuantity.STACK)
+                        == DepositAttempt.DISPATCHED) {
+            return;
         }
         int freeHotbarIndex = -1;
         for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
@@ -738,23 +768,27 @@ final class SlotWorkspaceUiSession {
         }
         // Route through the same identity-based hotbar assignment that digit-press
         // uses so items living in backpacks / other non-player carried sources can
-        // reach the hotbar (firstMainSlotForIdentity only scans PLAYER_MAIN).
+        // reach the hotbar — CarriedSourceAccess.findIdentity walks every carried
+        // source so the target doesn't need to live in PLAYER_MAIN.
         assignIdentityToHotbarIndex(serverPlayer, identity, freeHotbarIndex);
     }
 
     private void assignIdentityToHotbarIndex(ServerPlayer serverPlayer, ItemIdentity identity, int hotbarIndex) {
-        CarriedSlotRef source = firstCarriedSlotForIdentityAnySource(serverPlayer, identity);
-        if (source == null) {
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+        Optional<CarriedSourceAccess.CarriedLocation> located = carried.findIdentity(serverPlayer, identity);
+        if (located.isEmpty()) {
             status = "nothing_to_assign";
             diagnostics = "identity not found in any carried source";
             broadcast(serverPlayer);
             return;
         }
-        if (BuiltinInventoryIds.PLAYER_MAIN.equals(source.laneId())
-                || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(source.laneId())) {
+        String sourceId = located.get().sourceId();
+        int slotIndex = located.get().slotIndex();
+        if (BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)
+                || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId)) {
             WorkspaceTransferExecution execution = executeTransfer(
                     serverPlayer,
-                    new InventoryActionTarget.SourceSlotTarget(source.laneId(), source.slotIndex()),
+                    new InventoryActionTarget.SourceSlotTarget(sourceId, slotIndex),
                     new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
                     "slot_workspace.ldlib.assign_identity_to_hotbar"
             );
@@ -855,30 +889,6 @@ final class SlotWorkspaceUiSession {
         broadcast(serverPlayer);
     }
 
-    // Matches firstCarriedSlotForIdentity's intent (locate a carried copy of
-    // an identity) but searches every CARRIED-pane source, not just a
-    // hardcoded player-lane list. Player-owned lanes sort first via the
-    // InventorySourceDescriptor stableOrder (main/hotbar/offhand come before
-    // backpack additions), so normal cases still prefer main inventory.
-    private CarriedSlotRef firstCarriedSlotForIdentityAnySource(ServerPlayer serverPlayer, ItemIdentity identity) {
-        InventoryHostDescriptor host = resolveHost(serverPlayer);
-        if (host == null) {
-            return null;
-        }
-        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
-        for (InventorySourceDescriptor source : authority.carriedSources()) {
-            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
-                if (entry == null || !entry.present()) {
-                    continue;
-                }
-                if (ItemIdentityMatcher.create(entry.stack()).equals(identity)) {
-                    return new CarriedSlotRef(source.id(), entry.slotIndex());
-                }
-            }
-        }
-        return null;
-    }
-
     void depositHomeToLinkedChest(String itemId, String comparisonMode, String componentFingerprint) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
@@ -889,26 +899,19 @@ final class SlotWorkspaceUiSession {
             return;
         }
         refreshServerView(serverPlayer);
-        CarriedSlotRef source = firstCarriedSlotForIdentity(serverPlayer, identity);
-        if (source == null) {
-            status = "rejected";
-            diagnostics = "nothing_to_deposit";
-            broadcast(serverPlayer);
-            return;
+        switch (tryDepositIdentityToLinkedChest(serverPlayer, identity, DepositQuantity.STACK)) {
+            case DISPATCHED -> { /* applyChestDepositOutcome already broadcast */ }
+            case SOURCE_MISSING -> {
+                status = "rejected";
+                diagnostics = "nothing_to_deposit";
+                broadcast(serverPlayer);
+            }
+            case NO_CHEST -> {
+                status = "rejected";
+                diagnostics = "no_linked_proximate_chest_with_room";
+                broadcast(serverPlayer);
+            }
         }
-        ItemStack sourceStack = readSourceStack(serverPlayer, source);
-        ClaimedChest depositTarget = sourceStack.isEmpty()
-                ? null
-                : resolveProximateLinkedChestForIdentity(serverPlayer, identity, sourceStack);
-        if (depositTarget == null) {
-            status = "rejected";
-            diagnostics = "no_linked_proximate_chest_with_room";
-            broadcast(serverPlayer);
-            return;
-        }
-        DepositExecutor.SingleStackOutcome outcome = DepositExecutor.depositSingleStack(
-                serverPlayer, source.laneId(), source.slotIndex(), depositTarget);
-        applyChestDepositOutcome(serverPlayer, outcome, depositTarget);
     }
 
     void depositCarriedToChest(String itemId, String comparisonMode, String componentFingerprint, String storageIdRaw) {
@@ -925,15 +928,19 @@ final class SlotWorkspaceUiSession {
             applyChestDepositRejection(serverPlayer, resolved.outcome);
             return;
         }
-        CarriedSlotRef source = firstCarriedSlotForIdentity(serverPlayer, identity);
-        if (source == null) {
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+        Optional<CarriedSourceAccess.CarriedLocation> sourceLocation = carried.findIdentity(serverPlayer, identity);
+        if (sourceLocation.isEmpty()) {
             status = "rejected";
             diagnostics = "nothing_to_deposit";
             broadcast(serverPlayer);
             return;
         }
         DepositExecutor.SingleStackOutcome outcome = DepositExecutor.depositSingleStack(
-                serverPlayer, source.laneId(), source.slotIndex(), resolved.chest);
+                serverPlayer,
+                sourceLocation.get().sourceId(),
+                sourceLocation.get().slotIndex(),
+                resolved.chest);
         applyChestDepositOutcome(serverPlayer, outcome, resolved.chest);
     }
 
@@ -996,26 +1003,19 @@ final class SlotWorkspaceUiSession {
             return;
         }
         refreshServerView(serverPlayer);
-        CarriedSlotRef source = firstCarriedSlotForIdentity(serverPlayer, identity);
-        if (source == null) {
-            status = "rejected";
-            diagnostics = "nothing_to_deposit";
-            broadcast(serverPlayer);
-            return;
+        switch (tryDepositIdentityToLinkedChest(serverPlayer, identity, DepositQuantity.ITEM)) {
+            case DISPATCHED -> { /* applyChestDepositOutcome already broadcast */ }
+            case SOURCE_MISSING -> {
+                status = "rejected";
+                diagnostics = "nothing_to_deposit";
+                broadcast(serverPlayer);
+            }
+            case NO_CHEST -> {
+                status = "rejected";
+                diagnostics = "no_linked_proximate_chest_with_room";
+                broadcast(serverPlayer);
+            }
         }
-        ItemStack sourceStack = readSourceStack(serverPlayer, source);
-        ClaimedChest depositTarget = sourceStack.isEmpty()
-                ? null
-                : resolveProximateLinkedChestForIdentity(serverPlayer, identity, sourceStack);
-        if (depositTarget == null) {
-            status = "rejected";
-            diagnostics = "no_linked_proximate_chest_with_room";
-            broadcast(serverPlayer);
-            return;
-        }
-        DepositExecutor.SingleStackOutcome outcome = DepositExecutor.depositSingleItem(
-                serverPlayer, source.laneId(), source.slotIndex(), depositTarget);
-        applyChestDepositOutcome(serverPlayer, outcome, depositTarget);
     }
 
     void takeFromChest(String storageIdRaw, Integer chestSlotIndex) {
@@ -1091,6 +1091,50 @@ final class SlotWorkspaceUiSession {
         broadcast(serverPlayer);
     }
 
+    /** Quantity variant for {@link #tryDepositIdentityToLinkedChest}: whole stack vs single item. */
+    private enum DepositQuantity { STACK, ITEM }
+
+    /** Outcome of a deposit attempt. DISPATCHED means the outcome was already applied + broadcast. */
+    private enum DepositAttempt { DISPATCHED, SOURCE_MISSING, NO_CHEST }
+
+    /**
+     * Find the first carried slot matching {@code identity}, resolve a
+     * proximate linked chest that accepts it, and deposit via
+     * {@link DepositExecutor}. Applies the outcome (status + broadcast) only
+     * when {@link DepositAttempt#DISPATCHED} is returned — callers translate
+     * SOURCE_MISSING / NO_CHEST into their own rejection diagnostics (the
+     * two modes differ: opportunistic fall-through for assign-to-hotbar,
+     * hard rejection for explicit deposit verbs).
+     */
+    private DepositAttempt tryDepositIdentityToLinkedChest(
+            ServerPlayer serverPlayer,
+            ItemIdentity identity,
+            DepositQuantity quantity
+    ) {
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+        Optional<CarriedSourceAccess.CarriedLocation> located = carried.findIdentity(serverPlayer, identity);
+        if (located.isEmpty()) {
+            return DepositAttempt.SOURCE_MISSING;
+        }
+        ItemStack sourceStack = carried.peek(serverPlayer,
+                located.get().sourceId(), located.get().slotIndex());
+        if (sourceStack.isEmpty()) {
+            return DepositAttempt.SOURCE_MISSING;
+        }
+        ClaimedChest chest = resolveProximateLinkedChestForIdentity(serverPlayer, identity, sourceStack);
+        if (chest == null) {
+            return DepositAttempt.NO_CHEST;
+        }
+        DepositExecutor.SingleStackOutcome outcome = switch (quantity) {
+            case STACK -> DepositExecutor.depositSingleStack(
+                    serverPlayer, located.get().sourceId(), located.get().slotIndex(), chest);
+            case ITEM -> DepositExecutor.depositSingleItem(
+                    serverPlayer, located.get().sourceId(), located.get().slotIndex(), chest);
+        };
+        applyChestDepositOutcome(serverPlayer, outcome, chest);
+        return DepositAttempt.DISPATCHED;
+    }
+
     private static String chestLabel(ClaimedChest chest) {
         if (chest == null) {
             return "chest";
@@ -1105,59 +1149,6 @@ final class SlotWorkspaceUiSession {
             shortId = shortId.substring(shortId.length() - 4);
         }
         return "Chest #" + shortId;
-    }
-
-    private CarriedSlotRef firstCarriedSlotForIdentity(ServerPlayer serverPlayer, ItemIdentity identity) {
-        InventoryHostDescriptor host = resolveHost(serverPlayer);
-        if (host == null) {
-            return null;
-        }
-        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
-        String[] preferenceOrder = {
-                BuiltinInventoryIds.PLAYER_MAIN,
-                BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
-                BuiltinInventoryIds.PLAYER_OFFHAND
-        };
-        for (String laneId : preferenceOrder) {
-            for (InventoryEntrySnapshot entry : authority.entries(laneId)) {
-                if (entry == null || !entry.present()) {
-                    continue;
-                }
-                if (ItemIdentityMatcher.create(entry.stack()).equals(identity)) {
-                    return new CarriedSlotRef(laneId, entry.slotIndex());
-                }
-            }
-        }
-        return null;
-    }
-
-    private record CarriedSlotRef(String laneId, int slotIndex) {
-    }
-
-    private ItemStack readSourceStack(ServerPlayer serverPlayer, CarriedSlotRef source) {
-        if (source == null) {
-            return ItemStack.EMPTY;
-        }
-        if (BuiltinInventoryIds.PLAYER_MAIN.equals(source.laneId())) {
-            int rawSlot = source.slotIndex() + 9;
-            if (rawSlot < 0 || rawSlot >= serverPlayer.getInventory().items.size()) {
-                return ItemStack.EMPTY;
-            }
-            return serverPlayer.getInventory().getItem(rawSlot);
-        }
-        if (BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(source.laneId())) {
-            int rawSlot = source.slotIndex();
-            if (rawSlot < 0 || rawSlot >= 9) {
-                return ItemStack.EMPTY;
-            }
-            return serverPlayer.getInventory().getItem(rawSlot);
-        }
-        if (BuiltinInventoryIds.PLAYER_OFFHAND.equals(source.laneId())) {
-            return serverPlayer.getInventory().offhand.isEmpty()
-                    ? ItemStack.EMPTY
-                    : serverPlayer.getInventory().offhand.get(0);
-        }
-        return ItemStack.EMPTY;
     }
 
     private ClaimedChest resolveProximateLinkedChestForIdentity(
@@ -1190,6 +1181,11 @@ final class SlotWorkspaceUiSession {
         }
         record Candidate(ClaimedChest chest, int freeSlots, int matchingCount, java.util.UUID storageId) {
         }
+        MinecraftServer server = serverPlayer.getServer();
+        if (server == null || !StorageAccessRegistry.isInstalled()) {
+            return null;
+        }
+        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         java.util.List<Candidate> candidates = new java.util.ArrayList<>();
         for (java.util.UUID storageId : linkedStorageIds) {
             if (!proximate.contains(storageId.toString())) {
@@ -1199,24 +1195,28 @@ final class SlotWorkspaceUiSession {
             if (chest == null) {
                 continue;
             }
-            IItemHandler handler = resolveChestHandler(serverPlayer, chest);
-            if (handler == null) {
+            WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+            if (!world.isAccessible(server, target)) {
                 continue;
             }
-            ItemStack simulation = ItemHandlerHelper.insertItemStacked(handler, sourceStack.copy(), true);
+            ItemStack simulation = world.insert(server, target, sourceStack.copy(), true);
             if (!simulation.isEmpty()) {
                 continue;
             }
-            int freeSlots = 0;
+            int totalSlots = world.slotCount(server, target);
             int matchingCount = 0;
-            for (int slotIdx = 0; slotIdx < handler.getSlots(); slotIdx++) {
-                ItemStack here = handler.getStackInSlot(slotIdx);
-                if (here == null || here.isEmpty()) {
-                    freeSlots++;
-                } else if (ItemIdentityMatcher.create(here).equals(identity)) {
+            int occupiedSlots = 0;
+            for (WorldStorageAccess.SlotContent content : world.enumerate(server, target)) {
+                ItemStack here = content.stack();
+                if (here.isEmpty()) {
+                    continue;
+                }
+                occupiedSlots++;
+                if (ItemIdentityMatcher.create(here).equals(identity)) {
                     matchingCount += here.getCount();
                 }
             }
+            int freeSlots = Math.max(0, totalSlots - occupiedSlots);
             candidates.add(new Candidate(chest, freeSlots, matchingCount, storageId));
         }
         if (candidates.isEmpty()) {
@@ -1232,33 +1232,6 @@ final class SlotWorkspaceUiSession {
         return candidates.get(0).chest();
     }
 
-    private IItemHandler resolveChestHandler(ServerPlayer serverPlayer, ClaimedChest chest) {
-        if (serverPlayer.getServer() == null) {
-            return null;
-        }
-        for (ChestAnchor anchor : chest.anchors()) {
-            ServerLevel level = null;
-            for (ServerLevel candidate : serverPlayer.getServer().getAllLevels()) {
-                if (candidate.dimension().location().toString().equals(anchor.dimensionId())) {
-                    level = candidate;
-                    break;
-                }
-            }
-            if (level == null) {
-                continue;
-            }
-            BlockPos pos = new BlockPos(anchor.x(), anchor.y(), anchor.z());
-            if (!level.isLoaded(pos)) {
-                continue;
-            }
-            IItemHandler handler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
-            if (handler != null) {
-                return handler;
-            }
-        }
-        return null;
-    }
-
     private static final class ChestProximityResult {
         private final ClaimedChest chest;
         private final String outcome;
@@ -1271,23 +1244,6 @@ final class SlotWorkspaceUiSession {
         private static ChestProximityResult failed(String reason) {
             return new ChestProximityResult(null, reason);
         }
-    }
-
-    private int firstMainSlotForIdentity(ServerPlayer serverPlayer, ItemIdentity identity) {
-        InventoryHostDescriptor host = resolveHost(serverPlayer);
-        if (host == null) {
-            return -1;
-        }
-        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
-        for (InventoryEntrySnapshot entry : authority.entries(BuiltinInventoryIds.PLAYER_MAIN)) {
-            if (entry == null || !entry.present()) {
-                continue;
-            }
-            if (ItemIdentityMatcher.create(entry.stack()).equals(identity)) {
-                return entry.slotIndex();
-            }
-        }
-        return -1;
     }
 
     private static ItemIdentity resolveIdentity(String itemId, String comparisonMode, String componentFingerprint) {
@@ -1510,6 +1466,22 @@ final class SlotWorkspaceUiSession {
         return hasFirst ? first : hasSecond ? second : "";
     }
 
+    /**
+     * Maps an RPC transfer-target kind (an int the client sends) to an
+     * {@link InventoryActionTarget}. The set of valid kinds is protocol-bound —
+     * the client must know the integer constants at compile time — so this
+     * switch intentionally enumerates exactly what the UI emits over RPC, not
+     * every possible carried source in the world.
+     *
+     * <p>Identity-based flows (drag-to-hotbar, drag-to-chest) don't come
+     * through here; they go through
+     * {@code CarriedSourceAccess.findIdentity} which is source-agnostic.
+     *
+     * <p>Adding a new transfer-target kind means: (1) add a TARGET_* constant,
+     * (2) update the client-side emitter, (3) add a case here. The scope is
+     * the RPC protocol, not the storage layer — bona fide registry-style
+     * extensibility lives in {@link CarriedSourceAccess}.
+     */
     private static InventoryActionTarget target(Integer kind, Integer index, boolean source) {
         int resolvedKind = kind == null ? -1 : kind;
         int resolvedIndex = index == null ? -1 : index;
