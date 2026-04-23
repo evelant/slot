@@ -155,58 +155,59 @@ Goal:
 
 Status:
 
-- `/slot test populate-atlas triage <count>` — samples distinct registry
-  items into main inventory, overflow drops to world
-- `/slot test populate-atlas homed <count> [islands] [seed]` — seeds
-  `VisualHomeMap` directly with synthetic `PLAYER_PLACED` homes across a
-  generated island grid; identities resolve to ghost items in the projection
-- `/slot test clear` — removes islands whose ids start with
-  `SyntheticHomedAtlasGenerator.SYNTHETIC_ISLAND_ID_PREFIX` and their
-  assignments (inventory not touched; use vanilla `/clear`)
-- `populate-chests` subcommand deferred to Slice 2 (claim RPC dependency)
+- Superseded by the unified `/slot test populate <profile>` command
+  (profiles: `starter | organized | late-modpack`). Each profile
+  generates a single cohesive world-state in one shot: semantic-bucket
+  islands, homes, triage leftovers, and claimed+linked chests. See the
+  `status.md` "Realistic populate seeder landed" note for the shape
+  of the generator and the classifier used.
+- `/slot test clear` — full-reset: deletes all player-created islands
+  and assignments, deletes all claimed chests (breaking their blocks
+  in loaded chunks), and empties player main/hotbar/offhand/armor.
+  Backpack items stay in place but their contents are emptied via
+  the `Capabilities.ItemHandler.ITEM` capability. Triage island
+  stays as the built-in.
 - command gated on `source.hasPermission(2)` (op)
-- common helpers (`IdentitySampler`, `SyntheticHomedAtlasGenerator`,
-  `SyntheticHomedAtlasPlan`) live in `dev.imagio.slot.debug` with unit
-  tests covering determinism, distribution, and empty-pool safety
+- generator and resolver live in `dev.imagio.slot.debug`
+  (`RealisticAtlasGenerator`, `SemanticBucketResolver`,
+  `PopulateProfile`, `SemanticBucket`) with unit tests covering the
+  island layout, chest bucket-match ratio, triage fraction, and
+  empty-pool safety
 
-Deliverables:
+Deliverables (historical — see Status above for the landed shape):
 
-- NeoForge server command `/slot test populate-atlas <mode> <count>` gated on
-  cheats / operator permission and no-op on release builds:
-  - `mode=triage` inserts a spread of distinct `ItemStack`s directly into
-    the player's main inventory. SLOT's triage is driven by the workspace
-    projection scan over the authority snapshot on each refresh, not by
-    pickup events, so direct insertion is sufficient: the next view refresh
-    groups the new identities, attaches chips, and shows them in the Triage
-    island. Stacks that don't fit fall back to vanilla drop so the set size
-    isn't silently capped at 36.
-  - `mode=homed` seeds the `VisualHomeMap` directly with synthetic
-    `PLAYER_PLACED` homes across a procedurally generated set of islands
-    (useful for LOD / readability testing at scale without clicking through
-    thousands of chips)
-- a separate subcommand `/slot test populate-chests <count>` places a row of
-  claimable chests near the player and claims them with a spread of
-  identity-to-chest content (useful for slice 2+ testing)
+- NeoForge server command `/slot test populate <profile>` gated on
+  operator permission, where `<profile>` is `starter | organized |
+  late-modpack`. Each profile produces islands + homes + triage stacks
+  + claimed+linked chests in one call.
 - item pool draws from the live registry; filter to at least
   `ItemStack::isEmpty == false` and a reasonable stack-size default
-- command output reports what it did (counts, islands created, chests
-  placed) so CI/manual runs have a reproducible transcript
+- command output reports what it did (islands, assignments, triage
+  added, chests placed/claimed/linked/skipped) so CI/manual runs have
+  a reproducible transcript
 
 Exit criteria:
 
-- on a fresh world, `/slot test populate-atlas homed 2000` opens into an
-  atlas with 2000 realistically distributed homes
-- `/slot test populate-atlas triage 100` puts 100 identities into Triage as
-  if the player had just gone on a long gathering run
+- on a fresh world, `/slot test populate late-modpack` opens into an
+  atlas with up to ~800 identities distributed across semantic-bucket
+  islands (Materials ends up largest, consistent with late-modpack
+  shape), a handful of triage leftovers in inventory, and ~16 claimed
+  chests auto-linked to matching bucket islands
+- `/slot test populate starter` puts ~30 identities into a small atlas
+  with 1 chest, simulating a fresh playthrough
 - command paths fail closed with a useful diagnostic when preconditions
-  (cheats off, not a server context) are not met
+  (not a server context, unknown profile) are not met
 
 Tests:
 
-- headless unit test for the identity-sampling logic (deterministic with a
-  seed; no duplicates within a run)
-- unit test for the `homed` path: seeded map has expected island count and
-  home distribution given a seed
+- unit tests for the bucket-driven generator: one island per
+  non-empty bucket, assignments fit inside island bounds, triage
+  fraction matches profile, linked chests mostly contain bucket-
+  matched items (≥60% under RNG variance), island rects do not
+  overlap
+- resolver accuracy is validated empirically in-game rather than
+  unit-tested; if systematic misclassifications bother us, add a
+  hardcoded override map rather than JSON infrastructure
 
 ### Slice 1: Carried Readability At Scale — LANDED
 
@@ -322,11 +323,13 @@ Status (2026-04-17):
   `moveChestEmitter` → `SlotWorkspaceUiSession.moveChest` →
   `SlotWorkspaceCommandService.moveChest` →
   `ChestClaimWorkflowDomainService.moveChest`.
-- `/slot test populate-chests <count> [radius]` landed: places a ring
-  of vanilla chests at `radius` blocks (default 4), fills each with up
-  to 9 deterministic stacks sampled from the item registry, and claims
-  each through `ChestClaimServerService.claim` — no direct-to-repository
-  injection, per the helper-command rules.
+- chest placement landed inside this slice as a standalone
+  `populate-chests` subcommand at the time. The chest-placement
+  behaviour now lives inside the unified `/slot test populate
+  <profile>` command (same `ChestClaimServerService.claim` routing;
+  contents are bucket-biased and auto-linked to the matching island)
+  — see "Test Helper Command" at the bottom of this doc for the
+  current shape.
 - persistence refactor bundled in this slice:
   `WorkflowDomainFileStore` moved from `neoforge/persistence` →
   `common/workflow/domain/persistence/` (zero platform imports).
@@ -700,20 +703,26 @@ the same cheats/operator gate as vanilla `/give`, and the command tree is
 only registered when a `slot.debug` config flag is on (default on in dev,
 off in release builds).
 
-- `/slot test populate-atlas triage <count>` — sample `count` distinct
-  registry items, spawn them as pickups near the player; identities flow
-  through the normal triage path so chip/learned-rule behavior can be
-  manually observed under load
-- `/slot test populate-atlas homed <count> [--islands N] [--seed S]` —
-  generate `N` synthetic player islands with template-default chrome and
-  distribute `count` identities across them as `PLAYER_PLACED` homes; the
-  seed makes runs reproducible so screenshots and bug reports are stable
-- `/slot test populate-chests <count> [--radius R]` — place `count`
-  claimable chests in a ring around the player, claim each one through the
-  normal claim RPC path, and fill each with a deterministic identity spread
-- `/slot test clear` — remove all synthetic state emitted by the helper
-  (homed islands marked with a debug flag; chests placed by this command
-  tagged so we do not remove real ones)
+- `/slot test populate <starter|organized|late-modpack>` — in one call,
+  generates a cohesive atlas state for the chosen profile: islands
+  sized by semantic bucket (TOOLS, COMBAT, ARMOR, FOOD, MATERIALS,
+  BUILDING, NATURAL, DECORATION, REDSTONE, STORAGE, MISC), homes
+  assigned to each bucket island, triage leftovers inserted into the
+  player's inventory, and claimed chests placed in a ring around the
+  player with contents biased toward a matching bucket and auto-linked
+  to that bucket's island. Non-deterministic; each run is fresh.
+- `/slot test clear` — full-reset the player's atlas for a fresh
+  slate: deletes all player-created islands and home assignments
+  (Triage survives as the built-in), deletes all claimed chests and
+  their links, physically breaks the underlying chest blocks in the
+  world (loaded anchors only — unloaded anchors are counted and get
+  reconciled on next server start), and empties the player's main,
+  hotbar, offhand, and armor slots. Stacks whose item id contains
+  "backpack" (case-insensitive) are kept in place, but their
+  contents are emptied via the `Capabilities.ItemHandler.ITEM`
+  capability (works with Sophisticated Backpacks / Simply Backpacks
+  / anything that exposes its inventory via the standard NeoForge
+  item handler capability).
 
 The helper must use the same domain-service entry points as normal UI paths.
 It is explicitly not allowed to inject records into the persistence layer

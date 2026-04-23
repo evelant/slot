@@ -362,7 +362,8 @@ public record SlotWorkspaceViewModel(
                 .thenComparingInt(AtlasItem::x)
                 .thenComparing(item -> item.name().toLowerCase(Locale.ROOT)));
         triageItems.sort(Comparator
-                .comparing((AtlasItem item) -> item.name().toLowerCase(Locale.ROOT))
+                .comparingInt((AtlasItem item) -> recentRankByIdentity.getOrDefault(item.identity(), Integer.MAX_VALUE))
+                .thenComparing(item -> item.name().toLowerCase(Locale.ROOT))
                 .thenComparing(item -> item.identity().itemId()));
 
         List<AtlasIsland> fittedIslands = SlotWorkspaceAtlasLayout.fittedIslands(layoutIslands, atlasItems);

@@ -38,8 +38,16 @@ Currently landed:
   readability at scale) — see
   [plans/storage-prototype.md](plans/storage-prototype.md) for per-slice
   detail. Key landing points:
-  - `/slot test populate-atlas {triage|homed} <count>` and `/slot test clear`
-    (op-gated) for reproducible populated atlases
+  - `/slot test populate <starter|organized|late-modpack>` and
+    `/slot test clear` (op-gated) drive the bucket-aware debug seeder
+    described below under "Realistic populate seeder".
+    `/slot test clear` is a full reset: all player-created islands,
+    all home assignments, all claimed chests (with their world
+    blocks broken in loaded chunks), and the player's main/hotbar
+    /offhand/armor slots. Stacks whose item id contains "backpack"
+    are kept in place, but their *contents* are emptied via the
+    `Capabilities.ItemHandler.ITEM` capability so old contents don't
+    leak into the next populate run
   - `AtlasItem.carried` / `AtlasIsland.carriedCount` on the view model;
     carried lanes = main + hotbar + offhand; ghost items emitted for homed
     identities not in any carried lane
@@ -55,10 +63,10 @@ Currently landed:
 - storage prototype Slices 2–3, 4a, 5 Take-All, 6, and 7 landed
   (domain + server-side identity machinery, claim RPC + chest-screen
   button, atlas storage-zone rendering + chest tile drag-to-reposition,
-  `populate-chests` helper, live chest-contents grid + proximity
-  activation, island↔chest link model with popover + proximity-driven
-  link threads, deposit verb, Take All verb, per-item chest presence
-  strip, chest naming, and workflow persistence — see
+  live chest-contents grid + proximity activation, island↔chest link
+  model with popover + proximity-driven link threads, deposit verb,
+  Take All verb, per-item chest presence strip, chest naming, and
+  workflow persistence — see
   [plans/storage-prototype.md](plans/storage-prototype.md)).
   Key landing points:
   - `ClaimedChest(storageId, anchors, atlasX, atlasY, label)` +
@@ -94,9 +102,11 @@ Currently landed:
     + drag-to-reposition via `moveChestEmitter` → `SlotWorkspaceUiSession`
     → `SlotWorkspaceCommandService.moveChest` →
     `ChestClaimWorkflowDomainService.moveChest`
-  - `/slot test populate-chests <count> [radius]` places a ring of
-    vanilla chests, fills each with a deterministic identity spread,
-    and claims each via the real `ChestClaimServerService` path
+  - chest placement is part of the unified `/slot test populate
+    <profile>` command (see "Realistic populate seeder" below); chests
+    are placed in a ring around the player, filled with bucket-biased
+    contents, claimed via `ChestClaimServerService`, and auto-linked
+    to the matching bucket island
   - chest contents grid: `ChestContentsReader` on neoforge reads the
     live `IItemHandler` snapshot for each claim and strips empty slots
     at the source (only filled stacks travel to the client);
@@ -293,6 +303,119 @@ main↔hotbar, offhand→hotbar, main→backpack, backpack→main, hotbar→
 backpack, backpack→hotbar, backpack→backpack, plus the existing
 hotbar↔hotbar ASSIGN swap. Any future refactor that breaks one of
 these combinations will surface in CI immediately.
+
+**Realistic populate seeder landed.** The old
+`/slot test populate-atlas {triage|homed}` + `/slot test populate-chests`
+commands are replaced by `/slot test populate <profile>` with three
+profiles: `starter`, `organized`, `late-modpack`. Every profile
+generates a single cohesive atlas state in one call: islands + homes
++ triage leftovers + claimed/linked chests + player inventory full
+of rolled-count item stacks.
+
+**Two-level bucket system.** Primary buckets (parent) are TOOLS,
+COMBAT, ARMOR, FOOD, MATERIALS, BUILDING, NATURAL, DECORATION,
+REDSTONE, MECHANISMS, WORKBENCHES, STORAGE, UPGRADES, MISC.
+STORAGE now holds **containers only** (chest, barrel, shulker_box,
+backpack, storage_connector/tool/output, item_vault, beehive);
+WORKBENCHES holds the crafting/smelting/processing surfaces
+(crafting_table, furnace, smoker, blast_furnace, brewing_stand,
+smithing_table, cartography_table, fletching_table, stonecutter,
+grindstone, enchanting_table, anvil, loom, roll_table, bookshelf).
+UPGRADES holds `*_upgrade`, `*_downgrade`, and smithing_templates /
+armor_trim_templates — both Sophisticated Backpacks / Sophisticated
+Storage upgrades and vanilla templates land here. Classification
+runs in five stages and the first stage that matches wins:
+
+1. **Class**: `SwordItem`/`ArmorItem`/`DiggerItem`/`PotionItem`/etc.
+2. **`DataComponents.FOOD`**.
+3. **Item tags** (`c:ingots`, `c:plates`, `c:storage_blocks`,
+   `create:casing`, `create:crushed_raw_materials`,
+   `minecraft:planks`, …).
+4. **`BlockItem` block-subclass** (Chest/Barrel/Piston/Leaves/…).
+5. **Parent keyword fallback**
+   ([ParentKeywordRules](../common/src/main/java/dev/imagio/slot/debug/ParentKeywordRules.java)):
+   priority-ordered `(bucket, keyword)` rules with word-boundary
+   matching against the item id's path. STORAGE keywords (chest,
+   barrel, crafting_table, furnace, backpack, …) sit at the top
+   tier; MECHANISMS covers Create-family machinery (cogwheel,
+   gearbox, shaft, mechanical, pipe, funnel, crushing_wheel,
+   precision_mechanism, conveyor, toolbox, …); REDSTONE covers
+   observer/piston/hopper/comparator; BUILDING spans structural
+   (stairs, door, wall, fence) plus surfaces (concrete, glazed,
+   terracotta, bricks, stone variants, cut_copper, asphalt, …);
+   NATURAL catches leaves/saplings/flowers/crops/coral/nylium;
+   MATERIALS catches ingot/gem/dust/raw + storage-block
+   (diamond_block, brass_block, industrial_iron_block, …). A
+   last-resort `block` keyword at priority 20 sends any unmatched
+   `*_block` stack to Materials · Storage Blocks.
+
+If nothing matches, stays MISC.
+
+On top of parents, each item also runs through
+[SubBucketResolver](../common/src/main/java/dev/imagio/slot/debug/SubBucketResolver.java)
+against a priority-ordered keyword list in
+[SubBucketRules](../common/src/main/java/dev/imagio/slot/debug/SubBucketRules.java).
+First matching rule wins, so "cut copper stairs" → Trim (priority
+100) rather than Copper (60) or Wood. This splits big buckets into
+narrower islands: BUILDING → Trim / Glass / Concrete / Glazed /
+Copper / Wood / Stone; MATERIALS → Metals / Ores & Raw / Gems /
+Dusts; NATURAL → Leaves & Saplings / Flowers / Crops & Seeds;
+DECORATION → Banners / Wool & Carpets / Dyes / Lights; MECHANISMS →
+Kinetics / Logistics / Contraptions / Casings; MISC → Spawn Eggs /
+Music Discs / Transport / Utility / Brewing / Books & Paper. Items
+that don't match any sub-keyword stay in the parent island.
+
+**Layout** packs islands left-to-right per parent's cluster row,
+grouping sub-islands adjacent to their parent bucket's position with
+an extra gap between parent groups. Cards-per-row scales with item
+count (`sqrt(count × 1.5)`, clamped to 4..20) so a 200-item island
+stays wide, not absurdly tall.
+
+**Inventory stocking.** Each profile has a `carriedIdentityCap`
+(STARTER 20, ORGANIZED 50, LATE_MODPACK 100) — a realistic cap on
+"how many distinct item types a player is actively carrying right
+now." The generator picks a uniform-random subset of homed
+identities up to that cap and materializes them into stacks with
+rolled counts: bulky (16..maxStack) for Materials / Building /
+Natural / Mechanisms, count=1 for Tools / Combat / Armor, mid-depth
+for Food, small for Decoration / Redstone / Storage. Every identity
+*beyond* the cap stays a pure-ghost home assignment on the atlas
+(no carried stack). Insertion order mirrors the kernel's stableOrder
+routing: **backpacks first** (via `Capabilities.ItemHandler.ITEM` on
+any item whose id contains "backpack"), then
+`player.getInventory().add()`, then drop. Triage stacks follow the
+same routing.
+
+**Chest placement** uses cardinal clusters instead of a ring. Each
+parent bucket is mapped to a cardinal direction from its
+`clusterColumn % 4` (0=W, 1=N, 2=E, 3=S); sub-buckets inherit their
+parent's direction so related islands cluster together physically.
+Within a direction, chests lay out in a 2-wide grid extending
+outward from the player with a 1-block gap between adjacent chests
+(CHEST_CLUSTER_STEP=2, CHEST_CLUSTER_LANE_OFFSET=1). When multiple
+parents share a cardinal, they're separated by a 5-row spacer
+(=10 blocks of empty space between parent-cluster boundaries).
+Different cardinals are naturally ≥14 blocks apart due to the
+10-block base offset. Chest placement also force-replaces whatever
+terrain is at the target spot (old `canBeReplaced` gate silently
+dropped chests in grassy/forested test areas).
+
+**Per-bucket chest allocation**: each linked bucket gets at least 1
+chest, then extras are distributed by weighted sampling capped at
+`min(5, ceil(item_count / 20))`. Big buckets like Materials get
+multiple chests (vanilla-realistic for one category that needs
+several chests to hold it all); small buckets (Tools, Combat) still
+get exactly 1. ~10% of the budget stays as unlinked overflow piled
+behind the player (north). Chest contents keep the ~85% bucket-match
+bias; WARN-level diagnostics now fire at every failure stage
+(`setBlock` failed, `claim` returned null, `linkIslandToChest`
+returned false) so next-time debugging is a single log grep.
+Generator lives in
+[common/debug/RealisticAtlasGenerator.java](../common/src/main/java/dev/imagio/slot/debug/RealisticAtlasGenerator.java)
+with an injected `Function<ItemStack, SemanticBucket>` classifier so
+layout + chest-linking logic is testable in common without a
+Minecraft bootstrap. Non-deterministic per run — no seed argument,
+regenerate with `/slot test clear` then re-run.
 
 **Open Kit follow-up**: drag-to-edit an *active* kit updates only the
 kit definition, not the live belt. Design says the belt should sync

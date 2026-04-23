@@ -586,8 +586,8 @@ Exit criteria:
 - pressing `/` with the atlas open opens the chip and starts an
   empty buffer; the camera does not move yet
 - typing `log` eases to the top-matching "log" item (in a
-  typical carried atlas — verify with `/slot test populate-atlas
-  homed 200`)
+  typical carried atlas — verify with
+  `/slot test populate organized`)
 - 800ms of idle → auto-commits; pressing `back` returns to the
   camera before `/` was pressed
 - typing `log` then Tab cycles through matches deterministically;
@@ -639,7 +639,7 @@ Highest-value coverage to add, in slice order:
     label click-to-pan, Home button, chest presence strip click,
     chip accept focus all still work (now via animated ease)
   - performance: no measurable FPS regression on the populated
-    atlas (`/slot test populate-atlas homed 500`) during an active
+    atlas (`/slot test populate late-modpack`) during an active
     peek or search
 - architecture check: `common` still does not import LDLib2 (the
   existing architecture test covers this)
@@ -670,5 +670,5 @@ This phase is complete when:
 - no new RPCs, no view-model fields, no workflow domain events
 - `common` continues not to import LDLib2
 - unit tests for `CameraHistory` and `AtlasSearchIndex` pass
-- manual QA checklist (above) passes on `/slot test populate-atlas
-  homed 200` and `populate-atlas homed 500`
+- manual QA checklist (above) passes on
+  `/slot test populate organized` and `/slot test populate late-modpack`
