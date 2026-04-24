@@ -1,0 +1,1060 @@
+{
+  "items": {
+    "minecraft:iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Primary crafting material used for many recipes"
+        },
+        "tier": {
+          "value": "iron",
+          "confidence": 0.95,
+          "rationale": "Iron-tier progression material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used regularly during progression, less frequently late game"
+        },
+        "activity": {
+          "values": [
+            "crafting",
+            "enchanting"
+          ],
+          "confidence": 0.85,
+          "rationale": "Used in crafting recipes and armor trimming"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "Simple, unadorned metal ingot"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "confidence": 0.85,
+          "rationale": "Iron ingots have dark metallic gray color"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and armor",
+            "beacon payments",
+            "armor trimming"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary uses from game mechanics and recipes"
+        }
+      }
+    },
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.95,
+          "rationale": "Mining tool for breaking stone and ore blocks"
+        },
+        "material_family": {
+          "value": "diamond",
+          "confidence": 0.95,
+          "rationale": "Diamond is the primary material of pickaxe head"
+        },
+        "tier": {
+          "value": "diamond",
+          "confidence": 0.95,
+          "rationale": "Diamond-tier progression tool"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Heavy use during mining and exploration phases"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primarily for mining, can be used as weapon"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "confidence": 0.85,
+          "rationale": "Diamond tools are prestigious and decorative"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing"
+          ],
+          "confidence": 0.8,
+          "rationale": "Diamonds sparkle with light-blue glow"
+        },
+        "primary_uses": {
+          "values": [
+            "mining ore and stone",
+            "combat tool",
+            "netherite upgrade base"
+          ],
+          "confidence": 0.85,
+          "rationale": "Main uses in gameplay progression"
+        }
+      }
+    },
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.95,
+          "rationale": "Equippable head armor with durability"
+        },
+        "material_family": {
+          "value": "netherite",
+          "confidence": 0.95,
+          "rationale": "Netherite is the material of the helmet"
+        },
+        "tier": {
+          "value": "netherite",
+          "confidence": 0.95,
+          "rationale": "Top-tier endgame armor material"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.85,
+          "rationale": "Worn constantly by players with endgame gear"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary uses are combat defense and exploration"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "confidence": 0.8,
+          "rationale": "Netherite has dark, ancient aesthetic"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "glowing"
+          ],
+          "confidence": 0.85,
+          "rationale": "Netherite is dark with purple glowing effect"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "confidence": 0.95,
+          "rationale": "Component minecraft:damage_resistant covers fires"
+        },
+        "primary_uses": {
+          "values": [
+            "combat protection",
+            "fire immunity",
+            "exploration"
+          ],
+          "confidence": 0.85,
+          "rationale": "Main benefits: damage resistance and fire protection"
+        }
+      }
+    },
+    "minecraft:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "confidence": 0.95,
+          "rationale": "Primary function is item storage and portability"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "confidence": 0.75,
+          "rationale": "Made from shulker shells in crafting recipe"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.9,
+          "rationale": "Essential for inventory management in late game"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use is organizing and transporting items"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "confidence": 0.85,
+          "rationale": "Shulker boxes come in 16 colors and are distinctive"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "confidence": 0.8,
+          "rationale": "Default shulker box is purple/violet colored"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "confidence": 0.9,
+          "rationale": "Holds standard inventory items with nbt data"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "inventory management"
+          ],
+          "confidence": 0.95,
+          "rationale": "Key feature is being portable storage container"
+        }
+      }
+    },
+    "minecraft:bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.95,
+          "rationale": "Portable inventory container item"
+        },
+        "material_family": {
+          "value": "wool",
+          "confidence": 0.8,
+          "rationale": "Crafted from wool and string"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "confidence": 0.8,
+          "rationale": "String used alongside wool in crafting"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.8,
+          "rationale": "Active item used for organization when obtained"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary use is portable item storage"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "Bundles can be dyed into many colors"
+        },
+        "palette": {
+          "values": [
+            "wool_light"
+          ],
+          "confidence": 0.75,
+          "rationale": "Default undyed bundle appears light tan"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "backpack_restricted"
+          ],
+          "confidence": 0.85,
+          "rationale": "Holds standard items with weight/item limits"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "inventory organization"
+          ],
+          "confidence": 0.9,
+          "rationale": "Main purpose is efficient item carrying"
+        }
+      }
+    },
+    "minecraft:command_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "confidence": 0.95,
+          "rationale": "Creative/admin-only tool for executing commands"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "Only used in creative/admin contexts"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "confidence": 0.85,
+          "rationale": "Executes commands in response to signals/triggers"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "mechanical"
+          ],
+          "confidence": 0.8,
+          "rationale": "Dark, functional aesthetic with technical purpose"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "confidence": 0.85,
+          "rationale": "Command blocks are dark/black colored"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "Only obtainable via creative mode or commands"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "confidence": 0.9,
+          "rationale": "Command blocks cannot be moved by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "command execution",
+            "game automation"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary purpose is running map-making automation"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 0.95,
+          "rationale": "Command blocks are creative/admin items"
+        }
+      }
+    },
+    "minecraft:dragon_egg": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "confidence": 0.95,
+          "rationale": "Unique end boss drop, serves as achievement/trophy"
+        },
+        "frequency": {
+          "value": "display_only",
+          "confidence": 0.95,
+          "rationale": "One per world, players display it as trophy"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "ominous",
+            "mystical"
+          ],
+          "confidence": 0.85,
+          "rationale": "End dragon egg has ancient, powerful aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "confidence": 0.85,
+          "rationale": "Dragon egg is dark with glowing/emissive particles"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "confidence": 0.85,
+          "rationale": "Dragon egg emits light particles around it"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "confidence": 0.95,
+          "rationale": "Found in End dimension after defeating dragon"
+        },
+        "primary_uses": {
+          "values": [
+            "trophy display",
+            "end dimension achievement"
+          ],
+          "confidence": 0.9,
+          "rationale": "Represents completion of main boss"
+        }
+      }
+    },
+    "minecraft:totem_of_undying": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.9,
+          "rationale": "Special protective item with death-prevention mechanic"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "Used rarely in dangerous situations"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for protection during dangerous activities"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "ominous"
+          ],
+          "confidence": 0.85,
+          "rationale": "Magical appearance with powerful protective effect"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "confidence": 0.8,
+          "rationale": "Totem is predominantly gold-colored"
+        },
+        "primary_uses": {
+          "values": [
+            "death prevention",
+            "emergency protection"
+          ],
+          "confidence": 0.9,
+          "rationale": "Prevents death by applying protective effects"
+        }
+      }
+    },
+    "minecraft:creeper_head": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "confidence": 0.85,
+          "rationale": "Interesting mob drop that can be displayed or worn"
+        },
+        "frequency": {
+          "value": "display_only",
+          "confidence": 0.85,
+          "rationale": "Primarily displayed as decoration, not actively used"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for decorative building and banner patterns"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "Creeper aesthetic with ability to dye different colors"
+        },
+        "palette": {
+          "values": [
+            "green"
+          ],
+          "confidence": 0.85,
+          "rationale": "Creepers are iconic green color"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "confidence": 0.95,
+          "rationale": "Dropped by creepers when killed by charged creeper"
+        },
+        "primary_uses": {
+          "values": [
+            "mob trophy",
+            "head decoration",
+            "banner patterns"
+          ],
+          "confidence": 0.85,
+          "rationale": "Used for display and crafting"
+        }
+      }
+    },
+    "minecraft:potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "Drinkable item that provides effects when consumed"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Used frequently during combat and exploration"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration",
+            "brewing"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used in combat/exploration, brewed in cauldrons"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "Magical potions come in many colors based on effects"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "translucent"
+          ],
+          "confidence": 0.85,
+          "rationale": "Potions glow and are liquid in glass bottles"
+        },
+        "primary_uses": {
+          "values": [
+            "combat enhancement",
+            "status effects",
+            "brewing ingredient"
+          ],
+          "confidence": 0.9,
+          "rationale": "Main uses: providing buffs and brewing material"
+        }
+      }
+    },
+    "minecraft:golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "Edible food item with special status effects"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.95,
+          "rationale": "Apple with gold leaf or gold wrapping"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used occasionally for important situations"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "confidence": 0.85,
+          "rationale": "Golden apples are luxurious/prestigious food"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "confidence": 0.9,
+          "rationale": "Apple coated in or made with gold"
+        },
+        "primary_uses": {
+          "values": [
+            "health and absorption effect",
+            "important battles"
+          ],
+          "confidence": 0.85,
+          "rationale": "Provides regeneration and absorption effects"
+        }
+      }
+    },
+    "minecraft:bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "Edible food item for hunger recovery"
+        },
+        "material_family": {
+          "value": "wheat",
+          "confidence": 0.9,
+          "rationale": "Bread is made from wheat"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used for hunger recovery, less after acquiring better food"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "Simple, unadorned bread"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "confidence": 0.85,
+          "rationale": "Bread has warm tan/brown color"
+        },
+        "primary_uses": {
+          "values": [
+            "hunger recovery",
+            "food source"
+          ],
+          "confidence": 0.95,
+          "rationale": "Main purpose is satisfying hunger"
+        }
+      }
+    },
+    "minecraft:firework_rocket": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "confidence": 0.85,
+          "rationale": "Projectile/explosive item launched for effects"
+        },
+        "material_family": {
+          "value": "paper",
+          "confidence": 0.8,
+          "rationale": "Fireworks made with paper and gunpowder"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "Used occasionally for celebration or propulsion"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.8,
+          "rationale": "Primarily decorative, can provide elytra propulsion"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "Fireworks are decorative with colorful effects"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "confidence": 0.8,
+          "rationale": "Fireworks have bright, vivid colors"
+        },
+        "primary_uses": {
+          "values": [
+            "celebration fireworks",
+            "elytra propulsion"
+          ],
+          "confidence": 0.85,
+          "rationale": "Used for display and as propulsion"
+        }
+      }
+    },
+    "minecraft:tipped_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "confidence": 0.95,
+          "rationale": "Projectile fired from bows for combat"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.8,
+          "rationale": "Arrows are primarily wood shafts with tips"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used when using bows, not primary combat for most"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use is bow combat with status effects"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "Tipped arrows have different colors based on potion"
+        },
+        "palette": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.8,
+          "rationale": "Colored tips matching potion effects"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat",
+            "potion delivery"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used to deal damage and apply effects at range"
+        }
+      }
+    },
+    "minecraft:ender_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.9,
+          "rationale": "Throwing item providing teleportation ability"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Used frequently for exploration and escape"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration",
+            "transportation"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary uses: teleportation, evasion, navigation"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "confidence": 0.85,
+          "rationale": "Ender pearls have magical appearance"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "translucent"
+          ],
+          "confidence": 0.8,
+          "rationale": "Ender pearls are glowing green translucent spheres"
+        },
+        "primary_uses": {
+          "values": [
+            "teleportation",
+            "exploration utility",
+            "ender eye crafting"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for quick teleportation and crafting"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.9,
+          "rationale": "Equippable item worn in chest armor slot"
+        },
+        "material_family": {
+          "value": "membrane",
+          "confidence": 0.85,
+          "rationale": "Made from phantom membrane"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.85,
+          "rationale": "Worn constantly once obtained for fast travel"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "confidence": 0.95,
+          "rationale": "Enables flying/gliding for exploration and travel"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "confidence": 0.8,
+          "rationale": "Elytra are prestigious endgame items"
+        },
+        "palette": {
+          "values": [
+            "iridescent",
+            "translucent"
+          ],
+          "confidence": 0.85,
+          "rationale": "Elytra have iridescent wings with translucent appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "confidence": 0.8,
+          "rationale": "Elytra cannot be moved by pistons when worn"
+        },
+        "primary_uses": {
+          "values": [
+            "fast travel",
+            "exploration",
+            "flight"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary purpose is enabling flight/gliding"
+        }
+      }
+    },
+    "minecraft:compass": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.95,
+          "rationale": "Navigation tool for finding spawn point"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.85,
+          "rationale": "Compass made with iron and redstone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used occasionally for navigation, not essential"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary use is navigation during exploration"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "Compasses are mechanical navigation instruments"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "gold"
+          ],
+          "confidence": 0.8,
+          "rationale": "Compasses have dark iron frame and red/gold needle"
+        },
+        "primary_uses": {
+          "values": [
+            "navigation to spawn",
+            "map creation"
+          ],
+          "confidence": 0.85,
+          "rationale": "Used for finding home and map-making"
+        }
+      }
+    },
+    "minecraft:cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "Decorative/structural stair block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used for building projects when desired"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used for construction and decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.8,
+          "rationale": "Copper oxidizes through multiple color stages"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.85,
+          "rationale": "Fresh copper has bright copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "confidence": 0.9,
+          "rationale": "Stairs can be moved by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative stairs",
+            "architectural building"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for aesthetic stair construction"
+        }
+      }
+    },
+    "minecraft:copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "Decorative grating/screen block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used for decorative building when desired"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used for construction and decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.8,
+          "rationale": "Copper oxidizes through multiple color stages"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.85,
+          "rationale": "Fresh copper grate is bright copper colored"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "confidence": 0.9,
+          "rationale": "Grates can be moved by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative grating",
+            "copper architecture"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for aesthetic copper construction"
+        }
+      }
+    },
+    "minecraft:piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.95,
+          "rationale": "Core redstone mechanism for moving blocks"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.8,
+          "rationale": "Piston body has wooden base"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "confidence": 0.8,
+          "rationale": "Iron components and piston head"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used for redstone contraptions and automation"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "building"
+          ],
+          "confidence": 0.95,
+          "rationale": "Core component for redstone contraptions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "Pistons are mechanical devices"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "iron_dark"
+          ],
+          "confidence": 0.8,
+          "rationale": "Combination of wood and iron colors"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "confidence": 0.85,
+          "rationale": "Pistons can be moved by other pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone automation",
+            "block movement"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary purpose is moving blocks via redstone"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

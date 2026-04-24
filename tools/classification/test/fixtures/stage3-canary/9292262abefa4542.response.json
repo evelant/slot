@@ -1,0 +1,59 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 72886,
+  "duration_api_ms": 73706,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:redstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"confidence\": 0.9,\n          \"rationale\": \"crafting ingredient used across many recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"power_generation\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"used in redstone circuits, automation, and power systems\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"confidence\": 0.75,\n          \"rationale\": \"mineral dust harvested from ore\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"confidence\": 0.7,\n          \"rationale\": \"reddish-brown particle dust\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"confidence\": 0.85,\n          \"rationale\": \"staple ingredient for redstone automation and mechanisms\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone circuits\", \"automation recipes\", \"trim material\"],\n          \"confidence\": 0.9,\n          \"rationale\": \"used in redstone mechanics, machines, and armor trim\"\n        }\n      }\n    },\n    \"minecraft:music_disc_13\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"confidence\": 0.85,\n          \"rationale\": \"playable music item for jukebox entertainment\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"confidence\": 0.9,\n          \"rationale\": \"placed in jukebox for listening, not actively used\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"confidence\": 0.75,\n          \"rationale\": \"one of many music disc variants\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"play in jukebox\"],\n          \"confidence\": 0.95,\n          \"rationale\": \"sole purpose is jukebox playable content\"\n        }\n      }\n    },\n    \"minecraft:creaking_heart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"confidence\": 0.65,\n          \"rationale\": \"special block from Pale Garden biome, primarily decorative\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"confidence\": 0.7,\n          \"rationale\": \"living/organic block from pale garden ecosystem\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"confidence\": 0.75,\n          \"rationale\": \"dark wood-like block texture\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.8,\n          \"rationale\": \"decorative block, not primary building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"confidence\": 0.8,\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative block\"],\n          \"confidence\": 0.75,\n          \"rationale\": \"primarily used for building/decorating\"\n        }\n      }\n    },\n    \"minecraft:oak_sapling\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"confidence\": 0.85,\n          \"rationale\": \"grows into trees when planted\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"confidence\": 0.95,\n          \"rationale\": \"living plant with growth mechanics\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"green foliage visual appearance\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\", \"decorating\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"used to grow trees, place blocks, and decorate\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.8,\n          \"rationale\": \"used for tree farming and decoration, not daily\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"grow trees\", \"tree farming\", \"decorative plant\"],\n          \"confidence\": 0.9,\n          \"rationale\": \"primary use is growing oak trees for resources\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:oak_sapling\",\n      \"facet\": \"origin\",\n      \"current\": [\"village\"],\n      \"suggested\": [\"village\", \"overworld_surface\"],\n      \"rationale\": \"sample_loot_sources include oak_leaves blocks which drop saplings as natural source\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "2dfb8e77-aafc-489e-809d-7e02338d73bb",
+  "total_cost_usd": 0.07473950000000001,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 13866,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 10403,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13866,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 10,
+        "output_tokens": 10403,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 13866,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 13866
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5322,
+      "outputTokens": 10417,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 13866,
+      "webSearchRequests": 0,
+      "costUSD": 0.07473950000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "31ccd927-ca3c-4e9a-a567-b6c7212f4f35"
+}

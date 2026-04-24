@@ -61,7 +61,7 @@ export interface Stage3Result {
   warnings: string[];
 }
 
-const DEFAULT_MODEL = "claude-haiku-4-5";
+const DEFAULT_MODEL = "haiku";
 const DEFAULT_BATCH_SIZE = 20;
 
 /**

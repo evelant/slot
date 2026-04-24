@@ -30,8 +30,19 @@ export interface QueryOptions {
 export class ClaudeCliClient implements LlmClient {
   async query(prompt: string, options: QueryOptions): Promise<string> {
     const bin = options.claudeBinary ?? "claude";
-    const timeout = options.timeoutMs ?? 120_000;
-    const args = ["-p", "--model", options.model, "--output-format", "json"];
+    // 10 min default — Haiku batches of 20 items can take 2–3 minutes to
+    // emit a long JSON response; Sonnet retries on ambiguous items are slower.
+    const timeout = options.timeoutMs ?? 600_000;
+    // --tools "" disables tool use (prompt is pure classification, no tools
+    // needed) and --dangerously-skip-permissions skips the workspace trust
+    // dialog since this is a read-only text-in / text-out call.
+    const args = [
+      "-p",
+      "--model", options.model,
+      "--output-format", "json",
+      "--tools", "",
+      "--dangerously-skip-permissions",
+    ];
 
     return new Promise((resolve, reject) => {
       const child = spawn(bin, args, {
@@ -68,8 +79,11 @@ export class ClaudeCliClient implements LlmClient {
  * Deterministic fixture-based client used by tests and by `--use-replay` runs.
  *
  * Each prompt is hashed (sha256 → first 16 hex chars) and looked up as
- * `<dir>/<hash>.response.txt`. On miss, the call throws — no network
+ * `<dir>/<hash>.response.json`. On miss, the call throws — no network
  * fallback, so test runs can't accidentally burn tokens.
+ *
+ * For backwards compatibility with older fixture sets we also fall back to
+ * `.response.txt` — the file body is the same; only the extension changed.
  */
 export class ReplayLlmClient implements LlmClient {
   constructor(private readonly fixtureDir: string) {}
@@ -86,7 +100,12 @@ export class ReplayLlmClient implements LlmClient {
   }
 
   pathFor(prompt: string): string {
-    return join(this.fixtureDir, `${fixtureHash(prompt)}.response.txt`);
+    const hash = fixtureHash(prompt);
+    const primary = join(this.fixtureDir, `${hash}.response.json`);
+    if (existsSync(primary)) return primary;
+    const legacy = join(this.fixtureDir, `${hash}.response.txt`);
+    if (existsSync(legacy)) return legacy;
+    return primary;
   }
 }
 
@@ -94,6 +113,13 @@ export class ReplayLlmClient implements LlmClient {
  * Recording wrapper: calls an inner client, persists the request+response pair
  * alongside the fixtures, and returns the response to the caller. Use this when
  * you want to bootstrap a fixture set from a real run.
+ *
+ * Three files are written per call:
+ *   - `<hash>.prompt.md`      — the prompt as sent (markdown-flavored text).
+ *   - `<hash>.response.json`  — the claude -p envelope, pretty-printed for review.
+ *   - `<hash>.parsed.json`    — the model's actual classification output, extracted
+ *                                from the envelope and pretty-printed. This is the
+ *                                file a human typically wants to read.
  */
 export class RecordingLlmClient implements LlmClient {
   constructor(
@@ -106,10 +132,59 @@ export class RecordingLlmClient implements LlmClient {
   async query(prompt: string, options: QueryOptions): Promise<string> {
     const response = await this.inner.query(prompt, options);
     const hash = fixtureHash(prompt);
-    writeFileSync(join(this.fixtureDir, `${hash}.prompt.txt`), prompt);
-    writeFileSync(join(this.fixtureDir, `${hash}.response.txt`), response);
+    writeFileSync(join(this.fixtureDir, `${hash}.prompt.md`), prompt);
+    writeFileSync(
+      join(this.fixtureDir, `${hash}.response.json`),
+      formatEnvelope(response),
+    );
+    const parsed = extractParsedContent(response);
+    if (parsed !== null) {
+      writeFileSync(join(this.fixtureDir, `${hash}.parsed.json`), parsed);
+    }
     return response;
   }
+}
+
+/**
+ * Pretty-print the claude -p envelope JSON, preserving the structure but
+ * making it human-readable. Falls back to the raw text if parsing fails.
+ */
+function formatEnvelope(raw: string): string {
+  try {
+    const obj = JSON.parse(raw.trim());
+    return JSON.stringify(obj, null, 2) + "\n";
+  } catch {
+    return raw.endsWith("\n") ? raw : raw + "\n";
+  }
+}
+
+/**
+ * Extract the model's actual output from the envelope, strip the ```json fence
+ * if present, re-parse, and pretty-print. Returns null when the response
+ * doesn't fit the expected shape (the envelope is still preserved separately).
+ */
+function extractParsedContent(raw: string): string | null {
+  let envelope: unknown;
+  try {
+    envelope = JSON.parse(raw.trim());
+  } catch {
+    return null;
+  }
+  if (!envelope || typeof envelope !== "object") return null;
+  const result = (envelope as { result?: unknown }).result;
+  if (typeof result !== "string") return null;
+  const stripped = stripFence(result.trim());
+  try {
+    const inner = JSON.parse(stripped);
+    return JSON.stringify(inner, null, 2) + "\n";
+  } catch {
+    return null;
+  }
+}
+
+function stripFence(text: string): string {
+  const fence = text.match(/^```(?:json)?\n([\s\S]*?)\n```$/);
+  return fence?.[1] ?? text;
 }
 
 export function fixtureHash(prompt: string): string {

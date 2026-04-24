@@ -142,13 +142,15 @@ The fundamental kind of thing. Every item has exactly one role.
 - `ammunition` — arrows, firework rockets used in crossbow
 - `transport` — boats, minecarts, saddles, carpets-on-llama
 - `container_portable` — backpacks, shulker boxes used as bags, bundles
-- `utility` — compasses, maps, spyglass, name tags, leads, buckets
+- `utility` — items that help the player *do* something active but aren't tool/weapon/armor/consumable: compasses, maps, spyglass, name tags, leads, buckets, ender pearl, totem of undying (consumed on lethal damage; actively saves the player)
 - `curiosity` — items without clear gameplay role (debug stick, music discs, pottery sherds, banner patterns, smithing templates are better under `upgrade`)
-- `upgrade` — smithing templates, trims, apotheosis-style enhancers, sophisticated backpack upgradese
-- `trophy` — unique / one-of-a-kind items that players display rather than use (dragon egg, nether star, mob heads, totem of undying)
+- `upgrade` — smithing templates, trims, apotheosis-style enhancers, sophisticated backpack upgrades, nether star (unlocks beacons; crafting ingredient, not display)
+- `trophy` — unique / one-of-a-kind items that players *display rather than use*. Dragon egg, mob heads, souvenir banners. If the item has a consumed-on-use behaviour or a crafting-ingredient role, it's *not* a trophy — prefer `utility` or `upgrade`.
 - `admin` — command blocks, barrier, jigsaw, structure_void
 
 **Resolved:** `trophy` stays a role. Rationale: it fundamentally changes how the item is treated layout-wise (never-used display item), which is a role concern, not a frequency one.
+
+**Resolved (2026-04-24):** `totem_of_undying` moved from `trophy` to `utility`; `nether_star` moved from `trophy` to `upgrade`. Both were mis-classified in the initial draft; the stage 3 LLM canary flagged totem as utility (consumed on lethal damage; not display-only) and the same logic applies to nether star (crafting ingredient for beacons). The `trophy` definition now explicitly excludes consumed-on-use and crafting-ingredient items.
 
 ### 2. `activity` — multi
 
