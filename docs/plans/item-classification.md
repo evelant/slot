@@ -11,10 +11,10 @@ This document is ~1400 lines. If you're picking it up without prior context:
 1. **[Purpose](#purpose)** and **[Glossary](#glossary)** (≈ 40 lines) — the vocabulary and why this project exists.
 2. **[Goals](#goals)** / **[Non-goals (V1)](#non-goals-v1)** — scope boundaries.
 3. **[Facet kinds](#facet-kinds)** — the type system. Everything downstream assumes these eight kinds.
-4. **[Layer file format](#layer-file-format)** + the JSONSchema at [reference/classification/pipeline/layer.schema.json](../../reference/classification/pipeline/layer.schema.json) — the wire contract.
+4. **[Layer file format](#layer-file-format)** + the JSONSchema at [tools/classification/layer.schema.json](../../tools/classification/layer.schema.json) — the wire contract.
 5. **[Layering & merging](#layering--merging)** — how the 6 layers stack, including the [Resource-location matrix](#resource-location-matrix).
 6. **[Pipeline](#pipeline)** and **[Runtime discovery](#runtime-discovery)** — what the offline pipeline does vs what the runtime crawl does.
-7. **[Milestones](#milestones)** — the execution order. Milestones 1–4 complete (stage-1 extractor + stage-2 deterministic rules in [reference/classification/pipeline/](../../reference/classification/pipeline/)); milestone 5 (stage-3 LLM completion) is the next concrete work.
+7. **[Milestones](#milestones)** — the execution order. Milestones 1–4 complete (stage-1 extractor + stage-2 deterministic rules in [tools/classification/](../../tools/classification/)); milestone 5 (stage-3 LLM completion) is the next concrete work.
 8. **Facet list (1–28)** — skim the headings; read the specific facets you need.
 
 Skip **[Modeling principles](#modeling-principles)** until you're about to add or change a facet — those rules are authored for that case.
@@ -99,7 +99,7 @@ applicable to every item (a food item has no `tier`; a potion has no `wood_type`
 
 Every facet declares a **kind**, which determines its value shape, validation rules, and
 the valid `mode`s it can use in a layer entry. The schema-authoring format
-([classification-layer.schema.json](../../reference/classification/pipeline/layer.schema.json))
+([classification-layer.schema.json](../../tools/classification/layer.schema.json))
 enforces these via JSONSchema.
 
 | Kind | Cardinality | Value shape | Valid modes | Example facets |
@@ -700,10 +700,10 @@ dependency install, excellent for this shape of work.
 
 ### Pipeline layout
 
-Directory: `reference/classification/pipeline/`.
+Directory: `tools/classification/`.
 
 ```
-reference/classification/pipeline/
+tools/classification/
 ├── package.json             # bun project — name, scripts, deps
 ├── tsconfig.json
 ├── layer.schema.json        # wire-format JSONSchema (source of truth)
@@ -907,7 +907,7 @@ in but the semantic facets empty — that's the quality floor for unknown mods.
 ### Layer file format
 
 Every layer uses the same top-level structure. Formal schema:
-[reference/classification/pipeline/layer.schema.json](../../reference/classification/pipeline/layer.schema.json).
+[tools/classification/layer.schema.json](../../tools/classification/layer.schema.json).
 
 ```json
 {
@@ -1233,7 +1233,7 @@ precomputed files for.
 
 One-liner per component. Concretely written so "does this have tests?" is answerable.
 
-### Pipeline (Bun/TS in `reference/classification/pipeline/`)
+### Pipeline (Bun/TS in `tools/classification/`)
 
 - **Stage 1 (Extract)** — per-parser unit tests using fixture jar directories under `test/fixtures/mod-*`. Assert NDJSON lines match expected shape.
 - **Stage 2 (Deterministic)** — per-rule unit test. Each extractor (e.g. `material_family_from_tag`) gets hand-crafted input and expected facet entries. Keep rules pure functions; test at that boundary.
@@ -1268,7 +1268,7 @@ One-liner per component. Concretely written so "does this have tests?" is answer
 ## Schema evolution
 
 - Facet schema file: `common/src/main/resources/slot/classification/schema.v<N>.json` — the list of facets, their kinds, and their permitted values.
-- Wire-format schema: [`reference/classification/pipeline/layer.schema.json`](../../reference/classification/pipeline/layer.schema.json) — the JSONSchema that validates layer files.
+- Wire-format schema: [`tools/classification/layer.schema.json`](../../tools/classification/layer.schema.json) — the JSONSchema that validates layer files.
 - Each classification layer file records `schema_version` in its header and is validated against both at load time.
 
 ### Breaking vs non-breaking changes
@@ -1320,9 +1320,9 @@ without a changelog entry). CI (once present) enforces the same rule.
 ## Milestones
 
 1. **Schema v1 freeze.** Iterate on the facet list in this doc until satisfied. No code. *(In progress — schema still accepting revisions; `CHANGELOG.md` not yet created since no versions have shipped.)*
-2. **Layer file format spec + JSONSchema**, including merge modes. *(Done: [layer.schema.json](../../reference/classification/pipeline/layer.schema.json), facet kinds spec'd in this doc.)*
-3. **Extractor** (stage 1, Bun/TS) against vanilla only. Output `minecraft.items.ndjson`. *(Done: [reference/classification/pipeline/src/extract/vanilla/](../../reference/classification/pipeline/src/extract/vanilla/). Run with `bun classify --mod minecraft --source ../mcmeta`; produces one record per item with tags, recipe role, loot sources, model chain, and component data.)*
-4. **Deterministic facet extractor** (stage 2) against vanilla. Measure coverage — what fraction of items have each facet assigned deterministically? *(Done: [reference/classification/pipeline/src/deterministic/](../../reference/classification/pipeline/src/deterministic/). Rules cover `mod_namespace`, `material_family`, `form`, `dye_color`, `equip_slot`, `required_tool`/`required_tool_tier`, `processing_in`, `origin`, `rarity`, and the boolean facets. Vanilla coverage at a glance: `mod_namespace`/`rarity` 100%, `is_stackable` 84%, `is_block_item` 68%, `required_tool` 53%, `processing_in` 46%, `form` 43%, `material_family` 34%, `origin` 22%, `dye_color` 13%, plus smaller slices for `equip_slot`/`has_durability`/`has_enchantments`/`has_nbt_variation`. Everything else waits for stage 3.)*
+2. **Layer file format spec + JSONSchema**, including merge modes. *(Done: [layer.schema.json](../../tools/classification/layer.schema.json), facet kinds spec'd in this doc.)*
+3. **Extractor** (stage 1, Bun/TS) against vanilla only. Output `minecraft.items.ndjson`. *(Done: [tools/classification/src/extract/vanilla/](../../tools/classification/src/extract/vanilla/). Run with `bun classify --mod minecraft --source ../mcmeta`; produces one record per item with tags, recipe role, loot sources, model chain, and component data.)*
+4. **Deterministic facet extractor** (stage 2) against vanilla. Measure coverage — what fraction of items have each facet assigned deterministically? *(Done: [tools/classification/src/deterministic/](../../tools/classification/src/deterministic/). Rules cover `mod_namespace`, `material_family`, `form`, `dye_color`, `equip_slot`, `required_tool`/`required_tool_tier`, `processing_in`, `origin`, `rarity`, and the boolean facets. Vanilla coverage at a glance: `mod_namespace`/`rarity` 100%, `is_stackable` 84%, `is_block_item` 68%, `required_tool` 53%, `processing_in` 46%, `form` 43%, `material_family` 34%, `origin` 22%, `dye_color` 13%, plus smaller slices for `equip_slot`/`has_durability`/`has_enchantments`/`has_nbt_variation`. Everything else waits for stage 3.)*
 5. **LLM completer** (stage 3) against vanilla. Manual spot-check the output on ~100 items the team has opinions on. Goal: it feels meaningfully better than the current resolver in playtesting — no formal match-rate target.
 6. **Nearest-neighbor precompute** (stage 4) and compile to layer-format JSON (stage 5).
 7. **Runtime `FacetIndex`** — layer loading + merging + queries + lookup. Wire it into the atlas generator behind a feature flag. Regression-check current tests still pass.
@@ -1360,10 +1360,10 @@ continue with mod expansion. If the abstraction isn't working, rewind.
 - **Mod uninstall** — invalid entries (player_island for items whose mod is gone) are preserved silently; they re-activate if the mod returns. Tests required.
 - **Match-rate measurement** — no formal protocol. Human playtesting decides whether it feels good enough. Milestone wording updated accordingly.
 - **API-key ownership** — solo maintainer. Pipeline uses `claude -p` (Claude Code CLI) rather than the Anthropic SDK directly. Contributors who re-run it locally need their own Claude subscription. No CI runs the LLM; outputs are committed.
-- **Pipeline layout** — `reference/classification/pipeline/`, Bun + TypeScript, skeleton spec'd in [Pipeline layout](#pipeline-layout). Implementation starts at milestone 3.
+- **Pipeline layout** — `tools/classification/`, Bun + TypeScript, skeleton spec'd in [Pipeline layout](#pipeline-layout). Implementation starts at milestone 3.
 - **Resource-location matrix** — spec'd in [Resource-location matrix](#resource-location-matrix).
 - **Facet kind system** — spec'd in [Facet kinds](#facet-kinds). 6 kinds in V1 use (`enum`, `multi_enum`, `free_text`, `multi_free_text`, `boolean`) plus `numeric` reserved for first numeric facet; 2 reserved for V2 (`item_ref`, `multi_item_ref`).
-- **Layer file JSONSchema** — committed at [`reference/classification/pipeline/layer.schema.json`](../../reference/classification/pipeline/layer.schema.json).
+- **Layer file JSONSchema** — committed at [`tools/classification/layer.schema.json`](../../tools/classification/layer.schema.json).
 - **Schema changelog policy** — spec'd in [Schema evolution](#schema-evolution). CHANGELOG.md file is required alongside the schema; pipeline refuses to run against a schema change without a changelog entry.
 
 ### Still open
