@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 289105,
+  "duration_api_ms": 290293,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:redstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dust form; key crafting ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component names common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ingredient for many components\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as wire; used in automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mineral powder from ore\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red dust color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"placing redstone circuits\",\n            \"crafting clocks, compasses, rails\",\n            \"armor trim material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream uses\"\n        }\n      }\n    },\n    \"minecraft:coal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops direct from ore; raw fuel\"\n        },\n        \"material_family\": {\n          \"value\": \"coal\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = minecraft:coal\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component names common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary furnace fuel; constant use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelting; torches for caves\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mineral\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black matte mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"furnace and smoker fuel\",\n            \"crafting torches and campfires\",\n            \"fire charge ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream uses\"\n        }\n      }\n    },\n    \"minecraft:emerald\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gem; primary villager trade currency\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mountains-only ore; limited yield\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"constant use in villager trading\"\n        },\n        \"activity\": {\n          \"values\": [\"trading\", \"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trade currency; block; armor trim\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative gemstone\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright green gem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"villager trading currency\",\n            \"armor trim material\",\n            \"beacon payment\",\n            \"emerald block crafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream uses\"\n        }\n      }\n    },\n    \"minecraft:amethyst_shard\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystal shard; crafting ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires finding amethyst geode\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"few recipes; niche uses\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tinted glass; sculk sensor; trim\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"geode crystal; magical aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple translucent crystal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting tinted glass\",\n            \"calibrated sculk sensor\",\n            \"armor trim material\",\n            \"allay duplication\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream uses\"\n        }\n      }\n    },\n    \"minecraft:slime_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"direct mob drop; unrefined organic\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slimes only in slime chunks/swamps\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"few but important recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sticky piston; slime block builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime green slime\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting sticky pistons\",\n            \"slime blocks for building\",\n            \"magma cream ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e7a38d5f-2637-4b64-84f9-3e5693bf8446",
+  "total_cost_usd": 0.33248729999999993,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5150,
+    "cache_read_input_tokens": 5996,
+    "output_tokens": 20467,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5150,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 20467,
+        "cache_read_input_tokens": 5996,
+        "cache_creation_input_tokens": 5150,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5150
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4287,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004362,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 20467,
+      "cacheReadInputTokens": 5996,
+      "cacheCreationInputTokens": 5150,
+      "webSearchRequests": 0,
+      "costUSD": 0.32812529999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a2bacd13-2d09-4c61-ab60-4f6e948c2a76"
+}

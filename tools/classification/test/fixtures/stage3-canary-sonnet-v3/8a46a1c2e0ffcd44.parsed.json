@@ -1,0 +1,303 @@
+{
+  "items": {
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "head armor; tag minecraft:head_armor"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ancient debris + diamond + template needed"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "best helm; worn constantly once crafted"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection in all activities"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple dark metal appearance"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark matte netherite finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via smithing; no loot sources"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types #minecraft:is_fire",
+          "rationale": "item immune to fire and lava damage"
+        },
+        "primary_uses": {
+          "values": [
+            "top-tier head armor",
+            "item survives lava/fire"
+          ],
+          "signal": "inferred",
+          "rationale": "best helm tier; indestructible in lava"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "chest armor; tag minecraft:chest_armor"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "not craftable; situational use"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for protection in combat"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "chain link design; uncraftable tier"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron chain link look"
+        },
+        "primary_uses": {
+          "values": [
+            "mid-tier chest protection",
+            "mob or chest drop armor"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-tier protection, no craft recipe"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "foot armor; tag minecraft:foot_armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common leather drops"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game; quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "starter armor; powdered snow traversal"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeable; organic leather material"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural tan leather tone"
+        },
+        "primary_uses": {
+          "values": [
+            "early-game foot armor",
+            "dyeable armor piece",
+            "walk on powdered snow"
+          ],
+          "signal": "inferred",
+          "rationale": "starter armor; freeze immunity; dyeable"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "head armor; tag minecraft:head_armor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs scutes from baby turtle growth"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underwater utility use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protection + water breathing underwater"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic turtle scute material"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "green-teal turtle shell coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from 5 scutes; no loot"
+        },
+        "primary_uses": {
+          "values": [
+            "water breathing bonus while worn",
+            "underwater exploration helmet",
+            "turtle-tier head armor"
+          ],
+          "signal": "inferred",
+          "rationale": "10s water breathing; unique niche"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "values": [
+            "armor",
+            "transport"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "chest armor; main use is flight"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for all long-distance travel"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "aerial travel and exploration"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient wing relic from end structures"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark grey wing texture"
+        },
+        "origin": {
+          "values": [
+            "end_ship"
+          ],
+          "signal": "inferred",
+          "rationale": "item frame in end ship hold"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "transports player via aerial glide"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding and aerial travel",
+            "long-distance transport",
+            "end exploration reward"
+          ],
+          "signal": "inferred",
+          "rationale": "the definitive flight item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "powdered_snow_walkable",
+      "rationale": "leather boots allow walking on powdered snow without sinking or freezing; no current value captures this interaction"
+    },
+    {
+      "kind": "add_facet",
+      "name": "worn_effect",
+      "suggested_kind": "multi_free_text",
+      "rationale": "turtle helmet grants water breathing; leather boots grant freeze immunity; no facet captures status effects or bonuses granted by worn armor"
+    }
+  ],
+  "corrections": []
+}

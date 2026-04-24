@@ -1,0 +1,305 @@
+{
+  "items": {
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "suffix _pickaxe; tool component present"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamonds which are uncommon"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly for mid-to-end-game mining"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary mining tool, secondary weapon use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard unmodified pickaxe"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond is blue-teal crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine ores and stone blocks",
+            "Upgrade path to netherite pickaxe",
+            "Break decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "core pickaxe purposes"
+        }
+      }
+    },
+    "minecraft:netherite_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "suffix _sword; weapon component"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires ancient debris from deep nether"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "end-game primary combat weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "top-tier melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite from ancient debris, ancient feel"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "matte",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark charcoal matte finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; smithing upgrade only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types: #minecraft:is_fire",
+          "rationale": "item won't burn in fire or lava"
+        },
+        "primary_uses": {
+          "values": [
+            "Highest-tier sword for combat",
+            "Item fireproof when dropped in fire/lava",
+            "Sweeping melee attacks"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite sword core capabilities"
+        }
+      }
+    },
+    "minecraft:mace": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "weapon component; display name Mace"
+        },
+        "material_family": {
+          "value": "heavy_core",
+          "signal": "inferred",
+          "rationale": "heavy core is rare primary ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "breeze_rod"
+          ],
+          "signal": "named",
+          "evidence": "repairable items: minecraft:breeze_rod",
+          "rationale": "breeze rod is handle and repair material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche fall-damage mechanic, situational use"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "epic melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "epic rarity with unique smash mechanic"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber",
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "heavy core from trial vault; breeze rod from breeze"
+        },
+        "primary_uses": {
+          "values": [
+            "Fall-height bonus smash attack",
+            "Epic unique melee combat",
+            "Break decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "mace unique capabilities"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "weapon component; drowned preferred weapon tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare mob drop with niche enchantment uses"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "melee/ranged combat + Riptide player propulsion"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic mob drop, oceanic theme"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "prismarine-like blue-teal coloring"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "drowned mob drop; not craftable"
+        },
+        "primary_uses": {
+          "values": [
+            "Melee and thrown ranged combat",
+            "Riptide propulsion in rain or water",
+            "Channel lightning with Channeling enchant"
+          ],
+          "signal": "inferred",
+          "rationale": "trident core capabilities"
+        }
+      }
+    },
+    "minecraft:crossbow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "ranged weapon firing arrows and fireworks"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "iron ingots main structural component"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak",
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "sticks and string from crafting recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "explicitly common; craftable + common loot"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ranged combat weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "ranged weapon for combat"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical cocking and loading mechanism"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "wood body with iron hardware"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "pillagers and piglins drop crossbows"
+        },
+        "primary_uses": {
+          "values": [
+            "Ranged combat with arrows",
+            "Fire firework rockets for AoE",
+            "Multishot/Piercing enchantment support"
+          ],
+          "signal": "inferred",
+          "rationale": "crossbow core uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

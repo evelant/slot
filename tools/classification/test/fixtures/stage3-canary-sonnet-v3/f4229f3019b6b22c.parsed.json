@@ -1,0 +1,342 @@
+{
+  "items": {
+    "minecraft:iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Smelted ingot; material taxonomy"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "tag minecraft:iron_tool_materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Farmable from caves/golems; staple"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Used across vast range of recipes"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Tools, armor, mechanisms, rails"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic unadorned metal ingot"
+        },
+        "palette": {
+          "values": [
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "Silvery metallic appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft tools and armor",
+            "Repair iron and chain armor",
+            "Beacon payment",
+            "Armor trim smithing",
+            "Craft mechanisms and rails"
+          ],
+          "signal": "inferred",
+          "rationale": "Core downstream recipe uses"
+        }
+      }
+    },
+    "minecraft:gold_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Smelted ingot; material taxonomy"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "tag minecraft:gold_tool_materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Plentiful nether ore; farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Rails, clocks, apples, bartering"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "building",
+            "trading",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "Armor/apples, rails, piglin barter"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard ingot form"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "Vivid golden yellow color"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_pacifying",
+            "piglin_barters_with"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved",
+          "rationale": "Piglin_loved: pacifies + enables barter"
+        },
+        "primary_uses": {
+          "values": [
+            "Piglin bartering",
+            "Craft powered rails and clock",
+            "Craft golden apples",
+            "Beacon payment",
+            "Armor trim smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "Core downstream recipe uses"
+        }
+      }
+    },
+    "minecraft:copper_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Smelted ingot; material taxonomy"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "tag minecraft:copper_tool_materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Copper ore very common in overworld"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Blocks, tools, decorations, trim"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "combat",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper blocks, rod, tools/armor"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard ingot form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "Fresh copper orange-red hue"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft copper tools and armor",
+            "Build copper blocks and decorations",
+            "Craft lightning rod and brush",
+            "Armor trim smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "Core downstream recipe uses"
+        }
+      }
+    },
+    "minecraft:netherite_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Crafted ingot; material taxonomy"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "tag minecraft:netherite_tool_materials"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Ancient debris very rare; multi-step"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Reserved for top-tier gear upgrades"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "Top-tier tools and armor downstream"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense dark ingot, no flourish"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark gray-black metallic appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant #minecraft:is_fire",
+          "rationale": "Item survives fire and lava"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade diamond gear to netherite",
+            "Craft netherite tools and armor",
+            "Beacon payment",
+            "Armor trim smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "Core downstream recipe uses"
+        }
+      }
+    },
+    "minecraft:diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "Gem; material taxonomy"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "tag minecraft:diamond_tool_materials"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Deep mining required; scarcer than iron"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Tools, armor, enchanting table, trims"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "enchanting",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Tools/armor; enchanting table; blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple gem form"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "Clear crystalline gem appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft diamond tools and armor",
+            "Craft enchanting table",
+            "Duplicate smithing templates",
+            "Beacon payment",
+            "Armor trim smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "Core downstream recipe uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:copper_ingot",
+      "facet": "origin",
+      "current": [
+        "mob_drop"
+      ],
+      "suggested": [
+        "mob_drop",
+        "overworld_cave"
+      ],
+      "rationale": "Primary source is copper ore (caves)",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "facet": "origin",
+      "current": [
+        "bastion"
+      ],
+      "suggested": [
+        "bastion",
+        "nether"
+      ],
+      "rationale": "Ancient debris mined from nether caves",
+      "confidence": 0.9
+    }
+  ]
+}

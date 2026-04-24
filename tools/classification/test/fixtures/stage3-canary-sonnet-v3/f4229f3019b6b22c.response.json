@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 348854,
+  "duration_api_ms": 350159,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:iron_ingot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Smelted ingot; material taxonomy\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:iron_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Farmable from caves/golems; staple\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used across vast range of recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Tools, armor, mechanisms, rails\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Basic unadorned metal ingot\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Silvery metallic appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft tools and armor\",\n            \"Repair iron and chain armor\",\n            \"Beacon payment\",\n            \"Armor trim smithing\",\n            \"Craft mechanisms and rails\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core downstream recipe uses\"\n        }\n      }\n    },\n    \"minecraft:gold_ingot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Smelted ingot; material taxonomy\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:gold_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Plentiful nether ore; farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Rails, clocks, apples, bartering\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"building\", \"trading\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Armor/apples, rails, piglin barter\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard ingot form\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Vivid golden yellow color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_pacifying\", \"piglin_barters_with\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_loved\",\n          \"rationale\": \"Piglin_loved: pacifies + enables barter\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Piglin bartering\",\n            \"Craft powered rails and clock\",\n            \"Craft golden apples\",\n            \"Beacon payment\",\n            \"Armor trim smithing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core downstream recipe uses\"\n        }\n      }\n    },\n    \"minecraft:copper_ingot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Smelted ingot; material taxonomy\"\n        },\n        \"tier\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:copper_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper ore very common in overworld\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Blocks, tools, decorations, trim\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"combat\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper blocks, rod, tools/armor\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard ingot form\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Fresh copper orange-red hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft copper tools and armor\",\n            \"Build copper blocks and decorations\",\n            \"Craft lightning rod and brush\",\n            \"Armor trim smithing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core downstream recipe uses\"\n        }\n      }\n    },\n    \"minecraft:netherite_ingot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Crafted ingot; material taxonomy\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:netherite_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Ancient debris very rare; multi-step\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Reserved for top-tier gear upgrades\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Top-tier tools and armor downstream\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dense dark ingot, no flourish\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark gray-black metallic appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\", \"lava_safe\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:damage_resistant #minecraft:is_fire\",\n          \"rationale\": \"Item survives fire and lava\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Upgrade diamond gear to netherite\",\n            \"Craft netherite tools and armor\",\n            \"Beacon payment\",\n            \"Armor trim smithing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core downstream recipe uses\"\n        }\n      }\n    },\n    \"minecraft:diamond\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Gem; material taxonomy\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:diamond_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Deep mining required; scarcer than iron\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Tools, armor, enchanting table, trims\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"enchanting\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Tools/armor; enchanting table; blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Simple gem form\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Clear crystalline gem appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft diamond tools and armor\",\n            \"Craft enchanting table\",\n            \"Duplicate smithing templates\",\n            \"Beacon payment\",\n            \"Armor trim smithing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core downstream recipe uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:copper_ingot\",\n      \"facet\": \"origin\",\n      \"current\": [\"mob_drop\"],\n      \"suggested\": [\"mob_drop\", \"overworld_cave\"],\n      \"rationale\": \"Primary source is copper ore (caves)\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:netherite_ingot\",\n      \"facet\": \"origin\",\n      \"current\": [\"bastion\"],\n      \"suggested\": [\"bastion\", \"nether\"],\n      \"rationale\": \"Ancient debris mined from nether caves\",\n      \"confidence\": 0.90\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "ed6b899f-170b-4f2b-b56a-00272c4f5de9",
+  "total_cost_usd": 0.47433575,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 12057,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 28256,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12057,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 28256,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 12057,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 12057
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5198,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.005273000000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 28256,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 12057,
+      "webSearchRequests": 0,
+      "costUSD": 0.46906275,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "9071931a-648f-4c8a-b496-5b8bf9cd4a6f"
+}

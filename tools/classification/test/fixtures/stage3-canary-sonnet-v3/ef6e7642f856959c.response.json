@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 272232,
+  "duration_api_ms": 273420,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:raw_iron\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore chunk mined from world\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw_iron → iron_ingot → iron tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable iron ore, found everywhere\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted constantly for iron ingots\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron → tools, weapons, armor, blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain unprocessed ore, no special look\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish-brown raw ore appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Smelt into iron ingots\",\n            \"Craft raw iron block\",\n            \"Foundation of iron tier progression\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard raw ore uses\"\n        }\n      }\n    },\n    \"minecraft:ancient_debris\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw unprocessed netherite-tier ore\"\n        },\n        \"material_family\": {\n          \"value\": \"netherite\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelts to netherite_scrap then ingot\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"chain: ancient_debris→netherite_ingot\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"scarce nether deep ore; few per chunk\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only for netherite upgrades\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yields best tools and armor tier\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"named\",\n          \"rationale\": \"display name: Ancient Debris\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark brown nether ore block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\", \"lava_safe\", \"blast_resistant_high\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:damage_resistant #minecraft:is_fire\",\n          \"rationale\": \"item immune to fire/lava; block BR=1200\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Smelt into netherite scrap\",\n            \"Upgrade gear to netherite tier\",\n            \"Endgame progression material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole path to netherite materials\"\n        }\n      }\n    },\n    \"minecraft:oak_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw log obtained from world trees\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak spawns in nearly every biome\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"foundational resource used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structure; crafted into planks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw natural wood form\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"medium brown oak bark and wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:logs_that_burn\",\n          \"rationale\": \"logs_that_burn; fire spreads to logs\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Build wood structures directly\",\n            \"Craft into oak planks\",\n            \"Smelt into charcoal\",\n            \"Tree farm staple\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wood log uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw log from cherry grove biome\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry grove is a specific rarer biome\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used like any wood once obtained\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structure + sought for pink aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural wood; distinctive pink variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"coral\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale pink-coral cherry wood tones\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:logs_that_burn\",\n          \"rationale\": \"logs_that_burn; fire spreads to logs\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Build cherry wood structures\",\n            \"Craft into cherry planks\",\n            \"Smelt into charcoal\",\n            \"Decorative pink-toned builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wood uses + aesthetic appeal\"\n        }\n      }\n    },\n    \"minecraft:bamboo\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant harvested from world\"\n        },\n        \"material_family\": {\n          \"value\": \"bamboo\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id=minecraft:bamboo; yields bamboo wood\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in bamboo jungles; easily farmed\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for scaffolding, blocks, sticks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"scaffolding, blocks; panda breeding\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant material, no processing\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo is distinctly green\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"burns as fuel; flammable plant\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft scaffolding\",\n            \"Craft bamboo blocks and planks\",\n            \"Panda food and breeding\",\n            \"Make sticks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main bamboo crafting and farm uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d437bd37-a01d-4e1d-9550-ed97f69ac12a",
+  "total_cost_usd": 0.3653778,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4888,
+    "cache_read_input_tokens": 5996,
+    "output_tokens": 22743,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4888,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 22743,
+        "cache_read_input_tokens": 5996,
+        "cache_creation_input_tokens": 4888,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4888
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4025,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004095,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 22743,
+      "cacheReadInputTokens": 5996,
+      "cacheCreationInputTokens": 4888,
+      "webSearchRequests": 0,
+      "costUSD": 0.36128279999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8a99bce3-738a-4fe0-822b-302fb5eac0ab"
+}
