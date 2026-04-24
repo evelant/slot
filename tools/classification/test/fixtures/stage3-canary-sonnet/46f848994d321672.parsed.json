@@ -1,0 +1,535 @@
+{
+  "items": {
+    "minecraft:raw_iron": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Raw ore; primary purpose is smelting into iron ingots"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Iron is a staple resource used heavily throughout mid-game"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "confidence": 0.85,
+          "rationale": "Obtained by mining; raw_iron_block is a direct crafting product for building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.95,
+          "rationale": "Generic raw ore, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "confidence": 0.8,
+          "rationale": "Brownish-orange rough ore texture"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into iron ingots",
+            "craft raw iron blocks",
+            "early metal progression"
+          ],
+          "confidence": 0.95,
+          "rationale": "Recipes confirm smelting to ingots and raw_iron_block crafting"
+        }
+      }
+    },
+    "minecraft:ancient_debris": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.9,
+          "rationale": "Rare nether ore block mined exclusively for netherite scrap"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.95,
+          "rationale": "Players acquire very few; each piece is precious endgame material"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "confidence": 0.95,
+          "rationale": "Mined deep in the nether, smelted for netherite; no other activity"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "confidence": 0.95,
+          "rationale": "Name explicitly includes 'ancient'; rare relic-like nether ore"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "confidence": 0.85,
+          "rationale": "Dark brownish-gray nether ore block appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe",
+            "blast_resistant_high"
+          ],
+          "confidence": 0.92,
+          "rationale": "damage_resistant: is_fire component; blast resistance 1200 (equal to obsidian)"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into netherite scrap",
+            "craft netherite ingots",
+            "endgame gear upgrade path"
+          ],
+          "confidence": 0.98,
+          "rationale": "Only recipes are netherite_scrap variants; used exclusively for netherite progression"
+        }
+      }
+    },
+    "minecraft:oak_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.85,
+          "rationale": "Placeable block used in construction; also a primary crafting input"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.9,
+          "rationale": "Among the most-used items in early and mid game"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "Placed in structures; commonly tree-farmed for bulk wood"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "Standard tree log; natural and plain in appearance"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "confidence": 0.9,
+          "rationale": "Oak is a medium-brown wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.95,
+          "rationale": "Tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "craft oak planks",
+            "building structures",
+            "smelt as fuel",
+            "make charcoal"
+          ],
+          "confidence": 0.95,
+          "rationale": "Recipes: planks, charcoal; used in campfire/smoker crafting"
+        }
+      }
+    },
+    "minecraft:cherry_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.85,
+          "rationale": "Placeable log block used in decorative pink-toned builds"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.8,
+          "rationale": "Used regularly by builders; popular for aesthetics despite being less common than oak"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "Placed structurally and decoratively; pink hue drives aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "confidence": 0.9,
+          "rationale": "Distinctive pink wood; a variant wood type with unique appearance"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "pastel"
+          ],
+          "confidence": 0.85,
+          "rationale": "Cherry wood has pinkish-warm pastel tones"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.95,
+          "rationale": "Tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "craft cherry planks",
+            "decorative pink builds",
+            "smelt as fuel",
+            "make charcoal"
+          ],
+          "confidence": 0.95,
+          "rationale": "Same recipe pattern as other logs; distinctive palette drives decorating use"
+        }
+      }
+    },
+    "minecraft:bamboo": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.85,
+          "rationale": "Harvested plant; primary use is crafting ingredients and fuel"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "confidence": 0.95,
+          "rationale": "Bamboo is its own distinct plant material family"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Commonly farmed for scaffolding, bamboo blocks, and sticks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "Crafts scaffolding and bamboo blocks; heavily bamboo-farmed"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.95,
+          "rationale": "Natural plant resource"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "confidence": 0.95,
+          "rationale": "Bamboo is bright green"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.88,
+          "rationale": "is_fuel=true; plant material that burns in world"
+        },
+        "primary_uses": {
+          "values": [
+            "craft scaffolding",
+            "craft bamboo blocks",
+            "make sticks",
+            "panda food"
+          ],
+          "confidence": 0.9,
+          "rationale": "sample_ingredient_of: bamboo_block, scaffolding, sticks; panda_food tag"
+        }
+      }
+    },
+    "minecraft:sugar_cane": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.9,
+          "rationale": "Farmed plant used exclusively as crafting ingredient"
+        },
+        "material_family": {
+          "value": "sugar_cane",
+          "confidence": 0.9,
+          "rationale": "Distinct plant material with no analogous family"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Heavily farmed for paper/sugar; key to librarian trade economy"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "trading"
+          ],
+          "confidence": 0.85,
+          "rationale": "Farmed in bulk; paper from sugar cane drives librarian trades"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.95,
+          "rationale": "Simple natural plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "confidence": 0.9,
+          "rationale": "Green-stalked cane plant"
+        },
+        "primary_uses": {
+          "values": [
+            "craft paper",
+            "craft sugar",
+            "trade via paper and books"
+          ],
+          "confidence": 0.95,
+          "rationale": "Recipes: paper and sugar; both heavily used in trading economy"
+        }
+      }
+    },
+    "minecraft:kelp": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.9,
+          "rationale": "Ocean plant harvested and dried for food or fuel"
+        },
+        "material_family": {
+          "value": "kelp",
+          "confidence": 0.9,
+          "rationale": "Distinct ocean plant material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Niche use: dried kelp food or kelp block fuel source"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "confidence": 0.8,
+          "rationale": "Can be farmed underwater; collected during ocean exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.95,
+          "rationale": "Natural ocean plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "teal"
+          ],
+          "confidence": 0.8,
+          "rationale": "Green kelp with teal underwater ambiance"
+        },
+        "primary_uses": {
+          "values": [
+            "dry into dried kelp food",
+            "kelp blocks as fuel",
+            "underwater farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "All recipes are cooking variants yielding dried kelp"
+        }
+      }
+    },
+    "minecraft:feather": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.9,
+          "rationale": "Mob drop used as crafting ingredient for arrows, books, and brush"
+        },
+        "material_family": {
+          "value": "feather",
+          "confidence": 0.85,
+          "rationale": "Organic animal material with no analogous family"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Arrows are consumables used in quantity; feathers needed in volume"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "confidence": 0.85,
+          "rationale": "Crafts arrows (combat); also brush (archaeology/exploration)"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.9,
+          "rationale": "Natural animal drop"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "confidence": 0.8,
+          "rationale": "Feathers are typically white/pale and soft-toned"
+        },
+        "primary_uses": {
+          "values": [
+            "craft arrows",
+            "craft writable books",
+            "craft brush"
+          ],
+          "confidence": 0.95,
+          "rationale": "sample_ingredient_of: arrow, brush, firework_star, writable_book"
+        }
+      }
+    },
+    "minecraft:wooden_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 1,
+          "rationale": "Mining tool with minecraft:tool component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Used heavily in early game; first pickaxe every player crafts"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "confidence": 0.98,
+          "rationale": "Pickaxe is exclusively a mining tool; tool component confirms"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.95,
+          "rationale": "Basic starter tool with no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "confidence": 0.85,
+          "rationale": "Crafted from light-colored wooden planks"
+        },
+        "primary_uses": {
+          "values": [
+            "mine stone and coal",
+            "starter mining tool",
+            "early-game progression"
+          ],
+          "confidence": 0.95,
+          "rationale": "Wooden tier can mine stone, coal; first pickaxe in progression"
+        }
+      }
+    },
+    "minecraft:stone_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 1,
+          "rationale": "Mining tool with minecraft:tool component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Standard early-game pickaxe used until iron tier"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "confidence": 0.98,
+          "rationale": "Pickaxe is a mining tool; tool component confirms"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.95,
+          "rationale": "No special aesthetic, standard stone tool"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "dark"
+          ],
+          "confidence": 0.8,
+          "rationale": "Gray cobblestone construction, matte dark finish"
+        },
+        "primary_uses": {
+          "values": [
+            "mine iron and copper ore",
+            "early mining progression",
+            "found in trial chambers"
+          ],
+          "confidence": 0.9,
+          "rationale": "Stone tier mines iron; loot sources include trial chambers"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:ancient_debris",
+      "facet": "rarity",
+      "current": "common",
+      "suggested": "rare",
+      "rationale": "minecraft:rarity component is display color only (common = white name). Obtain-difficulty for ancient debris is very rare; among the rarest natural ores in vanilla.",
+      "confidence": 0.92
+    },
+    {
+      "item": "minecraft:kelp",
+      "facet": "origin",
+      "current": [
+        "overworld_surface"
+      ],
+      "suggested": [
+        "overworld_ocean"
+      ],
+      "rationale": "Kelp grows exclusively underwater in ocean biomes. Loot tables minecraft:blocks/kelp and kelp_plant are ocean blocks, not surface.",
+      "confidence": 0.95
+    }
+  ]
+}

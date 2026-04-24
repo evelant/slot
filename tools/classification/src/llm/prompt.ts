@@ -58,6 +58,8 @@ Rules:
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
 - Don't re-emit facets listed under \`stage2_facets\` inside \`facets\` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level \`corrections\` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
 - Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.
+- Your response MUST start with \`{\` and end with \`}\`. Do NOT prepend any narration (no "Here is…", "Continuing with…", etc.). Do NOT append any text after the closing brace.
+- Classify every item listed in the \`items\` array. Keep rationales short so you don't have to trim items — terse ≤80-char rationales are fine.
 
 Common confusions to avoid:
 - \`activity\` does NOT include \`crafting\` — every item is craftable, so "crafting" is noise. If the item is used as a crafting ingredient, that's already captured in \`processing_in\`. Pick an end-use activity instead (\`building\`, \`mining\`, \`combat\`, \`redstone\`, etc.) or omit.

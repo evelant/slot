@@ -208,7 +208,18 @@ function parseFacetEntry(
   }
 
   if (isMulti) {
-    const values = e.values;
+    // Lenient: accept `value: <scalar>` as a single-element array for
+    // multi facets. Haiku in particular drifts back to single-value shape
+    // when only one value applies; wrapping it rather than dropping lets
+    // the entry through. We still warn quietly in case we want to debug.
+    let values = e.values;
+    if (!Array.isArray(values) && "value" in e) {
+      const single = (e as { value: unknown }).value;
+      if (typeof single === "string" || typeof single === "number") {
+        values = [single];
+        warnings.push(`${itemId} ${facetId}: emitted single 'value' for multi facet; wrapped as [value] (informational)`);
+      }
+    }
     if (!Array.isArray(values)) {
       warnings.push(`${itemId} ${facetId}: multi-value facet requires 'values' array`);
       return null;
@@ -267,8 +278,61 @@ function unwrapEnvelope(raw: string, warnings: string[]): string {
   return trimmed;
 }
 
+/**
+ * Extract the classification JSON from a model response. Accepts, in order:
+ *   1. The entire text trimmed (when the model respected "JSON only").
+ *   2. The first ```json ... ``` block anywhere in the text.
+ *   3. The first top-level brace-balanced `{ ... }` region.
+ *
+ * Sonnet 4.6 occasionally prepends a narration ("Continuing with remaining
+ * items…") before emitting the JSON despite the "JSON only" rule, so falling
+ * through to substring extraction is necessary for robustness.
+ */
 function stripCodeFences(text: string): string {
   const trimmed = text.trim();
-  const fence = trimmed.match(/^```(?:json)?\n([\s\S]*?)\n```$/);
-  return fence?.[1] ?? trimmed;
+
+  // Whole string is a fenced block
+  const whole = trimmed.match(/^```(?:json)?\n([\s\S]*?)\n```$/);
+  if (whole) return whole[1]!;
+
+  // Any ```json…``` block inside the text
+  const anyFence = trimmed.match(/```(?:json)?\s*\n([\s\S]*?)\n```/);
+  if (anyFence) return anyFence[1]!;
+
+  // First top-level brace-balanced object (string-aware)
+  const obj = firstJsonObject(trimmed);
+  if (obj) return obj;
+
+  return trimmed;
+}
+
+function firstJsonObject(text: string): string | null {
+  const start = text.indexOf("{");
+  if (start < 0) return null;
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i]!;
+    if (inString) {
+      if (escape) {
+        escape = false;
+      } else if (ch === "\\") {
+        escape = true;
+      } else if (ch === '"') {
+        inString = false;
+      }
+      continue;
+    }
+    if (ch === '"') {
+      inString = true;
+      continue;
+    }
+    if (ch === "{") depth++;
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0) return text.slice(start, i + 1);
+    }
+  }
+  return null;
 }

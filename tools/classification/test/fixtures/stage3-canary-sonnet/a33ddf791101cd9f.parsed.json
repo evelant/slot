@@ -1,0 +1,560 @@
+{
+  "items": {
+    "minecraft:iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.97,
+          "rationale": "Foundational crafting material for tools, armor, mechanisms, and trim"
+        },
+        "tier": {
+          "value": "iron",
+          "confidence": 0.99,
+          "rationale": "Standard iron tier; tag iron_tool_materials confirms"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.92,
+          "rationale": "Constantly used for tools, armor, rails, hoppers, and many recipes"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building",
+            "automation"
+          ],
+          "confidence": 0.88,
+          "rationale": "Iron tools/armor (mining/combat), rails/hoppers (automation), iron blocks (building)"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "Simple metallic ingot with no decorative flair"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "confidence": 0.85,
+          "rationale": "Matte dark gray metallic appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and armor",
+            "beacon payment",
+            "armor trim smithing",
+            "rails and mechanical crafting"
+          ],
+          "confidence": 0.92,
+          "rationale": "Derived from tags and sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:gold_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting material for gold gear, clocks, golden food, and trim"
+        },
+        "tier": {
+          "value": "gold",
+          "confidence": 0.99,
+          "rationale": "Gold tool/armor tier; tag gold_tool_materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.82,
+          "rationale": "Used for golden food, clocks, piglin bartering, and trim"
+        },
+        "activity": {
+          "values": [
+            "trading",
+            "combat",
+            "building"
+          ],
+          "confidence": 0.85,
+          "rationale": "Piglin bartering (trading), gold armor (combat), golden apple/clock (building)"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "Plain metallic ingot form"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "confidence": 0.97,
+          "rationale": "Bright golden-yellow color"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_barters_with"
+          ],
+          "confidence": 0.92,
+          "rationale": "Tag minecraft:piglin_loved; piglins barter gold ingots"
+        },
+        "primary_uses": {
+          "values": [
+            "piglin bartering",
+            "golden food crafting",
+            "armor trim material",
+            "clock crafting"
+          ],
+          "confidence": 0.9,
+          "rationale": "Confirmed by piglin_loved tag and sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:copper_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting material for copper tools, armor, blocks, and brush"
+        },
+        "tier": {
+          "value": "copper",
+          "confidence": 0.88,
+          "rationale": "Copper tool/armor material tier; tag copper_tool_materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.8,
+          "rationale": "Used across copper gear, building blocks, copper bulb, and brush"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "confidence": 0.82,
+          "rationale": "Copper blocks (building/decorating), copper bulb (redstone), brush (exploration)"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.82,
+          "rationale": "Natural metal with distinctive oxidation properties"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.9,
+          "rationale": "Bright orange-red copper hue"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting copper tools and armor",
+            "building copper blocks",
+            "armor trim material",
+            "brush for archaeology"
+          ],
+          "confidence": 0.88,
+          "rationale": "Confirmed by tags and sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:netherite_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.97,
+          "rationale": "Endgame upgrade material for tools, armor, and trim"
+        },
+        "tier": {
+          "value": "netherite",
+          "confidence": 0.99,
+          "rationale": "Highest vanilla tier; tag netherite_tool_materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.9,
+          "rationale": "Extremely hard to obtain; used sparingly for endgame upgrades"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building"
+          ],
+          "confidence": 0.85,
+          "rationale": "Netherite tools (mining/combat), netherite block (building/beacon)"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "confidence": 0.85,
+          "rationale": "Derived from ancient debris in the nether; evokes deep age"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "matte"
+          ],
+          "confidence": 0.92,
+          "rationale": "Dark charcoal-gray matte finish"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "confidence": 0.95,
+          "rationale": "component damage_resistant to #minecraft:is_fire; survives lava"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading diamond gear to netherite",
+            "armor trim smithing",
+            "beacon payment",
+            "netherite block crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Smithing templates and netherite block in sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Precious gem crafting material for tools, armor, and trim"
+        },
+        "tier": {
+          "value": "diamond",
+          "confidence": 0.99,
+          "rationale": "Diamond tool/armor tier; tag diamond_tool_materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Valuable; used carefully for gear upgrades and smithing prereq"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building"
+          ],
+          "confidence": 0.85,
+          "rationale": "Diamond tools/armor (mining/combat), diamond blocks (building/beacons)"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "confidence": 0.75,
+          "rationale": "Prestigious gem associated with high-value crafting and prestige"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "teal"
+          ],
+          "confidence": 0.88,
+          "rationale": "Blue-tinted transparent crystal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting diamond tools and armor",
+            "armor trim material",
+            "smithing prereq for netherite",
+            "beacon payment"
+          ],
+          "confidence": 0.92,
+          "rationale": "Confirmed by tags and sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:redstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.8,
+          "rationale": "Crafting ingredient for redstone devices; also placeable as wire"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Core ingredient constantly consumed in redstone and automation builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "building"
+          ],
+          "confidence": 0.92,
+          "rationale": "Signal wire (redstone), device ingredients (automation), contraptions (building)"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "Powers mechanical/technical redstone contraptions"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "confidence": 0.85,
+          "rationale": "Bright vivid red dust"
+        },
+        "primary_uses": {
+          "values": [
+            "placing as redstone wire",
+            "crafting redstone devices",
+            "automation components",
+            "armor trim material"
+          ],
+          "confidence": 0.9,
+          "rationale": "Core uses from sample_ingredient_of (dispenser, crafter, detector rail, etc.)"
+        }
+      }
+    },
+    "minecraft:coal": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.87,
+          "rationale": "Raw natural fuel resource mined from coal ore"
+        },
+        "material_family": {
+          "value": "coal",
+          "confidence": 0.95,
+          "rationale": "Coal material; not covered by stage2 rules"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.93,
+          "rationale": "Constantly used as furnace fuel throughout the entire game"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "building"
+          ],
+          "confidence": 0.88,
+          "rationale": "Furnace fuel (power_generation), torches and campfires (building)"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.9,
+          "rationale": "Raw natural material mined from stone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "confidence": 0.88,
+          "rationale": "Matte black appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "furnace fuel",
+            "torch crafting",
+            "campfire and fire charge crafting"
+          ],
+          "confidence": 0.93,
+          "rationale": "is_fuel in stage2, ingredient of torch/campfire/fire_charge"
+        }
+      }
+    },
+    "minecraft:emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.88,
+          "rationale": "Gem material used as trading currency and crafting ingredient"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Villager trading currency; constantly exchanged in mid-to-late game"
+        },
+        "activity": {
+          "values": [
+            "trading",
+            "building"
+          ],
+          "confidence": 0.88,
+          "rationale": "Primary villager currency (trading), emerald blocks (building)"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "confidence": 0.72,
+          "rationale": "Natural gem with prestige value as primary trade currency"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "crystal"
+          ],
+          "confidence": 0.9,
+          "rationale": "Vivid green crystal gem"
+        },
+        "primary_uses": {
+          "values": [
+            "villager trading currency",
+            "armor trim material",
+            "beacon payment",
+            "emerald block crafting"
+          ],
+          "confidence": 0.92,
+          "rationale": "Primary identity as trading currency; beacon_payment_items tag confirms"
+        }
+      }
+    },
+    "minecraft:amethyst_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.9,
+          "rationale": "Crystal material for calibrated sculk sensor, blocks, and trim"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Geodes are findable but recipes are niche; used occasionally"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "confidence": 0.82,
+          "rationale": "Amethyst blocks (building/decorating), calibrated sculk sensor (redstone)"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "confidence": 0.8,
+          "rationale": "Natural crystal with distinctive resonant acoustic properties"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "confidence": 0.92,
+          "rationale": "Purple-violet translucent crystal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "calibrated sculk sensor crafting",
+            "armor trim material",
+            "amethyst block crafting",
+            "allay duplication"
+          ],
+          "confidence": 0.88,
+          "rationale": "tag duplicates_allays, calibrated_sculk_sensor in sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:slime_ball": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.9,
+          "rationale": "Organic mob-drop crafting material for sticky piston and slime block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.82,
+          "rationale": "Used for specific builds; sticky pistons and slime blocks are situational"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building",
+            "automation"
+          ],
+          "confidence": 0.85,
+          "rationale": "Sticky pistons (redstone/automation), slime blocks (building/mechanics)"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.87,
+          "rationale": "Organic mob drop from slimes"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "confidence": 0.85,
+          "rationale": "Bright vivid green slime color"
+        },
+        "primary_uses": {
+          "values": [
+            "sticky piston crafting",
+            "slime block building",
+            "magma cream for potions",
+            "frog food"
+          ],
+          "confidence": 0.88,
+          "rationale": "sample_ingredient_of: sticky_piston, slime_block, magma_cream; tag frog_food"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:netherite_ingot",
+      "facet": "rarity",
+      "current": "common",
+      "suggested": "rare",
+      "rationale": "Requires ancient debris mining (extremely rare in nether) plus multi-step crafting. Stage2 mirrors UI rarity label, not obtainability.",
+      "confidence": 0.9
+    },
+    {
+      "item": "minecraft:diamond",
+      "facet": "rarity",
+      "current": "common",
+      "suggested": "uncommon",
+      "rationale": "Requires deepslate-level mining; significantly less common than iron. Stage2 mirrors UI rarity label, not obtainability.",
+      "confidence": 0.82
+    },
+    {
+      "item": "minecraft:amethyst_shard",
+      "facet": "origin",
+      "current": [
+        "ancient_city",
+        "trial_chamber"
+      ],
+      "suggested": [
+        "ancient_city",
+        "trial_chamber",
+        "overworld_cave"
+      ],
+      "rationale": "Amethyst clusters grow in geodes in overworld caves; loot_source blocks/amethyst_cluster is present but overworld_cave was not derived.",
+      "confidence": 0.88
+    }
+  ]
+}

@@ -15,6 +15,9 @@ import { processingInRule } from "./rules/processing_in.ts";
 import { originRule } from "./rules/origin.ts";
 import { rarityRule } from "./rules/rarity.ts";
 import { yLevelRangeRule } from "./rules/y_level_range.ts";
+import { isCreativeOnlyRule } from "./rules/is_creative_only.ts";
+import { isFuelRule } from "./rules/is_fuel.ts";
+import { tierRule } from "./rules/tier.ts";
 
 /** The ordered rule set. Order matters only for the (rare) case where two rules
  *  assert the same single-value facet — earlier wins. We currently don't have
@@ -31,6 +34,9 @@ export const DEFAULT_RULES: Rule[] = [
   processingInRule,
   originRule,
   yLevelRangeRule,
+  isCreativeOnlyRule,
+  isFuelRule,
+  tierRule,
 ];
 
 export interface DeterministicRunOptions {

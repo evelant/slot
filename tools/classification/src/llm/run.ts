@@ -106,7 +106,23 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       model,
       ...options.clientOptions,
     });
-    const parsed = parseLlmResponse(responseText);
+    let parsed;
+    try {
+      parsed = parseLlmResponse(responseText);
+    } catch (err) {
+      // Per-batch parse failure is recoverable — record a warning and
+      // continue with the remaining batches rather than aborting the whole run.
+      warnings.push(`batch ${i + 1}: parse failed: ${(err as Error).message.slice(0, 200)}`);
+      options.onBatch?.({
+        batchIndex: i,
+        batchCount: batches.length,
+        items: batch.map((r) => r.id),
+        warnings: [`parse failure`],
+        parsed: 0,
+        elapsedMs: Date.now() - start,
+      });
+      continue;
+    }
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
     corrections.push(...parsed.corrections);
@@ -122,8 +138,13 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       let itemAdded = false;
       for (const [facetId, entry] of Object.entries(itemFacets.facets)) {
         if (existing[facetId]) {
-          // stage 2 already spoke — stage 3 must not clobber deterministic facets
-          warnings.push(`${itemId} ${facetId}: stage 2 already asserted; LLM value dropped`);
+          // stage 2 already spoke — stage 3 must not clobber deterministic facets.
+          // Only warn when the LLM's value actually disagrees with stage 2's; a
+          // same-value re-emission (common for wood-derivative is_fuel etc.) is
+          // harmless and just noise.
+          if (valuesDisagree(existing[facetId], entry)) {
+            warnings.push(`${itemId} ${facetId}: stage 2 asserted ${describeEntry(existing[facetId])}; LLM value ${describeEntry(toLayerEntry(entry))} dropped — add to corrections if clearly wrong`);
+          }
           continue;
         }
         next[facetId] = toLayerEntry(entry);
@@ -152,6 +173,41 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   };
 
   return { layer, filledItems, coverageAdded, proposals, corrections, warnings };
+}
+
+/** Compact string summary of a layer entry for warning text. */
+function describeEntry(entry: unknown): string {
+  if (!entry || typeof entry !== "object") return String(entry);
+  const e = entry as Record<string, unknown>;
+  if ("value" in e) return JSON.stringify(e.value);
+  if (Array.isArray(e.values)) return JSON.stringify(e.values);
+  return JSON.stringify(e);
+}
+
+/**
+ * True when the LLM's entry has at least one concrete value not already in
+ * the stage-2 entry. For single-value facets, "disagree" means a different
+ * value. For multi-value facets, "disagree" means the LLM is trying to add
+ * a value we don't have (i.e. LLM's values aren't a subset of existing).
+ * A same-value or subset re-emission is harmless and not a warning.
+ */
+function valuesDisagree(
+  existing: unknown,
+  llm: ParsedFacetEntry,
+): boolean {
+  if (!existing || typeof existing !== "object") return true;
+  const e = existing as Record<string, unknown>;
+  if (llm.kind === "single") {
+    return JSON.stringify(e.value) !== JSON.stringify(llm.value);
+  }
+  if (llm.kind === "ambiguous") {
+    // ambiguous is always meaningful — let it through as a disagreement.
+    return true;
+  }
+  // multi
+  const existingVals = Array.isArray(e.values) ? (e.values as unknown[]) : [];
+  const existingSet = new Set(existingVals.map((v) => JSON.stringify(v)));
+  return llm.values.some((v) => !existingSet.has(JSON.stringify(v)));
 }
 
 function chunk<T>(arr: readonly T[], size: number): T[][] {

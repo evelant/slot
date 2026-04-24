@@ -30,9 +30,11 @@ export interface QueryOptions {
 export class ClaudeCliClient implements LlmClient {
   async query(prompt: string, options: QueryOptions): Promise<string> {
     const bin = options.claudeBinary ?? "claude";
-    // 10 min default — Haiku batches of 20 items can take 2–3 minutes to
-    // emit a long JSON response; Sonnet retries on ambiguous items are slower.
-    const timeout = options.timeoutMs ?? 600_000;
+    // 30 min default — Haiku batches of 20 items finish in 2–3 min but
+    // Sonnet 4.6 routinely takes 7+ min on the first batch (cache warm-up
+    // + verbose output). Subsequent batches amortize faster but we still
+    // want headroom.
+    const timeout = options.timeoutMs ?? 1_800_000;
     // --tools "" disables tool use (prompt is pure classification, no tools
     // needed) and --dangerously-skip-permissions skips the workspace trust
     // dialog since this is a read-only text-in / text-out call.

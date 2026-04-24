@@ -135,6 +135,26 @@ describe("response parsing", () => {
     expect(parsed.warnings[0]!).toContain("not in enum");
   });
 
+  test("single 'value' for a multi facet is wrapped into [value]", () => {
+    const response = JSON.stringify({
+      items: {
+        "minecraft:iron_ingot": {
+          facets: {
+            flavor: { value: "plain", confidence: 0.8 },
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    const flavor = parsed.items.get("minecraft:iron_ingot")!.facets.flavor!;
+    expect(flavor.kind).toBe("multi");
+    if (flavor.kind === "multi") {
+      expect(flavor.values).toEqual(["plain"]);
+    }
+    // the wrap is informational — it still pushes a warning for observability
+    expect(parsed.warnings.some((w) => w.includes("wrapped as [value]"))).toBe(true);
+  });
+
   test("ambiguous two-value shape", () => {
     const response = JSON.stringify({
       items: {
@@ -264,9 +284,9 @@ describe("runStage3", () => {
       values: ["anvil repairs", "crafting tools and armor"],
     });
 
-    // merger should warn about the stage-2 clobber attempt
+    // merger should warn about the stage-2 clobber attempt (only when values disagree)
     const clobberWarn = result.warnings.find((w) =>
-      w.includes("material_family") && w.includes("stage 2 already asserted"),
+      w.includes("material_family") && w.includes("stage 2 asserted"),
     );
     expect(clobberWarn).toBeTruthy();
 

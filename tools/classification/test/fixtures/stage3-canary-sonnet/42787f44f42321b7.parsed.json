@@ -1,0 +1,228 @@
+{
+  "items": {
+    "minecraft:enchanting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "Enchants items using XP levels and lapis lazuli"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "confidence": 0.85,
+          "rationale": "4 obsidian blocks form the base structure"
+        },
+        "material_secondary": {
+          "values": [
+            "diamond",
+            "book"
+          ],
+          "confidence": 0.9,
+          "rationale": "2 diamonds and 1 book are required crafting components"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Used regularly for enchanting tools, weapons, and armor"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "confidence": 0.98,
+          "rationale": "Primary and sole function is applying enchantments to items"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "ancient"
+          ],
+          "confidence": 0.85,
+          "rationale": "Floating animated arcane tome with glowing rune particles"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "confidence": 0.8,
+          "rationale": "Dark obsidian base with glowing red animated book"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.8,
+          "rationale": "Not found in any structure loot table; only craftable"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "confidence": 0.75,
+          "rationale": "Emits ambient light from glowing book and particle effects"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting items with XP and lapis",
+            "boosted enchanting via bookshelves",
+            "XP and lapis sink"
+          ],
+          "confidence": 0.95,
+          "rationale": "Only vanilla block for applying primary enchantments to items"
+        }
+      }
+    },
+    "minecraft:anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "Used for repairing, renaming, and combining enchantments"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.95,
+          "rationale": "Crafted from 3 iron blocks + 4 iron ingots (31 total)"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used periodically for repairs and enchant combining, not daily"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "combat"
+          ],
+          "confidence": 0.85,
+          "rationale": "Combines enchanted books (enchanting) and repairs combat gear"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "Heavy utilitarian iron block with straightforward industrial look"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "confidence": 0.8,
+          "rationale": "Dark grey matte iron texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.85,
+          "rationale": "No natural loot table sources; only craftable"
+        },
+        "primary_uses": {
+          "values": [
+            "repairing items with materials",
+            "combining enchantments from books",
+            "renaming items"
+          ],
+          "confidence": 0.95,
+          "rationale": "Core uses: item repair, enchant combining, renaming"
+        }
+      }
+    },
+    "minecraft:composter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.9,
+          "rationale": "Converts plant materials into bone meal over time"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.85,
+          "rationale": "Crafted from 7 wooden slabs of any wood type"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "Used in farms for bone meal; not an everyday carried item"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use is generating bone meal from plant byproducts"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "Simple wooden container; utilitarian farm equipment"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "wood_dark"
+          ],
+          "confidence": 0.75,
+          "rationale": "Wooden slat construction with darker interior tones"
+        },
+        "origin": {
+          "values": [
+            "village"
+          ],
+          "confidence": 0.85,
+          "rationale": "Spawns naturally in village farm plots as farmer job site block"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.85,
+          "rationale": "Wood construction makes it flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "converting plant scraps to bone meal",
+            "farmer villager job site",
+            "compost-loop automation"
+          ],
+          "confidence": 0.9,
+          "rationale": "Core use is bone meal production from otherwise wasted plant items"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:shulker_box",
+      "facet": "rarity",
+      "current": "common",
+      "suggested": "uncommon",
+      "rationale": "Requires End travel and killing shulkers in End Cities; significant progression barrier",
+      "confidence": 0.75
+    },
+    {
+      "item": "minecraft:ender_chest",
+      "facet": "rarity",
+      "current": "common",
+      "suggested": "uncommon",
+      "rationale": "Requires diamond pickaxe to mine obsidian + eye of ender needing nether blaze rods",
+      "confidence": 0.8
+    },
+    {
+      "item": "minecraft:enchanting_table",
+      "facet": "rarity",
+      "current": "common",
+      "suggested": "uncommon",
+      "rationale": "Requires diamonds (uncommon gem) and obsidian (needs diamond pickaxe + lava exposure)",
+      "confidence": 0.75
+    }
+  ]
+}

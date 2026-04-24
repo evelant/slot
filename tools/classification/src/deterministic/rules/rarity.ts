@@ -1,17 +1,17 @@
 import type { Rule } from "../types.ts";
 
 /**
- * `rarity` has a direct component in vanilla (`minecraft:rarity`) with values
- * `common` / `uncommon` / `rare` / `epic`. Our enum uses different labels
- * — `abundant` / `common` / `uncommon` / `rare` / `unique` — so we map:
- *   common   -> common
- *   uncommon -> uncommon
- *   rare     -> rare
- *   epic     -> unique
+ * `rarity` is *acquisition difficulty* per the plan's §7 definition, but
+ * vanilla's `minecraft:rarity` component is actually the **display-name color**
+ * — it's `common` on everything from cobblestone to ancient_debris. Using it
+ * verbatim gave us `rarity=common` on netherite_ingot and ancient_debris,
+ * which the sonnet canary correctly flagged as wrong.
  *
- * The `abundant` bucket isn't expressible from components alone (it needs
- * usage / frequency judgement), so we emit with `mode: override-if-null` to
- * let a richer signal from stage 3 replace us.
+ * New policy: only fire when the component is informative — `uncommon`,
+ * `rare`, or `epic` (→ `unique`). For `common`, skip and let stage 3 judge.
+ * That gets us the obvious wins (totems/unique items/enchanted books) without
+ * polluting the "common" bucket with items stage 3 would classify as
+ * uncommon or rare.
  */
 export const rarityRule: Rule = {
   id: "rarity",
@@ -24,8 +24,7 @@ export const rarityRule: Rule = {
       raw === "epic" ? "unique" :
       raw === "rare" ? "rare" :
       raw === "uncommon" ? "uncommon" :
-      raw === "common" ? "common" :
-      null;
+      null; // skip `common` — too noisy, stage 3 fills
     if (!value) return [];
     return [
       {
