@@ -173,6 +173,46 @@ describe("response parsing", () => {
     expect(parsed.proposals.length).toBe(1);
     expect(parsed.proposals[0]!.kind).toBe("add_value");
   });
+
+  test("corrections at >= 0.7 confidence are retained", () => {
+    const response = JSON.stringify({
+      items: {},
+      corrections: [
+        {
+          item: "minecraft:iron_ingot",
+          facet: "material_family",
+          current: "wood_oak",
+          suggested: "iron",
+          rationale: "Item is clearly iron; stage 2 misread the tag.",
+          confidence: 0.95,
+        },
+        {
+          item: "minecraft:foo",
+          facet: "form",
+          current: "ingot",
+          suggested: "nugget",
+          rationale: "uncertain",
+          confidence: 0.3,
+        },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.corrections.length).toBe(1);
+    expect(parsed.corrections[0]!.item).toBe("minecraft:iron_ingot");
+    expect(parsed.warnings.some((w) => w.includes("below confidence"))).toBe(true);
+  });
+
+  test("corrections with missing fields are dropped with a warning", () => {
+    const response = JSON.stringify({
+      items: {},
+      corrections: [
+        { item: "minecraft:iron_ingot", facet: "form" /* no rationale */ },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.corrections.length).toBe(0);
+    expect(parsed.warnings.length).toBe(1);
+  });
 });
 
 describe("runStage3", () => {

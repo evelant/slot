@@ -46,16 +46,18 @@ export interface LlmPromptInput {
 }
 
 const SYSTEM_PREAMBLE = `You are classifying Minecraft items for an inventory mod called Slot. \
-For each input item you will emit a concise facet record per the schema below. \
+For each input item you will emit a concise facet record per the schema below.
+
 Rules:
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
+- Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit \`null\`, empty arrays, or placeholder values.
 - For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
 - Attach a \`confidence\` 0.0–1.0 to every facet; <0.4 means "I'm guessing."
 - Attach a short \`rationale\` per facet (≤120 chars) — what in the inputs led to the value.
-- If the item's lore or tooltip explicitly names a behaviour, weight that over generic defaults.
+- If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
-- Don't re-assert facets listed under \`stage2_facets\` — those are already fixed.
-- Output strict JSON, no markdown, no commentary, no code fences.`;
+- Don't re-emit facets listed under \`stage2_facets\` inside \`facets\` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level \`corrections\` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
+- Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.`;
 
 /**
  * Build the LLM prompt for a batch. The prompt is plain text with embedded JSON
@@ -105,25 +107,45 @@ function renderSchemaForPrompt(targetFacets: readonly string[]): string {
 
 function renderExpectedOutput(targetFacets: readonly string[]): string {
   const exampleFacet = chooseExampleFacet(targetFacets);
-  return `\`\`\`
-{
-  "items": {
-    "<item_id>": {
-      "facets": {
-        "${exampleFacet.facet}": ${JSON.stringify(exampleFacet.entry)}
-        // …more facets…
-      }
-    }
-  },
-  "schema_proposals": [
-    // optional — only when you wanted a value that isn't in the schema
-    { "kind": "add_value", "facet": "<facet_id>", "value": "<new_value>", "rationale": "…" }
-  ]
+  const exampleMulti = chooseMultiExampleFacet(targetFacets);
+  const shape = {
+    items: {
+      "<item_id>": {
+        facets: {
+          [exampleFacet.facet]: exampleFacet.entry,
+          [exampleMulti.facet]: exampleMulti.entry,
+        },
+      },
+    },
+    schema_proposals: [],
+    corrections: [],
+  };
+  return [
+    "Structure (pure JSON, no comments):",
+    JSON.stringify(shape, null, 2),
+    "",
+    "Field rules:",
+    "- Single-value facets (enum / free_text / boolean): `value: <scalar>`.",
+    "- Multi-value facets (multi_enum / multi_free_text): `values: [<scalar>, ...]`.",
+    "- Ambiguous single-value (enum / free_text only): `values: [a, b]` AND `ambiguous: true`.",
+    "- `schema_proposals` (optional top-level array, default `[]`): use when you want a value the schema doesn't include. Each entry is `{kind: 'add_value', facet, value, rationale}` or `{kind: 'add_facet', name, suggested_kind, rationale}`.",
+    "- `corrections` (optional top-level array, default `[]`): use when a stage 2 facet is clearly wrong. Each entry is `{item, facet, current, suggested, rationale, confidence}` — confidence ≥ 0.7 required.",
+  ].join("\n");
 }
-\`\`\`
 
-For multi_enum / multi_free_text facets, use \`"values": [...]\` (an array) instead of \`"value"\`.
-For the ambiguous single-value case, use \`"values": [a, b]\` AND \`"ambiguous": true\`.`;
+function chooseMultiExampleFacet(targetFacets: readonly string[]): {
+  facet: string;
+  entry: Record<string, unknown>;
+} {
+  for (const candidate of ["activity", "primary_uses", "flavor"]) {
+    if (!targetFacets.includes(candidate)) continue;
+    const def = FACETS[candidate]!;
+    return {
+      facet: candidate,
+      entry: exampleEntryFor(candidate, def),
+    };
+  }
+  return chooseExampleFacet(targetFacets);
 }
 
 function chooseExampleFacet(targetFacets: readonly string[]): {

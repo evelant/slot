@@ -20,6 +20,11 @@ import {
   type LlmClient,
 } from "./llm/client.ts";
 import { runStage3 } from "./llm/run.ts";
+import {
+  buildBatchPrompt,
+  buildItemPayload,
+  defaultTargetFacets,
+} from "./llm/prompt.ts";
 import { VANILLA_CANARY_ITEMS } from "./llm/canary.ts";
 
 const TOOL_VERSION = "slot-classify v0.1.0";
@@ -232,11 +237,12 @@ async function executeStage3(
   const n = only?.length ?? records.length;
   console.log(`[stage3] running against ${n} items${only ? " (sampled)" : ""}`);
 
-  const client = buildClient(opts);
   if (opts.dryRun) {
-    console.log(`[stage3] --dry-run: skipping LLM call. Exiting after prompt validation.`);
+    await dryRunStage3(records, stage2Layer, only, opts, dirname(completePath));
     return;
   }
+
+  const client = buildClient(opts);
 
   const result = await runStage3({
     records,
@@ -274,10 +280,77 @@ async function executeStage3(
     console.log(`[stage3] ${result.proposals.length} schema proposals (review before schema v2):`);
     for (const p of result.proposals.slice(0, 10)) console.log(`  ${JSON.stringify(p)}`);
   }
+  if (result.corrections.length) {
+    const correctionsPath = completePath.replace(/\.complete\.json$/, ".corrections.json");
+    writeFileSync(correctionsPath, JSON.stringify(result.corrections, null, 2) + "\n");
+    console.log(`[stage3] ${result.corrections.length} stage-2 corrections flagged by LLM — ${correctionsPath}`);
+    for (const c of result.corrections.slice(0, 10)) {
+      console.log(`  ${c.item} ${c.facet}: current='${c.current}' → suggested='${c.suggested}' (${c.confidence ?? "?"}): ${c.rationale}`);
+    }
+  }
   if (result.warnings.length) {
     console.log(`[stage3] ${result.warnings.length} warnings:`);
     for (const w of result.warnings.slice(0, 10)) console.log(`  ${w}`);
   }
+}
+
+/**
+ * Build and persist the prompts without calling the LLM. Writes one prompt
+ * file per batch + a summary so the prompt content can be eyeballed before
+ * we commit to tokens.
+ */
+async function dryRunStage3(
+  records: readonly ItemExtractRecord[],
+  stage2Layer: LayerFile,
+  only: readonly string[] | undefined,
+  opts: Stage3CliOptions,
+  outDir: string,
+) {
+  const batchSize = opts.batchSize ?? 20;
+  const targetFacets = defaultTargetFacets();
+  const recordIndex = new Map(records.map((r) => [r.id, r]));
+
+  const selected = only
+    ? (only.map((id) => recordIndex.get(id)).filter((r): r is ItemExtractRecord => !!r))
+    : records;
+
+  const batches: ItemExtractRecord[][] = [];
+  for (let i = 0; i < selected.length; i += batchSize) {
+    batches.push(selected.slice(i, i + batchSize));
+  }
+
+  const dryRunDir = join(outDir, "stage3-dry-run");
+  mkdirSync(dryRunDir, { recursive: true });
+
+  const summary: Array<{ batch: number; items: string[]; file: string; chars: number; approxTokens: number }> = [];
+  for (let i = 0; i < batches.length; i++) {
+    const batch = batches[i]!;
+    const payloads = batch.map((record) => {
+      const stage2 = stage2Layer.entries[record.id]?.facets ?? {};
+      return buildItemPayload(record, stage2);
+    });
+    const prompt = buildBatchPrompt({ items: payloads, target_facets: targetFacets });
+    const file = join(dryRunDir, `batch-${String(i + 1).padStart(2, "0")}.prompt.txt`);
+    writeFileSync(file, prompt);
+    summary.push({
+      batch: i + 1,
+      items: batch.map((r) => r.id),
+      file,
+      chars: prompt.length,
+      approxTokens: Math.round(prompt.length / 4),
+    });
+  }
+
+  const summaryFile = join(dryRunDir, "summary.json");
+  writeFileSync(summaryFile, JSON.stringify(summary, null, 2) + "\n");
+
+  console.log(`[stage3] dry run: wrote ${batches.length} prompt(s) to ${dryRunDir}`);
+  for (const s of summary) {
+    console.log(
+      `  batch ${s.batch}: ${s.items.length} items, ${s.chars} chars (~${s.approxTokens} tokens) → ${s.file.split("/").slice(-2).join("/")}`,
+    );
+  }
+  console.log(`  summary → ${summaryFile}`);
 }
 
 function resolveSample(

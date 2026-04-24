@@ -6,14 +6,26 @@ import {
 
 /**
  * Parsed output from a single LLM batch. Callers merge `items` into the layer
- * file and aggregate `proposals` for curator review.
+ * file and aggregate `proposals` and `corrections` for curator review.
  */
 export interface ParsedLlmResponse {
   items: Map<string, ParsedItemFacets>;
   proposals: SchemaProposal[];
+  /** Flags from the LLM that a stage-2 facet looks wrong. These are never
+   *  merged into the layer automatically — they surface for human review. */
+  corrections: StageCorrection[];
   /** Non-fatal issues (unknown facet, value out of enum, etc.) — the
    *  affected entries are dropped but the rest of the response is kept. */
   warnings: string[];
+}
+
+export interface StageCorrection {
+  item: string;
+  facet: string;
+  current?: string | number | boolean | null;
+  suggested?: string | number | boolean | null;
+  rationale: string;
+  confidence?: number;
 }
 
 export interface ParsedItemFacets {
@@ -73,6 +85,7 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
 
   const rootItems = (parsed as { items?: unknown }).items;
   const rootProposals = (parsed as { schema_proposals?: unknown }).schema_proposals;
+  const rootCorrections = (parsed as { corrections?: unknown }).corrections;
 
   const items = new Map<string, ParsedItemFacets>();
   if (rootItems && typeof rootItems === "object") {
@@ -89,7 +102,32 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
     }
   }
 
-  return { items, proposals, warnings };
+  const corrections: StageCorrection[] = [];
+  if (Array.isArray(rootCorrections)) {
+    for (const raw of rootCorrections) {
+      if (!raw || typeof raw !== "object") continue;
+      const c = raw as Record<string, unknown>;
+      if (typeof c.item !== "string" || typeof c.facet !== "string" || typeof c.rationale !== "string") {
+        warnings.push(`correction missing required field(s): ${JSON.stringify(raw).slice(0, 120)}`);
+        continue;
+      }
+      const confidence = typeof c.confidence === "number" ? c.confidence : undefined;
+      if (confidence !== undefined && confidence < 0.7) {
+        warnings.push(`correction for ${c.item} ${c.facet} below confidence threshold (${confidence}); dropped`);
+        continue;
+      }
+      corrections.push({
+        item: c.item,
+        facet: c.facet,
+        current: c.current as StageCorrection["current"],
+        suggested: c.suggested as StageCorrection["suggested"],
+        rationale: c.rationale,
+        confidence,
+      });
+    }
+  }
+
+  return { items, proposals, corrections, warnings };
 }
 
 function parseItemEntry(

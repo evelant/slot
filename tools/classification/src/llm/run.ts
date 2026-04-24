@@ -11,6 +11,7 @@ import {
   parseLlmResponse,
   type ParsedFacetEntry,
   type SchemaProposal,
+  type StageCorrection,
 } from "./parse.ts";
 
 export interface Stage3Options {
@@ -54,6 +55,8 @@ export interface Stage3Result {
   coverageAdded: Record<string, number>;
   /** Aggregated schema proposals for curator review. */
   proposals: SchemaProposal[];
+  /** Aggregated stage-2 corrections the LLM suggested (NOT auto-merged). */
+  corrections: StageCorrection[];
   /** Warnings collected across all batches. */
   warnings: string[];
 }
@@ -81,6 +84,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const batches = chunk(selected, batchSize);
   const warnings: string[] = [];
   const proposals: SchemaProposal[] = [];
+  const corrections: StageCorrection[] = [];
   const coverageAdded: Record<string, number> = {};
 
   // Deep-clone only what we'll mutate; the entries map itself is new but
@@ -105,6 +109,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     const parsed = parseLlmResponse(responseText);
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
+    corrections.push(...parsed.corrections);
 
     for (const [itemId, itemFacets] of parsed.items) {
       if (!recordIndex.has(itemId)) {
@@ -146,7 +151,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     generated_at: new Date().toISOString(),
   };
 
-  return { layer, filledItems, coverageAdded, proposals, warnings };
+  return { layer, filledItems, coverageAdded, proposals, corrections, warnings };
 }
 
 function chunk<T>(arr: readonly T[], size: number): T[][] {
