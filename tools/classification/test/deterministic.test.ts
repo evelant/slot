@@ -19,7 +19,8 @@ function record(overrides: Partial<ItemExtractRecord>): ItemExtractRecord {
     path: "x",
     display_name: null,
     minecraft_tags: [],
-    recipe_role: { ingredient_of: [], output_of: [], in_degree: 0, out_degree: 0 },
+    minecraft_tags_direct: [],
+    recipe_role: { ingredient_of: [], output_of: [], in_degree: 0, out_degree: 0, ingredient_of_counts: {}, output_of_counts: {} },
     model_parents: [],
     loot_table_sources: [],
     creative_tabs: [],
@@ -165,6 +166,8 @@ describe("processingInRule", () => {
         output_of: [],
         in_degree: 2,
         out_degree: 0,
+        ingredient_of_counts: { smelting: 1, blasting: 1 },
+        output_of_counts: {},
       },
     });
     const out = processingInRule.run(ctx(rec, {
@@ -182,7 +185,7 @@ describe("processingInRule", () => {
 
   test("unknown recipe type passes through", () => {
     const rec = record({
-      recipe_role: { ingredient_of: ["create:milling_xyz"], output_of: [], in_degree: 1, out_degree: 0 },
+      recipe_role: { ingredient_of: ["create:milling_xyz"], output_of: [], in_degree: 1, out_degree: 0, ingredient_of_counts: {}, output_of_counts: {} },
     });
     const out = processingInRule.run(ctx(rec, {
       recipeTypes: new Map([["create:milling_xyz", "create:milling"]]),

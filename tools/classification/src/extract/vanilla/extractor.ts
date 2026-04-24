@@ -1,5 +1,5 @@
 import type { ItemExtractRecord, ExtractRunMeta } from "../record.ts";
-import { buildItemTagClosure } from "../tags.ts";
+import { buildItemTagClosure, buildItemTagMembership } from "../tags.ts";
 import { buildRecipeRoles } from "../recipes.ts";
 import { buildLootSources } from "../loot.ts";
 import { resolveModelParents } from "../models.ts";
@@ -39,7 +39,7 @@ export function extractFromBundle(
 ): VanillaExtractResult {
   const itemIds = bundle.registries.item ?? [];
   const itemTagMembers = tagMembersOnly(bundle.itemTags, VANILLA_NAMESPACE);
-  const tagClosure = buildItemTagClosure(bundle.itemTags, VANILLA_NAMESPACE);
+  const tagMembership = buildItemTagMembership(bundle.itemTags, VANILLA_NAMESPACE);
   const recipeRoles = buildRecipeRoles(
     bundle.recipes,
     VANILLA_NAMESPACE,
@@ -57,17 +57,21 @@ export function extractFromBundle(
       ?? enUs[`block.${VANILLA_NAMESPACE}.${shortId}`]
       ?? null;
 
+    const membership = tagMembership.get(id);
     records.push({
       id,
       namespace: VANILLA_NAMESPACE,
       path: shortId,
       display_name: displayName,
-      minecraft_tags: tagClosure.get(id) ?? [],
+      minecraft_tags: membership?.all ?? [],
+      minecraft_tags_direct: membership?.direct ?? [],
       recipe_role: recipeRoles.get(id) ?? {
         ingredient_of: [],
         output_of: [],
         in_degree: 0,
         out_degree: 0,
+        ingredient_of_counts: {},
+        output_of_counts: {},
       },
       model_parents: resolveModelParents(definition, bundle.models),
       loot_table_sources: lootSources.get(id) ?? [],

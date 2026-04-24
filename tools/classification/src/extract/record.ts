@@ -22,6 +22,13 @@ export interface ItemExtractRecord {
    */
   minecraft_tags: string[];
   /**
+   * Subset of `minecraft_tags` listing only tags where this item appears as
+   * a direct member (not through a `#tag` reference). Usually a stronger
+   * classification signal — a direct tag means someone consciously added
+   * this item to that tag.
+   */
+  minecraft_tags_direct: string[];
+  /**
    * How this item participates in recipes. `ingredient_of` and `output_of`
    * are de-duplicated lists of recipe ids (fully-qualified).
    */
@@ -57,6 +64,17 @@ export interface RecipeRole {
   in_degree: number;
   /** Count of `output_of`. */
   out_degree: number;
+  /**
+   * Count of consumption-recipes grouped by recipe type (the bare vanilla
+   * type name without the `minecraft:` prefix, e.g. `crafting_shaped`,
+   * `smelting`, `smithing_transform`). Lets stage 3 see how the item is
+   * weighted across recipe categories without enumerating every recipe.
+   * E.g. iron_ingot → { crafting_shaped: 38, crafting_shapeless: 4,
+   * smithing_transform: 6, … }.
+   */
+  ingredient_of_counts: Record<string, number>;
+  /** Production-recipe count per type, same shape as above. */
+  output_of_counts: Record<string, number>;
 }
 
 export interface ExtractRunMeta {

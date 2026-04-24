@@ -134,6 +134,8 @@ describe("extractFromBundle", () => {
       output_of: [],
       in_degree: 0,
       out_degree: 0,
+      ingredient_of_counts: {},
+      output_of_counts: {},
     });
     expect(mystery.model_parents).toEqual([]);
     expect(mystery.loot_table_sources).toEqual([]);

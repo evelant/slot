@@ -22,11 +22,14 @@ function ironIngotRecord(): ItemExtractRecord {
     path: "iron_ingot",
     display_name: "Iron Ingot",
     minecraft_tags: ["minecraft:iron_tool_materials"],
+    minecraft_tags_direct: ["minecraft:iron_tool_materials"],
     recipe_role: {
       ingredient_of: ["minecraft:iron_pickaxe"],
       output_of: ["minecraft:iron_ingot_from_smelting_iron_ore"],
       in_degree: 1,
       out_degree: 1,
+      ingredient_of_counts: { crafting_shaped: 1 },
+      output_of_counts: { smelting: 1 },
     },
     model_parents: ["item/iron_ingot", "item/generated"],
     loot_table_sources: ["minecraft:chests/simple_dungeon"],
@@ -86,6 +89,8 @@ describe("prompt building", () => {
       output_of: [],
       in_degree: 50,
       out_degree: 0,
+      ingredient_of_counts: { crafting_shaped: 50 },
+      output_of_counts: {},
     };
     r.loot_table_sources = Array.from({ length: 30 }, (_, i) => `minecraft:t${i}`);
     const p = buildItemPayload(r, {});
@@ -543,7 +548,8 @@ describe("runStage3Retry", () => {
       path: "mystery",
       display_name: "Mystery Item",
       minecraft_tags: [],
-      recipe_role: { ingredient_of: [], output_of: [], in_degree: 0, out_degree: 0 },
+      minecraft_tags_direct: [],
+      recipe_role: { ingredient_of: [], output_of: [], in_degree: 0, out_degree: 0, ingredient_of_counts: {}, output_of_counts: {} },
       model_parents: [],
       loot_table_sources: [],
       creative_tabs: [],

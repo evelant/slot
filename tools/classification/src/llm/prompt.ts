@@ -11,10 +11,29 @@ export interface LlmItemPayload {
   id: string;
   display_name: string | null;
   namespace: string;
-  minecraft_tags: readonly string[];
+  /**
+   * Tags where this item is a **direct** listed member (not via a #tag
+   * reference). Strongest classification signal; show first.
+   */
+  minecraft_tags_direct: readonly string[];
+  /**
+   * Tags reached **transitively** via nested #tag references, excluding the
+   * direct ones. Weaker but still useful context (e.g. oak_planks → `planks`
+   * is direct, → `wooden_tool_materials` is inherited via `#planks`).
+   */
+  minecraft_tags_inherited: readonly string[];
   /** Short list of recipe types this item is consumed in (from stage 2 output). */
   processing_in: readonly string[];
-  /** Top-10 of the hundreds-element recipe lists — enough for shape signal. */
+  /**
+   * Count of recipes consuming this item, grouped by recipe type —
+   * e.g. { crafting_shaped: 38, smelting: 8, smithing_transform: 6 }.
+   * Lets the LLM weigh the item's role across recipe categories without
+   * re-deriving it from a flat id list.
+   */
+  recipe_consumption_by_type: Record<string, number>;
+  /** Count of recipes producing this item, grouped by recipe type. */
+  recipe_production_by_type: Record<string, number>;
+  /** Top-10 of the hundreds-element recipe lists — concrete examples. */
   sample_ingredient_of: readonly string[];
   /** Handful of output recipes. */
   sample_output_of: readonly string[];
@@ -337,12 +356,18 @@ export function buildItemPayload(
   // pull the array directly so the LLM doesn't have to re-derive it.
   const processingIn = extractProcessingIn(stage2Facets["processing_in"]);
 
+  const directTags = new Set(record.minecraft_tags_direct);
+  const inheritedTags = record.minecraft_tags.filter((t) => !directTags.has(t));
+
   return {
     id: record.id,
     namespace: record.namespace,
     display_name: record.display_name,
-    minecraft_tags: record.minecraft_tags,
+    minecraft_tags_direct: record.minecraft_tags_direct,
+    minecraft_tags_inherited: inheritedTags,
     processing_in: processingIn,
+    recipe_consumption_by_type: record.recipe_role.ingredient_of_counts ?? {},
+    recipe_production_by_type: record.recipe_role.output_of_counts ?? {},
     sample_ingredient_of: record.recipe_role.ingredient_of.slice(0, 10),
     sample_output_of: record.recipe_role.output_of.slice(0, 10),
     model_parents: record.model_parents,

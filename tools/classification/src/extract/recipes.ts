@@ -23,50 +23,57 @@ export function buildRecipeRoles(
 ): Map<string, RecipeRole> {
   const ingredientOf = new Map<string, Set<string>>();
   const outputOf = new Map<string, Set<string>>();
+  const ingredientCounts = new Map<string, Map<string, number>>();
+  const outputCounts = new Map<string, Map<string, number>>();
 
-  const addIngredient = (itemId: string, recipeId: string) => {
-    const bucket = ingredientOf.get(itemId) ?? new Set<string>();
-    bucket.add(recipeId);
-    ingredientOf.set(itemId, bucket);
-  };
-  const addOutput = (itemId: string, recipeId: string) => {
-    const bucket = outputOf.get(itemId) ?? new Set<string>();
-    bucket.add(recipeId);
-    outputOf.set(itemId, bucket);
+  const bump = (
+    counts: Map<string, Map<string, number>>,
+    itemId: string,
+    type: string,
+  ) => {
+    const bucket = counts.get(itemId) ?? new Map<string, number>();
+    bucket.set(type, (bucket.get(type) ?? 0) + 1);
+    counts.set(itemId, bucket);
   };
 
   for (const [shortId, recipe] of Object.entries(recipes)) {
     const recipeId = normalize(shortId, defaultNamespace);
+    const type = shortRecipeType(recipe.type);
+
+    // Dedup ingredient items within a recipe so a shaped pattern that uses
+    // the same key twice counts as one contribution for this recipe.
+    const seenIngredients = new Set<string>();
+    const ingest = (value: unknown) => {
+      collectIngredientItems(value, defaultNamespace, tagMembers).forEach(
+        (itemId) => {
+          if (seenIngredients.has(itemId)) return;
+          seenIngredients.add(itemId);
+          const bucket = ingredientOf.get(itemId) ?? new Set<string>();
+          bucket.add(recipeId);
+          ingredientOf.set(itemId, bucket);
+          bump(ingredientCounts, itemId, type);
+        },
+      );
+    };
 
     for (const field of INGREDIENT_FIELDS) {
       const value = (recipe as Record<string, unknown>)[field];
-      if (value === undefined) continue;
-      collectIngredientItems(value, defaultNamespace, tagMembers).forEach(
-        (itemId) => addIngredient(itemId, recipeId),
-      );
+      if (value !== undefined) ingest(value);
     }
-
-    // `key` on shaped recipes maps pattern char -> ingredient
     if (recipe.key && typeof recipe.key === "object") {
-      for (const value of Object.values(recipe.key)) {
-        collectIngredientItems(value, defaultNamespace, tagMembers).forEach(
-          (itemId) => addIngredient(itemId, recipeId),
-        );
-      }
+      for (const value of Object.values(recipe.key)) ingest(value);
     }
-
-    // `shapes` on firework_star: { burst: ing, creeper: ing, ... }
     if (recipe.shapes && typeof recipe.shapes === "object") {
-      for (const value of Object.values(recipe.shapes)) {
-        collectIngredientItems(value, defaultNamespace, tagMembers).forEach(
-          (itemId) => addIngredient(itemId, recipeId),
-        );
-      }
+      for (const value of Object.values(recipe.shapes)) ingest(value);
     }
 
-    // result can be a string id or an object with `id`
     const resultId = extractResultId(recipe.result, defaultNamespace);
-    if (resultId) addOutput(resultId, recipeId);
+    if (resultId) {
+      const bucket = outputOf.get(resultId) ?? new Set<string>();
+      bucket.add(recipeId);
+      outputOf.set(resultId, bucket);
+      bump(outputCounts, resultId, type);
+    }
   }
 
   const result = new Map<string, RecipeRole>();
@@ -82,9 +89,25 @@ export function buildRecipeRoles(
       output_of: out,
       in_degree: ing.length,
       out_degree: out.length,
+      ingredient_of_counts: mapToObject(ingredientCounts.get(item)),
+      output_of_counts: mapToObject(outputCounts.get(item)),
     });
   }
   return result;
+}
+
+/** Strip the `minecraft:` prefix off a recipe type (`minecraft:smelting` →
+ *  `smelting`). Mod-authored types keep their namespace prefix. */
+function shortRecipeType(type: string | undefined): string {
+  if (!type) return "unknown";
+  return type.startsWith("minecraft:") ? type.slice("minecraft:".length) : type;
+}
+
+function mapToObject(m: Map<string, number> | undefined): Record<string, number> {
+  const out: Record<string, number> = {};
+  if (!m) return out;
+  for (const [k, v] of m) out[k] = v;
+  return out;
 }
 
 const INGREDIENT_FIELDS = [

@@ -13,10 +13,59 @@ import type { TagJson } from "./vanilla/source.ts";
  * The `replace: true` flag means "the lower layer's members are discarded" —
  * vanilla's own summary never sets this, but we honor it for completeness.
  */
+export interface ItemTagMembership {
+  /** Full transitive closure of tags this item belongs to. */
+  all: string[];
+  /** Subset of `all`: tags where this item appears as a direct listed member
+   *  (not via a nested `#tag` reference). Usually the stronger signal for
+   *  classification. */
+  direct: string[];
+}
+
+/**
+ * Like `buildItemTagClosure` but returns a richer membership object that
+ * splits direct vs transitive memberships. Prefer this over the legacy
+ * closure-only helper when the caller wants to weight direct tags higher.
+ */
+export function buildItemTagMembership(
+  itemTags: Record<string, TagJson>,
+  defaultNamespace: string,
+): Map<string, ItemTagMembership> {
+  const { closure, directPerItem } = buildTagIndices(itemTags, defaultNamespace);
+  const out = new Map<string, ItemTagMembership>();
+  for (const [item, all] of closure) {
+    out.set(item, {
+      all: [...all].sort(),
+      direct: [...(directPerItem.get(item) ?? new Set<string>())].sort(),
+    });
+  }
+  return out;
+}
+
 export function buildItemTagClosure(
   itemTags: Record<string, TagJson>,
   defaultNamespace: string,
 ): Map<string, string[]> {
+  const { closure } = buildTagIndices(itemTags, defaultNamespace);
+  const result = new Map<string, string[]>();
+  for (const [item, tags] of closure) {
+    result.set(item, [...tags].sort());
+  }
+  return result;
+}
+
+/**
+ * Shared core for `buildItemTagClosure` and `buildItemTagMembership`:
+ * returns both the item→transitive-tag-closure map and the
+ * item→direct-tag-only map computed off the same data.
+ */
+function buildTagIndices(
+  itemTags: Record<string, TagJson>,
+  defaultNamespace: string,
+): {
+  closure: Map<string, Set<string>>;
+  directPerItem: Map<string, Set<string>>;
+} {
   // direct members: tag id -> set of item ids (both fully-qualified)
   const directMembers = new Map<string, Set<string>>();
   // tag id -> set of sub-tag ids it references
@@ -67,21 +116,27 @@ export function buildItemTagClosure(
     }
   }
 
-  // Invert: item id -> tag ids.
-  const itemToTags = new Map<string, Set<string>>();
+  // Invert closure: item id -> tag ids (transitive)
+  const closure = new Map<string, Set<string>>();
   for (const [tagId, items] of fullMembers) {
     for (const item of items) {
-      const bucket = itemToTags.get(item) ?? new Set<string>();
+      const bucket = closure.get(item) ?? new Set<string>();
       bucket.add(tagId);
-      itemToTags.set(item, bucket);
+      closure.set(item, bucket);
     }
   }
 
-  const result = new Map<string, string[]>();
-  for (const [item, tags] of itemToTags) {
-    result.set(item, [...tags].sort());
+  // Invert direct-only: item id -> tag ids where item is a direct member
+  const directPerItem = new Map<string, Set<string>>();
+  for (const [tagId, items] of directMembers) {
+    for (const item of items) {
+      const bucket = directPerItem.get(item) ?? new Set<string>();
+      bucket.add(tagId);
+      directPerItem.set(item, bucket);
+    }
   }
-  return result;
+
+  return { closure, directPerItem };
 }
 
 function normalize(id: string, defaultNamespace: string): string {
