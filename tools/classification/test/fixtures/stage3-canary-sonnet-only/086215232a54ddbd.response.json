@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 291430,
+  "duration_api_ms": 292438,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:diamond_pickaxe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"pickaxe suffix = mining tool\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs 3 diamonds; mid-game gating\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary mining tool for mid-late game\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mines blocks; backup melee weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard vanilla tool aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond = crystalline light-blue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mine ores and stone at diamond speed\",\n            \"harvest all ore drops correctly\",\n            \"base for netherite pickaxe upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core mining tool function\"\n        }\n      }\n    },\n    \"minecraft:netherite_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"sword suffix = melee weapon\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ancient_debris chain + smithing required\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"end-game primary combat weapon\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"melee weapon; combat is primary role\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard weapon form factor\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite = dark grey metallic\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\", \"lava_safe\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:damage_resistant types:#minecraft:is_fire\",\n          \"rationale\": \"is_fire component = item won't burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"melee combat\",\n            \"boss fights\",\n            \"end-game PvP\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"highest-tier sword use cases\"\n        }\n      }\n    },\n    \"minecraft:mace\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mace is a melee weapon\"\n        },\n        \"material_family\": {\n          \"value\": \"heavy_core\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy_core is primary mace ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"breeze_rod\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"breeze_rod is shaft and repair material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche fall-attack; not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exclusive melee combat weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"epic rarity; unique weapon model\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy brown-gold mace head texture\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy_core from trial ominous vault\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"fall-height bonus damage strikes\",\n            \"opening burst damage on bosses\",\n            \"unique epic melee weapon\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mace fall-damage mechanic\"\n        }\n      }\n    },\n    \"minecraft:trident\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"melee + ranged thrown weapon\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche: water/Riptide/Channeling builds\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combat primary; Riptide enables travel\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oceanic/drowned weapon aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aqua-teal ocean weapon colouring\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"drowned mobs drop tridents\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"water melee and thrown combat\",\n            \"Riptide-based aerial travel\",\n            \"Channeling lightning strikes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trident enchantment use cases\"\n        }\n      }\n    },\n    \"minecraft:crossbow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ranged weapon fires arrows/fireworks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable; found in multiple loot\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular ranged weapon with pre-load\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted with iron ingot + tripwire hook\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ranged combat weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crossbow has mechanical loading action\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood body with iron mechanism\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ranged combat\",\n            \"pre-loaded shot ready-to-fire\",\n            \"firework rocket launcher\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crossbow unique pre-load + fireworks\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "8a4007f7-29c9-407b-bd34-97bcedfe122d",
+  "total_cost_usd": 0.37961065000000005,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9045,
+    "cache_read_input_tokens": 7653,
+    "output_tokens": 22342,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9045,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 22342,
+        "cache_read_input_tokens": 7653,
+        "cache_creation_input_tokens": 9045,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9045
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 8182,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.008257,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 22342,
+      "cacheReadInputTokens": 7653,
+      "cacheCreationInputTokens": 9045,
+      "webSearchRequests": 0,
+      "costUSD": 0.37135365000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7d99d8d8-9af8-4ffd-bcbe-cf956c3851e3"
+}

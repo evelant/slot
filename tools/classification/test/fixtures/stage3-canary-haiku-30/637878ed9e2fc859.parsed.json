@@ -1,0 +1,762 @@
+{
+  "items": {
+    "minecraft:iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot material for crafting"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "standard progression tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component_highlights rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core tool/armor/mechanism material"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building",
+            "redstone"
+          ],
+          "signal": "pattern",
+          "rationale": "used in tools, armor, mechanisms"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "basic metal ingot"
+        },
+        "palette": {
+          "value": "iron_dark",
+          "signal": "inferred",
+          "rationale": "dark metallic appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "tool and armor crafting",
+            "mechanism components",
+            "beacon payments"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:gold_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot material for crafting"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "mid-tier progression material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "tools, armor, trading, decoration"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building",
+            "trading",
+            "decorating"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "colored"
+          ],
+          "signal": "inferred"
+        },
+        "palette": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "warm yellowish metal"
+        },
+        "environmental_property": {
+          "value": "piglin_barters_with",
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "tool/armor crafting",
+            "pigling trading",
+            "decoration"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:copper_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot material for crafting"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "copper progression tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "newer material, specialized uses"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive orange-brown tone"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "warm"
+          ],
+          "signal": "inferred"
+        },
+        "environmental_property": {
+          "value": "conducts_lightning",
+          "signal": "inferred",
+          "rationale": "copper is conductive"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "lightning rods",
+            "decoration"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:netherite_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot material for crafting"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "highest progression tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires ancient debris smelting"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "endgame material, limited supply"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "otherworldly dark aesthetic"
+        },
+        "palette": {
+          "value": "netherite_dark",
+          "signal": "inferred"
+        },
+        "environmental_property": {
+          "value": "fireproof",
+          "signal": "named",
+          "evidence": "damage_resistant to fire"
+        },
+        "primary_uses": {
+          "values": [
+            "endgame tool upgrades",
+            "armor upgrades"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "crafting material for tools/armor"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "diamond progression tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "limited deep-cave spawning"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "endgame standard tool/armor"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building",
+            "enchanting"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "value": "fancy",
+          "signal": "inferred",
+          "rationale": "precious gem aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing",
+            "light"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "endgame tool/armor",
+            "trim material",
+            "enchanting"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:redstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for mechanisms"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential for redstone circuits"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "building"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "colored"
+          ],
+          "signal": "inferred"
+        },
+        "palette": {
+          "value": "vivid",
+          "signal": "inferred",
+          "rationale": "bright red particles"
+        },
+        "environmental_property": {
+          "value": "conducts_lightning",
+          "signal": "inferred",
+          "rationale": "redstone is conductive"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone circuits",
+            "automation",
+            "transmission"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:coal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "fuel source and crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "early game fuel, torches, fire charges"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in torches and mechanisms"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred"
+        },
+        "palette": {
+          "value": "dark",
+          "signal": "inferred",
+          "rationale": "black mineral"
+        },
+        "environmental_property": {
+          "value": "burnable",
+          "signal": "inferred",
+          "rationale": "fuel source"
+        },
+        "primary_uses": {
+          "values": [
+            "furnace fuel",
+            "torch crafting",
+            "early power"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "trading currency and crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "less common than diamonds"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "primarily for villager trading"
+        },
+        "activity": {
+          "values": [
+            "trading",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "value": "fancy",
+          "signal": "inferred",
+          "rationale": "precious gem appearance"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "villager trading",
+            "trim material",
+            "decoration"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:amethyst_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting and decorative material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "limited spawn locations"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized crafting uses"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "sculk sensor components"
+        },
+        "flavor": {
+          "value": "fancy",
+          "signal": "inferred",
+          "rationale": "precious crystal aesthetic"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "sculk sensors",
+            "decorative blocks",
+            "trim material"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:slime_ball": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific piston/block crafts"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "sticky pistons, slime blocks"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred"
+        },
+        "palette": {
+          "value": "leaf_green",
+          "signal": "inferred",
+          "rationale": "greenish gel"
+        },
+        "environmental_property": {
+          "value": "slows_walking",
+          "signal": "inferred",
+          "rationale": "slime blocks reduce speed"
+        },
+        "primary_uses": {
+          "values": [
+            "sticky pistons",
+            "slime blocks",
+            "magma cream"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:raw_iron": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed ore from mining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "early iron supply"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred"
+        },
+        "palette": {
+          "value": "iron_dark",
+          "signal": "inferred",
+          "rationale": "dark ore material"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting to ingots",
+            "bulk storage"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:ancient_debris": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "ore-like raw material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "extremely limited nether spawn"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "single-playthrough material"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "otherworldly nether relic"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "dark"
+          ],
+          "signal": "inferred"
+        },
+        "environmental_property": {
+          "value": "blast_resistant_high",
+          "signal": "inferred",
+          "rationale": "extremely durable nether ore"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting to netherite scrap"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "harvested wood material"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "common everywhere on surface"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "early game essential"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "crafting",
+            "automation"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred"
+        },
+        "palette": {
+          "value": "wood_medium",
+          "signal": "inferred",
+          "rationale": "medium brown wood tone"
+        },
+        "primary_uses": {
+          "values": [
+            "planks crafting",
+            "fuel source",
+            "building blocks"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:cherry_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "harvested wood material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "biome-specific cherry forest"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "biome-dependent gathering"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "crafting",
+            "decorating"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive pale/pink wood"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "wood_pale"
+          ],
+          "signal": "inferred"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "planks",
+            "fuel"
+          ],
+          "signal": "inferred"
+        }
+      }
+    },
+    "minecraft:bamboo": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "harvested plant material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "biome-specific jungle/roofed forest"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "biome-dependent, scaffolding use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "crafting"
+          ],
+          "signal": "inferred"
+        },
+        "flavor": {
+          "value": "natural",
+          "signal": "inferred"
+        },
+        "palette": {
+          "value": "leaf_green",
+          "signal": "inferred",
+          "rationale": "green plant stem"
+        },
+        "primary_uses": {
+          "values": [
+            "scaffolding blocks",
+            "sticks",
+            "decoration"
+          ],
+          "signal": "inferred"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

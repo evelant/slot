@@ -52,23 +52,22 @@ Rules:
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit \`null\`, empty arrays, or placeholder values.
 - For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
-- **Each facet entry MUST include \`signal\` and \`evidence\` fields** — these drive the confidence score automatically and gate downstream retry. Format:
-    \`{value, signal: "named|pattern|inferred|guess", evidence: "<quote from inputs>", rationale: "<why>"}\`
+- **Each facet entry MUST include a \`signal\` field** — it drives the confidence score automatically. Format:
+    \`{value, signal: "named|pattern|inferred|guess", rationale: "<≤40 char terse reason>"}\`
     The four signal levels:
-      • \`named\` — the value is explicitly stated in a tag/component/lore string in the inputs. Quote the exact tag or component key in \`evidence\` (e.g. \`"tag minecraft:iron_tool_materials"\`, \`"component minecraft:equippable.slot=head"\`). Reserve for cases where you're transcribing, not interpreting.
-      • \`pattern\` — the value follows mechanically from an id/tag/model pattern. Quote the pattern in \`evidence\` (e.g. \`"id ends in _ingot + tag iron_tool_materials"\`, \`"model parent block/stairs"\`).
-      • \`inferred\` — you're reasoning from indirect cues (recipe context, lore prose, neighboring items, mod conventions). Quote the strongest cue (e.g. \`"recipe consumes 4 iron_ingot + 1 redstone (clock)"\`).
-      • \`guess\` — no real signal in the inputs; you're applying a generic default. Use sparingly.
-    \`evidence\` is required for \`named\`, \`pattern\`, and \`inferred\`. For \`guess\`, set \`evidence: ""\` and prefer \`ambiguous: true\` with two values, or omit the facet entirely.
-    \`confidence\` is computed from \`signal\` (named=0.95, pattern=0.80, inferred=0.60, guess=0.30). You may include \`confidence\` to nudge it DOWN within the band, but the runner ignores values higher than the signal allows — overconfidence on a guess is silently demoted.
-    For subjective facets (\`flavor\`, \`palette\`, \`primary_uses\`) without an explicit lore/component cue, prefer \`signal: inferred\` or omit the facet rather than reaching for \`named\`.
-- Attach a short \`rationale\` per facet (≤120 chars) — what in the inputs led to the value.
+      • \`named\` — the value is explicitly stated in a tag/component/lore string. You're transcribing, not judging.
+      • \`pattern\` — the value follows mechanically from an id/tag/model pattern (e.g. _ingot + *_tool_materials → material).
+      • \`inferred\` — you're making a judgment call from context (recipes, lore, mod conventions, similar items, gameplay knowledge). This is the **normal case** for most classification decisions — Minecraft items rarely announce what they are; you're the judge. Use this freely when your reasoning is sound.
+      • \`guess\` — you have essentially no information and are applying a default. Use sparingly; prefer \`ambiguous: true\` + two values, or omit the facet entirely.
+    An optional \`evidence: "<short quote>"\` field is allowed if you want to cite the specific input that informed the decision. Not required — skip it to save output tokens.
+    \`confidence\` is computed from \`signal\` (named=0.95, pattern=0.80, inferred=0.60, guess=0.30). You may include \`confidence\` to nudge DOWN within the band, but the runner caps it at the signal floor — overclaiming on a guess is silently demoted.
+- **Be terse**: rationales must be ≤40 characters. No evidence field unless it adds real information beyond the rationale. Compact output means more items fit in a batch before hitting the token cap.
 - If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
 - Don't re-emit facets listed under \`stage2_facets\` inside \`facets\` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level \`corrections\` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
 - Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.
 - Your response MUST start with \`{\` and end with \`}\`. Do NOT prepend any narration (no "Here is…", "Continuing with…", etc.). Do NOT append any text after the closing brace.
-- Classify every item listed in the \`items\` array. Keep rationales short so you don't have to trim items — terse ≤80-char rationales are fine.
+- Classify every item listed in the \`items\` array. If output is getting long, shorten rationales further rather than dropping items.
 
 Common confusions to avoid:
 - \`activity\` does NOT include \`crafting\` — every item is craftable, so "crafting" is noise. If the item is used as a crafting ingredient, that's already captured in \`processing_in\`. Pick an end-use activity instead (\`building\`, \`mining\`, \`combat\`, \`redstone\`, etc.) or omit.
@@ -77,25 +76,51 @@ Common confusions to avoid:
 - \`environmental_property\` is world/physics behaviour (fireproof, slippery, waterlogs, piston_movable). \`spawn_interaction\` is mob-farm behaviour (blocks_monster_spawn, allows_spawning, damages_entities). Pick the right facet before picking a value.`;
 
 /**
- * Build the LLM prompt for a batch. The prompt is plain text with embedded JSON
- * blocks; claude -p accepts either structured input or freeform with "respond
- * only in JSON" instructions. We use the freeform style so the same prompt
- * works across model versions without tool-use wiring.
+ * Build a combined prompt for the legacy single-message path. Kept for
+ * backwards-compat; prefer `buildSplitPrompt()` so the stable system-prompt
+ * content separates from the per-batch data.
  */
 export function buildBatchPrompt(input: LlmPromptInput): string {
+  const { system, user } = buildSplitPrompt(input);
+  return [system, "", user].join("\n");
+}
+
+/**
+ * Build a split prompt: the `system` section contains the stable
+ * classification rules + facet schema + disambiguation + output-shape
+ * example (~15KB, identical across batches), and the `user` section carries
+ * the per-batch items (~30KB, varies). Pass `system` to `claude --system-prompt`
+ * and `user` on stdin.
+ *
+ * The split improves prompt-cache hit rate — the system portion is stable
+ * across every batch of a run, so Claude Code can cache all of it rather
+ * than just the opening preamble. It also avoids mixing our task
+ * instructions with Claude Code's default coding-assistant system prompt,
+ * which historically caused Sonnet to prepend "Continuing with…" narration.
+ */
+export function buildSplitPrompt(input: LlmPromptInput): { system: string; user: string } {
   const schemaDoc = renderSchemaForPrompt(input.target_facets);
   const outputShape = renderExpectedOutput(input.target_facets);
   const neighborsNote = renderNeighborsSection(input.neighbors);
 
-  return [
+  const system = [
     SYSTEM_PREAMBLE,
     "",
     "# Facet schema",
     schemaDoc,
     "",
+    FACET_DISAMBIGUATION,
+    "",
+    "# Common misconceptions to avoid",
+    COMMON_MISCONCEPTIONS,
+    "",
     "# Expected output shape",
     outputShape,
-    "",
+  ]
+    .filter((section) => section.length > 0)
+    .join("\n");
+
+  const user = [
     neighborsNote,
     "# Items to classify",
     JSON.stringify({ items: input.items }, null, 2),
@@ -104,7 +129,76 @@ export function buildBatchPrompt(input: LlmPromptInput): string {
   ]
     .filter((section) => section.length > 0)
     .join("\n");
+
+  return { system, user };
 }
+
+/**
+ * Inline guidance for facets with commonly-misapplied values. Kept adjacent
+ * to the schema so the LLM reads it while facet vocabulary is top-of-mind.
+ */
+const FACET_DISAMBIGUATION = `# Facet disambiguation (read before emitting)
+
+## role: material vs natural_resource
+- \`natural_resource\` — items obtained **from the world** in raw form: ores,
+  raw ore chunks (raw_iron, raw_gold, raw_copper, ancient_debris), logs, mob
+  drops (feather, leather, bone, slime_ball, string), unprocessed plants
+  (sugar_cane, kelp, bamboo, nether_wart).
+- \`material\` — **processed / intermediate** crafting ingredients: ingots,
+  nuggets, gems, dusts, plates, dyes, shards. You made it from something raw.
+- Test: "did the player pick this up from the world as-is, or is it a
+  refined product?" If raw → natural_resource. If refined → material.
+
+## role: building_block vs decorative_block vs functional_block
+- \`building_block\` — primary purpose is structure: planks, stairs, slabs,
+  walls, logs (when placed), bricks, sandstone, stone variants.
+- \`decorative_block\` — primary purpose is aesthetics: banners, carpets,
+  paintings, flower pots, candles (unlit or as decor), heads.
+- \`functional_block\` — active interactive behaviour: crafting table,
+  furnace, anvil, beacon, jukebox, composter, cauldron, lectern, grindstone.
+- A block that's *usable* for decoration but primarily structural (like
+  stairs) is \`building_block\`, not \`decorative_block\`.
+
+## tier
+- Apply to tools/weapons/armor (their progression tier) and to the raw
+  materials they're made from (iron_ingot, diamond, netherite_ingot — each
+  has tier=iron/diamond/netherite).
+- Ingots/gems that aren't part of a tool-tier progression (redstone,
+  emerald, amethyst_shard, lapis) do **not** have a \`tier\`.
+
+## activity — "what you DO with this item"
+- Pick the gameplay activities where this item is **actively used**, not
+  activities it's an ingredient of. A pickaxe is \`mining\` (used to mine);
+  a diamond is not \`mining\` (it's crafted into pickaxes).
+- A crafting ingredient gets activities from its **downstream use**, not
+  from the act of crafting — so \`feather\` gets \`combat\` (via arrows),
+  not \`mining\` (even though you might mine to get emeralds to trade for
+  feathers).
+- If unsure, omit \`activity\` rather than guess.
+`;
+
+const COMMON_MISCONCEPTIONS = `These factual errors recur in LLM output — avoid them:
+
+- **Netherite armor does NOT grant fire resistance status effect.** The
+  \`minecraft:damage_resistant\` component (tag minecraft:is_fire) means the
+  ITEM doesn't burn when dropped in lava — it's about item durability,
+  not player protection. Do not add "fire resistance" to
+  \`primary_uses\` of netherite armor.
+- **Chainmail repairs with iron ingot**, but its \`material_family\` is
+  \`iron\`, not \`chainmail\` (chainmail isn't a material — it's a tier name).
+- **Gold armor gives piglin neutrality**, but only when WORN. Don't claim
+  it "crafts gold" or similar derivatives.
+- **"Abundant" rarity** is for items found by the chest in every world
+  (cobblestone, dirt, wood). "Common" is for farmable staples (iron,
+  wheat). Don't put iron at \`abundant\` or netherite at \`common\`.
+- **Music discs**: role=\`curiosity\` (the plan explicitly says so), not
+  \`decorative_block\` or \`utility\`.
+- **Totem of undying**: role=\`utility\` (consumed on lethal damage; NOT
+  \`trophy\` even though it's rare-ish).
+- **Elytra**: ambiguous between \`armor\` and \`transport\`. Emit
+  \`ambiguous: true\` with \`values: [armor, transport]\` rather than picking
+  one.
+`;
 
 function renderSchemaForPrompt(targetFacets: readonly string[]): string {
   const lines: string[] = [];

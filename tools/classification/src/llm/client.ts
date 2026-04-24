@@ -13,6 +13,13 @@ import { spawn } from "node:child_process";
  */
 export interface LlmClient {
   query(prompt: string, options: QueryOptions): Promise<string>;
+  /**
+   * Split-prompt variant: the stable `system` content replaces Claude Code's
+   * default system prompt; the `user` content is sent on stdin as the user
+   * message. Optional — clients that don't implement it fall back to sending
+   * `system + "\\n" + user` on stdin as a single message.
+   */
+  querySplit?(system: string, user: string, options: QueryOptions): Promise<string>;
 }
 
 export interface QueryOptions {
@@ -49,12 +56,15 @@ export interface QueryOptions {
 /** Shell out to `claude -p --model <m> --output-format json` with the prompt on stdin. */
 export class ClaudeCliClient implements LlmClient {
   async query(prompt: string, options: QueryOptions): Promise<string> {
-    const bin = options.claudeBinary ?? "claude";
-    // 30 min default — Haiku batches of 20 items finish in 2–3 min but
-    // Sonnet 4.6 routinely takes 7+ min on the first batch (cache warm-up
-    // + verbose output). Subsequent batches amortize faster but we still
-    // want headroom.
-    const timeout = options.timeoutMs ?? 1_800_000;
+    return this.run({ args: this.baseArgs(options), env: this.buildEnv(options), stdin: prompt, options });
+  }
+
+  async querySplit(system: string, user: string, options: QueryOptions): Promise<string> {
+    const args = [...this.baseArgs(options), "--system-prompt", system];
+    return this.run({ args, env: this.buildEnv(options), stdin: user, options });
+  }
+
+  private baseArgs(options: QueryOptions): string[] {
     // --tools "" disables tool use (prompt is pure classification, no tools
     // needed) and --dangerously-skip-permissions skips the workspace trust
     // dialog since this is a read-only text-in / text-out call.
@@ -65,10 +75,11 @@ export class ClaudeCliClient implements LlmClient {
       "--tools", "",
       "--dangerously-skip-permissions",
     ];
-    if (options.effort) {
-      args.push("--effort", options.effort);
-    }
+    if (options.effort) args.push("--effort", options.effort);
+    return args;
+  }
 
+  private buildEnv(options: QueryOptions): Record<string, string> {
     // Forward env vars that control extended thinking. We don't replace
     // process.env wholesale — claude needs PATH, HOME, etc. — just layer
     // ours on top.
@@ -79,12 +90,27 @@ export class ClaudeCliClient implements LlmClient {
     if (options.disableAdaptiveThinking) {
       env.CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING = "1";
     }
+    return env;
+  }
+
+  private async run(opts: {
+    args: string[];
+    env: Record<string, string>;
+    stdin: string;
+    options: QueryOptions;
+  }): Promise<string> {
+    const bin = opts.options.claudeBinary ?? "claude";
+    // 30 min default — Haiku batches of 20 items finish in 2–3 min but
+    // Sonnet 4.6 routinely takes 7+ min on the first batch (cache warm-up
+    // + verbose output). Subsequent batches amortize faster but we still
+    // want headroom.
+    const timeout = opts.options.timeoutMs ?? 1_800_000;
 
     return new Promise((resolve, reject) => {
-      const child = spawn(bin, args, {
+      const child = spawn(bin, opts.args, {
         stdio: ["pipe", "pipe", "pipe"],
-        signal: options.signal,
-        env,
+        signal: opts.options.signal,
+        env: opts.env,
       });
       const timer = setTimeout(() => child.kill("SIGKILL"), timeout);
       let stdout = "";
@@ -107,7 +133,7 @@ export class ClaudeCliClient implements LlmClient {
         }
         resolve(stdout);
       });
-      child.stdin.end(prompt);
+      child.stdin.end(opts.stdin);
     });
   }
 }
@@ -126,18 +152,29 @@ export class ReplayLlmClient implements LlmClient {
   constructor(private readonly fixtureDir: string) {}
 
   async query(prompt: string): Promise<string> {
-    const path = this.pathFor(prompt);
+    return this.readFixture(prompt);
+  }
+
+  async querySplit(system: string, user: string): Promise<string> {
+    // Split-mode fixtures are hashed on `system\n\n${user}` so the hash is
+    // deterministic no matter which code path recorded them. See
+    // `splitFixtureKey`.
+    return this.readFixture(splitFixtureKey(system, user));
+  }
+
+  private readFixture(keyContent: string): string {
+    const path = this.pathFor(keyContent);
     if (!existsSync(path)) {
       throw new Error(
-        `no replay fixture for prompt hash ${fixtureHash(prompt)} (looked at ${path}). ` +
+        `no replay fixture for prompt hash ${fixtureHash(keyContent)} (looked at ${path}). ` +
           `Record one first with \`--record-replay\`.`,
       );
     }
     return readFileSync(path, "utf8");
   }
 
-  pathFor(prompt: string): string {
-    const hash = fixtureHash(prompt);
+  pathFor(keyContent: string): string {
+    const hash = fixtureHash(keyContent);
     const primary = join(this.fixtureDir, `${hash}.response.json`);
     if (existsSync(primary)) return primary;
     const legacy = join(this.fixtureDir, `${hash}.response.txt`);
@@ -168,8 +205,32 @@ export class RecordingLlmClient implements LlmClient {
 
   async query(prompt: string, options: QueryOptions): Promise<string> {
     const response = await this.inner.query(prompt, options);
+    this.persist(prompt, response);
+    return response;
+  }
+
+  async querySplit(system: string, user: string, options: QueryOptions): Promise<string> {
+    if (!this.inner.querySplit) {
+      // fall back to the combined path
+      return this.query(`${system}\n\n${user}`, options);
+    }
+    const response = await this.inner.querySplit(system, user, options);
+    const key = splitFixtureKey(system, user);
+    const hash = fixtureHash(key);
+    // Save both halves so a curator can inspect them separately.
+    writeFileSync(join(this.fixtureDir, `${hash}.system.md`), system);
+    writeFileSync(join(this.fixtureDir, `${hash}.user.md`), user);
+    this.persistEnvelope(hash, response);
+    return response;
+  }
+
+  private persist(prompt: string, response: string): void {
     const hash = fixtureHash(prompt);
     writeFileSync(join(this.fixtureDir, `${hash}.prompt.md`), prompt);
+    this.persistEnvelope(hash, response);
+  }
+
+  private persistEnvelope(hash: string, response: string): void {
     writeFileSync(
       join(this.fixtureDir, `${hash}.response.json`),
       formatEnvelope(response),
@@ -178,8 +239,16 @@ export class RecordingLlmClient implements LlmClient {
     if (parsed !== null) {
       writeFileSync(join(this.fixtureDir, `${hash}.parsed.json`), parsed);
     }
-    return response;
   }
+}
+
+/**
+ * Canonical key used to hash a split prompt. Concatenates system and user
+ * with a separator that's stable across recorders/replayers. Keep in sync
+ * with ReplayLlmClient.querySplit.
+ */
+function splitFixtureKey(system: string, user: string): string {
+  return `${system}\n\n---\n\n${user}`;
 }
 
 /**

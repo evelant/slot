@@ -1,0 +1,276 @@
+{
+  "items": {
+    "minecraft:sugar_cane": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant from world"
+        },
+        "material_family": {
+          "value": "sugar_cane",
+          "signal": "pattern",
+          "rationale": "id is sugar_cane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component is common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "paper and sugar are staple crafts"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "farmed crop; sugar for potions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant item"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green stalks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting paper",
+            "crafting sugar",
+            "farming as renewable crop"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of outputs"
+        }
+      }
+    },
+    "minecraft:kelp": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ocean plant"
+        },
+        "material_family": {
+          "value": "kelp",
+          "signal": "pattern",
+          "rationale": "id is kelp"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component is common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "dried for fuel or food mainly"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "kelp farms; dried kelp fuels smelters"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green aquatic plant"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into dried kelp",
+            "kelp farm for automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in outputs + farm utility"
+        }
+      }
+    },
+    "minecraft:feather": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop"
+        },
+        "material_family": {
+          "value": "feather",
+          "signal": "pattern",
+          "rationale": "id is feather"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component is common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "arrows consumed constantly in combat"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "arrows=combat; brush=archaeology"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob drop"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white feather"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting arrows",
+            "crafting book and quill",
+            "crafting brush"
+          ],
+          "signal": "inferred",
+          "rationale": "top items in sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:wooden_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "suffix _pickaxe + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component is common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "first tool in every survival game"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mineable/pickaxe rule in tool component"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic starter tool"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ore",
+            "breaking decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rules + breaks_decorated_pots tag"
+        }
+      }
+    },
+    "minecraft:stone_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "suffix _pickaxe + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component is common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "main early-game mining tool"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "mineable/pickaxe rule in tool component"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic stone tool"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "mining ores and stone",
+            "breaking decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "tool rules + breaks_decorated_pots tag"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:wooden_pickaxe",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood",
+      "rationale": "any plank works; not oak-specific",
+      "confidence": 0.75
+    }
+  ]
+}

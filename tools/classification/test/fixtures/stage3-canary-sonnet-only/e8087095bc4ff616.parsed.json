@@ -1,0 +1,320 @@
+{
+  "items": {
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet suffix + head_armor tag"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires ancient debris from nether"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn continuously in end-game"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "armor worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard unremarkable armor form"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark charcoal netherite texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smithed only, no loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "top-tier head protection",
+            "combat survival"
+          ],
+          "signal": "inferred",
+          "rationale": "best head armor in vanilla"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "damage_resistant #minecraft:is_fire",
+          "rationale": "item immune to fire/lava when dropped"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "chestplate suffix + chest_armor tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "often skipped tier, niche use"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "chest protection in combat"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "linked metal ring structure"
+        },
+        "palette": {
+          "values": [
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "metallic silver chain appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "chest protection",
+            "obtained via trade or loot only"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-tier uncraftable armor"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "boots suffix + foot_armor tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "leather from cows, easily crafted"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "early armor + dyeable + snow walking"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "combat armor + powder snow traverse"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:cauldron_can_remove_dye tag",
+          "rationale": "dyeable armor piece"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural leather brown tones"
+        },
+        "primary_uses": {
+          "values": [
+            "early-game foot protection",
+            "dyeable armor piece",
+            "walk on powder snow"
+          ],
+          "signal": "inferred",
+          "rationale": "starter armor with powder snow feature"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "helmet suffix + head_armor tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs scutes from breeding turtles"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underwater use case"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for underwater exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "biological organic turtle scutes"
+        },
+        "palette": {
+          "values": [
+            "olive",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "turtle scutes are olive green"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted from 5 scutes"
+        },
+        "primary_uses": {
+          "values": [
+            "water breathing while submerged",
+            "underwater exploration",
+            "head protection"
+          ],
+          "signal": "inferred",
+          "rationale": "unique water breathing property"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "values": [
+            "armor",
+            "transport"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "chest slot but primary use is flight"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core traversal tool once obtained"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:glider component",
+          "rationale": "glider enables flight/exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "biological wing aesthetic"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "default gray-dark wing texture"
+        },
+        "origin": {
+          "values": [
+            "end_ship"
+          ],
+          "signal": "inferred",
+          "rationale": "found only in end city ship chests"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:glider component",
+          "rationale": "transports player through air"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding flight across distances",
+            "long-range exploration",
+            "firework-boosted travel"
+          ],
+          "signal": "inferred",
+          "rationale": "primary end-game travel method"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "powder_snow_walkable",
+      "rationale": "leather boots let player walk on powder snow without sinking; no existing value covers this"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "minecraft:elytra",
+      "facet": "has_enchantments",
+      "current": null,
+      "suggested": true,
+      "rationale": "enchantable tags: durability, equippable, vanishing",
+      "confidence": 0.95
+    },
+    {
+      "item": "minecraft:chainmail_chestplate",
+      "facet": "origin",
+      "current": [
+        "village",
+        "woodland_mansion"
+      ],
+      "suggested": [
+        "village",
+        "woodland_mansion",
+        "mob_drop"
+      ],
+      "rationale": "zombie/skeleton mob drops",
+      "confidence": 0.85
+    }
+  ]
+}

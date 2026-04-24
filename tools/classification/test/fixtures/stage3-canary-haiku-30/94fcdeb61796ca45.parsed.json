@@ -1,0 +1,649 @@
+{
+  "items": {
+    "minecraft:sugar_cane": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant material used in crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common component tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used occasionally for recipes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "botanical material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green plant color"
+        },
+        "primary_uses": {
+          "values": [
+            "paper crafting",
+            "sugar crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "main crafting uses"
+        }
+      }
+    },
+    "minecraft:kelp": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "aquatic plant material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common component tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processed into dried kelp"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic plant"
+        },
+        "palette": {
+          "values": [
+            "aqua",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "underwater plant colors"
+        },
+        "primary_uses": {
+          "values": [
+            "dried kelp"
+          ],
+          "signal": "inferred",
+          "rationale": "primary conversion use"
+        }
+      }
+    },
+    "minecraft:feather": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "mob drop used in crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common component tag"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used for arrows"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural mob material"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "white feather color"
+        },
+        "primary_uses": {
+          "values": [
+            "arrow crafting",
+            "firework stars"
+          ],
+          "signal": "inferred",
+          "rationale": "main ingredient recipes"
+        }
+      }
+    },
+    "minecraft:wooden_pickaxe": {
+      "facets": {
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common component tag"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential early-game tool"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "pickaxes mine blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "basic tool tier"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material color"
+        },
+        "primary_uses": {
+          "values": [
+            "early-game mining"
+          ],
+          "signal": "inferred",
+          "rationale": "starter tool tier"
+        }
+      }
+    },
+    "minecraft:stone_pickaxe": {
+      "facets": {
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common component tag"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential progression tool"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "pickaxes mine blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "basic tool tier"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "ore mining"
+          ],
+          "signal": "inferred",
+          "rationale": "progression mining tool"
+        }
+      }
+    },
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found in exclusive loot"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary late-game tool"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "pickaxes mine blocks"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "precious material"
+        },
+        "palette": {
+          "values": [
+            "iridescent",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond sparkle"
+        },
+        "primary_uses": {
+          "values": [
+            "hardened ore mining"
+          ],
+          "signal": "inferred",
+          "rationale": "required for top tier"
+        }
+      }
+    },
+    "minecraft:netherite_sword": {
+      "facets": {
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "crafted, not naturally spawned"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary end-game weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "end-game, special"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite material"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "pattern",
+          "rationale": "fire damage resistant"
+        },
+        "primary_uses": {
+          "values": [
+            "end-game combat"
+          ],
+          "signal": "inferred",
+          "rationale": "best sword tier"
+        }
+      }
+    },
+    "minecraft:mace": {
+      "facets": {
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "ominous",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "special unique weapon"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "breeze rod coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "heavy melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "high damage mechanic"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "melee/ranged weapon"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "unique weapon mechanics"
+        },
+        "palette": {
+          "values": [
+            "aqua",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "underwater weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "underwater combat"
+          ],
+          "signal": "inferred",
+          "rationale": "designed for water use"
+        }
+      }
+    },
+    "minecraft:crossbow": {
+      "facets": {
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common component tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ranged weapon option"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "ranged weapon"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical device"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "wood/metal construction"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat"
+          ],
+          "signal": "inferred",
+          "rationale": "projectile weapon"
+        }
+      }
+    },
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "end-game armor tier"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary late-game armor"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "armor for combat"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "end-game armor"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite material"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "pattern",
+          "rationale": "fire damage resistant"
+        },
+        "primary_uses": {
+          "values": [
+            "end-game protection"
+          ],
+          "signal": "inferred",
+          "rationale": "best armor tier"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "uncommon armor variant"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "armor for combat"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "unique armor type"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "metal chain appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "mid-game protection"
+          ],
+          "signal": "inferred",
+          "rationale": "alternative armor path"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "common component tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game armor"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "armor for combat"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "basic, dyeable armor"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown leather color"
+        },
+        "primary_uses": {
+          "values": [
+            "foot protection"
+          ],
+          "signal": "inferred",
+          "rationale": "lowest-tier armor"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires rare scute drops"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized water armor"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water breathing + combat"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural shell, special"
+        },
+        "palette": {
+          "values": [
+            "turquoise",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "turtle shell color"
+        },
+        "primary_uses": {
+          "values": [
+            "water breathing",
+            "underwater exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "unique water feature"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized flight gear"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "gliding and fast travel"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "special unique item"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "purple glowing wings"
+        },
+        "primary_uses": {
+          "values": [
+            "flight gliding",
+            "fast travel"
+          ],
+          "signal": "inferred",
+          "rationale": "primary mechanic"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

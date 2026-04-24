@@ -5,6 +5,7 @@ import { join } from "node:path";
 import {
   buildBatchPrompt,
   buildItemPayload,
+  buildSplitPrompt,
   defaultTargetFacets,
 } from "../src/llm/prompt.ts";
 import { parseLlmResponse } from "../src/llm/parse.ts";
@@ -210,20 +211,21 @@ describe("response parsing", () => {
     expect(role.confidence).toBe(0.30);
   });
 
-  test("signal=pattern with empty evidence is demoted to guess + warned", () => {
+  test("signal=pattern without evidence is accepted (evidence is optional)", () => {
     const response = JSON.stringify({
       items: {
         "minecraft:x": {
           facets: {
-            role: { value: "tool", signal: "pattern", evidence: "", confidence: 0.85 },
+            role: { value: "tool", signal: "pattern", confidence: 0.85 },
           },
         },
       },
     });
     const parsed = parseLlmResponse(response);
     const role = parsed.items.get("minecraft:x")!.facets.role!;
-    expect(role.confidence).toBe(0.30);
-    expect(parsed.warnings.some((w) => w.includes("requires non-empty evidence"))).toBe(true);
+    // pattern caps at 0.80; model's 0.85 is silently capped
+    expect(role.confidence).toBe(0.80);
+    expect(parsed.warnings.length).toBe(0);
   });
 
   test("model confidence below signal floor is preserved (not raised)", () => {
@@ -327,11 +329,14 @@ describe("runStage3", () => {
     const record = ironIngotRecord();
     const stage2Layer = ironIngotStage2Layer();
 
-    const prompt = buildBatchPrompt({
+    // runStage3 prefers querySplit when the client implements it (which
+    // ReplayLlmClient does). The fixture must be hashed under the split-mode
+    // key, not the combined-prompt key.
+    const { system, user } = buildSplitPrompt({
       items: [buildItemPayload(record, stage2Layer.entries["minecraft:iron_ingot"]!.facets)],
       target_facets: defaultTargetFacets(),
     });
-    const hash = fixtureHash(prompt);
+    const hash = fixtureHash(`${system}\n\n---\n\n${user}`);
 
     const fixtureDir = mkdtempSync(join(tmpdir(), "slot-stage3-"));
     const response = JSON.stringify({

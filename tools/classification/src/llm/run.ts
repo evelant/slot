@@ -4,6 +4,7 @@ import type { LlmClient, QueryOptions } from "./client.ts";
 import {
   buildBatchPrompt,
   buildItemPayload,
+  buildSplitPrompt,
   defaultTargetFacets,
   type LlmItemPayload,
 } from "./prompt.ts";
@@ -101,11 +102,20 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       return buildItemPayload(record, stage2);
     });
 
-    const prompt = buildBatchPrompt({ items: payloads, target_facets: targetFacets });
-    const responseText = await options.client.query(prompt, {
-      model,
-      ...options.clientOptions,
-    });
+    // Prefer split prompt when the client supports it — sends the stable
+    // system content (preamble + schema + disambiguation) via
+    // `claude --system-prompt` and the per-batch item data on stdin. This
+    // maximizes prompt-cache hit rate and keeps Claude Code's default
+    // system prompt from interfering with classification context.
+    const queryOptions = { model, ...options.clientOptions };
+    let responseText: string;
+    if (options.client.querySplit) {
+      const { system, user } = buildSplitPrompt({ items: payloads, target_facets: targetFacets });
+      responseText = await options.client.querySplit(system, user, queryOptions);
+    } else {
+      const prompt = buildBatchPrompt({ items: payloads, target_facets: targetFacets });
+      responseText = await options.client.query(prompt, queryOptions);
+    }
     let parsed;
     try {
       parsed = parseLlmResponse(responseText);

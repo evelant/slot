@@ -1,0 +1,302 @@
+{
+  "items": {
+    "minecraft:raw_iron": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw ore from mining, not yet processed"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "raw form of iron-tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in caves, farmable staple"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "smelted constantly for iron ingots"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: iron tools/armor/blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unremarkable raw ore chunk"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-brown ore appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into iron ingots",
+            "Craft into raw iron block",
+            "Source for iron-tier gear"
+          ],
+          "signal": "inferred",
+          "rationale": "core processing paths"
+        }
+      }
+    },
+    "minecraft:ancient_debris": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw nether ore, smelted for scrap"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "inferred",
+          "rationale": "precursor to netherite scrap/ingot"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "raw material for netherite tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "tiny veins deep in the nether"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "endgame; each piece precious"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: netherite weapons/tools"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient aesthetic, name implies age"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark brownish-grey texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant #minecraft:is_fire"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into netherite scrap",
+            "Upgrade gear to netherite tier",
+            "Endgame progression resource"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use path"
+        }
+      }
+    },
+    "minecraft:oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw log from tree, unprocessed"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "oak trees everywhere in overworld"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "first resource gathered; used constantly"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "planks for structure, log for decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed natural wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "medium brown oak tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft into oak planks",
+            "Place as structural log",
+            "Burn as fuel or smelt for charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses"
+        }
+      }
+    },
+    "minecraft:cherry_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw log from tree, unprocessed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cherry groves less common than oak"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for cherry aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "planks for structure, pink log decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive pink wood variant"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "pinkish light wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft into cherry planks",
+            "Place as decorative pink log",
+            "Distinctive aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses"
+        }
+      }
+    },
+    "minecraft:bamboo": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "unprocessed plant, harvested raw"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "pattern",
+          "rationale": "id minecraft:bamboo"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "bamboo jungles findable, farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "scaffolding and bamboo builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "scaffolding + bamboo block/plank craft"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed plant material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "bright green stalk"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft scaffolding for building/climbing",
+            "Craft into bamboo blocks and planks",
+            "Feed to pandas"
+          ],
+          "signal": "inferred",
+          "rationale": "main use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

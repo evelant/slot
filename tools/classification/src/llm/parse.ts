@@ -198,24 +198,17 @@ function parseFacetEntry(
     def.kind === "multi_item_ref";
   const rationale = typeof e.rationale === "string" ? e.rationale : undefined;
 
-  // Signal + evidence drive the final confidence. The model's self-reported
-  // confidence is treated as a CAP — if the model says 0.9 but signal=guess,
-  // the actual confidence is min(0.9, signal_floor). Overconfidence on a
-  // weak signal is silently demoted; underconfidence is preserved.
+  // Signal drives the final confidence. Evidence is optional context. The
+  // model's self-reported confidence is treated as a CAP — if the model says
+  // 0.9 but signal=guess, the actual confidence is min(0.9, signal_floor).
+  // Overconfidence on a weak signal is silently demoted; underconfidence is
+  // preserved.
   const signal = parseSignal(e.signal);
   const evidence = typeof e.evidence === "string" ? e.evidence.trim() : "";
-
-  if (signal && (signal === "named" || signal === "pattern" || signal === "inferred") && evidence.length === 0) {
-    warnings.push(`${itemId} ${facetId}: signal=${signal} requires non-empty evidence; demoted to 'guess'`);
-  }
-  const effectiveSignal: Signal | undefined =
-    signal && (signal === "named" || signal === "pattern" || signal === "inferred") && evidence.length === 0
-      ? "guess"
-      : signal;
-
   const modelConf = typeof e.confidence === "number" ? e.confidence : undefined;
-  const confidence = computeConfidence(effectiveSignal, modelConf);
-  const richRationale = formatRationale(rationale, evidence, effectiveSignal);
+  const confidence = computeConfidence(signal, modelConf);
+  const richRationale = formatRationale(rationale, evidence, signal);
+  const effectiveSignal = signal; // kept for downstream type compatibility
 
   // Ambiguous two-value shape.
   if (e.ambiguous === true) {
