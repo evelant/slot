@@ -36,6 +36,23 @@ interface StageSelection {
   stage3: boolean;
 }
 
+/**
+ * Assemble the QueryOptions slice the LLM client needs (effort + thinking
+ * budget + adaptive-thinking flag). Returns undefined when nothing is set
+ * so we don't pass an empty object through the pipeline.
+ */
+function buildClientOptions(
+  effort: "low" | "medium" | "high" | "xhigh" | "max" | undefined,
+  thinkingBudget: number | undefined,
+  disableAdaptiveThinking: boolean | undefined,
+): { effort?: "low" | "medium" | "high" | "xhigh" | "max"; thinkingBudget?: number; disableAdaptiveThinking?: boolean } | undefined {
+  const out: ReturnType<typeof buildClientOptions> = {};
+  if (effort) out!.effort = effort;
+  if (thinkingBudget !== undefined) out!.thinkingBudget = thinkingBudget;
+  if (disableAdaptiveThinking) out!.disableAdaptiveThinking = true;
+  return Object.keys(out!).length > 0 ? out : undefined;
+}
+
 function parseEffort(
   input: string | undefined,
 ): "low" | "medium" | "high" | "xhigh" | "max" | undefined {
@@ -80,6 +97,8 @@ async function main() {
           model: { type: "string" },
           "batch-size": { type: "string" },
           effort: { type: "string" },
+          "thinking-budget": { type: "string" },
+          "disable-adaptive-thinking": { type: "boolean" },
           sample: { type: "string" }, // `canary`, `N`, or comma-separated ids
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
@@ -114,6 +133,10 @@ async function main() {
           model: args.values.model,
           batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
           effort: parseEffort(args.values.effort),
+          thinkingBudget: args.values["thinking-budget"]
+            ? Number(args.values["thinking-budget"])
+            : undefined,
+          disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
           sample: args.values.sample,
           fixtureDir: args.values["fixture-dir"],
           useReplay: args.values["use-replay"] ?? false,
@@ -175,12 +198,17 @@ interface Stage3CliOptions {
   model?: string;
   batchSize?: number;
   effort?: "low" | "medium" | "high" | "xhigh" | "max";
+  thinkingBudget?: number;
+  disableAdaptiveThinking?: boolean;
   sample?: string;
   fixtureDir?: string;
   useReplay: boolean;
   recordReplay: boolean;
   dryRun: boolean;
-  /** If set, run a retry pass with this model after the first pass. */
+  /** If set, run a retry pass with this model after the first pass.
+   *  Note: the retry deliberately does NOT inherit thinkingBudget or
+   *  disableAdaptiveThinking — those are first-pass-only knobs. The retry
+   *  uses --retry-effort and lets the retry model drive its own thinking. */
   retryModel?: string;
   retryEffort?: "low" | "medium" | "high" | "xhigh" | "max";
   retryThreshold?: number;
@@ -297,7 +325,7 @@ async function executeStage3(
     model: opts.model,
     batchSize: opts.batchSize,
     only,
-    clientOptions: opts.effort ? { effort: opts.effort } : undefined,
+    clientOptions: buildClientOptions(opts.effort, opts.thinkingBudget, opts.disableAdaptiveThinking),
     onBatch: (info) => {
       console.log(
         `[stage3] batch ${info.batchIndex + 1}/${info.batchCount} ` +

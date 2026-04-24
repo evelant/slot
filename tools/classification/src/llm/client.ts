@@ -20,11 +20,24 @@ export interface QueryOptions {
   model: string;
   /**
    * Reasoning effort level — `low` | `medium` | `high` | `xhigh` | `max`.
-   * Claude Code maps this to extended-thinking budget. Set `max` on retry
-   * passes where quality matters more than latency; leave unset for first-pass
-   * classification where Haiku's default is fine.
+   * Mapped to `claude --effort`. Sonnet/Opus respect this for extended
+   * thinking budget; Haiku's behaviour is undocumented (likely a no-op
+   * outside of `xhigh`/`max` since `high` is its default).
    */
   effort?: "low" | "medium" | "high" | "xhigh" | "max";
+  /**
+   * Explicit extended-thinking budget in tokens, set via the
+   * `MAX_THINKING_TOKENS` env var on the spawned `claude` process.
+   * Use this when you want a guaranteed thinking budget regardless of
+   * the model's default `--effort` mapping. Set to 0 to disable thinking.
+   */
+  thinkingBudget?: number;
+  /**
+   * If true, sets `CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1` so the
+   * `MAX_THINKING_TOKENS` budget is honored on adaptive-reasoning models
+   * (otherwise the budget is ignored when adaptive reasoning is on).
+   */
+  disableAdaptiveThinking?: boolean;
   /** Abort signal for long-running batches. */
   signal?: AbortSignal;
   /** Override the `claude` executable path (defaults to "claude" on PATH). */
@@ -56,10 +69,22 @@ export class ClaudeCliClient implements LlmClient {
       args.push("--effort", options.effort);
     }
 
+    // Forward env vars that control extended thinking. We don't replace
+    // process.env wholesale — claude needs PATH, HOME, etc. — just layer
+    // ours on top.
+    const env: Record<string, string> = { ...process.env } as Record<string, string>;
+    if (options.thinkingBudget !== undefined) {
+      env.MAX_THINKING_TOKENS = String(options.thinkingBudget);
+    }
+    if (options.disableAdaptiveThinking) {
+      env.CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING = "1";
+    }
+
     return new Promise((resolve, reject) => {
       const child = spawn(bin, args, {
         stdio: ["pipe", "pipe", "pipe"],
         signal: options.signal,
+        env,
       });
       const timer = setTimeout(() => child.kill("SIGKILL"), timeout);
       let stdout = "";

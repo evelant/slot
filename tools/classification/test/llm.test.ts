@@ -178,6 +178,92 @@ describe("response parsing", () => {
     });
   });
 
+  test("signal=named caps at 0.95 even if model claims higher", () => {
+    const response = JSON.stringify({
+      items: {
+        "minecraft:iron_ingot": {
+          facets: {
+            role: { value: "material", signal: "named", evidence: "tag minecraft:iron_tool_materials", confidence: 0.99 },
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    const role = parsed.items.get("minecraft:iron_ingot")!.facets.role!;
+    expect(role.confidence).toBe(0.95);
+    expect(role.rationale).toContain("[named]");
+    expect(role.rationale).toContain("tag minecraft:iron_tool_materials");
+  });
+
+  test("signal=guess caps overconfident model claim at 0.30", () => {
+    const response = JSON.stringify({
+      items: {
+        "minecraft:mystery": {
+          facets: {
+            role: { value: "curiosity", signal: "guess", evidence: "", confidence: 0.95 },
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    const role = parsed.items.get("minecraft:mystery")!.facets.role!;
+    expect(role.confidence).toBe(0.30);
+  });
+
+  test("signal=pattern with empty evidence is demoted to guess + warned", () => {
+    const response = JSON.stringify({
+      items: {
+        "minecraft:x": {
+          facets: {
+            role: { value: "tool", signal: "pattern", evidence: "", confidence: 0.85 },
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    const role = parsed.items.get("minecraft:x")!.facets.role!;
+    expect(role.confidence).toBe(0.30);
+    expect(parsed.warnings.some((w) => w.includes("requires non-empty evidence"))).toBe(true);
+  });
+
+  test("model confidence below signal floor is preserved (not raised)", () => {
+    const response = JSON.stringify({
+      items: {
+        "minecraft:x": {
+          facets: {
+            role: { value: "tool", signal: "named", evidence: "tag foo", confidence: 0.6 },
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.items.get("minecraft:x")!.facets.role!.confidence).toBe(0.6);
+  });
+
+  test("multi facet preserves signal+evidence; rationale folds them in", () => {
+    const response = JSON.stringify({
+      items: {
+        "minecraft:iron_ingot": {
+          facets: {
+            activity: {
+              values: ["building", "combat"],
+              signal: "inferred",
+              evidence: "ingredient_of: anvil, sword",
+              rationale: "common combat + structural usage",
+            },
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    const a = parsed.items.get("minecraft:iron_ingot")!.facets.activity!;
+    expect(a.kind).toBe("multi");
+    expect(a.confidence).toBe(0.6); // inferred floor
+    expect(a.rationale).toContain("[inferred]");
+    expect(a.rationale).toContain("ingredient_of");
+    expect(a.rationale).toContain("structural usage");
+  });
+
   test("schema_proposals flow through unchanged", () => {
     const response = JSON.stringify({
       items: {},

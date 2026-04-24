@@ -1,0 +1,729 @@
+{
+  "items": {
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "id ends _pickaxe + tag minecraft:pickaxes",
+          "rationale": "pickaxe tool for mining blocks"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:enchantable/mining, tool mineable/pickaxe rules",
+          "rationale": "primary activity is stone/ore harvesting"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "mining tool with durability for regular use",
+          "rationale": "pickaxes used regularly for gathering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "explicitly tagged common"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores"
+          ],
+          "signal": "inferred",
+          "evidence": "tool rules mineable/pickaxe",
+          "rationale": "core mining equipment"
+        }
+      }
+    },
+    "minecraft:netherite_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id ends _sword + tag minecraft:swords",
+          "rationale": "melee combat weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:enchantable/melee_weapon",
+          "rationale": "designed for melee combat"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "primary combat tool with durability",
+          "rationale": "regularly used in combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity tier"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "evidence": "weapon component, enchantable/melee_weapon",
+          "rationale": "primary weapon for combat"
+        },
+        "environmental_property": {
+          "values": [
+            "lava_safe"
+          ],
+          "signal": "inferred",
+          "evidence": "netherite material, fire-resistant component",
+          "rationale": "netherite items don't burn in lava"
+        }
+      }
+    },
+    "minecraft:mace": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id = mace (exact match)",
+          "rationale": "melee combat weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:enchantable/mace",
+          "rationale": "specialized combat weapon"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "epic rarity, specialized weapon",
+          "rationale": "used when available in combat"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat"
+          ],
+          "signal": "inferred",
+          "evidence": "weapon component, trial chamber origin",
+          "rationale": "specialized combat equipment"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "evidence": "breeze rod material from trial chambers",
+          "rationale": "trial chamber origin suggests ominous aesthetic"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id = trident (exact match)",
+          "rationale": "melee/ranged weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "weapon component, ranged attack capability",
+          "rationale": "ranged and melee combat weapon"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "rare rarity, trial chamber exclusive",
+          "rationale": "rarely obtained, used when available"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat",
+            "underwater combat"
+          ],
+          "signal": "inferred",
+          "evidence": "tag minecraft:drowned_preferred_weapons, trial chamber loot",
+          "rationale": "water-themed ranged weapon"
+        }
+      }
+    },
+    "minecraft:crossbow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "evidence": "id = crossbow (exact match)",
+          "rationale": "ranged combat weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "ranged weapon component",
+          "rationale": "ranged combat weapon"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "common rarity, ranged alternative",
+          "rationale": "occasional use for ranged combat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "common rarity tier"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat"
+          ],
+          "signal": "inferred",
+          "evidence": "ranged weapon component",
+          "rationale": "primary use is ranged attacks"
+        }
+      }
+    },
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "id ends _helmet + tag minecraft:head_armor",
+          "rationale": "head armor piece"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "armor component, enchantable/armor",
+          "rationale": "defensive equipment"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "evidence": "essential armor piece with durability",
+          "rationale": "core protective equipment"
+        },
+        "primary_uses": {
+          "values": [
+            "head protection"
+          ],
+          "signal": "inferred",
+          "evidence": "armor component, netherite tier",
+          "rationale": "protective equipment for combat"
+        },
+        "environmental_property": {
+          "values": [
+            "lava_safe"
+          ],
+          "signal": "inferred",
+          "evidence": "netherite material, fire-resistant",
+          "rationale": "netherite is lava and fire safe"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "id ends _chestplate + tag minecraft:chest_armor",
+          "rationale": "body armor piece"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "armor component",
+          "rationale": "defensive equipment"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "uncommon tier, intermediate armor",
+          "rationale": "used occasionally for defense"
+        },
+        "primary_uses": {
+          "values": [
+            "body protection"
+          ],
+          "signal": "inferred",
+          "evidence": "armor component, chainmail tier",
+          "rationale": "protective equipment"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "id ends _boots + tag minecraft:foot_armor",
+          "rationale": "foot armor piece"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "armor component",
+          "rationale": "defensive equipment"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "leather tier, early-game armor",
+          "rationale": "early armor, used when available"
+        },
+        "primary_uses": {
+          "values": [
+            "foot protection"
+          ],
+          "signal": "inferred",
+          "evidence": "armor component, leather tier",
+          "rationale": "protective equipment"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "id ends _helmet + tag minecraft:head_armor",
+          "rationale": "head armor piece"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "evidence": "armor component, water-themed origin",
+          "rationale": "armor with water-breathing utility"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "specialized water armor",
+          "rationale": "rarely used, niche utility"
+        },
+        "primary_uses": {
+          "values": [
+            "underwater breathing",
+            "water exploration"
+          ],
+          "signal": "inferred",
+          "evidence": "scute material, water-themed",
+          "rationale": "specialized underwater equipment"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "named",
+          "evidence": "component minecraft:glider",
+          "rationale": "flight/gliding equipment, not combat armor"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "evidence": "glider component, enables flight",
+          "rationale": "movement and navigation tool"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "essential late-game mobility",
+          "rationale": "regularly used for navigation"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding",
+            "flight exploration"
+          ],
+          "signal": "inferred",
+          "evidence": "glider component",
+          "rationale": "primary use is aerial navigation"
+        }
+      }
+    },
+    "minecraft:shield": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "evidence": "equip_slot off_hand, defensive equipment",
+          "rationale": "defensive equipment for protection"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "defensive mechanism",
+          "rationale": "combat defense tool"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "common defensive equipment",
+          "rationale": "regularly used in combat"
+        },
+        "primary_uses": {
+          "values": [
+            "blocking damage"
+          ],
+          "signal": "inferred",
+          "evidence": "defensive equipment",
+          "rationale": "primary use is attack blocking"
+        }
+      }
+    },
+    "minecraft:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "pattern",
+          "evidence": "id ends _box, form storage_block",
+          "rationale": "portable inventory container"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "evidence": "storage block with inventory capacity",
+          "rationale": "item transport and organization"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "common utility for inventory management",
+          "rationale": "regularly used for logistics"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage"
+          ],
+          "signal": "inferred",
+          "evidence": "storage block functionality",
+          "rationale": "main use is portable containment"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "evidence": "generic item container",
+          "rationale": "stores standard items"
+        }
+      }
+    },
+    "minecraft:ender_chest": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "evidence": "chest block, provides cross-dimension storage",
+          "rationale": "portable shared storage container"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "evidence": "storage block functionality",
+          "rationale": "inventory organization"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "common utility for storage",
+          "rationale": "regularly used for organization"
+        },
+        "primary_uses": {
+          "values": [
+            "shared storage access"
+          ],
+          "signal": "inferred",
+          "evidence": "ender chest cross-dimension storage",
+          "rationale": "accessible inventory management"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "evidence": "generic inventory storage",
+          "rationale": "stores standard items"
+        }
+      }
+    },
+    "minecraft:bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "pattern",
+          "evidence": "id = bundle, container structure",
+          "rationale": "portable inventory container"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "evidence": "inventory container functionality",
+          "rationale": "item organization"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "common inventory utility",
+          "rationale": "regularly used for organization"
+        },
+        "primary_uses": {
+          "values": [
+            "inventory organization"
+          ],
+          "signal": "inferred",
+          "evidence": "container functionality",
+          "rationale": "main use is organizing items"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "evidence": "generic item container",
+          "rationale": "stores standard items"
+        }
+      }
+    },
+    "minecraft:barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "evidence": "id = barrel (exact match)",
+          "rationale": "item storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "evidence": "storage block with inventory, mineable",
+          "rationale": "storage and decorative building"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "used for base organization",
+          "rationale": "sometimes used for item storage"
+        },
+        "primary_uses": {
+          "values": [
+            "item storage",
+            "building block"
+          ],
+          "signal": "inferred",
+          "evidence": "storage block with inventory",
+          "rationale": "container and building material"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "evidence": "generic inventory container",
+          "rationale": "stores standard items"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "evidence": "is_fuel = true, mineable by axe",
+          "rationale": "wooden block, flammable"
+        }
+      }
+    },
+    "minecraft:beacon": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "evidence": "beacon provides status effects",
+          "rationale": "functional utility block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "evidence": "functional building block",
+          "rationale": "end-game building block"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "end-game block, expensive",
+          "rationale": "rarely obtained/used"
+        },
+        "primary_uses": {
+          "values": [
+            "status effect beacon"
+          ],
+          "signal": "inferred",
+          "evidence": "beacon provides local buffs",
+          "rationale": "main use is providing effects"
+        }
+      }
+    },
+    "minecraft:brewing_stand": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "id = brewing_stand (exact match)",
+          "rationale": "functional crafting block"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "evidence": "crafting block for potions",
+          "rationale": "potion creation"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "used when brewing potions",
+          "rationale": "sometimes used for crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "potion brewing"
+          ],
+          "signal": "inferred",
+          "evidence": "brewing stand functionality",
+          "rationale": "main use is potion creation"
+        }
+      }
+    },
+    "minecraft:enchanting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "id = enchanting_table (exact match)",
+          "rationale": "functional enchanting block"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "pattern",
+          "evidence": "id suffix, enchanting function",
+          "rationale": "item enchanting utility"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "essential for enchanting items",
+          "rationale": "regularly used for enhancement"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting items"
+          ],
+          "signal": "inferred",
+          "evidence": "enchanting functionality",
+          "rationale": "main use is adding enchantments"
+        }
+      }
+    },
+    "minecraft:anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "id = anvil (exact match)",
+          "rationale": "functional repair/naming block"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "essential for item repair",
+          "rationale": "regularly used for maintenance"
+        },
+        "primary_uses": {
+          "values": [
+            "item repair",
+            "renaming items"
+          ],
+          "signal": "inferred",
+          "evidence": "anvil functionality",
+          "rationale": "main use is item maintenance"
+        }
+      }
+    },
+    "minecraft:composter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "id = composter (exact match)",
+          "rationale": "composting/farming utility block"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "evidence": "composting for farming utility",
+          "rationale": "bonemeal production for crops"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "farming utility block",
+          "rationale": "used when farming needs bonemeal"
+        },
+        "primary_uses": {
+          "values": [
+            "bonemeal production"
+          ],
+          "signal": "inferred",
+          "evidence": "composter functionality",
+          "rationale": "main use is waste conversion"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -32,6 +32,23 @@ export interface ParsedItemFacets {
   facets: Record<string, ParsedFacetEntry>;
 }
 
+/**
+ * Strength tag the LLM emits for each facet value. Drives the final confidence
+ * via SIGNAL_TO_CONFIDENCE so we don't have to trust the model's self-reported
+ * calibration.
+ */
+export type Signal = "named" | "pattern" | "inferred" | "guess";
+
+/** Map signal strength → confidence floor. The LLM may emit a `confidence`
+ *  to nudge DOWN within the band, but values above the signal's mapped
+ *  confidence are silently capped — overconfidence on a guess is demoted. */
+export const SIGNAL_TO_CONFIDENCE: Record<Signal, number> = {
+  named: 0.95,
+  pattern: 0.80,
+  inferred: 0.60,
+  guess: 0.30,
+};
+
 export type ParsedFacetEntry =
   | {
       kind: "single";
@@ -39,6 +56,8 @@ export type ParsedFacetEntry =
       confidence?: number;
       rationale?: string;
       ambiguous?: false;
+      signal?: Signal;
+      evidence?: string;
     }
   | {
       kind: "ambiguous";
@@ -46,12 +65,16 @@ export type ParsedFacetEntry =
       confidence?: number;
       rationale?: string;
       ambiguous: true;
+      signal?: Signal;
+      evidence?: string;
     }
   | {
       kind: "multi";
       values: (string | number)[];
       confidence?: number;
       rationale?: string;
+      signal?: Signal;
+      evidence?: string;
     };
 
 export interface SchemaProposal {
@@ -173,8 +196,26 @@ function parseFacetEntry(
     def.kind === "multi_enum" ||
     def.kind === "multi_free_text" ||
     def.kind === "multi_item_ref";
-  const confidence = typeof e.confidence === "number" ? e.confidence : undefined;
   const rationale = typeof e.rationale === "string" ? e.rationale : undefined;
+
+  // Signal + evidence drive the final confidence. The model's self-reported
+  // confidence is treated as a CAP — if the model says 0.9 but signal=guess,
+  // the actual confidence is min(0.9, signal_floor). Overconfidence on a
+  // weak signal is silently demoted; underconfidence is preserved.
+  const signal = parseSignal(e.signal);
+  const evidence = typeof e.evidence === "string" ? e.evidence.trim() : "";
+
+  if (signal && (signal === "named" || signal === "pattern" || signal === "inferred") && evidence.length === 0) {
+    warnings.push(`${itemId} ${facetId}: signal=${signal} requires non-empty evidence; demoted to 'guess'`);
+  }
+  const effectiveSignal: Signal | undefined =
+    signal && (signal === "named" || signal === "pattern" || signal === "inferred") && evidence.length === 0
+      ? "guess"
+      : signal;
+
+  const modelConf = typeof e.confidence === "number" ? e.confidence : undefined;
+  const confidence = computeConfidence(effectiveSignal, modelConf);
+  const richRationale = formatRationale(rationale, evidence, effectiveSignal);
 
   // Ambiguous two-value shape.
   if (e.ambiguous === true) {
@@ -203,7 +244,9 @@ function parseFacetEntry(
       values: values as [string | number, string | number],
       ambiguous: true,
       confidence,
-      rationale,
+      rationale: richRationale,
+      signal: effectiveSignal,
+      evidence: evidence || undefined,
     };
   }
 
@@ -233,7 +276,9 @@ function parseFacetEntry(
       kind: "multi",
       values: values as (string | number)[],
       confidence,
-      rationale,
+      rationale: richRationale,
+      signal: effectiveSignal,
+      evidence: evidence || undefined,
     };
   }
 
@@ -252,8 +297,47 @@ function parseFacetEntry(
     kind: "single",
     value: value as string | number | boolean | null,
     confidence,
-    rationale,
+    rationale: richRationale,
+    signal: effectiveSignal,
+    evidence: evidence || undefined,
   };
+}
+
+/** Apply the signal floor as a confidence cap. Returns undefined if neither
+ *  signal nor model confidence was provided. */
+function computeConfidence(
+  signal: Signal | undefined,
+  modelConf: number | undefined,
+): number | undefined {
+  if (signal !== undefined) {
+    const ceiling = SIGNAL_TO_CONFIDENCE[signal];
+    if (modelConf !== undefined) return Math.min(modelConf, ceiling);
+    return ceiling;
+  }
+  return modelConf;
+}
+
+/** Fold the LLM-emitted rationale + evidence + signal into a single readable
+ *  string for the layer file. Wire format stays unchanged. */
+function formatRationale(
+  rationale: string | undefined,
+  evidence: string,
+  signal: Signal | undefined,
+): string | undefined {
+  const parts: string[] = [];
+  if (signal) parts.push(`[${signal}]`);
+  if (evidence) parts.push(evidence);
+  if (rationale && rationale !== evidence) parts.push(rationale);
+  if (parts.length === 0) return undefined;
+  return parts.join(" — ");
+}
+
+function parseSignal(raw: unknown): Signal | undefined {
+  if (typeof raw !== "string") return undefined;
+  if (raw === "named" || raw === "pattern" || raw === "inferred" || raw === "guess") {
+    return raw;
+  }
+  return undefined;
 }
 
 function unwrapEnvelope(raw: string, warnings: string[]): string {

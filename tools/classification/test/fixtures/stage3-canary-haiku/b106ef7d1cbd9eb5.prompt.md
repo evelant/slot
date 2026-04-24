@@ -3,13 +3,17 @@ You are classifying Minecraft items for an inventory mod called Slot. For each i
 Rules:
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit `null`, empty arrays, or placeholder values.
-- For single-value enum facets where two values could apply with similar confidence, emit a two-element `values` array AND set `ambiguous: true`. Downstream reviewers see both. Err on the side of marking ambiguous when the signal is thin — a flagged retry is cheap, a confidently wrong answer is expensive.
-- Attach a `confidence` 0.0–1.0 to every facet. Calibrate honestly:
-    • **≥0.90**: the value is directly named or unambiguous from tags/components/lore (e.g. `diamond_pickaxe` tier=`diamond`).
-    • **0.70–0.89**: a strong pattern in the inputs points to the value but isn't named (e.g. role=`material` for an ingot).
-    • **0.50–0.69**: reasonable inference from indirect signals (recipe shape, name, neighbors).
-    • **<0.50**: you're guessing or extrapolating. Prefer `ambiguous: true` + two-value list over a single low-confidence guess.
-    It's better to emit a low confidence + rationale than to fake certainty. A confidently-wrong answer burns a human review round; a low-confidence answer triggers a cheap Sonnet retry.
+- For single-value enum facets where two values could apply with similar confidence, emit a two-element `values` array AND set `ambiguous: true`. Downstream reviewers see both.
+- **Each facet entry MUST include `signal` and `evidence` fields** — these drive the confidence score automatically and gate downstream retry. Format:
+    `{value, signal: "named|pattern|inferred|guess", evidence: "<quote from inputs>", rationale: "<why>"}`
+    The four signal levels:
+      • `named` — the value is explicitly stated in a tag/component/lore string in the inputs. Quote the exact tag or component key in `evidence` (e.g. `"tag minecraft:iron_tool_materials"`, `"component minecraft:equippable.slot=head"`). Reserve for cases where you're transcribing, not interpreting.
+      • `pattern` — the value follows mechanically from an id/tag/model pattern. Quote the pattern in `evidence` (e.g. `"id ends in _ingot + tag iron_tool_materials"`, `"model parent block/stairs"`).
+      • `inferred` — you're reasoning from indirect cues (recipe context, lore prose, neighboring items, mod conventions). Quote the strongest cue (e.g. `"recipe consumes 4 iron_ingot + 1 redstone (clock)"`).
+      • `guess` — no real signal in the inputs; you're applying a generic default. Use sparingly.
+    `evidence` is required for `named`, `pattern`, and `inferred`. For `guess`, set `evidence: ""` and prefer `ambiguous: true` with two values, or omit the facet entirely.
+    `confidence` is computed from `signal` (named=0.95, pattern=0.80, inferred=0.60, guess=0.30). You may include `confidence` to nudge it DOWN within the band, but the runner ignores values higher than the signal allows — overconfidence on a guess is silently demoted.
+    For subjective facets (`flavor`, `palette`, `primary_uses`) without an explicit lore/component cue, prefer `signal: inferred` or omit the facet rather than reaching for `named`.
 - Attach a short `rationale` per facet (≤120 chars) — what in the inputs led to the value.
 - If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to `schema_proposals` at the top level.
@@ -133,15 +137,17 @@ Structure (pure JSON, no comments):
       "facets": {
         "role": {
           "value": "material",
-          "confidence": 0.95,
-          "rationale": "short reason"
+          "signal": "pattern",
+          "evidence": "id ends _ingot + tag minecraft:iron_tool_materials",
+          "rationale": "ingot of a known crafting material"
         },
         "activity": {
           "values": [
             "mining",
             "combat"
           ],
-          "confidence": 0.9,
+          "signal": "pattern",
+          "evidence": "id suffix + tag minecraft:<example>",
           "rationale": "short reason"
         }
       }
@@ -161,21 +167,23 @@ Field rules:
 {
   "items": [
     {
-      "id": "minecraft:lectern",
+      "id": "minecraft:creaking_heart",
       "namespace": "minecraft",
-      "display_name": "Lectern",
+      "display_name": "Creaking Heart",
       "minecraft_tags": [],
       "processing_in": [],
       "sample_ingredient_of": [],
       "sample_output_of": [
-        "minecraft:lectern"
+        "minecraft:creaking_heart"
       ],
       "model_parents": [
-        "block/lectern",
+        "block/creaking_heart",
+        "block/cube_column",
+        "block/cube",
         "block/block"
       ],
       "sample_loot_sources": [
-        "minecraft:blocks/lectern"
+        "minecraft:blocks/creaking_heart"
       ],
       "lore": [],
       "component_highlights": {
@@ -206,495 +214,356 @@ Field rules:
       }
     },
     {
-      "id": "minecraft:grindstone",
+      "id": "minecraft:pale_oak_log",
       "namespace": "minecraft",
-      "display_name": "Grindstone",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:grindstone"
-      ],
-      "model_parents": [
-        "block/grindstone",
-        "block/block"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/grindstone"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "required_tool": {
-          "value": "pickaxe",
-          "confidence": 1,
-          "source": "rule:required_tool_from_block_tag",
-          "rationale": "tag minecraft:mineable/pickaxe"
-        }
-      }
-    },
-    {
-      "id": "minecraft:smoker",
-      "namespace": "minecraft",
-      "display_name": "Smoker",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:smoker"
-      ],
-      "model_parents": [
-        "block/smoker",
-        "block/orientable_with_bottom",
-        "block/cube",
-        "block/block"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/smoker"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "has_nbt_variation": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:has_nbt_variation_from_component"
-        },
-        "required_tool": {
-          "value": "pickaxe",
-          "confidence": 1,
-          "source": "rule:required_tool_from_block_tag",
-          "rationale": "tag minecraft:mineable/pickaxe"
-        }
-      }
-    },
-    {
-      "id": "minecraft:piston",
-      "namespace": "minecraft",
-      "display_name": "Piston",
-      "minecraft_tags": [],
-      "processing_in": [
-        "crafting"
-      ],
-      "sample_ingredient_of": [
-        "minecraft:sticky_piston"
-      ],
-      "sample_output_of": [
-        "minecraft:piston"
-      ],
-      "model_parents": [
-        "block/piston_inventory",
-        "block/cube_bottom_top",
-        "block/cube",
-        "block/block"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/piston"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "required_tool": {
-          "value": "pickaxe",
-          "confidence": 1,
-          "source": "rule:required_tool_from_block_tag",
-          "rationale": "tag minecraft:mineable/pickaxe"
-        },
-        "processing_in": {
-          "values": [
-            "crafting"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:processing_in_from_recipes"
-        }
-      }
-    },
-    {
-      "id": "minecraft:sticky_piston",
-      "namespace": "minecraft",
-      "display_name": "Sticky Piston",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:sticky_piston"
-      ],
-      "model_parents": [
-        "block/sticky_piston_inventory",
-        "block/cube_bottom_top",
-        "block/cube",
-        "block/block"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/sticky_piston"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "required_tool": {
-          "value": "pickaxe",
-          "confidence": 1,
-          "source": "rule:required_tool_from_block_tag",
-          "rationale": "tag minecraft:mineable/pickaxe"
-        }
-      }
-    },
-    {
-      "id": "minecraft:hopper",
-      "namespace": "minecraft",
-      "display_name": "Hopper",
-      "minecraft_tags": [],
-      "processing_in": [
-        "crafting"
-      ],
-      "sample_ingredient_of": [
-        "minecraft:hopper_minecart"
-      ],
-      "sample_output_of": [
-        "minecraft:hopper"
-      ],
-      "model_parents": [
-        "item/hopper",
-        "item/generated",
-        "builtin/generated"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/hopper"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "has_nbt_variation": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:has_nbt_variation_from_component"
-        },
-        "required_tool": {
-          "value": "pickaxe",
-          "confidence": 1,
-          "source": "rule:required_tool_from_block_tag",
-          "rationale": "tag minecraft:mineable/pickaxe"
-        },
-        "processing_in": {
-          "values": [
-            "crafting"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:processing_in_from_recipes"
-        }
-      }
-    },
-    {
-      "id": "minecraft:dropper",
-      "namespace": "minecraft",
-      "display_name": "Dropper",
-      "minecraft_tags": [],
-      "processing_in": [
-        "crafting"
-      ],
-      "sample_ingredient_of": [
-        "minecraft:crafter"
-      ],
-      "sample_output_of": [
-        "minecraft:dropper"
-      ],
-      "model_parents": [
-        "block/dropper",
-        "block/orientable",
-        "block/orientable_with_bottom",
-        "block/cube",
-        "block/block"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/dropper"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "has_nbt_variation": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:has_nbt_variation_from_component"
-        },
-        "required_tool": {
-          "value": "pickaxe",
-          "confidence": 1,
-          "source": "rule:required_tool_from_block_tag",
-          "rationale": "tag minecraft:mineable/pickaxe"
-        },
-        "processing_in": {
-          "values": [
-            "crafting"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:processing_in_from_recipes"
-        }
-      }
-    },
-    {
-      "id": "minecraft:observer",
-      "namespace": "minecraft",
-      "display_name": "Observer",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:observer"
-      ],
-      "model_parents": [
-        "block/observer",
-        "block/block"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/observer"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "required_tool": {
-          "value": "pickaxe",
-          "confidence": 1,
-          "source": "rule:required_tool_from_block_tag",
-          "rationale": "tag minecraft:mineable/pickaxe"
-        }
-      }
-    },
-    {
-      "id": "minecraft:repeater",
-      "namespace": "minecraft",
-      "display_name": "Redstone Repeater",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:repeater"
-      ],
-      "model_parents": [
-        "item/repeater",
-        "item/generated",
-        "builtin/generated"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/repeater"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        }
-      }
-    },
-    {
-      "id": "minecraft:comparator",
-      "namespace": "minecraft",
-      "display_name": "Redstone Comparator",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:comparator"
-      ],
-      "model_parents": [
-        "item/comparator",
-        "item/generated",
-        "builtin/generated"
-      ],
-      "sample_loot_sources": [
-        "minecraft:blocks/comparator"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        }
-      }
-    },
-    {
-      "id": "minecraft:bread",
-      "namespace": "minecraft",
-      "display_name": "Bread",
+      "display_name": "Pale Oak Log",
       "minecraft_tags": [
-        "minecraft:villager_picks_up"
+        "minecraft:completes_find_tree_tutorial",
+        "minecraft:logs",
+        "minecraft:logs_that_burn",
+        "minecraft:pale_oak_logs",
+        "minecraft:sulfur_cube_archetype/bouncy",
+        "minecraft:sulfur_cube_swallowable"
+      ],
+      "processing_in": [
+        "crafting",
+        "smelting"
+      ],
+      "sample_ingredient_of": [
+        "minecraft:campfire",
+        "minecraft:charcoal",
+        "minecraft:creaking_heart",
+        "minecraft:pale_oak_planks",
+        "minecraft:pale_oak_wood",
+        "minecraft:smoker",
+        "minecraft:soul_campfire"
+      ],
+      "sample_output_of": [],
+      "model_parents": [
+        "block/pale_oak_log",
+        "block/cube_column",
+        "block/cube",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/pale_oak_log"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "wood_pale_oak",
+          "confidence": 1,
+          "source": "rule:material_family_from_tag",
+          "rationale": "log tag minecraft:pale_oak_logs"
+        },
+        "form": {
+          "value": "log",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:logs"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "smelting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "is_fuel": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_fuel_from_id_or_tag"
+        }
+      }
+    },
+    {
+      "id": "minecraft:cherry_sapling",
+      "namespace": "minecraft",
+      "display_name": "Cherry Sapling",
+      "minecraft_tags": [
+        "minecraft:saplings"
       ],
       "processing_in": [],
       "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:bread"
-      ],
+      "sample_output_of": [],
       "model_parents": [
-        "item/bread",
+        "item/cherry_sapling",
         "item/generated",
         "builtin/generated"
       ],
       "sample_loot_sources": [
+        "minecraft:blocks/cherry_leaves",
+        "minecraft:blocks/cherry_sapling",
+        "minecraft:blocks/potted_cherry_sapling"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "wood_cherry",
+          "confidence": 1,
+          "source": "rule:material_family_from_id",
+          "rationale": "id prefix cherry_"
+        },
+        "form": {
+          "value": "sapling",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:saplings"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "is_fuel": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_fuel_from_id_or_tag"
+        }
+      }
+    },
+    {
+      "id": "minecraft:pitcher_pod",
+      "namespace": "minecraft",
+      "display_name": "Pitcher Pod",
+      "minecraft_tags": [
+        "minecraft:chicken_food",
+        "minecraft:parrot_food",
+        "minecraft:villager_picks_up",
+        "minecraft:villager_plantable_seeds"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/pitcher_pod",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/pitcher_crop",
+        "minecraft:gameplay/sniffer_digging"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "sniffer_garden"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "minecraft:torchflower_seeds",
+      "namespace": "minecraft",
+      "display_name": "Torchflower Seeds",
+      "minecraft_tags": [
+        "minecraft:chicken_food",
+        "minecraft:parrot_food",
+        "minecraft:sniffer_food",
+        "minecraft:villager_picks_up",
+        "minecraft:villager_plantable_seeds"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/torchflower_seeds",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/torchflower_crop",
+        "minecraft:gameplay/sniffer_digging"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "form": {
+          "value": "seed",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _seeds"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "sniffer_garden"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "minecraft:azalea",
+      "namespace": "minecraft",
+      "display_name": "Azalea",
+      "minecraft_tags": [
+        "minecraft:saplings"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "block/azalea",
+        "block/template_azalea",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/azalea",
+        "minecraft:blocks/azalea_leaves",
+        "minecraft:blocks/potted_azalea_bush"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "sapling",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:saplings"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "minecraft:glow_berries",
+      "namespace": "minecraft",
+      "display_name": "Glow Berries",
+      "minecraft_tags": [
+        "minecraft:fox_food"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/glow_berries",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/cave_vines",
+        "minecraft:blocks/cave_vines_plant",
         "minecraft:chests/abandoned_mineshaft",
-        "minecraft:chests/simple_dungeon",
-        "minecraft:chests/spawn_bonus_chest",
-        "minecraft:chests/stronghold_corridor",
-        "minecraft:chests/stronghold_crossing",
-        "minecraft:chests/village/village_armorer",
-        "minecraft:chests/village/village_cartographer",
-        "minecraft:chests/village/village_desert_house",
-        "minecraft:chests/village/village_mason",
-        "minecraft:chests/village/village_plains_house"
+        "minecraft:chests/ancient_city",
+        "minecraft:chests/trial_chambers/supply",
+        "minecraft:harvest/cave_vine"
       ],
       "lore": [],
       "component_highlights": {
         "minecraft:food": {
-          "nutrition": 5,
-          "saturation": 6
+          "nutrition": 2,
+          "saturation": 0.4
         },
         "minecraft:consumable": {},
         "minecraft:rarity": "common"
@@ -712,13 +581,9 @@ Field rules:
         },
         "origin": {
           "values": [
+            "ancient_city",
             "mineshaft",
-            "overworld_cave",
-            "overworld_surface",
-            "stronghold",
-            "trial_chamber",
-            "village",
-            "woodland_mansion"
+            "trial_chamber"
           ],
           "mode": "add",
           "confidence": 1,
@@ -727,63 +592,29 @@ Field rules:
       }
     },
     {
-      "id": "minecraft:golden_apple",
+      "id": "minecraft:nether_wart",
       "namespace": "minecraft",
-      "display_name": "Golden Apple",
-      "minecraft_tags": [
-        "minecraft:horse_food",
-        "minecraft:horse_tempt_items",
-        "minecraft:piglin_loved"
+      "display_name": "Nether Wart",
+      "minecraft_tags": [],
+      "processing_in": [
+        "crafting"
       ],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:golden_apple"
+      "sample_ingredient_of": [
+        "minecraft:nether_wart_block",
+        "minecraft:red_nether_bricks"
       ],
+      "sample_output_of": [],
       "model_parents": [
-        "item/golden_apple",
+        "item/nether_wart",
         "item/generated",
         "builtin/generated"
       ],
       "sample_loot_sources": [
-        "minecraft:chests/abandoned_mineshaft",
-        "minecraft:chests/bastion_hoglin_stable",
-        "minecraft:chests/bastion_other",
-        "minecraft:chests/desert_pyramid",
-        "minecraft:chests/igloo_chest",
-        "minecraft:chests/ruined_portal",
-        "minecraft:chests/simple_dungeon",
-        "minecraft:chests/stronghold_corridor",
-        "minecraft:chests/trial_chambers/reward_ominous_rare",
-        "minecraft:chests/trial_chambers/reward_unique"
+        "minecraft:blocks/nether_wart",
+        "minecraft:chests/nether_bridge"
       ],
       "lore": [],
       "component_highlights": {
-        "minecraft:food": {
-          "can_always_eat": true,
-          "nutrition": 4,
-          "saturation": 9.6
-        },
-        "minecraft:consumable": {
-          "on_consume_effects": [
-            {
-              "type": "minecraft:apply_effects",
-              "effects": [
-                {
-                  "amplifier": 1,
-                  "duration": 100,
-                  "id": "minecraft:regeneration",
-                  "show_icon": true
-                },
-                {
-                  "duration": 2400,
-                  "id": "minecraft:absorption",
-                  "show_icon": true
-                }
-              ]
-            }
-          ]
-        },
         "minecraft:rarity": "common"
       },
       "stage2_facets": {
@@ -797,16 +628,280 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
         },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
         "origin": {
           "values": [
-            "bastion",
-            "desert_temple",
-            "mineshaft",
+            "nether",
+            "nether_fortress"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "y_level_range": {
+          "value": "nether_surface",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "minecraft:dragon_egg",
+      "namespace": "minecraft",
+      "display_name": "Dragon Egg",
+      "minecraft_tags": [],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "block/dragon_egg",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/dragon_egg"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "epic"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "rarity": {
+          "value": "unique",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = epic"
+        },
+        "y_level_range": {
+          "value": "end_islands",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "minecraft:dragon_head",
+      "namespace": "minecraft",
+      "display_name": "Dragon Head",
+      "minecraft_tags": [
+        "minecraft:enchantable/equippable",
+        "minecraft:enchantable/vanishing",
+        "minecraft:noteblock_top_instruments",
+        "minecraft:skulls"
+      ],
+      "processing_in": [
+        "crafting"
+      ],
+      "sample_ingredient_of": [
+        "minecraft:firework_star"
+      ],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/dragon_head",
+        "item/template_skull"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/dragon_head"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "epic"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "equip_slot": {
+          "value": "head",
+          "confidence": 1,
+          "source": "rule:equip_slot_from_component"
+        },
+        "rarity": {
+          "value": "unique",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = epic"
+        },
+        "form": {
+          "value": "head",
+          "confidence": 1,
+          "source": "rule:form_from_model",
+          "rationale": "model item/template_skull"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "y_level_range": {
+          "value": "end_islands",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        }
+      }
+    },
+    {
+      "id": "minecraft:creeper_head",
+      "namespace": "minecraft",
+      "display_name": "Creeper Head",
+      "minecraft_tags": [
+        "minecraft:enchantable/equippable",
+        "minecraft:enchantable/vanishing",
+        "minecraft:noteblock_top_instruments",
+        "minecraft:skulls"
+      ],
+      "processing_in": [
+        "crafting"
+      ],
+      "sample_ingredient_of": [
+        "minecraft:creeper_banner_pattern",
+        "minecraft:firework_star"
+      ],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/template_skull"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/creeper_head",
+        "minecraft:charged_creeper/creeper"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "uncommon"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "equip_slot": {
+          "value": "head",
+          "confidence": 1,
+          "source": "rule:equip_slot_from_component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = uncommon"
+        },
+        "form": {
+          "value": "head",
+          "confidence": 1,
+          "source": "rule:form_from_model",
+          "rationale": "model item/template_skull"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        }
+      }
+    },
+    {
+      "id": "minecraft:music_disc_13",
+      "namespace": "minecraft",
+      "display_name": "Music Disc",
+      "minecraft_tags": [
+        "minecraft:creeper_drop_music_discs"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/music_disc_13",
+        "item/template_music_disc",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:chests/ancient_city",
+        "minecraft:chests/simple_dungeon",
+        "minecraft:chests/woodland_mansion"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:jukebox_playable": "minecraft:13",
+        "minecraft:rarity": "uncommon"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = uncommon"
+        },
+        "origin": {
+          "values": [
+            "ancient_city",
             "overworld_cave",
-            "overworld_ocean",
-            "ruined_portal",
-            "stronghold",
-            "trial_chamber",
             "woodland_mansion"
           ],
           "mode": "add",
@@ -816,73 +911,144 @@ Field rules:
       }
     },
     {
-      "id": "minecraft:enchanted_golden_apple",
+      "id": "minecraft:music_disc_creator",
       "namespace": "minecraft",
-      "display_name": "Enchanted Golden Apple",
-      "minecraft_tags": [
-        "minecraft:horse_food",
-        "minecraft:horse_tempt_items",
-        "minecraft:piglin_loved"
-      ],
-      "processing_in": [
-        "crafting"
-      ],
-      "sample_ingredient_of": [
-        "minecraft:mojang_banner_pattern"
-      ],
+      "display_name": "Music Disc",
+      "minecraft_tags": [],
+      "processing_in": [],
+      "sample_ingredient_of": [],
       "sample_output_of": [],
       "model_parents": [
-        "item/enchanted_golden_apple",
+        "item/music_disc_creator",
+        "item/template_music_disc",
         "item/generated",
         "builtin/generated"
       ],
       "sample_loot_sources": [
-        "minecraft:chests/abandoned_mineshaft",
-        "minecraft:chests/ancient_city",
-        "minecraft:chests/bastion_treasure",
-        "minecraft:chests/desert_pyramid",
-        "minecraft:chests/ruined_portal",
-        "minecraft:chests/simple_dungeon",
-        "minecraft:chests/trial_chambers/reward_ominous_unique",
-        "minecraft:chests/woodland_mansion"
+        "minecraft:chests/trial_chambers/reward_ominous_unique"
       ],
       "lore": [],
       "component_highlights": {
-        "minecraft:food": {
-          "can_always_eat": true,
-          "nutrition": 4,
-          "saturation": 9.6
+        "minecraft:jukebox_playable": "minecraft:creator",
+        "minecraft:rarity": "rare"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
         },
-        "minecraft:consumable": {
-          "on_consume_effects": [
+        "rarity": {
+          "value": "rare",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = rare"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "minecraft:totem_of_undying",
+      "namespace": "minecraft",
+      "display_name": "Totem of Undying",
+      "minecraft_tags": [],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/totem_of_undying",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:entities/evoker"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:death_protection": {
+          "death_effects": [
+            {
+              "type": "minecraft:clear_all_effects"
+            },
             {
               "type": "minecraft:apply_effects",
               "effects": [
                 {
                   "amplifier": 1,
-                  "duration": 400,
+                  "duration": 900,
                   "id": "minecraft:regeneration",
                   "show_icon": true
                 },
                 {
-                  "duration": 6000,
-                  "id": "minecraft:resistance",
-                  "show_icon": true
-                },
-                {
-                  "duration": 6000,
-                  "id": "minecraft:fire_resistance",
-                  "show_icon": true
-                },
-                {
-                  "amplifier": 3,
-                  "duration": 2400,
+                  "amplifier": 1,
+                  "duration": 100,
                   "id": "minecraft:absorption",
+                  "show_icon": true
+                },
+                {
+                  "duration": 800,
+                  "id": "minecraft:fire_resistance",
                   "show_icon": true
                 }
               ]
             }
           ]
+        },
+        "minecraft:rarity": "uncommon"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = uncommon"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "minecraft:nether_star",
+      "namespace": "minecraft",
+      "display_name": "Nether Star",
+      "minecraft_tags": [],
+      "processing_in": [
+        "crafting"
+      ],
+      "sample_ingredient_of": [
+        "minecraft:beacon"
+      ],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/nether_star",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:damage_resistant": {
+          "types": "#minecraft:is_explosion"
         },
         "minecraft:rarity": "rare"
       },
@@ -912,261 +1078,40 @@ Field rules:
           "confidence": 1,
           "source": "rule:processing_in_from_recipes"
         },
-        "origin": {
-          "values": [
-            "ancient_city",
-            "bastion",
-            "desert_temple",
-            "mineshaft",
-            "overworld_cave",
-            "ruined_portal",
-            "trial_chamber",
-            "woodland_mansion"
-          ],
-          "mode": "add",
+        "y_level_range": {
+          "value": "nether_surface",
           "confidence": 1,
-          "source": "rule:origin_from_loot_tables"
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
         }
       }
     },
     {
-      "id": "minecraft:potion",
+      "id": "minecraft:netherite_upgrade_smithing_template",
       "namespace": "minecraft",
-      "display_name": "Potion",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [],
-      "model_parents": [
-        "item/potion",
-        "item/generated",
-        "builtin/generated"
-      ],
-      "sample_loot_sources": [
-        "minecraft:chests/ancient_city",
-        "minecraft:chests/buried_treasure",
-        "minecraft:chests/trial_chambers/supply",
-        "minecraft:gameplay/fishing/junk",
-        "minecraft:gameplay/piglin_bartering",
-        "minecraft:spawners/ominous/trial_chamber/consumables",
-        "minecraft:spawners/trial_chamber/consumables"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:consumable": {
-          "animation": "drink",
-          "has_consume_particles": false,
-          "sound": "minecraft:entity.generic.drink"
-        },
-        "minecraft:potion_contents": {},
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "has_nbt_variation": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:has_nbt_variation_from_component"
-        },
-        "form": {
-          "value": "potion",
-          "confidence": 1,
-          "source": "rule:form_from_id",
-          "rationale": "exact id"
-        },
-        "origin": {
-          "values": [
-            "ancient_city",
-            "overworld_ocean",
-            "trial_chamber"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:origin_from_loot_tables"
-        }
-      }
-    },
-    {
-      "id": "minecraft:splash_potion",
-      "namespace": "minecraft",
-      "display_name": "Splash Potion",
-      "minecraft_tags": [],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [],
-      "model_parents": [
-        "item/splash_potion",
-        "item/generated",
-        "builtin/generated"
-      ],
-      "sample_loot_sources": [
-        "minecraft:dispensers/trial_chambers/chamber",
-        "minecraft:gameplay/piglin_bartering"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:potion_contents": {},
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "has_nbt_variation": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:has_nbt_variation_from_component"
-        },
-        "form": {
-          "value": "potion",
-          "confidence": 1,
-          "source": "rule:form_from_id",
-          "rationale": "exact id"
-        },
-        "origin": {
-          "values": [
-            "trial_chamber"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:origin_from_loot_tables"
-        }
-      }
-    },
-    {
-      "id": "minecraft:milk_bucket",
-      "namespace": "minecraft",
-      "display_name": "Milk Bucket",
+      "display_name": "Smithing Template",
       "minecraft_tags": [],
       "processing_in": [
-        "crafting"
+        "crafting",
+        "smithing"
       ],
       "sample_ingredient_of": [
-        "minecraft:cake"
-      ],
-      "sample_output_of": [],
-      "model_parents": [
-        "item/milk_bucket",
-        "item/generated",
-        "builtin/generated"
-      ],
-      "sample_loot_sources": [
-        "minecraft:chests/trial_chambers/supply"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:consumable": {
-          "animation": "drink",
-          "has_consume_particles": false,
-          "on_consume_effects": [
-            {
-              "type": "minecraft:clear_all_effects"
-            }
-          ],
-          "sound": "minecraft:entity.generic.drink"
-        },
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "form": {
-          "value": "bucket",
-          "confidence": 1,
-          "source": "rule:form_from_id",
-          "rationale": "exact id"
-        },
-        "processing_in": {
-          "values": [
-            "crafting"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:processing_in_from_recipes"
-        },
-        "origin": {
-          "values": [
-            "trial_chamber"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:origin_from_loot_tables"
-        }
-      }
-    },
-    {
-      "id": "minecraft:cake",
-      "namespace": "minecraft",
-      "display_name": "Cake",
-      "minecraft_tags": [
-        "minecraft:panda_eats_from_ground"
-      ],
-      "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:cake"
-      ],
-      "model_parents": [
-        "item/cake",
-        "item/generated",
-        "builtin/generated"
-      ],
-      "sample_loot_sources": [
-        "minecraft:chests/trial_chambers/intersection"
-      ],
-      "lore": [],
-      "component_highlights": {
-        "minecraft:rarity": "common"
-      },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "origin": {
-          "values": [
-            "trial_chamber"
-          ],
-          "mode": "add",
-          "confidence": 1,
-          "source": "rule:origin_from_loot_tables"
-        }
-      }
-    },
-    {
-      "id": "minecraft:arrow",
-      "namespace": "minecraft",
-      "display_name": "Arrow",
-      "minecraft_tags": [
-        "minecraft:arrows"
-      ],
-      "processing_in": [
-        "crafting"
-      ],
-      "sample_ingredient_of": [
-        "minecraft:spectral_arrow",
-        "minecraft:tipped_arrow"
+        "minecraft:netherite_axe_smithing",
+        "minecraft:netherite_boots_smithing",
+        "minecraft:netherite_chestplate_smithing",
+        "minecraft:netherite_helmet_smithing",
+        "minecraft:netherite_hoe_smithing",
+        "minecraft:netherite_horse_armor_smithing",
+        "minecraft:netherite_leggings_smithing",
+        "minecraft:netherite_nautilus_armor_smithing",
+        "minecraft:netherite_pickaxe_smithing",
+        "minecraft:netherite_shovel_smithing"
       ],
       "sample_output_of": [
-        "minecraft:arrow"
+        "minecraft:netherite_upgrade_smithing_template"
       ],
       "model_parents": [
-        "item/arrow",
+        "item/netherite_upgrade_smithing_template",
         "item/generated",
         "builtin/generated"
       ],
@@ -1174,17 +1119,11 @@ Field rules:
         "minecraft:chests/bastion_bridge",
         "minecraft:chests/bastion_hoglin_stable",
         "minecraft:chests/bastion_other",
-        "minecraft:chests/jungle_temple_dispenser",
-        "minecraft:chests/pillager_outpost",
-        "minecraft:chests/trial_chambers/entrance",
-        "minecraft:chests/trial_chambers/reward_common",
-        "minecraft:chests/trial_chambers/supply",
-        "minecraft:chests/village/village_fletcher",
-        "minecraft:dispensers/trial_chambers/chamber"
+        "minecraft:chests/bastion_treasure"
       ],
       "lore": [],
       "component_highlights": {
-        "minecraft:rarity": "common"
+        "minecraft:rarity": "uncommon"
       },
       "stage2_facets": {
         "mod_namespace": {
@@ -1197,15 +1136,17 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
         },
-        "form": {
-          "value": "projectile",
+        "rarity": {
+          "value": "uncommon",
+          "mode": "override-if-null",
           "confidence": 1,
-          "source": "rule:form_from_id",
-          "rationale": "exact id"
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = uncommon"
         },
         "processing_in": {
           "values": [
-            "crafting"
+            "crafting",
+            "smithing"
           ],
           "mode": "add",
           "confidence": 1,
@@ -1213,12 +1154,7 @@ Field rules:
         },
         "origin": {
           "values": [
-            "bastion",
-            "jungle_temple",
-            "mob_drop",
-            "pillager_outpost",
-            "trial_chamber",
-            "village"
+            "bastion"
           ],
           "mode": "add",
           "confidence": 1,
@@ -1227,35 +1163,32 @@ Field rules:
       }
     },
     {
-      "id": "minecraft:tipped_arrow",
+      "id": "minecraft:sentry_armor_trim_smithing_template",
       "namespace": "minecraft",
-      "display_name": "Tipped Arrow",
-      "minecraft_tags": [
-        "minecraft:arrows"
+      "display_name": "Smithing Template",
+      "minecraft_tags": [],
+      "processing_in": [
+        "crafting",
+        "smithing"
       ],
-      "processing_in": [],
-      "sample_ingredient_of": [],
+      "sample_ingredient_of": [
+        "minecraft:sentry_armor_trim_smithing_template",
+        "minecraft:sentry_armor_trim_smithing_template_smithing_trim"
+      ],
       "sample_output_of": [
-        "minecraft:tipped_arrow"
+        "minecraft:sentry_armor_trim_smithing_template"
       ],
       "model_parents": [
-        "item/tipped_arrow",
+        "item/sentry_armor_trim_smithing_template",
         "item/generated",
         "builtin/generated"
       ],
       "sample_loot_sources": [
-        "minecraft:chests/trial_chambers/reward_common",
-        "minecraft:chests/trial_chambers/reward_ominous_common",
-        "minecraft:chests/trial_chambers/supply",
-        "minecraft:entities/bogged",
-        "minecraft:entities/parched",
-        "minecraft:entities/stray",
-        "minecraft:gameplay/hero_of_the_village/fletcher_gift"
+        "minecraft:chests/pillager_outpost"
       ],
       "lore": [],
       "component_highlights": {
-        "minecraft:potion_contents": {},
-        "minecraft:rarity": "common"
+        "minecraft:rarity": "uncommon"
       },
       "stage2_facets": {
         "mod_namespace": {
@@ -1268,22 +1201,25 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
         },
-        "has_nbt_variation": {
-          "value": true,
+        "rarity": {
+          "value": "uncommon",
+          "mode": "override-if-null",
           "confidence": 1,
-          "source": "rule:has_nbt_variation_from_component"
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = uncommon"
         },
-        "form": {
-          "value": "projectile",
+        "processing_in": {
+          "values": [
+            "crafting",
+            "smithing"
+          ],
+          "mode": "add",
           "confidence": 1,
-          "source": "rule:form_from_id",
-          "rationale": "exact id"
+          "source": "rule:processing_in_from_recipes"
         },
         "origin": {
           "values": [
-            "mob_drop",
-            "trial_chamber",
-            "village"
+            "pillager_outpost"
           ],
           "mode": "add",
           "confidence": 1,
@@ -1292,25 +1228,123 @@ Field rules:
       }
     },
     {
-      "id": "minecraft:firework_rocket",
+      "id": "minecraft:angler_pottery_sherd",
       "namespace": "minecraft",
-      "display_name": "Firework Rocket",
+      "display_name": "Angler Pottery Sherd",
+      "minecraft_tags": [
+        "minecraft:decorated_pot_ingredients",
+        "minecraft:decorated_pot_sherds"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/angler_pottery_sherd",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:archaeology/ocean_ruin_warm"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "uncommon"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = uncommon"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "minecraft:command_block",
+      "namespace": "minecraft",
+      "display_name": "Command Block",
       "minecraft_tags": [],
       "processing_in": [],
       "sample_ingredient_of": [],
-      "sample_output_of": [
-        "minecraft:firework_rocket",
-        "minecraft:firework_rocket_simple"
-      ],
+      "sample_output_of": [],
       "model_parents": [
-        "item/firework_rocket",
+        "block/command_block",
+        "block/template_command_block",
+        "block/cube_directional",
+        "block/block"
+      ],
+      "sample_loot_sources": [],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "epic"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "rarity": {
+          "value": "unique",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = epic"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_creative_only_hardcoded",
+          "rationale": "known vanilla creative-only item"
+        }
+      }
+    },
+    {
+      "id": "minecraft:barrier",
+      "namespace": "minecraft",
+      "display_name": "Barrier",
+      "minecraft_tags": [],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/barrier",
         "item/generated",
         "builtin/generated"
       ],
       "sample_loot_sources": [],
       "lore": [],
       "component_highlights": {
-        "minecraft:rarity": "common"
+        "minecraft:rarity": "epic"
       },
       "stage2_facets": {
         "mod_namespace": {
@@ -1323,11 +1357,23 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
         },
-        "form": {
-          "value": "projectile",
+        "is_block_item": {
+          "value": true,
           "confidence": 1,
-          "source": "rule:form_from_id",
-          "rationale": "exact id"
+          "source": "rule:is_block_item_from_registry"
+        },
+        "rarity": {
+          "value": "unique",
+          "mode": "override-if-null",
+          "confidence": 1,
+          "source": "rule:rarity_from_component",
+          "rationale": "component minecraft:rarity = epic"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_creative_only_hardcoded",
+          "rationale": "known vanilla creative-only item"
         }
       }
     }

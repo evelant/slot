@@ -1,0 +1,1011 @@
+{
+  "items": {
+    "minecraft:snowball": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "pattern",
+          "evidence": "id suffix _ball + stage2 form=projectile",
+          "rationale": "thrown projectile weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "tag minecraft:happy_ghast_tempt_items + niche use",
+          "rationale": "situational combat and ghast mechanic"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "evidence": "projectile form + damage mechanic",
+          "rationale": "thrown as attack projectile"
+        },
+        "flavor": {
+          "value": "natural",
+          "signal": "inferred",
+          "evidence": "snow material from natural blocks",
+          "rationale": "natural frozen water projectile"
+        },
+        "primary_uses": {
+          "values": [
+            "combat projectile",
+            "ghast tempting"
+          ],
+          "signal": "inferred",
+          "evidence": "tag minecraft:happy_ghast_tempt_items + projectile",
+          "rationale": "core uses shown in mechanics"
+        }
+      }
+    },
+    "minecraft:ender_pearl": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "pattern",
+          "evidence": "use_cooldown + throwable projectile",
+          "rationale": "consumable thrown projectile"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "essential for teleportation + ender_eye crafting",
+          "rationale": "core traversal and crafting material"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "teleport mechanic + throwable + crafting ingredient",
+          "rationale": "enables exploration and combat uses"
+        },
+        "flavor": {
+          "value": "mystical",
+          "signal": "inferred",
+          "evidence": "from end dimension + teleport mechanic",
+          "rationale": "magical artifact with teleport property"
+        },
+        "primary_uses": {
+          "values": [
+            "teleportation",
+            "ender_eye crafting",
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "sample_ingredient_of ender_eye + usage pattern",
+          "rationale": "versatile exploration and combat tool"
+        }
+      }
+    },
+    "minecraft:chorus_fruit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "component minecraft:food + minecraft:consumable",
+          "rationale": "explicitly defined as consumable food"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "limited to end, random teleport side effect",
+          "rationale": "useful but situational due to chaotic teleport"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "evidence": "on_consume_effects=[teleport_randomly]",
+          "rationale": "enables exploration via random teleport"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "evidence": "from end plants + magical teleport mechanic",
+          "rationale": "exotic natural food with magical property",
+          "ambiguous": true
+        },
+        "primary_uses": {
+          "values": [
+            "sustenance",
+            "exploration teleport"
+          ],
+          "signal": "inferred",
+          "evidence": "food component (nutrition=4) + teleport effect",
+          "rationale": "food healing with exploratory side effect"
+        }
+      }
+    },
+    "minecraft:compass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "id=compass + navigation mechanic",
+          "rationale": "navigation guidance tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "essential spawn navigation + map crafting",
+          "rationale": "core navigation tool for overworld"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:compasses + navigation mechanic",
+          "rationale": "points to spawn/lodestone for navigation"
+        },
+        "flavor": {
+          "value": "mechanical",
+          "signal": "inferred",
+          "evidence": "crafted rotating instrument",
+          "rationale": "precision mechanical navigation device"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn navigation",
+            "map crafting"
+          ],
+          "signal": "inferred",
+          "evidence": "compass mechanic + sample_ingredient_of map",
+          "rationale": "core navigation and map-making tool"
+        }
+      }
+    },
+    "minecraft:recovery_compass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "id=recovery_compass + specialized compass",
+          "rationale": "death location navigation tool"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "points to death location for recovery",
+          "rationale": "essential for death item retrieval"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "evidence": "guides back to respawn anchors/death",
+          "rationale": "navigation to recovery point"
+        },
+        "flavor": {
+          "value": "mechanical",
+          "signal": "inferred",
+          "evidence": "specialized compass variant",
+          "rationale": "mechanical navigation instrument"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "sample_loot_sources=[] + sample_output_of=[recovery_compass]",
+          "rationale": "only created via crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "death location recovery"
+          ],
+          "signal": "pattern",
+          "evidence": "recovery_compass function + crafting",
+          "rationale": "locates death site for item recovery"
+        }
+      }
+    },
+    "minecraft:spyglass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "id=spyglass + zoom mechanic",
+          "rationale": "distant terrain viewing tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "situational scouting use",
+          "rationale": "useful but not essential"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "evidence": "zoom enables distant terrain viewing",
+          "rationale": "reveals distant landmarks for navigation"
+        },
+        "flavor": {
+          "value": "mechanical",
+          "signal": "inferred",
+          "evidence": "copper + amethyst optical instrument",
+          "rationale": "mechanical optical device"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "evidence": "sample_loot_sources=[] + sample_output_of=[spyglass]",
+          "rationale": "obtained only via crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "distant terrain scouting"
+          ],
+          "signal": "inferred",
+          "evidence": "zoom mechanic + crafted item",
+          "rationale": "exploration aid for viewing afar"
+        }
+      }
+    },
+    "minecraft:clock": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "id=clock + time display mechanic",
+          "rationale": "time-telling display utility"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "limited use in redstone timing",
+          "rationale": "specialized niche utility"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "evidence": "displays day/night for timing circuits",
+          "rationale": "aids redstone timing mechanisms"
+        },
+        "flavor": {
+          "value": "mechanical",
+          "signal": "inferred",
+          "evidence": "crafted precision mechanism",
+          "rationale": "mechanical timepiece"
+        },
+        "primary_uses": {
+          "values": [
+            "time display",
+            "redstone timing aid"
+          ],
+          "signal": "inferred",
+          "evidence": "clock mechanics + redstone utility",
+          "rationale": "shows time and assists circuit timing"
+        }
+      }
+    },
+    "minecraft:name_tag": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "id=name_tag + entity naming mechanic",
+          "rationale": "mob naming and preservation tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "situational pet/mob management",
+          "rationale": "used for specific preservation needs"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "evidence": "utility item without aesthetic role",
+          "rationale": "functional utility item"
+        },
+        "primary_uses": {
+          "values": [
+            "entity naming",
+            "prevent despawn"
+          ],
+          "signal": "inferred",
+          "evidence": "name_tag mechanics",
+          "rationale": "preserves mobs and prevents loss"
+        }
+      }
+    },
+    "minecraft:lead": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "evidence": "id=lead + mob tethering mechanic",
+          "rationale": "mob control and transport tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "situational mob transport needs",
+          "rationale": "used for specific collection/relocation"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "evidence": "tethers mobs for movement",
+          "rationale": "enables mob logistics"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "pattern",
+          "evidence": "id=lead + tether mechanic",
+          "rationale": "transports living entities"
+        },
+        "primary_uses": {
+          "values": [
+            "mob transport",
+            "animal leading"
+          ],
+          "signal": "inferred",
+          "evidence": "lead tether mechanic",
+          "rationale": "leads animals to farms/storage"
+        }
+      }
+    },
+    "minecraft:cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:stairs + stage2 form=stairs",
+          "rationale": "architectural stair element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "common building material",
+          "rationale": "frequently used in construction"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "pattern",
+          "evidence": "stairs form + copper decorative appeal",
+          "rationale": "architectural construction element"
+        },
+        "flavor": {
+          "value": "variant",
+          "signal": "inferred",
+          "evidence": "variant form of base copper material",
+          "rationale": "stylistic variant of copper block"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "evidence": "unoxidized cut copper appearance",
+          "rationale": "bright polished copper finish"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "building aesthetics"
+          ],
+          "signal": "inferred",
+          "evidence": "stairs + copper decorative use",
+          "rationale": "creates architectural staircases"
+        }
+      }
+    },
+    "minecraft:copper_grate": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "evidence": "id=copper_grate + no functional mechanics",
+          "rationale": "decorative grid pattern block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "decorative aesthetic use",
+          "rationale": "used situationally for design"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "pattern",
+          "evidence": "grate + decorative form",
+          "rationale": "architectural and design element"
+        },
+        "flavor": {
+          "value": "variant",
+          "signal": "inferred",
+          "evidence": "copper variant form",
+          "rationale": "decorative variant of copper"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "evidence": "unoxidized copper color",
+          "rationale": "bright polished copper appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent",
+            "air flow design"
+          ],
+          "signal": "inferred",
+          "evidence": "grate pattern form",
+          "rationale": "adds visual interest via grid pattern"
+        }
+      }
+    },
+    "minecraft:waxed_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:slabs + stage2 form=slab",
+          "rationale": "half-height building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "common building material variant",
+          "rationale": "frequently used in construction"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "pattern",
+          "evidence": "slab + copper decorative",
+          "rationale": "architectural construction element"
+        },
+        "flavor": {
+          "value": "variant",
+          "signal": "inferred",
+          "evidence": "waxed copper variant",
+          "rationale": "preserves bright color variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "evidence": "waxed copper maintains bright tone",
+          "rationale": "waxing preserves polished appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "slab construction",
+            "building aesthetics"
+          ],
+          "signal": "inferred",
+          "evidence": "slab form + copper decorative",
+          "rationale": "creates half-block copper elements"
+        }
+      }
+    },
+    "minecraft:mangrove_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:fence_gates + gating mechanic",
+          "rationale": "functional architectural gate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "situational fencing/enclosure use",
+          "rationale": "used for specific gate needs"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "pattern",
+          "evidence": "fence_gate + wood material",
+          "rationale": "architectural gating element"
+        },
+        "flavor": {
+          "value": "natural",
+          "signal": "inferred",
+          "evidence": "wood from mangrove trees",
+          "rationale": "natural tree wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "evidence": "mangrove has reddish wood tone",
+          "rationale": "reddish-brown wood color"
+        },
+        "primary_uses": {
+          "values": [
+            "gate sections",
+            "enclosure walls"
+          ],
+          "signal": "inferred",
+          "evidence": "fence_gate functionality",
+          "rationale": "creates openable fence barriers"
+        }
+      }
+    },
+    "minecraft:cherry_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "evidence": "tag minecraft:buttons + redstone input device",
+          "rationale": "redstone circuit push-button"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "situational redstone circuit use",
+          "rationale": "used for specific control purposes"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "pattern",
+          "evidence": "button + redstone mechanic",
+          "rationale": "enables redstone control circuits"
+        },
+        "flavor": {
+          "value": "natural",
+          "signal": "inferred",
+          "evidence": "cherry wood material",
+          "rationale": "natural tree wood"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "evidence": "cherry has pale pinkish wood tone",
+          "rationale": "pale pink-tinted cherry appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone trigger",
+            "door/gate control"
+          ],
+          "signal": "inferred",
+          "evidence": "button mechanics + redstone",
+          "rationale": "activates redstone mechanisms"
+        }
+      }
+    },
+    "minecraft:bamboo_mosaic": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "id=bamboo_mosaic + decorative block material",
+          "rationale": "patterned architectural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "popular decorative building material",
+          "rationale": "common in construction projects"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "pattern",
+          "evidence": "mosaic pattern + bamboo material",
+          "rationale": "architectural and design use"
+        },
+        "flavor": {
+          "value": "natural",
+          "signal": "inferred",
+          "evidence": "bamboo material",
+          "rationale": "natural bamboo plant construction"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "evidence": "light bamboo wood tone",
+          "rationale": "light natural bamboo appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "floor patterns",
+            "wall decoration"
+          ],
+          "signal": "inferred",
+          "evidence": "mosaic pattern form",
+          "rationale": "creates decorative patterned surfaces"
+        }
+      }
+    },
+    "minecraft:white_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:wool + block form",
+          "rationale": "versatile construction and utility block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "core building material + dye base",
+          "rationale": "very common in construction"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "evidence": "wool + dampens_vibrations (sculk interaction)",
+          "rationale": "building, decoration, and sculk negation"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "evidence": "basic dyed color in natural form",
+          "rationale": "simple dyed block variant"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "evidence": "white wool is light-toned",
+          "rationale": "light colored building material"
+        },
+        "primary_uses": {
+          "values": [
+            "construction",
+            "dye base",
+            "sculk isolation"
+          ],
+          "signal": "inferred",
+          "evidence": "wool properties + crafting uses",
+          "rationale": "core material for building and crafting"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:dampens_vibrations",
+          "rationale": "blocks sculk sensor vibrations"
+        }
+      }
+    },
+    "minecraft:light_blue_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:beds + sleeping mechanic",
+          "rationale": "sleep and respawn setting block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "essential home and spawn point",
+          "rationale": "core gameplay functionality"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "evidence": "bed placement + home establishment",
+          "rationale": "establishes home spawn location"
+        },
+        "flavor": {
+          "value": "colored",
+          "signal": "pattern",
+          "evidence": "dyed colored variant form",
+          "rationale": "dyed color variant item"
+        },
+        "primary_uses": {
+          "values": [
+            "sleeping",
+            "respawn point",
+            "home establishment"
+          ],
+          "signal": "inferred",
+          "evidence": "bed mechanics + dye variant",
+          "rationale": "essential for sleep and home"
+        }
+      }
+    },
+    "minecraft:magenta_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:banners + decorative display",
+          "rationale": "decorative hanging banner item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "decorative + shield pattern use",
+          "rationale": "situational decorative purposes"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "pattern",
+          "evidence": "banner form + decorative purpose",
+          "rationale": "purely decorative building element"
+        },
+        "flavor": {
+          "value": "colored",
+          "signal": "pattern",
+          "evidence": "dyed color variant form",
+          "rationale": "dyed colored variant"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "shield designs"
+          ],
+          "signal": "inferred",
+          "evidence": "banner + shield_decoration recipe",
+          "rationale": "visual decoration and heraldry"
+        }
+      }
+    },
+    "minecraft:pink_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:candles + light object",
+          "rationale": "decorative light-emitting block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "decorative ambient lighting use",
+          "rationale": "situational decorative lighting"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "pattern",
+          "evidence": "candle decoration form",
+          "rationale": "decorative ambient lighting"
+        },
+        "flavor": {
+          "value": "colored",
+          "signal": "pattern",
+          "evidence": "dyed color variant form",
+          "rationale": "dyed colored variant"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "light"
+          ],
+          "signal": "inferred",
+          "evidence": "candle warm glow + pink light tone",
+          "rationale": "warm soft glow from burning candle"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting",
+            "decoration"
+          ],
+          "signal": "inferred",
+          "evidence": "candle light + decorative form",
+          "rationale": "provides decorative light source"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "evidence": "candle light emission mechanic",
+          "rationale": "provides light like torch/lantern"
+        }
+      }
+    },
+    "minecraft:orange_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:glazed_terracotta + deco",
+          "rationale": "decorative patterned block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity=common",
+          "rationale": "explicitly marked common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "decorative patterned block use",
+          "rationale": "situational decorative use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "pattern",
+          "evidence": "glazed_terracotta + directional pattern",
+          "rationale": "decorative patterned element"
+        },
+        "flavor": {
+          "value": "colored",
+          "signal": "pattern",
+          "evidence": "dyed color variant form",
+          "rationale": "dyed colored variant"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "evidence": "orange glazed terracotta warm tone",
+          "rationale": "warm earth-toned color"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative patterning",
+            "architectural accents"
+          ],
+          "signal": "inferred",
+          "evidence": "glazed pattern + dyed color",
+          "rationale": "creates directional pattern designs"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

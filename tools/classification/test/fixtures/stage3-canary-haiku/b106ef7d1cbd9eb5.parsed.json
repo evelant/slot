@@ -1,0 +1,557 @@
+{
+  "items": {
+    "minecraft:nether_wart": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "evidence": "crop plant, ingredient in recipes",
+          "rationale": "plant material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity",
+          "rationale": "common resource"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "used for brewing and crafting",
+          "rationale": "potion brewing"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "crafting"
+          ],
+          "signal": "inferred",
+          "evidence": "potion and nether brick ingredient",
+          "rationale": "brewing and crafting"
+        },
+        "flavor": {
+          "value": "ominous",
+          "signal": "inferred",
+          "evidence": "nether plant with eerie appearance",
+          "rationale": "otherworldly"
+        },
+        "palette": {
+          "value": "vivid",
+          "signal": "inferred",
+          "evidence": "bright reddish-purple color",
+          "rationale": "vivid color"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing potions",
+            "crafting nether bricks"
+          ],
+          "signal": "inferred",
+          "evidence": "ingredient in recipes",
+          "rationale": "primary uses"
+        }
+      }
+    },
+    "minecraft:dragon_egg": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "inferred",
+          "evidence": "only from defeated ender dragon",
+          "rationale": "boss trophy"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "evidence": "one-time boss drop",
+          "rationale": "achievement display"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "evidence": "ender dragon trophy",
+          "rationale": "boss trophy item"
+        },
+        "palette": {
+          "value": "dark",
+          "signal": "inferred",
+          "evidence": "dark purple coloration",
+          "rationale": "dark appearance"
+        },
+        "primary_uses": {
+          "value": "trophy from defeating ender dragon",
+          "signal": "inferred",
+          "evidence": "unique boss drop",
+          "rationale": "victory trophy"
+        }
+      }
+    },
+    "minecraft:dragon_head": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "tag enchantable/equippable, equip_slot head",
+          "rationale": "head armor"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "evidence": "trophy item, worn for appearance",
+          "rationale": "cosmetic display"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "evidence": "armor piece worn as trophy",
+          "rationale": "combat and cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "evidence": "dragon trophy",
+          "rationale": "boss item"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "evidence": "dark with glowing eyes",
+          "rationale": "glowing eyes"
+        },
+        "primary_uses": {
+          "values": [
+            "trophy head armor",
+            "firework ingredient"
+          ],
+          "signal": "inferred",
+          "evidence": "equippable, firework_star ingredient",
+          "rationale": "trophy and crafting"
+        }
+      }
+    },
+    "minecraft:creeper_head": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "evidence": "tag enchantable/equippable, equip_slot head",
+          "rationale": "head armor"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "evidence": "trophy worn for display",
+          "rationale": "cosmetic"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "evidence": "armor, worn as trophy",
+          "rationale": "combat and cosmetic"
+        },
+        "flavor": {
+          "value": "ominous",
+          "signal": "inferred",
+          "evidence": "creeper trophy",
+          "rationale": "explosive mob"
+        },
+        "palette": {
+          "value": "dark",
+          "signal": "inferred",
+          "evidence": "dark green/black",
+          "rationale": "dark appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "trophy head armor",
+            "banner/firework ingredient"
+          ],
+          "signal": "inferred",
+          "evidence": "creeper_banner_pattern, firework_star ingredient",
+          "rationale": "trophy and crafting"
+        }
+      }
+    },
+    "minecraft:music_disc_13": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "evidence": "collectible music item",
+          "rationale": "collectible"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "evidence": "collected for music listening",
+          "rationale": "displayed"
+        },
+        "flavor": {
+          "value": "variant",
+          "signal": "inferred",
+          "evidence": "one of many disc variants",
+          "rationale": "variant item"
+        },
+        "storage_categories": {
+          "values": [
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "evidence": "component jukebox_playable",
+          "rationale": "jukebox storage"
+        },
+        "primary_uses": {
+          "value": "playing music on jukebox",
+          "signal": "pattern",
+          "evidence": "component jukebox_playable",
+          "rationale": "music playback"
+        }
+      }
+    },
+    "minecraft:music_disc_creator": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "evidence": "collectible music disc",
+          "rationale": "collectible"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "evidence": "rare music item",
+          "rationale": "displayed"
+        },
+        "flavor": {
+          "value": "variant",
+          "signal": "inferred",
+          "evidence": "music disc variant",
+          "rationale": "variant item"
+        },
+        "storage_categories": {
+          "values": [
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "evidence": "component jukebox_playable",
+          "rationale": "jukebox storage"
+        },
+        "primary_uses": {
+          "value": "playing music on jukebox",
+          "signal": "pattern",
+          "evidence": "component jukebox_playable",
+          "rationale": "music playback"
+        }
+      }
+    },
+    "minecraft:totem_of_undying": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "evidence": "death_protection component",
+          "rationale": "survival utility"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "critical survival tool",
+          "rationale": "key item for players"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "evidence": "death protection in dangerous situations",
+          "rationale": "survival tool"
+        },
+        "flavor": {
+          "value": "mystical",
+          "signal": "inferred",
+          "evidence": "magical death protection",
+          "rationale": "magical artifact"
+        },
+        "palette": {
+          "value": "glowing",
+          "signal": "inferred",
+          "evidence": "glowing item texture",
+          "rationale": "luminous"
+        },
+        "primary_uses": {
+          "values": [
+            "surviving lethal damage",
+            "raid defense"
+          ],
+          "signal": "inferred",
+          "evidence": "death protection, used in raids",
+          "rationale": "survival item"
+        }
+      }
+    },
+    "minecraft:nether_star": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "ingredient in beacon, crafting material",
+          "rationale": "crafting material"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "few players craft beacons",
+          "rationale": "rarely needed"
+        },
+        "activity": {
+          "values": [
+            "crafting",
+            "power_generation"
+          ],
+          "signal": "pattern",
+          "evidence": "beacon ingredient, beacon provides effects",
+          "rationale": "beacon crafting"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "evidence": "wither boss drop, magical star",
+          "rationale": "magical boss item"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "gold"
+          ],
+          "signal": "inferred",
+          "evidence": "bright glowing appearance",
+          "rationale": "bright glow"
+        },
+        "environmental_property": {
+          "value": "blast_resistant_max",
+          "signal": "inferred",
+          "evidence": "damage_resistant explosion component",
+          "rationale": "explosion-resistant"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting beacons",
+            "wither trophy"
+          ],
+          "signal": "inferred",
+          "evidence": "beacon ingredient, boss drop",
+          "rationale": "beacon and trophy"
+        }
+      }
+    },
+    "minecraft:netherite_upgrade_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "upgrade template for smithing",
+          "rationale": "upgrade component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "used when upgrading to netherite",
+          "rationale": "upgrade use"
+        },
+        "activity": {
+          "value": "crafting",
+          "signal": "pattern",
+          "evidence": "smithing/crafting recipes",
+          "rationale": "upgrade crafting"
+        },
+        "flavor": {
+          "value": "mechanical",
+          "signal": "inferred",
+          "evidence": "smithing template, mechanical",
+          "rationale": "mechanical upgrade"
+        },
+        "palette": {
+          "value": "netherite_dark",
+          "signal": "pattern",
+          "evidence": "netherite upgrade template",
+          "rationale": "netherite palette"
+        },
+        "primary_uses": {
+          "value": "upgrading tools and armor to netherite",
+          "signal": "inferred",
+          "evidence": "netherite smithing recipes",
+          "rationale": "upgrade crafting"
+        }
+      }
+    },
+    "minecraft:sentry_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "armor trim smithing recipes",
+          "rationale": "upgrade component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "used for armor trims",
+          "rationale": "armor decoration"
+        },
+        "activity": {
+          "value": "crafting",
+          "signal": "pattern",
+          "evidence": "smithing/crafting recipes",
+          "rationale": "trim crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "evidence": "armor trim, pillager origin",
+          "rationale": "mechanical with ominous origin"
+        },
+        "palette": {
+          "value": "dark",
+          "signal": "inferred",
+          "evidence": "sentry armor dark color",
+          "rationale": "dark trim"
+        },
+        "primary_uses": {
+          "value": "applying sentry armor trims",
+          "signal": "inferred",
+          "evidence": "sentry trim recipes",
+          "rationale": "armor decoration"
+        }
+      }
+    },
+    "minecraft:angler_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "tag decorated_pot_ingredients, crafting",
+          "rationale": "pottery material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "used for pottery crafting",
+          "rationale": "crafting use"
+        },
+        "activity": {
+          "values": [
+            "crafting",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "evidence": "decorative pottery ingredient",
+          "rationale": "decorative crafting"
+        },
+        "flavor": {
+          "value": "ancient",
+          "signal": "inferred",
+          "evidence": "archaeology sherd, ancient artifact",
+          "rationale": "archaeological artifact"
+        },
+        "palette": {
+          "value": "earthy",
+          "signal": "inferred",
+          "evidence": "pottery sherd earthenware tones",
+          "rationale": "earthy appearance"
+        },
+        "primary_uses": {
+          "value": "decorating pottery",
+          "signal": "pattern",
+          "evidence": "decorated_pot_ingredients tag",
+          "rationale": "pottery decoration"
+        }
+      }
+    },
+    "minecraft:command_block": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "evidence": "block/command_block model",
+          "rationale": "functional redstone"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "map creators only",
+          "rationale": "creative-only use"
+        },
+        "activity": {
+          "value": "redstone",
+          "signal": "inferred",
+          "evidence": "command automation",
+          "rationale": "redstone automation"
+        },
+        "flavor": {
+          "value": "mechanical",
+          "signal": "inferred",
+          "evidence": "redstone mechanism",
+          "rationale": "mechanical"
+        },
+        "primary_uses": {
+          "value": "executing commands in maps",
+          "signal": "inferred",
+          "evidence": "command block automation",
+          "rationale": "map commands"
+        }
+      }
+    },
+    "minecraft:barrier": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "invisible building block",
+          "rationale": "invisible boundary"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "map makers only",
+          "rationale": "creative-only use"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "evidence": "invisible block",
+          "rationale": "functionally invisible"
+        },
+        "primary_uses": {
+          "value": "setting map boundaries",
+          "signal": "inferred",
+          "evidence": "invisible boundary block",
+          "rationale": "map boundaries"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

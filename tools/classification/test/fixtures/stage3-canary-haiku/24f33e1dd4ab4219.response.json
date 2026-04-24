@@ -1,0 +1,59 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 58962,
+  "duration_api_ms": 60080,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:structure_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"evidence\": \"id=structure_block, is_creative_only=true\",\n          \"rationale\": \"creative-only admin tool for structure operations\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"evidence\": \"is_creative_only=true\",\n          \"rationale\": \"only useful in creative mode, not in survival\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"copying and pasting structures\",\n            \"creative mode building\"\n          ],\n          \"signal\": \"inferred\",\n          \"evidence\": \"id and function, is_creative_only=true\",\n          \"rationale\": \"primary use case for structure block in creative\"\n        }\n      }\n    },\n    \"minecraft:debug_stick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"evidence\": \"display_name=Debug Stick, is_creative_only=true\",\n          \"rationale\": \"creative-only tool for debugging block properties\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"evidence\": \"is_creative_only=true\",\n          \"rationale\": \"only useful in creative mode, not in survival\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"modifying block properties\",\n            \"debug editing in creative\"\n          ],\n          \"signal\": \"inferred\",\n          \"evidence\": \"display_name, is_creative_only=true\",\n          \"rationale\": \"primary use case for debug stick in creative\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "f77416b1-0341-4eae-bdd6-62cd737888dd",
+  "total_cost_usd": 0.0444645,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 12702,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 4798,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12702,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 10,
+        "output_tokens": 4798,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 12702,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 12702
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4517,
+      "outputTokens": 4814,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 12702,
+      "webSearchRequests": 0,
+      "costUSD": 0.0444645,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2100aacc-bebb-4488-baa2-96abbfe804e5"
+}

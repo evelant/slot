@@ -51,13 +51,17 @@ For each input item you will emit a concise facet record per the schema below.
 Rules:
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit \`null\`, empty arrays, or placeholder values.
-- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both. Err on the side of marking ambiguous when the signal is thin — a flagged retry is cheap, a confidently wrong answer is expensive.
-- Attach a \`confidence\` 0.0–1.0 to every facet. Calibrate honestly:
-    • **≥0.90**: the value is directly named or unambiguous from tags/components/lore (e.g. \`diamond_pickaxe\` tier=\`diamond\`).
-    • **0.70–0.89**: a strong pattern in the inputs points to the value but isn't named (e.g. role=\`material\` for an ingot).
-    • **0.50–0.69**: reasonable inference from indirect signals (recipe shape, name, neighbors).
-    • **<0.50**: you're guessing or extrapolating. Prefer \`ambiguous: true\` + two-value list over a single low-confidence guess.
-    It's better to emit a low confidence + rationale than to fake certainty. A confidently-wrong answer burns a human review round; a low-confidence answer triggers a cheap Sonnet retry.
+- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
+- **Each facet entry MUST include \`signal\` and \`evidence\` fields** — these drive the confidence score automatically and gate downstream retry. Format:
+    \`{value, signal: "named|pattern|inferred|guess", evidence: "<quote from inputs>", rationale: "<why>"}\`
+    The four signal levels:
+      • \`named\` — the value is explicitly stated in a tag/component/lore string in the inputs. Quote the exact tag or component key in \`evidence\` (e.g. \`"tag minecraft:iron_tool_materials"\`, \`"component minecraft:equippable.slot=head"\`). Reserve for cases where you're transcribing, not interpreting.
+      • \`pattern\` — the value follows mechanically from an id/tag/model pattern. Quote the pattern in \`evidence\` (e.g. \`"id ends in _ingot + tag iron_tool_materials"\`, \`"model parent block/stairs"\`).
+      • \`inferred\` — you're reasoning from indirect cues (recipe context, lore prose, neighboring items, mod conventions). Quote the strongest cue (e.g. \`"recipe consumes 4 iron_ingot + 1 redstone (clock)"\`).
+      • \`guess\` — no real signal in the inputs; you're applying a generic default. Use sparingly.
+    \`evidence\` is required for \`named\`, \`pattern\`, and \`inferred\`. For \`guess\`, set \`evidence: ""\` and prefer \`ambiguous: true\` with two values, or omit the facet entirely.
+    \`confidence\` is computed from \`signal\` (named=0.95, pattern=0.80, inferred=0.60, guess=0.30). You may include \`confidence\` to nudge it DOWN within the band, but the runner ignores values higher than the signal allows — overconfidence on a guess is silently demoted.
+    For subjective facets (\`flavor\`, \`palette\`, \`primary_uses\`) without an explicit lore/component cue, prefer \`signal: inferred\` or omit the facet rather than reaching for \`named\`.
 - Attach a short \`rationale\` per facet (≤120 chars) — what in the inputs led to the value.
 - If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
@@ -189,16 +193,23 @@ function exampleEntryFor(facet: string, def: FacetDef): Record<string, unknown> 
   if (isMulti) {
     return {
       values: def.values?.slice(0, 2) ?? def.examples?.slice(0, 2) ?? ["<value>"],
-      confidence: 0.9,
+      signal: "pattern",
+      evidence: "id suffix + tag minecraft:<example>",
       rationale: "short reason",
     };
   }
   if (facet === "role") {
-    return { value: "material", confidence: 0.95, rationale: "short reason" };
+    return {
+      value: "material",
+      signal: "pattern",
+      evidence: "id ends _ingot + tag minecraft:iron_tool_materials",
+      rationale: "ingot of a known crafting material",
+    };
   }
   return {
     value: def.values?.[0] ?? def.examples?.[0] ?? "<value>",
-    confidence: 0.9,
+    signal: "named",
+    evidence: "<exact quote from a tag/component/lore string>",
     rationale: "short reason",
   };
 }

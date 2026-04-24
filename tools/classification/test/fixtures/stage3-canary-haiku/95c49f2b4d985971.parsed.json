@@ -1,0 +1,681 @@
+{
+  "items": {
+    "minecraft:lectern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "evidence": "interactive block for reading and displaying books",
+          "rationale": "decorative book display and storage block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "evidence": "required_tool is axe",
+          "rationale": "axe is tool for harvesting wood blocks"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "evidence": "placed as library/study decoration",
+          "rationale": "primarily decorative block in builds"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "evidence": "wooden construction with light tones",
+          "rationale": "light natural wood appearance"
+        }
+      }
+    },
+    "minecraft:grindstone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "evidence": "block for enchantment removal and repair",
+          "rationale": "interactive block for enchantment management"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "required_tool is pickaxe",
+          "rationale": "pickaxe required for stone blocks"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "evidence": "removes enchantments from items",
+          "rationale": "enchantment system component for removal"
+        }
+      }
+    },
+    "minecraft:smoker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "evidence": "cooks food faster than furnace",
+          "rationale": "specialized cooking appliance for food"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "required_tool is pickaxe",
+          "rationale": "pickaxe required for stone-based blocks"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "evidence": "processes farm-produced food items",
+          "rationale": "food processing in farming workflow"
+        }
+      }
+    },
+    "minecraft:piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "evidence": "mechanical block that extends/retracts",
+          "rationale": "core redstone and automation mechanism"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "required_tool is pickaxe",
+          "rationale": "pickaxe required for stone blocks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "evidence": "extends blocks in redstone circuits",
+          "rationale": "fundamental automation mechanism"
+        }
+      }
+    },
+    "minecraft:sticky_piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "evidence": "mechanical block that pulls blocks",
+          "rationale": "redstone mechanism for block retraction"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "evidence": "sticky extension/retraction in circuits",
+          "rationale": "sticky block transport mechanism"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_sticky"
+          ],
+          "signal": "inferred",
+          "evidence": "pulls blocks back when retracting",
+          "rationale": "sticky piston mechanical behavior"
+        }
+      }
+    },
+    "minecraft:hopper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "evidence": "block for automated item transport",
+          "rationale": "logistics and item routing block"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "evidence": "hopper crafted with iron in vanilla design",
+          "rationale": "iron construction for durability"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "evidence": "sorts and transports items in systems",
+          "rationale": "automated item routing component"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "evidence": "hopper moves items for automation",
+          "rationale": "transports items for logistics"
+        }
+      }
+    },
+    "minecraft:dropper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "evidence": "block that ejects items",
+          "rationale": "automated item ejection mechanism"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "required_tool is pickaxe",
+          "rationale": "pickaxe required for stone blocks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "evidence": "routes items in automation systems",
+          "rationale": "item dispensing mechanism"
+        }
+      }
+    },
+    "minecraft:observer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "evidence": "detects block updates and emits signal",
+          "rationale": "redstone sensing and detection block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "evidence": "required_tool is pickaxe",
+          "rationale": "pickaxe required for stone blocks"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "evidence": "triggers redstone circuits on block change",
+          "rationale": "detection component for automation"
+        }
+      }
+    },
+    "minecraft:repeater": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "evidence": "delays redstone signal propagation",
+          "rationale": "redstone timing and delay component"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "evidence": "controls timing in redstone circuits",
+          "rationale": "fundamental redstone timing element"
+        }
+      }
+    },
+    "minecraft:comparator": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "evidence": "compares redstone signal strengths",
+          "rationale": "redstone signal analysis component"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "evidence": "compares inputs in redstone logic",
+          "rationale": "signal strength analysis in circuits"
+        }
+      }
+    },
+    "minecraft:bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "component minecraft:consumable",
+          "rationale": "food item with consumption mechanic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "widely available food source"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "evidence": "fundamental food for hunger restoration",
+          "rationale": "staple survival sustenance item"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "evidence": "simple grain-based food",
+          "rationale": "basic foodstuff without special qualities"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "evidence": "brown and tan bread coloring",
+          "rationale": "natural earth-tone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "restore hunger",
+            "survival sustenance"
+          ],
+          "signal": "inferred",
+          "evidence": "primary function is food consumption",
+          "rationale": "fundamental hunger restoration item"
+        }
+      }
+    },
+    "minecraft:golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "component minecraft:consumable",
+          "rationale": "food item with consumption mechanic"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "valuable item used in specific situations",
+          "rationale": "special-purpose healing item"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "grants regeneration and absorption buffs",
+          "rationale": "combat survival enhancement item"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "evidence": "constructed from gold material",
+          "rationale": "luxury food item"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "evidence": "golden color and appearance",
+          "rationale": "distinctive gold coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "emergency healing",
+            "combat buffs"
+          ],
+          "signal": "inferred",
+          "evidence": "provides health regeneration and absorption",
+          "rationale": "healing and protection for combat"
+        }
+      }
+    },
+    "minecraft:enchanted_golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "component minecraft:consumable",
+          "rationale": "food item with consumption mechanic"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "very rare loot item with high value",
+          "rationale": "exceptional item found rarely"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "grants powerful healing and resistance",
+          "rationale": "extreme combat survival enhancement"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "evidence": "enchanted precious gold apple",
+          "rationale": "luxury enchanted food item"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "evidence": "golden with enchantment effects",
+          "rationale": "distinctive gold with magical glow"
+        },
+        "primary_uses": {
+          "values": [
+            "emergency healing",
+            "boss fight buffs"
+          ],
+          "signal": "inferred",
+          "evidence": "provides intense healing and effects",
+          "rationale": "powerful healing for critical situations"
+        }
+      }
+    },
+    "minecraft:potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "component minecraft:consumable",
+          "rationale": "drinkable item with magical effects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "widely available potion"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "specialized items for specific situations",
+          "rationale": "situational buff items"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "provides magical effects for gameplay",
+          "rationale": "buff/debuff application item"
+        },
+        "primary_uses": {
+          "values": [
+            "apply potion effects"
+          ],
+          "signal": "inferred",
+          "evidence": "core function is effect application",
+          "rationale": "consumable for magical buff application"
+        }
+      }
+    },
+    "minecraft:splash_potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "throwable potion with area effects",
+          "rationale": "thrown consumable with effects"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "standard potion variant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "specialized items for combat situations",
+          "rationale": "situational throwable items"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "thrown at enemies for area effects",
+          "rationale": "projectile potion for combat"
+        },
+        "primary_uses": {
+          "values": [
+            "throw at enemies",
+            "area effect buffs"
+          ],
+          "signal": "inferred",
+          "evidence": "thrown consumable with area impact",
+          "rationale": "area-of-effect potion for combat"
+        }
+      }
+    },
+    "minecraft:milk_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "evidence": "component minecraft:consumable",
+          "rationale": "drinkable consumable item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "standard consumable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "used for effect removal in specific situations",
+          "rationale": "utility item for status management"
+        },
+        "primary_uses": {
+          "values": [
+            "clear all effects",
+            "remove debuffs"
+          ],
+          "signal": "inferred",
+          "evidence": "clears all potion effects when consumed",
+          "rationale": "status effect removal utility"
+        }
+      }
+    },
+    "minecraft:cake": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "evidence": "block item for placement and decoration",
+          "rationale": "primarily decorative food-themed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "standard crafted block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "not frequently placed in typical builds",
+          "rationale": "decorative block with limited use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "evidence": "placed as decorative block in builds",
+          "rationale": "decorative food-themed block"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "evidence": "simple food decoration",
+          "rationale": "basic cake design"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "evidence": "brown and tan cake coloring",
+          "rationale": "warm earth tones of baked goods"
+        },
+        "primary_uses": {
+          "values": [
+            "place as decoration",
+            "eat for food"
+          ],
+          "signal": "inferred",
+          "evidence": "can be placed and eaten from block",
+          "rationale": "decorative food block with sustenance"
+        }
+      }
+    },
+    "minecraft:arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "pattern",
+          "evidence": "id = arrow, tag minecraft:arrows",
+          "rationale": "arrow projectile for bows"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "readily available ammunition"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "evidence": "used constantly in ranged combat",
+          "rationale": "essential projectile ammunition"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "launched from bows at targets",
+          "rationale": "projectile ammunition for archery"
+        },
+        "primary_uses": {
+          "values": [
+            "bow ammunition",
+            "ranged combat"
+          ],
+          "signal": "inferred",
+          "evidence": "primary use is arrow for bows",
+          "rationale": "fundamental ranged weapon projectile"
+        }
+      }
+    },
+    "minecraft:tipped_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "evidence": "arrow variant with potion effects",
+          "rationale": "enhanced projectile ammunition"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "standard potion variant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "evidence": "specialized variant, less common",
+          "rationale": "limited availability vs regular arrows"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "potion effect arrow for combat",
+          "rationale": "enhanced combat projectile"
+        },
+        "primary_uses": {
+          "values": [
+            "bow ammunition with effects"
+          ],
+          "signal": "inferred",
+          "evidence": "arrow delivering potion effects",
+          "rationale": "projectile with magical effect delivery"
+        }
+      }
+    },
+    "minecraft:firework_rocket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "evidence": "celebration item and elytra propulsion",
+          "rationale": "multi-purpose utility item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "component minecraft:rarity = common",
+          "rationale": "easily craftable item"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "evidence": "niche use for celebrations and elytra",
+          "rationale": "infrequent use outside specific scenarios"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "evidence": "celebratory decorative item",
+          "rationale": "festive decorative purpose"
+        },
+        "primary_uses": {
+          "values": [
+            "celebrate",
+            "elytra propulsion"
+          ],
+          "signal": "inferred",
+          "evidence": "fireworks for celebration and flight",
+          "rationale": "dual-purpose celebration and flight utility"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

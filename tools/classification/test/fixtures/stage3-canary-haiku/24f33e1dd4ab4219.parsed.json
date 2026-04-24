@@ -1,0 +1,56 @@
+{
+  "items": {
+    "minecraft:structure_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "evidence": "id=structure_block, is_creative_only=true",
+          "rationale": "creative-only admin tool for structure operations"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "evidence": "is_creative_only=true",
+          "rationale": "only useful in creative mode, not in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "copying and pasting structures",
+            "creative mode building"
+          ],
+          "signal": "inferred",
+          "evidence": "id and function, is_creative_only=true",
+          "rationale": "primary use case for structure block in creative"
+        }
+      }
+    },
+    "minecraft:debug_stick": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "evidence": "display_name=Debug Stick, is_creative_only=true",
+          "rationale": "creative-only tool for debugging block properties"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "evidence": "is_creative_only=true",
+          "rationale": "only useful in creative mode, not in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "modifying block properties",
+            "debug editing in creative"
+          ],
+          "signal": "inferred",
+          "evidence": "display_name, is_creative_only=true",
+          "rationale": "primary use case for debug stick in creative"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

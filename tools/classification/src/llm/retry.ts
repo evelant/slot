@@ -50,7 +50,13 @@ export interface RetryOptions {
   threshold?: number;
   /** Passed through to runStage3. */
   model?: string;
-  /** Passed through to the client — `max` for heaviest thinking. */
+  /**
+   * Effort level for the retry pass. We deliberately do NOT plumb through
+   * `thinkingBudget` or `disableAdaptiveThinking` here — Sonnet's adaptive
+   * thinking should drive itself, and forcing a fixed budget tends to make
+   * it worse. The retry is the one place where the model gets to "think
+   * hard," so trust it.
+   */
   effort?: "low" | "medium" | "high" | "xhigh" | "max";
   /** Items per retry batch — typically smaller than first-pass to avoid
    *  output-token truncation with verbose models. Default 8. */
