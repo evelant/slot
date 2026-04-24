@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/evelant/slot/docs/design/classification/layer-format.schema.json",
+  "title": "Slot Classification Layer",
+  "description": "A single layer of item classification data. Merged with other layers at FacetIndex build time. See ../../plans/item-classification.md for the layer stack.",
+  "type": "object",
+  "required": ["schema_version", "layer", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The facet schema version this layer was authored against."
+    },
+    "layer": {
+      "type": "string",
+      "enum": ["vanilla-base", "per-mod", "runtime-crawl", "modpack", "server", "player"],
+      "description": "Layer kind. Determines merge priority (lowest → highest in order listed)."
+    },
+    "source": {
+      "type": "string",
+      "description": "Free-text identifier of the author. Mod namespace for per-mod. Pack id for modpack. Player uuid for player. May be empty for vanilla-base."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp when this file was produced. Informational only."
+    },
+    "generator": {
+      "type": "string",
+      "description": "Informational: what produced this file (e.g. 'slot-classification-pipeline@0.1.0', 'runtime-crawl', 'human-authored')."
+    },
+    "entries": {
+      "type": "object",
+      "description": "Keyed by item id in <namespace>:<path> form.",
+      "patternProperties": {
+        "^[a-z0-9_.-]+:[a-z0-9_/.-]+$": { "$ref": "#/definitions/ItemEntry" }
+      },
+      "additionalProperties": false
+    },
+    "schema_proposals": {
+      "type": "array",
+      "description": "Side-channel for stage 3: facets/values the LLM wanted but couldn't find. Curator reviews offline.",
+      "items": { "$ref": "#/definitions/SchemaProposal" }
+    }
+  },
+  "definitions": {
+    "ItemEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["facets"],
+      "properties": {
+        "facets": {
+          "type": "object",
+          "description": "Per-facet entries. Keys are facet ids from the active schema.",
+          "additionalProperties": { "$ref": "#/definitions/FacetEntry" }
+        },
+        "neighbors": {
+          "type": "array",
+          "description": "Precomputed top-K nearest neighbors by facet-Jaccard similarity. Produced by stage 4.",
+          "items": { "type": "string", "pattern": "^[a-z0-9_.-]+:[a-z0-9_/.-]+$" },
+          "maxItems": 50
+        }
+      }
+    },
+    "FacetEntry": {
+      "oneOf": [
+        { "$ref": "#/definitions/SingleValueEntry" },
+        { "$ref": "#/definitions/MultiValueEntry" }
+      ]
+    },
+    "SingleValueEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value"],
+      "properties": {
+        "value": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "boolean" },
+            { "type": "number" }
+          ]
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["replace", "override-if-null"],
+          "default": "replace"
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "type": "string" },
+        "rationale": { "type": "string" },
+        "ambiguous": { "type": "boolean" }
+      }
+    },
+    "MultiValueEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["values"],
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["replace", "add", "remove"],
+          "default": "add"
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "type": "string" },
+        "rationale": { "type": "string" }
+      }
+    },
+    "SchemaProposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["facet", "proposed_value", "rationale"],
+      "properties": {
+        "facet": {
+          "type": "string",
+          "description": "Existing facet id, or a proposed-new facet id."
+        },
+        "proposed_value": { "type": "string" },
+        "is_new_facet": { "type": "boolean", "default": false },
+        "suggested_kind": {
+          "type": "string",
+          "enum": ["enum", "multi_enum", "free_text", "multi_free_text", "boolean", "numeric", "item_ref", "item_ref_multi"]
+        },
+        "rationale": { "type": "string" },
+        "example_items": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9_.-]+:[a-z0-9_/.-]+$" }
+        },
+        "source": { "type": "string" }
+      }
+    }
+  }
+}

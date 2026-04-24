@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://imagio.dev/slot/classification/layer.schema.json",
+  "title": "Slot Classification Layer",
+  "description": "A classification layer file — one source of facet entries for items, to be merged by the FacetIndex with other layers. See docs/plans/item-classification.md.",
+  "type": "object",
+  "required": ["schema_version", "layer", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The facet schema version this layer was authored against."
+    },
+    "layer": {
+      "type": "string",
+      "enum": ["vanilla-base", "per-mod", "runtime-crawl", "modpack", "server", "player"],
+      "description": "Which slot in the layer merge order this file occupies."
+    },
+    "source": {
+      "type": "string",
+      "description": "Identifier of the author/origin, e.g. a mod namespace ('create'), a pack id, a player UUID, or 'runtime-crawl'."
+    },
+    "generated_by": {
+      "type": "string",
+      "description": "Optional tool-version string (e.g. 'slot-classify v0.1.0') for debugging regressions."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional ISO-8601 timestamp."
+    },
+    "entries": {
+      "type": "object",
+      "description": "Map of item id -> facet entries.",
+      "patternProperties": {
+        "^[a-z0-9_.-]+:[a-z0-9_/.-]+$": { "$ref": "#/definitions/ItemEntry" }
+      },
+      "additionalProperties": false
+    },
+    "schema_proposals": {
+      "type": "array",
+      "description": "Side-channel from stage 3 — values or facets the LLM wanted to use but couldn't find in the active schema. Curator reviews offline.",
+      "items": { "$ref": "#/definitions/SchemaProposal" }
+    }
+  },
+  "definitions": {
+    "ItemEntry": {
+      "type": "object",
+      "required": ["facets"],
+      "additionalProperties": false,
+      "properties": {
+        "facets": {
+          "type": "object",
+          "description": "Keyed by facet id (e.g. 'role', 'activity'). Values must match the facet's declared kind.",
+          "additionalProperties": { "$ref": "#/definitions/FacetEntry" }
+        },
+        "neighbors": {
+          "type": "array",
+          "description": "Optional top-K nearest-neighbor item ids, produced by stage 4.",
+          "items": { "type": "string", "pattern": "^[a-z0-9_.-]+:[a-z0-9_/.-]+$" }
+        }
+      }
+    },
+    "FacetEntry": {
+      "oneOf": [
+        { "$ref": "#/definitions/SingleValueEntry" },
+        { "$ref": "#/definitions/MultiValueEntry" },
+        { "$ref": "#/definitions/AmbiguousSingleValueEntry" }
+      ]
+    },
+    "SingleValueEntry": {
+      "type": "object",
+      "description": "For enum / free_text / boolean / numeric / item_ref facets, non-ambiguous.",
+      "required": ["value"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": ["string", "number", "boolean", "null"] },
+        "mode": {
+          "type": "string",
+          "enum": ["replace", "override-if-null"],
+          "default": "replace"
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "type": "string" },
+        "rationale": { "type": "string" }
+      }
+    },
+    "AmbiguousSingleValueEntry": {
+      "type": "object",
+      "description": "For enum / free_text facets where stage 3 flagged a tie. 'values' carries 2 candidates; homing picks the highest-confidence; reviewers see both.",
+      "required": ["values", "ambiguous"],
+      "additionalProperties": false,
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": { "type": ["string", "number"] },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "ambiguous": { "const": true },
+        "mode": {
+          "type": "string",
+          "enum": ["replace", "override-if-null"],
+          "default": "replace"
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "type": "string" },
+        "rationale": { "type": "string" }
+      }
+    },
+    "MultiValueEntry": {
+      "type": "object",
+      "description": "For multi_enum / multi_free_text / multi_item_ref facets.",
+      "required": ["values"],
+      "additionalProperties": false,
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": { "type": ["string", "number"] },
+          "uniqueItems": true
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["replace", "add", "remove"],
+          "default": "add"
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "type": "string" },
+        "rationale": { "type": "string" }
+      }
+    },
+    "SchemaProposal": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": ["kind", "facet", "value", "rationale"],
+          "properties": {
+            "kind": { "const": "add_value" },
+            "facet": { "type": "string" },
+            "value": { "type": "string" },
+            "rationale": { "type": "string" },
+            "example_items": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        },
+        {
+          "required": ["kind", "name", "suggested_kind", "rationale"],
+          "properties": {
+            "kind": { "const": "add_facet" },
+            "name": { "type": "string" },
+            "suggested_kind": {
+              "type": "string",
+              "enum": ["enum", "multi_enum", "free_text", "multi_free_text", "boolean", "numeric", "item_ref", "multi_item_ref"]
+            },
+            "suggested_values": { "type": "array", "items": { "type": "string" } },
+            "rationale": { "type": "string" },
+            "example_items": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
