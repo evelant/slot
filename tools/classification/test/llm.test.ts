@@ -11,7 +11,7 @@ import {
 import { parseLlmResponse } from "../src/llm/parse.ts";
 import { runStage3 } from "../src/llm/run.ts";
 import { selectRetryCandidates, runStage3Retry } from "../src/llm/retry.ts";
-import { ReplayLlmClient, fixtureHash } from "../src/llm/client.ts";
+import { ReplayLlmClient, RecordingLlmClient, fixtureHash } from "../src/llm/client.ts";
 import type { ItemExtractRecord } from "../src/extract/record.ts";
 import type { LayerFile } from "../src/deterministic/run.ts";
 
@@ -419,6 +419,68 @@ describe("runStage3", () => {
       client,
       only: ["minecraft:a"],
     });
+  });
+});
+
+describe("RecordingLlmClient resume behaviour", () => {
+  test("returns cached response on hash hit without calling inner", async () => {
+    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-resume-"));
+    // Pre-plant a fixture for a specific prompt
+    const prompt = "canonical prompt";
+    const hash = fixtureHash(prompt);
+    const cachedResponse = JSON.stringify({ type: "result", result: "{\"items\":{}}" });
+    writeFileSync(join(fixtureDir, `${hash}.response.json`), cachedResponse);
+
+    let innerCalled = false;
+    const inner = {
+      async query() { innerCalled = true; return "SHOULD NOT BE CALLED"; },
+    };
+    const events: Array<{ hit: boolean }> = [];
+    const client = new RecordingLlmClient(inner, fixtureDir, (e) => events.push(e));
+
+    const got = await client.query(prompt, { model: "haiku" });
+    expect(got).toBe(cachedResponse);
+    expect(innerCalled).toBe(false);
+    expect(events[0]?.hit).toBe(true);
+  });
+
+  test("calls inner on miss and persists", async () => {
+    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-resume-miss-"));
+    let innerCalled = 0;
+    const inner = {
+      async query() {
+        innerCalled++;
+        return JSON.stringify({ type: "result", result: "{\"items\":{}}" });
+      },
+    };
+    const client = new RecordingLlmClient(inner, fixtureDir);
+
+    const prompt = "fresh prompt";
+    await client.query(prompt, { model: "haiku" });
+    expect(innerCalled).toBe(1);
+
+    // Second call with same prompt should hit cache
+    await client.query(prompt, { model: "haiku" });
+    expect(innerCalled).toBe(1); // unchanged
+  });
+
+  test("querySplit caches on system+user hash", async () => {
+    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-resume-split-"));
+    let innerCalls = 0;
+    const inner = {
+      async query() { throw new Error("should use querySplit"); },
+      async querySplit() {
+        innerCalls++;
+        return JSON.stringify({ type: "result", result: "{\"items\":{}}" });
+      },
+    };
+    const client = new RecordingLlmClient(inner, fixtureDir);
+
+    await client.querySplit!("SYSTEM", "USER A", { model: "sonnet" });
+    await client.querySplit!("SYSTEM", "USER A", { model: "sonnet" }); // cache hit
+    await client.querySplit!("SYSTEM", "USER B", { model: "sonnet" }); // different user → miss
+
+    expect(innerCalls).toBe(2);
   });
 });
 

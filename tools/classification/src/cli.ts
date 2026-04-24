@@ -516,7 +516,19 @@ function buildClient(opts: Stage3CliOptions): LlmClient {
       console.error("--record-replay requires --fixture-dir");
       process.exit(2);
     }
-    return new RecordingLlmClient(live, resolve(opts.fixtureDir));
+    let hits = 0;
+    let misses = 0;
+    const cacheLog = (event: { hit: boolean }) => {
+      if (event.hit) {
+        hits++;
+        // Print a tight "resumed" line only on the first hit of a run so the
+        // user knows cache is active; batch-completion lines will still count.
+        if (hits === 1) console.log(`[stage3] resume: found existing fixture(s); cached batches will skip the LLM.`);
+      } else {
+        misses++;
+      }
+    };
+    return new RecordingLlmClient(live, resolve(opts.fixtureDir), cacheLog);
   }
   return live;
 }

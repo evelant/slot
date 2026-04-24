@@ -184,26 +184,42 @@ export class ReplayLlmClient implements LlmClient {
 }
 
 /**
- * Recording wrapper: calls an inner client, persists the request+response pair
- * alongside the fixtures, and returns the response to the caller. Use this when
- * you want to bootstrap a fixture set from a real run.
+ * Recording wrapper with cache-then-call semantics. Before asking the inner
+ * client, it checks for an existing fixture keyed by the prompt hash:
+ *   - hit  → return the cached response, no LLM call (free resume)
+ *   - miss → call inner, persist response to disk, return it
  *
- * Three files are written per call:
- *   - `<hash>.prompt.md`      — the prompt as sent (markdown-flavored text).
- *   - `<hash>.response.json`  — the claude -p envelope, pretty-printed for review.
- *   - `<hash>.parsed.json`    — the model's actual classification output, extracted
- *                                from the envelope and pretty-printed. This is the
- *                                file a human typically wants to read.
+ * Persisted files per call:
+ *   - `<hash>.prompt.md`      — combined-mode prompt text
+ *   - `<hash>.system.md`      — split-mode system content (split mode only)
+ *   - `<hash>.user.md`        — split-mode user content  (split mode only)
+ *   - `<hash>.response.json`  — the claude -p envelope, pretty-printed
+ *   - `<hash>.parsed.json`    — extracted classification JSON, pretty-printed
+ *
+ * Because fixtures are keyed by prompt content (including the stable system
+ * prompt in split mode), any prompt change invalidates all caches. That's
+ * intentional — you never want yesterday's classification replayed under a
+ * new prompt spec.
  */
 export class RecordingLlmClient implements LlmClient {
   constructor(
     private readonly inner: LlmClient,
     private readonly fixtureDir: string,
+    /** Optional callback fired on each cache hit/miss; used by the CLI
+     *  to print progress ("batch 5/80 cached"). */
+    private readonly onCache?: (event: CacheEvent) => void,
   ) {
     mkdirSync(fixtureDir, { recursive: true });
   }
 
   async query(prompt: string, options: QueryOptions): Promise<string> {
+    const hash = fixtureHash(prompt);
+    const cached = this.readCachedResponse(hash);
+    if (cached !== null) {
+      this.onCache?.({ hit: true, hash, mode: "combined" });
+      return cached;
+    }
+    this.onCache?.({ hit: false, hash, mode: "combined" });
     const response = await this.inner.query(prompt, options);
     this.persist(prompt, response);
     return response;
@@ -211,17 +227,29 @@ export class RecordingLlmClient implements LlmClient {
 
   async querySplit(system: string, user: string, options: QueryOptions): Promise<string> {
     if (!this.inner.querySplit) {
-      // fall back to the combined path
       return this.query(`${system}\n\n${user}`, options);
     }
-    const response = await this.inner.querySplit(system, user, options);
     const key = splitFixtureKey(system, user);
     const hash = fixtureHash(key);
-    // Save both halves so a curator can inspect them separately.
+    const cached = this.readCachedResponse(hash);
+    if (cached !== null) {
+      this.onCache?.({ hit: true, hash, mode: "split" });
+      return cached;
+    }
+    this.onCache?.({ hit: false, hash, mode: "split" });
+    const response = await this.inner.querySplit(system, user, options);
     writeFileSync(join(this.fixtureDir, `${hash}.system.md`), system);
     writeFileSync(join(this.fixtureDir, `${hash}.user.md`), user);
     this.persistEnvelope(hash, response);
     return response;
+  }
+
+  private readCachedResponse(hash: string): string | null {
+    const primary = join(this.fixtureDir, `${hash}.response.json`);
+    if (existsSync(primary)) return readFileSync(primary, "utf8");
+    const legacy = join(this.fixtureDir, `${hash}.response.txt`);
+    if (existsSync(legacy)) return readFileSync(legacy, "utf8");
+    return null;
   }
 
   private persist(prompt: string, response: string): void {
@@ -240,6 +268,12 @@ export class RecordingLlmClient implements LlmClient {
       writeFileSync(join(this.fixtureDir, `${hash}.parsed.json`), parsed);
     }
   }
+}
+
+export interface CacheEvent {
+  hit: boolean;
+  hash: string;
+  mode: "combined" | "split";
 }
 
 /**

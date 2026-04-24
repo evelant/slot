@@ -1216,6 +1216,14 @@ encoding semantic data in lang files via well-known keys. Worth scanning each mo
 lang files for other conventions: JEI/REI have similar patterns for recipe-type
 descriptions. Cheap extract-time enrichment.
 
+**Vanilla has nearly zero item descriptions** (surveyed 2026-04-24: no
+`item.minecraft.*.description` / `.tooltip` / `.desc` keys; only
+`item.minecraft.potion.effect.*` for 26 potion variants plus 126 advancement
+descriptions that incidentally reference items). So the lang-enrichment work
+is low-value for the vanilla run and should be prioritized when we add modded
+targets: Create, Mekanism, AE2, Tech Reborn all ship rich tooltip keys that
+currently don't flow into our extract records.
+
 ### Non-goal: our own in-game item search UI
 
 If we later want fuzzy query UI over facets, reuse EMI's search infrastructure
