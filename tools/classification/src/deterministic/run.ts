@@ -58,15 +58,16 @@ export interface LayerFile {
   entries: Record<string, LayerEntry>;
 }
 
-interface LayerEntry {
+export interface LayerEntry {
   facets: Record<string, LayerFacetEntry>;
 }
 
-type LayerFacetEntry =
+export type LayerFacetEntry =
   | SingleEntry
-  | MultiEntry;
+  | MultiEntry
+  | AmbiguousEntry;
 
-interface SingleEntry {
+export interface SingleEntry {
   value: string | number | boolean | null;
   mode?: "replace" | "override-if-null";
   confidence?: number;
@@ -74,9 +75,19 @@ interface SingleEntry {
   rationale?: string;
 }
 
-interface MultiEntry {
+export interface MultiEntry {
   values: (string | number)[];
   mode?: "replace" | "add" | "remove";
+  confidence?: number;
+  source?: string;
+  rationale?: string;
+}
+
+/** Stage 3 emits this when two enum/free_text values could both apply. */
+export interface AmbiguousEntry {
+  values: [string | number, string | number];
+  ambiguous: true;
+  mode?: "replace" | "override-if-null";
   confidence?: number;
   source?: string;
   rationale?: string;
