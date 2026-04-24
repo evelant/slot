@@ -1,0 +1,857 @@
+{
+  "items": {
+    "minecraft:iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting ingredient for tools, armor, and structures"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 1,
+          "rationale": "Component_highlights indicate common rarity"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.8,
+          "rationale": "Essential crafting ingredient used repeatedly throughout progression"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.9,
+          "rationale": "Basic metallic ingot with no special aesthetic qualities"
+        },
+        "primary_uses": {
+          "values": [
+            "tool and armor crafting",
+            "armor repair",
+            "beacon payment"
+          ],
+          "confidence": 0.9,
+          "rationale": "Main uses are crafting tiered tools and beacons"
+        }
+      }
+    },
+    "minecraft:gold_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting ingredient for tools, armor, and decorative blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 1,
+          "rationale": "Component_highlights indicate common rarity"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.8,
+          "rationale": "Used for early tools, decorative blocks, and beacon"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.9,
+          "rationale": "Basic metallic ingot"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "confidence": 0.95,
+          "rationale": "Distinctly gold-colored metallic material"
+        },
+        "primary_uses": {
+          "values": [
+            "tool and armor crafting",
+            "decorative gold blocks",
+            "beacon payment"
+          ],
+          "confidence": 0.9,
+          "rationale": "Main uses are tools, decoration, and beacon material"
+        }
+      }
+    },
+    "minecraft:copper_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting ingredient for tools, armor, and decorative blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 1,
+          "rationale": "Component_highlights indicate common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used for specialized tools and blocks, less common than iron"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.9,
+          "rationale": "Basic metallic ingot"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.85,
+          "rationale": "Fresh copper has bright metallic appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "tool and armor crafting",
+            "decorative block crafting"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for copper tools, armor, and decorative blocks"
+        }
+      }
+    },
+    "minecraft:netherite_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Endgame crafting ingredient for top-tier tools and armor"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.95,
+          "rationale": "Only available from bastion treasure loot"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.9,
+          "rationale": "Only used in endgame tool and armor upgrades"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.85,
+          "rationale": "Dark metallic ingot without special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "confidence": 0.95,
+          "rationale": "Characteristic dark netherite color"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "confidence": 0.95,
+          "rationale": "Component shows damage_resistant to fire types"
+        },
+        "primary_uses": {
+          "values": [
+            "endgame tool upgrading",
+            "endgame armor upgrading"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used exclusively for crafting top-tier tools and armor"
+        }
+      }
+    },
+    "minecraft:diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Mid-to-late game crafting ingredient for tools and armor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.85,
+          "rationale": "More scarce than iron, found deep in caves"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Important for mid-late game tool and armor progression"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.75,
+          "rationale": "Precious gem but presented as basic crafting material"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "confidence": 0.9,
+          "rationale": "Diamonds have crystalline, translucent sparkly appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "tool and armor crafting",
+            "beacon payment",
+            "trim material"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for tier-up tools, armor, beacons, and decorative trim"
+        }
+      }
+    },
+    "minecraft:redstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.8,
+          "rationale": "Crafting ingredient specifically for redstone contraptions"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.85,
+          "rationale": "Found in caves but requires mining, not super common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used by players building redstone contraptions"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.95,
+          "rationale": "Core component of redstone contraptions and circuits"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.9,
+          "rationale": "Basic redstone dust with no special aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone contraption crafting",
+            "trim material"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for redstone circuits and decorative trim"
+        }
+      }
+    },
+    "minecraft:coal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.9,
+          "rationale": "Fuel and crafting ingredient for torches and blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Widely available from surface coal ore"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Used as fuel for furnaces and smelting throughout game"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "confidence": 0.75,
+          "rationale": "Functions as fuel for furnaces and minecarts"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.9,
+          "rationale": "Basic dark mineral"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "confidence": 0.95,
+          "rationale": "Coal is characteristically dark and black"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use as furnace fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "furnace fuel",
+            "torch crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used for smelting fuel and torch ingredient"
+        }
+      }
+    },
+    "minecraft:emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting and trading ingredient"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.85,
+          "rationale": "Found in biome-specific locations, harder to find than iron"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used for emerald blocks and trading, not essential"
+        },
+        "flavor": {
+          "value": "fancy",
+          "confidence": 0.75,
+          "rationale": "Precious gem with special significance for trading"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "confidence": 0.95,
+          "rationale": "Emeralds are characteristically green"
+        },
+        "primary_uses": {
+          "values": [
+            "emerald block crafting",
+            "villager trading",
+            "trim material"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for decoration, trading economy, and trim"
+        }
+      }
+    },
+    "minecraft:amethyst_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting ingredient for amethyst blocks and specialized components"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.85,
+          "rationale": "Found in ancient cities and trial chambers, location-specific"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used for specialized amethyst builds and sensors"
+        },
+        "flavor": {
+          "value": "fancy",
+          "confidence": 0.85,
+          "rationale": "Precious gem with aesthetic and decorative purpose"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "confidence": 0.95,
+          "rationale": "Amethyst is characteristically violet and purple"
+        },
+        "primary_uses": {
+          "values": [
+            "amethyst block crafting",
+            "sculk sensor crafting",
+            "trim material"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for decoration, sensors, and trim material"
+        }
+      }
+    },
+    "minecraft:slime_ball": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Adhesive ingredient for sticky pistons and slime blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Slimes are common hostile mobs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used for sticky pistons and slime blocks in specific builds"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.85,
+          "rationale": "Organic but unremarkable material"
+        },
+        "primary_uses": {
+          "values": [
+            "sticky piston crafting",
+            "slime block crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use as adhesive ingredient for redstone and movement"
+        }
+      }
+    },
+    "minecraft:raw_iron": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.9,
+          "rationale": "Unrefined ore requiring smelting or blasting to process"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Widely available in caves"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Early smelting material, fundamental to progression"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.9,
+          "rationale": "Basic raw ore"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "confidence": 0.85,
+          "rationale": "Raw ore has earthy brown and tan coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting to iron ingot",
+            "raw iron block crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Processed into ingots or decorative blocks"
+        }
+      }
+    },
+    "minecraft:ancient_debris": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.8,
+          "rationale": "Processed into netherite scrap, not used for building"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.95,
+          "rationale": "Very limited availability in nether"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.95,
+          "rationale": "Only used for endgame netherite progression"
+        },
+        "flavor": {
+          "value": "ancient",
+          "confidence": 0.95,
+          "rationale": "Named ancient and thematically represents ancient nether material"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "confidence": 0.9,
+          "rationale": "Has dark netherite coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "confidence": 0.95,
+          "rationale": "Component shows damage_resistant to fire types"
+        },
+        "primary_uses": {
+          "values": [
+            "netherite scrap crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Sole primary use is smelting into netherite scrap"
+        }
+      }
+    },
+    "minecraft:oak_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "Fundamental wood building material used for construction"
+        },
+        "rarity": {
+          "value": "abundant",
+          "confidence": 0.95,
+          "rationale": "Extremely common from trees throughout overworld"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.95,
+          "rationale": "Used constantly for planks, fuel, and building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "confidence": 0.95,
+          "rationale": "Fundamental building material for wooden structures"
+        },
+        "flavor": {
+          "value": "natural",
+          "confidence": 0.95,
+          "rationale": "Natural wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "confidence": 0.85,
+          "rationale": "Oak wood has medium-dark brown coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "confidence": 0.95,
+          "rationale": "Can be burned as fuel, can be moved by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "plank crafting",
+            "fuel",
+            "wooden building"
+          ],
+          "confidence": 0.95,
+          "rationale": "Processed into planks, used as fuel, and for construction"
+        }
+      }
+    },
+    "minecraft:cherry_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "Wood building material for construction"
+        },
+        "rarity": {
+          "value": "abundant",
+          "confidence": 0.95,
+          "rationale": "Common from cherry trees in biomes"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.95,
+          "rationale": "Used for planks, fuel, and building when available"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "confidence": 0.95,
+          "rationale": "Wood building material"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "confidence": 0.95,
+          "rationale": "Natural wood, variant of standard oak wood"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "confidence": 0.8,
+          "rationale": "Cherry wood has pale pinkish tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "confidence": 0.95,
+          "rationale": "Can be burned as fuel, can be moved by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "plank crafting",
+            "fuel",
+            "wooden building"
+          ],
+          "confidence": 0.95,
+          "rationale": "Processed into planks, used as fuel, and for construction"
+        }
+      }
+    },
+    "minecraft:bamboo": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.9,
+          "rationale": "Used for scaffolding and structural building"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.85,
+          "rationale": "Biome-specific (jungle), not ubiquitous"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used for scaffolding and specific building projects"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primarily used for scaffolding construction aid"
+        },
+        "flavor": {
+          "value": "natural",
+          "confidence": 0.95,
+          "rationale": "Natural plant material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "confidence": 0.95,
+          "rationale": "Bamboo is green"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "confidence": 0.9,
+          "rationale": "Can be moved by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "scaffolding crafting",
+            "stick crafting",
+            "bamboo building"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary uses are scaffolding, sticks, and building"
+        }
+      }
+    },
+    "minecraft:sugar_cane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.75,
+          "rationale": "Can be placed to build, though primarily processed for paper"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Common near water in overworld"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used for paper crafting when needed"
+        },
+        "flavor": {
+          "value": "natural",
+          "confidence": 0.95,
+          "rationale": "Natural plant material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "confidence": 0.95,
+          "rationale": "Sugar cane is green"
+        },
+        "primary_uses": {
+          "values": [
+            "paper crafting",
+            "sugar crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Processed into paper or sugar"
+        }
+      }
+    },
+    "minecraft:kelp": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.75,
+          "rationale": "Can be placed in water for building, though primarily processed"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Abundant in ocean biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Used for dried kelp farming and fuel"
+        },
+        "flavor": {
+          "value": "natural",
+          "confidence": 0.95,
+          "rationale": "Natural marine plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "confidence": 0.95,
+          "rationale": "Kelp is green"
+        },
+        "primary_uses": {
+          "values": [
+            "dried kelp fuel",
+            "kelp farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "Processed for food and fuel"
+        }
+      }
+    },
+    "minecraft:feather": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.95,
+          "rationale": "Crafting ingredient for arrows and books"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Readily available from chickens"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used when crafting arrows or books"
+        },
+        "flavor": {
+          "value": "natural",
+          "confidence": 0.9,
+          "rationale": "Natural organic material from birds"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "confidence": 0.85,
+          "rationale": "Feathers are light and white colored"
+        },
+        "primary_uses": {
+          "values": [
+            "arrow crafting",
+            "book crafting",
+            "brush crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary uses are crafting arrows, books, and brushes"
+        }
+      }
+    },
+    "minecraft:wooden_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 1,
+          "rationale": "Mining tool confirmed in component highlights"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Starting tool easily crafted from wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.95,
+          "rationale": "Used in early game mining progression"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "confidence": 0.99,
+          "rationale": "Primary tool for mining blocks"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.95,
+          "rationale": "Basic starter tool without special aesthetics"
+        },
+        "primary_uses": {
+          "values": [
+            "stone mining",
+            "ore harvesting",
+            "early game mining"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used for mining stone and early ores"
+        }
+      }
+    },
+    "minecraft:stone_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 1,
+          "rationale": "Mining tool confirmed in component highlights"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Commonly crafted from stone"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Used in early mining progression"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "confidence": 0.99,
+          "rationale": "Primary tool for mining iron ore and harder ores"
+        },
+        "flavor": {
+          "value": "plain",
+          "confidence": 0.95,
+          "rationale": "Basic utility tool"
+        },
+        "primary_uses": {
+          "values": [
+            "iron ore mining",
+            "ore harvesting",
+            "stone mining"
+          ],
+          "confidence": 0.95,
+          "rationale": "Progression tool for mining harder ores"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

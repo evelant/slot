@@ -1,0 +1,1098 @@
+{
+  "items": {
+    "minecraft:lectern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "interactive block for reading/storing books"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "confidence": 0.8,
+          "rationale": "traditional wooden lectern construction"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.65,
+          "rationale": "primarily used as furniture display"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "simple unadorned wooden block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "confidence": 0.75,
+          "rationale": "medium-toned wood"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "readily craftable from wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "decorative, not essential"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        },
+        "primary_uses": {
+          "values": [
+            "book storage and display"
+          ],
+          "confidence": 0.9,
+          "rationale": "primary function is holding readable books"
+        }
+      }
+    },
+    "minecraft:grindstone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "interactive block for removing enchantments"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.75,
+          "rationale": "primarily wooden construction"
+        },
+        "material_secondary": {
+          "values": [
+            "stone"
+          ],
+          "confidence": 0.8,
+          "rationale": "stone grinding wheel"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "confidence": 0.9,
+          "rationale": "removes enchantments from items"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "straightforward functional block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "confidence": 0.75,
+          "rationale": "dark wood frame with stone wheel"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used for enchantment management"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.8,
+          "rationale": "no loot sources listed"
+        }
+      }
+    },
+    "minecraft:smoker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "interactive cooking device"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.85,
+          "rationale": "primarily wooden construction"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "confidence": 0.75,
+          "rationale": "used in automated cooking systems"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "simple functional block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "confidence": 0.8,
+          "rationale": "dark wood with metal components"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used if automating food production"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.9,
+          "rationale": "no loot sources provided"
+        }
+      }
+    },
+    "minecraft:piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.95,
+          "rationale": "core redstone-activated moving component"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.85,
+          "rationale": "piston head is made of iron"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "confidence": 0.8,
+          "rationale": "wooden base and back plate"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.95,
+          "rationale": "core redstone mechanism"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical/technical device"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "confidence": 0.85,
+          "rationale": "dark iron piston head"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "common in redstone contraptions"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "confidence": 0.95,
+          "rationale": "can be pushed by other pistons"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        }
+      }
+    },
+    "minecraft:sticky_piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.95,
+          "rationale": "redstone mechanism that pulls blocks"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.85,
+          "rationale": "iron piston head"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak",
+            "slime"
+          ],
+          "confidence": 0.8,
+          "rationale": "wooden base and slime coating"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.95,
+          "rationale": "redstone mechanism"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical device, variant of piston"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "leaf_green"
+          ],
+          "confidence": 0.8,
+          "rationale": "iron with green slime coating"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used in advanced redstone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_sticky"
+          ],
+          "confidence": 0.95,
+          "rationale": "pulls blocks when retracted"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        }
+      }
+    },
+    "minecraft:hopper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.95,
+          "rationale": "automated item transfer device"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.9,
+          "rationale": "made of iron"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "confidence": 0.95,
+          "rationale": "core item automation component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical utility device"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "confidence": 0.85,
+          "rationale": "dark iron construction"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "common in automation systems"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "confidence": 0.95,
+          "rationale": "moves items between containers"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.9,
+          "rationale": "no loot sources listed"
+        }
+      }
+    },
+    "minecraft:dropper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.95,
+          "rationale": "redstone-activated item ejector"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.9,
+          "rationale": "made of stone"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "automation"
+          ],
+          "confidence": 0.9,
+          "rationale": "outputs items in automation systems"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical/technical component"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "confidence": 0.8,
+          "rationale": "stone coloration"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used in specific automation designs"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "confidence": 0.95,
+          "rationale": "ejects items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        }
+      }
+    },
+    "minecraft:observer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "confidence": 0.95,
+          "rationale": "detects block changes, outputs signal"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.9,
+          "rationale": "made of stone"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.95,
+          "rationale": "redstone logic component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical/technical"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "confidence": 0.8,
+          "rationale": "stone colored"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used in specific redstone logic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        }
+      }
+    },
+    "minecraft:repeater": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "confidence": 0.95,
+          "rationale": "delays and amplifies redstone signals"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.85,
+          "rationale": "stone base"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.85,
+          "rationale": "redstone dust component"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.95,
+          "rationale": "core redstone logic"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "technical/mechanical device"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "confidence": 0.8,
+          "rationale": "stone colored"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "common in redstone circuits"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        }
+      }
+    },
+    "minecraft:comparator": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "confidence": 0.95,
+          "rationale": "compares signal strength"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.85,
+          "rationale": "stone base"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone",
+            "quartz"
+          ],
+          "confidence": 0.8,
+          "rationale": "redstone and quartz components"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.95,
+          "rationale": "redstone logic component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "technical/mechanical"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "confidence": 0.8,
+          "rationale": "stone and quartz"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used in specific logic circuits"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        }
+      }
+    },
+    "minecraft:bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "edible food item"
+        },
+        "material_family": {
+          "value": "wheat",
+          "confidence": 0.9,
+          "rationale": "made from wheat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "simple food item"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "confidence": 0.85,
+          "rationale": "tan/brown coloration"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily crafted from wheat"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used for survival hunger management"
+        },
+        "primary_uses": {
+          "values": [
+            "restores hunger"
+          ],
+          "confidence": 0.95,
+          "rationale": "primary food source in survival"
+        }
+      }
+    },
+    "minecraft:golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "consumable item with effects"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.95,
+          "rationale": "made from gold blocks and apple"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "confidence": 0.9,
+          "rationale": "ornate golden item"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "confidence": 0.9,
+          "rationale": "golden coloration"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "component shows common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "situational use for regeneration effect"
+        },
+        "primary_uses": {
+          "values": [
+            "grants regeneration and absorption"
+          ],
+          "confidence": 0.95,
+          "rationale": "temporary healing effects when consumed"
+        }
+      }
+    },
+    "minecraft:enchanted_golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "consumable with powerful effects"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.95,
+          "rationale": "made from gold blocks"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mystical"
+          ],
+          "confidence": 0.88,
+          "rationale": "ornate with enchantment shimmer"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "iridescent"
+          ],
+          "confidence": 0.85,
+          "rationale": "golden with magical shimmer"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.95,
+          "rationale": "component indicates rare rarity"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "special item for critical situations"
+        },
+        "primary_uses": {
+          "values": [
+            "emergency healing and protection"
+          ],
+          "confidence": 0.95,
+          "rationale": "strong regen and resistance effects"
+        }
+      }
+    },
+    "minecraft:potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "drinkable effect-granting item"
+        },
+        "activity": {
+          "values": [
+            "magic"
+          ],
+          "confidence": 0.85,
+          "rationale": "applies magical status effects"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "confidence": 0.85,
+          "rationale": "magical nature of potions"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "glowing"
+          ],
+          "confidence": 0.75,
+          "rationale": "liquid with magical shimmer"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily crafted in brewing stand"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "situational use for effects"
+        },
+        "primary_uses": {
+          "values": [
+            "apply magical status effects"
+          ],
+          "confidence": 0.9,
+          "rationale": "grants temporary buff effects"
+        }
+      }
+    },
+    "minecraft:splash_potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.9,
+          "rationale": "throwable potion item"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "magic"
+          ],
+          "confidence": 0.85,
+          "rationale": "thrown for area effect application"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "variant"
+          ],
+          "confidence": 0.8,
+          "rationale": "magical, variant form of potion"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "glowing"
+          ],
+          "confidence": 0.75,
+          "rationale": "liquid with magical shimmer"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily crafted from regular potions"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "situational combat use"
+        },
+        "primary_uses": {
+          "values": [
+            "throw for area effect in combat"
+          ],
+          "confidence": 0.9,
+          "rationale": "affects all nearby entities"
+        }
+      }
+    },
+    "minecraft:milk_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.85,
+          "rationale": "drinkable item that clears effects"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.85,
+          "rationale": "bucket is made of iron"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "simple utility item"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "craftable from bucket and milk"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used to clear status effects"
+        },
+        "primary_uses": {
+          "values": [
+            "removes negative status effects"
+          ],
+          "confidence": 0.95,
+          "rationale": "clears all potion effects when consumed"
+        }
+      }
+    },
+    "minecraft:cake": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.8,
+          "rationale": "primarily used as ornamental block"
+        },
+        "material_family": {
+          "value": "wheat",
+          "confidence": 0.7,
+          "rationale": "primary ingredient is wheat"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.8,
+          "rationale": "placed as decorative furniture"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "simple food block"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "confidence": 0.85,
+          "rationale": "tan and brown cake coloration"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily crafted from ingredients"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "decorative, rarely eaten"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative block",
+            "food block"
+          ],
+          "confidence": 0.85,
+          "rationale": "placed for looks or eaten"
+        }
+      }
+    },
+    "minecraft:arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "confidence": 0.95,
+          "rationale": "projectile for bow"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.85,
+          "rationale": "wooden shaft"
+        },
+        "material_secondary": {
+          "values": [
+            "flint",
+            "feather"
+          ],
+          "confidence": 0.8,
+          "rationale": "flint head and feather fletching"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "used in archery and ranged combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "simple arrow, no special aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used constantly with bow"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat projectile"
+          ],
+          "confidence": 0.95,
+          "rationale": "ammunition for bows"
+        }
+      }
+    },
+    "minecraft:tipped_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "confidence": 0.95,
+          "rationale": "specialized projectile with effect"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.85,
+          "rationale": "wooden shaft"
+        },
+        "material_secondary": {
+          "values": [
+            "flint"
+          ],
+          "confidence": 0.8,
+          "rationale": "flint arrowhead"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "magic"
+          ],
+          "confidence": 0.85,
+          "rationale": "ranged combat with status effects"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mystical"
+          ],
+          "confidence": 0.85,
+          "rationale": "arrow variant with magical properties"
+        },
+        "palette": {
+          "values": [
+            "iridescent"
+          ],
+          "confidence": 0.8,
+          "rationale": "potion shimmer on arrow"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily crafted from arrows and potions"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "situational ranged attack"
+        },
+        "primary_uses": {
+          "values": [
+            "arrow with status effect"
+          ],
+          "confidence": 0.9,
+          "rationale": "applies potion effects on impact"
+        }
+      }
+    },
+    "minecraft:firework_rocket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.85,
+          "rationale": "used for elytra flight and effects"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "decorating"
+          ],
+          "confidence": 0.8,
+          "rationale": "elytra propulsion and visual effects"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "confidence": 0.85,
+          "rationale": "colorful celebratory visual effects"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "glowing"
+          ],
+          "confidence": 0.8,
+          "rationale": "bright colors with glow"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "easily craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used for elytra or celebration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources provided"
+        },
+        "primary_uses": {
+          "values": [
+            "elytra propulsion",
+            "celebratory effects"
+          ],
+          "confidence": 0.85,
+          "rationale": "boost flight or visual celebration"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

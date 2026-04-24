@@ -20,6 +20,7 @@ import {
   type LlmClient,
 } from "./llm/client.ts";
 import { runStage3 } from "./llm/run.ts";
+import { runStage3Retry, selectRetryCandidates } from "./llm/retry.ts";
 import {
   buildBatchPrompt,
   buildItemPayload,
@@ -33,6 +34,17 @@ interface StageSelection {
   stage1: boolean;
   stage2: boolean;
   stage3: boolean;
+}
+
+function parseEffort(
+  input: string | undefined,
+): "low" | "medium" | "high" | "xhigh" | "max" | undefined {
+  if (!input) return undefined;
+  const allowed = ["low", "medium", "high", "xhigh", "max"] as const;
+  if (!(allowed as readonly string[]).includes(input)) {
+    throw new Error(`unknown --effort value: ${input} (use one of ${allowed.join("|")})`);
+  }
+  return input as "low" | "medium" | "high" | "xhigh" | "max";
 }
 
 function parseStages(input: string | undefined): StageSelection {
@@ -67,11 +79,21 @@ async function main() {
           // stage 3 knobs
           model: { type: "string" },
           "batch-size": { type: "string" },
+          effort: { type: "string" },
           sample: { type: "string" }, // `canary`, `N`, or comma-separated ids
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
+          // stage 3 retry knobs — applied after the first pass on any item
+          // whose LLM facets have confidence < retry-threshold or ambiguous:true.
+          "retry-model": { type: "string" },
+          "retry-effort": { type: "string" },
+          "retry-threshold": { type: "string" },
+          "retry-batch-size": { type: "string" },
+          "retry-fixture-dir": { type: "string" },
+          "retry-use-replay": { type: "boolean" },
+          "retry-record-replay": { type: "boolean" },
         },
         allowPositionals: false,
         strict: true,
@@ -91,11 +113,23 @@ async function main() {
         await runVanilla(sourcePath, outDir, stages, {
           model: args.values.model,
           batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
+          effort: parseEffort(args.values.effort),
           sample: args.values.sample,
           fixtureDir: args.values["fixture-dir"],
           useReplay: args.values["use-replay"] ?? false,
           recordReplay: args.values["record-replay"] ?? false,
           dryRun: args.values["dry-run"] ?? false,
+          retryModel: args.values["retry-model"],
+          retryEffort: parseEffort(args.values["retry-effort"]),
+          retryThreshold: args.values["retry-threshold"]
+            ? Number(args.values["retry-threshold"])
+            : undefined,
+          retryBatchSize: args.values["retry-batch-size"]
+            ? Number(args.values["retry-batch-size"])
+            : undefined,
+          retryFixtureDir: args.values["retry-fixture-dir"],
+          retryUseReplay: args.values["retry-use-replay"],
+          retryRecordReplay: args.values["retry-record-replay"],
         });
         return;
       }
@@ -140,11 +174,23 @@ async function main() {
 interface Stage3CliOptions {
   model?: string;
   batchSize?: number;
+  effort?: "low" | "medium" | "high" | "xhigh" | "max";
   sample?: string;
   fixtureDir?: string;
   useReplay: boolean;
   recordReplay: boolean;
   dryRun: boolean;
+  /** If set, run a retry pass with this model after the first pass. */
+  retryModel?: string;
+  retryEffort?: "low" | "medium" | "high" | "xhigh" | "max";
+  retryThreshold?: number;
+  retryBatchSize?: number;
+  retryFixtureDir?: string;
+  /** Override the retry pass's record/replay mode. Defaults to recording
+   *  when --retry-fixture-dir is set, since we usually don't have retry
+   *  fixtures pre-populated. */
+  retryUseReplay?: boolean;
+  retryRecordReplay?: boolean;
 }
 
 async function runVanilla(
@@ -251,6 +297,7 @@ async function executeStage3(
     model: opts.model,
     batchSize: opts.batchSize,
     only,
+    clientOptions: opts.effort ? { effort: opts.effort } : undefined,
     onBatch: (info) => {
       console.log(
         `[stage3] batch ${info.batchIndex + 1}/${info.batchCount} ` +
@@ -260,6 +307,67 @@ async function executeStage3(
       );
     },
   });
+
+  // Optional retry pass: re-ask a stronger model about items whose LLM
+  // facets were low-confidence or ambiguous.
+  if (opts.retryModel) {
+    const candidates = selectRetryCandidates(
+      result.layer,
+      opts.retryThreshold ?? 0.5,
+    );
+    console.log(
+      `[stage3-retry] ${candidates.length} candidate item(s) below confidence ${opts.retryThreshold ?? 0.5} or flagged ambiguous`,
+    );
+    if (candidates.length > 0) {
+      // Resolve retry record/replay mode independently of the first pass:
+      //   - explicit --retry-use-replay / --retry-record-replay win
+      //   - else if --retry-fixture-dir was provided, default to recording
+      //     (we usually don't have retry fixtures pre-populated)
+      //   - else inherit from the first-pass mode
+      const retryHasFixtureDir = !!opts.retryFixtureDir;
+      const retryUseReplay = opts.retryUseReplay
+        ?? (retryHasFixtureDir ? false : opts.useReplay);
+      const retryRecordReplay = opts.retryRecordReplay
+        ?? (retryHasFixtureDir ? true : opts.recordReplay);
+      const retryClient = buildClient({
+        ...opts,
+        fixtureDir: opts.retryFixtureDir ?? opts.fixtureDir,
+        useReplay: retryUseReplay,
+        recordReplay: retryRecordReplay,
+      });
+      const retryResult = await runStage3Retry({
+        records,
+        firstPassLayer: result.layer,
+        client: retryClient,
+        model: opts.retryModel,
+        effort: opts.retryEffort,
+        threshold: opts.retryThreshold,
+        batchSize: opts.retryBatchSize,
+        onBatch: (info) => {
+          console.log(
+            `[stage3-retry] batch ${info.batchIndex + 1}/${info.batchCount} ` +
+              `parsed=${info.parsed}/${info.items.length} ` +
+              `warnings=${info.warnings.length} ` +
+              `elapsed=${info.elapsedMs}ms`,
+          );
+        },
+      });
+      result.layer = retryResult.layer;
+      result.warnings.push(...retryResult.warnings);
+      result.proposals.push(...retryResult.proposals);
+      result.corrections.push(...retryResult.corrections);
+      console.log(
+        `[stage3-retry] changed: ${Object.values(retryResult.facetsChanged).reduce((a, b) => a + b, 0)} facet(s), confirmed: ${Object.values(retryResult.facetsConfirmed).reduce((a, b) => a + b, 0)} facet(s)`,
+      );
+      if (Object.keys(retryResult.facetsChanged).length) {
+        const changed = Object.entries(retryResult.facetsChanged).sort(
+          (a, b) => b[1] - a[1],
+        );
+        console.log(`[stage3-retry] changes by facet:`);
+        for (const [f, n] of changed) console.log(`  ${f.padEnd(22)} ${n}`);
+      }
+    }
+  }
 
   const validation = validateLayer(result.layer);
   if (!validation.ok) {
@@ -408,10 +516,12 @@ Stage selection:
   --stages 1,2[,3]          Which stages to run. Default: 1,2 (stage 3 opt-in).
 
 Stage 3 (LLM) knobs — only used when 3 is in --stages:
-  --model <id>              Claude model id (default claude-haiku-4-5).
-  --batch-size <n>          Items per LLM call (default 20).
+  --model <id>              Claude model id (default haiku). Accepts aliases
+                            (haiku/sonnet/opus) or full model names.
+  --effort <level>          Reasoning effort: low|medium|high|xhigh|max.
+  --batch-size <n>          Items per LLM call (default 20 for haiku, try 10 for sonnet).
   --sample canary|N|id,...  Restrict to a subset:
-                              canary   – the hand-picked ~20-item set.
+                              canary   – the hand-picked 102-item set.
                               N        – first N records from the extract.
                               id,...   – explicit comma-separated item ids.
   --fixture-dir <path>      Directory for replay fixtures (prompt/response pairs).
@@ -419,11 +529,22 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
   --use-replay              Read responses from --fixture-dir; never call claude -p.
   --dry-run                 Build prompts and stop before any LLM call.
 
+Retry pass (opt-in; runs after the first pass on low-confidence items):
+  --retry-model <id>        Retry model (e.g. sonnet). Enabling this turns on retry.
+  --retry-effort <level>    Effort for the retry pass — 'max' for heaviest thinking.
+  --retry-threshold <n>     Retry items with any LLM facet confidence < n or ambiguous:true. Default 0.5.
+  --retry-batch-size <n>    Items per retry LLM call. Default 8.
+  --retry-fixture-dir <p>   Separate fixture directory for the retry pass.
+
 Examples:
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary --dry-run
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
       --record-replay --fixture-dir test/fixtures/stage3-canary
+  bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
+      --model haiku --record-replay --fixture-dir test/fixtures/stage3-canary-haiku \\
+      --retry-model sonnet --retry-effort max --retry-threshold 0.6 \\
+      --retry-fixture-dir test/fixtures/stage3-canary-sonnet-retry
 `);
 }
 

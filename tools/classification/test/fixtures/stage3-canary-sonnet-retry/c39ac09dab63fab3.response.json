@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 227711,
+  "duration_api_ms": 229380,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cut_copper_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"confidence\": 0.95,\n          \"rationale\": \"Stair-shaped block for construction and decoration\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"confidence\": 0.98,\n          \"rationale\": \"Explicitly Cut Copper Stairs; output of copper block stonecutting\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Cut copper is a processed variant of raw copper blocks\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"confidence\": 0.80,\n          \"rationale\": \"Unoxidized cut copper reads as bright copper tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"confidence\": 0.90,\n          \"rationale\": \"Crafted/stonecutted from copper; no natural generation\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.92,\n          \"rationale\": \"Copper ore is abundant; component_highlights confirms common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.75,\n          \"rationale\": \"Used for themed builds, not an everyday utility block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Stair shape serves both structural builds and decoration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper-themed stair construction\", \"architectural roof/stair detail\", \"decorative accent block\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Stair block used in architectural and decorative builds\"\n        }\n      }\n    },\n    \"minecraft:glow_berries\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"confidence\": 0.95,\n          \"rationale\": \"food component present; nutrition 2, saturation 0.4\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"confidence\": 0.85,\n          \"rationale\": \"Berry grown on cave vines; organic plant origin\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Cave-grown berry with bioluminescent organic aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"glowing\"],\n          \"confidence\": 0.78,\n          \"rationale\": \"Orange-amber berry with characteristic glow particle effect\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\", \"mineshaft\", \"ancient_city\", \"trial_chamber\"],\n          \"confidence\": 0.90,\n          \"rationale\": \"Grows on cave vines; loot tables include mineshaft, ancient_city, trial_chambers\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.85,\n          \"rationale\": \"Cave vines common underground; found in multiple chest sources\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.75,\n          \"rationale\": \"Nutrition 2/saturation 0.4 makes it a minor supplemental food\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"exploration\"],\n          \"confidence\": 0.80,\n          \"rationale\": \"Harvestable from cave vines; found while caving/exploring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"low-tier food source\", \"cave vine propagation\", \"fox taming and breeding\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"food+fox_food tags; harvest loot implies planting/farming use\"\n        }\n      }\n    },\n    \"minecraft:lectern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"confidence\": 0.92,\n          \"rationale\": \"Holds books, is librarian job site, emits redstone signal\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"confidence\": 0.85,\n          \"rationale\": \"Crafted from wooden slabs and bookshelf; entirely wooden appearance\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"confidence\": 0.80,\n          \"rationale\": \"Standard vanilla aesthetic without special ornamentation\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"confidence\": 0.75,\n          \"rationale\": \"Default oak-toned wood appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\", \"village\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Crafted from slabs+bookshelf; spawns in villages as librarian job site\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.90,\n          \"rationale\": \"Easy to craft; common in villages\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.78,\n          \"rationale\": \"Used for specific setups; not an everyday item\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"trading\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Emits comparator signal on page turn; job site for librarian villagers\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Wood-based construction; catches fire like other wood blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"hold books for reading/display\", \"librarian job site block\", \"redstone page-turn signal\"],\n          \"confidence\": 0.90,\n          \"rationale\": \"All three uses are well-known game mechanics\"\n        }\n      }\n    },\n    \"minecraft:magenta_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"confidence\": 0.95,\n          \"rationale\": \"In banners tag; purely decorative block/item\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"confidence\": 0.90,\n          \"rationale\": \"Banners crafted from wool; banner_patterns component confirms\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"confidence\": 0.92,\n          \"rationale\": \"Magenta is one of the 16 dye-color variants\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"confidence\": 0.80,\n          \"rationale\": \"Magenta is a saturated, vivid hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"confidence\": 0.92,\n          \"rationale\": \"Crafted from magenta wool; no natural structure generation\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.90,\n          \"rationale\": \"Wool and dye accessible early; components confirm common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.80,\n          \"rationale\": \"Decorative use; not a daily utility item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"confidence\": 0.95,\n          \"rationale\": \"Primary purpose is visual decoration; ingredient in shield_decoration\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Wool-based banner; wool is combustible\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"visual decoration in builds\", \"shield pattern decoration\", \"team/faction color markers\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"sample_ingredient_of includes shield_decoration; decorative by nature\"\n        }\n      }\n    },\n    \"minecraft:mangrove_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"confidence\": 0.90,\n          \"rationale\": \"Fence gate is a structural element for enclosures and passages\"\n        },\n        \"material_family\": {\n          \"value\": \"wood_mangrove\",\n          \"confidence\": 0.92,\n          \"rationale\": \"Explicitly Mangrove Fence Gate; mangrove planks are primary material\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"confidence\": 0.80,\n          \"rationale\": \"Mangrove is natural swamp wood; one variant among wood fence gate types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Mangrove planks have a distinctive reddish-brown color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Crafted from mangrove planks; not naturally generated as fence gate\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.88,\n          \"rationale\": \"Mangrove wood available in swamp biomes; easy to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.78,\n          \"rationale\": \"Used in specific builds requiring enclosures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Used in building enclosures and animal pen access\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"confidence\": 0.90,\n          \"rationale\": \"Wooden fence gate; all wood types are combustible\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"animal pen and enclosure access\", \"building entrances through fences\", \"mangrove-themed builds\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Fence gate purpose is enclosure access; mangrove provides distinct aesthetic\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"environmental_property\",\n      \"value\": \"oxidizes\",\n      \"rationale\": \"Copper blocks change color through 4 oxidation stages; key behavior for copper-family items\"\n    },\n    {\n      \"kind\": \"add_facet\",\n      \"name\": \"dye_color\",\n      \"suggested_kind\": \"enum\",\n      \"rationale\": \"16-color dyed items need machine-readable color for grouping banners, wool, glass panes, etc.\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d14e01fa-96d0-4bf5-9e62-a6a4f0c281aa",
+  "total_cost_usd": 0.27420115,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5535,
+    "cache_read_input_tokens": 8513,
+    "output_tokens": 16409,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5535,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16409,
+        "cache_read_input_tokens": 8513,
+        "cache_creation_input_tokens": 5535,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5535
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4672,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004747,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16409,
+      "cacheReadInputTokens": 8513,
+      "cacheCreationInputTokens": 5535,
+      "webSearchRequests": 0,
+      "costUSD": 0.26945415,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "051b6911-d686-4806-a113-69ec1d511be2"
+}

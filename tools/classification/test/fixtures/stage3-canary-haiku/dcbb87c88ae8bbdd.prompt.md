@@ -3,13 +3,20 @@ You are classifying Minecraft items for an inventory mod called Slot. For each i
 Rules:
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit `null`, empty arrays, or placeholder values.
-- For single-value enum facets where two values could apply with similar confidence, emit a two-element `values` array AND set `ambiguous: true`. Downstream reviewers see both.
-- Attach a `confidence` 0.0–1.0 to every facet; <0.4 means "I'm guessing."
+- For single-value enum facets where two values could apply with similar confidence, emit a two-element `values` array AND set `ambiguous: true`. Downstream reviewers see both. Err on the side of marking ambiguous when the signal is thin — a flagged retry is cheap, a confidently wrong answer is expensive.
+- Attach a `confidence` 0.0–1.0 to every facet. Calibrate honestly:
+    • **≥0.90**: the value is directly named or unambiguous from tags/components/lore (e.g. `diamond_pickaxe` tier=`diamond`).
+    • **0.70–0.89**: a strong pattern in the inputs points to the value but isn't named (e.g. role=`material` for an ingot).
+    • **0.50–0.69**: reasonable inference from indirect signals (recipe shape, name, neighbors).
+    • **<0.50**: you're guessing or extrapolating. Prefer `ambiguous: true` + two-value list over a single low-confidence guess.
+    It's better to emit a low confidence + rationale than to fake certainty. A confidently-wrong answer burns a human review round; a low-confidence answer triggers a cheap Sonnet retry.
 - Attach a short `rationale` per facet (≤120 chars) — what in the inputs led to the value.
 - If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to `schema_proposals` at the top level.
 - Don't re-emit facets listed under `stage2_facets` inside `facets` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level `corrections` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
 - Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.
+- Your response MUST start with `{` and end with `}`. Do NOT prepend any narration (no "Here is…", "Continuing with…", etc.). Do NOT append any text after the closing brace.
+- Classify every item listed in the `items` array. Keep rationales short so you don't have to trim items — terse ≤80-char rationales are fine.
 
 Common confusions to avoid:
 - `activity` does NOT include `crafting` — every item is craftable, so "crafting" is noise. If the item is used as a crafting ingredient, that's already captured in `processing_in`. Pick an end-use activity instead (`building`, `mining`, `combat`, `redstone`, etc.) or omit.
@@ -196,13 +203,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "form": {
           "value": "projectile",
           "confidence": 1,
@@ -270,13 +270,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "form": {
           "value": "projectile",
@@ -354,13 +347,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "processing_in": {
           "values": [
             "smelting"
@@ -429,13 +415,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "processing_in": {
           "values": [
@@ -526,13 +505,6 @@ Field rules:
           "value": "minecraft",
           "confidence": 1,
           "source": "rule:mod_namespace"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         }
       }
     },
@@ -571,13 +543,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "origin": {
           "values": [
@@ -625,13 +590,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "origin": {
           "values": [
             "mineshaft",
@@ -677,13 +635,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_stackable_from_component"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "origin": {
           "values": [
@@ -742,13 +693,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "material_family": {
           "value": "copper",
@@ -828,13 +772,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "required_tool": {
           "value": "pickaxe",
           "confidence": 1,
@@ -903,13 +840,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "material_family": {
           "value": "copper",
@@ -985,13 +915,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "material_family": {
           "value": "wood_mangrove",
           "confidence": 1,
@@ -1057,13 +980,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "material_family": {
           "value": "wood_cherry",
@@ -1136,13 +1052,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "material_family": {
           "value": "wood_bamboo",
@@ -1236,13 +1145,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "material_family": {
           "value": "wool",
           "confidence": 1,
@@ -1334,13 +1236,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "form": {
           "value": "bed",
           "confidence": 1,
@@ -1418,13 +1313,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:has_nbt_variation_from_component"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "form": {
           "value": "banner",
           "confidence": 1,
@@ -1499,13 +1387,6 @@ Field rules:
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
         },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
-        },
         "form": {
           "value": "candle",
           "confidence": 1,
@@ -1562,13 +1443,6 @@ Field rules:
           "value": true,
           "confidence": 1,
           "source": "rule:is_block_item_from_registry"
-        },
-        "rarity": {
-          "value": "common",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = common"
         },
         "dye_color": {
           "value": "orange",

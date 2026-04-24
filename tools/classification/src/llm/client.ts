@@ -18,6 +18,13 @@ export interface LlmClient {
 export interface QueryOptions {
   /** Claude model id (`claude-haiku-4-5`, `claude-sonnet-4-6`, …). */
   model: string;
+  /**
+   * Reasoning effort level — `low` | `medium` | `high` | `xhigh` | `max`.
+   * Claude Code maps this to extended-thinking budget. Set `max` on retry
+   * passes where quality matters more than latency; leave unset for first-pass
+   * classification where Haiku's default is fine.
+   */
+  effort?: "low" | "medium" | "high" | "xhigh" | "max";
   /** Abort signal for long-running batches. */
   signal?: AbortSignal;
   /** Override the `claude` executable path (defaults to "claude" on PATH). */
@@ -45,6 +52,9 @@ export class ClaudeCliClient implements LlmClient {
       "--tools", "",
       "--dangerously-skip-permissions",
     ];
+    if (options.effort) {
+      args.push("--effort", options.effort);
+    }
 
     return new Promise((resolve, reject) => {
       const child = spawn(bin, args, {

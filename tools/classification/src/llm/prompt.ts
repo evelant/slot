@@ -51,8 +51,13 @@ For each input item you will emit a concise facet record per the schema below.
 Rules:
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit \`null\`, empty arrays, or placeholder values.
-- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
-- Attach a \`confidence\` 0.0–1.0 to every facet; <0.4 means "I'm guessing."
+- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both. Err on the side of marking ambiguous when the signal is thin — a flagged retry is cheap, a confidently wrong answer is expensive.
+- Attach a \`confidence\` 0.0–1.0 to every facet. Calibrate honestly:
+    • **≥0.90**: the value is directly named or unambiguous from tags/components/lore (e.g. \`diamond_pickaxe\` tier=\`diamond\`).
+    • **0.70–0.89**: a strong pattern in the inputs points to the value but isn't named (e.g. role=\`material\` for an ingot).
+    • **0.50–0.69**: reasonable inference from indirect signals (recipe shape, name, neighbors).
+    • **<0.50**: you're guessing or extrapolating. Prefer \`ambiguous: true\` + two-value list over a single low-confidence guess.
+    It's better to emit a low confidence + rationale than to fake certainty. A confidently-wrong answer burns a human review round; a low-confidence answer triggers a cheap Sonnet retry.
 - Attach a short \`rationale\` per facet (≤120 chars) — what in the inputs led to the value.
 - If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.

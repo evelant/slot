@@ -3,13 +3,20 @@ You are classifying Minecraft items for an inventory mod called Slot. For each i
 Rules:
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit `null`, empty arrays, or placeholder values.
-- For single-value enum facets where two values could apply with similar confidence, emit a two-element `values` array AND set `ambiguous: true`. Downstream reviewers see both.
-- Attach a `confidence` 0.0–1.0 to every facet; <0.4 means "I'm guessing."
+- For single-value enum facets where two values could apply with similar confidence, emit a two-element `values` array AND set `ambiguous: true`. Downstream reviewers see both. Err on the side of marking ambiguous when the signal is thin — a flagged retry is cheap, a confidently wrong answer is expensive.
+- Attach a `confidence` 0.0–1.0 to every facet. Calibrate honestly:
+    • **≥0.90**: the value is directly named or unambiguous from tags/components/lore (e.g. `diamond_pickaxe` tier=`diamond`).
+    • **0.70–0.89**: a strong pattern in the inputs points to the value but isn't named (e.g. role=`material` for an ingot).
+    • **0.50–0.69**: reasonable inference from indirect signals (recipe shape, name, neighbors).
+    • **<0.50**: you're guessing or extrapolating. Prefer `ambiguous: true` + two-value list over a single low-confidence guess.
+    It's better to emit a low confidence + rationale than to fake certainty. A confidently-wrong answer burns a human review round; a low-confidence answer triggers a cheap Sonnet retry.
 - Attach a short `rationale` per facet (≤120 chars) — what in the inputs led to the value.
 - If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to `schema_proposals` at the top level.
 - Don't re-emit facets listed under `stage2_facets` inside `facets` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level `corrections` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
 - Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.
+- Your response MUST start with `{` and end with `}`. Do NOT prepend any narration (no "Here is…", "Continuing with…", etc.). Do NOT append any text after the closing brace.
+- Classify every item listed in the `items` array. Keep rationales short so you don't have to trim items — terse ≤80-char rationales are fine.
 
 Common confusions to avoid:
 - `activity` does NOT include `crafting` — every item is craftable, so "crafting" is noise. If the item is used as a crafting ingredient, that's already captured in `processing_in`. Pick an end-use activity instead (`building`, `mining`, `combat`, `redstone`, etc.) or omit.
@@ -154,94 +161,146 @@ Field rules:
 {
   "items": [
     {
-      "id": "minecraft:structure_block",
+      "id": "minecraft:cut_copper_stairs",
       "namespace": "minecraft",
-      "display_name": "Structure Block",
-      "minecraft_tags": [],
+      "display_name": "Cut Copper Stairs",
+      "minecraft_tags": [
+        "minecraft:stairs"
+      ],
       "processing_in": [],
-      "sample_ingredient_of": [],
-      "sample_output_of": [],
+      "sample_ingredient_of": [
+        "minecraft:waxed_cut_copper_stairs_from_honeycomb"
+      ],
+      "sample_output_of": [
+        "minecraft:cut_copper_stairs",
+        "minecraft:cut_copper_stairs_from_copper_block_stonecutting",
+        "minecraft:cut_copper_stairs_from_cut_copper_stonecutting"
+      ],
       "model_parents": [
-        "block/structure_block",
-        "block/cube_all",
-        "block/cube",
+        "block/cut_copper_stairs",
+        "block/stairs",
         "block/block"
       ],
-      "sample_loot_sources": [],
+      "sample_loot_sources": [
+        "minecraft:blocks/cut_copper_stairs"
+      ],
       "lore": [],
       "component_highlights": {
-        "minecraft:rarity": "epic"
+        "minecraft:rarity": "common"
       },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "is_stackable": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_stackable_from_component"
-        },
-        "is_block_item": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_block_item_from_registry"
-        },
-        "rarity": {
-          "value": "unique",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = epic"
-        },
-        "is_creative_only": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_creative_only_hardcoded",
-          "rationale": "known vanilla creative-only item"
-        }
-      }
+      "stage2_facets": {}
     },
     {
-      "id": "minecraft:debug_stick",
+      "id": "minecraft:glow_berries",
       "namespace": "minecraft",
-      "display_name": "Debug Stick",
-      "minecraft_tags": [],
+      "display_name": "Glow Berries",
+      "minecraft_tags": [
+        "minecraft:fox_food"
+      ],
       "processing_in": [],
       "sample_ingredient_of": [],
       "sample_output_of": [],
       "model_parents": [
-        "item/debug_stick",
-        "item/handheld",
+        "item/glow_berries",
         "item/generated",
         "builtin/generated"
       ],
-      "sample_loot_sources": [],
+      "sample_loot_sources": [
+        "minecraft:blocks/cave_vines",
+        "minecraft:blocks/cave_vines_plant",
+        "minecraft:chests/abandoned_mineshaft",
+        "minecraft:chests/ancient_city",
+        "minecraft:chests/trial_chambers/supply",
+        "minecraft:harvest/cave_vine"
+      ],
       "lore": [],
       "component_highlights": {
-        "minecraft:rarity": "epic"
+        "minecraft:food": {
+          "nutrition": 2,
+          "saturation": 0.4
+        },
+        "minecraft:consumable": {},
+        "minecraft:rarity": "common"
       },
-      "stage2_facets": {
-        "mod_namespace": {
-          "value": "minecraft",
-          "confidence": 1,
-          "source": "rule:mod_namespace"
-        },
-        "rarity": {
-          "value": "unique",
-          "mode": "override-if-null",
-          "confidence": 1,
-          "source": "rule:rarity_from_component",
-          "rationale": "component minecraft:rarity = epic"
-        },
-        "is_creative_only": {
-          "value": true,
-          "confidence": 1,
-          "source": "rule:is_creative_only_hardcoded",
-          "rationale": "known vanilla creative-only item"
-        }
-      }
+      "stage2_facets": {}
+    },
+    {
+      "id": "minecraft:lectern",
+      "namespace": "minecraft",
+      "display_name": "Lectern",
+      "minecraft_tags": [],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [
+        "minecraft:lectern"
+      ],
+      "model_parents": [
+        "block/lectern",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/lectern"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {}
+    },
+    {
+      "id": "minecraft:magenta_banner",
+      "namespace": "minecraft",
+      "display_name": "Magenta Banner",
+      "minecraft_tags": [
+        "minecraft:banners"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [
+        "minecraft:magenta_banner_duplicate",
+        "minecraft:shield_decoration"
+      ],
+      "sample_output_of": [
+        "minecraft:magenta_banner",
+        "minecraft:magenta_banner_duplicate"
+      ],
+      "model_parents": [
+        "item/template_banner"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/magenta_banner"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:banner_patterns": [],
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {}
+    },
+    {
+      "id": "minecraft:mangrove_fence_gate",
+      "namespace": "minecraft",
+      "display_name": "Mangrove Fence Gate",
+      "minecraft_tags": [
+        "minecraft:fence_gates"
+      ],
+      "processing_in": [],
+      "sample_ingredient_of": [],
+      "sample_output_of": [
+        "minecraft:mangrove_fence_gate"
+      ],
+      "model_parents": [
+        "block/mangrove_fence_gate",
+        "block/template_fence_gate",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/mangrove_fence_gate"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {}
     }
   ]
 }

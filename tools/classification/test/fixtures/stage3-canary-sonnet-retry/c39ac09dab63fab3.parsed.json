@@ -1,0 +1,355 @@
+{
+  "items": {
+    "minecraft:cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "Stair-shaped block for construction and decoration"
+        },
+        "material_family": {
+          "value": "copper",
+          "confidence": 0.98,
+          "rationale": "Explicitly Cut Copper Stairs; output of copper block stonecutting"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "confidence": 0.85,
+          "rationale": "Cut copper is a processed variant of raw copper blocks"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.8,
+          "rationale": "Unoxidized cut copper reads as bright copper tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.9,
+          "rationale": "Crafted/stonecutted from copper; no natural generation"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.92,
+          "rationale": "Copper ore is abundant; component_highlights confirms common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "Used for themed builds, not an everyday utility block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.88,
+          "rationale": "Stair shape serves both structural builds and decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "copper-themed stair construction",
+            "architectural roof/stair detail",
+            "decorative accent block"
+          ],
+          "confidence": 0.88,
+          "rationale": "Stair block used in architectural and decorative builds"
+        }
+      }
+    },
+    "minecraft:glow_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "food component present; nutrition 2, saturation 0.4"
+        },
+        "material_family": {
+          "value": "plant",
+          "confidence": 0.85,
+          "rationale": "Berry grown on cave vines; organic plant origin"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.88,
+          "rationale": "Cave-grown berry with bioluminescent organic aesthetic"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "glowing"
+          ],
+          "confidence": 0.78,
+          "rationale": "Orange-amber berry with characteristic glow particle effect"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave",
+            "mineshaft",
+            "ancient_city",
+            "trial_chamber"
+          ],
+          "confidence": 0.9,
+          "rationale": "Grows on cave vines; loot tables include mineshaft, ancient_city, trial_chambers"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.85,
+          "rationale": "Cave vines common underground; found in multiple chest sources"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "Nutrition 2/saturation 0.4 makes it a minor supplemental food"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "confidence": 0.8,
+          "rationale": "Harvestable from cave vines; found while caving/exploring"
+        },
+        "primary_uses": {
+          "values": [
+            "low-tier food source",
+            "cave vine propagation",
+            "fox taming and breeding"
+          ],
+          "confidence": 0.85,
+          "rationale": "food+fox_food tags; harvest loot implies planting/farming use"
+        }
+      }
+    },
+    "minecraft:lectern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.92,
+          "rationale": "Holds books, is librarian job site, emits redstone signal"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.85,
+          "rationale": "Crafted from wooden slabs and bookshelf; entirely wooden appearance"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.8,
+          "rationale": "Standard vanilla aesthetic without special ornamentation"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "confidence": 0.75,
+          "rationale": "Default oak-toned wood appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only",
+            "village"
+          ],
+          "confidence": 0.82,
+          "rationale": "Crafted from slabs+bookshelf; spawns in villages as librarian job site"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.9,
+          "rationale": "Easy to craft; common in villages"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.78,
+          "rationale": "Used for specific setups; not an everyday item"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "trading"
+          ],
+          "confidence": 0.82,
+          "rationale": "Emits comparator signal on page turn; job site for librarian villagers"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.82,
+          "rationale": "Wood-based construction; catches fire like other wood blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "hold books for reading/display",
+            "librarian job site block",
+            "redstone page-turn signal"
+          ],
+          "confidence": 0.9,
+          "rationale": "All three uses are well-known game mechanics"
+        }
+      }
+    },
+    "minecraft:magenta_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.95,
+          "rationale": "In banners tag; purely decorative block/item"
+        },
+        "material_family": {
+          "value": "wool",
+          "confidence": 0.9,
+          "rationale": "Banners crafted from wool; banner_patterns component confirms"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.92,
+          "rationale": "Magenta is one of the 16 dye-color variants"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "confidence": 0.8,
+          "rationale": "Magenta is a saturated, vivid hue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.92,
+          "rationale": "Crafted from magenta wool; no natural structure generation"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.9,
+          "rationale": "Wool and dye accessible early; components confirm common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Decorative use; not a daily utility item"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary purpose is visual decoration; ingredient in shield_decoration"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.88,
+          "rationale": "Wool-based banner; wool is combustible"
+        },
+        "primary_uses": {
+          "values": [
+            "visual decoration in builds",
+            "shield pattern decoration",
+            "team/faction color markers"
+          ],
+          "confidence": 0.88,
+          "rationale": "sample_ingredient_of includes shield_decoration; decorative by nature"
+        }
+      }
+    },
+    "minecraft:mangrove_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.9,
+          "rationale": "Fence gate is a structural element for enclosures and passages"
+        },
+        "material_family": {
+          "value": "wood_mangrove",
+          "confidence": 0.92,
+          "rationale": "Explicitly Mangrove Fence Gate; mangrove planks are primary material"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "confidence": 0.8,
+          "rationale": "Mangrove is natural swamp wood; one variant among wood fence gate types"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "confidence": 0.85,
+          "rationale": "Mangrove planks have a distinctive reddish-brown color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.88,
+          "rationale": "Crafted from mangrove planks; not naturally generated as fence gate"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.88,
+          "rationale": "Mangrove wood available in swamp biomes; easy to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.78,
+          "rationale": "Used in specific builds requiring enclosures"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "confidence": 0.82,
+          "rationale": "Used in building enclosures and animal pen access"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.9,
+          "rationale": "Wooden fence gate; all wood types are combustible"
+        },
+        "primary_uses": {
+          "values": [
+            "animal pen and enclosure access",
+            "building entrances through fences",
+            "mangrove-themed builds"
+          ],
+          "confidence": 0.85,
+          "rationale": "Fence gate purpose is enclosure access; mangrove provides distinct aesthetic"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "oxidizes",
+      "rationale": "Copper blocks change color through 4 oxidation stages; key behavior for copper-family items"
+    },
+    {
+      "kind": "add_facet",
+      "name": "dye_color",
+      "suggested_kind": "enum",
+      "rationale": "16-color dyed items need machine-readable color for grouping banners, wool, glass panes, etc."
+    }
+  ],
+  "corrections": []
+}

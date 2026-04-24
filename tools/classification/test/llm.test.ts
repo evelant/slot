@@ -9,6 +9,7 @@ import {
 } from "../src/llm/prompt.ts";
 import { parseLlmResponse } from "../src/llm/parse.ts";
 import { runStage3 } from "../src/llm/run.ts";
+import { selectRetryCandidates, runStage3Retry } from "../src/llm/retry.ts";
 import { ReplayLlmClient, fixtureHash } from "../src/llm/client.ts";
 import type { ItemExtractRecord } from "../src/extract/record.ts";
 import type { LayerFile } from "../src/deterministic/run.ts";
@@ -327,5 +328,216 @@ describe("runStage3", () => {
       client,
       only: ["minecraft:a"],
     });
+  });
+});
+
+describe("retry candidate selection", () => {
+  function layer(entries: Record<string, Record<string, unknown>>): LayerFile {
+    const layerEntries: LayerFile["entries"] = {};
+    for (const [id, facets] of Object.entries(entries)) {
+      layerEntries[id] = { facets: facets as LayerFile["entries"][string]["facets"] };
+    }
+    return { schema_version: 1, layer: "vanilla-base", source: "minecraft", entries: layerEntries };
+  }
+
+  test("flags items with confidence below threshold on any llm facet", () => {
+    const l = layer({
+      "minecraft:a": {
+        role: { value: "material", confidence: 0.95, source: "llm:stage3" },
+        primary_uses: { values: ["x"], confidence: 0.3, source: "llm:stage3" },
+      },
+      "minecraft:b": {
+        role: { value: "tool", confidence: 0.9, source: "llm:stage3" },
+      },
+    });
+    expect(selectRetryCandidates(l, 0.5)).toEqual(["minecraft:a"]);
+  });
+
+  test("flags items with ambiguous: true", () => {
+    const l = layer({
+      "minecraft:a": {
+        role: {
+          values: ["material", "natural_resource"],
+          ambiguous: true,
+          confidence: 0.9,
+          source: "llm:stage3",
+        },
+      },
+      "minecraft:b": {
+        role: { value: "tool", confidence: 0.9, source: "llm:stage3" },
+      },
+    });
+    expect(selectRetryCandidates(l, 0.5)).toEqual(["minecraft:a"]);
+  });
+
+  test("ignores stage-2 rule-derived facets below threshold", () => {
+    const l = layer({
+      "minecraft:a": {
+        material_family: { value: "iron", confidence: 0.2, source: "rule:foo" },
+        role: { value: "material", confidence: 0.95, source: "llm:stage3" },
+      },
+    });
+    // rule facet with low confidence shouldn't flag retry
+    expect(selectRetryCandidates(l, 0.5)).toEqual([]);
+  });
+});
+
+describe("runStage3Retry", () => {
+  function baseRecord(): ItemExtractRecord {
+    return {
+      id: "minecraft:mystery",
+      namespace: "minecraft",
+      path: "mystery",
+      display_name: "Mystery Item",
+      minecraft_tags: [],
+      recipe_role: { ingredient_of: [], output_of: [], in_degree: 0, out_degree: 0 },
+      model_parents: [],
+      loot_table_sources: [],
+      creative_tabs: [],
+      component_data: null,
+    };
+  }
+
+  test("retry replaces low-confidence facet with higher-confidence result", async () => {
+    const firstPassLayer: LayerFile = {
+      schema_version: 1,
+      layer: "vanilla-base",
+      source: "minecraft",
+      entries: {
+        "minecraft:mystery": {
+          facets: {
+            role: { value: "curiosity", confidence: 0.35, source: "llm:stage3" },
+          },
+        },
+      },
+    };
+    const retryResponse = JSON.stringify({
+      items: {
+        "minecraft:mystery": {
+          facets: {
+            role: { value: "utility", confidence: 0.88, rationale: "specific behaviour" },
+          },
+        },
+      },
+    });
+    const retryClient = {
+      async query() {
+        return retryResponse;
+      },
+    };
+
+    const result = await runStage3Retry({
+      records: [baseRecord()],
+      firstPassLayer,
+      client: retryClient,
+      threshold: 0.5,
+      model: "sonnet",
+      effort: "max",
+    });
+
+    expect(result.retriedItems).toEqual(["minecraft:mystery"]);
+    const role = result.layer.entries["minecraft:mystery"]!.facets.role as { value: string; source: string; confidence: number };
+    expect(role.value).toBe("utility");
+    expect(role.source).toBe("llm:stage3-retry");
+    expect(result.facetsChanged.role).toBe(1);
+    expect(result.facetsConfirmed.role ?? 0).toBe(0);
+  });
+
+  test("retry keeps first-pass value when retry has lower confidence", async () => {
+    const firstPassLayer: LayerFile = {
+      schema_version: 1,
+      layer: "vanilla-base",
+      source: "minecraft",
+      entries: {
+        "minecraft:mystery": {
+          facets: {
+            role: { value: "curiosity", confidence: 0.45, source: "llm:stage3" },
+          },
+        },
+      },
+    };
+    const retryResponse = JSON.stringify({
+      items: {
+        "minecraft:mystery": {
+          facets: {
+            role: { value: "utility", confidence: 0.3 },
+          },
+        },
+      },
+    });
+    const retryClient = { async query() { return retryResponse; } };
+
+    const result = await runStage3Retry({
+      records: [baseRecord()],
+      firstPassLayer,
+      client: retryClient,
+      threshold: 0.5,
+    });
+
+    const role = result.layer.entries["minecraft:mystery"]!.facets.role as { value: string };
+    expect(role.value).toBe("curiosity");
+    expect(result.warnings.some((w) => w.includes("retry disagreed but lower confidence"))).toBe(true);
+  });
+
+  test("retry confirms same value and counts as confirmed, not changed", async () => {
+    const firstPassLayer: LayerFile = {
+      schema_version: 1,
+      layer: "vanilla-base",
+      source: "minecraft",
+      entries: {
+        "minecraft:mystery": {
+          facets: {
+            role: { value: "material", confidence: 0.4, source: "llm:stage3" },
+          },
+        },
+      },
+    };
+    const retryResponse = JSON.stringify({
+      items: {
+        "minecraft:mystery": {
+          facets: {
+            role: { value: "material", confidence: 0.9 },
+          },
+        },
+      },
+    });
+    const retryClient = { async query() { return retryResponse; } };
+
+    const result = await runStage3Retry({
+      records: [baseRecord()],
+      firstPassLayer,
+      client: retryClient,
+      threshold: 0.5,
+    });
+
+    expect(result.facetsConfirmed.role).toBe(1);
+    expect(result.facetsChanged.role ?? 0).toBe(0);
+    const role = result.layer.entries["minecraft:mystery"]!.facets.role as { confidence: number };
+    expect(role.confidence).toBe(0.9); // confidence bumped
+  });
+
+  test("no candidates → noop retry", async () => {
+    const firstPassLayer: LayerFile = {
+      schema_version: 1,
+      layer: "vanilla-base",
+      source: "minecraft",
+      entries: {
+        "minecraft:x": {
+          facets: {
+            role: { value: "material", confidence: 0.95, source: "llm:stage3" },
+          },
+        },
+      },
+    };
+    let queried = false;
+    const client = { async query() { queried = true; return "{}"; } };
+    const result = await runStage3Retry({
+      records: [baseRecord()],
+      firstPassLayer,
+      client,
+      threshold: 0.5,
+    });
+    expect(queried).toBe(false);
+    expect(result.retriedItems).toEqual([]);
   });
 });

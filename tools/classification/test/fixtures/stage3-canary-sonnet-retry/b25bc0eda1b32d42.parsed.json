@@ -1,0 +1,356 @@
+{
+  "items": {
+    "minecraft:bamboo_mosaic": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.88,
+          "rationale": "Solid block used in construction; base for mosaic slabs and stairs"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "confidence": 0.97,
+          "rationale": "Bamboo wood variant explicitly named"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.92,
+          "rationale": "Crafted from abundant bamboo; no rare ingredients"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "Decorative wood variant used less often than standard planks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.85,
+          "rationale": "Used for construction and decorative flooring/walls"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "confidence": 0.8,
+          "rationale": "Organic bamboo material; mosaic pattern is a decorative variant of bamboo planks"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "confidence": 0.75,
+          "rationale": "Bamboo has pale yellow-green warm wood tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.9,
+          "rationale": "Loot source is own block drop; no natural chest or structure generation"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flooring and walls",
+            "crafting bamboo mosaic slabs/stairs"
+          ],
+          "confidence": 0.85,
+          "rationale": "Block use in builds and as ingredient for sub-variants"
+        }
+      }
+    },
+    "minecraft:cake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "Placed food item eaten by right-clicking up to 7 times"
+        },
+        "material_family": {
+          "value": "wheat",
+          "confidence": 0.72,
+          "rationale": "Wheat occupies most crafting slots; primary structural ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.88,
+          "rationale": "Craftable from common farming ingredients; also found in trial chamber chests"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.72,
+          "rationale": "Placed food is less convenient than portable food; used situationally"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "confidence": 0.75,
+          "rationale": "Requires farming ingredients; commonly placed as decorative food prop"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "confidence": 0.78,
+          "rationale": "Elaborate multi-ingredient food with distinctive layered appearance"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "confidence": 0.72,
+          "rationale": "White frosting with tan/brown layers"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber"
+          ],
+          "confidence": 0.88,
+          "rationale": "Found in minecraft:chests/trial_chambers/intersection loot"
+        },
+        "primary_uses": {
+          "values": [
+            "restoring hunger (7 hunger total)",
+            "shareable placed food source",
+            "decorative food display"
+          ],
+          "confidence": 0.9,
+          "rationale": "Multi-use placed food; shared by multiple players; decorative prop"
+        }
+      }
+    },
+    "minecraft:clock": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.92,
+          "rationale": "Shows current in-game time; no combat or building function"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.9,
+          "rationale": "Crafted from gold ingots; piglin_loved tag confirms gold composition"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.85,
+          "rationale": "Redstone dust is a required crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.85,
+          "rationale": "Craftable; also found in ruined portal and shipwreck chests"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Consulted situationally to determine day/night cycle"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "confidence": 0.82,
+          "rationale": "Primary use is tracking day/night when no sky is visible while exploring"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "Animated clockface mechanism"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "confidence": 0.85,
+          "rationale": "Gold construction gives warm golden hue"
+        },
+        "origin": {
+          "values": [
+            "ruined_portal",
+            "overworld_ocean"
+          ],
+          "confidence": 0.88,
+          "rationale": "Found in ruined portal chests and shipwreck (ocean) map chests"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_pacifying"
+          ],
+          "confidence": 0.88,
+          "rationale": "piglin_loved tag means holding/wearing pacifies piglins"
+        },
+        "primary_uses": {
+          "values": [
+            "checking day/night cycle",
+            "timing nighttime activities",
+            "pacifying piglins in Nether"
+          ],
+          "confidence": 0.88,
+          "rationale": "Time display and piglin pacification are its two practical uses"
+        }
+      }
+    },
+    "minecraft:copper_grate": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.82,
+          "rationale": "See-through copper grating primarily valued for aesthetic architectural use"
+        },
+        "material_family": {
+          "value": "copper",
+          "confidence": 0.97,
+          "rationale": "Copper block variant explicitly named"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.9,
+          "rationale": "Crafted from copper ingots; stonecuttable from copper blocks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "Niche decorative block used in specific architectural contexts"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.88,
+          "rationale": "Architectural element for facades and decorative panels"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.82,
+          "rationale": "Industrial grating aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.8,
+          "rationale": "Default unoxidized copper color; waxable to preserve"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.9,
+          "rationale": "Loot source is own block drop; crafted from copper ingots or stonecutting"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs",
+            "piston_movable"
+          ],
+          "confidence": 0.82,
+          "rationale": "Copper grates accept water; movable by pistons like other copper blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative architectural grating",
+            "waterlogged panel accent",
+            "waxed permanent build element"
+          ],
+          "confidence": 0.85,
+          "rationale": "Aesthetics, waterlogging effect, and waxed permanence are main draws"
+        }
+      }
+    },
+    "minecraft:creaking_heart": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.85,
+          "rationale": "Spawns Creaking mob when embedded in valid pale oak tree at night"
+        },
+        "material_family": {
+          "value": "pale_oak",
+          "confidence": 0.9,
+          "rationale": "Log-column model; generates exclusively in pale oak trees"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.8,
+          "rationale": "Only found in pale garden biome, a rare overworld variant"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.78,
+          "rationale": "Highly situational; primarily useful for harvesting resin via creaking combat"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "decorating"
+          ],
+          "confidence": 0.72,
+          "rationale": "Enables creaking combat for resin drops; used in pale garden aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "Eerie glowing heart block; naturally occurring wood-form in pale oak trees"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "emissive"
+          ],
+          "confidence": 0.82,
+          "rationale": "Pale oak coloring; glows orange-red when active at night"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "confidence": 0.9,
+          "rationale": "Generates naturally in pale oak trees in pale garden surface biome"
+        },
+        "spawn_interaction": {
+          "values": [
+            "allows_spawning"
+          ],
+          "confidence": 0.88,
+          "rationale": "Spawns Creaking mob when active in valid pale oak tree structure at night"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "confidence": 0.82,
+          "rationale": "Glows orange-red when active at night"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning Creaking mob for resin drops",
+            "pale garden atmospheric building"
+          ],
+          "confidence": 0.85,
+          "rationale": "Core mechanics: conditional mob spawner and biome-themed decor"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

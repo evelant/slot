@@ -1,0 +1,618 @@
+{
+  "items": {
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.95,
+          "rationale": "Mining tool; tagged minecraft:pickaxes with tool component"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use is mining blocks; tagged minecraft:pickaxes"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Core mining tool used constantly in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Component minecraft:rarity = common; craftable"
+        }
+      }
+    },
+    "minecraft:netherite_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.95,
+          "rationale": "Combat weapon; tagged minecraft:swords with weapon component"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary melee combat tool; tagged minecraft:swords"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Primary combat tool used constantly in survival"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Component minecraft:rarity = common; craftable via smithing"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "confidence": 0.95,
+          "rationale": "minecraft:damage_resistant component protects from fire"
+        }
+      }
+    },
+    "minecraft:mace": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.95,
+          "rationale": "Heavy melee weapon with weapon component"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Combat weapon with specialized heavy attack mechanics"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Specialized weapon; endgame item not primary combat tool"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.95,
+          "rationale": "Melee/projectile weapon with weapon component"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Combat weapon; drowned_preferred_weapons tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Rare to obtain; specialized weapon not primary tool"
+        },
+        "combat_bonus": {
+          "values": [
+            "aquatic"
+          ],
+          "confidence": 0.75,
+          "rationale": "Trident effective in aquatic combat vs drowned/guardians"
+        }
+      }
+    },
+    "minecraft:crossbow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.95,
+          "rationale": "Ranged weapon; enchantable/crossbow tag"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Ranged combat tool; pillager_preferred_weapons tag"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Alternative to bow; less common than melee combat"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Component minecraft:rarity = common; found in loot"
+        }
+      }
+    },
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.95,
+          "rationale": "Head armor piece; equip_slot = head"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.9,
+          "rationale": "Protective gear used in combat encounters"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Essential protective equipment worn constantly"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.95,
+          "rationale": "Component minecraft:rarity = common; craftable"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "confidence": 0.95,
+          "rationale": "minecraft:damage_resistant component protects from fire"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.95,
+          "rationale": "Chest armor piece; equip_slot = chest"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.9,
+          "rationale": "Protective torso equipment for combat encounters"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Rarely used tier; iron/diamond armor preferred"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.95,
+          "rationale": "Foot armor piece; equip_slot = feet"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.9,
+          "rationale": "Protective footwear for early-game survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Early-game tier; replaced by better materials quickly"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.8,
+          "rationale": "Basic unadorned armor piece in default form"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.95,
+          "rationale": "Head armor piece with water breathing utility"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "confidence": 0.85,
+          "rationale": "Protective helmet; grants underwater breathing for exploration"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Specialized water exploration gear; niche use case"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.9,
+          "rationale": "Equipped as chest armor; enables flight/gliding mechanic"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use for rapid traversal and flight in endgame"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Essential for endgame travel after reaching the End"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "confidence": 0.95,
+          "rationale": "Enables player flight and rapid mobility across world"
+        }
+      }
+    },
+    "minecraft:shield": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.9,
+          "rationale": "Off-hand combat item for blocking damage"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Defensive combat tool blocking projectiles and melee"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Situational defensive tool; not always equipped"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "confidence": 0.8,
+          "rationale": "Can be decorated with banner patterns for visual variation"
+        }
+      }
+    },
+    "minecraft:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.95,
+          "rationale": "Portable storage retaining items when placed/picked up"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "confidence": 0.95,
+          "rationale": "Core tool for inventory management and item transport"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Essential mid-to-late game inventory organization"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "confidence": 0.95,
+          "rationale": "Available in 16 dye color variants"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "muted"
+          ],
+          "confidence": 0.85,
+          "rationale": "Base purple/gray shulker box coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "portable inventory expansion",
+            "color-coded storage",
+            "item transport between bases"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primary survival uses for organization and logistics"
+        }
+      }
+    },
+    "minecraft:ender_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "confidence": 0.95,
+          "rationale": "Block providing personal cloud storage access"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "confidence": 0.95,
+          "rationale": "Personal storage accessible from any ender chest instance"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Common mid-game+ for secure cross-location item storage"
+        },
+        "primary_uses": {
+          "values": [
+            "secure cross-location storage",
+            "inventory backup access"
+          ],
+          "confidence": 0.9,
+          "rationale": "Unique personal storage system for valuable items"
+        }
+      }
+    },
+    "minecraft:bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.95,
+          "rationale": "Portable container for flexible item grouping"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "confidence": 0.9,
+          "rationale": "Inventory organization tool; holds varied item types"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Useful alternative to shulker boxes but less critical"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "confidence": 0.85,
+          "rationale": "Available in multiple dye color variants"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "confidence": 0.8,
+          "rationale": "Base bundle has tan/brown coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "lightweight storage",
+            "mixed item grouping",
+            "portable organization"
+          ],
+          "confidence": 0.85,
+          "rationale": "Flexible storage without block placement requirement"
+        }
+      }
+    },
+    "minecraft:barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "confidence": 0.95,
+          "rationale": "Block-form storage container for base infrastructure"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for organizing items in base infrastructure"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Common in organized bases; less critical than chests"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "confidence": 0.9,
+          "rationale": "Wooden construction; can be burned or used as fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "base storage",
+            "item organization",
+            "aesthetic building"
+          ],
+          "confidence": 0.85,
+          "rationale": "Wooden storage alternative to chest for design variety"
+        }
+      }
+    },
+    "minecraft:beacon": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "Complex block providing status effects to nearby players"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "confidence": 0.85,
+          "rationale": "Advanced automation providing passive player benefits"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "Endgame expensive item with specialized use case"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "confidence": 0.95,
+          "rationale": "Beacon emits distinctive beam of light"
+        },
+        "primary_uses": {
+          "values": [
+            "status effect amplification",
+            "base marking",
+            "player enhancement"
+          ],
+          "confidence": 0.85,
+          "rationale": "Provides haste/speed/resistance/strength effects in radius"
+        }
+      }
+    },
+    "minecraft:brewing_stand": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "Potion brewing interface; specialized crafting station"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "confidence": 0.95,
+          "rationale": "Required for brewing potions; central to potion creation"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used when making potions; not constantly active"
+        },
+        "primary_uses": {
+          "values": [
+            "potion brewing",
+            "buff creation",
+            "enhancement crafting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Essential for creating beneficial potions and effects"
+        }
+      }
+    },
+    "minecraft:enchanting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "Enchanting interface; core progression crafting station"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "confidence": 0.95,
+          "rationale": "Required for enchanting tools/weapons/armor"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Used regularly to improve gear throughout gameplay"
+        },
+        "primary_uses": {
+          "values": [
+            "gear enchantment",
+            "tool improvement",
+            "progression enhancement"
+          ],
+          "confidence": 0.95,
+          "rationale": "Core progression mechanic for equipment power increase"
+        }
+      }
+    },
+    "minecraft:anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "Repair and enchantment merging crafting station"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for item repair and enchantment combining"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Used regularly for tool maintenance and enchanting"
+        },
+        "primary_uses": {
+          "values": [
+            "item repair",
+            "enchantment combining",
+            "item renaming"
+          ],
+          "confidence": 0.95,
+          "rationale": "Essential for tool durability management and enchant merging"
+        }
+      }
+    },
+    "minecraft:composter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "Composting interface converting organic waste to bone meal"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "confidence": 0.9,
+          "rationale": "Used for bone meal production supporting crop automation"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Used in farming setups; not essential to basic survival"
+        },
+        "primary_uses": {
+          "values": [
+            "bone meal generation",
+            "farm automation",
+            "waste conversion"
+          ],
+          "confidence": 0.9,
+          "rationale": "Converts compostable items to fertilizer for crops"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

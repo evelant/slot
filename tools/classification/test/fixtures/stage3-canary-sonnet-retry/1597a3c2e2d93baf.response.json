@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 281522,
+  "duration_api_ms": 282669,
+  "num_turns": 1,
+  "result": "{\"items\":{\"minecraft:pink_candle\":{\"facets\":{\"role\":{\"value\":\"decorative_block\",\"confidence\":0.82,\"rationale\":\"Candles are primarily placed for aesthetics; light emission is secondary.\"},\"material_family\":{\"value\":\"wax\",\"confidence\":0.75,\"rationale\":\"Crafted from honeycomb (wax) + string; wax is the primary constituent.\"},\"rarity\":{\"value\":\"common\",\"confidence\":0.95,\"rationale\":\"component_highlights declares common.\"},\"frequency\":{\"value\":\"occasional\",\"confidence\":0.80,\"rationale\":\"Placed for decoration; not a frequent-use consumable or tool.\"},\"activity\":{\"values\":[\"decorating\"],\"confidence\":0.90,\"rationale\":\"Primary purpose is decorating rooms, altars, and cakes.\"},\"flavor\":{\"values\":[\"colored\",\"variant\"],\"confidence\":0.90,\"rationale\":\"Pink is a dye-color variant of the base (uncolored) candle.\"},\"palette\":{\"values\":[\"pastel\",\"warm\"],\"confidence\":0.75,\"rationale\":\"Pink reads as a warm pastel tone.\"},\"origin\":{\"values\":[\"crafted_only\"],\"confidence\":0.88,\"rationale\":\"Loot sources are self-block drops; item is crafted (white candle + pink dye).\"},\"environmental_property\":{\"values\":[\"emits_light\"],\"confidence\":0.95,\"rationale\":\"Candles emit light up to level 3 per candle when lit.\"},\"primary_uses\":{\"values\":[\"room and altar decoration\",\"light source when lit\",\"cake decoration\"],\"confidence\":0.88,\"rationale\":\"Standard candle use cases in Minecraft.\"}}},\"minecraft:snowball\":{\"facets\":{\"role\":{\"values\":[\"utility\",\"ammunition\"],\"ambiguous\":true,\"confidence\":0.62,\"rationale\":\"Multi-use: throwable projectile and crafting ingredient; neither role alone dominates.\"},\"material_family\":{\"value\":\"snow\",\"confidence\":0.95,\"rationale\":\"Drops from snow blocks; the item is compressed snow.\"},\"rarity\":{\"value\":\"common\",\"confidence\":0.95,\"rationale\":\"component_highlights declares common; abundant in snowy biomes.\"},\"frequency\":{\"value\":\"occasional\",\"confidence\":0.75,\"rationale\":\"Used situationally for combat, snow blocks, or happy ghasts; not everyday.\"},\"activity\":{\"values\":[\"combat\",\"building\",\"farming\"],\"confidence\":0.75,\"rationale\":\"Thrown at blazes/ender dragon; crafted into snow blocks; tempts/feeds happy ghasts.\"},\"flavor\":{\"values\":[\"natural\"],\"confidence\":0.85,\"rationale\":\"Gathered from natural snow; a basic elemental item.\"},\"palette\":{\"values\":[\"light\",\"cool\"],\"confidence\":0.85,\"rationale\":\"Snow is white/light and cool-toned.\"},\"origin\":{\"values\":[\"overworld_surface\",\"mob_drop\",\"ancient_city\",\"village\",\"trial_chamber\"],\"confidence\":0.88,\"rationale\":\"Mined from snow blocks on surface; snow golem drops; several chest loot tables.\"},\"combat_bonus\":{\"values\":[\"boss:ender_dragon\"],\"confidence\":0.85,\"rationale\":\"Snowballs deal 3 damage to the ender dragon.\"},\"primary_uses\":{\"values\":[\"throw at blazes or ender dragon\",\"craft 4 into snow block\",\"tempt and feed happy ghasts\"],\"confidence\":0.88,\"rationale\":\"Derived from tags and sample_ingredient_of data.\"}}},\"minecraft:spyglass\":{\"facets\":{\"role\":{\"value\":\"tool\",\"confidence\":0.95,\"rationale\":\"An optical tool for zooming in on distant objects.\"},\"material_family\":{\"value\":\"copper\",\"confidence\":0.90,\"rationale\":\"Crafted primarily from copper ingots.\"},\"material_secondary\":{\"values\":[\"amethyst\"],\"confidence\":0.90,\"rationale\":\"Amethyst shard forms the optical lens in the recipe.\"},\"rarity\":{\"value\":\"common\",\"confidence\":0.90,\"rationale\":\"component_highlights declares common; copper and amethyst are mid-game obtainable.\"},\"frequency\":{\"value\":\"occasional\",\"confidence\":0.82,\"rationale\":\"Pulled out to scout; not in constant use like weapons or tools.\"},\"activity\":{\"values\":[\"exploration\"],\"confidence\":0.95,\"rationale\":\"Sole function is zooming in during exploration and scouting.\"},\"flavor\":{\"values\":[\"mechanical\"],\"confidence\":0.85,\"rationale\":\"A crafted optical-mechanical instrument.\"},\"palette\":{\"values\":[\"copper_bright\",\"crystal\"],\"confidence\":0.80,\"rationale\":\"Copper body with an amethyst crystal lens.\"},\"origin\":{\"values\":[\"crafted_only\"],\"confidence\":0.95,\"rationale\":\"No loot sources; crafted from copper ingots + amethyst shard.\"},\"primary_uses\":{\"values\":[\"zoom in on distant terrain or mobs\",\"scout before approaching danger\"],\"confidence\":0.92,\"rationale\":\"Core scouting tool with no other significant mechanical use.\"}}}},\"schema_proposals\":[{\"kind\":\"add_facet\",\"name\":\"dye_color\",\"suggested_kind\":\"enum\",\"rationale\":\"Colored items (candles, wool, concrete) need a dye_color facet for the 16 Minecraft dye colors; palette alone cannot express exact dye membership.\"},{\"kind\":\"add_value\",\"facet\":\"combat_bonus\",\"value\":\"vs_fire_mobs\",\"rationale\":\"Snowballs deal 3 damage to blazes but no combat_bonus value covers fire-type mobs.\"}],\"corrections\":[]}",
+  "stop_reason": "end_turn",
+  "session_id": "9c1bd33c-32d6-4707-ae31-21c8af68238f",
+  "total_cost_usd": 0.31338665,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5013,
+    "cache_read_input_tokens": 8513,
+    "output_tokens": 19186,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5013,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 19186,
+        "cache_read_input_tokens": 8513,
+        "cache_creation_input_tokens": 5013,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5013
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4150,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004235,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 19186,
+      "cacheReadInputTokens": 8513,
+      "cacheCreationInputTokens": 5013,
+      "webSearchRequests": 0,
+      "costUSD": 0.30915165,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "562c0716-a362-4fe1-9bc9-f0222b3c3ab2"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 220171,
+  "duration_api_ms": 221093,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:bamboo_mosaic\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"confidence\": 0.88,\n          \"rationale\": \"Solid block used in construction; base for mosaic slabs and stairs\"\n        },\n        \"material_family\": {\n          \"value\": \"bamboo\",\n          \"confidence\": 0.97,\n          \"rationale\": \"Bamboo wood variant explicitly named\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.92,\n          \"rationale\": \"Crafted from abundant bamboo; no rare ingredients\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.75,\n          \"rationale\": \"Decorative wood variant used less often than standard planks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Used for construction and decorative flooring/walls\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"confidence\": 0.8,\n          \"rationale\": \"Organic bamboo material; mosaic pattern is a decorative variant of bamboo planks\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"confidence\": 0.75,\n          \"rationale\": \"Bamboo has pale yellow-green warm wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"confidence\": 0.9,\n          \"rationale\": \"Loot source is own block drop; no natural chest or structure generation\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative flooring and walls\", \"crafting bamboo mosaic slabs/stairs\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Block use in builds and as ingredient for sub-variants\"\n        }\n      }\n    },\n    \"minecraft:cake\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"confidence\": 0.95,\n          \"rationale\": \"Placed food item eaten by right-clicking up to 7 times\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"confidence\": 0.72,\n          \"rationale\": \"Wheat occupies most crafting slots; primary structural ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.88,\n          \"rationale\": \"Craftable from common farming ingredients; also found in trial chamber chests\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.72,\n          \"rationale\": \"Placed food is less convenient than portable food; used situationally\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"confidence\": 0.75,\n          \"rationale\": \"Requires farming ingredients; commonly placed as decorative food prop\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"confidence\": 0.78,\n          \"rationale\": \"Elaborate multi-ingredient food with distinctive layered appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"confidence\": 0.72,\n          \"rationale\": \"White frosting with tan/brown layers\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Found in minecraft:chests/trial_chambers/intersection loot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"restoring hunger (7 hunger total)\", \"shareable placed food source\", \"decorative food display\"],\n          \"confidence\": 0.9,\n          \"rationale\": \"Multi-use placed food; shared by multiple players; decorative prop\"\n        }\n      }\n    },\n    \"minecraft:clock\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"confidence\": 0.92,\n          \"rationale\": \"Shows current in-game time; no combat or building function\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"confidence\": 0.9,\n          \"rationale\": \"Crafted from gold ingots; piglin_loved tag confirms gold composition\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Redstone dust is a required crafting ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.85,\n          \"rationale\": \"Craftable; also found in ruined portal and shipwreck chests\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.8,\n          \"rationale\": \"Consulted situationally to determine day/night cycle\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Primary use is tracking day/night when no sky is visible while exploring\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Animated clockface mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Gold construction gives warm golden hue\"\n        },\n        \"origin\": {\n          \"values\": [\"ruined_portal\", \"overworld_ocean\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Found in ruined portal chests and shipwreck (ocean) map chests\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_pacifying\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"piglin_loved tag means holding/wearing pacifies piglins\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"checking day/night cycle\", \"timing nighttime activities\", \"pacifying piglins in Nether\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Time display and piglin pacification are its two practical uses\"\n        }\n      }\n    },\n    \"minecraft:copper_grate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"confidence\": 0.82,\n          \"rationale\": \"See-through copper grating primarily valued for aesthetic architectural use\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"confidence\": 0.97,\n          \"rationale\": \"Copper block variant explicitly named\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"confidence\": 0.9,\n          \"rationale\": \"Crafted from copper ingots; stonecuttable from copper blocks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"confidence\": 0.75,\n          \"rationale\": \"Niche decorative block used in specific architectural contexts\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Architectural element for facades and decorative panels\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Industrial grating aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"confidence\": 0.8,\n          \"rationale\": \"Default unoxidized copper color; waxable to preserve\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"confidence\": 0.9,\n          \"rationale\": \"Loot source is own block drop; crafted from copper ingots or stonecutting\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\", \"piston_movable\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Copper grates accept water; movable by pistons like other copper blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative architectural grating\", \"waterlogged panel accent\", \"waxed permanent build element\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Aesthetics, waterlogging effect, and waxed permanence are main draws\"\n        }\n      }\n    },\n    \"minecraft:creaking_heart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"confidence\": 0.85,\n          \"rationale\": \"Spawns Creaking mob when embedded in valid pale oak tree at night\"\n        },\n        \"material_family\": {\n          \"value\": \"pale_oak\",\n          \"confidence\": 0.9,\n          \"rationale\": \"Log-column model; generates exclusively in pale oak trees\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"confidence\": 0.8,\n          \"rationale\": \"Only found in pale garden biome, a rare overworld variant\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"confidence\": 0.78,\n          \"rationale\": \"Highly situational; primarily useful for harvesting resin via creaking combat\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"decorating\"],\n          \"confidence\": 0.72,\n          \"rationale\": \"Enables creaking combat for resin drops; used in pale garden aesthetic builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"natural\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Eerie glowing heart block; naturally occurring wood-form in pale oak trees\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"emissive\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Pale oak coloring; glows orange-red when active at night\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"confidence\": 0.9,\n          \"rationale\": \"Generates naturally in pale oak trees in pale garden surface biome\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"allows_spawning\"],\n          \"confidence\": 0.88,\n          \"rationale\": \"Spawns Creaking mob when active in valid pale oak tree structure at night\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"confidence\": 0.82,\n          \"rationale\": \"Glows orange-red when active at night\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning Creaking mob for resin drops\", \"pale garden atmospheric building\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Core mechanics: conditional mob spawner and biome-themed decor\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "45cf9a22-5f2f-4a8a-ba0d-1733af10c1fe",
+  "total_cost_usd": 0.2876745,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 13974,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 15373,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13974,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15373,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 13974,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 13974
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4598,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004667999999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15373,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 13974,
+      "webSearchRequests": 0,
+      "costUSD": 0.2830065,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "31e4d606-1401-46b9-be74-05d02d6e1d77"
+}
