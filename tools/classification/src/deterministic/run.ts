@@ -14,6 +14,7 @@ import { requiredToolRule } from "./rules/required_tool.ts";
 import { processingInRule } from "./rules/processing_in.ts";
 import { originRule } from "./rules/origin.ts";
 import { rarityRule } from "./rules/rarity.ts";
+import { yLevelRangeRule } from "./rules/y_level_range.ts";
 
 /** The ordered rule set. Order matters only for the (rare) case where two rules
  *  assert the same single-value facet — earlier wins. We currently don't have
@@ -29,6 +30,7 @@ export const DEFAULT_RULES: Rule[] = [
   requiredToolRule,
   processingInRule,
   originRule,
+  yLevelRangeRule,
 ];
 
 export interface DeterministicRunOptions {

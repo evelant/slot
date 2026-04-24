@@ -1,0 +1,884 @@
+{
+  "items": {
+    "minecraft:snowball": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "confidence": 0.95,
+          "rationale": "projectile weapon used to damage entities"
+        },
+        "material_family": {
+          "value": "snow",
+          "confidence": 0.95,
+          "rationale": "made of snow/ice"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used in combat and mob farms, not everyday"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.9,
+          "rationale": "projectile weapon for ghasts and mob farms"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "simple frozen projectile, no aesthetic styling"
+        },
+        "primary_uses": {
+          "values": [
+            "combat projectile",
+            "mob farm fodder"
+          ],
+          "confidence": 0.85,
+          "rationale": "tags mention happy_ghast, used in combat"
+        }
+      }
+    },
+    "minecraft:ender_pearl": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "confidence": 0.9,
+          "rationale": "projectile used for teleportation"
+        },
+        "material_family": {
+          "value": "ender",
+          "confidence": 0.9,
+          "rationale": "extracted from endermen, ender-themed material"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used often for teleportation and ender eye crafting"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "combat"
+          ],
+          "confidence": 0.85,
+          "rationale": "teleportation for exploration, ender eye ingredient"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "confidence": 0.9,
+          "rationale": "ethereal enderman drop with magical properties"
+        },
+        "primary_uses": {
+          "values": [
+            "teleportation",
+            "crafting ender eyes"
+          ],
+          "confidence": 0.9,
+          "rationale": "primary uses are teleportation and eye crafting"
+        },
+        "environmental_property": {
+          "values": [
+            "warden_distracting"
+          ],
+          "confidence": 0.7,
+          "rationale": "pearls make vibrations that distract wardens"
+        }
+      }
+    },
+    "minecraft:chorus_fruit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "edible food item with consume effect"
+        },
+        "material_family": {
+          "value": "chorus",
+          "confidence": 0.9,
+          "rationale": "harvested from chorus plants in the end"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used for food and teleportation, not essential"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "brewing"
+          ],
+          "confidence": 0.8,
+          "rationale": "provides random teleportation and used as potion ingredient"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "end plant with magical teleportation effect"
+        },
+        "primary_uses": {
+          "values": [
+            "food/healing",
+            "random teleportation"
+          ],
+          "confidence": 0.85,
+          "rationale": "food value and consume teleport effect"
+        }
+      }
+    },
+    "minecraft:compass": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.95,
+          "rationale": "navigation tool for finding spawn"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "commonly used for navigation and orientation"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "confidence": 0.95,
+          "rationale": "used to navigate and find spawn point"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical precision device"
+        },
+        "primary_uses": {
+          "values": [
+            "navigation",
+            "finding spawn point"
+          ],
+          "confidence": 0.9,
+          "rationale": "points to spawn, essential navigation tool"
+        }
+      }
+    },
+    "minecraft:recovery_compass": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.95,
+          "rationale": "navigation tool for finding death location"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used situationally after death"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "confidence": 0.9,
+          "rationale": "used to navigate to death location"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical precision navigation device"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources, crafted from compass with echo shards"
+        },
+        "primary_uses": {
+          "values": [
+            "finding death location"
+          ],
+          "confidence": 0.95,
+          "rationale": "specific purpose to locate last death point"
+        }
+      }
+    },
+    "minecraft:spyglass": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.95,
+          "rationale": "zoom/magnification tool for exploration"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used situationally for viewing distant objects"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "confidence": 0.9,
+          "rationale": "aids in surveying distant terrain"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "precision optical instrument"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources, crafted from copper and amethyst"
+        },
+        "primary_uses": {
+          "values": [
+            "zooming into distant objects"
+          ],
+          "confidence": 0.95,
+          "rationale": "primary use is magnified viewing"
+        }
+      }
+    },
+    "minecraft:clock": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.9,
+          "rationale": "displays time information, no active gameplay function"
+        },
+        "frequency": {
+          "value": "display_only",
+          "confidence": 0.85,
+          "rationale": "primarily decorative/informational, rarely used actively"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mechanical timekeeping device"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "confidence": 0.85,
+          "rationale": "golden appearance and material"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_barters_with"
+          ],
+          "confidence": 0.9,
+          "rationale": "tag minecraft:piglin_loved, piglins trade for it"
+        },
+        "primary_uses": {
+          "values": [
+            "checking time"
+          ],
+          "confidence": 0.85,
+          "rationale": "displays overworld time cycle"
+        }
+      }
+    },
+    "minecraft:name_tag": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.95,
+          "rationale": "tool for naming and preserving mobs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used selectively for important mobs"
+        },
+        "primary_uses": {
+          "values": [
+            "preventing mob despawn"
+          ],
+          "confidence": 0.95,
+          "rationale": "primary use is naming mobs to prevent despawn"
+        }
+      }
+    },
+    "minecraft:lead": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.95,
+          "rationale": "tool for leashing and transporting mobs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used for mob transport and control"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "confidence": 0.95,
+          "rationale": "transports mobs via leashing mechanic"
+        },
+        "primary_uses": {
+          "values": [
+            "leashing mobs",
+            "mob transport"
+          ],
+          "confidence": 0.9,
+          "rationale": "main uses are mob control and transport"
+        }
+      }
+    },
+    "minecraft:cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "structural stair block for building"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used regularly in building projects"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "primary use is construction and aesthetic building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "confidence": 0.85,
+          "rationale": "stair variant of copper block"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.9,
+          "rationale": "fresh unwaxed copper has bright appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no natural loot, crafted from copper blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs",
+            "copper decoration"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for structural stairs and aesthetic builds"
+        }
+      }
+    },
+    "minecraft:copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.9,
+          "rationale": "structural and decorative grate block"
+        },
+        "material_family": {
+          "value": "copper",
+          "confidence": 0.95,
+          "rationale": "made from copper blocks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used in building and redstone projects"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "confidence": 0.85,
+          "rationale": "used for structure, aesthetics, and redstone wiring paths"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "industrial grating aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.9,
+          "rationale": "fresh copper grate has bright metallic appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no natural loot, crafted from copper"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "redstone wiring"
+          ],
+          "confidence": 0.85,
+          "rationale": "used for aesthetics and allowing signal/entity passage"
+        }
+      }
+    },
+    "minecraft:waxed_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "structural slab block for building"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used regularly in building projects"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "primary use is construction and aesthetic building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "confidence": 0.85,
+          "rationale": "waxed slab variant of copper"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "confidence": 0.9,
+          "rationale": "waxed copper maintains bright appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no natural loot, crafted from copper with wax"
+        },
+        "primary_uses": {
+          "values": [
+            "building slabs",
+            "copper decoration"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for structural slabs and protected copper builds"
+        }
+      }
+    },
+    "minecraft:mangrove_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.9,
+          "rationale": "structural fence gate block for building"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used regularly in building and redstone"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "confidence": 0.85,
+          "rationale": "structural element that can be redstone-controlled"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "wood variant with natural aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "confidence": 0.8,
+          "rationale": "mangrove wood has warm reddish-brown tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "crafted from mangrove wood, not found in loot"
+        },
+        "primary_uses": {
+          "values": [
+            "building fences",
+            "redstone gates"
+          ],
+          "confidence": 0.9,
+          "rationale": "used as fence/gate structure and redstone control"
+        }
+      }
+    },
+    "minecraft:cherry_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "confidence": 0.95,
+          "rationale": "button is a redstone activation device"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used regularly in redstone contraptions"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "confidence": 0.9,
+          "rationale": "redstone control component with decorative building"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "wood variant with natural aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "confidence": 0.85,
+          "rationale": "cherry wood is light and pale"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "crafted from cherry wood planks"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone control",
+            "building decoration"
+          ],
+          "confidence": 0.9,
+          "rationale": "primary use is redstone activation with aesthetic value"
+        }
+      }
+    },
+    "minecraft:bamboo_mosaic": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "decorative wood block for building"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used regularly in building projects"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "decorative building material"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "bamboo variant with natural wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "confidence": 0.85,
+          "rationale": "bamboo wood has pale light appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "decoration"
+          ],
+          "confidence": 0.9,
+          "rationale": "primary use is decorative wooden building"
+        }
+      }
+    },
+    "minecraft:white_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.95,
+          "rationale": "structural and decorative block"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "common building and crafting material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "primary use is building and decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "natural fiber material"
+        },
+        "primary_uses": {
+          "values": [
+            "building blocks",
+            "crafting ingredient"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for structure, decoration, and bed crafting"
+        }
+      }
+    },
+    "minecraft:light_blue_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.95,
+          "rationale": "functional block for sleeping and respawn"
+        },
+        "material_family": {
+          "value": "wool",
+          "confidence": 0.95,
+          "rationale": "made from wool blocks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.95,
+          "rationale": "essential item used daily for sleeping"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.9,
+          "rationale": "dyed color variant"
+        },
+        "primary_uses": {
+          "values": [
+            "sleeping",
+            "respawn location"
+          ],
+          "confidence": 0.95,
+          "rationale": "essential for setting spawn and sleeping"
+        }
+      }
+    },
+    "minecraft:magenta_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.95,
+          "rationale": "primarily decorative block"
+        },
+        "material_family": {
+          "value": "wool",
+          "confidence": 0.95,
+          "rationale": "made from wool and sticks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "used for decoration and shield customization"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for decoration and heraldic purposes"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "confidence": 0.85,
+          "rationale": "dyed color variant with pattern customization"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources, crafted from wool and sticks"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "shield customization"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for building decoration and shield patterns"
+        }
+      }
+    },
+    "minecraft:pink_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.9,
+          "rationale": "primarily decorative light source"
+        },
+        "material_family": {
+          "value": "wax",
+          "confidence": 0.85,
+          "rationale": "made from wax and dyes"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "commonly used for lighting and decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for aesthetic decoration and mood lighting"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.9,
+          "rationale": "dyed color variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "no loot sources, crafted from wax and dyes"
+        },
+        "primary_uses": {
+          "values": [
+            "lighting",
+            "decoration"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for ambiance and decorative lighting"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "confidence": 0.95,
+          "rationale": "provides light when lit"
+        }
+      }
+    },
+    "minecraft:orange_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.95,
+          "rationale": "primarily decorative building block"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "confidence": 0.95,
+          "rationale": "made from glazed terracotta"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "used regularly for decorative building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for decorative building projects"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "confidence": 0.9,
+          "rationale": "dyed color variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "confidence": 0.95,
+          "rationale": "crafted by smelting terracotta with dye"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building"
+          ],
+          "confidence": 0.9,
+          "rationale": "used for colorful decorative construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

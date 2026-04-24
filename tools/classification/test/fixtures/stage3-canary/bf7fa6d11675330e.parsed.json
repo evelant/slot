@@ -1,0 +1,70 @@
+{
+  "items": {
+    "minecraft:structure_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "confidence": 0.95,
+          "rationale": "Creative-only block used for copying and pasting structures"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 1,
+          "rationale": "Structure Block is only available in creative mode"
+        },
+        "frequency": {
+          "value": "display_only",
+          "confidence": 0.9,
+          "rationale": "Rarely used in actual gameplay, primarily a creative tool"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "confidence": 0.95,
+          "rationale": "Only obtainable in creative mode, not found naturally"
+        },
+        "primary_uses": {
+          "values": [
+            "copying and pasting structures",
+            "structure manipulation"
+          ],
+          "confidence": 0.85,
+          "rationale": "Primary function is to save/load/paste structures in creative mode"
+        }
+      }
+    },
+    "minecraft:debug_stick": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.95,
+          "rationale": "Handheld tool for modifying block properties and states"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 1,
+          "rationale": "Debug Stick is only available in creative mode"
+        },
+        "frequency": {
+          "value": "display_only",
+          "confidence": 0.95,
+          "rationale": "Used only in creative mode for debugging and experimentation"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "confidence": 0.95,
+          "rationale": "Only obtainable in creative mode, not found naturally"
+        },
+        "primary_uses": {
+          "values": [
+            "modifying block states",
+            "debugging blocks"
+          ],
+          "confidence": 0.85,
+          "rationale": "Used to change block properties and states in creative mode"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

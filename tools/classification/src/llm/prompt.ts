@@ -57,7 +57,13 @@ Rules:
 - If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
 - Don't re-emit facets listed under \`stage2_facets\` inside \`facets\` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level \`corrections\` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
-- Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.`;
+- Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.
+
+Common confusions to avoid:
+- \`activity\` does NOT include \`crafting\` — every item is craftable, so "crafting" is noise. If the item is used as a crafting ingredient, that's already captured in \`processing_in\`. Pick an end-use activity instead (\`building\`, \`mining\`, \`combat\`, \`redstone\`, etc.) or omit.
+- \`flavor\` is a small set of **aesthetic categories** (\`plain\`, \`variant\`, \`fancy\`, \`ominous\`, \`ancient\`, \`mystical\`, \`mechanical\`, \`natural\`, \`colored\`). Colors, finishes, and moods go in \`palette\`, not \`flavor\`.
+- \`palette\` values are in the schema's enum — don't invent new ones like \`green\`, \`colored\`, \`wool_light\`. Use \`leaf_green\` for green, \`pastel\`/\`light\` for soft tones, \`dye_color\` (separate facet) when the item is actually one of the 16 dye colors.
+- \`environmental_property\` is world/physics behaviour (fireproof, slippery, waterlogs, piston_movable). \`spawn_interaction\` is mob-farm behaviour (blocks_monster_spawn, allows_spawning, damages_entities). Pick the right facet before picking a value.`;
 
 /**
  * Build the LLM prompt for a batch. The prompt is plain text with embedded JSON

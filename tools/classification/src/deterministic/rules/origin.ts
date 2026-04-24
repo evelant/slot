@@ -41,13 +41,48 @@ const MATCHERS: Matcher[] = [
   { test: (p) => p.startsWith("archaeology/") || p.startsWith("brush/"), origin: "archaeology_site" },
   // entities
   { test: (p) => p.startsWith("entities/"), origin: "mob_drop" },
-  // gameplay tables — hero-of-the-village is trading, fishing is fishing-origin
+  // gameplay tables
   { test: (p) => p.startsWith("gameplay/hero_of_the_village"), origin: "village" },
-  // pots / spawners / dispensers — surface / chamber / etc. Treat pots as trial chambers.
+  { test: (p) => p.startsWith("gameplay/sniffer"), origin: "sniffer_garden" },
+  // pots / spawners / dispensers — treat pots as trial chambers.
   { test: (p) => p.startsWith("pots/trial_chambers"), origin: "trial_chamber" },
   { test: (p) => p.startsWith("dispensers/trial_chambers"), origin: "trial_chamber" },
   { test: (p) => p.startsWith("spawners/trial_chamber"), origin: "trial_chamber" },
-  // the remaining `blocks/...` drops are generic surface/underground — skip.
+  // ===== block drops =====
+  // deep-nether ancient debris
+  { test: (p) => p === "blocks/ancient_debris", origin: "nether" },
+  // sculk blocks → deep_dark biome
+  { test: (p) => p.startsWith("blocks/sculk"), origin: "deep_dark" },
+  // deepslate-tier ores are still overworld caves (just the lower band).
+  { test: (p) => /^blocks\/deepslate_[a-z_]+_ore$/.test(p), origin: "overworld_cave" },
+  // end-exclusive blocks
+  {
+    test: (p) =>
+      p.startsWith("blocks/end_") ||
+      p.startsWith("blocks/purpur") ||
+      p === "blocks/chorus_plant" ||
+      p === "blocks/chorus_flower",
+    origin: "end",
+  },
+  // nether-exclusive blocks (netherrack, soul_*, nether_*, crimson_*, warped_*, …)
+  {
+    test: (p) =>
+      /^blocks\/(netherrack|soul_|crimson_|warped_|nether_|basalt|blackstone|magma_block|bone_block|gilded_blackstone|glowstone|shroomlight|nylium)/.test(p),
+    origin: "nether",
+  },
+  // overworld ores (iron_ore, gold_ore, copper_ore, coal_ore …) → caves.
+  { test: (p) => /^blocks\/[a-z_]+_ore$/.test(p), origin: "overworld_cave" },
+  // overworld-surface plant drops: leaves/logs/saplings/propagules from surface trees,
+  // crops, berries, bamboo, kelp, cactus, flowers, grass.
+  {
+    test: (p) =>
+      /^blocks\/(oak|birch|spruce|jungle|acacia|dark_oak|pale_oak|mangrove|cherry|azalea|flowering_azalea)_(log|wood|leaves|sapling|propagule)$/.test(p) ||
+      /^blocks\/(short|tall)_grass$/.test(p) ||
+      /^blocks\/(cactus|sugar_cane|wheat|beetroots|carrots|potatoes|pumpkin|melon|bamboo|kelp|sweet_berry_bush|glow_berries|pitcher_crop|torchflower_crop|sunflower|dandelion|poppy|cornflower|lily_of_the_valley|rose_bush|peony|lilac|bluebell|wildflowers|oxeye_daisy|allium|azure_bluet|blue_orchid|orange_tulip|white_tulip|pink_tulip|red_tulip)/.test(p),
+    origin: "overworld_surface",
+  },
+  // remaining blocks/* drops (cobblestone, stone, gravel, obsidian, ice, snow, dirt, …)
+  // are too varied to pin without a y-level/biome map — skip rather than guess.
 ];
 
 export const originRule: Rule = {

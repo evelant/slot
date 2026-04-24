@@ -1,0 +1,728 @@
+{
+  "items": {
+    "minecraft:creaking_heart": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "confidence": 0.9,
+          "rationale": "decorative solid block placed and harvested like other building blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "simple solid block aesthetic without special visual details"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used periodically when building themed structures"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "decoration"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:pale_oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.95,
+          "rationale": "harvested from trees; primary source of pale oak wood material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "crafted into planks for building; grown via tree farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "heavily used resource for wood construction and crafting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "natural wood material from tree harvesting"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "confidence": 0.9,
+          "rationale": "pale oak has distinctly light wood coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "harvesting planks",
+            "crafting wood blocks"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:cherry_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.95,
+          "rationale": "primary source for growing cherry trees via farming"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "planted and grown to produce cherry wood resources"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "used periodically when farming and managing trees"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "natural plant with distinctive pink-toned foliage"
+        },
+        "primary_uses": {
+          "values": [
+            "growing cherry trees"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:pitcher_pod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.9,
+          "rationale": "plantable seed crop used for farming and mob food"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "tagged as plantable seed and chicken/parrot food"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used when planting crops or breeding animals"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.8,
+          "rationale": "naturally-occurring crop material"
+        },
+        "primary_uses": {
+          "values": [
+            "planting crops",
+            "mob food"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:torchflower_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.9,
+          "rationale": "plantable seed crop from sniffer digging"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "confidence": 0.9,
+          "rationale": "tagged as plantable seed and animal food source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used when farming or breeding animals"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "natural seed with torch flower's distinctive appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "planting crops",
+            "mob food"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:azalea": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.9,
+          "rationale": "plant that grows into trees; harvested from leaves and pots"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "confidence": 0.85,
+          "rationale": "grown into trees and used as decorative plant block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used for plant decoration and tree farming"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "confidence": 0.85,
+          "rationale": "flowering plant with distinctive pink and purple colors"
+        },
+        "primary_uses": {
+          "values": [
+            "plant decoration",
+            "growing trees"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:glow_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "confidence": 0.95,
+          "rationale": "food item with nutrition and saturation components"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "eaten periodically for hunger, but not primary food source"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "naturally growing berry food item"
+        },
+        "palette": {
+          "values": [
+            "glowing"
+          ],
+          "confidence": 0.9,
+          "rationale": "visibly emits light with distinctive glow effect"
+        },
+        "primary_uses": {
+          "values": [
+            "sustenance"
+          ],
+          "confidence": 0.9
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "confidence": 0.95,
+          "rationale": "berries have intrinsic light emission"
+        }
+      }
+    },
+    "minecraft:nether_wart": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "confidence": 0.95,
+          "rationale": "nether crop harvested for crafting and potion ingredients"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "brewing"
+          ],
+          "confidence": 0.9,
+          "rationale": "grown as nether crop; key ingredient in potion brewing"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "used when brewing potions or crafting nether bricks"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "confidence": 0.85,
+          "rationale": "nether plant with dark and unsettling appearance"
+        },
+        "material_family": {
+          "value": "nether_wart",
+          "confidence": 0.8,
+          "rationale": "wart material harvested from nether crop"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing potions",
+            "crafting bricks"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:dragon_egg": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "confidence": 0.95,
+          "rationale": "unique end-game item dropped by defeating ender dragon"
+        },
+        "frequency": {
+          "value": "display_only",
+          "confidence": 0.9,
+          "rationale": "typically kept as achievement display, rarely used actively"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "ancient"
+          ],
+          "confidence": 0.9,
+          "rationale": "dark, otherworldly appearance befitting boss drop"
+        },
+        "palette": {
+          "values": [
+            "emissive",
+            "dark"
+          ],
+          "confidence": 0.85,
+          "rationale": "has glowing particles and dark coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "display item"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:dragon_head": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.95,
+          "rationale": "wearable head piece that can be equipped in head slot"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.85,
+          "rationale": "worn for visual display and thematic costume"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "worn occasionally for aesthetics or collection display"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "ancient"
+          ],
+          "confidence": 0.9,
+          "rationale": "dragon trophy with otherworldly ancient appearance"
+        },
+        "palette": {
+          "values": [
+            "emissive",
+            "dark"
+          ],
+          "confidence": 0.85,
+          "rationale": "has glowing eyes and dark coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "head decoration",
+            "thematic costume"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:creeper_head": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.9,
+          "rationale": "wearable head piece from creeper mob drop"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.85,
+          "rationale": "worn for costume and decorative purposes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "worn periodically for theming or fun"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "confidence": 0.85,
+          "rationale": "creeper-themed with menacing appearance"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "confidence": 0.8,
+          "rationale": "dark green coloration matching creeper mob"
+        },
+        "primary_uses": {
+          "values": [
+            "head decoration",
+            "mob cosplay"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:music_disc_13": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "confidence": 0.9,
+          "rationale": "unique music disc for jukebox playback, primarily collectible"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.8,
+          "rationale": "mostly kept for collection; infrequently played"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.8,
+          "rationale": "standard music disc design"
+        },
+        "primary_uses": {
+          "values": [
+            "jukebox music",
+            "collection"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:music_disc_creator": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "confidence": 0.9,
+          "rationale": "rare music disc from trial chamber ominous rewards"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "rare drop; kept primarily for collection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.8,
+          "rationale": "standard music disc appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "jukebox music",
+            "rare collection"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:totem_of_undying": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.95,
+          "rationale": "special item granting death protection effect when held"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "confidence": 0.85,
+          "rationale": "carried during dangerous exploration and boss combat"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.8,
+          "rationale": "carried in specific dangerous situations; rarely activated"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "mystical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mysterious undeath power with dark appearance"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "emissive"
+          ],
+          "confidence": 0.85,
+          "rationale": "visibly glowing with mystical effects"
+        },
+        "primary_uses": {
+          "values": [
+            "death protection",
+            "emergency survival"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:nether_star": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.9,
+          "rationale": "primary ingredient for crafting beacons; rare crafting material"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "used rarely for beacon crafting; wither boss drops only"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "mystical"
+          ],
+          "confidence": 0.9,
+          "rationale": "mysterious celestial object with magical properties"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "emissive"
+          ],
+          "confidence": 0.9,
+          "rationale": "distinctly glowing star-like appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "beacon crafting"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:netherite_upgrade_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.95,
+          "rationale": "smithing template for upgrading tools/armor to netherite tier"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "used once per item upgrade; limited by bastion loot"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "crafting component with technical purpose"
+        },
+        "primary_uses": {
+          "values": [
+            "tier upgrades",
+            "tool enhancement"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:sentry_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.9,
+          "rationale": "smithing template for applying sentry armor trim pattern"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.75,
+          "rationale": "used for cosmetic armor enhancement; applies to multiple items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.8,
+          "rationale": "technical crafting component for armor decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "armor trim decoration"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:angler_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "confidence": 0.9,
+          "rationale": "decorative component for crafting decorated pots"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "confidence": 0.85,
+          "rationale": "used in decorated pot crafting for visual decoration"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.8,
+          "rationale": "archaeology find; used for decorative pot crafting"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "confidence": 0.9,
+          "rationale": "ancient pottery artifact from archaeology sites"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "confidence": 0.85,
+          "rationale": "pottery sherd made from ceramic material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating pots"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:command_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "confidence": 0.95,
+          "rationale": "creative-only block for executing commands"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 0.95,
+          "rationale": "not obtainable in survival mode"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "confidence": 0.8,
+          "rationale": "used in redstone systems for command automation"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "used only in creative or map-making"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "technical scripting block"
+        },
+        "primary_uses": {
+          "values": [
+            "command execution",
+            "automation"
+          ],
+          "confidence": 0.9
+        }
+      }
+    },
+    "minecraft:barrier": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "confidence": 0.95,
+          "rationale": "creative-only invisible barrier block"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 0.95,
+          "rationale": "not obtainable in survival mode"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "used only in creative world design"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.8,
+          "rationale": "technical boundary/barrier block"
+        },
+        "primary_uses": {
+          "values": [
+            "invisible barriers",
+            "building boundaries"
+          ],
+          "confidence": 0.9
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

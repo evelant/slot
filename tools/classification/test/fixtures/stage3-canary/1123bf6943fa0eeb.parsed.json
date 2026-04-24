@@ -1,0 +1,1008 @@
+{
+  "items": {
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "confidence": 0.99,
+          "rationale": "Pickaxes are tools designed for mining and block breaking"
+        },
+        "tier": {
+          "value": "diamond",
+          "confidence": 0.95,
+          "rationale": "Diamond is a standard progression tier for tools"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.9,
+          "rationale": "Mining is a core recurring activity for most players"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use is mining and harvesting ore"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "Basic tool without special aesthetic qualities"
+        },
+        "palette": {
+          "values": [
+            "aqua"
+          ],
+          "confidence": 0.9,
+          "rationale": "Diamond tools render in light blue/cyan color"
+        },
+        "primary_uses": {
+          "values": [
+            "mining blocks",
+            "ore harvesting",
+            "combat fallback"
+          ],
+          "confidence": 0.9,
+          "rationale": "Main purposes: block destruction and emergency weapon"
+        }
+      }
+    },
+    "minecraft:netherite_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.99,
+          "rationale": "Swords are designed as melee weapons"
+        },
+        "tier": {
+          "value": "netherite",
+          "confidence": 0.95,
+          "rationale": "Netherite is the highest progression tier for tools/weapons"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Combat is common once endgame progression reached"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.99,
+          "rationale": "Swords are weapons for melee combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.8,
+          "rationale": "Standard weapon without special aesthetic theme"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "confidence": 0.95,
+          "rationale": "Netherite renders as dark gray/black material"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "entity slaying",
+            "damage dealing"
+          ],
+          "confidence": 0.95,
+          "rationale": "Designed for combat and defeating mobs"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "confidence": 0.95,
+          "rationale": "Component minecraft:damage_resistant to fire types"
+        }
+      }
+    },
+    "minecraft:mace": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.99,
+          "rationale": "Maces are melee weapons with unique damage mechanics"
+        },
+        "material_family": {
+          "value": "breeze_rod",
+          "confidence": 0.95,
+          "rationale": "Mace is repaired with breeze rods, indicating primary material"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.95,
+          "rationale": "Breeze rods only obtained from Breeze, limiting availability"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.99,
+          "rationale": "Specialized melee combat weapon"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "Crafted from novel Breeze material, manufactured feel"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "confidence": 0.9,
+          "rationale": "Breeze rods render in bright yellow/gold tone"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "knockback damage",
+            "falling impact"
+          ],
+          "confidence": 0.9,
+          "rationale": "Maces have unique falling damage mechanic"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.99,
+          "rationale": "Tridents function as ranged/melee weapons"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.95,
+          "rationale": "Only dropped by drowned, relatively uncommon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary use is ranged and melee combat"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "Ocean-themed weapon with natural spear-like appearance"
+        },
+        "palette": {
+          "values": [
+            "turquoise"
+          ],
+          "confidence": 0.9,
+          "rationale": "Tridents render in blue-green aquatic color"
+        },
+        "combat_bonus": {
+          "values": [
+            "aquatic"
+          ],
+          "confidence": 0.9,
+          "rationale": "Tridents are more effective in water against aquatic entities"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat",
+            "water combat",
+            "projectile attacks"
+          ],
+          "confidence": 0.95,
+          "rationale": "Throwable weapon effective in aquatic environments"
+        }
+      }
+    },
+    "minecraft:crossbow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "confidence": 0.99,
+          "rationale": "Crossbows are ranged weapons that fire projectiles"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.9,
+          "rationale": "Crossbows are crafted from wood as primary material"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Readily available from loot chests and crafting"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.99,
+          "rationale": "Ranged combat weapon for projectile attacks"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "Complex mechanical construction with firing mechanism"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "confidence": 0.9,
+          "rationale": "Primarily wooden construction with medium-tone finish"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat",
+            "arrow launching",
+            "entity damage"
+          ],
+          "confidence": 0.95,
+          "rationale": "Designed for distance combat with ammunition"
+        }
+      }
+    },
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.99,
+          "rationale": "Head armor piece worn in armor slot"
+        },
+        "tier": {
+          "value": "netherite",
+          "confidence": 0.95,
+          "rationale": "Netherite highest progression tier for armor"
+        },
+        "frequency": {
+          "value": "everyday",
+          "confidence": 0.95,
+          "rationale": "Worn constantly once obtained in combat"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Armor provides combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "Standard armor piece without aesthetic variation"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "confidence": 0.95,
+          "rationale": "Netherite renders in dark gray/black"
+        },
+        "primary_uses": {
+          "values": [
+            "head protection",
+            "combat defense",
+            "damage reduction"
+          ],
+          "confidence": 0.95,
+          "rationale": "Reduces incoming damage to wearer"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "confidence": 0.95,
+          "rationale": "Netherite is fire-resistant per component data"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.99,
+          "rationale": "Chest armor piece worn in armor slot"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Mid-game armor, superseded by iron/diamond in progression"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Armor provides combat protection"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.85,
+          "rationale": "Interlocked chain links create mechanical appearance"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "confidence": 0.9,
+          "rationale": "Made from iron chains with dark metallic finish"
+        },
+        "primary_uses": {
+          "values": [
+            "chest protection",
+            "combat defense",
+            "damage reduction"
+          ],
+          "confidence": 0.95,
+          "rationale": "Reduces incoming damage to wearer's torso"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.99,
+          "rationale": "Foot armor piece worn in armor slot"
+        },
+        "tier": {
+          "value": "leather",
+          "confidence": 0.95,
+          "rationale": "Leather is lowest progression tier for armor"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Early-game armor widely available and used"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.95,
+          "rationale": "Armor provides combat protection"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "Dyeable leather provides color variation; plain base form"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "wood_light"
+          ],
+          "confidence": 0.9,
+          "rationale": "Leather renders in tan/light brown tones"
+        },
+        "primary_uses": {
+          "values": [
+            "foot protection",
+            "early-game defense",
+            "durability"
+          ],
+          "confidence": 0.95,
+          "rationale": "First armor tier available to new players"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.99,
+          "rationale": "Head armor piece with water breathing ability"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.9,
+          "rationale": "Requires turtle breeding and scute collection"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "combat"
+          ],
+          "confidence": 0.85,
+          "rationale": "Enables underwater exploration and aquatic combat"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.95,
+          "rationale": "Made from turtle scutes, natural animal material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "confidence": 0.9,
+          "rationale": "Turtle shells render in green-brown natural tones"
+        },
+        "primary_uses": {
+          "values": [
+            "water breathing",
+            "underwater exploration",
+            "head protection"
+          ],
+          "confidence": 0.95,
+          "rationale": "Grants water breathing while worn"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "confidence": 0.9,
+          "rationale": "Provides gliding/flight function rather than protection"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Endgame item used for travel and exploration"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "confidence": 0.95,
+          "rationale": "Enables aerial movement and cross-map travel"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "confidence": 0.9,
+          "rationale": "Found only in End cities, has otherworldly aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iridescent"
+          ],
+          "confidence": 0.95,
+          "rationale": "Wings render with shimmering iridescent appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "gliding",
+            "flight",
+            "aerial exploration"
+          ],
+          "confidence": 0.98,
+          "rationale": "Primary function is enabling gliding with Rockets"
+        },
+        "material_family": {
+          "value": "phantom_membrane",
+          "confidence": 0.95,
+          "rationale": "Repaired with phantom membranes, primary material"
+        }
+      }
+    },
+    "minecraft:shield": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "confidence": 0.95,
+          "rationale": "Defensive off-hand equipment worn in armor context"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.9,
+          "rationale": "Shields crafted and repaired with wooden materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.9,
+          "rationale": "Blocking is common defensive mechanic in combat"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "confidence": 0.99,
+          "rationale": "Primary use is blocking incoming damage"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.85,
+          "rationale": "Standard shield with no innate decoration"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "confidence": 0.9,
+          "rationale": "Wooden shields render in medium wood tones"
+        },
+        "primary_uses": {
+          "values": [
+            "blocking",
+            "damage mitigation",
+            "defense"
+          ],
+          "confidence": 0.98,
+          "rationale": "Blocks incoming projectiles and melee attacks"
+        }
+      }
+    },
+    "minecraft:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.99,
+          "rationale": "Portable container that can be carried in inventory"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.95,
+          "rationale": "Essential for inventory management and logistics"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used for organizing and transporting items"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "Base purple shulker box without color variants"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "confidence": 0.95,
+          "rationale": "Default shulker boxes render in purple"
+        },
+        "primary_uses": {
+          "values": [
+            "item storage",
+            "inventory transport",
+            "organization"
+          ],
+          "confidence": 0.98,
+          "rationale": "Primary purpose is portable item containment"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "confidence": 0.95,
+          "rationale": "Made from shulker shells, primary material"
+        }
+      }
+    },
+    "minecraft:ender_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "confidence": 0.99,
+          "rationale": "Placeable block that stores items across dimensions"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Endgame storage, less frequent than regular chests"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used for cross-world item synchronization"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "ominous"
+          ],
+          "confidence": 0.9,
+          "rationale": "End dimension aesthetic, mysterious interdimensional storage"
+        },
+        "palette": {
+          "values": [
+            "indigo"
+          ],
+          "confidence": 0.95,
+          "rationale": "Renders in dark purple with mystical appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "cross-world storage",
+            "item synchronization",
+            "endgame logistics"
+          ],
+          "confidence": 0.95,
+          "rationale": "Provides synchronized storage accessible from any dimension"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "confidence": 0.95,
+          "rationale": "Crafted with obsidian as primary material"
+        }
+      }
+    },
+    "minecraft:bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.99,
+          "rationale": "Portable inventory container for item organization"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.85,
+          "rationale": "Useful for inventory management, often found in villages"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "confidence": 0.95,
+          "rationale": "Used for organizing diverse item types in limited space"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "confidence": 0.9,
+          "rationale": "Woven fabric container without special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "confidence": 0.85,
+          "rationale": "Woven leather/fiber renders in warm tan tones"
+        },
+        "primary_uses": {
+          "values": [
+            "item storage",
+            "inventory organization",
+            "portability"
+          ],
+          "confidence": 0.95,
+          "rationale": "Compact container for carrying mixed items"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "confidence": 0.9,
+          "rationale": "Primary crafting material is rabbit hide"
+        }
+      }
+    },
+    "minecraft:barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "confidence": 0.99,
+          "rationale": "Placeable block that stores items"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.8,
+          "rationale": "Storage block less common than chests"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "confidence": 0.95,
+          "rationale": "Primary function is item storage"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "confidence": 0.85,
+          "rationale": "Simple wooden barrel with natural aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "confidence": 0.95,
+          "rationale": "Wooden barrel renders in medium brown wood tones"
+        },
+        "primary_uses": {
+          "values": [
+            "item storage",
+            "block placement",
+            "decoration"
+          ],
+          "confidence": 0.9,
+          "rationale": "Storage container that doubles as decorative block"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.95,
+          "rationale": "Crafted from wooden planks"
+        }
+      }
+    },
+    "minecraft:beacon": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.99,
+          "rationale": "Functional block that provides status effects to nearby players"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.9,
+          "rationale": "Rare endgame utility block requiring significant resources"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "confidence": 0.9,
+          "rationale": "Placed as part of player construction for buff effects"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "confidence": 0.9,
+          "rationale": "Magical effects and otherworldly glowing appearance"
+        },
+        "palette": {
+          "values": [
+            "emissive"
+          ],
+          "confidence": 0.98,
+          "rationale": "Beacon emits bright light in sky beam"
+        },
+        "primary_uses": {
+          "values": [
+            "buff application",
+            "player enhancement",
+            "effect radius"
+          ],
+          "confidence": 0.95,
+          "rationale": "Provides status effects in radius around placement"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "confidence": 0.9,
+          "rationale": "Crafted with obsidian as base material"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "confidence": 0.99,
+          "rationale": "Beacons emit upward light beam visible from distance"
+        }
+      }
+    },
+    "minecraft:brewing_stand": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.99,
+          "rationale": "Functional block for crafting potions"
+        },
+        "frequency": {
+          "value": "occasional",
+          "confidence": 0.85,
+          "rationale": "Brewing is secondary activity for most players"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "confidence": 0.99,
+          "rationale": "Dedicated brewing functionality"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.9,
+          "rationale": "Complex functional apparatus for potion creation"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "confidence": 0.9,
+          "rationale": "Made with iron materials, dark metallic appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "potion brewing",
+            "effect creation",
+            "status application"
+          ],
+          "confidence": 0.98,
+          "rationale": "Exclusive block for brewing potions and effects"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.9,
+          "rationale": "Crafted from iron materials"
+        }
+      }
+    },
+    "minecraft:enchanting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.99,
+          "rationale": "Functional block for applying enchantments"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.95,
+          "rationale": "Enchanting is regular activity for gear progression"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "confidence": 0.99,
+          "rationale": "Dedicated enchantment functionality"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "ancient"
+          ],
+          "confidence": 0.95,
+          "rationale": "Magical appearance with arcane enchantment mechanics"
+        },
+        "palette": {
+          "values": [
+            "indigo"
+          ],
+          "confidence": 0.95,
+          "rationale": "Renders in dark purple with mystical glow"
+        },
+        "primary_uses": {
+          "values": [
+            "enchantment application",
+            "ability enhancement",
+            "gear improvement"
+          ],
+          "confidence": 0.98,
+          "rationale": "Primary function is applying enchantments to tools/armor"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "confidence": 0.9,
+          "rationale": "Crafted with obsidian as primary material"
+        }
+      }
+    },
+    "minecraft:anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.99,
+          "rationale": "Functional block for repairs and enchantments"
+        },
+        "frequency": {
+          "value": "frequent",
+          "confidence": 0.95,
+          "rationale": "Item repairs are regular maintenance activity"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "confidence": 0.85,
+          "rationale": "Placed as functional structure for repairs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "confidence": 0.95,
+          "rationale": "Heavy metalworking apparatus with mechanical function"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "confidence": 0.95,
+          "rationale": "Iron construction with dark metallic finish"
+        },
+        "primary_uses": {
+          "values": [
+            "item repair",
+            "name changing",
+            "enchantment combining"
+          ],
+          "confidence": 0.95,
+          "rationale": "Repairs durability, renames items, combines enchantments"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.95,
+          "rationale": "Made from iron blocks"
+        }
+      }
+    },
+    "minecraft:composter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.99,
+          "rationale": "Functional block for composting waste materials"
+        },
+        "frequency": {
+          "value": "rare",
+          "confidence": 0.85,
+          "rationale": "Composting is niche activity for specific players"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "confidence": 0.95,
+          "rationale": "Converts plant waste to bone meal for farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "confidence": 0.95,
+          "rationale": "Processes natural materials using wooden structure"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "confidence": 0.95,
+          "rationale": "Wooden construction with natural finish"
+        },
+        "primary_uses": {
+          "values": [
+            "bone meal production",
+            "waste processing",
+            "organic recycling"
+          ],
+          "confidence": 0.95,
+          "rationale": "Converts plant materials to bone meal for crops"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.95,
+          "rationale": "Crafted from wooden materials"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

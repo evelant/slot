@@ -59,6 +59,31 @@ const LOG_TAG_TO_WOOD: Record<string, string> = {
   "minecraft:warped_stems": "wood_warped",
 };
 
+/**
+ * Tools / weapons / armor follow a strict `<material>_<kind>` naming pattern
+ * in vanilla, and the name is the authoritative material signal — the
+ * `*_tool_materials` tags live on the ingots/materials, not on the tools.
+ * We detect this first because the prefix-list below would also match the
+ * `_stairs` / `_slab` variants but with different intent.
+ */
+const TOOL_ARMOR_SUFFIXES = [
+  "_pickaxe", "_sword", "_axe", "_shovel", "_hoe",
+  "_helmet", "_chestplate", "_leggings", "_boots",
+] as const;
+
+const TOOL_ARMOR_MATERIAL_PREFIX: Record<string, string> = {
+  wooden: "wood_oak",
+  stone: "stone",
+  iron: "iron",
+  golden: "gold",
+  diamond: "diamond",
+  netherite: "netherite",
+  copper: "copper",
+  leather: "leather", // armor only but the fallthrough is fine
+  chainmail: "iron", // repaired with iron via minecraft:repairs_chain_armor
+  turtle: "scute", // turtle_helmet
+};
+
 /** Id prefix → family. Checked last; wins only when no tag matched. */
 const ID_PREFIX_TO_FAMILY: Array<[prefix: string, family: string]> = [
   ["oak_", "wood_oak"],
@@ -241,6 +266,27 @@ export const materialFamilyRule: Rule = {
           rationale: `exact id ${record.id}`,
         },
       ];
+    }
+
+    // Tool / weapon / armor material prefix: `diamond_pickaxe` → diamond,
+    // `chainmail_helmet` → iron, `golden_sword` → gold. The material name
+    // before the tool suffix is the authoritative signal for these items.
+    for (const suffix of TOOL_ARMOR_SUFFIXES) {
+      if (!record.path.endsWith(suffix)) continue;
+      const prefix = record.path.slice(0, record.path.length - suffix.length);
+      const mat = TOOL_ARMOR_MATERIAL_PREFIX[prefix];
+      if (mat) {
+        return [
+          {
+            facet: "material_family",
+            kind: "single",
+            value: mat,
+            source: "rule:material_family_from_tool_prefix",
+            confidence: 1,
+            rationale: `${prefix}${suffix}`,
+          },
+        ];
+      }
     }
 
     for (const [prefix, family] of ID_PREFIX_TO_FAMILY) {

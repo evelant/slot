@@ -1,0 +1,59 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 37235,
+  "duration_api_ms": 38401,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:structure_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"confidence\": 0.95,\n          \"rationale\": \"Creative-only block used for copying and pasting structures\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"confidence\": 1.0,\n          \"rationale\": \"Structure Block is only available in creative mode\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"confidence\": 0.9,\n          \"rationale\": \"Rarely used in actual gameplay, primarily a creative tool\"\n        },\n        \"origin\": {\n          \"value\": \"crafted_only\",\n          \"confidence\": 0.95,\n          \"rationale\": \"Only obtainable in creative mode, not found naturally\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copying and pasting structures\", \"structure manipulation\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Primary function is to save/load/paste structures in creative mode\"\n        }\n      }\n    },\n    \"minecraft:debug_stick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"confidence\": 0.95,\n          \"rationale\": \"Handheld tool for modifying block properties and states\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"confidence\": 1.0,\n          \"rationale\": \"Debug Stick is only available in creative mode\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"confidence\": 0.95,\n          \"rationale\": \"Used only in creative mode for debugging and experimentation\"\n        },\n        \"origin\": {\n          \"value\": \"crafted_only\",\n          \"confidence\": 0.95,\n          \"rationale\": \"Only obtainable in creative mode, not found naturally\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"modifying block states\", \"debugging blocks\"],\n          \"confidence\": 0.85,\n          \"rationale\": \"Used to change block properties and states in creative mode\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "83a23e43-5bb3-41e3-9e8f-4ecdff61a7e1",
+  "total_cost_usd": 0.046841249999999994,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 13049,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 5326,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13049,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 10,
+        "output_tokens": 5326,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 13049,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 13049
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3830,
+      "outputTokens": 5340,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 13049,
+      "webSearchRequests": 0,
+      "costUSD": 0.046841249999999994,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "521bda83-79e1-4175-9731-a4aa386c1944"
+}
