@@ -17,23 +17,26 @@ in this directory.
   every classification layer file. Source of truth for the wire format.
 - `src/extract/` — stage 1 extractor. Vanilla target is implemented; modded
   targets land in later milestones.
-- `src/schema/validate.ts` — thin AJV wrapper around `layer.schema.json`.
+- `src/deterministic/` — stage 2 rule-based facet derivation. Emits a layer
+  file validated against the wire schema.
+- `src/schema/` — facet registry (v1 vocabulary) and AJV wrapper around
+  `layer.schema.json`.
 
-## What will be here (milestone 4+)
+## What will be here (milestone 5+)
 
 See [Pipeline layout](../../../docs/plans/item-classification.md#pipeline-layout) in
-the plan for the planned directory shape. `src/deterministic/`, `src/llm/`,
-`src/neighbors/`, and `src/compile/` correspond to stages 2–5 and arrive as
-subsequent milestones.
+the plan for the planned directory shape. `src/llm/`, `src/neighbors/`, and
+`src/compile/` correspond to stages 3–5 and arrive as subsequent milestones.
 
 ## Running the pipeline
 
 ```sh
 cd reference/classification/pipeline
 bun install
-bun classify --mod minecraft --source ../mcmeta   # stage 1 only today
-bun validate out/minecraft.json                   # wire-format schema check
-bun test                                          # unit tests
+bun classify --mod minecraft --source ../mcmeta              # stages 1+2
+bun classify --mod minecraft --source ../mcmeta --stages 2   # skip stage 1 (re-reads ndjson)
+bun validate out/minecraft.facets.partial.json               # wire-format schema check
+bun test                                                     # unit tests
 ```
 
 The vanilla extractor reads from a clone of [misode/mcmeta](https://github.com/misode/mcmeta)
@@ -43,8 +46,13 @@ branch under `../mcmeta/.worktrees/summary` and reads the consolidated
 `git fetch` inside the mcmeta clone and delete the worktree; the next run
 recreates it.
 
-Output goes to `out/minecraft.items.ndjson` (one JSON record per item) and
-`out/minecraft.items.meta.json` (extractor version, MC version, timestamp).
+Outputs:
+
+- `out/minecraft.items.ndjson` — stage 1, one JSON record per item.
+- `out/minecraft.items.meta.json` — stage 1 metadata (extractor, MC version, timestamp).
+- `out/minecraft.facets.partial.json` — stage 2 layer file, validates against
+  `layer.schema.json`. Stage 3 (LLM) fills the remaining facets and writes
+  `minecraft.facets.complete.json`.
 
 ## LLM gateway
 

@@ -69,6 +69,8 @@ export interface SummaryBundle {
   lootTables: Record<string, LootTableJson>;
   /** Item-tag short id (no namespace) -> { values, replace? }. */
   itemTags: Record<string, TagJson>;
+  /** Block-tag short id (no namespace) -> { values, replace? }. */
+  blockTags: Record<string, TagJson>;
   /** Item id (short) -> item definition (contains model ref). */
   itemDefinitions: Record<string, ItemDefinitionJson>;
   /** Model id (e.g. `item/iron_ingot`) -> model JSON. */
@@ -138,27 +140,12 @@ export interface TagJson {
 }
 
 export interface ItemDefinitionJson {
-  model?: ItemModelDef;
-}
-
-interface ItemModelDef {
-  type?: string;
-  model?: string;
-  cases?: ItemModelCase[];
-  entries?: ItemModelEntry[];
-  fallback?: ItemModelDef;
-  on_false?: ItemModelDef;
-  on_true?: ItemModelDef;
-}
-
-interface ItemModelCase {
-  model?: ItemModelDef;
-  when?: unknown;
-}
-
-interface ItemModelEntry {
-  model?: ItemModelDef;
-  threshold?: number;
+  /** Loosely typed — item-definition variant trees have a ton of shapes
+   *  (`minecraft:model`, `minecraft:special`, `minecraft:composite`,
+   *  `minecraft:range_dispatch`, …). `resolveModelParents` walks them
+   *  structurally via runtime type checks, so a strong schema here buys
+   *  little and fights the test fixtures. */
+  model?: unknown;
 }
 
 export interface ModelJson {
@@ -192,6 +179,10 @@ export function loadSummaryBundle(source: VanillaSource): SummaryBundle {
     source,
     "data/tag/item/data.min.json",
   );
+  const blockTags = readJson<Record<string, TagJson>>(
+    source,
+    "data/tag/block/data.min.json",
+  );
   const itemDefinitions = readJson<Record<string, ItemDefinitionJson>>(
     source,
     "assets/item_definition/data.min.json",
@@ -219,6 +210,7 @@ export function loadSummaryBundle(source: VanillaSource): SummaryBundle {
     recipes,
     lootTables,
     itemTags,
+    blockTags,
     itemDefinitions,
     models,
     lang,

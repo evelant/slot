@@ -45,6 +45,7 @@ function bundle(): SummaryBundle {
       iron_tool_materials: { values: ["minecraft:iron_ingot"] },
       repairs_iron_armor: { values: ["#minecraft:iron_tool_materials"] },
     },
+    blockTags: {},
     itemDefinitions: {
       iron_ingot: {
         model: { type: "minecraft:model", model: "minecraft:item/iron_ingot" },
