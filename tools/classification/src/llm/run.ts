@@ -83,6 +83,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     : options.records;
 
   const batches = chunk(selected, batchSize);
+  const concurrency = Math.max(1, options.concurrency ?? 1);
   const warnings: string[] = [];
   const proposals: SchemaProposal[] = [];
   const corrections: StageCorrection[] = [];
@@ -93,8 +94,15 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const mergedEntries: LayerFile["entries"] = { ...options.stage2Layer.entries };
   let filledItems = 0;
 
-  for (let i = 0; i < batches.length; i++) {
-    const batch = batches[i]!;
+  /**
+   * Process a single batch end-to-end: build the prompt, call the LLM,
+   * parse the response, merge into the shared layer state. Mutations to
+   * `mergedEntries`, `warnings`, etc. happen synchronously after each
+   * `await`, so JS's microtask scheduling guarantees no concurrent writes
+   * even with multiple in-flight workers — only one worker is executing
+   * JS code at any instant.
+   */
+  const processBatch = async (batch: ItemExtractRecord[], i: number): Promise<void> => {
     const start = Date.now();
 
     const payloads: LlmItemPayload[] = batch.map((record) => {
@@ -116,12 +124,11 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       const prompt = buildBatchPrompt({ items: payloads, target_facets: targetFacets });
       responseText = await options.client.query(prompt, queryOptions);
     }
+
     let parsed;
     try {
       parsed = parseLlmResponse(responseText);
     } catch (err) {
-      // Per-batch parse failure is recoverable — record a warning and
-      // continue with the remaining batches rather than aborting the whole run.
       warnings.push(`batch ${i + 1}: parse failed: ${(err as Error).message.slice(0, 200)}`);
       options.onBatch?.({
         batchIndex: i,
@@ -131,7 +138,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
         parsed: 0,
         elapsedMs: Date.now() - start,
       });
-      continue;
+      return;
     }
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
@@ -148,10 +155,6 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       let itemAdded = false;
       for (const [facetId, entry] of Object.entries(itemFacets.facets)) {
         if (existing[facetId]) {
-          // stage 2 already spoke — stage 3 must not clobber deterministic facets.
-          // Only warn when the LLM's value actually disagrees with stage 2's; a
-          // same-value re-emission (common for wood-derivative is_fuel etc.) is
-          // harmless and just noise.
           if (valuesDisagree(existing[facetId], entry)) {
             warnings.push(`${itemId} ${facetId}: stage 2 asserted ${describeEntry(existing[facetId])}; LLM value ${describeEntry(toLayerEntry(entry))} dropped — add to corrections if clearly wrong`);
           }
@@ -173,7 +176,21 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       parsed: parsed.items.size,
       elapsedMs: Date.now() - start,
     });
-  }
+  };
+
+  // Worker pool: each worker pulls the next batch index until exhausted.
+  // Concurrency=1 reproduces the original serial loop exactly.
+  let nextBatchIndex = 0;
+  const worker = async (): Promise<void> => {
+    while (true) {
+      const idx = nextBatchIndex++;
+      if (idx >= batches.length) return;
+      await processBatch(batches[idx]!, idx);
+    }
+  };
+  await Promise.all(
+    Array.from({ length: Math.min(concurrency, batches.length) }, () => worker()),
+  );
 
   const layer: LayerFile = {
     ...options.stage2Layer,

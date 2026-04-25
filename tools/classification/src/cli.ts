@@ -96,6 +96,7 @@ async function main() {
           // stage 3 knobs
           model: { type: "string" },
           "batch-size": { type: "string" },
+          concurrency: { type: "string" },
           effort: { type: "string" },
           "thinking-budget": { type: "string" },
           "disable-adaptive-thinking": { type: "boolean" },
@@ -132,6 +133,7 @@ async function main() {
         await runVanilla(sourcePath, outDir, stages, {
           model: args.values.model,
           batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
+          concurrency: args.values.concurrency ? Number(args.values.concurrency) : undefined,
           effort: parseEffort(args.values.effort),
           thinkingBudget: args.values["thinking-budget"]
             ? Number(args.values["thinking-budget"])
@@ -197,6 +199,7 @@ async function main() {
 interface Stage3CliOptions {
   model?: string;
   batchSize?: number;
+  concurrency?: number;
   effort?: "low" | "medium" | "high" | "xhigh" | "max";
   thinkingBudget?: number;
   disableAdaptiveThinking?: boolean;
@@ -324,6 +327,7 @@ async function executeStage3(
     client,
     model: opts.model,
     batchSize: opts.batchSize,
+    concurrency: opts.concurrency,
     only,
     clientOptions: buildClientOptions(opts.effort, opts.thinkingBudget, opts.disableAdaptiveThinking),
     onBatch: (info) => {
@@ -560,6 +564,10 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
                             (haiku/sonnet/opus) or full model names.
   --effort <level>          Reasoning effort: low|medium|high|xhigh|max.
   --batch-size <n>          Items per LLM call (default 20 for haiku, try 10 for sonnet).
+  --concurrency <n>         Run up to N batches in parallel (default 1 = serial).
+                            Each parallel batch spawns its own claude -p process.
+                            Recommended: 4 for sonnet on Max plan; cuts wall time
+                            ~4x without affecting cost (each batch identical work).
   --sample canary|N|id,...  Restrict to a subset:
                               canary   – the hand-picked 102-item set.
                               N        – first N records from the extract.

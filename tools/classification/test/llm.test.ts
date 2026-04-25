@@ -392,6 +392,64 @@ describe("runStage3", () => {
     expect(result.coverageAdded.activity).toBe(1);
   });
 
+  test("concurrency runs batches in parallel and merges in any order", async () => {
+    const records: ItemExtractRecord[] = Array.from({ length: 12 }, (_, i) => ({
+      ...ironIngotRecord(),
+      id: `minecraft:item${i}`,
+      path: `item${i}`,
+    }));
+    const stage2: LayerFile = {
+      schema_version: 1,
+      layer: "vanilla-base",
+      source: "minecraft",
+      entries: {},
+    };
+
+    let inFlight = 0;
+    let maxInFlight = 0;
+    const completions: number[] = [];
+    let completionOrder = 0;
+
+    const client = {
+      async query(prompt: string) {
+        inFlight++;
+        maxInFlight = Math.max(maxInFlight, inFlight);
+        // Tiny async tick so other workers actually start before this resolves.
+        await new Promise((r) => setTimeout(r, 5));
+        // Identify which item batch this is by sniffing the prompt.
+        const m = prompt.match(/minecraft:item(\d+)/);
+        const itemIdx = m ? Number(m[1]) : -1;
+        completions.push(itemIdx);
+        completionOrder++;
+        inFlight--;
+        return JSON.stringify({
+          items: {
+            [`minecraft:item${itemIdx}`]: {
+              facets: { role: { value: "material", signal: "named", evidence: "test" } },
+            },
+          },
+        });
+      },
+    };
+
+    const result = await runStage3({
+      records,
+      stage2Layer: stage2,
+      client,
+      batchSize: 1,
+      concurrency: 4,
+    });
+
+    expect(maxInFlight).toBeGreaterThan(1); // actually parallel
+    expect(maxInFlight).toBeLessThanOrEqual(4); // bounded by concurrency
+    // All 12 items got their role facet
+    let count = 0;
+    for (const r of records) {
+      if (result.layer.entries[r.id]?.facets.role) count++;
+    }
+    expect(count).toBe(12);
+  });
+
   test("only-list restricts execution", async () => {
     const recA: ItemExtractRecord = {
       ...ironIngotRecord(),
