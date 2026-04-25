@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-24 (executor fallback rework + backpack-first routing restored)
+Last updated: 2026-04-25 (first vanilla classification dataset shipped; runtime FacetIndex integration is the next track)
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -194,6 +194,23 @@ Currently landed:
   stays in neoforge because the test runtime needs Gson from the bundled
   NeoForge jar. `SlotPlayerWorkflowRuntimeService` continues to own the
   platform-specific file-path resolution and lifecycle triggers.
+- item classification pipeline (Bun/TS) at
+  [tools/classification/](../tools/classification/) producing
+  per-source layer files validated against
+  [layer.schema.json](../tools/classification/layer.schema.json).
+  Stage 1 (extract from mcmeta + mod source trees) + stage 2 (rule-based
+  facet derivation) + stage 3 (LLM completion via `claude -p`) all run
+  end-to-end with split-prompt mode, fixture-based record/replay for
+  free resume, transient-error retry, and a per-mod `mod_subsystem`
+  proposer pre-pass that pins a canonical 3–8 entry vocabulary into
+  the system prompt. First curated dataset is checked in at
+  [tools/classification/datasets/minecraft/](../tools/classification/datasets/minecraft/)
+  (1536 vanilla items, 30 facets, 11 plank `material_family` entries
+  patched in-place after the corrections sweep). Validated end-to-end
+  on createaddition, AE2, and SophisticatedStorage runs. Runtime
+  consumption side (`FacetIndex` in `common/`) is not yet wired —
+  see [plans/item-classification.md](plans/item-classification.md)
+  milestones 6+.
 
 Current prototype validation point:
 

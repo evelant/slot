@@ -1,15 +1,24 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-04-20
+Last updated: 2026-04-25
 
 This is the near-term engineering sequence from the current baseline. For the
 short operational handoff, read [../status.md](../status.md) first.
 
 **Active plan:** core-workflow UX pass landed (all six slices in
 [core-workflow-ux.md](core-workflow-ux.md), plus playtest follow-ups
-documented in [../status.md](../status.md)). Next focus is resuming
-the Kit prototype at slice 4 — see
-[kit-prototype.md](kit-prototype.md).
+documented in [../status.md](../status.md)). Two parallel tracks are now
+active:
+
+1. **Classification → atlas-homing integration.** First vanilla
+   classification dataset is committed at
+   [`tools/classification/datasets/minecraft/`](../../tools/classification/datasets/minecraft/)
+   (1536 items, 30 facets). Next is loading it through a runtime
+   `FacetIndex` in `common/` and wiring the `role`-based homing rule
+   into the atlas behind a feature flag, replacing the `SemanticBucketResolver`
+   keyword path. See [item-classification.md](item-classification.md)
+   milestones 6 (FacetIndex) and 7 (atlas wiring).
+2. **Kit prototype slice 4** — resume per [kit-prototype.md](kit-prototype.md).
 
 For product goals, see [../product/direction.md](../product/direction.md).
 For current architecture, see [../architecture/overview.md](../architecture/overview.md).
