@@ -69,6 +69,28 @@ class AtlasLayoutTest {
     }
 
     @Test
+    void islandPlacementsHonorAuthoredTopLeft() {
+        SlotWorkspaceViewModel.AtlasIsland tools = new SlotWorkspaceViewModel.AtlasIsland(
+                "tools", "Tools", VisualAtlasIslandKind.PLAYER, 1500, 200, 200, 200, 0xFF000000, 0
+        );
+        SlotWorkspaceViewModel vm = viewModel(
+                List.of(tools),
+                List.of(atlasItem(IRON, "tools")),
+                List.of()
+        );
+        AtlasLayoutResult result = AtlasLayout.layout(vm, RelevanceContext.empty(),
+                List.of(), AtlasLayoutConfig.DEFAULT);
+
+        AtlasLayoutResult.IslandPlacement toolsPlace = result.islandPlacementOf("tools");
+        assertEquals(1500, toolsPlace.x(), "island chrome must render at authored x");
+        assertEquals(200, toolsPlace.y(), "island chrome must render at authored y");
+
+        AtlasLayoutResult.ItemPlacement ironPlace = result.placementOf(SlotWorkspaceViewModel.IdentityRef.from(IRON));
+        assertTrue(ironPlace.x() >= 1500, "item must render inside its island, not at atlas origin");
+        assertTrue(ironPlace.y() >= 200, "item must render inside its island, not at atlas origin");
+    }
+
+    @Test
     void islandPlacementsAreReturned() {
         SlotWorkspaceViewModel.AtlasIsland tools = synthIsland("tools", 200, 200);
         SlotWorkspaceViewModel.AtlasIsland food = synthIsland("food", 200, 200);

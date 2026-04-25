@@ -74,44 +74,22 @@ public final class AtlasLayout {
                     .add(new ItemRow(item.identity(), relevance, width, height));
         }
 
-        // Per-island packing: position items inside each island in canonical order,
-        // collect island bounding boxes for the atlas-level pack.
-        LinkedHashMap<String, IslandPack> packsByIsland = new LinkedHashMap<>();
+        // Per-island packing: position items inside each island in canonical order.
+        // Phase 2.1 honours the island's AUTHORED top-left (island.x() / island.y())
+        // — the atlas-level packer is wired but unused until Phase 2.2 drops
+        // authored island width/height in favour of auto-square layout.
+        LinkedHashMap<SlotWorkspaceViewModel.IdentityRef, AtlasLayoutResult.ItemPlacement> itemResults = new LinkedHashMap<>();
+        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> islandResults = new LinkedHashMap<>();
         for (Map.Entry<String, SlotWorkspaceViewModel.AtlasIsland> entry : atlasIslandsById.entrySet()) {
             String islandId = entry.getKey();
             SlotWorkspaceViewModel.AtlasIsland island = entry.getValue();
             List<ItemRow> rows = rowsByIsland.getOrDefault(islandId, List.of());
-            packsByIsland.put(islandId, packIsland(island, rows, cfg));
-        }
+            IslandPack pack = packIsland(island, rows, cfg);
 
-        // Atlas-level packing: each island's effective bbox becomes a cell at the
-        // atlas level. Container width = view-model canvasWidth.
-        ArrayList<WeightedGridPacker.Cell> islandCells = new ArrayList<>(packsByIsland.size());
-        ArrayList<String> islandOrder = new ArrayList<>(packsByIsland.size());
-        for (Map.Entry<String, IslandPack> entry : packsByIsland.entrySet()) {
-            islandOrder.add(entry.getKey());
-            IslandPack pack = entry.getValue();
-            islandCells.add(new WeightedGridPacker.Cell(pack.width(), pack.height()));
-        }
-        List<WeightedGridPacker.Placement> islandPlacements = WeightedGridPacker.pack(
-                islandCells,
-                Math.max(cfg.baseCardWidth(), viewModel.canvasWidth()),
-                cfg.atlasMargin(),
-                cfg.atlasMargin(),
-                cfg.atlasIslandGap()
-        );
-
-        // Translate per-island item placements to world coordinates.
-        LinkedHashMap<SlotWorkspaceViewModel.IdentityRef, AtlasLayoutResult.ItemPlacement> itemResults = new LinkedHashMap<>();
-        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> islandResults = new LinkedHashMap<>();
-        for (int i = 0; i < islandOrder.size(); i++) {
-            String islandId = islandOrder.get(i);
-            IslandPack pack = packsByIsland.get(islandId);
-            WeightedGridPacker.Placement islandPlacement = islandPlacements.get(i);
             islandResults.put(islandId, new AtlasLayoutResult.IslandPlacement(
                     islandId,
-                    islandPlacement.localX(),
-                    islandPlacement.localY(),
+                    island.x(),
+                    island.y(),
                     pack.width(),
                     pack.height(),
                     pack.itemCount()
@@ -119,8 +97,8 @@ public final class AtlasLayout {
             for (PackedItem packed : pack.items()) {
                 itemResults.put(packed.identity(), new AtlasLayoutResult.ItemPlacement(
                         islandId,
-                        islandPlacement.localX() + packed.localX(),
-                        islandPlacement.localY() + packed.localY(),
+                        island.x() + packed.localX(),
+                        island.y() + packed.localY(),
                         packed.width(),
                         packed.height(),
                         packed.relevance()
