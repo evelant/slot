@@ -1,0 +1,381 @@
+{
+  "items": {
+    "minecraft:shield": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "off-hand defensive blocking equipment"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "repairs with #wooden_tool_materials"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ingot in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easy to craft; found in trial chambers"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard combat defensive item"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "blocks damage in combat"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "plain base; banner deco = variant"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "wood body + iron trim"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        },
+        "primary_uses": {
+          "values": [
+            "Block incoming melee and projectile damage",
+            "Off-hand combat protection",
+            "Apply banner decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "shield core gameplay uses"
+        }
+      }
+    },
+    "minecraft:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "keeps contents when broken"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "2 shulker shells in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "chest (wood) in recipe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "shells require End mob farm"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential storage item"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage + item transport"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "plain base; dye transmute = colored"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "default dusty purple tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot source for box"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable storage keeping contents when broken",
+            "Color-coded inventory organization",
+            "Item transport in bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker box core uses"
+        }
+      }
+    },
+    "minecraft:ender_chest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "per-player shared cross-dim storage"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "signal": "inferred",
+          "rationale": "8 obsidian in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "eye_of_ender"
+          ],
+          "signal": "inferred",
+          "rationale": "center recipe slot"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires obsidian + eye of ender"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential cross-dimension storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "shared storage + cross-dim access"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical shared-storage mechanic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "obsidian dark + glowing eyes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot source"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high",
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "obsidian-based block entity"
+        },
+        "primary_uses": {
+          "values": [
+            "Per-player shared storage across dimensions",
+            "Access same items from any ender chest",
+            "Secure personal inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "ender chest core uses"
+        }
+      }
+    },
+    "minecraft:bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable multi-item bag in inventory"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable + found in villages"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "inventory management staple"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "groups items in one slot"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "natural hide; dye transmute variants"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "rabbit hide brown/tan color"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item"
+        },
+        "primary_uses": {
+          "values": [
+            "Group mixed item types in one inventory slot",
+            "Carry partial stacks efficiently",
+            "Inventory organization"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle core uses"
+        }
+      }
+    },
+    "minecraft:barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "27-slot container block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "all-wood; axe mineable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable + village loot"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is item storage"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "wood; simple unadorned form"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "wood plank appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item storage"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block; flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "27-slot storage openable from any direction",
+            "Fisher villager workstation block",
+            "Storage without overhead clearance needed"
+          ],
+          "signal": "inferred",
+          "rationale": "barrel core uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

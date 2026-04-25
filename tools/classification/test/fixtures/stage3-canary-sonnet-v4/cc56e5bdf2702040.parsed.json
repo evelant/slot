@@ -1,0 +1,298 @@
+{
+  "items": {
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "head_armor tag confirms role"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ancient debris chain; deep nether grind"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "best tier; worn endgame constantly"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for combat; nether exploration"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard dark functional helmet"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark grey netherite metal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; smithed from diamond helmet"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant #is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "Highest-tier head armor",
+            "10% knockback resistance per piece",
+            "Item survives fire and lava"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite helmet properties"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "chest_armor tag confirms role"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche tier; iron preferred in practice"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "chest armor worn for combat"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "interlocked iron ring aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron chain texture"
+        },
+        "primary_uses": {
+          "values": [
+            "Mid-tier chest protection",
+            "Obtained via trading or village gift",
+            "Smeltable to iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "chainmail use cases"
+        }
+      }
+    },
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "foot_armor tag confirms role"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap craft from farmable leather"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game only; replaced quickly"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor + powder snow traversal"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "named",
+          "rationale": "leather; cauldron_can_remove_dye tag"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "default brown leather appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Early-game foot protection",
+            "Prevents powder snow freeze damage",
+            "Dyeable to any color"
+          ],
+          "signal": "inferred",
+          "rationale": "leather boots key properties"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "head_armor tag confirms role"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "scutes require turtle breeding setup"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche; aquatic exploration only"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor + water breathing utility"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic turtle shell material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish-green turtle shell"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; crafted from 5 scutes"
+        },
+        "primary_uses": {
+          "values": [
+            "Grants Water Breathing when worn",
+            "Head protection for aquatic exploration",
+            "Crafted from turtle scutes"
+          ],
+          "signal": "inferred",
+          "rationale": "turtle helmet key properties"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "values": [
+            "armor",
+            "transport"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "chest-slot armor that enables glider flight"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used often post-End for travel"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "gliding is primary activity"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "unique exotic end-game wing item"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "off-white grey wing coloring"
+        },
+        "origin": {
+          "values": [
+            "end_ship"
+          ],
+          "signal": "inferred",
+          "rationale": "exclusively in end city ship chests"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "named",
+          "rationale": "glider component transports player"
+        },
+        "primary_uses": {
+          "values": [
+            "Gliding and firework-powered flight",
+            "Fast long-range travel",
+            "Essential for end-game exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "elytra core use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "freeze_immune_when_worn",
+      "rationale": "freeze_immune_wearables tag (leather armor prevents powder snow freeze) not captured by any current environmental_property value"
+    }
+  ],
+  "corrections": []
+}

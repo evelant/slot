@@ -1,0 +1,250 @@
+{
+  "items": {
+    "minecraft:netherite_upgrade_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "template consumed in smithing to upgrade gear tier"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite_"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per piece, ~6-10 total per playthrough"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades gear used for combat and mining"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing templates have archaeological aesthetic"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite visual identity is dark"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade diamond tools/armor to netherite",
+            "single-use netherite smithing pattern"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is enabling netherite tier"
+        }
+      }
+    },
+    "minecraft:sentry_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "consumed in smithing table to apply trim"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor piece for cosmetic trim"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applies cosmetic trim pattern to armor"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing templates have archaeological aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "apply sentry trim pattern to armor",
+            "cosmetic armor decoration ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "armor decoration smithing template"
+        }
+      }
+    },
+    "minecraft:angler_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "collectible archaeological find with artwork"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "rationale": "loot: archaeology/ocean_ruin_warm"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely used; primarily collected"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological oceanic clay artifact"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay pottery from warm ocean ruins"
+        },
+        "primary_uses": {
+          "values": [
+            "craft decorated pots with angler motif",
+            "collect archaeology finds"
+          ],
+          "signal": "inferred",
+          "rationale": "pot ingredient and collectible"
+        }
+      }
+    },
+    "minecraft:command_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only command executor block"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "only usable by server admins and map makers"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "executes commands in automation pipelines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical automation block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-amber block appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable",
+            "blast_resistant_max"
+          ],
+          "signal": "inferred",
+          "rationale": "indestructible in survival, not piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "execute server commands",
+            "map making automation",
+            "adventure map scripting"
+          ],
+          "signal": "inferred",
+          "rationale": "admin command automation"
+        }
+      }
+    },
+    "minecraft:barrier": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only invisible blocking block"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "only for map makers and admins"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to block areas during map/world building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "invisible in-world; functionally minimal"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red no-entry icon texture"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_max",
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "indestructible and immovable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "invisible wall for map makers",
+            "block player movement invisibly",
+            "adventure map boundaries"
+          ],
+          "signal": "inferred",
+          "rationale": "admin invisible barrier"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

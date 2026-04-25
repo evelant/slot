@@ -1,0 +1,370 @@
+{
+  "items": {
+    "minecraft:lectern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "holds books, interactive job site block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from slabs+bookshelf (wood)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use; not used every session"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "trading",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "librarian site, display, comparator"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood+bookshelf organic aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm oak-toned wood body"
+        },
+        "origin": {
+          "values": [
+            "village"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns in village libraries"
+        },
+        "primary_uses": {
+          "values": [
+            "hold book for reading",
+            "librarian villager job site",
+            "comparator page-number signal"
+          ],
+          "signal": "inferred",
+          "rationale": "core gameplay uses of lectern"
+        }
+      }
+    },
+    "minecraft:grindstone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "repair/disenchant interactive block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "stone slab primary structural component"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "planks+sticks in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for repairs/disenchanting"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "disenchants items, repairs weapons/tools"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "stone grinding wheel mechanism"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "grey stone with dark iron elements"
+        },
+        "origin": {
+          "values": [
+            "village"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns in weaponsmith shops"
+        },
+        "primary_uses": {
+          "values": [
+            "remove enchantments (return XP)",
+            "repair tools/weapons without anvil",
+            "weaponsmith villager job site"
+          ],
+          "signal": "inferred",
+          "rationale": "core grindstone interactions"
+        }
+      }
+    },
+    "minecraft:smoker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "food-only furnace variant, interactive"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "furnace core (cobblestone) primary body"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_log"
+          ],
+          "signal": "inferred",
+          "rationale": "4 logs surround furnace in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every session for food cooking"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "cooks food; automatable with hoppers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian cooking block, no frills"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "stone+wood earthy dark tones"
+        },
+        "origin": {
+          "values": [
+            "village"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns in village butcher shops"
+        },
+        "primary_uses": {
+          "values": [
+            "cook food 2x faster than furnace",
+            "butcher villager job site"
+          ],
+          "signal": "inferred",
+          "rationale": "core smoker uses"
+        }
+      }
+    },
+    "minecraft:piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "redstone-powered block-pushing device"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "planks form primary face and body"
+        },
+        "material_secondary": {
+          "values": [
+            "stone",
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "cobblestone body + iron bands in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core redstone mechanism, widely used"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "push blocks for redstone/auto/build"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood+iron mechanical push device"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "wood face + dark iron bands"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural generation; crafted"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "pistons can be pushed by other pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "push blocks/entities with redstone",
+            "create automated doors and gates",
+            "ingredient for sticky piston"
+          ],
+          "signal": "inferred",
+          "rationale": "core piston gameplay uses"
+        }
+      }
+    },
+    "minecraft:sticky_piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "redstone piston that also pulls blocks"
+        },
+        "material_family": {
+          "value": "slime",
+          "signal": "inferred",
+          "rationale": "slime ball on piston; defining element"
+        },
+        "material_secondary": {
+          "values": [
+            "wood",
+            "stone",
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "piston base materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "preferred for most redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "push+pull blocks for redstone automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical device with slime face"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "green slime face + wood body"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural gen; crafted from piston"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_sticky",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "pulls adjacent blocks; movable"
+        },
+        "primary_uses": {
+          "values": [
+            "push and pull blocks with redstone",
+            "retractable doors and bridges",
+            "precise block placement automation"
+          ],
+          "signal": "inferred",
+          "rationale": "sticky piston core uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

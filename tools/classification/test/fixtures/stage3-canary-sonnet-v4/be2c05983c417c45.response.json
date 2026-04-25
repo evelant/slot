@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 311508,
+  "duration_api_ms": 312302,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:snowball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"throwable combat/utility projectile\"\n        },\n        \"material_family\": {\n          \"value\": \"snow\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"obtained by breaking snow blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"commonly thrown in combat and gathered\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown at mobs; crafts snow blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw natural material from snow\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white icy appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"throw at mobs for knockback\",\n            \"craft snow blocks\",\n            \"feed happy ghasts\",\n            \"bonus damage vs blazes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:ender_pearl\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"teleportation item, crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"ender\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"dropped by endermen, ender namespace\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used often for movement and escape\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teleport for travel and escape\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical ender teleportation item\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark teal ender aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"teleport to thrown location\",\n            \"craft eye of ender\",\n            \"quick traversal and parkour\",\n            \"escape from danger\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:chorus_fruit\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has minecraft:food component\"\n        },\n        \"material_family\": {\n          \"value\": \"chorus_plant\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"drops from chorus plant\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"End-only, requires defeating dragon\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational End use\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teleport in End, escape mobs\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"End plant with teleport on eat\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple chorus fruit color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"eat to teleport randomly in End\",\n            \"pass through blocks via teleport\",\n            \"smelt to popped chorus fruit\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses\"\n        }\n      }\n    },\n    \"minecraft:compass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigation tool pointing to spawn\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted primarily from iron ingots\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe requires redstone dust\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used early, replaced by maps\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigation to spawn or lodestone\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical navigation device\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron casing appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"navigate to world spawn point\",\n            \"link to lodestone for wayfinding\",\n            \"craft maps and recovery compass\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses\"\n        }\n      }\n    },\n    \"minecraft:recovery_compass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigate to last death location\"\n        },\n        \"material_family\": {\n          \"value\": \"echo_shard\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"8 echo shards as primary ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"compass\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compass in center of recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used after losing items on death\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigate to last death point\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"echo shard ingredient from ancient city\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal glow on recovery compass texture\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"navigate to last death location\",\n            \"recover dropped items after death\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole gameplay purpose\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:snowball\",\n      \"facet\": \"origin\",\n      \"current\": [\"ancient_city\", \"mob_drop\", \"trial_chamber\", \"village\"],\n      \"suggested\": [\"ancient_city\", \"mob_drop\", \"overworld_surface\", \"trial_chamber\", \"village\"],\n      \"rationale\": \"snow block loot = overworld_surface\",\n      \"confidence\": 0.95\n    },\n    {\n      \"item\": \"minecraft:ender_pearl\",\n      \"facet\": \"origin\",\n      \"current\": [\"mob_drop\", \"stronghold\", \"trial_chamber\"],\n      \"suggested\": [\"mob_drop\", \"stronghold\", \"trading\", \"trial_chamber\"],\n      \"rationale\": \"piglin_bartering loot = trading origin\",\n      \"confidence\": 0.92\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a4a03ef1-d77f-4352-82ba-4eca4c14c683",
+  "total_cost_usd": 0.32942259999999995,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 10002,
+    "output_tokens": 21546,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 21546,
+        "cache_read_input_tokens": 10002,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3143,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003223,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 21546,
+      "cacheReadInputTokens": 10002,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.3261996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "9b76460d-71ab-4a90-87fa-092525fd2bde"
+}

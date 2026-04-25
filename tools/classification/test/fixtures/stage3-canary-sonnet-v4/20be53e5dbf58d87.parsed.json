@@ -1,0 +1,352 @@
+{
+  "items": {
+    "minecraft:white_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural/decorative block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple building and crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in structures; colored decor use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob material; dyeable 16 colors"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white is light; wool texture is matte"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:dampens_vibrations",
+          "rationale": "wool burns; dampens_vibrations tag"
+        },
+        "primary_uses": {
+          "values": [
+            "build walls and structural surfaces",
+            "craft beds, carpets, and banners",
+            "re-dye into any of 16 wool colors",
+            "silence sculk sensor vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses from recipe data and tags"
+        }
+      }
+    },
+    "minecraft:light_blue_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "skips night, sets respawn; interactive"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "3 wool + 3 planks; wool dominant"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden planks in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every night in survival"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in survival base"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue dye color"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is cool pastel"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no structure loot in data; crafted item"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood+wool construction is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "skip night in survival mode",
+            "set player respawn point",
+            "explosive trap in Nether or End"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed mechanics"
+        }
+      }
+    },
+    "minecraft:magenta_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primarily visual decoration"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "6 wool + 1 stick; wool dominant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative; not used every session"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall/ceiling decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta color; supports pattern layers"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is a vivid pink-purple hue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only self-block drop in loot data"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool+stick construction is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "wall and ceiling decoration",
+            "decorate shields via crafting",
+            "mark or brand locations"
+          ],
+          "signal": "inferred",
+          "rationale": "standard banner mechanics"
+        }
+      }
+    },
+    "minecraft:pink_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles primarily aesthetic per disambiguation"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "1 honeycomb + 1 string recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative lighting item"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative ambient lighting"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "beeswax candle; pink dye"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is warm pastel"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only self-block drops in loot data"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 3 when lit"
+        },
+        "primary_uses": {
+          "values": [
+            "atmospheric decorative lighting",
+            "place on cake for birthday decor",
+            "stack up to 4 for brighter light"
+          ],
+          "signal": "inferred",
+          "rationale": "standard candle mechanics"
+        }
+      }
+    },
+    "minecraft:orange_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "ornate patterned block; primarily aesthetic"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains terracotta; smelted from orange_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative/building use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "patterned decorative structural block"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "ornate glaze pattern; orange color"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange glaze reads amber and warm"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted; only self-drop in loot data"
+        },
+        "primary_uses": {
+          "values": [
+            "ornate decorative flooring and walls",
+            "directional patterned building",
+            "desert or Mediterranean aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glazed terracotta uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

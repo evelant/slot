@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:creaking_heart": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "autonomously spawns/controls Creaking mob"
+        },
+        "material_family": {
+          "value": "wood_pale_oak",
+          "signal": "inferred",
+          "rationale": "pale garden tree block; crafted from pale oak"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only in rare pale garden biome trees"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when setting up Creaking mob farm"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mob-farm for resin via Creaking mob"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "organic tree block; spawns hostile mob"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "pale wood exterior with glowing heart center"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "generates naturally inside pale oak trees"
+        },
+        "spawn_interaction": {
+          "values": [
+            "allows_spawning"
+          ],
+          "signal": "inferred",
+          "rationale": "best-fit for: generates linked Creaking at night"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn Creaking mob at night",
+            "Farm resin clumps via Creaking",
+            "Pale Garden tree mechanic feature"
+          ],
+          "signal": "inferred",
+          "rationale": "core functional mechanics of block"
+        }
+      }
+    },
+    "minecraft:pale_oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw log from tree; schema lists logs as natural_resource"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable once pale garden biome located"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core building and crafting resource"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; crafted into planks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood log"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak is very light white-toned wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:logs_that_burn",
+          "rationale": "explicitly in logs_that_burn tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft pale oak planks and wood products",
+            "Fuel for smelting",
+            "Build with log-column texture",
+            "Smelt into charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "standard log downstream uses"
+        }
+      }
+    },
+    "minecraft:cherry_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant dropped from cherry leaves"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "drops readily from cherry leaves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted periodically to grow trees"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "grow cherry trees; flower pot decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic tree sapling"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry blossom pink, soft tone"
+        },
+        "primary_uses": {
+          "values": [
+            "Grow cherry blossom trees",
+            "Decorative flower pot plant",
+            "Feed to chickens and parrots"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling planting and animal feeding uses"
+        }
+      }
+    },
+    "minecraft:pitcher_pod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw seed pod from sniffer digging"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires sniffer mob to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted occasionally for decorative flowers"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "planted; grows into decorative pitcher plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic sniffer-found seed"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green pitcher plant pod appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Grow pitcher plant (tall decorative flower)",
+            "Feed to chickens and parrots"
+          ],
+          "signal": "inferred",
+          "rationale": "uses from tags and planting mechanic"
+        }
+      }
+    },
+    "minecraft:torchflower_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw seed from sniffer digging"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires sniffer mob to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted for flowers; used for sniffer breeding"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "grows torchflower; breeds sniffers"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic sniffer-found seed"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "torchflower orange-amber color"
+        },
+        "primary_uses": {
+          "values": [
+            "Grow torchflower (decorative orange flower)",
+            "Breed and feed sniffers",
+            "Feed to chickens and parrots"
+          ],
+          "signal": "inferred",
+          "rationale": "uses from tags and sniffer_food mechanic"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "spawn_interaction",
+      "value": "spawns_linked_mob",
+      "rationale": "Creaking Heart generates a mob whose existence is bound to the block's survival; none of the current values capture this paired lifecycle — 'allows_spawning' implies passive surface spawning, not active mob generation"
+    }
+  ],
+  "corrections": []
+}

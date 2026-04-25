@@ -1,0 +1,308 @@
+{
+  "items": {
+    "minecraft:raw_iron": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw ore chunk per schema disambiguation"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "smelts to iron_ingot (iron tier)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "iron smelted constantly early-mid game"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream iron ingot uses"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "raw ore chunk, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-brown raw ore texture"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt or blast to iron ingot",
+            "craft into raw iron block",
+            "iron ingot crafting precursor"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe outputs and downstream use"
+        }
+      }
+    },
+    "minecraft:ancient_debris": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "named",
+          "rationale": "schema lists ancient_debris explicitly"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "inferred",
+          "rationale": "smelts to netherite_scrap then ingot"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "inferred",
+          "rationale": "raw source of netherite tier progression"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "notoriously rare nether ore"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "precious, used sparingly for upgrades"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mined in nether; yields netherite gear"
+        },
+        "flavor": {
+          "value": "ancient",
+          "signal": "named",
+          "rationale": "Ancient in item name"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark brown/black nether ore texture"
+        },
+        "environmental_property": {
+          "values": [
+            "lava_safe",
+            "fireproof",
+            "blast_resistant_max"
+          ],
+          "signal": "inferred",
+          "rationale": "lava safe, fireproof, max blast resist"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt to netherite scrap",
+            "netherite tier equipment source",
+            "rare nether mining target"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of and tier role"
+        }
+      }
+    },
+    "minecraft:oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw tree component from world"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "oak trees ubiquitous across overworld"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "wood used constantly at all play stages"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "log structures and aesthetic building"
+        },
+        "flavor": {
+          "value": "natural",
+          "signal": "inferred",
+          "rationale": "organic tree material"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "typical medium brown oak bark texture"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "tag logs_that_burn; ignites in fire"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into oak planks",
+            "smelt to charcoal",
+            "structural log building"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of and typical usage"
+        }
+      }
+    },
+    "minecraft:cherry_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw tree component from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "biome-specific, less common than oak"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "specialty wood used when accessible"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry aesthetic structures and decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "variant wood, pink-red aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "pinkish-red cherry wood tones"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "tag logs_that_burn; ignites in fire"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into cherry planks",
+            "smelt to charcoal",
+            "cherry-aesthetic building"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of and typical usage"
+        }
+      }
+    },
+    "minecraft:bamboo": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant per schema rules"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "proliferates in jungle/bamboo biomes"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "scaffolding and bamboo blocks used often"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "scaffolding=building; panda food=farming"
+        },
+        "flavor": {
+          "value": "natural",
+          "signal": "inferred",
+          "rationale": "plant material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctly green bamboo stalks"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "plant material used as fuel"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "rationale": "tag panda_food; panda_eats_from_ground"
+        },
+        "primary_uses": {
+          "values": [
+            "craft scaffolding",
+            "bamboo wood block crafting",
+            "panda breeding and feeding",
+            "make sticks"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of and tag evidence"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

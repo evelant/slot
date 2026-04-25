@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 394874,
+  "duration_api_ms": 395838,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:azalea\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant collected from world as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"component rarity=common; found above lush caves\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use for trees or pot decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted as decor; roots indicate lush caves\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flowering bush plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green leafy bush with pink flowers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"growing azalea trees\",\n            \"potting for decoration\",\n            \"indicating lush cave below\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key player-facing uses\"\n        }\n      }\n    },\n    \"minecraft:glow_berries\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food + consumable components present\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"component rarity=common; farmable from vines\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"low nutrition; not a primary food source\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cave vine farming; glowing ceiling decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural cave plant food\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm orange glow from placed vines\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed cave vines emit light level 14\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"eating (2 nutrition, low saturation)\",\n            \"growing glowing cave vines for light\",\n            \"feeding and breeding foxes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key player-facing uses\"\n        }\n      }\n    },\n    \"minecraft:nether_wart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw nether plant harvested as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires locating a nether fortress first\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base ingredient for all potions\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"potion base; farmable; nether wart block crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether plant, organic\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark crimson-red nether plant\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"brewing awkward potions (base for all potions)\",\n            \"farming for steady brew supply\",\n            \"crafting nether wart block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key player-facing uses\"\n        }\n      }\n    },\n    \"minecraft:dragon_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"trophy\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one-per-world reward for defeating ender dragon\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no functional use; purely displayed\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as ultimate decorative trophy\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mythical end boss egg, mysterious relic\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"indigo\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark purple-black scaly texture\"\n        },\n        \"origin\": {\n          \"values\": [\"end\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns on exit portal after dragon defeat\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ultimate end-game trophy display\",\n            \"proof of ender dragon defeat\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key player-facing uses\"\n        }\n      }\n    },\n    \"minecraft:dragon_head\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"skull for display; wearable is secondary\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche skull decor and firework ingredient\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"skull placement; noteblock instrument; cosmetic wear\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"intimidating dragon skull, impressive display piece\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark grey-purple dragon coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"end_ship\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found mounted on bow of End Ships\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative skull block\",\n            \"wearable helmet piece\",\n            \"firework star (dragon shape)\",\n            \"noteblock instrument\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key player-facing uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:dragon_head\",\n      \"facet\": \"rarity\",\n      \"current\": \"unique\",\n      \"suggested\": \"rare\",\n      \"rationale\": \"Multiple per world; one per End Ship, many ships exist\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "25e6f991-ac63-4e62-af12-38258f33b3dc",
+  "total_cost_usd": 0.39645954999999994,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4001,
+    "cache_read_input_tokens": 5996,
+    "output_tokens": 25096,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4001,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 25096,
+        "cache_read_input_tokens": 5996,
+        "cache_creation_input_tokens": 4001,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4001
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3138,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0032080000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 25096,
+      "cacheReadInputTokens": 5996,
+      "cacheCreationInputTokens": 4001,
+      "webSearchRequests": 0,
+      "costUSD": 0.39325154999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "59e01d27-2ca2-4e22-bbc2-119cdf130d4f"
+}

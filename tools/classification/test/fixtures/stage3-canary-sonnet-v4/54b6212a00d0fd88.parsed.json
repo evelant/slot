@@ -1,0 +1,307 @@
+{
+  "items": {
+    "minecraft:milk_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "minecraft:consumable with drink animation + clear_all_effects",
+          "rationale": "consumable component, drink animation"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Iron bucket container"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cows abundant, easy to milk"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational effect cleansing"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Milked from cows; clears bad effects"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Animal product, organic"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "Milk is cream-white"
+        },
+        "primary_uses": {
+          "values": [
+            "Drink to clear all status effects",
+            "Ingredient for cake",
+            "Obtained by milking cows"
+          ],
+          "signal": "inferred",
+          "rationale": "Core milk bucket uses"
+        }
+      }
+    },
+    "minecraft:cake": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Placed block, eaten by right-click"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Simple farm ingredient recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Not primary food source"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Farm product; festive decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "Food item; festive/celebratory"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "Brown and cream tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Food: 7 hunger bites from one block",
+            "Decorative celebration centerpiece",
+            "Shared food for multiple players"
+          ],
+          "signal": "inferred",
+          "rationale": "Core cake uses"
+        }
+      }
+    },
+    "minecraft:arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "named",
+          "evidence": "tag minecraft:arrows",
+          "rationale": "Arrows tag; fired from bow/crossbow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Skeleton drops; easily crafted"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used each bow/crossbow shot"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Ranged weapon projectile"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Basic unadorned projectile"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "Brown/grey wood and flint"
+        },
+        "primary_uses": {
+          "values": [
+            "Bow and crossbow ammunition",
+            "Base for tipped arrow crafting",
+            "Common skeleton mob drop"
+          ],
+          "signal": "inferred",
+          "rationale": "Core arrow uses"
+        }
+      }
+    },
+    "minecraft:tipped_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "named",
+          "evidence": "tag minecraft:arrows",
+          "rationale": "Arrows tag; potion-enhanced projectile"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Needs brewing or specific mob drops"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specialized combat situational use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "Ranged combat; imbued with potions"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "Arrow variant with potion effects"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "Colored potion tip + wood shaft"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply potion effects on hit",
+            "Ranged status effect delivery",
+            "Crafted by imbuing arrows with potions"
+          ],
+          "signal": "inferred",
+          "rationale": "Core tipped arrow uses"
+        }
+      }
+    },
+    "minecraft:firework_rocket": {
+      "facets": {
+        "role": {
+          "values": [
+            "ammunition",
+            "utility"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "Crossbow ammo or elytra booster"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "Paper is base casing material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from gunpowder + paper"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Elytra users consume constantly"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "decorating",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Elytra; firework display; crossbow"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Festive; color varies with firework star"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "Colorful firework burst"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot sources; recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "Propels player via elytra"
+        },
+        "primary_uses": {
+          "values": [
+            "Boost elytra flight speed",
+            "Launch for firework display",
+            "Crossbow ammo for area damage"
+          ],
+          "signal": "inferred",
+          "rationale": "Three main uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:milk_bucket",
+      "facet": "origin",
+      "current": [
+        "trial_chamber"
+      ],
+      "suggested": [
+        "trial_chamber",
+        "overworld_surface"
+      ],
+      "rationale": "Primary source: cow milking in overworld",
+      "confidence": 0.95
+    }
+  ]
+}

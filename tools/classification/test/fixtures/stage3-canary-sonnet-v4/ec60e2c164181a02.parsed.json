@@ -1,0 +1,340 @@
+{
+  "items": {
+    "minecraft:copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full-size block used in construction"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from easily obtained copper"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper building variant"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in copper-themed builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "grate pattern=mechanical; copper variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "unoxidized copper; see-through grate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted/stonecutting; not natural gen"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "copper grate can waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "see-through copper barrier block",
+            "decorative copper structures",
+            "items fall through when dropped on top"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent grate uses"
+        }
+      }
+    },
+    "minecraft:waxed_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag = structural building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper + honeycomb; both obtainable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche waxed copper slab variant"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for half-height surfaces"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper=mechanical; cut slab=variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed stays bright copper color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "requires waxing; fully crafted"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs waterlog in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height copper building surface",
+            "permanent non-oxidizing copper surface",
+            "copper-themed architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed slab for lasting copper builds"
+        }
+      }
+    },
+    "minecraft:mangrove_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "gate is structural fence element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mangrove swamp wood is accessible"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in farms and fenced areas"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "fencing structures and animal pens"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove = natural swamp aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove planks are distinctly reddish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from mangrove planks"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wood material; is_fuel confirmed"
+        },
+        "primary_uses": {
+          "values": [
+            "openable gate in fence lines",
+            "animal pen access point",
+            "mangrove-themed building"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gate purposes"
+        }
+      }
+    },
+    "minecraft:cherry_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "button emits momentary redstone pulse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cherry wood is accessible"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in redstone circuits"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is signal generation"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry = floral/natural aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood is light pinkish tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from cherry planks"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden button; is_fuel confirmed"
+        },
+        "primary_uses": {
+          "values": [
+            "momentary redstone pulse",
+            "triggering doors, gates, and circuits",
+            "redstone circuit input"
+          ],
+          "signal": "inferred",
+          "rationale": "core button gameplay purposes"
+        }
+      }
+    },
+    "minecraft:bamboo_mosaic": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full-size decorative building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "bamboo is very abundant resource"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative bamboo block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative pattern block for builds"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mosaic=fancy; bamboo=natural"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo is light yellowish wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "bamboo material; flammable wood type"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative bamboo patterned block",
+            "bamboo-themed floor and wall builds",
+            "crafting bamboo mosaic slabs and stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative + ingredient for variants"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:bamboo_mosaic",
+      "facet": "origin",
+      "current": [
+        "overworld_surface"
+      ],
+      "suggested": [
+        "crafted_only"
+      ],
+      "rationale": "Bamboo mosaic is crafted; not naturally generated in world",
+      "confidence": 0.8
+    }
+  ]
+}

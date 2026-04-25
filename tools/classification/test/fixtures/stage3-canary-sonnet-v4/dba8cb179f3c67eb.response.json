@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 166279,
+  "duration_api_ms": 167006,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:netherite_upgrade_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"template consumed in smithing to upgrade gear tier\"\n        },\n        \"material_family\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix netherite_\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per piece, ~6-10 total per playthrough\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades gear used for combat and mining\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing templates have archaeological aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite visual identity is dark\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"upgrade diamond tools/armor to netherite\", \"single-use netherite smithing pattern\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is enabling netherite tier\"\n        }\n      }\n    },\n    \"minecraft:sentry_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed in smithing table to apply trim\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per armor piece for cosmetic trim\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies cosmetic trim pattern to armor\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing templates have archaeological aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply sentry trim pattern to armor\", \"cosmetic armor decoration ingredient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor decoration smithing template\"\n        }\n      }\n    },\n    \"minecraft:angler_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collectible archaeological find with artwork\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"loot: archaeology/ocean_ruin_warm\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rarely used; primarily collected\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in decorated pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological oceanic clay artifact\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay pottery from warm ocean ruins\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft decorated pots with angler motif\", \"collect archaeology finds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pot ingredient and collectible\"\n        }\n      }\n    },\n    \"minecraft:command_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only command executor block\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only usable by server admins and map makers\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"executes commands in automation pipelines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical automation block\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-amber block appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\", \"blast_resistant_max\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"indestructible in survival, not piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"execute server commands\", \"map making automation\", \"adventure map scripting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin command automation\"\n        }\n      }\n    },\n    \"minecraft:barrier\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only invisible blocking block\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only for map makers and admins\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to block areas during map/world building\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"invisible in-world; functionally minimal\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright red no-entry icon texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_max\", \"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"indestructible and immovable in survival\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"invisible wall for map makers\", \"block player movement invisibly\", \"adventure map boundaries\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin invisible barrier\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "51dc3157-964b-4b22-a3f8-8f7886f1b84f",
+  "total_cost_usd": 0.20447955,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4021,
+    "cache_read_input_tokens": 5996,
+    "output_tokens": 12290,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4021,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12290,
+        "cache_read_input_tokens": 5996,
+        "cache_creation_input_tokens": 4021,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4021
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3158,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0032430000000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12290,
+      "cacheReadInputTokens": 5996,
+      "cacheCreationInputTokens": 4021,
+      "webSearchRequests": 0,
+      "costUSD": 0.20123655000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "3d64090a-6d49-46e5-9522-9930e48736e8"
+}

@@ -1,0 +1,282 @@
+{
+  "items": {
+    "minecraft:bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "inferred",
+          "rationale": "crafted from 3 wheat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "basic staple food item"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream product of wheat farming"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple food, no special effects"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown baked bread tones"
+        },
+        "primary_uses": {
+          "values": [
+            "restore hunger and saturation",
+            "basic food staple",
+            "found in village and dungeon loot"
+          ],
+          "signal": "inferred",
+          "rationale": "standard food item uses"
+        }
+      }
+    },
+    "minecraft:golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "8 gold ingots in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "apple"
+          ],
+          "signal": "pattern",
+          "rationale": "apple is the core ingredient"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "costs 8 gold ingots to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "saved for emergencies or horse taming"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "healing in combat; horse taming/breeding"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-enhanced special item"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "golden visual appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "emergency healing (regen+absorption)",
+            "horse taming and breeding",
+            "curing zombie villagers"
+          ],
+          "signal": "inferred",
+          "rationale": "golden apple main uses"
+        }
+      }
+    },
+    "minecraft:enchanted_golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "gold-based enchanted apple"
+        },
+        "material_secondary": {
+          "values": [
+            "apple"
+          ],
+          "signal": "inferred",
+          "rationale": "apple is the base item"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "extremely rare loot-only item"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "powerful emergency combat healing"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "enchanted glowing golden item"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "gold with enchantment glint"
+        },
+        "primary_uses": {
+          "values": [
+            "powerful emergency healing",
+            "resistance+fire resistance buff",
+            "crafting Mojang banner pattern"
+          ],
+          "signal": "inferred",
+          "rationale": "enchanted golden apple uses"
+        }
+      }
+    },
+    "minecraft:potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "consumable drink component present"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "regularly brewed and used"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "brewed; used in combat and exploration"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical drinkable item"
+        },
+        "palette": {
+          "values": [
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "glass bottle with colored liquid"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for status effects",
+            "combat buffs and healing",
+            "brewing stand output"
+          ],
+          "signal": "inferred",
+          "rationale": "standard drinkable potion uses"
+        }
+      }
+    },
+    "minecraft:splash_potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "single-use thrown item consumed on use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used less than regular potions"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "brewed and thrown in combat"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical thrown potion"
+        },
+        "palette": {
+          "values": [
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "glass bottle with colored liquid"
+        },
+        "primary_uses": {
+          "values": [
+            "throw for area status effects",
+            "offensive combat tool",
+            "crowd control vs enemies"
+          ],
+          "signal": "inferred",
+          "rationale": "splash potion primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

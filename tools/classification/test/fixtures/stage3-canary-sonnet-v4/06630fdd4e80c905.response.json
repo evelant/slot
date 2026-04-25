@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 214557,
+  "duration_api_ms": 215243,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:lectern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds books, interactive job site block\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from slabs+bookshelf (wood)\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use; not used every session\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"trading\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"librarian site, display, comparator\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood+bookshelf organic aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm oak-toned wood body\"\n        },\n        \"origin\": {\n          \"values\": [\"village\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns in village libraries\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"hold book for reading\",\n            \"librarian villager job site\",\n            \"comparator page-number signal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core gameplay uses of lectern\"\n        }\n      }\n    },\n    \"minecraft:grindstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"repair/disenchant interactive block\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone slab primary structural component\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks+sticks in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for repairs/disenchanting\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"disenchants items, repairs weapons/tools\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone grinding wheel mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey stone with dark iron elements\"\n        },\n        \"origin\": {\n          \"values\": [\"village\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns in weaponsmith shops\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"remove enchantments (return XP)\",\n            \"repair tools/weapons without anvil\",\n            \"weaponsmith villager job site\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core grindstone interactions\"\n        }\n      }\n    },\n    \"minecraft:smoker\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"food-only furnace variant, interactive\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"furnace core (cobblestone) primary body\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_log\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"4 logs surround furnace in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every session for food cooking\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooks food; automatable with hoppers\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"utilitarian cooking block, no frills\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone+wood earthy dark tones\"\n        },\n        \"origin\": {\n          \"values\": [\"village\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns in village butcher shops\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"cook food 2x faster than furnace\",\n            \"butcher villager job site\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core smoker uses\"\n        }\n      }\n    },\n    \"minecraft:piston\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-powered block-pushing device\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks form primary face and body\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"stone\", \"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobblestone body + iron bands in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core redstone mechanism, widely used\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"push blocks for redstone/auto/build\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood+iron mechanical push device\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood face + dark iron bands\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural generation; crafted\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pistons can be pushed by other pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"push blocks/entities with redstone\",\n            \"create automated doors and gates\",\n            \"ingredient for sticky piston\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core piston gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:sticky_piston\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone piston that also pulls blocks\"\n        },\n        \"material_family\": {\n          \"value\": \"slime\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slime ball on piston; defining element\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\", \"stone\", \"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piston base materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"preferred for most redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"push+pull blocks for redstone automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical device with slime face\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green slime face + wood body\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural gen; crafted from piston\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_sticky\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pulls adjacent blocks; movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"push and pull blocks with redstone\",\n            \"retractable doors and bridges\",\n            \"precise block placement automation\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sticky piston core uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c6b9de2f-4b6a-4ed6-b11d-fce7e5980b88",
+  "total_cost_usd": 0.2636168,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 9536,
+    "output_tokens": 17200,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17200,
+        "cache_read_input_tokens": 9536,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2677,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0027470000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17200,
+      "cacheReadInputTokens": 9536,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.2608698,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4a9c5dcc-6fdd-45c4-81cd-48c53700d5ee"
+}

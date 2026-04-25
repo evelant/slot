@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 394956,
+  "duration_api_ms": 395665,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:diamond_pickaxe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _pickaxe\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs diamond-tier progression\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core mining tool; used every session\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary miner; weapon component present\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard undecorated pickaxe\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond cyan-teal color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mine stone and ores\",\n            \"break hard blocks quickly\",\n            \"upgrade to netherite pickaxe\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core diamond pickaxe uses\"\n        }\n      }\n    },\n    \"minecraft:netherite_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _sword\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether ancient_debris grind required\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary combat sword when obtained\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"sword = combat\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; smithing only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\", \"lava_safe\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:damage_resistant types #minecraft:is_fire\",\n          \"rationale\": \"item doesn't burn in fire/lava\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard netherite sword\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite dark gray-black texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"highest tier melee weapon\",\n            \"primary mob and player combat\",\n            \"fire-safe when dropped in lava\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top-tier sword uses\"\n        }\n      }\n    },\n    \"minecraft:mace\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"weapon component + handheld_mace model\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational fall-bonus mechanic\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"melee weapon; fall-bonus is combat mechanic\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy_core only from trial vault\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"epic-rarity unique weapon\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy dark metal + warm core glow\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"fall-height bonus smash damage\",\n            \"heavy melee vs armored mobs\",\n            \"trial chamber combat\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mace core use cases\"\n        }\n      }\n    },\n    \"minecraft:trident\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"drowned tag + weapon component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche weapon needing enchantments\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"melee/ranged, riptide travel, ocean use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aquatic mob drop, aquatic theme\"\n        },\n        \"palette\": {\n          \"values\": [\"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"classic aqua ocean weapon color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"melee and ranged aquatic combat\",\n            \"riptide water transportation\",\n            \"channeling lightning strikes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trident signature uses\"\n        }\n      }\n    },\n    \"minecraft:crossbow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"enchantable/crossbow tag; ranged weapon\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable + multiple loot sources\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary ranged weapon option\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ranged weapon = combat\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick-dominant crafting recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\", \"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron ingot + string in recipe\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cocking mechanism, trigger assembly\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood stock + subdued overall tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ranged combat with arrows\",\n            \"fire firework rockets for AoE\",\n            \"multishot and piercing attacks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crossbow main uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"combat_bonus\",\n      \"value\": \"fall_bonus_damage\",\n      \"rationale\": \"Mace scales damage by fall height before striking; no existing value captures this\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "bdd9749b-1324-4a58-b71d-eb3d35f5db15",
+  "total_cost_usd": 0.43784605,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5075,
+    "cache_read_input_tokens": 5996,
+    "output_tokens": 27515,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5075,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 27515,
+        "cache_read_input_tokens": 5996,
+        "cache_creation_input_tokens": 5075,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5075
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4212,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004281999999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 27515,
+      "cacheReadInputTokens": 5996,
+      "cacheCreationInputTokens": 5075,
+      "webSearchRequests": 0,
+      "costUSD": 0.43356405,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "06c180db-7645-4c6b-a39e-fc75a8f0275c"
+}

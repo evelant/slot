@@ -1,0 +1,354 @@
+{
+  "items": {
+    "minecraft:beacon": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "grants radius status effect buffs"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "5 glass blocks form beacon body"
+        },
+        "material_secondary": {
+          "values": [
+            "obsidian",
+            "nether_star"
+          ],
+          "signal": "inferred",
+          "rationale": "base=3 obsidian; core=nether_star"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "built once or twice per world"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "haste/strength/resistance buffs"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing pyramid topper, magical"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "glass body with bright light beam"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only source is crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Emit radius status effect buffs",
+            "Haste/strength source in base area",
+            "Pyramid beacon centerpiece"
+          ],
+          "signal": "inferred",
+          "rationale": "core beacon gameplay loop"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 15"
+        }
+      }
+    },
+    "minecraft:brewing_stand": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive brewing UI block"
+        },
+        "material_family": {
+          "value": "blaze_rod",
+          "signal": "inferred",
+          "rationale": "blaze rod forms the stand shaft"
+        },
+        "material_secondary": {
+          "values": [
+            "cobblestone"
+          ],
+          "signal": "inferred",
+          "rationale": "3 cobblestone form the base"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs blaze rod from nether fortress"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for mid/late potions"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is brewing potions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tripod stand with hanging bottles"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only source is crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Brew potions from ingredients",
+            "Convert water bottles to effect potions",
+            "Cleric villager job site block"
+          ],
+          "signal": "inferred",
+          "rationale": "core brewing gameplay"
+        }
+      }
+    },
+    "minecraft:enchanting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive enchanting UI block"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "signal": "inferred",
+          "rationale": "4 obsidian in recipe, forms base"
+        },
+        "material_secondary": {
+          "values": [
+            "diamond",
+            "book"
+          ],
+          "signal": "inferred",
+          "rationale": "2 diamonds + 1 book in recipe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamonds and obsidian"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for gear progression"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is enchanting items"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "floating book, runic script, glow"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "obsidian dark base, animated glow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only source is crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Enchant items using XP levels",
+            "Access random enchantment selection",
+            "Boosted by surrounding bookshelves"
+          ],
+          "signal": "inferred",
+          "rationale": "core enchanting mechanic"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 7"
+        }
+      }
+    },
+    "minecraft:anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "repair/rename/combine enchants UI"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "3 iron blocks + 4 iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "lots of iron, but iron is farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly to repair and enchant"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "combine enchants; repair combat gear"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian heavy iron block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron coloration, matte finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only source is crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Repair items with materials or XP",
+            "Combine enchanted items",
+            "Rename items with name tag"
+          ],
+          "signal": "inferred",
+          "rationale": "core anvil functions"
+        }
+      }
+    },
+    "minecraft:composter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "converts plant items to bone meal"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "7 wooden slabs, any wood type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "wooden slabs easily obtained"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in farming setups"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "composting plants; used in auto-farms"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden barrel, organic function"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural wood tones"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only source is crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Convert plant items to bone meal",
+            "Farmer villager job site block",
+            "Bone meal source for auto-farms"
+          ],
+          "signal": "inferred",
+          "rationale": "core composter functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "gravity_affected",
+      "rationale": "Anvil/sand/gravel fall when unsupported; physics behavior absent from current enum"
+    }
+  ],
+  "corrections": []
+}

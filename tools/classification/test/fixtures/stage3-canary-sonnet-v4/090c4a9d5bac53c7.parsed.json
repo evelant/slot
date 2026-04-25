@@ -1,0 +1,274 @@
+{
+  "items": {
+    "minecraft:creeper_head": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "rationale": "schema: mob heads → decorative_block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche uses: decor, disguise, crafting"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as aesthetic mob head"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob head; creeper = danger"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "creeper: muted green face texture"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:charged_creeper/creeper",
+          "rationale": "charged creeper kills creeper → drop"
+        },
+        "primary_uses": {
+          "values": [
+            "Place as mob head decoration",
+            "Wear for reduced creeper detection",
+            "Craft creeper banner pattern",
+            "Craft firework star"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes + equip + block placement"
+        }
+      }
+    },
+    "minecraft:music_disc_13": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "schema rule: music discs = curiosity"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "collector item; rarely replayed"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "disc 13: eerie ambient, minimal feel"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark disc with low-key texture"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:jukebox_playable: minecraft:13",
+          "rationale": "jukebox_playable → fits jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "Play ambient track in jukebox",
+            "Collect as rare chest loot"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox_playable + loot sources"
+        }
+      }
+    },
+    "minecraft:music_disc_creator": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "schema rule: music discs = curiosity"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "collector item; rarely replayed"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "evidence": "chests/trial_chambers/reward_ominous_unique",
+          "rationale": "ominous trial unique loot; prestigious"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "trial chamber disc: dark aesthetic"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:jukebox_playable: minecraft:creator",
+          "rationale": "jukebox_playable → fits jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "Play in jukebox",
+            "Rare ominous trial chamber trophy"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox_playable + ominous unique vault"
+        }
+      }
+    },
+    "minecraft:totem_of_undying": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "schema rule: totem = utility"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "held for emergencies; consumed on use"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "prevents death; held during combat"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical death-prevention evoker drop"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "totem is gold/amber colored"
+        },
+        "primary_uses": {
+          "values": [
+            "Prevent one lethal death when held",
+            "Survival insurance in raids/boss fights"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:death_protection component",
+          "rationale": "death_protection: survive lethal hit"
+        }
+      }
+    },
+    "minecraft:nether_star": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "boss drop; crafts beacon"
+        },
+        "material_family": {
+          "value": "nether_star",
+          "signal": "pattern",
+          "rationale": "item id is its own material name"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per beacon; rarely farmed"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "crafts beacon for base/settlement"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing boss-drop star shape"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "white glowing iridescent star"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "exclusive Wither boss kill drop"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft beacon",
+            "Wither boss kill reward"
+          ],
+          "signal": "named",
+          "evidence": "sample_ingredient_of: minecraft:beacon",
+          "rationale": "sole recipe use is beacon"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "item_blast_proof",
+      "rationale": "Item entity survives explosions; nether_star and netherite items share minecraft:damage_resistant #is_explosion — no current value captures this item-entity-level property"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "minecraft:nether_star",
+      "facet": "y_level_range",
+      "current": "nether_surface",
+      "suggested": null,
+      "rationale": "Wither summoned by player anywhere; not nether-surface loot — id pattern misfired on 'nether' substring",
+      "confidence": 0.85
+    }
+  ]
+}

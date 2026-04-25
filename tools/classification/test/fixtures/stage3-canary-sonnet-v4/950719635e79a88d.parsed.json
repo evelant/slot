@@ -1,0 +1,372 @@
+{
+  "items": {
+    "minecraft:spyglass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld zoom; not weapon/tool/armor"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "crafted from 2 copper ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "amethyst"
+          ],
+          "signal": "inferred",
+          "rationale": "amethyst shard in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper common; amethyst geodes frequent"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche scouting/observation use"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "zoom to scout terrain and mobs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted optical instrument"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "dominant copper body color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted only"
+        },
+        "primary_uses": {
+          "values": [
+            "zoom in on distant terrain or mobs",
+            "exploration and scouting aid",
+            "observe far-off entities safely"
+          ],
+          "signal": "inferred",
+          "rationale": "core spyglass gameplay purpose"
+        }
+      }
+    },
+    "minecraft:clock": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "displays day/night cycle position"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "crafted from 4 gold ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone at recipe center"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "gold common; multiple loot sources"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used mainly underground or in Nether"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "tells day/night cycle underground"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "animated timekeeping device"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-colored, warm orange-yellow"
+        },
+        "primary_uses": {
+          "values": [
+            "tells time of day underground",
+            "navigate day/night cycle in Nether",
+            "decorative gold item"
+          ],
+          "signal": "inferred",
+          "rationale": "core clock gameplay uses"
+        }
+      }
+    },
+    "minecraft:name_tag": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "applies custom names to mobs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "chest/fishing/trading; not craftable normally"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche naming and despawn prevention"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "naming farm animals; preventing despawn"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple mundane utility item"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "cream/paper-colored tag appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "name mobs to prevent natural despawn",
+            "identify pet or farm animals",
+            "use with anvil to set custom mob names"
+          ],
+          "signal": "inferred",
+          "rationale": "core name tag gameplay uses"
+        }
+      }
+    },
+    "minecraft:lead": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "leashes and guides mobs"
+        },
+        "material_family": {
+          "value": "string",
+          "signal": "inferred",
+          "rationale": "4 string in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "slime"
+          ],
+          "signal": "inferred",
+          "rationale": "slimeball in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "string and slime both farmable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational mob transport use"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "herding animals; leading mounts"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "rope-like; natural materials"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish rope appearance"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "moves mobs by leashing and leading"
+        },
+        "primary_uses": {
+          "values": [
+            "leash passive mobs to fence posts",
+            "lead livestock to farm areas",
+            "transport passive mobs across terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "core lead gameplay uses"
+        }
+      }
+    },
+    "minecraft:cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form; primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper abundant in overworld"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used actively in building projects"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs and copper aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cut/processed copper block variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "unwaxed fresh copper, warm orange"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via crafting or stonecutting"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs are piston-movable and waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "copper-themed staircase construction",
+            "architectural detail in copper builds",
+            "oxidizes 4 stages; waxable for fixed look"
+          ],
+          "signal": "inferred",
+          "rationale": "core cut copper stairs uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "piglin_loved",
+      "rationale": "piglins admire/pick up minecraft:piglin_loved items; distinct from pacifying or bartering"
+    },
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "oxidizes_over_time",
+      "rationale": "copper blocks cycle through 4 oxidation stages without waxing; unique mechanic"
+    },
+    {
+      "kind": "add_value",
+      "facet": "origin",
+      "value": "fishing",
+      "rationale": "items in minecraft:gameplay/fishing/treasure have no existing origin value"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "minecraft:name_tag",
+      "facet": "origin",
+      "current": [
+        "mineshaft",
+        "overworld_cave"
+      ],
+      "suggested": [
+        "mineshaft",
+        "overworld_cave",
+        "trading"
+      ],
+      "rationale": "master librarians trade name tags; loot-table rule missed trading",
+      "confidence": 0.75
+    },
+    {
+      "item": "minecraft:lead",
+      "facet": "origin",
+      "current": [
+        "ancient_city",
+        "archaeology_site",
+        "woodland_mansion"
+      ],
+      "suggested": [
+        "ancient_city",
+        "archaeology_site",
+        "woodland_mansion",
+        "mob_drop"
+      ],
+      "rationale": "wandering trader llamas drop leads; mob_drop missed by loot-table rule",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 243282,
+  "duration_api_ms": 244320,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:bread\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 3 wheat\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic staple food item\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream product of wheat farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple food, no special effects\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown baked bread tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore hunger and saturation\",\n            \"basic food staple\",\n            \"found in village and dungeon loot\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard food item uses\"\n        }\n      }\n    },\n    \"minecraft:golden_apple\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"8 gold ingots in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"apple\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"apple is the core ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"costs 8 gold ingots to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"saved for emergencies or horse taming\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"healing in combat; horse taming/breeding\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-enhanced special item\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden visual appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"emergency healing (regen+absorption)\",\n            \"horse taming and breeding\",\n            \"curing zombie villagers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden apple main uses\"\n        }\n      }\n    },\n    \"minecraft:enchanted_golden_apple\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-based enchanted apple\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"apple\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"apple is the base item\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"extremely rare loot-only item\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powerful emergency combat healing\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enchanted glowing golden item\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold with enchantment glint\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"powerful emergency healing\",\n            \"resistance+fire resistance buff\",\n            \"crafting Mojang banner pattern\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enchanted golden apple uses\"\n        }\n      }\n    },\n    \"minecraft:potion\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"consumable drink component present\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"regularly brewed and used\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brewed; used in combat and exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical drinkable item\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass bottle with colored liquid\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"drink for status effects\",\n            \"combat buffs and healing\",\n            \"brewing stand output\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard drinkable potion uses\"\n        }\n      }\n    },\n    \"minecraft:splash_potion\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"single-use thrown item consumed on use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used less than regular potions\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brewed and thrown in combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical thrown potion\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass bottle with colored liquid\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"throw for area status effects\",\n            \"offensive combat tool\",\n            \"crowd control vs enemies\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"splash potion primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "ee087379-808f-4efb-8530-c3e063c06e65",
+  "total_cost_usd": 0.27161709999999994,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 10567,
+    "output_tokens": 17643,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17643,
+        "cache_read_input_tokens": 10567,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3708,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003793,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17643,
+      "cacheReadInputTokens": 10567,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.26782409999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d19d2b1c-7d19-4d34-8a58-b2e26244d375"
+}

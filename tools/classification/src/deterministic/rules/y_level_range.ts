@@ -22,15 +22,27 @@ const MATCHERS: Matcher[] = [
   { test: (p) => p === "deepslate" || p === "cobbled_deepslate" || p.startsWith("deepslate_") || p.startsWith("polished_deepslate") || p.startsWith("chiseled_deepslate"), bucket: "deep" },
   // surface ores
   { test: (p) => /^[a-z_]+_ore$/.test(p) && !p.startsWith("deepslate_") && !p.startsWith("nether_"), bucket: "underground" },
-  // nether-exclusive
+  // nether-exclusive blocks/items. The previous `p.startsWith("nether_")`
+  // rule misfired on `nether_star` (a crafted item from wither drops, not a
+  // nether-surface block) — flagged by sonnet canary 2026-04-24. Be explicit
+  // about which `nether_*` ids actually live in the nether.
   {
     test: (p) =>
       p === "netherrack" ||
+      p === "nether_quartz_ore" ||
+      p === "nether_gold_ore" ||
+      p === "nether_wart" ||
+      p === "nether_wart_block" ||
+      p === "nether_bricks" || p === "nether_brick" ||
+      p.startsWith("nether_brick_") ||
+      p === "cracked_nether_bricks" ||
+      p === "chiseled_nether_bricks" ||
+      p === "red_nether_bricks" ||
+      p === "warped_nylium" || p === "crimson_nylium" ||
       p.startsWith("soul_") ||
       p.startsWith("crimson_") ||
       p.startsWith("warped_") ||
-      p.startsWith("nether_") ||
-      p === "basalt" || p.startsWith("polished_basalt") ||
+      p === "basalt" || p.startsWith("polished_basalt") || p.startsWith("smooth_basalt") ||
       p === "blackstone" || p.startsWith("polished_blackstone") || p.startsWith("chiseled_polished_blackstone") || p === "gilded_blackstone" ||
       p === "magma_block" ||
       p === "glowstone" ||

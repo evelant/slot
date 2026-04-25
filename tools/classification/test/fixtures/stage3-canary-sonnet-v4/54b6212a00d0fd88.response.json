@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 335513,
+  "duration_api_ms": 336506,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:milk_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:consumable with drink animation + clear_all_effects\",\n          \"rationale\": \"consumable component, drink animation\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Iron bucket container\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cows abundant, easy to milk\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Situational effect cleansing\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Milked from cows; clears bad effects\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Animal product, organic\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Milk is cream-white\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Drink to clear all status effects\",\n            \"Ingredient for cake\",\n            \"Obtained by milking cows\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core milk bucket uses\"\n        }\n      }\n    },\n    \"minecraft:cake\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed block, eaten by right-click\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Simple farm ingredient recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Not primary food source\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Farm product; festive decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Food item; festive/celebratory\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"ivory\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Brown and cream tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Food: 7 hunger bites from one block\",\n            \"Decorative celebration centerpiece\",\n            \"Shared food for multiple players\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core cake uses\"\n        }\n      }\n    },\n    \"minecraft:arrow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"ammunition\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:arrows\",\n          \"rationale\": \"Arrows tag; fired from bow/crossbow\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Skeleton drops; easily crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used each bow/crossbow shot\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Ranged weapon projectile\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Basic unadorned projectile\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Brown/grey wood and flint\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Bow and crossbow ammunition\",\n            \"Base for tipped arrow crafting\",\n            \"Common skeleton mob drop\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core arrow uses\"\n        }\n      }\n    },\n    \"minecraft:tipped_arrow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"ammunition\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:arrows\",\n          \"rationale\": \"Arrows tag; potion-enhanced projectile\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Needs brewing or specific mob drops\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Specialized combat situational use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Ranged combat; imbued with potions\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Arrow variant with potion effects\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Colored potion tip + wood shaft\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Apply potion effects on hit\",\n            \"Ranged status effect delivery\",\n            \"Crafted by imbuing arrows with potions\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core tipped arrow uses\"\n        }\n      }\n    },\n    \"minecraft:firework_rocket\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"ammunition\", \"utility\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crossbow ammo or elytra booster\"\n        },\n        \"material_family\": {\n          \"value\": \"paper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Paper is base casing material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from gunpowder + paper\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Elytra users consume constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"decorating\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Elytra; firework display; crossbow\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Festive; color varies with firework star\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Colorful firework burst\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"No loot sources; recipe output only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Propels player via elytra\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Boost elytra flight speed\",\n            \"Launch for firework display\",\n            \"Crossbow ammo for area damage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Three main uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:milk_bucket\",\n      \"facet\": \"origin\",\n      \"current\": [\"trial_chamber\"],\n      \"suggested\": [\"trial_chamber\", \"overworld_surface\"],\n      \"rationale\": \"Primary source: cow milking in overworld\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "4e71a9b7-4e81-4742-9738-7c90aa3f46a8",
+  "total_cost_usd": 0.3468756,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 9862,
+    "output_tokens": 22721,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 22721,
+        "cache_read_input_tokens": 9862,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3003,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003093,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 22721,
+      "cacheReadInputTokens": 9862,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.3437826,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "dd8fb6e2-753f-41e3-94da-4db47b0fb2b2"
+}

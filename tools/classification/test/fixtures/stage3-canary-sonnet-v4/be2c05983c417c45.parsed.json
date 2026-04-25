@@ -1,0 +1,339 @@
+{
+  "items": {
+    "minecraft:snowball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "throwable combat/utility projectile"
+        },
+        "material_family": {
+          "value": "snow",
+          "signal": "pattern",
+          "rationale": "obtained by breaking snow blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly thrown in combat and gathered"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "thrown at mobs; crafts snow blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw natural material from snow"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "white icy appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "throw at mobs for knockback",
+            "craft snow blocks",
+            "feed happy ghasts",
+            "bonus damage vs blazes"
+          ],
+          "signal": "inferred",
+          "rationale": "main gameplay uses"
+        }
+      }
+    },
+    "minecraft:ender_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "teleportation item, crafting ingredient"
+        },
+        "material_family": {
+          "value": "ender",
+          "signal": "pattern",
+          "rationale": "dropped by endermen, ender namespace"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used often for movement and escape"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "teleport for travel and escape"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical ender teleportation item"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark teal ender aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "teleport to thrown location",
+            "craft eye of ender",
+            "quick traversal and parkour",
+            "escape from danger"
+          ],
+          "signal": "inferred",
+          "rationale": "main gameplay uses"
+        }
+      }
+    },
+    "minecraft:chorus_fruit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has minecraft:food component"
+        },
+        "material_family": {
+          "value": "chorus_plant",
+          "signal": "pattern",
+          "rationale": "drops from chorus plant"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End-only, requires defeating dragon"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational End use"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "teleport in End, escape mobs"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "End plant with teleport on eat"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "purple chorus fruit color"
+        },
+        "primary_uses": {
+          "values": [
+            "eat to teleport randomly in End",
+            "pass through blocks via teleport",
+            "smelt to popped chorus fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses"
+        }
+      }
+    },
+    "minecraft:compass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigation tool pointing to spawn"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "crafted primarily from iron ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe requires redstone dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used early, replaced by maps"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "navigation to spawn or lodestone"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical navigation device"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron casing appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "navigate to world spawn point",
+            "link to lodestone for wayfinding",
+            "craft maps and recovery compass"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses"
+        }
+      }
+    },
+    "minecraft:recovery_compass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigate to last death location"
+        },
+        "material_family": {
+          "value": "echo_shard",
+          "signal": "inferred",
+          "rationale": "8 echo shards as primary ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "compass"
+          ],
+          "signal": "inferred",
+          "rationale": "compass in center of recipe"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used after losing items on death"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "navigate to last death point"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "echo shard ingredient from ancient city"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "teal glow on recovery compass texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted only"
+        },
+        "primary_uses": {
+          "values": [
+            "navigate to last death location",
+            "recover dropped items after death"
+          ],
+          "signal": "inferred",
+          "rationale": "sole gameplay purpose"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:snowball",
+      "facet": "origin",
+      "current": [
+        "ancient_city",
+        "mob_drop",
+        "trial_chamber",
+        "village"
+      ],
+      "suggested": [
+        "ancient_city",
+        "mob_drop",
+        "overworld_surface",
+        "trial_chamber",
+        "village"
+      ],
+      "rationale": "snow block loot = overworld_surface",
+      "confidence": 0.95
+    },
+    {
+      "item": "minecraft:ender_pearl",
+      "facet": "origin",
+      "current": [
+        "mob_drop",
+        "stronghold",
+        "trial_chamber"
+      ],
+      "suggested": [
+        "mob_drop",
+        "stronghold",
+        "trading",
+        "trial_chamber"
+      ],
+      "rationale": "piglin_bartering loot = trading origin",
+      "confidence": 0.92
+    }
+  ]
+}

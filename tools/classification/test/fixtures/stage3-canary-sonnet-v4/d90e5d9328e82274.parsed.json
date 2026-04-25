@@ -1,0 +1,379 @@
+{
+  "items": {
+    "minecraft:hopper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "automated item routing device"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "5 iron ingots dominate recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "chest (wood) required in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ubiquitous in automation setups"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "routes items between containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "funnel-shaped automated device"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron-gray appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot or spawn source"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "moves items between inventories"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer items between containers",
+            "Collect dropped items into storage",
+            "Automate item processing chains",
+            "Feed furnaces and crafting machines"
+          ],
+          "signal": "inferred",
+          "rationale": "core logistics automation block"
+        }
+      }
+    },
+    "minecraft:dropper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "redstone-activated item ejector"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "inferred",
+          "rationale": "7 cobblestone dominate recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone dust in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in automation/redstone builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ejects items via redstone signal"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-activated ejection device"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "cobblestone-gray appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot or spawn source"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "ejects items when activated"
+        },
+        "primary_uses": {
+          "values": [
+            "Eject items via redstone signal",
+            "Automate item dispensing",
+            "Component in automation pipelines",
+            "Ingredient for crafter block"
+          ],
+          "signal": "inferred",
+          "rationale": "item ejection and routing device"
+        }
+      }
+    },
+    "minecraft:observer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "detects block states, emits RS pulse"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "inferred",
+          "rationale": "6 cobblestone in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone",
+            "nether_quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone + quartz in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in auto-farms and circuits"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers pulses for farms and circuits"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "block-state detection sensor"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "cobblestone body with face texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot or spawn source"
+        },
+        "primary_uses": {
+          "values": [
+            "Detect block state changes",
+            "Emit redstone pulse on update",
+            "Automate crop and piston farms",
+            "Trigger logic on world events"
+          ],
+          "signal": "inferred",
+          "rationale": "block-change detection sensor"
+        }
+      }
+    },
+    "minecraft:repeater": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "amplifies and delays RS signals"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "3 stone in recipe base"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone dust and torches in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "vital in nearly all redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "signal relay and timing component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone timing relay device"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-gray with redstone torches"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot or spawn source"
+        },
+        "primary_uses": {
+          "values": [
+            "Amplify redstone signal strength",
+            "Delay redstone signal timing",
+            "Lock signal direction in circuits",
+            "Prevent signal decay over distance"
+          ],
+          "signal": "inferred",
+          "rationale": "core redstone signal utility"
+        }
+      }
+    },
+    "minecraft:comparator": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "compares and subtracts RS signals"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "3 stone in recipe base"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone",
+            "nether_quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone torches + quartz in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in logic and sorting systems"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "measures fill, compares signals"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "signal comparison logic device"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-gray with quartz accent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot or spawn source"
+        },
+        "primary_uses": {
+          "values": [
+            "Compare or subtract redstone signals",
+            "Measure container fill level",
+            "Build redstone logic circuits",
+            "Create item-counting systems"
+          ],
+          "signal": "inferred",
+          "rationale": "signal logic and measurement block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

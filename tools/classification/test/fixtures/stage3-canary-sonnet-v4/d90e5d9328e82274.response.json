@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 201919,
+  "duration_api_ms": 202927,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:hopper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"automated item routing device\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"5 iron ingots dominate recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest (wood) required in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ubiquitous in automation setups\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes items between containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"funnel-shaped automated device\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron-gray appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot or spawn source\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves items between inventories\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Transfer items between containers\",\n            \"Collect dropped items into storage\",\n            \"Automate item processing chains\",\n            \"Feed furnaces and crafting machines\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core logistics automation block\"\n        }\n      }\n    },\n    \"minecraft:dropper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-activated item ejector\"\n        },\n        \"material_family\": {\n          \"value\": \"cobblestone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"7 cobblestone dominate recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone dust in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in automation/redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ejects items via redstone signal\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-activated ejection device\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobblestone-gray appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot or spawn source\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ejects items when activated\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Eject items via redstone signal\",\n            \"Automate item dispensing\",\n            \"Component in automation pipelines\",\n            \"Ingredient for crafter block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"item ejection and routing device\"\n        }\n      }\n    },\n    \"minecraft:observer\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"detects block states, emits RS pulse\"\n        },\n        \"material_family\": {\n          \"value\": \"cobblestone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"6 cobblestone in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\", \"nether_quartz\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone + quartz in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in auto-farms and circuits\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers pulses for farms and circuits\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block-state detection sensor\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobblestone body with face texture\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot or spawn source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Detect block state changes\",\n            \"Emit redstone pulse on update\",\n            \"Automate crop and piston farms\",\n            \"Trigger logic on world events\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block-change detection sensor\"\n        }\n      }\n    },\n    \"minecraft:repeater\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"amplifies and delays RS signals\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 stone in recipe base\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone dust and torches in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"vital in nearly all redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"signal relay and timing component\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone timing relay device\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-gray with redstone torches\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot or spawn source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Amplify redstone signal strength\",\n            \"Delay redstone signal timing\",\n            \"Lock signal direction in circuits\",\n            \"Prevent signal decay over distance\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core redstone signal utility\"\n        }\n      }\n    },\n    \"minecraft:comparator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"compares and subtracts RS signals\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 stone in recipe base\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\", \"nether_quartz\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone torches + quartz in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in logic and sorting systems\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"measures fill, compares signals\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"signal comparison logic device\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-gray with quartz accent\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot or spawn source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Compare or subtract redstone signals\",\n            \"Measure container fill level\",\n            \"Build redstone logic circuits\",\n            \"Create item-counting systems\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"signal logic and measurement block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "22260187-9f2d-4600-89f2-2d6ceac23f95",
+  "total_cost_usd": 0.2445127,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 9529,
+    "output_tokens": 15926,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15926,
+        "cache_read_input_tokens": 9529,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2670,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002755,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15926,
+      "cacheReadInputTokens": 9529,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.2417577,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8488e2f3-ccec-482c-af8f-0fa5dacec8e5"
+}

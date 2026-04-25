@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 251112,
+  "duration_api_ms": 251800,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:beacon\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grants radius status effect buffs\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"5 glass blocks form beacon body\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"obsidian\", \"nether_star\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base=3 obsidian; core=nether_star\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"built once or twice per world\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"haste/strength/resistance buffs\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing pyramid topper, magical\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass body with bright light beam\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Emit radius status effect buffs\",\n            \"Haste/strength source in base area\",\n            \"Pyramid beacon centerpiece\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core beacon gameplay loop\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 15\"\n        }\n      }\n    },\n    \"minecraft:brewing_stand\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive brewing UI block\"\n        },\n        \"material_family\": {\n          \"value\": \"blaze_rod\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"blaze rod forms the stand shaft\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"cobblestone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 cobblestone form the base\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs blaze rod from nether fortress\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for mid/late potions\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is brewing potions\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tripod stand with hanging bottles\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Brew potions from ingredients\",\n            \"Convert water bottles to effect potions\",\n            \"Cleric villager job site block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core brewing gameplay\"\n        }\n      }\n    },\n    \"minecraft:enchanting_table\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive enchanting UI block\"\n        },\n        \"material_family\": {\n          \"value\": \"obsidian\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"4 obsidian in recipe, forms base\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"diamond\", \"book\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"2 diamonds + 1 book in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamonds and obsidian\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for gear progression\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is enchanting items\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floating book, runic script, glow\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"obsidian dark base, animated glow\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Enchant items using XP levels\",\n            \"Access random enchantment selection\",\n            \"Boosted by surrounding bookshelves\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core enchanting mechanic\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 7\"\n        }\n      }\n    },\n    \"minecraft:anvil\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"repair/rename/combine enchants UI\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 iron blocks + 4 iron ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lots of iron, but iron is farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly to repair and enchant\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combine enchants; repair combat gear\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"utilitarian heavy iron block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron coloration, matte finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Repair items with materials or XP\",\n            \"Combine enchanted items\",\n            \"Rename items with name tag\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core anvil functions\"\n        }\n      }\n    },\n    \"minecraft:composter\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"converts plant items to bone meal\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"7 wooden slabs, any wood type\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden slabs easily obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly in farming setups\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"composting plants; used in auto-farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden barrel, organic function\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural wood tones\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Convert plant items to bone meal\",\n            \"Farmer villager job site block\",\n            \"Bone meal source for auto-farms\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core composter functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"environmental_property\",\n      \"value\": \"gravity_affected\",\n      \"rationale\": \"Anvil/sand/gravel fall when unsupported; physics behavior absent from current enum\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "09b2ef09-829f-47de-bce1-364127802004",
+  "total_cost_usd": 0.33351629999999993,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3414,
+    "cache_read_input_tokens": 5996,
+    "output_tokens": 21085,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3414,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 21085,
+        "cache_read_input_tokens": 5996,
+        "cache_creation_input_tokens": 3414,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3414
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2551,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0026309999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 21085,
+      "cacheReadInputTokens": 5996,
+      "cacheCreationInputTokens": 3414,
+      "webSearchRequests": 0,
+      "costUSD": 0.33088529999999994,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7d26c69c-780e-4f67-8935-d3c6d30ee470"
+}

@@ -1,0 +1,280 @@
+{
+  "items": {
+    "minecraft:azalea": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant collected from world as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity=common; found above lush caves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use for trees or pot decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "planted as decor; roots indicate lush caves"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "flowering bush plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green leafy bush with pink flowers"
+        },
+        "primary_uses": {
+          "values": [
+            "growing azalea trees",
+            "potting for decoration",
+            "indicating lush cave below"
+          ],
+          "signal": "inferred",
+          "rationale": "key player-facing uses"
+        }
+      }
+    },
+    "minecraft:glow_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food + consumable components present"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "rationale": "component rarity=common; farmable from vines"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "low nutrition; not a primary food source"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cave vine farming; glowing ceiling decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural cave plant food"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm orange glow from placed vines"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "placed cave vines emit light level 14"
+        },
+        "primary_uses": {
+          "values": [
+            "eating (2 nutrition, low saturation)",
+            "growing glowing cave vines for light",
+            "feeding and breeding foxes"
+          ],
+          "signal": "inferred",
+          "rationale": "key player-facing uses"
+        }
+      }
+    },
+    "minecraft:nether_wart": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw nether plant harvested as-is"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires locating a nether fortress first"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "base ingredient for all potions"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "potion base; farmable; nether wart block crafting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "nether plant, organic"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark crimson-red nether plant"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing awkward potions (base for all potions)",
+            "farming for steady brew supply",
+            "crafting nether wart block"
+          ],
+          "signal": "inferred",
+          "rationale": "key player-facing uses"
+        }
+      }
+    },
+    "minecraft:dragon_egg": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "inferred",
+          "rationale": "one-per-world reward for defeating ender dragon"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "no functional use; purely displayed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as ultimate decorative trophy"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "mythical end boss egg, mysterious relic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "indigo"
+          ],
+          "signal": "inferred",
+          "rationale": "dark purple-black scaly texture"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns on exit portal after dragon defeat"
+        },
+        "primary_uses": {
+          "values": [
+            "ultimate end-game trophy display",
+            "proof of ender dragon defeat"
+          ],
+          "signal": "inferred",
+          "rationale": "key player-facing uses"
+        }
+      }
+    },
+    "minecraft:dragon_head": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "skull for display; wearable is secondary"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche skull decor and firework ingredient"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "skull placement; noteblock instrument; cosmetic wear"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "intimidating dragon skull, impressive display piece"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark grey-purple dragon coloring"
+        },
+        "origin": {
+          "values": [
+            "end_ship"
+          ],
+          "signal": "inferred",
+          "rationale": "found mounted on bow of End Ships"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative skull block",
+            "wearable helmet piece",
+            "firework star (dragon shape)",
+            "noteblock instrument"
+          ],
+          "signal": "inferred",
+          "rationale": "key player-facing uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:dragon_head",
+      "facet": "rarity",
+      "current": "unique",
+      "suggested": "rare",
+      "rationale": "Multiple per world; one per End Ship, many ships exist",
+      "confidence": 0.85
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 62611,
+  "duration_api_ms": 63444,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:structure_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only world editing block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"saves/loads structure templates\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical editor block\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche map-making tool\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structure blocks resist piston movement\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Save and load structures\", \"Map/adventure world editing\", \"Structure templates\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core structure block functions\"\n        }\n      }\n    },\n    \"minecraft:debug_stick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"debug-only tool, creative only\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical debug instrument\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dev/map-maker use only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Cycle through block states\", \"Debug block placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole debug stick functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "cea89c9d-8f6c-412a-98ae-be08a7c9c362",
+  "total_cost_usd": 0.07207155,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2073,
+    "cache_read_input_tokens": 5996,
+    "output_tokens": 4080,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2073,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 4080,
+        "cache_read_input_tokens": 5996,
+        "cache_creation_input_tokens": 2073,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2073
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1210,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00129,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 4080,
+      "cacheReadInputTokens": 5996,
+      "cacheCreationInputTokens": 2073,
+      "webSearchRequests": 0,
+      "costUSD": 0.07078155,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b43f3198-338d-47de-83c7-0529557080af"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 317570,
+  "duration_api_ms": 318306,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:copper_grate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full-size block used in construction\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from easily obtained copper\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche copper building variant\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in copper-themed builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grate pattern=mechanical; copper variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unoxidized copper; see-through grate\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted/stonecutting; not natural gen\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper grate can waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"see-through copper barrier block\",\n            \"decorative copper structures\",\n            \"items fall through when dropped on top\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transparent grate uses\"\n        }\n      }\n    },\n    \"minecraft:waxed_cut_copper_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab tag = structural building element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper + honeycomb; both obtainable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche waxed copper slab variant\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for half-height surfaces\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper=mechanical; cut slab=variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed stays bright copper color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires waxing; fully crafted\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs waterlog in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height copper building surface\",\n            \"permanent non-oxidizing copper surface\",\n            \"copper-themed architectural detail\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed slab for lasting copper builds\"\n        }\n      }\n    },\n    \"minecraft:mangrove_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gate is structural fence element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove swamp wood is accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in farms and fenced areas\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fencing structures and animal pens\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove = natural swamp aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove planks are distinctly reddish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from mangrove planks\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wood material; is_fuel confirmed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"openable gate in fence lines\",\n            \"animal pen access point\",\n            \"mangrove-themed building\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence gate purposes\"\n        }\n      }\n    },\n    \"minecraft:cherry_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"button emits momentary redstone pulse\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood is accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in redstone circuits\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is signal generation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry = floral/natural aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood is light pinkish tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from cherry planks\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wooden button; is_fuel confirmed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"momentary redstone pulse\",\n            \"triggering doors, gates, and circuits\",\n            \"redstone circuit input\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core button gameplay purposes\"\n        }\n      }\n    },\n    \"minecraft:bamboo_mosaic\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full-size decorative building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo is very abundant resource\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative bamboo block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative pattern block for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mosaic=fancy; bamboo=natural\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo is light yellowish wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"bamboo material; flammable wood type\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative bamboo patterned block\",\n            \"bamboo-themed floor and wall builds\",\n            \"crafting bamboo mosaic slabs and stairs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative + ingredient for variants\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:bamboo_mosaic\",\n      \"facet\": \"origin\",\n      \"current\": [\"overworld_surface\"],\n      \"suggested\": [\"crafted_only\"],\n      \"rationale\": \"Bamboo mosaic is crafted; not naturally generated in world\",\n      \"confidence\": 0.8\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "825d3f85-4fd3-4f76-98a0-21eefac54830",
+  "total_cost_usd": 0.3794647,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 10669,
+    "output_tokens": 24825,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 24825,
+        "cache_read_input_tokens": 10669,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3810,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00388,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 24825,
+      "cacheReadInputTokens": 10669,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.3755847,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "fd10780b-1ea0-4f3d-9a1d-fd22a71e55dd"
+}

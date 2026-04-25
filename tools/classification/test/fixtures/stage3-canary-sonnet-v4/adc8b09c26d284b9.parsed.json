@@ -1,0 +1,289 @@
+{
+  "items": {
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "id suffix _pickaxe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs diamond-tier progression"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core mining tool; used every session"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary miner; weapon component present"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard undecorated pickaxe"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond cyan-teal color"
+        },
+        "primary_uses": {
+          "values": [
+            "mine stone and ores",
+            "break hard blocks quickly",
+            "upgrade to netherite pickaxe"
+          ],
+          "signal": "inferred",
+          "rationale": "core diamond pickaxe uses"
+        }
+      }
+    },
+    "minecraft:netherite_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "id suffix _sword"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "nether ancient_debris grind required"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary combat sword when obtained"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "sword = combat"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; smithing only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types #minecraft:is_fire",
+          "rationale": "item doesn't burn in fire/lava"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard netherite sword"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite dark gray-black texture"
+        },
+        "primary_uses": {
+          "values": [
+            "highest tier melee weapon",
+            "primary mob and player combat",
+            "fire-safe when dropped in lava"
+          ],
+          "signal": "inferred",
+          "rationale": "top-tier sword uses"
+        }
+      }
+    },
+    "minecraft:mace": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "weapon component + handheld_mace model"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational fall-bonus mechanic"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "melee weapon; fall-bonus is combat mechanic"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "heavy_core only from trial vault"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "epic-rarity unique weapon"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "heavy dark metal + warm core glow"
+        },
+        "primary_uses": {
+          "values": [
+            "fall-height bonus smash damage",
+            "heavy melee vs armored mobs",
+            "trial chamber combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mace core use cases"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "drowned tag + weapon component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche weapon needing enchantments"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "melee/ranged, riptide travel, ocean use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic mob drop, aquatic theme"
+        },
+        "palette": {
+          "values": [
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "classic aqua ocean weapon color"
+        },
+        "primary_uses": {
+          "values": [
+            "melee and ranged aquatic combat",
+            "riptide water transportation",
+            "channeling lightning strikes"
+          ],
+          "signal": "inferred",
+          "rationale": "trident signature uses"
+        }
+      }
+    },
+    "minecraft:crossbow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "enchantable/crossbow tag; ranged weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable + multiple loot sources"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary ranged weapon option"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "ranged weapon = combat"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "stick-dominant crafting recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "iron",
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ingot + string in recipe"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cocking mechanism, trigger assembly"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "wood stock + subdued overall tones"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat with arrows",
+            "fire firework rockets for AoE",
+            "multishot and piercing attacks"
+          ],
+          "signal": "inferred",
+          "rationale": "crossbow main uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "combat_bonus",
+      "value": "fall_bonus_damage",
+      "rationale": "Mace scales damage by fall height before striking; no existing value captures this"
+    }
+  ],
+  "corrections": []
+}

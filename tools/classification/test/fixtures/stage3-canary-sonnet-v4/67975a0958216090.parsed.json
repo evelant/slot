@@ -1,0 +1,270 @@
+{
+  "items": {
+    "minecraft:redstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form; schema lists dusts as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core ingredient for redstone circuits"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "circuits, dispensers, droppers, crafters"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mineral dust from ore"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright crimson-red mineral dust"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone circuitry and logic",
+            "crafting clocks and compasses",
+            "dispenser and dropper crafting",
+            "armor trimming via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from recipe and component data"
+        }
+      }
+    },
+    "minecraft:coal": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "drops from ore as-is, raw fuel"
+        },
+        "material_family": {
+          "value": "coal",
+          "signal": "pattern",
+          "rationale": "id is minecraft:coal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary furnace fuel, constant demand"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "torches for light; cave exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mineral chunk, no embellishment"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "black/dark grey coal"
+        },
+        "primary_uses": {
+          "values": [
+            "furnace and smelting fuel",
+            "crafting torches and campfires",
+            "fire charge crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from recipe sample"
+        }
+      }
+    },
+    "minecraft:emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gem form; schema lists gems as material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "biome-locked ore; requires trade effort"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core villager trading currency"
+        },
+        "activity": {
+          "values": [
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is villager economy"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "lustrous gemstone"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "bright green gem"
+        },
+        "primary_uses": {
+          "values": [
+            "villager trading currency",
+            "beacon payment",
+            "armor trimming via smithing",
+            "emerald block crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from recipe and tag data"
+        }
+      }
+    },
+    "minecraft:amethyst_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "shard form; schema lists shards as material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "geodes common in caves, farmable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific crafts, not daily"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "sculk sensor craft; amethyst decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "crystalline gem from geode"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "purple translucent crystal"
+        },
+        "primary_uses": {
+          "values": [
+            "calibrated sculk sensor crafting",
+            "allay duplication",
+            "armor trimming via smithing",
+            "amethyst block crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from recipe and tag data"
+        }
+      }
+    },
+    "minecraft:slime_ball": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed organic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "slimes in swamps and slime chunks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "key for sticky piston, not daily use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "sticky piston; slime block construction"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob drop material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "glossy"
+          ],
+          "signal": "inferred",
+          "rationale": "bright green gel-like appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "sticky piston crafting",
+            "slime block crafting",
+            "magma cream crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "all recipe outputs from data"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

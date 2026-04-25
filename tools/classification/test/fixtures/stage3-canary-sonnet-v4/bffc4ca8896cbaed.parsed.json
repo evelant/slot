@@ -1,0 +1,79 @@
+{
+  "items": {
+    "minecraft:structure_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only world editing block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "saves/loads structure templates"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical editor block"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche map-making tool"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "structure blocks resist piston movement"
+        },
+        "primary_uses": {
+          "values": [
+            "Save and load structures",
+            "Map/adventure world editing",
+            "Structure templates"
+          ],
+          "signal": "inferred",
+          "rationale": "core structure block functions"
+        }
+      }
+    },
+    "minecraft:debug_stick": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "debug-only tool, creative only"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical debug instrument"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "dev/map-maker use only"
+        },
+        "primary_uses": {
+          "values": [
+            "Cycle through block states",
+            "Debug block placement"
+          ],
+          "signal": "inferred",
+          "rationale": "sole debug stick functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}
