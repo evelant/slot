@@ -72,7 +72,11 @@ const TOOL_ARMOR_SUFFIXES = [
 ] as const;
 
 const TOOL_ARMOR_MATERIAL_PREFIX: Record<string, string> = {
-  wooden: "wood_oak",
+  // `wooden_*` tools accept any plank in the recipe, not specifically oak;
+  // emit the generic `wood` family rather than `wood_oak`. Sonnet-v4 canary
+  // flagged this — the previous wood_oak claim was wrong for half the times
+  // a player would craft a wooden_pickaxe out of birch/spruce/etc. planks.
+  wooden: "wood",
   stone: "stone",
   iron: "iron",
   golden: "gold",

@@ -44,6 +44,9 @@ const MATCHERS: Matcher[] = [
   // gameplay tables
   { test: (p) => p.startsWith("gameplay/hero_of_the_village"), origin: "village" },
   { test: (p) => p.startsWith("gameplay/sniffer"), origin: "sniffer_garden" },
+  { test: (p) => p.startsWith("gameplay/piglin_bartering"), origin: "trading" },
+  { test: (p) => p.startsWith("gameplay/villagers"), origin: "trading" },
+  { test: (p) => p.startsWith("gameplay/fishing"), origin: "fishing" },
   // pots / spawners / dispensers — treat pots as trial chambers.
   { test: (p) => p.startsWith("pots/trial_chambers"), origin: "trial_chamber" },
   { test: (p) => p.startsWith("dispensers/trial_chambers"), origin: "trial_chamber" },
@@ -65,7 +68,9 @@ const MATCHERS: Matcher[] = [
       p.startsWith("blocks/end_") ||
       p.startsWith("blocks/purpur") ||
       p === "blocks/chorus_plant" ||
-      p === "blocks/chorus_flower",
+      p === "blocks/chorus_flower" ||
+      p === "blocks/dragon_head" ||
+      p === "blocks/dragon_egg",
     origin: "end",
   },
   // nether-exclusive blocks (netherrack, soul_*, nether_*, crimson_*, warped_*, …)
@@ -77,33 +82,80 @@ const MATCHERS: Matcher[] = [
   // overworld ores (iron_ore, gold_ore, copper_ore, coal_ore …) → caves.
   { test: (p) => /^blocks\/[a-z_]+_ore$/.test(p), origin: "overworld_cave" },
   // overworld-surface plant drops: leaves/logs/saplings/propagules from surface trees,
-  // crops, berries, bamboo, kelp, cactus, flowers, grass.
+  // crops, berries, bamboo, kelp, cactus, flowers, grass, plus snow blocks
+  // (snowballs drop from snow/snow_block — flagged by sonnet-v4 canary).
+  // The plant patterns use `^...$` (exact match) so we don't accidentally
+  // match `blocks/bamboo_mosaic` (a crafted item) under "bamboo" — also
+  // a sonnet-v4 canary catch.
   {
     test: (p) =>
       /^blocks\/(oak|birch|spruce|jungle|acacia|dark_oak|pale_oak|mangrove|cherry|azalea|flowering_azalea)_(log|wood|leaves|sapling|propagule)$/.test(p) ||
       /^blocks\/(short|tall)_grass$/.test(p) ||
-      /^blocks\/(cactus|sugar_cane|wheat|beetroots|carrots|potatoes|pumpkin|melon|bamboo|kelp|sweet_berry_bush|glow_berries|pitcher_crop|torchflower_crop|sunflower|dandelion|poppy|cornflower|lily_of_the_valley|rose_bush|peony|lilac|bluebell|wildflowers|oxeye_daisy|allium|azure_bluet|blue_orchid|orange_tulip|white_tulip|pink_tulip|red_tulip)/.test(p),
+      /^blocks\/(snow|snow_block|powder_snow)$/.test(p) ||
+      /^blocks\/(cactus|sugar_cane|wheat|beetroots|carrots|potatoes|pumpkin|melon|bamboo|kelp|sweet_berry_bush|glow_berries|sunflower|dandelion|poppy|cornflower|lily_of_the_valley|rose_bush|peony|lilac|bluebell|wildflowers|oxeye_daisy|allium|azure_bluet|blue_orchid|orange_tulip|white_tulip|pink_tulip|red_tulip)$/.test(p) ||
+      /^blocks\/(pitcher_crop|torchflower_crop|pitcher_plant|torchflower)$/.test(p),
     origin: "overworld_surface",
   },
-  // remaining blocks/* drops (cobblestone, stone, gravel, obsidian, ice, snow, dirt, …)
+  // remaining blocks/* drops (cobblestone, stone, gravel, obsidian, ice, dirt, …)
   // are too varied to pin without a y-level/biome map — skip rather than guess.
 ];
+
+/**
+ * Items obtained primarily through hardcoded game interactions that don't show
+ * up in any loot table — the rule can't see them otherwise. Keep this list
+ * tight: only add items where the loot tables we DO see give an incomplete or
+ * misleading picture of where the player gets the item.
+ */
+const HARDCODED_INTERACTION_ORIGINS: Record<string, readonly string[]> = {
+  // Right-clicking a cow with an empty bucket. Loot tables only show
+  // milk_bucket in trial chamber chests (which is correct but minor) —
+  // nearly every player gets it from milking, in the overworld.
+  "minecraft:milk_bucket": ["overworld_surface"],
+  // Wandering trader llamas drop their lead on death; in 1.21+ this is
+  // hardcoded behaviour rather than a loot-table entry, so we add it here.
+  "minecraft:lead": ["mob_drop"],
+};
 
 export const originRule: Rule = {
   id: "origin",
   facets: ["origin"],
   run({ record }) {
     const origins = new Set<string>();
-    for (const tableId of record.loot_table_sources) {
-      const colon = tableId.indexOf(":");
-      const path = colon >= 0 ? tableId.slice(colon + 1) : tableId;
-      for (const m of MATCHERS) {
-        if (m.test(path)) {
-          origins.add(m.origin);
-          break;
+    const sources = record.loot_table_sources;
+    const colonId = `${record.namespace}:`;
+    const selfPaths = new Set([`blocks/${record.path}`, `blocks/${record.id.replace(colonId, "")}`]);
+
+    // Self-drop-only detection: when the only loot table for an item is
+    // `blocks/<self_id>` (the block dropping itself when broken), the item
+    // is crafted/placed rather than naturally generated. Emit `crafted_only`
+    // unless we have a more specific signal.
+    const onlySelfDrop =
+      sources.length > 0 &&
+      sources.every((tableId) => {
+        const colon = tableId.indexOf(":");
+        const path = colon >= 0 ? tableId.slice(colon + 1) : tableId;
+        return selfPaths.has(path);
+      });
+    if (onlySelfDrop && !MATCHES_KNOWN_ORIGIN(sources, record.namespace)) {
+      origins.add("crafted_only");
+    } else {
+      for (const tableId of sources) {
+        const colon = tableId.indexOf(":");
+        const path = colon >= 0 ? tableId.slice(colon + 1) : tableId;
+        for (const m of MATCHERS) {
+          if (m.test(path)) {
+            origins.add(m.origin);
+            break;
+          }
         }
       }
     }
+
+    // Hardcoded interaction origins for items the loot-table data misses.
+    for (const o of HARDCODED_INTERACTION_ORIGINS[record.id] ?? []) {
+      origins.add(o);
+    }
+
     if (origins.size === 0) return [];
 
     return [
@@ -118,3 +170,18 @@ export const originRule: Rule = {
     ];
   },
 };
+
+/** True when at least one of the item's loot tables matches a known
+ *  origin matcher. Used to decide if a self-drop-only item still has a
+ *  meaningful world origin (e.g. dragon_head drops from itself but is
+ *  also tagged via the end-block matcher elsewhere). */
+function MATCHES_KNOWN_ORIGIN(sources: readonly string[], namespace: string): boolean {
+  const ns = `${namespace}:`;
+  for (const tableId of sources) {
+    const path = tableId.startsWith(ns) ? tableId.slice(ns.length) : tableId;
+    for (const m of MATCHERS) {
+      if (m.test(path)) return true;
+    }
+  }
+  return false;
+}
