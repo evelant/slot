@@ -163,6 +163,18 @@ Manual playtest deferred — verify in-game that:
 - submitting a search pops matches
 - pickups don't make the atlas convulse mid-session
 
+Known Phase-2.1 limitation: with `relevanceLift = 1.5f`, a max-relevance
+carried card is ~75 px wide. Authored islands narrower than ~85 px
+(card + padding) will have content overflow the chrome bounds. Phase
+2.2's auto-square layout fixes this by sizing islands to their
+content. Until then, don't author tiny islands.
+
+Known Phase-2.1 visual quirk: items follow their authored island
+position exactly. After Phase 2.2 the atlas-level packer reactivates
+and islands auto-arrange — that's where the design's "constellation
+auto-organizes around what's relevant" feel comes from. Phase 2.1
+keeps player-authored island arrangement as a transitional fallback.
+
 ### Phase 2.2 (next) — Ordinal drag-drop + auto-square islands
 
 The transitional `localX/localY`-as-sort-key path works but the data
@@ -188,6 +200,17 @@ Data-model changes:
 - `VisualHomeAssignment` gains `int ordinal`. Drops `localX` and
   `localY` entirely — they're meaningless under the ordinal model
   and we're carrying the freeform-coordinate baggage long enough.
+  **Plain numeric ordinal**, not a linked list and not fractional /
+  sparse ordinals. Considered both:
+  - Linked list (prev/next per assignment): O(1) inserts but every
+    render is a traversal walk, plus corruption recovery if a link
+    breaks. Not worth it at our scale (max ~50 items per island).
+  - Fractional / sparse (1.0, 2.0, 2.5 to insert between): O(1)
+    inserts without breaking the map shape, but introduces
+    rebalancing concerns. Solving a problem we don't have.
+  - Plain numeric (chosen): O(items_in_island) rewrite on insert.
+    Persistence is whole-workflow-file anyway, so disk cost is the
+    same whether one record or fifty changes.
 - One-shot migration on workflow-domain load: group existing
   assignments by `islandId`, sort by `(localY, localX, identity)`,
   assign ordinals `0..N-1`. Persist the migrated form. No transitional
