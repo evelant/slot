@@ -99,6 +99,40 @@ export class ClaudeCliClient implements LlmClient {
     stdin: string;
     options: QueryOptions;
   }): Promise<string> {
+    // Long classification batches occasionally hit transient upstream errors
+    // ("API Error: terminated", "An unexpected error occurred while processing
+    // the response"). They resolve on retry. Hard rate-limit (429) is NOT
+    // retried here — it requires waiting hours, and the caller is better
+    // positioned to schedule that.
+    const maxAttempts = 3;
+    const backoffSchedule = [5_000, 15_000];
+    let lastError: Error | null = null;
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        return await this.spawnOnce(opts);
+      } catch (err) {
+        lastError = err as Error;
+        const cls = classifyError(lastError.message);
+        if (cls === "rate_limit" || cls === "fatal" || attempt === maxAttempts) {
+          throw lastError;
+        }
+        const wait = backoffSchedule[attempt - 1] ?? 15_000;
+        console.warn(
+          `[claude-cli] transient error on attempt ${attempt}/${maxAttempts} (${cls}); retrying in ${wait}ms: ${lastError.message.slice(0, 160)}`,
+        );
+        await sleep(wait);
+      }
+    }
+    // Unreachable — the loop either returns or rethrows.
+    throw lastError!;
+  }
+
+  private async spawnOnce(opts: {
+    args: string[];
+    env: Record<string, string>;
+    stdin: string;
+    options: QueryOptions;
+  }): Promise<string> {
     const bin = opts.options.claudeBinary ?? "claude";
     // 30 min default — Haiku batches of 20 items finish in 2–3 min but
     // Sonnet 4.6 routinely takes 7+ min on the first batch (cache warm-up
@@ -136,6 +170,55 @@ export class ClaudeCliClient implements LlmClient {
       child.stdin.end(opts.stdin);
     });
   }
+}
+
+/**
+ * Classify a `claude -p` failure message into one of three buckets so the
+ * retry loop knows whether to back off and retry, give up immediately, or
+ * surface a true rate-limit unchanged. We sniff the embedded envelope JSON
+ * (claude -p prints its full result envelope into stderr/stdout when
+ * --output-format=json), not just the human-readable error string.
+ */
+type ErrorClass = "rate_limit" | "transient" | "fatal";
+function classifyError(msg: string): ErrorClass {
+  // Pull out the embedded JSON envelope if present.
+  const start = msg.indexOf("{");
+  const end = msg.lastIndexOf("}");
+  let envelope: { api_error_status?: number | null; result?: string } | null = null;
+  if (start >= 0 && end > start) {
+    try {
+      envelope = JSON.parse(msg.slice(start, end + 1));
+    } catch {
+      envelope = null;
+    }
+  }
+  const result = envelope?.result ?? "";
+  // Hard rate limit (5h subscription cap). Not retryable — the reset is hours
+  // away and the caller decides whether to wait.
+  if (envelope?.api_error_status === 429) return "rate_limit";
+  if (/hit your limit|rate.?limit/i.test(result)) return "rate_limit";
+  // Known transient patterns observed across long runs.
+  if (
+    result.includes("API Error: terminated") ||
+    result.includes("unexpected error occurred while processing the response") ||
+    result.includes("Connection error") ||
+    result.includes("Overloaded") ||
+    result.includes("502 Bad Gateway") ||
+    result.includes("503 Service Unavailable") ||
+    result.includes("504 Gateway Timeout")
+  ) {
+    return "transient";
+  }
+  // is_error=true with no clear pattern — treat as transient (one retry can't
+  // hurt) unless the envelope explicitly carries a non-retryable status.
+  if (envelope && (envelope as { is_error?: boolean }).is_error) return "transient";
+  // No parseable envelope: this is some lower-level failure (process spawn,
+  // bad bin, signal). Don't retry; surface it.
+  return "fatal";
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /**
