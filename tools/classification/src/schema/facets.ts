@@ -95,6 +95,8 @@ export const SPAWN_INTERACTION_VALUES = [
   "blocks_monster_spawn", "allows_spawning", "damages_entities",
   "mob_transport", "mob_launcher", "suffocates_mobs", "repels_mobs",
   "attracts_mobs",
+  // sonnet-v4 canary
+  "spawns_linked_mob",
 ] as const;
 
 export const COMBAT_BONUS_VALUES = [
@@ -102,6 +104,8 @@ export const COMBAT_BONUS_VALUES = [
   "boss:ender_dragon", "boss:warden", "boss:wither", "boss:elder_guardian",
   "inflicts_poison", "inflicts_slowness", "inflicts_weakness", "inflicts_wither",
   "bonus_in_water", "bonus_in_daylight",
+  // sonnet-v4 canary
+  "fall_bonus_damage",
 ] as const;
 
 export const ENVIRONMENTAL_PROPERTY_VALUES = [
@@ -114,6 +118,13 @@ export const ENVIRONMENTAL_PROPERTY_VALUES = [
   "slippery", "slows_walking", "bounces",
   "emits_light", "emits_light_underwater",
   "waterlogs", "floats", "sinks",
+  // sonnet-v4 canary additions
+  "gravity_affected",       // anvil/sand/gravel — fall when unsupported
+  "piglin_loved",           // gold items — piglins admire/pick up
+  "oxidizes_over_time",     // unwaxed copper variants
+  "item_blast_proof",       // item entity survives explosions (nether_star, netherite)
+  "freeze_immune_when_worn", // leather armor — prevents powder snow freeze
+  "powder_snow_walkable",   // leather boots — walk on powder snow
 ] as const;
 
 export const TRANSPORT_MEDIUM_VALUES = [
@@ -186,6 +197,8 @@ export const ORIGIN_VALUES = [
   "jungle_temple", "ocean_monument", "mineshaft",
   "trading", "mob_drop", "archaeology_site", "sniffer_garden",
   "crafted_only",
+  // sonnet-v4 canary
+  "fishing",
 ] as const;
 
 const RARITY_VALUES = ["abundant", "common", "uncommon", "rare", "unique"] as const;

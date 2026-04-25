@@ -408,30 +408,108 @@ async function executeStage3(
     process.exit(1);
   }
   writeFileSync(completePath, JSON.stringify(result.layer, null, 2) + "\n");
-  console.log(`[stage3] wrote ${completePath}`);
-  console.log(`[stage3] filled ${result.filledItems} items; coverage added:`);
-  const facets = Object.keys(result.coverageAdded).sort(
-    (a, b) => result.coverageAdded[b]! - result.coverageAdded[a]!,
-  );
-  for (const facet of facets) {
-    console.log(`  ${facet.padEnd(22)} ${String(result.coverageAdded[facet]).padStart(5)}`);
-  }
+
+  // Persist proposals/corrections to dedicated files (only when non-empty,
+  // so the report can list exactly what's on disk and what's worth opening).
+  const writtenFiles: { path: string; description: string }[] = [];
+  writtenFiles.push({ path: completePath, description: "merged layer (stage 2 + stage 3)" });
+
   if (result.proposals.length) {
-    console.log(`[stage3] ${result.proposals.length} schema proposals (review before schema v2):`);
-    for (const p of result.proposals.slice(0, 10)) console.log(`  ${JSON.stringify(p)}`);
+    const proposalsPath = completePath.replace(/\.complete\.json$/, ".schema-proposals.json");
+    writeFileSync(proposalsPath, JSON.stringify(result.proposals, null, 2) + "\n");
+    writtenFiles.push({
+      path: proposalsPath,
+      description: `${result.proposals.length} schema proposal(s) — values/facets the LLM wanted but couldn't find in the schema`,
+    });
   }
   if (result.corrections.length) {
     const correctionsPath = completePath.replace(/\.complete\.json$/, ".corrections.json");
     writeFileSync(correctionsPath, JSON.stringify(result.corrections, null, 2) + "\n");
-    console.log(`[stage3] ${result.corrections.length} stage-2 corrections flagged by LLM — ${correctionsPath}`);
-    for (const c of result.corrections.slice(0, 10)) {
-      console.log(`  ${c.item} ${c.facet}: current='${c.current}' → suggested='${c.suggested}' (${c.confidence ?? "?"}): ${c.rationale}`);
-    }
+    writtenFiles.push({
+      path: correctionsPath,
+      description: `${result.corrections.length} stage-2 correction(s) flagged by the LLM — review and patch the rule files if valid`,
+    });
+  }
+
+  // ===== End-of-run report =====
+  const sep = "=".repeat(72);
+  console.log("");
+  console.log(sep);
+  console.log("Stage 3 run complete");
+  console.log(sep);
+
+  console.log("");
+  console.log("Coverage added (LLM-authored facets, sorted by frequency):");
+  const facets = Object.keys(result.coverageAdded).sort(
+    (a, b) => result.coverageAdded[b]! - result.coverageAdded[a]!,
+  );
+  for (const facet of facets) {
+    console.log(`  ${facet.padEnd(24)} ${String(result.coverageAdded[facet]).padStart(5)}`);
+  }
+  console.log(`  (filled ${result.filledItems} items total)`);
+
+  console.log("");
+  console.log(`Output files (${writtenFiles.length}):`);
+  for (const f of writtenFiles) {
+    console.log(`  ${f.path}`);
+    console.log(`    ${f.description}`);
+  }
+
+  // ----- Review queue: things a curator should look at before shipping -----
+  const reviewItems: { kind: string; summary: string; detail?: string[]; path?: string }[] = [];
+  if (result.corrections.length) {
+    reviewItems.push({
+      kind: "STAGE-2 CORRECTIONS",
+      summary: `${result.corrections.length} item(s) where the LLM thinks a deterministic stage-2 facet is wrong`,
+      detail: result.corrections.slice(0, 10).map((c) =>
+        `${c.item} ${c.facet}: '${c.current}' → '${c.suggested}'  (${(c.confidence ?? 0).toFixed(2)}) — ${c.rationale}`,
+      ),
+      path: completePath.replace(/\.complete\.json$/, ".corrections.json"),
+    });
+  }
+  if (result.proposals.length) {
+    reviewItems.push({
+      kind: "SCHEMA PROPOSALS",
+      summary: `${result.proposals.length} proposal(s) — values or facets the LLM wanted but couldn't find`,
+      detail: result.proposals.slice(0, 10).map((p) => {
+        if (p.kind === "add_value") {
+          return `add_value  ${p.facet}: '${p.value}' — ${p.rationale}`;
+        }
+        if (p.kind === "add_facet") {
+          return `add_facet  ${p.name} (${p.suggested_kind}) — ${p.rationale}`;
+        }
+        return JSON.stringify(p);
+      }),
+      path: completePath.replace(/\.complete\.json$/, ".schema-proposals.json"),
+    });
   }
   if (result.warnings.length) {
-    console.log(`[stage3] ${result.warnings.length} warnings:`);
-    for (const w of result.warnings.slice(0, 10)) console.log(`  ${w}`);
+    reviewItems.push({
+      kind: "WARNINGS",
+      summary: `${result.warnings.length} warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)`,
+      detail: result.warnings.slice(0, 5),
+    });
   }
+
+  console.log("");
+  if (reviewItems.length === 0) {
+    console.log("Review queue: clean — no proposals, corrections, or warnings.");
+  } else {
+    console.log(`Review queue (${reviewItems.length} section(s)):`);
+    for (const r of reviewItems) {
+      console.log("");
+      console.log(`  ${r.kind} — ${r.summary}`);
+      if (r.path) console.log(`    file: ${r.path}`);
+      if (r.detail?.length) {
+        for (const d of r.detail) console.log(`      • ${d}`);
+        if ((r.detail.length === 10 || r.detail.length === 5) && r.path) {
+          console.log(`      … (full list in ${r.path})`);
+        }
+      }
+    }
+  }
+  console.log("");
+  console.log(sep);
 }
 
 /**
