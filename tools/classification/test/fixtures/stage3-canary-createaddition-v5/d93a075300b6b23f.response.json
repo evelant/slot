@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 122807,
+  "duration_api_ms": 123577,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"createaddition:accumulator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores FE electrical energy like a battery\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mod machine block, requires crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core to any electric power network\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"FE energy buffer for electric systems\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create-style industrial machine aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"typical Create machine block coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, mod machine block\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy accumulator = electricity subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"store FE electrical energy\", \"buffer power supply fluctuations\", \"connect to electric machine network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"accumulator = energy storage device\"\n        }\n      }\n    },\n    \"createaddition:alternator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"converts rotational SU to FE electricity\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires create:mechanical_crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"essential for kinetic-to-electric setups\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates FE from Create rotational force\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create electromechanical converter\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy_conversion\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"kinetic→electric conversion device\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"convert rotational force to FE\", \"power electric machines from Create network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"alternator name = kinetic to electric\"\n        }\n      }\n    },\n    \"createaddition:barbed_wire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"damages entities on contact\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shaped crafting, iron-based material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche defensive use case\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"defensive perimeter, placeable block\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"metal wire, industrial unstyled look\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"metallic wire, unsaturated tone\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"barbed wire hurts on contact\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"mob-damage perimeter fence\", \"decorative industrial fencing\", \"contact damage trap\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"barbed wire = contact damage fence\"\n        }\n      }\n    },\n    \"createaddition:bioethanol\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed liquid fuel, refined via mixing\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable organic inputs, mixing recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed regularly as biofuel\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"burned in combustion generators\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bio-organic origin liquid\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced via create:mixing only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:biofuel\"],\n          \"signal\": \"named\",\n          \"rationale\": \"id bioethanol matches biofuel vocab\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fuel for combustion generator\", \"fill into bioethanol bucket\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biofuel = power generation feedstock\"\n        }\n      }\n    },\n    \"createaddition:bioethanol_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucketed fuel, consumed for power\"\n        },\n        \"material_family\": {\n          \"value\": \"bioethanol\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix before _bucket\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable ingredients, standard bucket\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"regularly consumed as biofuel\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biofuel generators, belt logistics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic bio-origin content\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"filling bucket with mixed bioethanol\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket in inventory and fluid tanks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:biofuel\"],\n          \"signal\": \"named\",\n          \"rationale\": \"display_name: Bucket of Biofuel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fuel combustion generators\", \"transport bioethanol on Create belts\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fuel bucket + upright_on_belt tag\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e4360e26-3ad9-4d35-b4ce-a3d7b3c89a1e",
+  "total_cost_usd": 0.18603200000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9088,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 9990,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9088,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9990,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9088,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9088
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2018,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002093,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9990,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9088,
+      "webSearchRequests": 0,
+      "costUSD": 0.18393900000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "463480d8-a50b-4815-b222-64aa235876f3"
+}

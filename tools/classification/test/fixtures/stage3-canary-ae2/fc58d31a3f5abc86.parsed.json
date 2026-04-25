@@ -1,0 +1,335 @@
+{
+  "items": {
+    "ae2:brown_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 cable carries network channels/signal"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 materials + dye coloring"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "dense cables used heavily in large nets"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network backbone cabling"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "brown dye variant, AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown is earthy warm tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe exists, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels and network power"
+        },
+        "primary_uses": {
+          "values": [
+            "High-channel ME network backbone",
+            "Carries 32 AE2 channels",
+            "Color-coded cable routing"
+          ],
+          "signal": "inferred",
+          "rationale": "dense smart cable core functions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "explicitly ME network cable tag"
+        }
+      }
+    },
+    "ae2:cable_anchor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "small intermediate crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic AE2 crafting ingredient"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many AE2 fixture recipes"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in AE2 network fixture crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "small bracket/anchor component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "quartz_cutting recipe, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item"
+        },
+        "primary_uses": {
+          "values": [
+            "Anchor cables to block surfaces",
+            "Craft AE2 fixtures and decoratives"
+          ],
+          "signal": "inferred",
+          "rationale": "cable anchor usage per ingredient list"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "component for AE2 cable fixtures"
+        }
+      }
+    },
+    "ae2:cable_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed AE2 block with network behavior"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "guess",
+          "rationale": "no recipe/loot; internal placed block"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable+bus network placed block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 mechanical network component"
+        },
+        "primary_uses": {
+          "values": [
+            "Placed AE2 cable bus network block"
+          ],
+          "signal": "inferred",
+          "rationale": "internal block for placed cables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network cable bus block"
+        }
+      }
+    },
+    "ae2:cable_energy_acceptor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active power input for AE2 network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic AE2 energy component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "need 1-2 per network, not many"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "powers AE2 network from external power"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 energy conversion component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe exists, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "accepts and converts power into AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Accept external power into ME network",
+            "Cable-form energy acceptor part"
+          ],
+          "signal": "inferred",
+          "rationale": "energy acceptor primary function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 energy infrastructure component"
+        }
+      }
+    },
+    "ae2:cable_interface": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active I/O component for AE2 network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "fundamental AE2 component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used extensively in AE2 automation"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "moves items between network and machines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network I/O component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe exists, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "exchanges items between net and external"
+        },
+        "primary_uses": {
+          "values": [
+            "Exchange items with external machines",
+            "Autocrafting pattern push/pull",
+            "Cable-form ME interface part"
+          ],
+          "signal": "inferred",
+          "rationale": "ME interface primary functions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:external_io",
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used for I/O and autocrafting setups"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

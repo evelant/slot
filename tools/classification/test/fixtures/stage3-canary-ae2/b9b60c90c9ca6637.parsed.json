@@ -1,0 +1,365 @@
+{
+  "items": {
+    "ae2:item_p2p_tunnel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block tunnels items through ME network"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; AE2 crafted component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-tier materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when dedicated item routing needed"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item routing through ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "typical AE2 dark certus casing"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "named",
+          "rationale": "display_name: Item P2P Tunnel"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "P2P is a network routing component"
+        },
+        "primary_uses": {
+          "values": [
+            "route items point-to-point via ME network",
+            "reduce channel usage with bundled routing"
+          ],
+          "signal": "inferred",
+          "rationale": "core P2P tunnel function"
+        }
+      }
+    },
+    "ae2:item_storage_cell_1k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable item storage medium inserted into drives"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; recipe data present"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "entry-level AE2 cell, accessible recipe"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "first cell crafted in AE2 progression"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark casing with capacity indicator light"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "goes into ME Drive or Portable Cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "store items digitally in ME Drive",
+            "entry-level ME item storage",
+            "use in portable cell device"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose of storage cells"
+        }
+      }
+    },
+    "ae2:item_storage_cell_4k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable item storage medium inserted into drives"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; recipe data present"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "early-mid tier, accessible recipe"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common upgrade from 1k cells"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark casing with capacity indicator light"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "goes into ME Drive or Portable Cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "store items digitally in ME Drive",
+            "upgrade from 1k cells",
+            "use in portable cell device"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose of storage cells"
+        }
+      }
+    },
+    "ae2:item_storage_cell_16k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable item storage medium inserted into drives"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; recipe data present"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier cell, requires prior cell components"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard workhorse cell in mature AE2 setups"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark casing with capacity indicator light"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "goes into ME Drive or Portable Cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "store items digitally in ME Drive",
+            "mid-capacity ME item storage",
+            "use in portable cell device"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose of storage cells"
+        }
+      }
+    },
+    "ae2:item_storage_cell_256k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable item storage medium inserted into drives"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; recipe data present"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "top-tier cell, expensive recursive recipe chain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "few needed once crafted; endgame item"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark casing with capacity indicator light"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "goes into ME Drive or Portable Cell"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity ME item storage",
+            "consolidate many lower cells into one",
+            "use in portable cell device"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose of top-tier storage cells"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

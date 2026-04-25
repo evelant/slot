@@ -62,6 +62,16 @@ export interface LlmPromptInput {
   /** Nearest-neighbor priming: for each item id, id → summary string.
    *  Empty during milestone 5 (stage 4 fills this later). */
   neighbors?: Record<string, readonly string[]>;
+  /**
+   * Pre-proposed canonical vocabulary for the `mod_subsystem` facet, derived
+   * from the mod's README/metadata in a separate pass. When present, the LLM
+   * is told to prefer these labels over inventing new ones — keeps subsystem
+   * names consistent across items in a single mod run.
+   *
+   * Each entry is a fully-qualified id (`<modnamespace>:<token>`) optionally
+   * paired with a short rationale describing which kinds of items it covers.
+   */
+  subsystem_vocabulary?: readonly { id: string; rationale?: string }[];
 }
 
 const SYSTEM_PREAMBLE = `You are classifying Minecraft items for an inventory mod called Slot. \
@@ -121,6 +131,7 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   const schemaDoc = renderSchemaForPrompt(input.target_facets);
   const outputShape = renderExpectedOutput(input.target_facets);
   const neighborsNote = renderNeighborsSection(input.neighbors);
+  const subsystemHint = renderSubsystemVocabulary(input.subsystem_vocabulary);
 
   const system = [
     SYSTEM_PREAMBLE,
@@ -133,6 +144,7 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
     "# Common misconceptions to avoid",
     COMMON_MISCONCEPTIONS,
     "",
+    subsystemHint,
     "# Expected output shape",
     outputShape,
   ]
@@ -325,6 +337,35 @@ function exampleEntryFor(facet: string, def: FacetDef): Record<string, unknown> 
     evidence: "<exact quote from a tag/component/lore string>",
     rationale: "short reason",
   };
+}
+
+/**
+ * Render the canonical mod_subsystem vocabulary inline in the system prompt.
+ * Empty when no vocabulary is supplied — vanilla runs and mods with no
+ * meaningful subsystem groupings simply omit the section.
+ *
+ * Lives in the system prompt (not the per-batch user message) because the
+ * vocabulary is identical across every batch of a single mod run; keeping it
+ * stable maximizes prompt-cache reuse.
+ */
+function renderSubsystemVocabulary(
+  vocab: readonly { id: string; rationale?: string }[] | undefined,
+): string {
+  if (!vocab || vocab.length === 0) return "";
+  const lines: string[] = ["# Suggested mod_subsystem vocabulary"];
+  lines.push(
+    "Prefer these canonical labels for the `mod_subsystem` facet over inventing new names. Pick zero or more per item; if none fit, omit the facet rather than coining a synonym.",
+  );
+  lines.push("");
+  for (const entry of vocab) {
+    if (entry.rationale) {
+      lines.push(`- \`${entry.id}\` — ${entry.rationale}`);
+    } else {
+      lines.push(`- \`${entry.id}\``);
+    }
+  }
+  lines.push("");
+  return lines.join("\n");
 }
 
 function renderNeighborsSection(

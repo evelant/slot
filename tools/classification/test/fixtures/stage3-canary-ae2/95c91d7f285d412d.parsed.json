@@ -1,0 +1,358 @@
+{
+  "items": {
+    "ae2:fluix_crystal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:gems tag; refined via transform process"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "AE2 fluix material line"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires ae2:transform in water"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "14 recipes consume it"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in cables, controller, spatial"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing AE2 crystal"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix is purple glowing crystal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "cables, controller, spatial, energy parts"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting ME cables and network parts",
+            "crafting ME controller",
+            "crafting spatial IO components",
+            "crafting speed cards and fluix pearl"
+          ],
+          "signal": "named",
+          "rationale": "sample_ingredient_of list"
+        }
+      }
+    },
+    "ae2:fluix_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:dusts tag; intermediate crafting ingredient"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "AE2 fluix material line"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires ae2:inscriber processing"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in cores, cells, spatial pylon"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in AE2 processing cores"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix-derived, inscriber-processed"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only via ae2:inscriber; no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:processing"
+          ],
+          "signal": "inferred",
+          "rationale": "network cores and energy components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting annihilation and formation cores",
+            "crafting energy cells",
+            "crafting fluix pearl",
+            "crafting wireless booster and spatial pylon"
+          ],
+          "signal": "named",
+          "rationale": "sample_ingredient_of list"
+        }
+      }
+    },
+    "ae2:fluix_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network cable; connective infrastructure"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "glass_cable tag and display name"
+        },
+        "material_secondary": {
+          "values": [
+            "fluix"
+          ],
+          "signal": "pattern",
+          "rationale": "fluix variant of the glass cable type"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "bottlenecked by fluix crystal ingredient"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed in bulk across AE2 networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME network nodes"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glass network cable with fluix crystal"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "purple fluix glass cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry channels and network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:glass_cable + p2p_attunements/me_p2p_tunnel"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting ME network blocks",
+            "network backbone wiring",
+            "base for covered and colored cables",
+            "P2P tunnel ME channel attunement"
+          ],
+          "signal": "inferred",
+          "rationale": "tags and sample_ingredient_of context"
+        }
+      }
+    },
+    "ae2:fluix_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "minecraft:hoes tag"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "AE2 fluix material line"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "smithing_transform upgrade; AE2 fluix tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires smithing_transform upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hoes used infrequently; not core AE2 focus"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe tool for tilling soil"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix crystal material"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix material coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing_transform only; no loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling farmland",
+            "harvesting crops faster"
+          ],
+          "signal": "inferred",
+          "rationale": "standard hoe tool function"
+        }
+      }
+    },
+    "ae2:fluix_pearl": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate ingredient for top-tier AE2 parts"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "fluix-based composite"
+        },
+        "material_secondary": {
+          "values": [
+            "ender_pearl"
+          ],
+          "signal": "inferred",
+          "rationale": "pearl name; used in quantum/spatial/wireless"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used in quantum link and top-tier AE2 parts"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only 3 downstream end-tier recipes"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "quantum link, spatial, wireless components"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix + ender pearl composite"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted only; no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:spatial_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "quantum_link, spatial_components, wireless_part"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting quantum entanglement link",
+            "crafting spatial storage cell components",
+            "crafting wireless terminal parts"
+          ],
+          "signal": "named",
+          "rationale": "sample_ingredient_of list"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

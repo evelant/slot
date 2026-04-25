@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 127194,
+  "duration_api_ms": 128066,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:facade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covers cables to mimic surrounding blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted freely with any block + anchor\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed when hiding cable runs\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely aesthetic cable cover\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"takes appearance of whatever block is used\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted with anchor+block\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 cable aesthetic attachment\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Hide ME cables behind block textures\", \"Aesthetic cable concealment\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"facade sole purpose is hiding cables\"\n        }\n      }\n    },\n    \"ae2:fe_p2p_tunnel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active point-to-point energy routing device\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted, accessible mid-game\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per energy routing need\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"automates FE/RF routing through ME\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network routing hardware\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; AE2 P2P is crafted\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"FE = Forge Energy; tunnels RF/FE\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"P2P tunnel is core ME network component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Tunnel RF/FE power through ME network\", \"Point-to-point energy routing\", \"Reduce channel usage for power lines\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"FE P2P tunnel sole function\"\n        }\n      }\n    },\n    \"ae2:flawed_budding_quartz\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"world-generated growing medium, not refined\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"meteorite-sourced; second-lowest of 4 tiers\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once as crystal farm anchor\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"passively grows certus quartz crystals\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring growing crystal block\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is pale blue-white crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\", \"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from meteorite blocks; transform from higher tier\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"certus quartz is foundational AE2 resource\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Passively grow certus quartz crystals\", \"AE2 crystal farm block\", \"Degrades one tier when mined\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"budding quartz core function in AE2\"\n        }\n      }\n    },\n    \"ae2:flawless_budding_quartz\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"meteorite-only growing medium, uncraftable\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"meteorite-exclusive, cannot be crafted or moved\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in-situ as permanent crystal farm\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fastest passive certus quartz growth rate\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rarest growing crystal, meteorite-exclusive\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is pale blue-white crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\", \"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found exclusively in AE2 skystone meteorites\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"top certus quartz source for AE2\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Highest-rate certus quartz crystal growth\", \"Permanent in-situ crystal farm\", \"Cannot be crafted or relocated intact\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flawless budding quartz unique properties\"\n        }\n      }\n    },\n    \"ae2:fluid_cell_housing\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted intermediate for fluid storage cells\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"straightforward crafting recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted when building fluid cell capacity\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all outputs are ME fluid storage cells\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 metallic cell housing component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting recipe output, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient for all AE2 fluid storage cells\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Craft ME fluid storage cells (1k–256k)\", \"Component for portable fluid cells\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"all sample_ingredient_of are fluid cells\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "dec9c05a-ff32-42de-aba7-d91b39482d77",
+  "total_cost_usd": 0.14797110000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2894,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 8874,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2894,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8874,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2894,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2894
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2031,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0021209999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8874,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2894,
+      "webSearchRequests": 0,
+      "costUSD": 0.1458501,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1def555e-52e7-4e9e-8d46-459b572b8995"
+}

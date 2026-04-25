@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 119165,
+  "duration_api_ms": 120891,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:light_blue_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable; carries channels/signal\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:glass_cable; glass visual\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 cable; early progression\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used extensively in any AE2 network\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network cable for automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light_blue color variant; network cable\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light blue is a pastel cool tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"no loot source; recipe_production only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables carry items, energy, channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag ae2:glass_cable in me_network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Connect ME network nodes\", \"Color-coded cable routing\", \"P2P tunnel attunement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core glass cable uses in AE2\"\n        }\n      }\n    },\n    \"ae2:light_blue_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to paint cables with glow effect\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires paint ball + extra crafting step\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per cable; not routine\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic cable coloring in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light_blue lumen color variant\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = luminescent; pastel blue glow\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"no loot source; recipe_production only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable painting system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Paint AE2 cables with glowing light blue\", \"Luminescent cable color coding\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = glow; paint ball applies color\"\n        }\n      }\n    },\n    \"ae2:light_blue_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown/used to paint AE2 cables/facades\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from dye; widely available\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per cable; not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cable color coding in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light_blue colored paint ball\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light blue is a pastel dye color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"no loot source; crafted from dye\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable painting system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Paint AE2 cables light blue\", \"Crafting lumen paint balls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"direct use + ingredient for lumen variant\"\n        }\n      }\n    },\n    \"ae2:light_blue_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 smart cable; shows channel usage\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart cable built on glass cable base\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard AE2 cable; widely crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 network component\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network smart cable\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light_blue color; smart channel display\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light blue pastel color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"no loot source; recipe_production only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart cable carries + displays channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag ae2:smart_cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ME network with channel visualization\", \"Color-coded smart routing\", \"P2P tunnel attunement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart = channel display on glass base\"\n        }\n      }\n    },\n    \"ae2:light_blue_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 32-channel dense network cable\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cables require iron in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"more advanced cable; more resources needed\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone cable in large AE2 networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-channel ME network backbone\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light_blue color; dense mechanical cable\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light blue color variant\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"no loot source; recipe_production only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable carries up to 32 channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag ae2:smart_dense_cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"32-channel ME network backbone\", \"High-density cable routing\", \"Quantum ring crafting ingredient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense=high channel; quantum_ring ingredient\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "33e0c386-92bf-4f77-92f8-95ca7072d85b",
+  "total_cost_usd": 0.1520251,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2778,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 9182,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2778,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9182,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2778,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2778
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1915,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00199,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9182,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2778,
+      "webSearchRequests": 0,
+      "costUSD": 0.1500351,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "6c07e611-683e-40b9-b17d-89f480ee01d3"
+}

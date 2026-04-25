@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 52869,
+  "duration_api_ms": 53569,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:fluid_p2p_tunnel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block that tunnels fluids between two ME endpoints\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 P2P tunnels built from quartz/glass\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 materials, not trivially farmed\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per fluid route, not spammed\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid routing in automated ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network infrastructure aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 blocks are dark metallic/matte\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot source; AE2 crafted item\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"named\",\n          \"rationale\": \"display_name: Fluid P2P Tunnel\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"P2P tunnels are ME network backbone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Route fluids between two ME network points\",\n            \"Fluid logistics via P2P link\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core purpose of a P2P fluid tunnel\"\n        }\n      }\n    },\n    \"ae2:fluid_storage_cell_1k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable cell inserted into ME drive/chest\"\n        },\n        \"tier\": {\n          \"value\": \"1k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id/name suffix indicates capacity tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lowest AE2 fluid cell tier, cheap to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early-game AE2 fluid storage staple\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores fluids in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 storage cell aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cell housing is dark metallic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe_production present, no loot source\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\", \"ae_storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds fluids inside ME drive\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell is AE2 storage subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store fluids in ME drive or chest\",\n            \"Early fluid storage on ME network\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use of a fluid storage cell\"\n        }\n      }\n    },\n    \"ae2:fluid_storage_cell_4k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable cell inserted into ME drive/chest\"\n        },\n        \"tier\": {\n          \"value\": \"4k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id/name suffix indicates capacity tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"second-lowest tier, still inexpensive\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common mid-early AE2 fluid storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores fluids in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 storage cell aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cell housing is dark metallic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe_production present, no loot source\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\", \"ae_storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds fluids inside ME drive\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell is AE2 storage subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store fluids in ME drive or chest\",\n            \"Mid-tier fluid storage on ME network\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use of a 4k fluid storage cell\"\n        }\n      }\n    },\n    \"ae2:fluid_storage_cell_16k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable cell inserted into ME drive/chest\"\n        },\n        \"tier\": {\n          \"value\": \"16k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id/name suffix indicates capacity tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"higher tier, more materials required\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard mid-game AE2 fluid storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores fluids in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 storage cell aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cell housing is dark metallic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe_production present, no loot source\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\", \"ae_storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds fluids inside ME drive\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell is AE2 storage subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store fluids in ME drive or chest\",\n            \"High-capacity fluid storage on ME network\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use of a 16k fluid storage cell\"\n        }\n      }\n    },\n    \"ae2:fluid_storage_cell_256k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable cell inserted into ME drive/chest\"\n        },\n        \"tier\": {\n          \"value\": \"256k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id/name suffix indicates capacity tier\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"top tier; expensive to craft in AE2\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"end-game cell, fewer needed at high tier\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores fluids in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 storage cell aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cell housing is dark metallic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe_production present, no loot source\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\", \"ae_storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds fluids inside ME drive\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell is AE2 storage subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store fluids in ME drive or chest\",\n            \"Max-capacity fluid storage on ME network\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use of a 256k fluid storage cell\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "fed9288b-2eee-408b-a9ef-b1a94bd47698",
+  "total_cost_usd": 0.07987259999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2548,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 4444,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2548,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 4444,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2548,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2548
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1685,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00177,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 4444,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2548,
+      "webSearchRequests": 0,
+      "costUSD": 0.07810259999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "61c75f89-dceb-41bc-8674-8847c9a907fb"
+}

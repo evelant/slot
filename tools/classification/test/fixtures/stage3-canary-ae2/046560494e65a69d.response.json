@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 94336,
+  "duration_api_ms": 95195,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:white_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 dense cable for ME network backbone\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables built from fluix materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable, used in bulk for large networks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"laid in quantity for dense-channel routing\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network automation and logistics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored mechanical network cable\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white colorway\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe, no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries AE2 channels and network power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dense cable = high-bandwidth network backbone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Dense 32-ch ME network routing\",\n            \"Connect high-bandwidth AE2 devices\",\n            \"Colored network cabling aesthetic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense covered cable primary purposes\"\n        }\n      }\n    },\n    \"ae2:white_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 glass cable, cheapest ME network tier\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables built from fluix glass fiber\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest AE2 cable, used everywhere\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"starter cable laid throughout networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored glass network cable\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white glass visual appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe, no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries AE2 channels and network power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"glass cable = basic ME network wiring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Basic 8-ch ME network wiring\",\n            \"Connect AE2 devices cheaply\",\n            \"Starter ME network cabling\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass = entry-level cable tier\"\n        }\n      }\n    },\n    \"ae2:white_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown to recolor cables with glow effect\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-based glowing paint projectile\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from paint ball + glow material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when decorating AE2 network\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors AE2 cables for aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies white glowing color\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white lumen = glowing white\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to color AE2 network cables\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Apply glowing white color to AE2 cables\",\n            \"Lumen (glowing) variant of white paint ball\",\n            \"Decorate ME network cabling with glow\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = emissive paint ball variant\"\n        }\n      }\n    },\n    \"ae2:white_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown to recolor AE2 cables\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-based paint projectile\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from basic dye materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when decorating network cabling\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors AE2 cables\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies white color to cables\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white colorway\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors AE2 network cables\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Apply white color to ME cables\",\n            \"Craft into white lumen paint ball\",\n            \"Decorate AE2 network cabling\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard AE2 paint ball uses\"\n        }\n      }\n    },\n    \"ae2:white_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 smart cable shows channel usage\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables built from fluix materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable mid-tier cable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"preferred for visible channel management\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network with visual channel feedback\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored smart mechanical cable\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white colorway\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe, no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries AE2 channels and network power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"smart cable visualizes channel usage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ME network cable with channel display\",\n            \"Visualize AE2 channel usage per device\",\n            \"8-ch wiring with smart diagnostics\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart = shows per-channel colored dots\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "11990eee-65a4-474c-a4a5-c6496054b159",
+  "total_cost_usd": 0.13207085,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2655,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 7890,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2655,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7890,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2655,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2655
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1792,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001877,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7890,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2655,
+      "webSearchRequests": 0,
+      "costUSD": 0.13019385,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4561643a-9ea6-412d-b743-24c32cff0c59"
+}

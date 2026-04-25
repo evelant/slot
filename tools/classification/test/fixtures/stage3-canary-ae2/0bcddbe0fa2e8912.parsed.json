@@ -1,0 +1,178 @@
+{
+  "items": {
+    "ae2:debug_meteorite_placer": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "debug_ id prefix + Dev. display name"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "debug_ prefix; no recipe or loot source"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "No survival obtain path"
+        }
+      }
+    },
+    "ae2:debug_phantom_node": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "debug_ id prefix + Dev. display name"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "debug_ prefix; no recipe"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "No survival obtain path"
+        }
+      }
+    },
+    "ae2:debug_replicator_card": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "debug_ id prefix + Dev. display name"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "debug_ prefix; no recipe or loot source"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "No survival obtain path"
+        }
+      }
+    },
+    "ae2:dense_energy_cell": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Stores FE energy for ME network"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Multi-step AE2 craft chain required"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used in terminals; needed for large setups"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Powers AE2 network machines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial AE2 energy block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark metallic AE2 block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "pattern",
+          "rationale": "FE P2P attunement tag; energy storage role"
+        },
+        "primary_uses": {
+          "values": [
+            "Store FE energy for ME network",
+            "Power wireless AE2 terminals",
+            "Dense energy buffer for large builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense energy storage block role"
+        }
+      }
+    },
+    "ae2:drive": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Holds AE2 storage cells; core ME block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Every AE2 setup needs one"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Core AE2 storage block, always present"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Houses cells; core ME item storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Industrial AE2 storage block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark metallic AE2 block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "ME Drive is core AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "House AE2 storage cells",
+            "Core ME network item/fluid storage",
+            "Indexed networked storage hub"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary function of ME Drive block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

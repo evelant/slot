@@ -1,0 +1,344 @@
+{
+  "items": {
+    "ae2:purple_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 cable routes channels/signals across network"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "AE2 cables built on glass-core covered cable"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-game AE2 crafted network component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "backbone cable used throughout large AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network channel-routing backbone"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "explicitly purple-colored technical cable"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "named",
+          "evidence": "Purple ME Dense Smart Cable",
+          "rationale": "display_name states Purple"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting_shaped only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "evidence": "ae2:smart_dense_cable",
+          "rationale": "tag explicitly classifies as smart dense cable"
+        },
+        "primary_uses": {
+          "values": [
+            "high-throughput 32-channel network backbone",
+            "connect ME network nodes",
+            "p2p tunnel attunement target"
+          ],
+          "signal": "inferred",
+          "rationale": "dense = 32 ch; p2p tag; used in quantum_ring recipe"
+        }
+      }
+    },
+    "ae2:quantum_entangled_singularity": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "consumed/placed to activate quantum bridge"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ae2:transform process; expensive late-game resource"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "one-time use per quantum bridge pair"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "enables cross-dimension ME network linking"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "quantum entanglement theme; exotic transform origin"
+        },
+        "palette": {
+          "values": [
+            "iridescent",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 singularity items emit energy glow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced only via ae2:transform; no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "activates quantum network bridge"
+        },
+        "primary_uses": {
+          "values": [
+            "activate ME quantum network bridge",
+            "link ME networks across dimensions"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in quantum link chambers as paired keys"
+        }
+      }
+    },
+    "ae2:quantum_link": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active multiblock controller with network behavior"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game AE2 multiblock; costly recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one per bridge; built once, stays in place"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "forms cross-dimension ME network link"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "quantum-themed AE2 technology block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 advanced blocks: dark casing, active glow"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "quantum bridge is ME network long-range component"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:quantum_network_bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "center piece of 3x3 quantum bridge structure"
+        },
+        "multiblock_role": {
+          "value": "controller",
+          "signal": "inferred",
+          "rationale": "center/active controller of quantum bridge"
+        },
+        "primary_uses": {
+          "values": [
+            "controller of ME quantum network bridge",
+            "holds quantum entangled singularity",
+            "link distant or cross-dimension ME networks"
+          ],
+          "signal": "inferred",
+          "rationale": "quantum link is the core active block of bridge"
+        }
+      }
+    },
+    "ae2:quantum_ring": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active multiblock frame piece for quantum bridge"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game AE2; 8 needed per quantum bridge"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "8 per bridge setup; placed once"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "forms quantum network bridge structure"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "ringed technical AE2 structure component"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dark metallic casing with ring glow"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of quantum network bridge"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:quantum_network_bridge"
+          ],
+          "signal": "inferred",
+          "rationale": "8 ring pieces surround quantum link chamber"
+        },
+        "multiblock_role": {
+          "value": "wall",
+          "signal": "inferred",
+          "rationale": "8 surrounding frame pieces of 3x3 multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "form ME quantum network bridge (×8)",
+            "long-distance ME network connection"
+          ],
+          "signal": "inferred",
+          "rationale": "surrounds quantum link to complete bridge"
+        }
+      }
+    },
+    "ae2:quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "produces stairs/slabs/walls; primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "certus quartz farmable from AE2 geode clusters"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in AE2 base decoration; not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "produces stairs/slabs/walls; decorative AE2 block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "natural crystal block, clean unadorned appearance"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is pale blue-white crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "compact certus quartz storage",
+            "craft decorative stairs/slabs/walls",
+            "transform to damaged budding quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "c:storage_blocks + many building recipes + transform"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:quartz_block",
+      "facet": "material_family",
+      "current": "quartz",
+      "suggested": "certus_quartz",
+      "rationale": "Display name 'Certus Quartz Block'; in ae2 namespace all bare 'quartz' ids refer to certus, not vanilla quartz",
+      "confidence": 0.85
+    }
+  ]
+}

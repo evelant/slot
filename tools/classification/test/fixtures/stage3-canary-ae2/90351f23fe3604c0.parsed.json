@@ -1,0 +1,336 @@
+{
+  "items": {
+    "ae2:semi_dark_monitor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for monitors/terminals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from accessible AE2 materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ingredient in 5+ monitor/terminal recipes"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network monitoring component chain"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable bus part aesthetic"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "illuminated panel emits light"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, shapeless crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "panel/monitor for cable bus system"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 monitors and terminals",
+            "decorative cable bus part",
+            "ambient lighting on cable buses"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in 5 monitor/terminal recipes"
+        }
+      }
+    },
+    "ae2:silicon": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "smelted intermediate for AE2 processors"
+        },
+        "material_family": {
+          "value": "silicon",
+          "signal": "named",
+          "rationale": "tag c:silicon; display name Silicon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "smelted from certus quartz dust"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in AE2 crafting chains"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in AE2 processor fabrication"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial electronic material"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "guess",
+          "rationale": "silicon typically grayish matte"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only from smelting/blasting certus dust"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in inscriber processor recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 processors via inscriber",
+            "fundamental AE2 material"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 crafting ingredient"
+        }
+      }
+    },
+    "ae2:silicon_press": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inscriber template enabling silicon printing"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "meteorite loot; limited craftability"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "needed once per inscriber setup"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "unlocks AE2 processor fabrication"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "meteorite artifact press"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "guess",
+          "rationale": "metal press from meteorite material"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "meteorite chests; inscriber recipe too"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:inscriber_presses"
+        },
+        "primary_uses": {
+          "values": [
+            "inscribing printed silicon in inscriber",
+            "crafting processor components"
+          ],
+          "signal": "inferred",
+          "rationale": "inscriber press for silicon printing"
+        }
+      }
+    },
+    "ae2:singularity": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingredient for entangled singularities"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires Matter Condenser compression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for quantum bridge/ring crafting"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "enables quantum bridge networking"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "exotic dense matter from a machine"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "guess",
+          "rationale": "dense compressed matter with energy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "created via Matter Condenser machine"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "quantum bridge network component"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting entangled singularities",
+            "enabling quantum bridge connections",
+            "long-distance ME network linking"
+          ],
+          "signal": "inferred",
+          "rationale": "transforms into entangled singularity"
+        }
+      }
+    },
+    "ae2:sky_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form of AE2 meteorite material"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "named",
+          "rationale": "tag c:dusts/sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires inscriber + meteorite sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in 256k cell and sky stone block"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used in high-tier AE2 storage cells"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ground meteorite stone material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone is dark grayish meteorite"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by inscriber from sky stone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "used in 256k storage cell components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting high-tier AE2 storage cells",
+            "processing sky stone into components"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in 256k cell component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

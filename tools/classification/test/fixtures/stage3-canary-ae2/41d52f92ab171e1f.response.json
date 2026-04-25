@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 148176,
+  "duration_api_ms": 131609,
+  "num_turns": 3,
+  "result": "{\n  \"items\": {\n    \"ae2:ender_dust\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:dusts tag; processed dust form\"\n        },\n        \"material_family\": {\n          \"value\": \"ender_pearl\",\n          \"signal\": \"named\",\n          \"rationale\": \"c:dusts/ender_pearl tag explicit\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"endermen + inscriber processing required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche wireless/quantum AE2 recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in AE2 wireless and quantum items\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from enderman mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ender pearl green-teal dusty hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; inscriber produces it\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\", \"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber product; ingredient in wireless/quantum\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft wireless boosters for ME network\",\n            \"craft entangled singularities\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sample_ingredient_of paths\"\n        }\n      }\n    },\n    \"ae2:energy_acceptor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block converting FE power to AE power\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 power input, early crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"every FE-powered ME network needs one\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powers ME network from external energy\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial AE2 power conversion block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 blocks are dark/matte aesthetic\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"converts and routes energy into network\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:energy\", \"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core energy input for ME network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"convert FE/RF to AE network power\",\n            \"power ME network from other mods\",\n            \"craft energy vibration chamber\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"name + FE p2p tag + ingredient list\"\n        }\n      }\n    },\n    \"ae2:energy_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card increases device energy buffer\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 materials; not trivially cheap\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inserted when extra energy buffer needed\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades AE2 device energy capacity\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 upgrade card aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade for AE2 wireless/controller devices\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"increase energy buffer of AE2 devices\",\n            \"upgrade ME Controller or Energy Acceptor\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy card = energy upgrade per deepwiki\"\n        }\n      }\n    },\n    \"ae2:energy_cell\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block storing AE2 network energy\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard AE2 energy storage, craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in networks; ingredient in many recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"buffers power for ME network operation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial energy storage block\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 energy cells have orange/amber glow\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores and supplies AE network energy\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 energy storage component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"store AE2 network energy\",\n            \"craft dense energy cell\",\n            \"craft quantum ring and AE2 tools\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"name + sample_ingredient_of paths\"\n        }\n      }\n    },\n    \"ae2:energy_level_emitter\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone based on ME energy level\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized AE2 automation part\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for advanced energy-aware automation\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone from ME energy threshold\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network part with redstone output\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network part monitoring energy grid\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"emit redstone at configurable energy thresholds\",\n            \"trigger automation on ME energy level change\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"display name + deepwiki confirms behavior\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "20620bdf-e934-4bde-a49b-73d606359d48",
+  "total_cost_usd": 0.18325625,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 10703,
+    "cache_read_input_tokens": 13390,
+    "output_tokens": 9095,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10703,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 1,
+        "output_tokens": 2983,
+        "cache_read_input_tokens": 8347,
+        "cache_creation_input_tokens": 7399,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 7399
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2581,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002666,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 4,
+      "outputTokens": 9095,
+      "cacheReadInputTokens": 13390,
+      "cacheCreationInputTokens": 10703,
+      "webSearchRequests": 0,
+      "costUSD": 0.18059025,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "3b67e780-ba32-4929-92e9-9ba7ec9c7ac4"
+}

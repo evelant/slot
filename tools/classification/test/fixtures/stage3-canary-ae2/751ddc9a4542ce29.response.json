@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 149436,
+  "duration_api_ms": 150404,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:engineering_processor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed chip; ingredient for AE2 components\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made from diamond in ae2:inscriber\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires inscriber, diamond, and redstone\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 10+ AE2 network recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for network/storage components\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electronic processor chip\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced only by ae2:inscriber\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\", \"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber output; used in many network parts\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft AE2 controller and drives\",\n            \"craft quantum ring and spatial components\",\n            \"craft crafting CPU accelerators\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core crafting ingredient across AE2\"\n        }\n      }\n    },\n    \"ae2:engineering_processor_press\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber template enabling processor crafting\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found only in AE2 skystone meteorites\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once in inscriber, rarely touched again\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"alien precursor artifact from meteorites\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in AE2 meteorite skystone craters\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tagged ae2:inscriber_presses\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"enables engineering processor crafting in inscriber\",\n            \"key AE2 progression bottleneck resource\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber press for engineering processor\"\n        }\n      }\n    },\n    \"ae2:entropy_manipulator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld tool that heats or cools blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 components to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use for in-world block transformation\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transforms blocks in-world (smelt/freeze)\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 charged energy tool\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"metallic AE2 tool aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced by crafting_shaped only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelt blocks in place (sand→glass, ore→ingot)\",\n            \"freeze liquids (water→ice, lava→obsidian)\",\n            \"transform world blocks without a furnace\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"in-world entropy manipulation tool\"\n        }\n      }\n    },\n    \"ae2:equal_distribution_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"card inserted into ME bus to modify behavior\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from accessible AE2 materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when balanced export is needed\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modifies ME export bus distribution\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electronic upgrade card\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced by crafting_shapeless only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:external_io\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades export/import bus behavior\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"balance item distribution across export slots\",\n            \"upgrade ME bus for equal slot filling\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"equal distribution upgrade for ME IO buses\"\n        }\n      }\n    },\n    \"ae2:export_bus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cable part that pushes items out of ME network\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 IO part, crafted readily\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core component in any AE2 automation setup\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exports items from ME to external inventories\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable bus attachment\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced by crafting_shaped only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tagged ae2:p2p_attunements/item_p2p_tunnel\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:external_io\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network IO bus for item export\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"export items from ME network to inventories\",\n            \"automate item supply to machines\",\n            \"configure ME network item output targets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary ME item export mechanism\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "68f30da1-ea9a-4baf-be9e-9e05776694d0",
+  "total_cost_usd": 0.18068460000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2780,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 11091,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2780,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11091,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2780,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2780
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1917,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002007,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11091,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2780,
+      "webSearchRequests": 0,
+      "costUSD": 0.17867760000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ae336df7-b3b0-427d-8517-dd6c06e227a0"
+}

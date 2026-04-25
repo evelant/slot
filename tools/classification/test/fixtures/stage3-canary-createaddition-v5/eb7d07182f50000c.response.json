@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 136627,
+  "duration_api_ms": 137930,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"createaddition:connector\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block that connects electrical components\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"CA copper power theme; copper subcomponents\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from common copper materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed throughout CA power networks\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrical connector block\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial connector block\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper-colored component\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transmits electrical energy in CA\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:power_transmission\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in relay and light connector\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"connecting electrical power lines\",\n            \"routing energy between machines\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in relay, light connector\"\n        }\n      }\n    },\n    \"createaddition:copper_goblet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipes/loot; function unknown\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix copper_\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no known source identified\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no functional use found\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"goblet = ornamental vessel\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"name says copper\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative display\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe or function in data\"\n        }\n      }\n    },\n    \"createaddition:copper_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:rods/copper tag; rolled from ingot\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id + c:rods/copper tag\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no world loot; made via rolling mill\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled from abundant copper ingots\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate for electrical components\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in connector and accumulator\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple rod form\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"copper material\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds connector and modular accumulator\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting electrical connectors\",\n            \"crafting modular accumulators\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named downstream recipes\"\n        }\n      }\n    },\n    \"createaddition:copper_spool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting ingredient for EM machines\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix + createaddition:spools tag\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no world loot; crafted item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from copper wire\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in motors, alternators, coils\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds electric_motor, alternator, tesla_coil\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wound wire spool for EM machines\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"copper wire spool\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core EM machine ingredient\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting electric motors and alternators\",\n            \"crafting tesla coils\",\n            \"crafting portable energy interface\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named in multiple CA machine recipes\"\n        }\n      }\n    },\n    \"createaddition:copper_wire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:wires/copper tag; rolled from plate\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id + c:wires/copper tag\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no world loot; made via rolling mill\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled from copper plates\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base material for copper spools\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds spool→motor chain\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wire form\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"copper material\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:power_transmission\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wire for power lines and spools\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting copper spools\",\n            \"base CA wiring material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole downstream use is copper_spool\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "b596a866-4119-4b1a-8d1b-ce9897d9e8cd",
+  "total_cost_usd": 0.19672125000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9391,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 10607,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9391,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10607,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9391,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9391
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2321,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0023910000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10607,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9391,
+      "webSearchRequests": 0,
+      "costUSD": 0.19433025,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b6ec0510-dd16-4063-885e-a6d424de8380"
+}

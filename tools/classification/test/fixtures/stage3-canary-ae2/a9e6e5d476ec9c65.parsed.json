@@ -1,0 +1,352 @@
+{
+  "items": {
+    "ae2:red_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown at AE2 parts to apply color"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "AE2 paint balls are glass-based projectiles"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from cheap materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when coloring network parts"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network cables/components"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "red member of paint_balls tag set"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "saturated red paint ball"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "paints ME network components"
+        },
+        "primary_uses": {
+          "values": [
+            "Color AE2 cables and parts",
+            "Craft lumen paint balls"
+          ],
+          "signal": "inferred",
+          "rationale": "per recipe graph and AE2 mechanics"
+        }
+      }
+    },
+    "ae2:red_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "ME network cable carrying channel signals"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "ME cables crafted primarily from glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable core infrastructure item"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used extensively in any AE2 build"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "backbone of ME automation network"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored variant; tech cable aesthetic"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "saturated red cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channel signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:smart_cable = ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME network nodes",
+            "Display channel usage count",
+            "Color-coded network routing"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable shows active channel count"
+        }
+      }
+    },
+    "ae2:red_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "high-capacity AE2 network backbone cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "ME cables crafted primarily from glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable network infrastructure"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for high-load backbone routes"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "dense backbone for ME automation"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored dense cable variant"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "saturated red dense cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries 32-channel AE2 signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "used in quantum_ring (spatial_storage)"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity ME network backbone",
+            "Craft quantum rings",
+            "Color-coded dense routing"
+          ],
+          "signal": "inferred",
+          "rationale": "32-ch dense cable + quantum_ring ingredient"
+        }
+      }
+    },
+    "ae2:redstone_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "inserted into AE2 machines to add RS control"
+        },
+        "material_family": {
+          "value": "redstone",
+          "signal": "pattern",
+          "rationale": "id prefix redstone_ + card suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per machine slot"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables RS control of AE2 devices"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade card aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade for AE2 network machines"
+        },
+        "primary_uses": {
+          "values": [
+            "Enable redstone control on AE2 machines",
+            "Toggle device operation via RS signal"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of redstone card upgrade"
+        }
+      }
+    },
+    "ae2:redstone_p2p_tunnel": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "P2P tunnel routing redstone signals"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires attunement; specialized niche"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use for RS signal routing"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "routes redstone signals through ME"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 P2P bus aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by attuning ME bus with redstone"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "transmits redstone signal point-to-point"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "P2P tunnels are ME network components"
+        },
+        "primary_uses": {
+          "values": [
+            "Transmit RS signals through ME network",
+            "Point-to-point redstone routing"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone P2P core mechanic"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,369 @@
+{
+  "items": {
+    "ae2:not_so_mysterious_cube": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "joke/decorative variant of mysterious cube"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 decorative blocks use certus quartz"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game materials"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "no functional use, purely decorative"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "named variant of mysterious cube"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz crystal glow aesthetic"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "no functional use beyond decoration"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative display block",
+            "AE2 humor/lore item"
+          ],
+          "signal": "inferred",
+          "rationale": "joke variant of meteorite mysterious cube"
+        }
+      }
+    },
+    "ae2:orange_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "ME cable routes up to 8 network channels"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables crafted from fluix materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard craftable AE2 component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout ME network builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "orange colored network cable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "orange color"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network automation and routing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted from fluix"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting ME network nodes",
+            "routing up to 8 channels",
+            "color-coding cable runs"
+          ],
+          "signal": "inferred",
+          "rationale": "covered cable carries 8 channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:covered_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME network signals and AE2 power"
+        }
+      }
+    },
+    "ae2:orange_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "dense ME cable routes 32 channels"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables crafted from fluix materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard craftable AE2 component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "backbone cable for dense network runs"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dense network cable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "orange color"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "high-density ME network routing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "routing up to 32 ME channels",
+            "dense network backbone",
+            "color-coded cable organization"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable is high-capacity backbone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:covered_dense_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME signals and AE2 power"
+        }
+      }
+    },
+    "ae2:orange_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "pattern",
+          "rationale": "basic ME glass cable, no channel limit"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "glass cables use fluix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheapest AE2 cable tier"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "entry-level ME cable, used everywhere"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "orange glass ME cable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "orange translucent glass appearance"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network signal routing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted from fluix glass"
+        },
+        "primary_uses": {
+          "values": [
+            "basic ME network connection",
+            "cheapest cable tier",
+            "color-coded aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "glass cable is entry-level AE2 cable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:glass_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME signals and AE2 power"
+        }
+      }
+    },
+    "ae2:orange_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "applies color and glow to AE2 components"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "paint ball is dye-based applicator"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common dye + AE2 materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when color-coding ME cable runs"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "explicitly a colored paint ball item"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "orange + lumen emissive property"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic color-coding of AE2 builds"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted only"
+        },
+        "primary_uses": {
+          "values": [
+            "color AE2 cables/parts orange",
+            "add glow effect to cables",
+            "aesthetic network customization"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen ball applies color and emissive glow"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used to customize AE2 network components"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

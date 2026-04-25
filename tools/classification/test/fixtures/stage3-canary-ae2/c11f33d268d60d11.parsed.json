@@ -1,0 +1,329 @@
+{
+  "items": {
+    "ae2:sky_stone_chest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "chest = interactive storage block"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "sky stone sourced from AE2 meteors"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "chests placed regularly in bases"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is item storage"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 chest variant; meteoric alien look"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone is dark charcoal gray"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "named",
+          "evidence": "tag c:chests",
+          "rationale": "c:chests confirms standard item storage"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone blast resistance ~150"
+        },
+        "primary_uses": {
+          "values": [
+            "store items in AE2 aesthetic",
+            "decorative chest for ME base builds"
+          ],
+          "signal": "inferred",
+          "rationale": "chest function + sky stone theme"
+        }
+      }
+    },
+    "ae2:sky_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab = structural half-height form"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from meteor sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for structure and decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 sky stone alien/meteoric aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone is dark charcoal gray"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone blast resistance ~150"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring or roofing",
+            "AE2 base aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab use in sky stone style"
+        }
+      }
+    },
+    "ae2:sky_stone_small_brick": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative brick block for building"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from meteor sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative build block, not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "brick for construction/decor"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "refined AE2 meteoric stone brick"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone is dark charcoal gray"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone blast resistance ~150"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall and floor builds",
+            "AE2 base construction",
+            "source for slab/stair/wall variants"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block + many derived sub-forms"
+        }
+      }
+    },
+    "ae2:sky_stone_small_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab = structural half-height form"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from meteor sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 small brick slab variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone is dark charcoal gray"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone blast resistance ~150"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height small brick flooring",
+            "AE2 base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form of small brick block"
+        }
+      }
+    },
+    "ae2:sky_stone_small_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs = structural stair form"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from meteor sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction/decor"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 small brick stairs variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone is dark charcoal gray"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone blast resistance ~150"
+        },
+        "primary_uses": {
+          "values": [
+            "stair blocks for AE2 base builds",
+            "decorative small brick stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form of small brick block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,374 @@
+{
+  "items": {
+    "ae2:quartz_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "minecraft:walls tag = structural wall form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "certus quartz requires AE2 ore mining"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building choice"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall used for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form of base block; crystalline look"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is pale and crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "building certus quartz-themed walls",
+            "AE2 aesthetic decoration",
+            "connecting quartz block structures"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block primary uses"
+        }
+      }
+    },
+    "ae2:red_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network active infrastructure"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables built on fluix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard cable in all AE2 setups"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential for every ME network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network channels for automation"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "red dye variant; network cable aesthetic"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "red coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting recipe only, no loot tables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:covered_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME power and channels"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting ME network nodes (8ch)",
+            "color-coded cable routing",
+            "covered aesthetic cable segment"
+          ],
+          "signal": "inferred",
+          "rationale": "covered cable primary uses"
+        }
+      }
+    },
+    "ae2:red_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network high-capacity infrastructure"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables built on fluix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard dense cable in AE2 networks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "main trunk cable in ME networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "32-channel ME network backbone"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "red dye variant; dense cable aesthetic"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "red coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting recipe only, no loot tables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:covered_dense_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME power and 32 channels"
+        },
+        "primary_uses": {
+          "values": [
+            "high-capacity ME trunk line (32ch)",
+            "color-coded dense routing",
+            "controller-to-subnet backbone"
+          ],
+          "signal": "inferred",
+          "rationale": "dense covered cable primary uses"
+        }
+      }
+    },
+    "ae2:red_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network basic cable"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "made from fluix glass panes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheapest, most basic cable type"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in early ME networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "basic ME network channels"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "red glass variant; ME cable aesthetic"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "red colored glass: vivid + see-through"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting recipe only, no loot tables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:glass_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME power and up to 8 channels"
+        },
+        "primary_uses": {
+          "values": [
+            "basic ME network connections",
+            "cheapest cable option (8ch)",
+            "color-coded glass cable routing"
+          ],
+          "signal": "inferred",
+          "rationale": "glass cable primary uses"
+        }
+      }
+    },
+    "ae2:red_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "applied to cables via color applicator"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires lumen crafting materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per cable during setup"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 cables for network org"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "red lumen paint: dye-colored item"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "red + lumen = glowing red cables"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting_shaped only, no loot tables"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "tag ae2:lumen_paint_balls; cable coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "applying red glow color to AE2 cables",
+            "color-coding ME network with glow effect",
+            "aesthetic cable organization"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen paint ball primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_facet",
+      "name": "dye_color",
+      "suggested_kind": "enum",
+      "rationale": "AE2 cables/paintballs come in all 16 dye colors; palette lacks specific hue values to distinguish red from blue variants"
+    }
+  ],
+  "corrections": [
+    {
+      "item": "ae2:quartz_wall",
+      "facet": "material_family",
+      "current": "quartz",
+      "suggested": "certus_quartz",
+      "rationale": "ae2 namespace 'quartz' = certus quartz, not vanilla nether quartz",
+      "confidence": 0.85
+    }
+  ]
+}

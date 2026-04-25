@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 60121,
+  "duration_api_ms": 60928,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"sophisticatedstorage:limited_gold_barrel_3\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrel that stores items with type-slot cap\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _gold_barrel\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold mid-high tier, needs upgrade recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed storage block used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limited variant of standard gold barrel\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material = golden color\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store items with 3-type slot cap\",\n            \"Upgrade to limited diamond barrel\",\n            \"Organized dedicated storage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limited-type storage + upgrade path\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_gold_barrel_4\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrel that stores items with type-slot cap\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _gold_barrel\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold mid-high tier, needs upgrade recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed storage block used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limited variant of standard gold barrel\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material = golden color\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store items with 4-type slot cap\",\n            \"Upgrade to limited diamond barrel\",\n            \"Organized dedicated storage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limited-type storage + upgrade path\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_iron_barrel_1\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrel that stores items with type-slot cap\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _iron_barrel\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron is an early accessible tier\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed storage block used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limited variant of standard iron barrel\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron material = silvery finish\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store items with 1-type slot cap\",\n            \"Upgrade to limited gold barrel\",\n            \"Early-game dedicated storage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"single-type storage + upgrade path\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_iron_barrel_2\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrel that stores items with type-slot cap\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _iron_barrel\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron is an early accessible tier\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed storage block used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limited variant of standard iron barrel\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron material = silvery finish\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store items with 2-type slot cap\",\n            \"Upgrade to limited gold barrel\",\n            \"Early-game dedicated storage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"two-type storage + upgrade path\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_iron_barrel_3\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrel that stores items with type-slot cap\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _iron_barrel\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron is an early accessible tier\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed storage block used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limited variant of standard iron barrel\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron material = silvery finish\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store items with 3-type slot cap\",\n            \"Upgrade to limited gold barrel\",\n            \"Early-game dedicated storage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"three-type storage + upgrade path\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "c3c61a41-f584-4621-89eb-879971c6023b",
+  "total_cost_usd": 0.09483454999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4321,
+    "cache_read_input_tokens": 6346,
+    "output_tokens": 4879,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4321,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 4879,
+        "cache_read_input_tokens": 6346,
+        "cache_creation_input_tokens": 4321,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4321
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3458,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003533,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 4879,
+      "cacheReadInputTokens": 6346,
+      "cacheCreationInputTokens": 4321,
+      "webSearchRequests": 0,
+      "costUSD": 0.09130155,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "13a0d87c-9d47-41fb-b350-01987169c2eb"
+}

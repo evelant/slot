@@ -1,0 +1,399 @@
+{
+  "items": {
+    "ae2:item_storage_cell_64k": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "portable ME storage medium; needs Drive/Chest"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cells built on certus quartz components"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "cell housing crafted with iron"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "players craft many cells for storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "core ME item storage unit"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tech mod storage device"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "standard AE2 cell silver/grey housing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting recipe only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "held in inventory; slots into ME Drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 item storage cell type"
+        },
+        "primary_uses": {
+          "values": [
+            "store items in ME network",
+            "insert into ME Drive or ME Chest",
+            "upgrade from lower capacity cells"
+          ],
+          "signal": "inferred",
+          "rationale": "64k byte storage in ME system"
+        }
+      }
+    },
+    "ae2:large_quartz_bud": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "crystal growth stage from AE2 geodes"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "certus quartz crystal growth stage"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found in AE2 certus quartz geodes"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely kept as item; silk touch only"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bud stage mostly decorative; not harvested"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "large variant of certus bud; natural crystal"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is pale/light blue crystal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "part of certus quartz growth cycle"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative crystal bud placement",
+            "indicates certus quartz geode nearby"
+          ],
+          "signal": "inferred",
+          "rationale": "bud form primarily decorative"
+        }
+      }
+    },
+    "ae2:level_emitter": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone based on ME network levels"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 part built from certus/fluix components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 automation part"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for threshold-based automation"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone output for ME-driven automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tech mod network sensor part"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network redstone output component"
+        },
+        "primary_uses": {
+          "values": [
+            "emit redstone on item count threshold",
+            "trigger automation from ME network state",
+            "ingredient in storage monitor recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "level-based redstone signal emitter"
+        }
+      }
+    },
+    "ae2:light_blue_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network cable; active network infrastructure"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables use fluix crystal as core"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "glass casing on covered cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 network cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "players use many cables for network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME parts; enables AE2 automation"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "light_blue colored ME cable variant"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a pastel tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "item",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "ME cable carries channels/items/power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "core ME network cable component"
+        },
+        "primary_uses": {
+          "values": [
+            "connect ME network components",
+            "route up to 8 channels",
+            "colored cable for network organization"
+          ],
+          "signal": "inferred",
+          "rationale": "standard 8-channel covered cable"
+        }
+      }
+    },
+    "ae2:light_blue_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "dense ME cable; 32-channel trunk line"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables use fluix crystal as core"
+        },
+        "material_secondary": {
+          "values": [
+            "glass"
+          ],
+          "signal": "inferred",
+          "rationale": "glass casing on covered dense cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 dense cable variant"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for high-channel trunk lines"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "32-channel trunk for large ME networks"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "light_blue colored dense cable variant"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a pastel tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "item",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "dense ME cable carries channels/items/power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "dense ME network cable"
+        },
+        "primary_uses": {
+          "values": [
+            "route 32 channels through single cable",
+            "dense ME network trunk lines",
+            "colored for cable organization"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity 32-channel dense cable"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:large_quartz_bud",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_cave"
+      ],
+      "rationale": "Certus quartz buds grow naturally in AE2 geode structures underground; crafted_only is incorrect",
+      "confidence": 0.8
+    }
+  ]
+}

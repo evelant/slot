@@ -1,0 +1,322 @@
+{
+  "items": {
+    "createaddition:redstone_relay": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "relay bridges redstone & Create electricity"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted mod component, non-trivial recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed where redstone meets electrical net"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "interfaces redstone signals with electricity"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create/CreateAddition aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "typical CA metal casing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone↔electrical interface component"
+        },
+        "primary_uses": {
+          "values": [
+            "interface redstone with Create electricity",
+            "gate or read electrical stress signals"
+          ],
+          "signal": "inferred",
+          "rationale": "relay function in CA electrical system"
+        }
+      }
+    },
+    "createaddition:rolling_mill": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "kinetic machine for metal processing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard early-mid Create machine"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core plate/wire production step"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic processing machine"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create kinetic machine aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "axe-mined = wood frame + iron rollers"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:mechanical_processing"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic rolling machine"
+        },
+        "primary_uses": {
+          "values": [
+            "roll metal ingots into plates",
+            "produce wire stock via kinetic power"
+          ],
+          "signal": "inferred",
+          "rationale": "rolling mill core function"
+        }
+      }
+    },
+    "createaddition:seed_oil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed fluid refined from seeds"
+        },
+        "material_family": {
+          "value": "seed_oil",
+          "signal": "pattern",
+          "rationale": "id is seed_oil"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "renewable from farmed seeds"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ongoing biofuel production"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "combustible biofuel for CA generators"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-derived organic fluid"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow-amber oil color"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid stored in tanks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:biofuel"
+          ],
+          "signal": "inferred",
+          "rationale": "seed-derived combustible fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "biofuel for electric motor",
+            "combustible fluid for power generation"
+          ],
+          "signal": "inferred",
+          "rationale": "CA biofuel system"
+        }
+      }
+    },
+    "createaddition:seed_oil_bucket": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "pattern",
+          "rationale": "filled bucket = portable fluid container"
+        },
+        "material_family": {
+          "value": "seed_oil",
+          "signal": "pattern",
+          "rationale": "bucket contains seed oil"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable oil in standard bucket"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used to transport/fill seed oil fuel"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "delivers biofuel; fits belt logistics"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid bucket fits standard inventory slots"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket transports fluid"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:biofuel"
+          ],
+          "signal": "inferred",
+          "rationale": "portable form of CA biofuel"
+        },
+        "primary_uses": {
+          "values": [
+            "transport seed oil as fuel",
+            "fill tanks with biofuel"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket form for fluid logistics"
+        }
+      }
+    },
+    "createaddition:small_light_connector": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "electrical wire connector = power component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard crafted wire connector"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used extensively in power networks"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "transmits electricity through CA networks"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "CreateAddition electrical component"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "metal connector with indicator light"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "named",
+          "evidence": "display_name: Small Connector With Light",
+          "rationale": "name explicitly states light present"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "electrical connector transmits energy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "wire connector for CA electrical network"
+        },
+        "primary_uses": {
+          "values": [
+            "connect wires in electrical network",
+            "transmit electrical energy",
+            "indicate energised state via light"
+          ],
+          "signal": "inferred",
+          "rationale": "connector with built-in status light"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

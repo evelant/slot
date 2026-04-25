@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 141270,
+  "duration_api_ms": 142049,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:fluid_storage_cell_64k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cell inserts into drives, not standalone\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary AE2 crystal material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires mid-game AE2 progression\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core fluid automation storage\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores fluids in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech storage device\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix crystal is purple-blue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafting recipes only\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"ae_storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"inserts into ME Drive or ME Chest slot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"output path ae2:network/cells/\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"store fluids in AE2 ME network\",\n            \"insert into ME Drive or ME Chest\",\n            \"64k fluid capacity per cell\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core fluid cell use cases\"\n        }\n      }\n    },\n    \"ae2:fluix_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:axes\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix_\"\n        },\n        \"tier\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2-specific material tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires fluix crystals + smithing\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 primary focus is network, not tools\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axes used for chopping wood and fighting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tech mod crafted tool\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix crystal coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, smithing_transform only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"chop wood and logs\",\n            \"melee combat weapon\",\n            \"AE2 tier progression tool\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard axe use cases\"\n        }\n      }\n    },\n    \"ae2:fluix_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"output path ae2:decorative/; has slabs/stairs/walls\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 fluix crystals\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative/structural AE2 builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2-themed structural and decorative use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystal block; slab/stair/wall variants exist\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix is vibrant purple-blue crystal\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient in growth accelerator and resonance gen\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"build AE2-themed structures\",\n            \"craft into slabs/stairs/walls\",\n            \"craft growth accelerators\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dominant recipe uses\"\n        }\n      }\n    },\n    \"ae2:fluix_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network backbone connector\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted cable used everywhere\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fundamental AE2 build ingredient\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects ME network devices\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network cable, dyeable to 16 colors\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix uncolored cable is teal/light-blue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME channels and network power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"output path ae2:network/cables/\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"connect ME network devices\",\n            \"carry up to 8 network channels\",\n            \"dye for color-coded cable runs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard covered cable use cases\"\n        }\n      }\n    },\n    \"ae2:fluix_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity ME network backbone\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted cable for dense channel runs\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for high-channel-density connections\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone for dense ME network segments\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense network cable, dyeable\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix default cable color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 32 channels and network power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"output path ae2:network/cables/dense_\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"carry up to 32 ME network channels\",\n            \"backbone for large AE2 networks\",\n            \"dye for color-coded dense runs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable key use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "2d67e5b9-f1ed-463b-b64f-be38be893db6",
+  "total_cost_usd": 0.18138260000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3628,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 10869,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3628,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10869,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3628,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3628
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2765,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002855,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10869,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3628,
+      "webSearchRequests": 0,
+      "costUSD": 0.17852760000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ca2da2ed-c166-4168-aa9b-42b05a35546c"
+}

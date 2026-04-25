@@ -1,0 +1,353 @@
+{
+  "items": {
+    "ae2:certus_quartz_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "minecraft:axes tag confirms axe"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz_"
+        },
+        "tier": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 first tier; upgrades to fluix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 certus quartz sourcing"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "transitional, replaced by fluix axe"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "axe: chops wood, deals melee damage"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural quartz crystal material"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is pale blue crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources present"
+        },
+        "primary_uses": {
+          "values": [
+            "chop wood",
+            "melee combat",
+            "upgrade to fluix axe via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard axe + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:certus_quartz_crystal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:gems tag; schema puts gems under material"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz_"
+        },
+        "tier": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "raw material for certus quartz tools"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 quartz cluster world gen"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "14+ shaped recipes; core AE2 material"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network parts; decorative quartz blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring quartz cluster drop"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 certus quartz pale blue crystal"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "quartz_cluster loot source in caves"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "foundational material for ME components"
+        },
+        "primary_uses": {
+          "values": [
+            "craft AE2 network components",
+            "charge into powered certus quartz",
+            "decorative quartz blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "confirmed by wide recipe usage"
+        }
+      }
+    },
+    "ae2:certus_quartz_cutting_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "ae2:knife tag; durability-consuming cutter"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic certus quartz"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "required throughout AE2 quartz cutting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in AE2 quartz cutting station"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "processing tool for AE2 station"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz material, pale blue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources present"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "inferred",
+          "rationale": "quartz cutting station ingredient tool"
+        },
+        "primary_uses": {
+          "values": [
+            "quartz cutting station ingredient",
+            "crafting cable anchors"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe data confirms both uses"
+        }
+      }
+    },
+    "ae2:certus_quartz_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:dusts tag; dust = processed material"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "drops from quartz buds; inscriber output"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "silicon production, quartz glass, AE2 parts"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 silicon/components; quartz glass build"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural crystal ground to powder"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "pale white powder appearance"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "pattern",
+          "rationale": "drops from quartz buds in caves"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "inferred",
+          "rationale": "inscriber output; AE2 recipe ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt/blast into silicon",
+            "craft quartz glass",
+            "craft AE2 quartz fiber"
+          ],
+          "signal": "inferred",
+          "rationale": "confirmed by recipe data"
+        }
+      }
+    },
+    "ae2:certus_quartz_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "minecraft:hoes tag confirms hoe"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz_"
+        },
+        "tier": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 first tier; upgrades to fluix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 certus quartz sourcing"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hoes used rarely; transitional tool"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe tills soil for crop farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural quartz crystal material"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz pale blue crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources present"
+        },
+        "primary_uses": {
+          "values": [
+            "till soil for farming",
+            "upgrade to fluix hoe via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard hoe + AE2 upgrade path"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

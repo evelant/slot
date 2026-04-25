@@ -1,0 +1,294 @@
+{
+  "items": {
+    "ae2:smithing_table_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "AE2 encoded pattern consumed by autocrafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "encoded from blank pattern, easily crafted"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set up once per smithing recipe needed"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "drives ME autocrafting for smithing ops"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical automation artefact"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "encoded from blank pattern in pattern terminal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "pattern inserted into pattern providers"
+        },
+        "primary_uses": {
+          "values": [
+            "encode smithing upgrades for ME autocrafting",
+            "insert into pattern provider to automate smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 smithing autocrafting workflow"
+        }
+      }
+    },
+    "ae2:smooth_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "smooth polished block, primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "smelted from certus quartz, farmable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building AE2-themed structures"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and aesthetic block"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth uniform surface, no ornament"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "white/pale certus quartz aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "build AE2-themed structures",
+            "craft smooth quartz slabs, stairs, walls"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and derivative crafting"
+        }
+      }
+    },
+    "ae2:smooth_quartz_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form, primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from smooth certus quartz block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "half-height structural and aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth uniform surface"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "white/pale certus quartz aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "AE2-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab use cases"
+        }
+      }
+    },
+    "ae2:smooth_quartz_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form, primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from smooth certus quartz block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairways and rooflines"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth uniform surface"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "white/pale certus quartz aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "stairways in AE2-themed structures",
+            "decorative rooflines and corners"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs use cases"
+        }
+      }
+    },
+    "ae2:smooth_quartz_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form, primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from smooth certus quartz block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "fencing and border use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth uniform surface"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "white/pale certus quartz aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative fencing in AE2 builds",
+            "wall borders and barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:smooth_quartz_block",
+      "facet": "material_family",
+      "current": "quartz",
+      "suggested": "certus_quartz",
+      "rationale": "display name 'Smooth Certus Quartz Block'; AE2 certus quartz is distinct from vanilla nether quartz",
+      "confidence": 0.95
+    },
+    {
+      "item": "ae2:smooth_quartz_slab",
+      "facet": "material_family",
+      "current": "quartz",
+      "suggested": "certus_quartz",
+      "rationale": "display name 'Smooth Certus Quartz Slab'; AE2-specific material",
+      "confidence": 0.95
+    },
+    {
+      "item": "ae2:smooth_quartz_stairs",
+      "facet": "material_family",
+      "current": "quartz",
+      "suggested": "certus_quartz",
+      "rationale": "display name 'Smooth Certus Quartz Stairs'; AE2-specific material",
+      "confidence": 0.95
+    },
+    {
+      "item": "ae2:smooth_quartz_wall",
+      "facet": "material_family",
+      "current": "quartz",
+      "suggested": "certus_quartz",
+      "rationale": "display name 'Smooth Certus Quartz Wall'; AE2-specific material",
+      "confidence": 0.95
+    }
+  ]
+}

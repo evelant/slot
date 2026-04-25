@@ -1,0 +1,374 @@
+{
+  "items": {
+    "ae2:purple_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 network cable carries channels"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass cable base with quartz covering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic AE2 materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used extensively in ME networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network backbone for automation"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored cable with mechanical network role"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "named",
+          "rationale": "display_name says Purple"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dense cable carries all channel types"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tagged covered_dense_cable in ae2"
+        },
+        "primary_uses": {
+          "values": [
+            "32-channel ME network backbone",
+            "Color-coded network organization",
+            "Connect AE2 devices at scale"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable primary function"
+        }
+      }
+    },
+    "ae2:purple_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 network cable carries channels"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "glass_cable tag, name says glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "most basic AE2 cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ubiquitous in ME networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network cabling for automation"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "colored variant of glass cable"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "named",
+          "rationale": "display_name says Purple"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry all channel types"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tagged glass_cable in ae2"
+        },
+        "primary_uses": {
+          "values": [
+            "Basic 8-channel ME network wiring",
+            "Color-coded network organization",
+            "Connect AE2 devices"
+          ],
+          "signal": "inferred",
+          "rationale": "glass cable primary function"
+        }
+      }
+    },
+    "ae2:purple_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to apply glowing color to cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from paint ball + glow item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when color-coding networks"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "glow color-coding cables in ME networks"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing upgrade of standard paint ball"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "glowing"
+          ],
+          "signal": "named",
+          "rationale": "purple + lumen = glowing emissive"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, shaped recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tagged lumen_paint_balls in ae2"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply glowing purple color to AE2 cables",
+            "Visual network org with emissive glow"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen paint ball function"
+        }
+      }
+    },
+    "ae2:purple_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to apply color to AE2 cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from dye + basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when color-coding networks"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "color-coding cables in ME networks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "rationale": "paint ball for coloring"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "named",
+          "rationale": "display_name says Purple"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, shaped recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tagged paint_balls in ae2"
+        },
+        "primary_uses": {
+          "values": [
+            "Color AE2 cables purple",
+            "Craft lumen paint balls",
+            "Visual network organization"
+          ],
+          "signal": "inferred",
+          "rationale": "paint ball + lumen ingredient"
+        }
+      }
+    },
+    "ae2:purple_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 smart cable shows channel usage"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "built on glass cable base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from glass cable + materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular for visual channel monitoring"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ME cabling with visual channel feedback"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored cable with smart channel display"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "named",
+          "rationale": "display_name says Purple"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry all channel types"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tagged smart_cable in ae2"
+        },
+        "primary_uses": {
+          "values": [
+            "8-channel ME cable with usage display",
+            "Color-coded visual channel monitoring",
+            "Connect AE2 devices with feedback"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable primary function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

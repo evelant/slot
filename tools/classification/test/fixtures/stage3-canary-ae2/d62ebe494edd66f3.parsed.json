@@ -1,0 +1,326 @@
+{
+  "items": {
+    "ae2:mysterious_cube": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Meteor core block; no recipe or functional use"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Only in rare AE2 meteor crash sites"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "No active gameplay use; purely collected"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "Mysterious meteor relic, cryptic name"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark sky stone meteor appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect from AE2 meteor crater",
+            "Place as decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "No recipe; purely collectible"
+        }
+      }
+    },
+    "ae2:name_press": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "Non-consumed template enabling inscriber output"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Found only in AE2 meteorite chests"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once in inscriber then static"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Sky stone chests inside meteor craters"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Enables AE2 inscriber component production"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Metal press die"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "Flat metallic press plate"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in AE2 Inscriber machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Place in Inscriber to enable name printing",
+            "Required for AE2 inscriber setup"
+          ],
+          "signal": "inferred",
+          "rationale": "Inscriber press template"
+        }
+      }
+    },
+    "ae2:nether_quartz_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "minecraft:axes tag + _axe id suffix"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix nether_quartz_"
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "AE2 quartz tool progression tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Nether quartz is readily farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used until upgraded to fluix axe"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "Axe: wood harvesting and combat"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Quartz mineral tool"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "Pale translucent quartz"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool is crafted from nether quartz"
+        },
+        "primary_uses": {
+          "values": [
+            "Chopping wood",
+            "Combat",
+            "Smithing upgrade to fluix axe"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard axe + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:nether_quartz_cutting_knife": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "ae2:knife tag + knife id suffix"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix nether_quartz_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Nether quartz is readily farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Consumed repeatedly in quartz cutting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in AE2 quartz cutting station"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Precision cutting tool"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "Quartz blade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted from nether quartz"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "Used in ae2:quartz_cutting recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Used in AE2 quartz cutting station",
+            "Crafting network components like cable anchors"
+          ],
+          "signal": "inferred",
+          "rationale": "Quartz cutter required tool"
+        }
+      }
+    },
+    "ae2:nether_quartz_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "minecraft:hoes tag + _hoe id suffix"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix nether_quartz_"
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "AE2 quartz tool progression tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Nether quartz is readily farmable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Hoes used less than axes/pickaxes"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "pattern",
+          "rationale": "minecraft:hoes tag implies farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Quartz mineral tool"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "Pale translucent quartz"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Tool crafted from nether quartz"
+        },
+        "primary_uses": {
+          "values": [
+            "Tilling soil for farming",
+            "Smithing upgrade to fluix hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard hoe + AE2 upgrade path"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:mysterious_cube",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Mysterious Cube is the core of AE2 meteorite structures generated in the world, not a crafted item",
+      "confidence": 0.8
+    }
+  ]
+}

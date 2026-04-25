@@ -1,0 +1,315 @@
+{
+  "items": {
+    "ae2:ender_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:dusts tag; processed dust form"
+        },
+        "material_family": {
+          "value": "ender_pearl",
+          "signal": "named",
+          "rationale": "c:dusts/ender_pearl tag explicit"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "endermen + inscriber processing required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche wireless/quantum AE2 recipes"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in AE2 wireless and quantum items"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "derived from enderman mob drop"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "ender pearl green-teal dusty hue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; inscriber produces it"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing",
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "inscriber product; ingredient in wireless/quantum"
+        },
+        "primary_uses": {
+          "values": [
+            "craft wireless boosters for ME network",
+            "craft entangled singularities"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of paths"
+        }
+      }
+    },
+    "ae2:energy_acceptor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block converting FE power to AE power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic AE2 power input, early crafted"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "every FE-powered ME network needs one"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "powers ME network from external energy"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial AE2 power conversion block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 blocks are dark/matte aesthetic"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "converts and routes energy into network"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy",
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "core energy input for ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "convert FE/RF to AE network power",
+            "power ME network from other mods",
+            "craft energy vibration chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "name + FE p2p tag + ingredient list"
+        }
+      }
+    },
+    "ae2:energy_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "upgrade card increases device energy buffer"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 materials; not trivially cheap"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "inserted when extra energy buffer needed"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades AE2 device energy capacity"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade card aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade for AE2 wireless/controller devices"
+        },
+        "primary_uses": {
+          "values": [
+            "increase energy buffer of AE2 devices",
+            "upgrade ME Controller or Energy Acceptor"
+          ],
+          "signal": "inferred",
+          "rationale": "energy card = energy upgrade per deepwiki"
+        }
+      }
+    },
+    "ae2:energy_cell": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block storing AE2 network energy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 energy storage, craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed in networks; ingredient in many recipes"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "buffers power for ME network operation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial energy storage block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 energy cells have orange/amber glow"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and supplies AE network energy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 energy storage component"
+        },
+        "primary_uses": {
+          "values": [
+            "store AE2 network energy",
+            "craft dense energy cell",
+            "craft quantum ring and AE2 tools"
+          ],
+          "signal": "inferred",
+          "rationale": "name + sample_ingredient_of paths"
+        }
+      }
+    },
+    "ae2:energy_level_emitter": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone based on ME energy level"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized AE2 automation part"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for advanced energy-aware automation"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "emits redstone from ME energy threshold"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network part with redstone output"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "network part monitoring energy grid"
+        },
+        "primary_uses": {
+          "values": [
+            "emit redstone at configurable energy thresholds",
+            "trigger automation on ME energy level change"
+          ],
+          "signal": "named",
+          "rationale": "display name + deepwiki confirms behavior"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

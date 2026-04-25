@@ -1,0 +1,314 @@
+{
+  "items": {
+    "sophisticatedstorage:alchemy_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted functional mod upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set-and-forget per container"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "alchemy=potion work; auto-processes in storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources in data"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "automation upgrade for storage containers"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-brew/combine potions in storage",
+            "alchemy automation for containers"
+          ],
+          "signal": "inferred",
+          "rationale": "alchemy upgrade = potion automation"
+        }
+      }
+    },
+    "sophisticatedstorage:auto_blasting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted functional mod upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set-and-forget per container"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-blasts items on insert"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources in data"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "automation upgrade for storage containers"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-blast smelt ores/metals in storage",
+            "blast furnace automation upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "blasting = blast furnace automation"
+        }
+      }
+    },
+    "sophisticatedstorage:auto_smelting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted functional mod upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set-and-forget per container"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-smelts items on insert"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources in data"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "automation upgrade for storage containers"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-smelt items inserted in storage",
+            "furnace automation upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting automation on storage insert"
+        }
+      }
+    },
+    "sophisticatedstorage:auto_smoking_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted functional mod upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set-and-forget per container"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-smokes food; farming=food processing chain"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources in data"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "automation upgrade for storage containers"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-smoke food items in storage",
+            "smoker automation upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "smoking = food cooking automation"
+        }
+      }
+    },
+    "sophisticatedstorage:barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "tag c:barrels; stores items"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "tag c:barrels/wooden"
+        },
+        "tier": {
+          "value": "wooden",
+          "signal": "pattern",
+          "rationale": "tag base_tier_wooden_storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic craftable storage block"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core storage used constantly"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items; accepts automation upgrades"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; many wood-type variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "default barrel brown wood tone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard inventory items"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden construction, flammable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "base tier SS storage container"
+        },
+        "primary_uses": {
+          "values": [
+            "store items with upgrade slots",
+            "upgradeable barrel storage",
+            "base wooden tier container"
+          ],
+          "signal": "inferred",
+          "rationale": "SS barrel with upgradeable slot system"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

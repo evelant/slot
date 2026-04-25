@@ -1,0 +1,323 @@
+{
+  "items": {
+    "ae2:toggle_bus": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "redstone-toggled ME network gate bus"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap, widely deployed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed only where gating needed"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone enables/disables network side"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 mechanical network part"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources present"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network bus part"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "gates ME channel/signal flow"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-gated ME network toggle",
+            "enable/disable subnetwork sides"
+          ],
+          "signal": "inferred",
+          "rationale": "core use is toggling connections"
+        }
+      }
+    },
+    "ae2:vibration_chamber": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "burns fuel to produce AE energy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "early AE2 power solution"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "often replaced by dedicated power mods"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates AE energy from solid fuel"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 machine block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron machine casing aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 energy generation subsystem"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "outputs AE energy to network"
+        },
+        "primary_uses": {
+          "values": [
+            "burn solid fuel for AE energy",
+            "early-game AE2 power source"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use is energy generation"
+        }
+      }
+    },
+    "ae2:view_cell": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "filters ME terminal item display"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap to craft, widely used"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "inserted in ME terminals constantly"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "filters terminal display to specific items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage system component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources present"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "slots into ME terminal cell view slots"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "ME storage terminal component"
+        },
+        "primary_uses": {
+          "values": [
+            "filter ME terminal item display",
+            "organize terminal view by item set"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is display filtering"
+        }
+      }
+    },
+    "ae2:void_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "upgrade card inserted into cells/buses"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "situational; not always needed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only used in overflow-prone setups"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-voids overflow on full cells"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade card"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources present"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "storage cell upgrade card"
+        },
+        "primary_uses": {
+          "values": [
+            "void overflow items when cell is full",
+            "prevent network input backlog"
+          ],
+          "signal": "inferred",
+          "rationale": "destroys excess items on overflow"
+        }
+      }
+    },
+    "ae2:white_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "ae2:covered_cable tag = ME network cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic cable, placed in bulk"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed extensively for network routing"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "routes ME network channels"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "white-dyed ME cable variant"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white coloring reads as light"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources present"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "ae2:covered_cable tag = network backbone"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME cables carry AE energy and channels"
+        },
+        "primary_uses": {
+          "values": [
+            "connect ME network components",
+            "carry up to 8 ME channels",
+            "white aesthetic network routing"
+          ],
+          "signal": "inferred",
+          "rationale": "core use is network channel routing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

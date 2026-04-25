@@ -1,0 +1,336 @@
+{
+  "items": {
+    "sophisticatedstorage:controller": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "network hub block managing linked storage"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "guess",
+          "rationale": "typical SS controller uses iron casing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted, moderate resource cost"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per storage network"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "links+manages storage network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "network controller device"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_network"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient of storage_link_from_controller"
+        },
+        "primary_uses": {
+          "values": [
+            "link multiple storage containers",
+            "act as network hub",
+            "enable storage automation"
+          ],
+          "signal": "inferred",
+          "rationale": "SS controller core function"
+        }
+      }
+    },
+    "sophisticatedstorage:copper_barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "tagged c:barrels + all_storage"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "barrels are wood-framed structures"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "SS base tier in progression"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper accessible early-game"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary base-tier storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "storage container"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood+copper natural materials"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "copper bands on wooden barrel"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "named",
+          "rationale": "tagged sophisticatedstorage:all_storage"
+        },
+        "primary_uses": {
+          "values": [
+            "store items at copper tier",
+            "upgrade to iron tier via tier upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "SS barrel usage patterns"
+        }
+      }
+    },
+    "sophisticatedstorage:copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "tagged c:chests + all_storage"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "chests are wood-framed"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "SS base tier in progression"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper accessible early-game"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core base-tier storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "chest storage and tier-upgradeable"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood+copper natural materials"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "copper accents on wooden chest"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "named",
+          "rationale": "tagged sophisticatedstorage:all_storage"
+        },
+        "primary_uses": {
+          "values": [
+            "store items at copper tier",
+            "upgrade to iron/diamond tier",
+            "convert to copper shulker box"
+          ],
+          "signal": "inferred",
+          "rationale": "SS chest usage patterns"
+        }
+      }
+    },
+    "sophisticatedstorage:copper_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "shulker box = portable container"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "SS base tier in progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires shulker shell + copper chest"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "carried for portable storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage for travel"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "copper shulker natural form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper-toned shulker casing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "named",
+          "rationale": "tagged sophisticatedstorage:all_storage"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "carry inventory while traveling",
+            "upgrade to iron shulker box"
+          ],
+          "signal": "inferred",
+          "rationale": "SS shulker box usage"
+        }
+      }
+    },
+    "sophisticatedstorage:copper_to_diamond_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_upgrade"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "destination tier in id"
+        },
+        "material_secondary": {
+          "values": [
+            "copper"
+          ],
+          "signal": "pattern",
+          "rationale": "source tier in id"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "upgrades to diamond tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamonds to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "id matches tier_upgrade pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade copper storage to diamond tier",
+            "intermediate step toward netherite tier"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient of copper_to_netherite upgrade"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 81610,
+  "duration_api_ms": 82750,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"sophisticatedstorage:advanced_alchemy_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag:upgrade + display name suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"advanced tier; non-trivial craft mats\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once per container slot\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"brewing\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"alchemy = brewing automation in storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade chip aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS advanced tier uses gold materials\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe/tier-up only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade category\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Automate alchemy in storage containers\",\n            \"Advanced potion ingredient processing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"alchemy upgrade function\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_compacting_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag:upgrade + display name suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"advanced tier; non-trivial craft mats\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once per container slot\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-compacts items into block form\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade chip aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS advanced tier uses gold materials\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe/tier-up only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade category\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Auto-compact items into block form\",\n            \"Advanced compacting with more filters\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compacting upgrade function\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_feeding_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag:upgrade + display name suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"advanced tier; non-trivial craft mats\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once per container slot\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-feeds player from food in storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade chip aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS advanced tier uses gold materials\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe/tier-up only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade category\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Auto-feed player from storage food\",\n            \"Advanced food filter/priority options\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeding upgrade function\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_filter_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag:upgrade + display name suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"advanced tier; non-trivial craft mats\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once per container slot\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"controls item flow in/out of storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade chip aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS advanced tier uses gold materials\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe/tier-up only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade category\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Filter items entering/leaving storage\",\n            \"Advanced filter with more item slots\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"filter upgrade function\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_hopper_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag:upgrade + display name suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"advanced tier; tier-up from basic hopper\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once per container slot\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-transfers items; advanced hopper logic\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade chip aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS advanced tier uses gold materials\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tier-up only; no loot/world source\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade category\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Auto-transfer items into/out of storage\",\n            \"Advanced hopper with speed & filter\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hopper upgrade function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "54764597-689c-43b0-b7a2-67bbb640d3f7",
+  "total_cost_usd": 0.1469835,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9546,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 7251,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9546,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7251,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9546,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9546
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2337,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002412,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7251,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9546,
+      "webSearchRequests": 0,
+      "costUSD": 0.1445715,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c83f4fbf-5bb8-4f1c-859b-8ff5469582d1"
+}

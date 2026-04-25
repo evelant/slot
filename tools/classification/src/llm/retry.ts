@@ -63,6 +63,9 @@ export interface RetryOptions {
   batchSize?: number;
   /** Optional per-batch progress callback. */
   onBatch?: Parameters<typeof runStage3>[0]["onBatch"];
+  /** Same as Stage3Options.subsystemVocabulary; the retry pass should use
+   *  the same canonical vocabulary as the first pass to avoid drift. */
+  subsystemVocabulary?: readonly { id: string; rationale?: string }[];
 }
 
 export interface RetryResult extends Stage3Result {
@@ -128,6 +131,7 @@ export async function runStage3Retry(
     only: candidates,
     clientOptions: options.effort ? { effort: options.effort } : undefined,
     onBatch: options.onBatch,
+    subsystemVocabulary: options.subsystemVocabulary,
   });
   warnings.push(...retry.warnings);
 

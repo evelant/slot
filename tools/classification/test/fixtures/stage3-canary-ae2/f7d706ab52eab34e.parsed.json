@@ -1,0 +1,333 @@
+{
+  "items": {
+    "ae2:crafting_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "encoded recipe card, not a block or material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "players craft many for automation setups"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core AE2 autocrafting item"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "encodes recipes for ME network autocrafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech item aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "encoded via pattern encoding terminal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "defines autocrafting recipes in ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "encode crafting recipes for ME network",
+            "insert into pattern providers for autocrafting",
+            "define automated crafting jobs"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 autocrafting workflow"
+        }
+      }
+    },
+    "ae2:crafting_terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive part for crafting via ME network"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game components"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary player UI for ME crafting"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "craft from and browse ME network inventory"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech terminal aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dark metallic terminal appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced only via crafting recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "network part enabling player-directed crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items using ME network materials",
+            "browse and access stored items",
+            "upgrade to pattern encoding terminal"
+          ],
+          "signal": "inferred",
+          "rationale": "standard crafting terminal workflow"
+        }
+      }
+    },
+    "ae2:crafting_unit": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "structural block of crafting CPU multiblock"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic AE2 materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed in quantity for crafting CPUs"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "forms the AE2 autocrafting CPU"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient of ae2:network/crafting/* recipes"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "inferred",
+          "rationale": "core block of AE2 crafting CPU"
+        },
+        "multiblock_role": {
+          "value": "wall",
+          "signal": "inferred",
+          "rationale": "fills body volume of crafting CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "build AE2 crafting CPU multiblock",
+            "upgrade into storage and accelerator blocks",
+            "enable ME autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "standard crafting unit usage"
+        }
+      }
+    },
+    "ae2:crank": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "manual hand-crank power device"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "display name: Wooden Crank"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic early-game crafted item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used pre-power-infrastructure only"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "provides manual kinetic power to AE2 machines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden mechanical device"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden appearance"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "inferred",
+          "rationale": "powers AE2 quartz grindstone"
+        },
+        "primary_uses": {
+          "values": [
+            "manually power quartz grindstone",
+            "hand-crank early AE2 processing machines",
+            "pre-automation energy source"
+          ],
+          "signal": "inferred",
+          "rationale": "standard AE2 crank use"
+        }
+      }
+    },
+    "ae2:creative_energy_cell": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "energy-providing block for ME network"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe; name confirms creative-only"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival acquisition"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative/testing use only"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "supplies infinite energy to ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech energy cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 energy cells glow at max charge"
+        },
+        "storage_categories": {
+          "values": [
+            "energy"
+          ],
+          "signal": "pattern",
+          "rationale": "FE energy cell; fe_p2p_tunnel tag confirms"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "pattern",
+          "rationale": "tagged ae2:p2p_attunements/fe_p2p_tunnel",
+          "evidence": "ae2:p2p_attunements/fe_p2p_tunnel"
+        },
+        "primary_uses": {
+          "values": [
+            "provide infinite energy to ME network",
+            "creative mode power testing",
+            "attune FE P2P tunnels"
+          ],
+          "signal": "inferred",
+          "rationale": "standard creative energy cell use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:creative_energy_cell",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": null,
+      "rationale": "creative-only; no recipe exists; origin inapplicable",
+      "confidence": 0.85
+    }
+  ]
+}

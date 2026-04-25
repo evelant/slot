@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 149149,
+  "duration_api_ms": 149962,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:stonecutting_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Encoded recipe template for autocrafting\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Craftable AE2 pattern item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Set-once in pattern provider\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in AE2 pattern providers for autocrafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 encoded substrate aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"No loot sources; encoded in AE2 encoder\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stonecutting recipe for autocrafting system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Encode stonecutting recipes for autocrafting\",\n            \"Place in Pattern Providers to automate stonecutting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 pattern for stonecutting automation\"\n        }\n      }\n    },\n    \"ae2:storage_bus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Network part bridging external storage to ME\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Craftable; widely used in AE2 setups\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Essential in most AE2 builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bridges adjacent inventories to ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable network attachment part\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"No loot sources; crafted via shapeless\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:external_io\", \"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Connects external storage to ME network\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Moves items between adjacent storage and network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Connect chests/barrels to ME network\",\n            \"Filter items entering or leaving ME\",\n            \"Expose adjacent inventory to autocrafting\",\n            \"Attune item P2P tunnels\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core AE2 external storage I/O part\"\n        }\n      }\n    },\n    \"ae2:storage_monitor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Display part showing ME network item counts\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Craftable AE2 monitor part\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Informational display; not essential\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Monitors ME network stock levels\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 illuminated display panel\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Lit display surface showing tracked item\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"No loot sources; crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network status display part\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Display item quantity in ME network\",\n            \"Monitor stock levels at a glance\",\n            \"Upgrade base for crafting monitor\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 stock monitoring display\"\n        }\n      }\n    },\n    \"ae2:terminal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary interactive UI for ME storage access\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Craftable essential AE2 component\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used constantly to access ME storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Main ME network item access point\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 digital interface aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Illuminated AE2 terminal display\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"No loot sources; crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core ME storage access terminal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Access and withdraw ME network items\",\n            \"View all stored item quantities\",\n            \"Base for crafting terminal and wireless terminal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Main AE2 storage interaction interface\"\n        }\n      }\n    },\n    \"ae2:tiny_tnt\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"One-use explosive device block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Craftable from common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Situational explosive use\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mini explosive for mining or combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Engineered miniature explosive\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Red TNT-style coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Small-radius controlled explosion\",\n            \"Precision mining without large craters\",\n            \"Combat or trap use\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Smaller TNT with reduced blast radius\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "bf12ee93-8755-4062-b78e-855ca0edec79",
+  "total_cost_usd": 0.19362535,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2817,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 11942,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2817,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11942,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2817,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2817
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1954,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002044,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11942,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2817,
+      "webSearchRequests": 0,
+      "costUSD": 0.19158135,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "90c00525-9b40-4213-a702-f9091cfffd9f"
+}

@@ -1,0 +1,328 @@
+{
+  "items": {
+    "ae2:orange_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "consumed by Color Applicator to paint cables"
+        },
+        "material_family": {
+          "value": "paint",
+          "signal": "pattern",
+          "rationale": "id suffix _paint_ball, tag ae2:paint_balls"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from dye+snowball, readily available"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when coloring ME components"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network cables and devices"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 color variants in paint_balls tag"
+        },
+        "palette": {
+          "values": [
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange reads as amber in palette enum"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, crafting recipes only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network cables/components"
+        },
+        "primary_uses": {
+          "values": [
+            "color ME cables and components",
+            "craft lumen paint ball variant"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient of lumen variant; consumed by color applicator"
+        }
+      }
+    },
+    "ae2:orange_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "placed block forming ME network backbone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic materials, used en masse"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core cable laid throughout every AE2 build"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME devices for automation/logistics"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "orange color variant; mechanical network cable"
+        },
+        "palette": {
+          "values": [
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange reads as amber in palette enum"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network routes items/fluids/energy/channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:smart_cable confirms ME network role"
+        },
+        "primary_uses": {
+          "values": [
+            "connect ME network devices",
+            "display per-side channel usage",
+            "color-code network segments"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable uniquely shows channel counts per face"
+        }
+      }
+    },
+    "ae2:orange_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-capacity ME network cable block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted; used for main trunk lines"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "trunk lines only; fewer than regular cables"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "32-channel backbone for large ME networks"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "orange color variant; dense mechanical cable"
+        },
+        "palette": {
+          "values": [
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange reads as amber in palette enum"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network routes items/fluids/energy/channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:smart_dense_cable; ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "32-channel ME trunk line",
+            "ingredient for quantum ring",
+            "color-code dense network segments"
+          ],
+          "signal": "inferred",
+          "rationale": "dense=32ch; sample_ingredient_of quantum_ring"
+        }
+      }
+    },
+    "ae2:paint": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "AE2 colorable block; purely aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when decorating AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "colorable decorative block for building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "base uncolored variant; no color prefix in name"
+        },
+        "primary_uses": {
+          "values": [
+            "colorable decorative block",
+            "AE2 aesthetic construction"
+          ],
+          "signal": "inferred",
+          "rationale": "paint block is decorative only, colored by paint balls"
+        }
+      }
+    },
+    "ae2:pattern_access_terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive terminal for pattern management"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game progression to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consulted when setting up/tuning autocrafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "manages crafting patterns for autocrafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 terminal with digital/mechanical aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 terminals use dark metallic finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, shapeless craft only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "named 'Pattern Access Terminal'; manages patterns"
+        },
+        "primary_uses": {
+          "values": [
+            "view and edit crafting patterns",
+            "manage AE2 autocrafting setup",
+            "browse patterns by provider"
+          ],
+          "signal": "inferred",
+          "rationale": "terminal specifically for pattern access across network"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 120322,
+  "duration_api_ms": 121108,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:black_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable physically links ME network nodes\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"all AE2 cables derive from fluix components\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart+dense requires extra fluix sub-parts\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"laid in bulk for high-density ME routing\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone of ME item/energy network\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"color variant; sci-fi tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"black colorway\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe output only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME channels carry items, power, data signals\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag ae2:smart_dense_cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High-capacity 32-channel ME routing\",\n            \"Visual per-channel traffic feedback\",\n            \"Ingredient for Quantum Ring\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart dense = max capacity + channel viz\"\n        }\n      }\n    },\n    \"ae2:blank_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed when encoding autocrafting patterns\"\n        },\n        \"material_family\": {\n          \"value\": \"paper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pattern is a paper-like template item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap to craft from basic materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"batch-made when wiring up autocrafting\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is ME autocrafting setup\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blank, unencoded; no decoration\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe output only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"encoded into patterns for pattern providers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Encoding crafting/processing recipes\",\n            \"Setting up ME autocrafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole use is encoding in pattern terminal\"\n        }\n      }\n    },\n    \"ae2:blue_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable links ME network components\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables derive from fluix glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic covered cable, cheap to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"laid in bulk for ME network routing\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone of ME item/energy network\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"color variant; sci-fi tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"blue colorway\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe output only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME channels carry items, power, data signals\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag ae2:covered_cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Basic 8-channel ME network routing\",\n            \"Connecting ME network components\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard covered cable for general use\"\n        }\n      }\n    },\n    \"ae2:blue_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 dense cable carries 32 channels\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables derive from fluix components\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense variant needs more materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in bulk for high-density ME routing\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone of ME item/energy network\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"color variant; sci-fi tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"blue colorway\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe output only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense ME channels carry items, power, signals\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag ae2:covered_dense_cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High-capacity 32-channel ME routing\",\n            \"Dense backbone between ME controllers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense = high channel-count trunk lines\"\n        }\n      }\n    },\n    \"ae2:blue_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable links ME components\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 glass cables made from fluix glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"most basic AE2 cable, fewest materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"entry-level cable used widely in ME builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone of ME item/energy network\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"color variant; sci-fi tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue glass, visually transparent\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe output only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME channels carry items, power, data signals\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag ae2:glass_cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Entry-level ME network connections\",\n            \"Basic 8-channel routing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simplest and cheapest AE2 cable type\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "0ae1b492-02af-4028-9f3e-7550f318e920",
+  "total_cost_usd": 0.17126850000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 8922,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 9061,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8922,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9061,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 8922,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 8922
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1797,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001887,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9061,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 8922,
+      "webSearchRequests": 0,
+      "costUSD": 0.16938150000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f899ca7c-3c19-42e5-b328-86a2d51a01d3"
+}

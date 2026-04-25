@@ -1,0 +1,360 @@
+{
+  "items": {
+    "ae2:light_detector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "actively detects light level; not purely aesthetic"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 crafted, requires mod materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche automation use case"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "light-level sensor for circuits/AE2 logic"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 block integrating with ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "detect ambient light level",
+            "trigger automation by light",
+            "AE2 network signal input"
+          ],
+          "signal": "inferred",
+          "rationale": "light sensor for network/redstone"
+        }
+      }
+    },
+    "ae2:light_gray_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active ME network transport component"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 covered cables built from fluix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "core AE2 infra, crafted in bulk"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed throughout every AE2 network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME devices for item/signal flow"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "light_gray color variant, tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "pattern",
+          "rationale": "light gray = light + muted tones"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME cable routes channels, energy, items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:covered_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "connect ME network devices",
+            "route up to 8 AE2 channels",
+            "light gray color variant"
+          ],
+          "signal": "inferred",
+          "rationale": "standard 8-channel ME cable"
+        }
+      }
+    },
+    "ae2:light_gray_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-bandwidth ME network cable"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 dense cables crafted from fluix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 infrastructure item"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed for high-channel ME backbone runs"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity ME network routing"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "light_gray color, dense tech cable"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "pattern",
+          "rationale": "light gray palette"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable carries 32 channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:covered_dense_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "route up to 32 AE2 channels",
+            "ME network backbone runs",
+            "light gray dense cable"
+          ],
+          "signal": "inferred",
+          "rationale": "32-channel dense network cable"
+        }
+      }
+    },
+    "ae2:light_gray_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "basic glass ME network cable"
+        },
+        "material_family": {
+          "value": "quartz_glass",
+          "signal": "inferred",
+          "rationale": "glass cables use AE2 quartz glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheapest AE2 cable tier"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "most basic ME cable, used everywhere"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "basic ME network connectivity"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "light_gray glass variant, tech mod"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "glass = translucent, light gray tint"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME cable carries network channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:glass_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "basic ME device connection",
+            "single-channel cable",
+            "light gray glass cable"
+          ],
+          "signal": "inferred",
+          "rationale": "entry-level ME cable type"
+        }
+      }
+    },
+    "ae2:light_gray_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "consumed to recolor AE2 cables with glow"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "lumen variant requires extra materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aesthetic only, not core AE2 function"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "paints cables light gray with lumen glow"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:lumen_paint_balls confirms type"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = glowing, light gray base color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe output only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used to paint AE2 network cables"
+        },
+        "primary_uses": {
+          "values": [
+            "paint AE2 cables light gray",
+            "add luminous glow to cables",
+            "cable color customization"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen paint ball for cable aesthetics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,166 @@
+{
+  "items": {
+    "sophisticatedstorage:upgrade_base": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed intermediate for all SS upgrades"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; produced only by crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, widely used across SS upgrades"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "consumed in 27 shaped recipes"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "all downstream uses are SS container upgrades"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "base crafting component, no special aesthetics"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "base component for all SS functional upgrades"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting base for every SS upgrade type",
+            "required ingredient in 27+ upgrade recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed in 27 upgrade recipes"
+        }
+      }
+    },
+    "sophisticatedstorage:void_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tagged sophisticatedstorage:upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; produced by crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, standard SS upgrade tier"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational: overflow prevention use"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-voids excess items in containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional automation upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "SS upgrade tag, void behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-void excess items in SS containers",
+            "prevent storage overflow",
+            "base for advanced_void_upgrade tier-up"
+          ],
+          "signal": "inferred",
+          "rationale": "void name + ingredient of advanced_void"
+        }
+      }
+    },
+    "sophisticatedstorage:xp_pump_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tagged sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "guess",
+          "rationale": "no recipe data; obtain method unclear"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche XP management use case"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "XP pump for SS containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional automation upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "SS upgrade tag, XP pump behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "pump XP into/from SS storage containers",
+            "automate XP collection and storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Experience Pump name implies XP transfer"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

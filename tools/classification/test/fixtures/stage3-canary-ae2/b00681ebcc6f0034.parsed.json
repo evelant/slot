@@ -1,0 +1,271 @@
+{
+  "items": {
+    "ae2:interface": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active I/O bridge block in ME network"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core component, many placed per network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "routes items, exposes network externally"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech mod block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 blocks use dark iron tones"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:external_io"
+          ],
+          "signal": "inferred",
+          "rationale": "network backbone + external IO bridge"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME network to adjacent inventories",
+            "Push/pull items from the ME network",
+            "Expose ME network to external pipes/mods",
+            "Autocrafting pattern distribution hub"
+          ],
+          "signal": "inferred",
+          "rationale": "core interface roles in AE2"
+        }
+      }
+    },
+    "ae2:inverted_toggle_bus": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "inverted redstone-gated network part"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game, niche use case"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only for specific redstone network setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "gates ME segment when redstone is low"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech mod cable part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "controls ME network topology"
+        },
+        "primary_uses": {
+          "values": [
+            "Disconnect ME segment when redstone active",
+            "Inverted redstone network topology control"
+          ],
+          "signal": "inferred",
+          "rationale": "inverted toggle bus behavior"
+        }
+      }
+    },
+    "ae2:inverter_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "card that inverts filter behavior in AE2 components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard crafted AE2 upgrade card"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used widely in buses, drives, and cells"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "inverts filters on AE2 components"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade card item"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies AE2 component filter behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "Invert whitelist filter to blacklist",
+            "Upgrade AE2 buses and storage components"
+          ],
+          "signal": "inferred",
+          "rationale": "card inverter core function"
+        }
+      }
+    },
+    "ae2:io_port": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active block for cell-to-network transfers"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for bulk cell ops, not continuously"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk cell-to-network item transfers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech mod block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 blocks use dark iron tones"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "manages storage cell contents"
+        },
+        "primary_uses": {
+          "values": [
+            "Transfer cell contents into ME network",
+            "Export network items to storage cells",
+            "Automate storage cell management"
+          ],
+          "signal": "inferred",
+          "rationale": "IO port core functions"
+        }
+      }
+    },
+    "ae2:item_cell_housing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for all item cells"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic AE2 materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "required for every item cell tier"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: all item/spatial/view cells"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 crafting component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "base component for all storage cells"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft all item storage cell tiers",
+            "Required for portable item cells",
+            "Craft view cells and spatial cells"
+          ],
+          "signal": "inferred",
+          "rationale": "used in 10+ cell recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

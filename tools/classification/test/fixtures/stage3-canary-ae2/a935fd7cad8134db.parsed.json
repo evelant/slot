@@ -1,0 +1,296 @@
+{
+  "items": {
+    "ae2:smooth_sky_stone_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural stone; deco variants + controller"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "ae2 sky_stone material family"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs ae2 meteorite then smelting"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in ae2 builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth tech-themed stone block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "charcoal-dark polished stone"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 ME controller",
+            "building AE2 base structures",
+            "cutting to deco slab/stair/wall variants"
+          ],
+          "signal": "inferred",
+          "rationale": "top recipe consumers"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "direct ingredient for ME controller"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_chest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "chest opens interactive storage GUI"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "sky stone themed chest"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from smooth sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ae2 aesthetic chest"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is storing items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "ae2 tech aesthetic container"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone dark coloring"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard chest item slots"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in AE2 aesthetic",
+            "AE2 themed base decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "chest variant for ae2 bases"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab for structural building"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "sky stone slab"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from ae2 meteorite stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ae2 builder niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for detail work and structure"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth plain slab variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark polished stone slab"
+        },
+        "primary_uses": {
+          "values": [
+            "half-block building",
+            "AE2 base floor and ceiling detail"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab use cases"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs for structural building"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "sky stone stairs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from ae2 meteorite stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ae2 builder niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for builds and detail"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth plain stair variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark polished stone stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase building",
+            "AE2 base architecture rooflines"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair use cases"
+        }
+      }
+    },
+    "ae2:smooth_sky_stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall block for structural use"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "sky stone wall"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from ae2 meteorite stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ae2 builder niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for perimeter and detail"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth plain wall variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark polished stone wall"
+        },
+        "primary_uses": {
+          "values": [
+            "perimeter walls and fencing",
+            "AE2 base exterior architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

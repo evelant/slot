@@ -1,0 +1,401 @@
+{
+  "items": {
+    "ae2:1k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block; multiblock CPU component"
+        },
+        "material_family": {
+          "value": "ae2:processor",
+          "signal": "inferred",
+          "rationale": "AE2 processors dominate recipe"
+        },
+        "tier": {
+          "value": "1k",
+          "signal": "pattern",
+          "rationale": "id encodes capacity tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "lowest AE2 crafting CPU tier"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in CPU, rarely swapped"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting CPU component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dark gray block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "signal": "inferred",
+          "rationale": "interior capacity component of CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "Store crafting jobs in Crafting CPU",
+            "Increase CPU crafting capacity",
+            "Component of AE2 Crafting CPU multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of crafting storage"
+        }
+      }
+    },
+    "ae2:4k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block; multiblock CPU component"
+        },
+        "material_family": {
+          "value": "ae2:processor",
+          "signal": "inferred",
+          "rationale": "AE2 processors dominate recipe"
+        },
+        "tier": {
+          "value": "4k",
+          "signal": "pattern",
+          "rationale": "id encodes capacity tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "second AE2 CPU tier, more resources"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in CPU, rarely swapped"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting CPU component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dark gray block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "signal": "inferred",
+          "rationale": "interior capacity component of CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "Store crafting jobs in Crafting CPU",
+            "Increase CPU crafting capacity",
+            "Component of AE2 Crafting CPU multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of crafting storage"
+        }
+      }
+    },
+    "ae2:16k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block; multiblock CPU component"
+        },
+        "material_family": {
+          "value": "ae2:processor",
+          "signal": "inferred",
+          "rationale": "AE2 processors dominate recipe"
+        },
+        "tier": {
+          "value": "16k",
+          "signal": "pattern",
+          "rationale": "id encodes capacity tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier AE2 CPU component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in CPU, rarely swapped"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting CPU component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dark gray block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "signal": "inferred",
+          "rationale": "interior capacity component of CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "Store crafting jobs in Crafting CPU",
+            "Increase CPU crafting capacity",
+            "Component of AE2 Crafting CPU multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of crafting storage"
+        }
+      }
+    },
+    "ae2:64k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block; multiblock CPU component"
+        },
+        "material_family": {
+          "value": "ae2:processor",
+          "signal": "inferred",
+          "rationale": "AE2 processors dominate recipe"
+        },
+        "tier": {
+          "value": "64k",
+          "signal": "pattern",
+          "rationale": "id encodes capacity tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "high-tier AE2; requires engineering processors"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in CPU, rarely swapped"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting CPU component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dark gray block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "signal": "inferred",
+          "rationale": "interior capacity component of CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "Store crafting jobs in Crafting CPU",
+            "Increase CPU crafting capacity",
+            "Component of AE2 Crafting CPU multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of crafting storage"
+        }
+      }
+    },
+    "ae2:256k_crafting_storage": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block; multiblock CPU component"
+        },
+        "material_family": {
+          "value": "ae2:processor",
+          "signal": "inferred",
+          "rationale": "AE2 processors dominate recipe"
+        },
+        "tier": {
+          "value": "256k",
+          "signal": "pattern",
+          "rationale": "id encodes capacity tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "highest AE2 CPU storage tier"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in CPU, rarely swapped"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 autocrafting CPU component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dark gray block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_output_of ae2:network/crafting"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "signal": "inferred",
+          "rationale": "interior capacity component of CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "Store crafting jobs in Crafting CPU",
+            "Increase CPU crafting capacity",
+            "Component of AE2 Crafting CPU multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of crafting storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

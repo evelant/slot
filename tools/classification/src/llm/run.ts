@@ -36,6 +36,12 @@ export interface Stage3Options {
   clientOptions?: Partial<QueryOptions>;
   /** Progress callback — one event per completed batch. */
   onBatch?: (info: BatchProgress) => void;
+  /**
+   * Pre-proposed canonical vocabulary for `mod_subsystem`. Forwarded into the
+   * system prompt so the LLM picks consistent labels across items in this run.
+   * Omit for vanilla / mods with no meaningful subsystem groupings.
+   */
+  subsystemVocabulary?: readonly { id: string; rationale?: string }[];
 }
 
 export interface BatchProgress {
@@ -117,11 +123,16 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     // system prompt from interfering with classification context.
     const queryOptions = { model, ...options.clientOptions };
     let responseText: string;
+    const promptInput = {
+      items: payloads,
+      target_facets: targetFacets,
+      subsystem_vocabulary: options.subsystemVocabulary,
+    };
     if (options.client.querySplit) {
-      const { system, user } = buildSplitPrompt({ items: payloads, target_facets: targetFacets });
+      const { system, user } = buildSplitPrompt(promptInput);
       responseText = await options.client.querySplit(system, user, queryOptions);
     } else {
-      const prompt = buildBatchPrompt({ items: payloads, target_facets: targetFacets });
+      const prompt = buildBatchPrompt(promptInput);
       responseText = await options.client.query(prompt, queryOptions);
     }
 

@@ -1,0 +1,270 @@
+{
+  "items": {
+    "ae2:matrix_frame": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "AE2 block; frame=structural component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 crafted block component"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network infrastructure block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "matrix=ME network structural block"
+        }
+      }
+    },
+    "ae2:matter_ball": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate for paintball crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when coloring cables"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "paintballs color AE2 cables/parts"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic intermediate material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft cable coloring items"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 colored paint balls"
+          ],
+          "signal": "named",
+          "evidence": "ingredient of ae2:tools/paintballs_*",
+          "rationale": "only downstream use in recipe data"
+        }
+      }
+    },
+    "ae2:matter_cannon": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "inferred",
+          "rationale": "fires projectile nuggets at mobs"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 crafted ranged weapon"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche AE2 ranged weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "ranged weapon for mob damage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tech-mod ranged weapon"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat via fired nuggets",
+            "mob control"
+          ],
+          "signal": "inferred",
+          "rationale": "fires metal nuggets as projectiles"
+        }
+      }
+    },
+    "ae2:me_p2p_tunnel": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "routes ME channels point-to-point"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 crafted network part"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when compressing channel load"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "routes ME channels in network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network routing component"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME P2P tunnels ME channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "evidence": "display_name: ME P2P Tunnel",
+          "rationale": "ME prefix confirms network subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "tunnel ME channels point-to-point",
+            "compress channel usage"
+          ],
+          "signal": "inferred",
+          "rationale": "P2P = point-to-point channel routing"
+        }
+      }
+    },
+    "ae2:medium_quartz_bud": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "growing crystal bud, like amethyst buds"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "named",
+          "evidence": "display_name: Medium Certus Quartz Bud",
+          "rationale": "explicitly named certus quartz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "grows in certus quartz geodes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected when mining certus geodes"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "certus geodes in overworld caves"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from certus quartz geodes"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "growing crystal bud formation"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale blue-white certus crystal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is core AE2 material"
+        },
+        "primary_uses": {
+          "values": [
+            "immature certus quartz growth stage",
+            "decorative crystal bud block"
+          ],
+          "signal": "inferred",
+          "rationale": "medium bud before full crystal"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:medium_quartz_bud",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_cave"
+      ],
+      "rationale": "Certus quartz geodes generate naturally in overworld caves; buds grow on budding certus quartz blocks that spawn in world gen",
+      "confidence": 0.85
+    }
+  ]
+}

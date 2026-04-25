@@ -1,0 +1,277 @@
+{
+  "items": {
+    "sophisticatedstorage:paintbrush": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Tool for applying cosmetic color to storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used only when recoloring storage blocks"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Applies cosmetic color to SS storage"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple functional tool appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Only crafting output, no loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "Recolor storage containers",
+            "Cosmetic customization of SS storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Paintbrush = paint/color application"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_customization"
+          ],
+          "signal": "inferred",
+          "rationale": "Cosmetic personalization subsystem"
+        }
+      }
+    },
+    "sophisticatedstorage:pickup_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "Tag sophisticatedstorage:upgrade; name suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted, standard tier functional upgrade"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Core automation upgrade used regularly"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Auto-collects ground items into storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Crafting output only, no loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-pickup items from ground",
+            "Automate item collection into storage",
+            "Base for magnet/advanced pickup upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "Name + downstream ingredients confirm use"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional automation upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:pump_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "Tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "guess",
+          "rationale": "No recipe data; typical SS upgrade tier"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Only used in fluid-handling setups"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Pumps fluids in/out of storage"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "Pump implies fluid movement"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "Pump fluids in/out of storage containers",
+            "Enable fluid automation in SS storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Pump name implies fluid transfer"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional upgrade for fluid handling"
+        }
+      }
+    },
+    "sophisticatedstorage:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "Tag all_storage; is_block_item=true"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "Shulker box crafted from shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Needs end-progression shulker shells"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Core storage container used regularly"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary SS storage and logistics container"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Organic mob-sourced shulker appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Enhanced storage with upgrade slots",
+            "Base tier for SS shulker upgrade chain",
+            "Store and organize items portably"
+          ],
+          "signal": "inferred",
+          "rationale": "all_storage tag + upgrade chain confirm use"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "named",
+          "rationale": "storage_tier_upgrade processing confirms tier"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds standard items like a chest"
+        }
+      }
+    },
+    "sophisticatedstorage:smelting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "Tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Common automation upgrade for processing"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Auto-smelts items passing through storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "No loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-smelt items in storage",
+            "Base for blasting/smoking/auto-smelting upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "Name + ingredient list confirm smelting use"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional processing upgrade"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 97633,
+  "duration_api_ms": 98307,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"sophisticatedstorage:storage_link\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block linking containers into a network\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted network block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per storage setup\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects containers in SS network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network connectivity tech block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS network blocks are dark metal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"link storage containers to a network\",\n            \"enable cross-container item routing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"name directly implies linking role\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS network connectivity component\"\n        }\n      }\n    },\n    \"sophisticatedstorage:storage_output\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block auto-pushing items from network\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted automation block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed per automation output point\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-pushes items out of storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"automation output block aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS output blocks are dark metal\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"outputs items from storage to world\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"auto-output items from storage network\",\n            \"feed items into adjacent inventories\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"name = output items from storage\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network automation output block\"\n        }\n      }\n    },\n    \"sophisticatedstorage:storage_tool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld management tool, not a block\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"has recipe, no loot source\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted utility tool\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when configuring storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"manages and configures storage blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tech management wand aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"configure and manage storage blocks\",\n            \"rename containers and network nodes\",\n            \"interact with SS storage network\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage config/management tool\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tool for SS network management\"\n        }\n      }\n    },\n    \"sophisticatedstorage:super_packing_tape\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumable utility for relocating storage\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"has recipe, no loot source\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"super/advanced packing tape variant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when relocating storage setups\"\n        },\n        \"activity\": {\n          \"values\": [\"logistics\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves storage containers with contents\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"super = enhanced variant of packing tape\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"move storage blocks keeping contents intact\",\n            \"relocate entire storage setups safely\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"super packing tape = move containers\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"works on SS storage containers\"\n        }\n      }\n    },\n    \"sophisticatedstorage:survival_infinity_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag sophisticatedstorage:upgrade\",\n          \"rationale\": \"explicitly tagged as SS upgrade\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"infinity capability = expensive craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once per container slot\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modifies container storage behavior\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-end infinity capability upgrade\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"unlimited storage for one item type\",\n            \"remove stack count limits in survival\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"survival infinity = unlimited one item\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional behavior upgrade for containers\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "7a1db242-f229-4cf8-9192-7a0958a7be8b",
+  "total_cost_usd": 0.12689355,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2845,
+    "cache_read_input_tokens": 6346,
+    "output_tokens": 7484,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2845,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7484,
+        "cache_read_input_tokens": 6346,
+        "cache_creation_input_tokens": 2845,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2845
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1982,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002052,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7484,
+      "cacheReadInputTokens": 6346,
+      "cacheCreationInputTokens": 2845,
+      "webSearchRequests": 0,
+      "costUSD": 0.12484155,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a12690eb-d378-4758-991a-9ec73f746de1"
+}

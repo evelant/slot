@@ -1,0 +1,350 @@
+{
+  "items": {
+    "ae2:certus_quartz_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "minecraft:pickaxes tag"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz"
+        },
+        "tier": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 certus→fluix tool progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires certus quartz crystal"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "transitional tier, replaced by fluix"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "named",
+          "rationale": "minecraft:pickaxes tag"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystal-material tool"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is light-blue crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped crafting recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "mining blocks at certus tier",
+            "upgrade base to fluix pickaxe via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe use + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:certus_quartz_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "minecraft:shovels tag"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz"
+        },
+        "tier": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 certus→fluix tool progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires certus quartz crystal"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "transitional tier, replaced by fluix"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel for terrain/digging"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystal-material tool"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is light-blue crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped crafting recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "digging soft blocks",
+            "upgrade base to fluix shovel via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel use + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:certus_quartz_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "rationale": "minecraft:swords tag"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz"
+        },
+        "tier": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 certus→fluix weapon progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires certus quartz crystal"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "transitional tier weapon"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "named",
+          "rationale": "minecraft:swords tag"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystal-material weapon"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is light-blue crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped crafting recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "upgrade base to fluix sword via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "sword use + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:certus_quartz_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "c:tools/wrench tag"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires certus quartz crystal"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout AE2 network setup"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "rotates/configures AE2 network blocks"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wrench tool aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz light-blue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped crafting recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "rotate AE2 network blocks",
+            "configure block orientations",
+            "crafted into network tool"
+          ],
+          "signal": "inferred",
+          "rationale": "wrench utility + ingredient for network tool"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "configures AE2 network blocks"
+        }
+      }
+    },
+    "ae2:charged_certus_quartz_crystal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "charged/processed certus quartz crystal"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix certus_quartz"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 charger to produce"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core ingredient across many AE2 recipes"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ME network, storage, patterns"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "charged glowing crystal"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "charged blue-glowing crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "output of AE2 charger machine"
+        },
+        "primary_uses": {
+          "values": [
+            "core AE2 crafting ingredient",
+            "making storage cell components",
+            "making ME energy cells",
+            "making blank patterns",
+            "crafting ME network parts"
+          ],
+          "signal": "inferred",
+          "rationale": "appears in 20+ AE2 recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:storage",
+            "ae2:energy",
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "used across all major AE2 subsystems"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

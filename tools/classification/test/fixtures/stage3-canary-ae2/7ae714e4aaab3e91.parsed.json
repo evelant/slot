@@ -1,0 +1,376 @@
+{
+  "items": {
+    "ae2:spatial_pylon": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block forming spatial IO multiblock"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 spatial components use fluix crystal"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 mid-game crafted component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "built once per spatial IO setup"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables spatial region capture/storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark casing with cyan fluix glow"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id contains spatial_pylon"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:spatial_io_port"
+          ],
+          "signal": "inferred",
+          "rationale": "pylons frame the Spatial IO multiblock"
+        },
+        "multiblock_role": {
+          "value": "wall",
+          "signal": "inferred",
+          "rationale": "pylons form enclosing frame of multiblock"
+        },
+        "primary_uses": {
+          "values": [
+            "Form Spatial IO multiblock frame",
+            "Enable spatial region capture"
+          ],
+          "signal": "inferred",
+          "rationale": "core spatial multiblock component"
+        }
+      }
+    },
+    "ae2:spatial_storage_cell_128": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "stores 128³ spatial region, inserted in drive"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cells use fluix housing"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "largest spatial cell, high craft cost"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific region captures"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "captures and relocates spatial regions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark cell with glowing accent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources present"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "inserted into Spatial IO Drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id: spatial_storage_cell_128"
+        },
+        "primary_uses": {
+          "values": [
+            "Capture 128³ spatial region",
+            "Insert into Spatial IO Drive"
+          ],
+          "signal": "inferred",
+          "rationale": "large spatial region storage medium"
+        }
+      }
+    },
+    "ae2:spatial_storage_cell_16": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "stores 16³ spatial region, inserted in drive"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cells use fluix housing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-size spatial cell, moderate cost"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific region captures"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "captures and relocates spatial regions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark cell with glowing accent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources present"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "inserted into Spatial IO Drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id: spatial_storage_cell_16"
+        },
+        "primary_uses": {
+          "values": [
+            "Capture 16³ spatial region",
+            "Insert into Spatial IO Drive"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-size spatial region storage medium"
+        }
+      }
+    },
+    "ae2:spatial_storage_cell_2": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "stores 2³ spatial region, inserted in drive"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cells use fluix housing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "starter spatial cell, still AE2 mid-game"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific region captures"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "captures and relocates small spatial regions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark cell with glowing accent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources present"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "inserted into Spatial IO Drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id: spatial_storage_cell_2"
+        },
+        "primary_uses": {
+          "values": [
+            "Capture 2³ spatial region",
+            "Insert into Spatial IO Drive"
+          ],
+          "signal": "inferred",
+          "rationale": "smallest spatial region storage cell"
+        }
+      }
+    },
+    "ae2:speed_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display_name Acceleration Card = machine upgrade"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 upgrade cards use fluix circuit"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stackable craftable AE2 upgrade"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slotted into many AE2 machines"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "speeds up AE2 automation devices"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit-card aesthetic"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "subdued card with glowing circuit traces"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shapeless craft only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades machines across ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "Speed up AE2 machines",
+            "Increase device throughput/tick rate"
+          ],
+          "signal": "inferred",
+          "rationale": "machine acceleration upgrade card"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

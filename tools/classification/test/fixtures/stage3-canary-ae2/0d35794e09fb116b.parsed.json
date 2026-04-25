@@ -1,0 +1,314 @@
+{
+  "items": {
+    "ae2:controller": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "manages ME network channels & routing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2-specific fluix/certus mats"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per base network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "drives ME network + channel logic"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "dense technical hub block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark casing with animated channel lights"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe path: blocks/controller"
+        },
+        "multiblock_role": {
+          "value": "controller",
+          "signal": "named",
+          "rationale": "display_name is ME Controller"
+        },
+        "primary_uses": {
+          "values": [
+            "central ME network control block",
+            "provides network channel capacity",
+            "scalable multiblock controller array"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 network function"
+        }
+      }
+    },
+    "ae2:conversion_monitor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive network IO cable part"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe exists, no loot sources"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted AE2 part"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche manual IO use case"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "manual item IO with ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable panel part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:external_io"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe path: parts/monitors_conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "manual item extraction from ME network",
+            "insert items into ME storage",
+            "displays single stored item on panel"
+          ],
+          "signal": "inferred",
+          "rationale": "conversion monitor AE2 functionality"
+        }
+      }
+    },
+    "ae2:crafting_accelerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "crafting CPU multiblock component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 crafting materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "built into crafting CPU once"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "speeds up autocrafting jobs only"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 CPU co-processing unit"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe path: cpu_crafting_accelerator"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe path: cpu_crafting_accelerator"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "signal": "inferred",
+          "rationale": "inner CPU unit boosting throughput"
+        },
+        "primary_uses": {
+          "values": [
+            "parallelizes autocrafting tasks",
+            "crafting CPU multiblock component",
+            "increases crafting job throughput"
+          ],
+          "signal": "inferred",
+          "rationale": "co-processing unit function"
+        }
+      }
+    },
+    "ae2:crafting_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "card inserted into buses/interfaces"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe exists, no loot sources"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic AE2 upgrade card"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "inserted in many interfaces/exporters"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables autocrafting in AE2 parts"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "circuit card upgrade item"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe path: materials/cardcrafting"
+        },
+        "primary_uses": {
+          "values": [
+            "enables autocrafting in export buses",
+            "on-demand crafting requests from interfaces",
+            "upgrade card for AE2 network parts"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting card AE2 function"
+        }
+      }
+    },
+    "ae2:crafting_monitor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "crafting CPU display/interaction block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 crafting materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one per crafting CPU build"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "shows and cancels active craft jobs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 monitor display block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark panel with active-job light display"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe path: cpu_crafting_monitor"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "ae2:crafting_cpu"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe path: cpu_crafting_monitor"
+        },
+        "multiblock_role": {
+          "value": "port",
+          "signal": "inferred",
+          "rationale": "access/display face of crafting CPU"
+        },
+        "primary_uses": {
+          "values": [
+            "displays active crafting job status",
+            "cancel in-progress crafting jobs",
+            "crafting CPU multiblock component"
+          ],
+          "signal": "inferred",
+          "rationale": "monitor role in crafting CPU"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

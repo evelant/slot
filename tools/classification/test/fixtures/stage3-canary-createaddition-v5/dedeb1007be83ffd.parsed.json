@@ -1,0 +1,292 @@
+{
+  "items": {
+    "createaddition:electrum_amulet": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "wearable curio; electric damage protection"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from electrum; multi-step alloy"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "worn situationally near electric hazards"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "amulet form = mystical/fancy accessory"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "light"
+          ],
+          "signal": "named",
+          "evidence": "Pale Gold Amulet",
+          "rationale": "display name: pale gold = gold + light"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "curio"
+          ],
+          "signal": "inferred",
+          "rationale": "amulet type fits curio slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "CA electrum; electrical protection context"
+        },
+        "primary_uses": {
+          "values": [
+            "Protect from electric damage",
+            "Curio slot accessory"
+          ],
+          "signal": "inferred",
+          "rationale": "amulet role in CreateAddition"
+        }
+      }
+    },
+    "createaddition:electrum_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "c:storage_blocks",
+          "rationale": "tagged c:storage_blocks"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires 9 electrum ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for bulk electrum storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is compact storage"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard metal storage block"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum pale gold appearance"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum is CA electricity material"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact electrum storage (9 ingots)",
+            "Convert from charged gold block"
+          ],
+          "signal": "inferred",
+          "rationale": "storage + charging recipe from gold"
+        }
+      }
+    },
+    "createaddition:electrum_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:ingots tag + ingot suffix"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "alloyed via Create:Mixing; not raw drop"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary electrum crafting unit"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: electrical & automated systems"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum pale gold alloy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "core CA electricity crafting material"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft electrical components",
+            "Compress to electrum block",
+            "Beacon payment",
+            "Press into plates or rods"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes show broad electrical use"
+        }
+      }
+    },
+    "createaddition:electrum_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:nuggets tag + nugget suffix"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crushable from ochrum/electrum items"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used to fill fractional ingot counts"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum pale gold"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "sub-unit of CA electrum material"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft into electrum ingot (9:1)",
+            "Small electrum unit for recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "standard nugget role"
+        }
+      }
+    },
+    "createaddition:electrum_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "rod = intermediate processed component"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rolled from electrum ingot; processed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific to large_connector recipe"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in large electrical connector"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum pale gold"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "evidence": "createaddition:large_connector_usable_rods",
+          "rationale": "tag confirms use in large connector wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft large electrical connector",
+            "Power line wiring component"
+          ],
+          "signal": "inferred",
+          "rationale": "large_connector_usable_rods tag"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 146533,
+  "duration_api_ms": 147734,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:blue_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\"value\": \"utility\", \"signal\": \"inferred\", \"rationale\": \"thrown/applied to paint AE2 components\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"inferred\", \"rationale\": \"craftable from basic AE2 materials\"},\n        \"frequency\": {\"value\": \"occasional\", \"signal\": \"inferred\", \"rationale\": \"used selectively for cable aesthetics\"},\n        \"activity\": {\"values\": [\"decorating\", \"automation\"], \"signal\": \"inferred\", \"rationale\": \"colors AE2 network for org/aesthetics\"},\n        \"flavor\": {\"values\": [\"colored\"], \"signal\": \"named\", \"rationale\": \"Blue = colored paint item\"},\n        \"palette\": {\"values\": [\"glowing\", \"vivid\"], \"signal\": \"inferred\", \"rationale\": \"lumen = emissive; blue = vivid\"},\n        \"origin\": {\"values\": [\"crafted_only\"], \"signal\": \"pattern\", \"rationale\": \"only from crafting recipe\"},\n        \"mod_subsystem\": {\"values\": [\"ae2:me_network\"], \"signal\": \"inferred\", \"rationale\": \"paints AE2 cables/facades\"},\n        \"primary_uses\": {\"values\": [\"Paint AE2 cables with glowing blue\", \"Decorate facades with emissive color\"], \"signal\": \"inferred\", \"rationale\": \"lumen paint ball core use\"}\n      }\n    },\n    \"ae2:blue_paint_ball\": {\n      \"facets\": {\n        \"role\": {\"value\": \"utility\", \"signal\": \"inferred\", \"rationale\": \"thrown/used to apply blue paint\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"inferred\", \"rationale\": \"craftable from basic AE2 materials\"},\n        \"frequency\": {\"value\": \"occasional\", \"signal\": \"inferred\", \"rationale\": \"used when color-coding cables\"},\n        \"activity\": {\"values\": [\"decorating\", \"automation\"], \"signal\": \"inferred\", \"rationale\": \"color-codes ME network components\"},\n        \"flavor\": {\"values\": [\"colored\"], \"signal\": \"named\", \"rationale\": \"Blue = colored paint item\"},\n        \"palette\": {\"values\": [\"cool\"], \"signal\": \"inferred\", \"rationale\": \"blue paint = cool tone\"},\n        \"origin\": {\"values\": [\"crafted_only\"], \"signal\": \"pattern\", \"rationale\": \"only from crafting recipe\"},\n        \"mod_subsystem\": {\"values\": [\"ae2:me_network\"], \"signal\": \"inferred\", \"rationale\": \"paints AE2 network components\"},\n        \"primary_uses\": {\"values\": [\"Paint AE2 cables and facades blue\", \"Craft into blue lumen paint ball\", \"Color-code ME network segments\"], \"signal\": \"inferred\", \"rationale\": \"standard paint ball uses\"}\n      }\n    },\n    \"ae2:blue_smart_cable\": {\n      \"facets\": {\n        \"role\": {\"value\": \"mechanism\", \"signal\": \"inferred\", \"rationale\": \"functional AE2 network cable device\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"inferred\", \"rationale\": \"crafted in quantity for ME builds\"},\n        \"frequency\": {\"value\": \"frequent\", \"signal\": \"inferred\", \"rationale\": \"core wiring for any AE2 setup\"},\n        \"activity\": {\"values\": [\"automation\", \"redstone\"], \"signal\": \"inferred\", \"rationale\": \"ME routing + redstone p2p attunement\"},\n        \"flavor\": {\"values\": [\"colored\", \"mechanical\"], \"signal\": \"inferred\", \"rationale\": \"blue colored technical cable\"},\n        \"palette\": {\"values\": [\"cool\"], \"signal\": \"inferred\", \"rationale\": \"blue cable = cool tone\"},\n        \"origin\": {\"values\": [\"crafted_only\"], \"signal\": \"pattern\", \"rationale\": \"only from crafting recipe\"},\n        \"mod_subsystem\": {\"values\": [\"ae2:me_network\"], \"signal\": \"named\", \"rationale\": \"tag ae2:smart_cable\"},\n        \"transport_medium\": {\"values\": [\"energy\", \"signal\"], \"signal\": \"inferred\", \"rationale\": \"carries ME channels and AE2 energy\"},\n        \"primary_uses\": {\"values\": [\"Route 8 AE2 channels with color coding\", \"Connect ME network components\", \"Visualize active channel usage\"], \"signal\": \"inferred\", \"rationale\": \"smart cable primary functions\"}\n      }\n    },\n    \"ae2:blue_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\"value\": \"mechanism\", \"signal\": \"inferred\", \"rationale\": \"high-capacity AE2 network cable\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"inferred\", \"rationale\": \"crafted for dense network segments\"},\n        \"frequency\": {\"value\": \"frequent\", \"signal\": \"inferred\", \"rationale\": \"trunk line cable for large AE2 builds\"},\n        \"activity\": {\"values\": [\"automation\", \"redstone\"], \"signal\": \"inferred\", \"rationale\": \"dense ME routing + p2p attunement\"},\n        \"flavor\": {\"values\": [\"colored\", \"mechanical\"], \"signal\": \"inferred\", \"rationale\": \"blue colored dense cable\"},\n        \"palette\": {\"values\": [\"cool\"], \"signal\": \"inferred\", \"rationale\": \"blue dense cable = cool tone\"},\n        \"origin\": {\"values\": [\"crafted_only\"], \"signal\": \"pattern\", \"rationale\": \"only from crafting recipe\"},\n        \"mod_subsystem\": {\"values\": [\"ae2:me_network\"], \"signal\": \"named\", \"rationale\": \"tag ae2:smart_dense_cable\"},\n        \"transport_medium\": {\"values\": [\"energy\", \"signal\"], \"signal\": \"inferred\", \"rationale\": \"carries 32 AE2 channels + ME energy\"},\n        \"primary_uses\": {\"values\": [\"Route 32 AE2 channels (dense trunk)\", \"Connect high-throughput ME segments\", \"Quantum ring crafting ingredient\"], \"signal\": \"inferred\", \"rationale\": \"dense cable AE2 functions\"}\n      }\n    },\n    \"ae2:brown_covered_cable\": {\n      \"facets\": {\n        \"role\": {\"value\": \"mechanism\", \"signal\": \"inferred\", \"rationale\": \"basic AE2 covered network cable\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"inferred\", \"rationale\": \"basic ME cable, widely crafted\"},\n        \"frequency\": {\"value\": \"frequent\", \"signal\": \"inferred\", \"rationale\": \"used throughout basic ME builds\"},\n        \"activity\": {\"values\": [\"automation\"], \"signal\": \"inferred\", \"rationale\": \"basic ME network cable routing\"},\n        \"flavor\": {\"values\": [\"colored\", \"mechanical\"], \"signal\": \"inferred\", \"rationale\": \"brown covered mechanical cable\"},\n        \"palette\": {\"values\": [\"earthy\"], \"signal\": \"inferred\", \"rationale\": \"brown = earthy tone\"},\n        \"origin\": {\"values\": [\"crafted_only\"], \"signal\": \"pattern\", \"rationale\": \"only from crafting recipe\"},\n        \"mod_subsystem\": {\"values\": [\"ae2:me_network\"], \"signal\": \"named\", \"rationale\": \"tag ae2:covered_cable\"},\n        \"transport_medium\": {\"values\": [\"energy\", \"signal\"], \"signal\": \"inferred\", \"rationale\": \"carries AE2 channels + ME energy\"},\n        \"primary_uses\": {\"values\": [\"Route ME channels with brown cover\", \"Connect AE2 components aesthetically\"], \"signal\": \"inferred\", \"rationale\": \"covered cable ME functions\"}\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d5a69cf5-ee9d-4679-b42f-0b91d815ee5b",
+  "total_cost_usd": 0.2170355,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9014,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 12083,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9014,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12083,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9014,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9014
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1889,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001979,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12083,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9014,
+      "webSearchRequests": 0,
+      "costUSD": 0.21505649999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "050d7758-4d03-4adc-b4b0-7498931a15b8"
+}

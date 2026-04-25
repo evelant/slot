@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 182592,
+  "duration_api_ms": 183200,
+  "num_turns": 4,
+  "result": "{\n  \"items\": {\n    \"createaddition:bronze_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"processed rod form of bronze alloy\"\n        },\n        \"material_family\": {\n          \"value\": \"bronze\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix bronze_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier crafted mod material\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mod rods used across many recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create addon rod → machine components\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple machined rod\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bronze is copper-gold hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; mod material\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:mechanical_processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create addon mechanical material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting mod machine components\", \"rod ingredient in mechanical recipes\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard rod role in Create ecosystem\"\n        }\n      }\n    },\n    \"createaddition:cake_base\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unbaked intermediate; not consumable\"\n        },\n        \"material_family\": {\n          \"value\": \"dough\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unbaked cake mixture\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic automated food ingredient\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only for automated cake chain\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"automated food production chain\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw food intermediate\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unbaked dough color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced by create:compacting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:mechanical_processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"made via Create compactor\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smoked into baked cake base\", \"intermediate in automated cake chain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used as input for smoking\"\n        }\n      }\n    },\n    \"createaddition:cake_base_baked\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"baked intermediate; not eaten alone\"\n        },\n        \"material_family\": {\n          \"value\": \"baked_dough\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smoked cake sponge\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic automated food intermediate\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only for automated cake filling\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"automated food production chain\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"baked food intermediate\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden baked color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only from smoking cake_base\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:mechanical_processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create automated food chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"filled to produce 3 cake variants\", \"intermediate in automated cake chain\"],\n          \"signal\": \"named\",\n          \"rationale\": \"used in 3 create:filling recipes\"\n        }\n      }\n    },\n    \"createaddition:capacitor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"electronic component for machines\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"capacitors use copper conductors\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires mechanical crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 4+ electrical machines\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"motor, alternator, coil, accumulator\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electronic machine component\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper+metal electrical part\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only from crafting recipes\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in all electrical machines\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting electric_motor and alternator\", \"crafting tesla_coil and accumulator\"],\n          \"signal\": \"named\",\n          \"rationale\": \"listed in sample_ingredient_of\"\n        }\n      }\n    },\n    \"createaddition:chocolate_cake\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"tagged c:foods/edible_when_placed\"\n        },\n        \"material_family\": {\n          \"value\": \"food_cake\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chocolate variant of cake block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"automated food output\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty cake, not staple food\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food via Create filling automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chocolate variant of vanilla cake\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chocolate brown and cream tones\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only from create:filling recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:mechanical_processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"made via Create filling machine\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"place and right-click to eat\", \"automated food from Create filling\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"edible_when_placed + filling recipe\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e27416e4-3f3c-4bcc-a3c9-6fb3a227fb7a",
+  "total_cost_usd": 0.2638605,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 9682,
+    "cache_read_input_tokens": 7740,
+    "output_tokens": 14874,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9682,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 1,
+        "output_tokens": 13147,
+        "cache_read_input_tokens": 7740,
+        "cache_creation_input_tokens": 1942,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1942
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2029,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0021089999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 4,
+      "outputTokens": 14874,
+      "cacheReadInputTokens": 7740,
+      "cacheCreationInputTokens": 9682,
+      "webSearchRequests": 0,
+      "costUSD": 0.2617515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f56cc1cf-f746-4b7c-9bb2-872a135237ed"
+}

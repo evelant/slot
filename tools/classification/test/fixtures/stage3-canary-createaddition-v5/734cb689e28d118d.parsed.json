@@ -1,0 +1,321 @@
+{
+  "items": {
+    "createaddition:iron_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "processed intermediate from rolling"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "named",
+          "rationale": "tag c:wires/iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron-based, produced from plates"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core ingredient for CA wire builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "used in power transmission components"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial wire material"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron wire, dark metallic look"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via CA rolling recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "core wire material for power networks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electrical connectors",
+            "crafting barbed wire"
+          ],
+          "signal": "inferred",
+          "rationale": "used in connectors and barbed wire"
+        }
+      }
+    },
+    "createaddition:large_connector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "connector block for power networks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common CA materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed at each machine connection point"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "connects power between machines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial electrical connector"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-based connector block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity wire connector block"
+        },
+        "primary_uses": {
+          "values": [
+            "attaching wires to machines",
+            "high-capacity power node"
+          ],
+          "signal": "inferred",
+          "rationale": "large variant, higher amperage"
+        }
+      }
+    },
+    "createaddition:liquid_blaze_burner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "heat source accepting liquid fuel"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires blaze-sourced components"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heat source for Create processing chains"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "powers Create heating recipes"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "blaze burner with straw attachment"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blaze fire themed, light-emitting"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "blaze burner emits fire/light"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:biofuel"
+          ],
+          "signal": "inferred",
+          "rationale": "accepts liquid fuel via straw"
+        },
+        "primary_uses": {
+          "values": [
+            "liquid-fuel heat source for Create",
+            "heating automation chains"
+          ],
+          "signal": "inferred",
+          "rationale": "blaze burner variant for liquid fuels"
+        }
+      }
+    },
+    "createaddition:modular_accumulator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "energy storage block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires CA-specific crafting materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "central buffer in power setups"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and buffers electrical energy"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "modular industrial energy storage"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron machine block aesthetic"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and outputs FE energy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "modular energy accumulator block"
+        },
+        "primary_uses": {
+          "values": [
+            "storing electrical energy",
+            "buffering power supply",
+            "expandable energy bank"
+          ],
+          "signal": "inferred",
+          "rationale": "named accumulator = energy storage"
+        }
+      }
+    },
+    "createaddition:portable_energy_interface": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "energy transfer interface block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted, needs CA-specific components"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used wherever contraption energy needed"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "powers moving Create contraptions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial energy interface block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron machine block aesthetic"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers FE to/from contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity",
+            "createaddition:energy_conversion"
+          ],
+          "signal": "inferred",
+          "rationale": "energy interface for Create contraptions"
+        },
+        "primary_uses": {
+          "values": [
+            "transfer energy to moving contraptions",
+            "portable energy access point"
+          ],
+          "signal": "inferred",
+          "rationale": "portable interface for contraption power"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

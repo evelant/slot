@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 161586,
+  "duration_api_ms": 162511,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:cut_quartz_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form; structural barrier block\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id cut_quartz → certus quartz material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz requires AE2 mining\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche aesthetic wall use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall for structure and AE2 aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"cut variant of certus quartz block\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale crystalline certus quartz\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building certus quartz walls\",\n            \"AE2 themed decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form, certus aesthetic\"\n        }\n      }\n    },\n    \"ae2:cyan_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME cable routes channels and signal\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix_glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable wraps fluix glass cable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic network cable, crafted freely\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used extensively in ME networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network routing and channel mgmt\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"named\",\n          \"rationale\": \"cyan color variant explicitly named\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan maps to teal in palette enum\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME channels and AE2 power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"covered_cable tag; ME network part\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ME network channel routing\",\n            \"color-coded cable organization\",\n            \"connecting AE2 machines\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ME network infrastructure\"\n        }\n      }\n    },\n    \"ae2:cyan_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-bandwidth ME network cable\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix_glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense covered cable base is fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted ME cable, freely available\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for high-throughput ME backbone\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"32-channel ME routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"named\",\n          \"rationale\": \"cyan variant explicitly named\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan ≈ teal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 32 ME channels + AE2 power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"covered_dense_cable tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"high-bandwidth ME network backbone\",\n            \"color-coded dense cable runs\",\n            \"connecting high-channel-use machines\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"32-channel dense backbone cable\"\n        }\n      }\n    },\n    \"ae2:cyan_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest ME network cable variant\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix_glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"glass_cable id → fluix glass material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest AE2 cable type\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common starter ME cable\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"named\",\n          \"rationale\": \"cyan color named explicitly\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan glass cable is translucent teal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME channels and AE2 power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"glass_cable tag → ME network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"basic ME network connections\",\n            \"color-coded cable identification\",\n            \"budget ME network wiring\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"entry-level ME cable\"\n        }\n      }\n    },\n    \"ae2:cyan_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumable applied to cables to recolor\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"paint balls are glass spheres with dye\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"extra lumen crafting step required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per cable to recolor\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"color-codes ME cables for network org\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"named\",\n          \"rationale\": \"cyan named; lumen = glowing variant\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan + lumen emissive glow effect\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to ME cables for visual ID\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply glowing cyan color to AE2 cables\",\n            \"network cable visual organization\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = glowing paint for cables\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_facet\",\n      \"name\": \"dye_color\",\n      \"suggested_kind\": \"enum\",\n      \"rationale\": \"16 MC dye colors recur across cable/paint variants; palette can't precisely encode them\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "773c92ba-d609-41a1-b416-27e71eaab3b3",
+  "total_cost_usd": 0.19754610000000006,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2834,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 12198,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2834,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12198,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2834,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2834
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1971,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002061,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12198,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2834,
+      "webSearchRequests": 0,
+      "costUSD": 0.19548510000000005,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "37a13370-0ee6-4472-8c11-dbce398d9e60"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 90827,
+  "duration_api_ms": 91776,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"sophisticatedstorage:basic_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to storage to raise its tier\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS basic tier is the wooden base\"\n        },\n        \"tier\": {\n          \"value\": \"basic\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains basic_tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"earliest-progression upgrade item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional, no aesthetic theme\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic/wooden tier aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe-produced only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade family\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"base ingredient for SS tier upgrade chain\", \"upgrade storage to basic tier\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bottom of upgrade progression\"\n        }\n      }\n    },\n    \"sophisticatedstorage:basic_to_copper_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to raise storage to copper tier\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id names copper as target tier\"\n        },\n        \"tier\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains copper_tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper is an early-game material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional upgrade item\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material visual\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe-produced only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade family\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"upgrade storage from basic to copper tier\", \"ingredient for iron tier upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-chain tier upgrade\"\n        }\n      }\n    },\n    \"sophisticatedstorage:basic_to_iron_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to raise storage to iron tier\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id names iron as target tier\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains iron_tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron is a common mid-game material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional upgrade item\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron material visual\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe-produced only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade family\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"upgrade storage from basic to iron tier\", \"ingredient for gold tier upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-chain tier upgrade\"\n        }\n      }\n    },\n    \"sophisticatedstorage:basic_to_gold_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to raise storage to gold tier\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id names gold as target tier\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains gold_tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold requires deliberate farming\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional upgrade item\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold material visual\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe-produced only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade family\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"upgrade storage from basic to gold tier\", \"ingredient for diamond tier upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upper-mid-chain tier upgrade\"\n        }\n      }\n    },\n    \"sophisticatedstorage:basic_to_diamond_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to raise storage to diamond tier\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id names diamond as target tier\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains diamond_tier\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond is a rare resource\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional upgrade item\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond visual theme\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe-produced only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade family\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"upgrade storage from basic to diamond tier\", \"ingredient for netherite tier upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"near-top-chain tier upgrade\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "3387b98e-f0d7-4ab0-b190-c5df8e7648a9",
+  "total_cost_usd": 0.16403250000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9310,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 8462,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9310,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8462,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9310,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9310
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2101,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0021809999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8462,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9310,
+      "webSearchRequests": 0,
+      "costUSD": 0.16185150000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0c66fecb-7cb1-4b37-bb13-c02603aa0b33"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 108999,
+  "duration_api_ms": 109926,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:debug_meteorite_placer\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"debug_ id prefix + Dev. display name\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"debug_ prefix; no recipe or loot source\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"No survival obtain path\"\n        }\n      }\n    },\n    \"ae2:debug_phantom_node\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"debug_ id prefix + Dev. display name\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"debug_ prefix; no recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"No survival obtain path\"\n        }\n      }\n    },\n    \"ae2:debug_replicator_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"debug_ id prefix + Dev. display name\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"debug_ prefix; no recipe or loot source\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"No survival obtain path\"\n        }\n      }\n    },\n    \"ae2:dense_energy_cell\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stores FE energy for ME network\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Multi-step AE2 craft chain required\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in terminals; needed for large setups\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Powers AE2 network machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Industrial AE2 energy block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark metallic AE2 block aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:energy\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"FE P2P attunement tag; energy storage role\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store FE energy for ME network\",\n            \"Power wireless AE2 terminals\",\n            \"Dense energy buffer for large builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dense energy storage block role\"\n        }\n      }\n    },\n    \"ae2:drive\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Holds AE2 storage cells; core ME block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Every AE2 setup needs one\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core AE2 storage block, always present\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Houses cells; core ME item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Industrial AE2 storage block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark metallic AE2 block aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ME Drive is core AE2 storage subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"House AE2 storage cells\",\n            \"Core ME network item/fluid storage\",\n            \"Indexed networked storage hub\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary function of ME Drive block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a5389176-ac66-42e1-b84f-04df16e6f378",
+  "total_cost_usd": 0.14561610000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3114,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 8648,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3114,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8648,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3114,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3114
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2251,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0023309999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8648,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3114,
+      "webSearchRequests": 0,
+      "costUSD": 0.14328510000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "dac0f16c-b3f1-4444-a74d-5e6baba4b5b8"
+}

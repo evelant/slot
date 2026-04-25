@@ -1,0 +1,325 @@
+{
+  "items": {
+    "ae2:cable_pattern_provider": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "routes crafting patterns to adjacent machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core autocrafting block, placed repeatedly"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "distributes patterns for ME autocrafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "dark casing with AE2 cable accent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; pure crafting recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "pattern provider is core autocrafting block"
+        },
+        "primary_uses": {
+          "values": [
+            "Route crafting patterns to adjacent machines",
+            "Enable ME network autocrafting jobs"
+          ],
+          "signal": "inferred",
+          "rationale": "pattern provider canonical function"
+        }
+      }
+    },
+    "ae2:calculation_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate AE2 crafting ingredient"
+        },
+        "material_family": {
+          "value": "silicon",
+          "signal": "inferred",
+          "rationale": "AE2 processors are silicon-based"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable via inscriber once press obtained"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "consumed in 18+ AE2 recipes"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream use in AE2 network devices"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 processor chip aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 processor dark+teal color scheme"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced only via ae2:inscriber recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing",
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "made in inscriber, used across AE2 network"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft AE2 storage cells",
+            "Craft AE2 upgrade cards",
+            "Core AE2 processor ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "dominant ingredient across AE2 tech tree"
+        }
+      }
+    },
+    "ae2:calculation_processor_press": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "reusable die/stamp used in AE2 inscriber"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "found in meteorite chests; one per world"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "installed once in inscriber, rarely moved"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "meteorite-found ancient tech artifact"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark metallic press stamp"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in AE2 meteorite chest loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:inscriber_presses links to inscriber"
+        },
+        "primary_uses": {
+          "values": [
+            "Stamp calculation processors in inscriber",
+            "Component of mysterious cube recipe"
+          ],
+          "signal": "inferred",
+          "rationale": "inscriber press canonical function"
+        }
+      }
+    },
+    "ae2:capacity_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "card installed in AE2 device to expand capacity"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable with basic AE2 materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per device slot"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "expands AE2 device filter/capacity slots"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 upgrade card form factor"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cards use gold-on-dark scheme"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shapeless crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades AE2 network device slots"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase AE2 device filter slot count",
+            "Expand AE2 machine storage capacity"
+          ],
+          "signal": "inferred",
+          "rationale": "capacity card standard AE2 function"
+        }
+      }
+    },
+    "ae2:cell_component_16k": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for cells and CPUs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable; needed in quantity"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "consumed in 8 downstream recipes"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: storage cells and crafting CPUs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage component aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell components teal+dark scheme"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "used in storage cells and crafting CPU storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft 16k ME item/fluid storage cells",
+            "Craft 64k cell component",
+            "Build crafting CPU storage blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in 8 storage-related recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

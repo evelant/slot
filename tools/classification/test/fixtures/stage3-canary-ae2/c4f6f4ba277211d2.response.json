@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 121348,
+  "duration_api_ms": 122151,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:light_gray_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown to recolor AE2 cable/facade\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from dye; applies color\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap dye+snowball craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per colored component\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors AE2 cables and facades\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"member of 16-color paint ball set\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"muted\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light gray tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; recipe output only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:paint_balls; colors network parts\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Color AE2 cables and facades\", \"Craft into lumen paint ball variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"two recorded use paths\"\n        }\n      }\n    },\n    \"ae2:light_gray_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active channel-routing network block\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass is primary AE2 cable ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap glass+quartz craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed extensively in every ME build\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network backbone\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored cable in 16-variant set\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"muted\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light gray tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; recipe output\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 8 ME channel slots\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:smart_cable; network backbone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Connect ME network devices\", \"Show per-face channel usage\", \"Route up to 8 ME channels\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart cable core functions\"\n        }\n      }\n    },\n    \"ae2:light_gray_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity channel-routing block\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass-based AE2 cable\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pricier craft than smart cable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone of large ME networks\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-throughput ME backbone\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored dense cable variant\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"muted\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"light gray tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; recipe output\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 32 ME channel slots\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:spatial_storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"cable backbone; ingredient in quantum ring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Route up to 32 ME channels\", \"Connect ME network devices\", \"Craft into quantum ring\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable primary roles\"\n        }\n      }\n    },\n    \"ae2:light_p2p_tunnel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"P2P part tunneling light signal\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche P2P attunement component\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"very niche light-tunnel use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tunnels light level in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network tunnel part\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"P2P relay for light signal\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 P2P tunnel variant\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Tunnel light levels point-to-point\", \"Replicate light source remotely\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light P2P tunnel purpose\"\n        }\n      }\n    },\n    \"ae2:lime_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic ME network routing block\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass-based AE2 cable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest ME cable tier\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed throughout ME networks\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network backbone\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime-colored cable in 16-variant set\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"lime green color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; recipe output\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 8 ME channel slots\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:covered_cable; network part\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Connect ME network devices\", \"Basic 8-channel ME routing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable core functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "3c03c037-e8d1-4652-af02-980bf73d34f7",
+  "total_cost_usd": 0.1582496,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2720,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 9614,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2720,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9614,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2720,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2720
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1857,
+      "outputTokens": 19,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001952,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9614,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2720,
+      "webSearchRequests": 0,
+      "costUSD": 0.15629759999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a7b25659-52b9-4f02-888b-315c9818d7f9"
+}

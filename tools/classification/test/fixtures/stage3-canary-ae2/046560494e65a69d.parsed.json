@@ -1,0 +1,383 @@
+{
+  "items": {
+    "ae2:white_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "AE2 dense cable for ME network backbone"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables built from fluix materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, used in bulk for large networks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "laid in quantity for dense-channel routing"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network automation and logistics"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored mechanical network cable"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels and network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "dense cable = high-bandwidth network backbone"
+        },
+        "primary_uses": {
+          "values": [
+            "Dense 32-ch ME network routing",
+            "Connect high-bandwidth AE2 devices",
+            "Colored network cabling aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "dense covered cable primary purposes"
+        }
+      }
+    },
+    "ae2:white_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "AE2 glass cable, cheapest ME network tier"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables built from fluix glass fiber"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheapest AE2 cable, used everywhere"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "starter cable laid throughout networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network automation"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored glass network cable"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "white glass visual appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels and network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "glass cable = basic ME network wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "Basic 8-ch ME network wiring",
+            "Connect AE2 devices cheaply",
+            "Starter ME network cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "glass = entry-level cable tier"
+        }
+      }
+    },
+    "ae2:white_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to recolor cables with glow effect"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "dye-based glowing paint projectile"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from paint ball + glow material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when decorating AE2 network"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 cables for aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "applies white glowing color"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "white lumen = glowing white"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used to color AE2 network cables"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply glowing white color to AE2 cables",
+            "Lumen (glowing) variant of white paint ball",
+            "Decorate ME network cabling with glow"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = emissive paint ball variant"
+        }
+      }
+    },
+    "ae2:white_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to recolor AE2 cables"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "dye-based paint projectile"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic dye materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when decorating network cabling"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 cables"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "applies white color to cables"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 network cables"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply white color to ME cables",
+            "Craft into white lumen paint ball",
+            "Decorate AE2 network cabling"
+          ],
+          "signal": "inferred",
+          "rationale": "standard AE2 paint ball uses"
+        }
+      }
+    },
+    "ae2:white_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "AE2 smart cable shows channel usage"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables built from fluix materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable mid-tier cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "preferred for visible channel management"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network with visual channel feedback"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored smart mechanical cable"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels and network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "smart cable visualizes channel usage"
+        },
+        "primary_uses": {
+          "values": [
+            "ME network cable with channel display",
+            "Visualize AE2 channel usage per device",
+            "8-ch wiring with smart diagnostics"
+          ],
+          "signal": "inferred",
+          "rationale": "smart = shows per-channel colored dots"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

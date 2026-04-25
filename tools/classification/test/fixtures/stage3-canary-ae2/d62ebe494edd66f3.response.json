@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 169956,
+  "duration_api_ms": 170641,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:mysterious_cube\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Meteor core block; no recipe or functional use\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Only in rare AE2 meteor crash sites\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"No active gameplay use; purely collected\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mysterious meteor relic, cryptic name\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark sky stone meteor appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Collect from AE2 meteor crater\", \"Place as decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"No recipe; purely collectible\"\n        }\n      }\n    },\n    \"ae2:name_press\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Non-consumed template enabling inscriber output\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Found only in AE2 meteorite chests\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed once in inscriber then static\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Sky stone chests inside meteor craters\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Enables AE2 inscriber component production\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Metal press die\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Flat metallic press plate\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed in AE2 Inscriber machine\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Place in Inscriber to enable name printing\", \"Required for AE2 inscriber setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Inscriber press template\"\n        }\n      }\n    },\n    \"ae2:nether_quartz_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:axes tag + _axe id suffix\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix nether_quartz_\"\n        },\n        \"tier\": {\n          \"value\": \"nether_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 quartz tool progression tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Nether quartz is readily farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used until upgraded to fluix axe\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Axe: wood harvesting and combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Quartz mineral tool\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Pale translucent quartz\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Tool is crafted from nether quartz\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Chopping wood\", \"Combat\", \"Smithing upgrade to fluix axe\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard axe + AE2 upgrade path\"\n        }\n      }\n    },\n    \"ae2:nether_quartz_cutting_knife\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"ae2:knife tag + knife id suffix\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix nether_quartz_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Nether quartz is readily farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Consumed repeatedly in quartz cutting\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in AE2 quartz cutting station\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Precision cutting tool\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Quartz blade\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from nether quartz\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Used in ae2:quartz_cutting recipes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Used in AE2 quartz cutting station\", \"Crafting network components like cable anchors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Quartz cutter required tool\"\n        }\n      }\n    },\n    \"ae2:nether_quartz_hoe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:hoes tag + _hoe id suffix\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix nether_quartz_\"\n        },\n        \"tier\": {\n          \"value\": \"nether_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 quartz tool progression tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Nether quartz is readily farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Hoes used less than axes/pickaxes\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:hoes tag implies farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Quartz mineral tool\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Pale translucent quartz\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Tool crafted from nether quartz\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Tilling soil for farming\", \"Smithing upgrade to fluix hoe\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard hoe + AE2 upgrade path\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:mysterious_cube\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\"],\n      \"rationale\": \"Mysterious Cube is the core of AE2 meteorite structures generated in the world, not a crafted item\",\n      \"confidence\": 0.8\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "dfaaf158-b4b4-4993-aa86-831a3980f646",
+  "total_cost_usd": 0.2234606,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3016,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 13869,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3016,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13869,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3016,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3016
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2153,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002228,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13869,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3016,
+      "webSearchRequests": 0,
+      "costUSD": 0.2212326,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ccec539e-e266-48bf-bcef-f9cc23adf98e"
+}

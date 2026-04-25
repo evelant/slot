@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 82092,
+  "duration_api_ms": 83038,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:sky_stone_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest = interactive storage block\"\n        },\n        \"material_family\": {\n          \"value\": \"sky_stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sky_stone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone sourced from AE2 meteors\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chests placed regularly in bases\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 chest variant; meteoric alien look\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone is dark charcoal gray\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag c:chests\",\n          \"rationale\": \"c:chests confirms standard item storage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone blast resistance ~150\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"store items in AE2 aesthetic\", \"decorative chest for ME base builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest function + sky stone theme\"\n        }\n      }\n    },\n    \"ae2:sky_stone_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab = structural half-height form\"\n        },\n        \"material_family\": {\n          \"value\": \"sky_stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sky_stone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from meteor sky stone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for structure and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 sky stone alien/meteoric aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone is dark charcoal gray\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone blast resistance ~150\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height flooring or roofing\", \"AE2 base aesthetic builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab use in sky stone style\"\n        }\n      }\n    },\n    \"ae2:sky_stone_small_brick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative brick block for building\"\n        },\n        \"material_family\": {\n          \"value\": \"sky_stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sky_stone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from meteor sky stone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative build block, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick for construction/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"refined AE2 meteoric stone brick\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone is dark charcoal gray\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone blast resistance ~150\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative wall and floor builds\", \"AE2 base construction\", \"source for slab/stair/wall variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick block + many derived sub-forms\"\n        }\n      }\n    },\n    \"ae2:sky_stone_small_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab = structural half-height form\"\n        },\n        \"material_family\": {\n          \"value\": \"sky_stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sky_stone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from meteor sky stone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab variant for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 small brick slab variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone is dark charcoal gray\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone blast resistance ~150\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height small brick flooring\", \"AE2 base decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form of small brick block\"\n        }\n      }\n    },\n    \"ae2:sky_stone_small_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs = structural stair form\"\n        },\n        \"material_family\": {\n          \"value\": \"sky_stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sky_stone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from meteor sky stone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for construction/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 small brick stairs variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone is dark charcoal gray\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone blast resistance ~150\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"stair blocks for AE2 base builds\", \"decorative small brick stairs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form of small brick block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "f9b90871-e278-4532-bea6-ed56418bc98b",
+  "total_cost_usd": 0.12605685,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4231,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 6990,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4231,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6990,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 4231,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4231
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3368,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003453,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6990,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 4231,
+      "webSearchRequests": 0,
+      "costUSD": 0.12260384999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "986e4413-58e8-4cff-8242-474d4d814cd2"
+}

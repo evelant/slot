@@ -150,7 +150,7 @@ export const MATERIAL_FAMILY_VALUES = [
   "end_stone", "purpur", "prismarine", "nether_bricks",
   // metals + metal-likes
   "iron", "gold", "copper", "netherite",
-  "diamond", "emerald", "lapis", "amethyst", "quartz", "redstone",
+  "diamond", "emerald", "lapis", "amethyst", "quartz", "certus_quartz", "redstone",
   // organics
   "wool", "leather", "bone", "slime", "honey", "scute",
   // borderlines
@@ -268,8 +268,9 @@ export const FACETS: Record<string, FacetDef> = {
   dye_color: {
     kind: "enum",
     values: DYE_COLOR_VALUES,
-    description: "One of the 16 vanilla dye colors, only when the item is explicitly dyed.",
+    description: "One of the 16 vanilla dye colors, only when the item is explicitly dyed (wool, beds, candles, banners, stained_glass, terracotta, concrete, shulker_box, paint balls, colored cables, etc.).",
     deterministic: true,
+    llm_authored: true,
   },
   rarity: {
     kind: "enum",

@@ -1,0 +1,357 @@
+{
+  "items": {
+    "sophisticatedstorage:magnet_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag upgrade + display name contains Upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier functional upgrade, craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "always-on upgrade in active storage builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-collects dropped items into storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional automation upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources listed"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "upgrade tag + automation behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-collect nearby dropped items into storage",
+            "reduce manual pickup during automation"
+          ],
+          "signal": "inferred",
+          "rationale": "magnet upgrade core function"
+        }
+      }
+    },
+    "sophisticatedstorage:netherite_barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "tags c:barrels + all_storage"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite, top SS tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite requires nether ancient debris"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "storage blocks used constantly once placed"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "barrel is storage + logistics block"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional storage, no aesthetic focus"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite dark metallic appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard items"
+        },
+        "environmental_property": {
+          "values": [
+            "lava_safe",
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite item entity survives lava/fire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:all_storage"
+        },
+        "primary_uses": {
+          "values": [
+            "high-tier item storage with upgrade slots",
+            "top-tier barrel in SS progression"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite tier = top of barrel line"
+        }
+      }
+    },
+    "sophisticatedstorage:netherite_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "tags c:chests + all_storage"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite, top SS tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite requires nether ancient debris"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "storage blocks used constantly once placed"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "chest is storage + logistics block"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional storage, no aesthetic focus"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite dark metallic appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard items"
+        },
+        "environmental_property": {
+          "values": [
+            "lava_safe",
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite item entity survives lava/fire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:all_storage"
+        },
+        "primary_uses": {
+          "values": [
+            "high-tier item storage with upgrade slots",
+            "convert to netherite shulker box",
+            "upgrade to double netherite chest"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe outputs confirm upgrade paths"
+        }
+      }
+    },
+    "sophisticatedstorage:netherite_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "shulker box retains items on break; portable"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite, top SS tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite + shulker shell = nether+end needed"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "portable storage used often for transport"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker boxes are the portable storage solution"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite dark metallic appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard items like a shulker box"
+        },
+        "environmental_property": {
+          "values": [
+            "lava_safe",
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite item entity survives lava/fire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:all_storage"
+        },
+        "primary_uses": {
+          "values": [
+            "portable netherite-tier item storage",
+            "transport items across dimensions",
+            "top-tier SS shulker with upgrade slots"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker portability + netherite tier"
+        }
+      }
+    },
+    "sophisticatedstorage:packing_tape": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "tool that seals storage containers for moving"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic materials, simple recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally when relocating storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "seals containers so items persist when broken"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tool-like utility for storage manipulation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafting recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_customization"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies storage behavior; not upgrade slot item"
+        },
+        "primary_uses": {
+          "values": [
+            "seal storage to keep items when broken",
+            "enable moving full storage containers"
+          ],
+          "signal": "inferred",
+          "rationale": "packing tape seals and locks containers"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 126045,
+  "duration_api_ms": 126910,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"sophisticatedstorage:decoration_table\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive station for storage customization\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"axe-mineable; tables are typically wood\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from basic materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once when setting up storage decor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"customizes storage block appearance\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional crafting/decoration station\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Apply textures to storage containers\",\n            \"Customize storage block appearance\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"name explicitly says Decoration Table\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_customization\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS cosmetic customization subsystem\"\n        }\n      }\n    },\n    \"sophisticatedstorage:diamond_barrel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag c:barrels + all_storage\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrel structure is wood-based\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond investment\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core storage block used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is storing items\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tiered variant of base barrel\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond = crystalline appearance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High-capacity tiered item storage\",\n            \"Barrel with upgrade slots at diamond tier\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS diamond barrel primary function\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS main storage container system\"\n        }\n      }\n    },\n    \"sophisticatedstorage:diamond_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag c:chests + all_storage\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest structure is wood-based\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond investment\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core storage block used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is storing items\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tiered variant of base chest\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond = crystalline appearance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High-capacity tiered item storage\",\n            \"Chest with upgrade slots at diamond tier\",\n            \"Upgradeable to netherite or shulker box\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS diamond chest primary functions\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS main storage container system\"\n        }\n      }\n    },\n    \"sophisticatedstorage:diamond_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block form; all_storage tag; SS context\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"shulker_shell\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker box base material\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond + shulker shell\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for portable storage regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage block + portable item transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tiered variant of base shulker box\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond = crystalline appearance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Portable diamond-tier item storage\",\n            \"Shulker box with upgrade slots\",\n            \"Carry stored items in inventory\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS diamond shulker box function\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS main storage container system\"\n        }\n      }\n    },\n    \"sophisticatedstorage:diamond_to_netherite_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"name explicitly says Tier Upgrade\"\n        },\n        \"material_family\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"upgrades to netherite tier\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"diamond\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"source tier is diamond\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"produces netherite-tier containers\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires netherite materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage container tier\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional upgrade item, no frills\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite dark + diamond crystal visuals\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"empty loot sources; crafted shapeless\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Upgrade diamond storage to netherite tier\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"name explicitly states function\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"named\",\n          \"rationale\": \"name says Tier Upgrade; SS subsystem\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "ff743923-64e5-4474-863e-903f6a800bb1",
+  "total_cost_usd": 0.18251355000000005,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4045,
+    "cache_read_input_tokens": 6346,
+    "output_tokens": 10812,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4045,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10812,
+        "cache_read_input_tokens": 6346,
+        "cache_creation_input_tokens": 4045,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4045
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3182,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003252,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10812,
+      "cacheReadInputTokens": 6346,
+      "cacheCreationInputTokens": 4045,
+      "webSearchRequests": 0,
+      "costUSD": 0.17926155000000005,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4d458cd3-762b-42e8-acbe-546df3bbe938"
+}

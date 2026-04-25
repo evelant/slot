@@ -1,0 +1,374 @@
+{
+  "items": {
+    "ae2:green_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network cable; active infra block"
+        },
+        "material_family": {
+          "value": "fluix_glass",
+          "signal": "inferred",
+          "rationale": "AE2 cables built from fluix glass fiber"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 mid-tier cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout AE2 network builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network routing and automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "technical cable, color variant line"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "pattern",
+          "rationale": "green color variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network routes all resource types"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:covered_dense_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2 network backbone (32 channels)",
+            "High-capacity ME component routing",
+            "Connect dense channel runs"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable = 32-channel capacity"
+        }
+      }
+    },
+    "ae2:green_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network cable; active infra block"
+        },
+        "material_family": {
+          "value": "fluix_glass",
+          "signal": "inferred",
+          "rationale": "glass cable uses fluix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic entry-level AE2 cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ubiquitous in AE2 network builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network routing and automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "technical cable, color variant line"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "pattern",
+          "rationale": "green color variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network routes all resource types"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:glass_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2 network backbone (8 channels)",
+            "Basic ME component connection"
+          ],
+          "signal": "inferred",
+          "rationale": "glass cable = standard 8-ch capacity"
+        }
+      }
+    },
+    "ae2:green_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "colors AE2 cables with glow effect"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from paint ball + glowstone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per cable to recolor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "cable color-coding for AE2 networks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing color variant of paint ball"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = glowing green paint ball"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 network cables"
+        },
+        "primary_uses": {
+          "values": [
+            "Color AE2 cables with glow effect",
+            "Cable color-coding in ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = emissive paint variant"
+        }
+      }
+    },
+    "ae2:green_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "colors AE2 cables and facades"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from dye + basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per cable to recolor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "cable color-coding for AE2 networks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "color-variant consumable paint item"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "pattern",
+          "rationale": "green paint ball"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 network cables"
+        },
+        "primary_uses": {
+          "values": [
+            "Color AE2 cables and facades",
+            "Cable color-coding in ME network",
+            "Ingredient for lumen paint ball"
+          ],
+          "signal": "inferred",
+          "rationale": "paint ball = cable colorizer"
+        }
+      }
+    },
+    "ae2:green_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 cable with live channel display"
+        },
+        "material_family": {
+          "value": "fluix_glass",
+          "signal": "inferred",
+          "rationale": "smart cable uses fluix glass base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mid-tier AE2 cable variant"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "preferred for visible channel tracking"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 routing with channel monitoring"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable, color variant line"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "pattern",
+          "rationale": "green color variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "fluid",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network routes all resource types"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:smart_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2 network backbone (8 channels)",
+            "Visual channel usage monitoring",
+            "ME component connection with feedback"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable shows active channels"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

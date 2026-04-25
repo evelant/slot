@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 81773,
+  "duration_api_ms": 82682,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:creative_storage_cell\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage cell inserted into ME drives/chests\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative mode only\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds items in ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative tier = top-end item\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"ae_storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sits in inventory and ME drive slots\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"storage cell → ae2:storage subsystem\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"named\",\n          \"rationale\": \"display_name begins with 'Creative'\"\n        }\n      }\n    },\n    \"ae2:crystal_resonance_generator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active generator block\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crystal resonance = AE2 certus quartz\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable, early AE2 setup item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per power setup\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates AE energy from crystals\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"machine/generator block\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz crystals, emits light\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"passive AE energy generator\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"generate AE energy passively\", \"early-game AE2 power source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystal resonance = AE energy gen\"\n        }\n      }\n    },\n    \"ae2:cut_quartz_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural/decorative block\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"display_name: Cut Certus Quartz Block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche deco block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2-themed structural deco\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"cut_ prefix = variant of base block\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz = pale blue crystal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"AE2 themed builds\", \"stonecutting into finer variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"many stonecutting outputs\"\n        }\n      }\n    },\n    \"ae2:cut_quartz_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab building block\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"display_name: Cut Certus Quartz Slab\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from cut certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche deco slab\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"cut_ prefix = variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz pale blue crystal\"\n        }\n      }\n    },\n    \"ae2:cut_quartz_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs building block\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"display_name: Cut Certus Quartz Stairs\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from cut certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche deco stairs\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs used in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"cut_ prefix = variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz pale blue crystal\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "65762cc5-a033-4af2-88db-0e4e1ec26bc1",
+  "total_cost_usd": 0.12596084999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3795,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 7121,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3795,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7121,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3795,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3795
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2932,
+      "outputTokens": 19,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003027,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7121,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3795,
+      "webSearchRequests": 0,
+      "costUSD": 0.12293384999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "449c9bb3-e032-4dd7-8795-5868598015b0"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 143301,
+  "duration_api_ms": 144008,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:cell_component_1k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for AE2 storage cells\"\n        },\n        \"tier\": {\n          \"value\": \"1k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"capacity tier encoded in item name\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base AE2 storage tier\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ingredient in many AE2 recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in storage cells and CPU blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 electronic circuit component\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray AE2 component aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\", \"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient for cells and CPU crafting storage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft 1k ME item/fluid storage cells\", \"craft 1k CPU crafting storage\", \"craft portable 1k ME cells\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs confirm uses\"\n        }\n      }\n    },\n    \"ae2:cell_component_256k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for AE2 storage cells\"\n        },\n        \"tier\": {\n          \"value\": \"256k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"capacity tier encoded in item name\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"highest standard AE2 storage tier\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"endgame component, rarely crafted\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in storage cells and CPU blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 electronic circuit component\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray AE2 component aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\", \"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient for cells and CPU crafting storage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft 256k ME item/fluid storage cells\", \"craft 256k CPU crafting storage\", \"craft portable 256k ME cells\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs confirm uses\"\n        }\n      }\n    },\n    \"ae2:cell_component_4k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for AE2 storage cells\"\n        },\n        \"tier\": {\n          \"value\": \"4k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"capacity tier encoded in item name\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"second AE2 storage tier, widely crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in cells, tools, and CPU storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cells, CPU storage, and matter cannon\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 electronic circuit component\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray AE2 component aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\", \"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient for cells, CPU storage, matter cannon\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft 4k ME item/fluid storage cells\", \"craft 4k CPU crafting storage\", \"craft matter cannon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs confirm uses\"\n        }\n      }\n    },\n    \"ae2:cell_component_64k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for AE2 storage cells\"\n        },\n        \"tier\": {\n          \"value\": \"64k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"capacity tier encoded in item name\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-tier AE2 component, more expensive\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made less often than lower tiers\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in storage cells and CPU blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 electronic circuit component\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray AE2 component aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\", \"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient for cells and CPU crafting storage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft 64k ME item/fluid storage cells\", \"craft 64k CPU crafting storage\", \"craft portable 64k ME cells\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs confirm uses\"\n        }\n      }\n    },\n    \"ae2:cell_workbench\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dedicated UI block for configuring cells\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap craft, standard in any AE2 setup\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when setting up or modifying cells\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"for ME cell partition configuration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech workbench block\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 gray/silver aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"exclusively for ME storage cell config\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"configure ME cell item partitions\", \"apply upgrade cards to cells\", \"set fuzzy or inverse cell modes\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cell workbench primary functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "2a57f666-b3e2-499f-8905-bdd47f6546e9",
+  "total_cost_usd": 0.1934431,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3646,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 11667,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3646,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11667,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3646,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3646
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2783,
+      "outputTokens": 19,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002878,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11667,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3646,
+      "webSearchRequests": 0,
+      "costUSD": 0.19056510000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8650775b-a8fd-41fa-b6ac-d1a0d0d87ce1"
+}

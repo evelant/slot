@@ -1,0 +1,287 @@
+{
+  "items": {
+    "ae2:quartz_fiber": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed AE2 component, not raw"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires certus quartz AE2 progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ingredient in cables and wireless"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network cable infrastructure"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "quartz-based fiber material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot table, only crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 network cables",
+            "crafting wireless network parts"
+          ],
+          "signal": "pattern",
+          "rationale": "ingredient of glass_fluix, wireless_part"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "used in cables and wireless parts"
+        }
+      }
+    },
+    "ae2:quartz_fixture": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "charged lamp fixture, primarily decorative"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires charged certus quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for AE2 aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative light fixture"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "charged glowing AE2 fixture"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light, pale quartz coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "charged quartz fixture emits light"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative AE2 light source",
+            "aesthetic base lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "charged fixture = light + decor"
+        }
+      }
+    },
+    "ae2:quartz_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tagged c:glass_blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from sand and certus quartz"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ingredient in 30+ AE2 recipes"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable glass + AE2 machine ingredient"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple transparent quartz glass"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "clear quartz glass block"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 machines and cells",
+            "crafting AE2 network blocks",
+            "decorative glass block"
+          ],
+          "signal": "pattern",
+          "rationale": "heavily used across AE2 recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "ingredient in cells, energy, spatial blocks"
+        }
+      }
+    },
+    "ae2:quartz_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "pillar block for structural/decorative use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires certus quartz AE2 material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative certus quartz pillar"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "pillar form of certus quartz block"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "pale white quartz pillar"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative pillar building",
+            "stonecuttable into slabs/stairs/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "certus pillar with many sub-forms"
+        }
+      }
+    },
+    "ae2:quartz_pillar_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form = building block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from certus quartz pillar"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative slab"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for detailed AE2 builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant of quartz pillar"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "pale certus quartz"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative half-block for detailed building"
+          ],
+          "signal": "inferred",
+          "rationale": "certus pillar slab for detail work"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,307 @@
+{
+  "items": {
+    "ae2:stonecutting_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Encoded recipe template for autocrafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable AE2 pattern item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Set-once in pattern provider"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in AE2 pattern providers for autocrafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 encoded substrate aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; encoded in AE2 encoder"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "Stonecutting recipe for autocrafting system"
+        },
+        "primary_uses": {
+          "values": [
+            "Encode stonecutting recipes for autocrafting",
+            "Place in Pattern Providers to automate stonecutting"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 pattern for stonecutting automation"
+        }
+      }
+    },
+    "ae2:storage_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Network part bridging external storage to ME"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable; widely used in AE2 setups"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential in most AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Bridges adjacent inventories to ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable network attachment part"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; crafted via shapeless"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:external_io",
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "Connects external storage to ME network"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves items between adjacent storage and network"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect chests/barrels to ME network",
+            "Filter items entering or leaving ME",
+            "Expose adjacent inventory to autocrafting",
+            "Attune item P2P tunnels"
+          ],
+          "signal": "inferred",
+          "rationale": "Core AE2 external storage I/O part"
+        }
+      }
+    },
+    "ae2:storage_monitor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Display part showing ME network item counts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable AE2 monitor part"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Informational display; not essential"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Monitors ME network stock levels"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 illuminated display panel"
+        },
+        "palette": {
+          "values": [
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "Lit display surface showing tracked item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network status display part"
+        },
+        "primary_uses": {
+          "values": [
+            "Display item quantity in ME network",
+            "Monitor stock levels at a glance",
+            "Upgrade base for crafting monitor"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 stock monitoring display"
+        }
+      }
+    },
+    "ae2:terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Primary interactive UI for ME storage access"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable essential AE2 component"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "Used constantly to access ME storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Main ME network item access point"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 digital interface aesthetic"
+        },
+        "palette": {
+          "values": [
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "Illuminated AE2 terminal display"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "Core ME storage access terminal"
+        },
+        "primary_uses": {
+          "values": [
+            "Access and withdraw ME network items",
+            "View all stored item quantities",
+            "Base for crafting terminal and wireless terminal"
+          ],
+          "signal": "inferred",
+          "rationale": "Main AE2 storage interaction interface"
+        }
+      }
+    },
+    "ae2:tiny_tnt": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "One-use explosive device block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Situational explosive use"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Mini explosive for mining or combat"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Engineered miniature explosive"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "Red TNT-style coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "Small-radius controlled explosion",
+            "Precision mining without large craters",
+            "Combat or trap use"
+          ],
+          "signal": "inferred",
+          "rationale": "Smaller TNT with reduced blast radius"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

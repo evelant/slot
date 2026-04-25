@@ -1,0 +1,300 @@
+{
+  "items": {
+    "ae2:sky_stone_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stone block; crafts structural/functional variants"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Only at AE2 meteorite crash sites"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used when building AE2-themed bases"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Block used for construction and aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 alien-origin stone; ancient lore"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark charcoal-grey stone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "Build AE2-themed structures",
+            "Craft sky stone brick/smooth variants",
+            "Craft sky stone chest and tank"
+          ],
+          "signal": "inferred",
+          "rationale": "Per recipe ingredient list"
+        }
+      }
+    },
+    "ae2:sky_stone_brick": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Brick form of sky stone for building"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted from meteor-sourced sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in AE2 aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick variant for construction"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed brick form of alien stone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark charcoal brick"
+        },
+        "primary_uses": {
+          "values": [
+            "Build AE2-themed brick structures",
+            "Craft slab, stair, and wall variants"
+          ],
+          "signal": "inferred",
+          "rationale": "Recipe outputs confirm sub-variants"
+        }
+      }
+    },
+    "ae2:sky_stone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Slab for structural detailing"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted from meteor-sourced sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Architectural detailing in AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for construction/detailing"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab of alien-origin brick"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark charcoal brick slab"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height AE2 brick detailing",
+            "Structural slab in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard slab use"
+        }
+      }
+    },
+    "ae2:sky_stone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Stair for structural transitions"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted from meteor-sourced sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Architectural detailing in AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs for construction/detailing"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Stair form of alien-origin brick"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark charcoal brick stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "Stair transitions in AE2 builds",
+            "Roof and edge detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard stair use"
+        }
+      }
+    },
+    "ae2:sky_stone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wall form for fencing and detailing"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Crafted from meteor-sourced sky stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Architectural detailing in AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for construction"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall form of alien-origin brick"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark charcoal brick wall"
+        },
+        "primary_uses": {
+          "values": [
+            "Border walls and fencing in AE2 builds",
+            "Parapet and edge detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard wall use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:sky_stone_block",
+      "facet": "origin",
+      "current": [
+        "village"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "village"
+      ],
+      "rationale": "AE2 meteors crash on overworld surface — primary source; village hero gift is secondary",
+      "confidence": 0.9
+    }
+  ]
+}

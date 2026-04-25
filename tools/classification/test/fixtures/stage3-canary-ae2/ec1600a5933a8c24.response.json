@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 118154,
+  "duration_api_ms": 119150,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:pink_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown/applied to tint ME cables with glow\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from paint ball + dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for aesthetic cable coloring\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors ME network cables aesthetically\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"named color variant in id and tag\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"glowing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pink=coral; lumen=emissive glow effect\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; shaped craft only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"paints ME network cable segments\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Apply glowing pink color to ME cables\", \"Color network components with emissive tint\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = glow variant of paint ball\"\n        }\n      }\n    },\n    \"ae2:pink_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown/applied to color ME cables pink\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from pink dye + basic materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for cable color aesthetics\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors ME network cables\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"named color variant in id and tag\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pink=coral; bright saturated dye color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shaped craft only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"paints ME network cable segments\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Color ME cables pink\", \"Ingredient for Pink Lumen Paint Ball\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient_of lumen variant; cable coloring\"\n        }\n      }\n    },\n    \"ae2:pink_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network cable routing channels\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from glass/quartz; widely used\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ME network infrastructure piece\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes ME channels for automation setups\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored cable; mechanical network component\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pink=coral; bright AE2 dye color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shaped craft only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME channels and AE2 network power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"ME Smart Cable = AE2 network backbone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Connect ME network devices\", \"Route up to 8 channels\", \"Display channel usage visually\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart cable visualizes channel load\"\n        }\n      }\n    },\n    \"ae2:pink_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense ME cable routing 32 channels\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from basic AE2 materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for ME network trunk lines\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes dense ME channels for automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored; thick mechanical trunk cable\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pink=coral; bright AE2 dye color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shaped craft only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 32 ME channels and network power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"Dense ME Smart Cable = AE2 backbone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Route up to 32 channels in ME network\", \"Connect dense trunk lines\", \"Crafting component for Quantum Ring\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense=32ch; ingredient_of quantum_ring\"\n        }\n      }\n    },\n    \"ae2:portable_fluid_cell_16k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld portable fluid storage cell\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 cell housing + components\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"actively used for portable fluid transport\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores/transports fluids; links to ME network\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\", \"curio\"],\n          \"signal\": \"named\",\n          \"evidence\": \"curios:curio tag\",\n          \"rationale\": \"fluid cell with curios:curio tag\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shapeless craft only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable AE2 fluid storage cell\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Store up to 16k fluid units portably\", \"Access fluid storage outside ME network\", \"Wearable as curio accessory\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable+curio tag; 16k fluid capacity\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "2cb01520-8f57-4277-99d1-308bbb25bbf6",
+  "total_cost_usd": 0.1436601,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 8997,
+    "output_tokens": 9267,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9267,
+        "cache_read_input_tokens": 8997,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1872,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001947,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9267,
+      "cacheReadInputTokens": 8997,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.1417131,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "5329db5a-f63a-473c-b2c1-f83645aa78f6"
+}

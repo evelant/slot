@@ -1,0 +1,306 @@
+{
+  "items": {
+    "ae2:wireless_terminal": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld remote ME network access device"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires mid-game AE2 progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly once ME network built"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "wireless ME item access and deposit"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech device aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has recipe, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "curios:curio tag present"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "AE2 wireless network terminal"
+        },
+        "primary_uses": {
+          "values": [
+            "Remote ME network access",
+            "Wireless item retrieval and deposit",
+            "Upgrade base for wireless crafting terminal"
+          ],
+          "signal": "inferred",
+          "rationale": "core wireless terminal functions"
+        }
+      }
+    },
+    "ae2:wrapped_generic_stack": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "no recipe/loot/tags; internal AE2 type"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe/loot; virtual network representation"
+        }
+      }
+    },
+    "ae2:yellow_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "ME network channel-carrying cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic AE2 network infrastructure"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used extensively in ME builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME network components"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "named",
+          "rationale": "yellow colored cable, one of 16 variants"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow cable color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME network channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "ae2:covered_cable tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME network components",
+            "8-channel network routing",
+            "Color-coded cable organization"
+          ],
+          "signal": "inferred",
+          "rationale": "standard covered cable functions"
+        }
+      }
+    },
+    "ae2:yellow_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "high-capacity ME network cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 backbone cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "backbone cable in large ME builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "backbone ME network routing"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "named",
+          "rationale": "yellow colored dense cable variant"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow cable color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries 32 ME network channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "ae2:covered_dense_cable tag"
+        },
+        "primary_uses": {
+          "values": [
+            "High-density ME network backbone",
+            "32-channel network routing",
+            "Color-coded dense cable organization"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable backbone functions"
+        }
+      }
+    },
+    "ae2:yellow_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "basic ME network glass cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "named",
+          "rationale": "item name explicitly says glass cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheapest AE2 cable type"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in ME builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME network components"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "named",
+          "rationale": "yellow colored glass cable variant"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow translucent glass cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "has recipe, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME network channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "ae2:glass_cable tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Basic ME network connections",
+            "8-channel cable routing",
+            "Color-coded cable organization"
+          ],
+          "signal": "inferred",
+          "rationale": "glass cable functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

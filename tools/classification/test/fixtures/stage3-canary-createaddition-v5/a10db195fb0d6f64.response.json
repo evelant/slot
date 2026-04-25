@@ -1,0 +1,59 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 38950,
+  "duration_api_ms": 39848,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"vocabulary\": [\n    {\"id\": \"createaddition:electricity\", \"rationale\": \"Power generation, storage, and regulation equipment\"},\n    {\"id\": \"createaddition:energy_conversion\", \"rationale\": \"Conversion between kinetic and electrical energy\"},\n    {\"id\": \"createaddition:power_transmission\", \"rationale\": \"Wires, cables, and connectors for power distribution\"},\n    {\"id\": \"createaddition:mechanical_processing\", \"rationale\": \"Kinetic machines for crafting and material processing\"},\n    {\"id\": \"createaddition:biofuel\", \"rationale\": \"Combustible organic materials for fuel and energy\"}\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "956b23c2-42f9-44d9-96fa-0449b5aea7e8",
+  "total_cost_usd": 0.0261642,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 4682,
+    "output_tokens": 4830,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 10,
+        "output_tokens": 4830,
+        "cache_read_input_tokens": 4682,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1451,
+      "outputTokens": 4849,
+      "cacheReadInputTokens": 4682,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0261642,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d08ebcf9-0929-4bfe-ab48-ce262f899d4e"
+}

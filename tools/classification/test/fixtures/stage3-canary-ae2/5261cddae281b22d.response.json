@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 100870,
+  "duration_api_ms": 101601,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:formation_plane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active part that ejects items into world\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 bus parts use iron as primary\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires several AE2 materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche: automated world block placement\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"places blocks from ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 bus face tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron-toned flat bus texture\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; shaped recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:external_io\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"I/O bus outputting items to world\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"place items into world from ME network\",\n            \"automated block placement\",\n            \"world-gen automation pipelines\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function of formation plane\"\n        }\n      }\n    },\n    \"ae2:fuzzy_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card slot item for cells/buses\"\n        },\n        \"material_family\": {\n          \"value\": \"redstone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cards use redstone/logic substrate\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shapeless recipe, common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific filter setups\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables fuzzy compare in storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 circuit card aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shapeless recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily upgrades storage cells\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"fuzzy comparison in storage cells\",\n            \"ignore damage/NBT in bus filters\",\n            \"upgrade buses for fuzzy matching\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named functionality of fuzzy card\"\n        }\n      }\n    },\n    \"ae2:gray_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME cable carries network channels\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable crafted from glass+dye\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted network component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed throughout any AE2 network\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects ME network devices\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gray dye variant of covered cable\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray color is muted neutral\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shaped crafting only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME cable carries channels + power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network backbone cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"connect ME network components\",\n            \"carry up to 8 channels\",\n            \"color-coded gray network routing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard covered cable function\"\n        }\n      }\n    },\n    \"ae2:gray_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense ME cable carries 32 channels\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense covered cable uses glass+dye\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone of larger AE2 networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense backbone for ME networks\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gray dense variant of covered cable\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray is muted neutral tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shaped crafting only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable carries channels + power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity network backbone cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"carry up to 32 ME channels\",\n            \"dense network backbone routing\",\n            \"high-throughput network connection\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable function\"\n        }\n      }\n    },\n    \"ae2:gray_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME glass cable carries channels\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains glass_cable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest cable type to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"most commonly placed cable type\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects ME network devices\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gray dye variant of glass cable\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray glass reads as muted+translucent\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shaped crafting only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME cable carries channels + power\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"entry-level network backbone cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"basic ME network connection\",\n            \"carry up to 8 channels\",\n            \"cheapest colored cable option\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass cable is entry-level cable\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "f87d1362-cae5-458d-b210-8fea772e0660",
+  "total_cost_usd": 0.13977635000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2533,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 8442,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2533,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8442,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2533,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2533
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1670,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00176,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8442,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2533,
+      "webSearchRequests": 0,
+      "costUSD": 0.13801635,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "fd15b7b2-ba24-4229-829a-6cb5e3abc56c"
+}

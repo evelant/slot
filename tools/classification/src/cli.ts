@@ -29,6 +29,11 @@ import {
   defaultTargetFacets,
 } from "./llm/prompt.ts";
 import { VANILLA_CANARY_ITEMS } from "./llm/canary.ts";
+import {
+  extractModMetadata,
+  proposeSubsystems,
+  type SubsystemEntry,
+} from "./llm/mod_metadata.ts";
 
 const TOOL_VERSION = "slot-classify v0.1.0";
 
@@ -116,6 +121,10 @@ async function main() {
           "retry-fixture-dir": { type: "string" },
           "retry-use-replay": { type: "boolean" },
           "retry-record-replay": { type: "boolean" },
+          // mod-only: bootstrap a canonical mod_subsystem vocabulary from the
+          // mod's README/metadata before stage 3 runs.
+          "no-propose-subsystems": { type: "boolean" },
+          "subsystems-model": { type: "string" },
         },
         allowPositionals: false,
         strict: true,
@@ -156,6 +165,8 @@ async function main() {
         retryFixtureDir: args.values["retry-fixture-dir"],
         retryUseReplay: args.values["retry-use-replay"],
         retryRecordReplay: args.values["retry-record-replay"],
+        proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
+        subsystemsModel: args.values["subsystems-model"],
       };
 
       if (mod === "minecraft") {
@@ -226,6 +237,14 @@ interface Stage3CliOptions {
    *  fixtures pre-populated. */
   retryUseReplay?: boolean;
   retryRecordReplay?: boolean;
+  /** When false, skip the mod_subsystem proposer pre-pass.  Default true. */
+  proposeSubsystems?: boolean;
+  /** Model id for the proposer call.  Default haiku — it's cheap, the prompt
+   *  is small, and we just want a plausible vocabulary. */
+  subsystemsModel?: string;
+  /** Pre-resolved canonical vocabulary, plumbed through to stage 3. Set
+   *  inside `runMod` after the proposer runs; consumed by `executeStage3`. */
+  subsystemVocabulary?: readonly { id: string; rationale?: string }[];
 }
 
 async function runVanilla(
@@ -387,10 +406,118 @@ async function runMod(
   }
 
   if (stages.stage3 && stage2Layer) {
-    await executeStage3(records, stage2Layer, completePath, stage3Opts);
+    let modOpts = stage3Opts;
+    if (stage3Opts.proposeSubsystems !== false) {
+      const vocab = await resolveModSubsystems({
+        modPath,
+        bundle,
+        outDir,
+        modNamespace,
+        opts: stage3Opts,
+        // dry-run + no cached file: skip the live LLM call but keep going
+        skipLiveCall: stage3Opts.dryRun,
+      });
+      if (vocab.length > 0) {
+        modOpts = { ...stage3Opts, subsystemVocabulary: vocab };
+      }
+    }
+    await executeStage3(records, stage2Layer, completePath, modOpts);
   }
 
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+/**
+ * Resolve the canonical `mod_subsystem` vocabulary for a mod run. Uses an
+ * on-disk cache (`<outDir>/<modid>.subsystems.json`) so the proposer LLM call
+ * only fires once per mod — subsequent runs read the saved vocabulary.
+ *
+ * The cache is content-agnostic: edits to README/mods.toml don't auto-bust it.
+ * Delete the file to regenerate.
+ */
+async function resolveModSubsystems(args: {
+  modPath: string;
+  bundle: import("./extract/mod/source.ts").ModSourceBundle;
+  outDir: string;
+  modNamespace: string;
+  opts: Stage3CliOptions;
+  /** When true, only read the cache; never fire a live LLM call. */
+  skipLiveCall?: boolean;
+}): Promise<SubsystemEntry[]> {
+  const { modPath, bundle, outDir, modNamespace, opts, skipLiveCall } = args;
+  const cachePath = join(outDir, `${modNamespace}.subsystems.json`);
+  if (existsSync(cachePath)) {
+    try {
+      const data = JSON.parse(readFileSync(cachePath, "utf8")) as {
+        vocabulary?: SubsystemEntry[];
+      };
+      if (Array.isArray(data.vocabulary) && data.vocabulary.length > 0) {
+        console.log(
+          `[subsystems] using cached vocabulary (${data.vocabulary.length} entries) from ${cachePath}`,
+        );
+        return data.vocabulary;
+      }
+    } catch (err) {
+      console.warn(`[subsystems] failed to read cache ${cachePath}: ${(err as Error).message}`);
+    }
+  }
+
+  if (skipLiveCall) {
+    console.log(
+      `[subsystems] no cache and live call disabled; stage 3 will run without canonical vocabulary.`,
+    );
+    return [];
+  }
+  if (opts.useReplay && !opts.recordReplay) {
+    // Replay-only mode: don't fire a live LLM call to populate the cache;
+    // the user has explicitly asked for offline behavior.
+    console.log(
+      `[subsystems] no cache and --use-replay set; skipping proposer (stage 3 will run without canonical vocabulary).`,
+    );
+    return [];
+  }
+
+  console.log(`[subsystems] proposing canonical vocabulary for ${modNamespace} via claude -p`);
+  const meta = extractModMetadata({ modPath, bundle });
+  if (
+    !meta.readme &&
+    !meta.description &&
+    meta.modRecipeTypes.length === 0 &&
+    meta.itemDisplayNames.length === 0
+  ) {
+    console.log(`[subsystems] no metadata signals; skipping proposer`);
+    return [];
+  }
+  const client = buildClient(opts);
+  const proposal = await proposeSubsystems(meta, {
+    client,
+    model: opts.subsystemsModel ?? "haiku",
+  });
+  if (proposal.vocabulary.length === 0) {
+    console.warn(
+      `[subsystems] proposer returned no usable vocabulary entries; raw response saved alongside cache`,
+    );
+  }
+  writeFileSync(
+    cachePath,
+    JSON.stringify(
+      {
+        modNamespace: proposal.modNamespace,
+        generated_at: new Date().toISOString(),
+        generated_by: TOOL_VERSION,
+        vocabulary: proposal.vocabulary,
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+  console.log(
+    `[subsystems] wrote ${proposal.vocabulary.length} entr(y/ies) → ${cachePath}`,
+  );
+  for (const entry of proposal.vocabulary) {
+    console.log(`  ${entry.id.padEnd(40)}${entry.rationale ? " " + entry.rationale : ""}`);
+  }
+  return proposal.vocabulary;
 }
 
 async function executeStage3(
@@ -423,6 +550,7 @@ async function executeStage3(
     concurrency: opts.concurrency,
     only,
     clientOptions: buildClientOptions(opts.effort, opts.thinkingBudget, opts.disableAdaptiveThinking),
+    subsystemVocabulary: opts.subsystemVocabulary,
     onBatch: (info) => {
       console.log(
         `[stage3] batch ${info.batchIndex + 1}/${info.batchCount} ` +
@@ -468,6 +596,7 @@ async function executeStage3(
         effort: opts.retryEffort,
         threshold: opts.retryThreshold,
         batchSize: opts.retryBatchSize,
+        subsystemVocabulary: opts.subsystemVocabulary,
         onBatch: (info) => {
           console.log(
             `[stage3-retry] batch ${info.batchIndex + 1}/${info.batchCount} ` +
@@ -754,6 +883,13 @@ Retry pass (opt-in; runs after the first pass on low-confidence items):
   --retry-threshold <n>     Retry items with any LLM facet confidence < n or ambiguous:true. Default 0.5.
   --retry-batch-size <n>    Items per retry LLM call. Default 8.
   --retry-fixture-dir <p>   Separate fixture directory for the retry pass.
+
+Mod-only subsystem proposer (default: on for mods):
+  --no-propose-subsystems   Skip the README/metadata pre-pass. Stage 3 then
+                            invents mod_subsystem labels per item.
+  --subsystems-model <id>   Model id for the proposer call. Default haiku.
+                            Cached at <out>/<modid>.subsystems.json — delete
+                            to regenerate.
 
 Examples:
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta

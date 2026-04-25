@@ -1,0 +1,307 @@
+{
+  "items": {
+    "sophisticatedstorage:gold_to_diamond_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name says 'Tier Upgrade'"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "upgrades from gold tier storage"
+        },
+        "material_secondary": {
+          "values": [
+            "diamond"
+          ],
+          "signal": "pattern",
+          "rationale": "upgrades to diamond tier"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "named",
+          "rationale": "target tier is diamond"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond crafting materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage container tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted tier upgrade component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade system"
+        }
+      }
+    },
+    "sophisticatedstorage:gold_to_netherite_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name says 'Tier Upgrade'"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "upgrades from gold tier storage"
+        },
+        "material_secondary": {
+          "values": [
+            "netherite"
+          ],
+          "signal": "pattern",
+          "rationale": "upgrades to netherite tier"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "named",
+          "rationale": "target tier is netherite"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires netherite materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage container tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted tier upgrade component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade system"
+        }
+      }
+    },
+    "sophisticatedstorage:hopper_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name ends in 'Upgrade'"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "hopper mechanic is iron-based"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted functional upgrade"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core automation upgrade, widely used"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "enables item auto-transfer to storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical automation upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "hopper-style item transfer"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:infinity_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name ends in 'Upgrade'"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "display name says '(Admin)'"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "named",
+          "rationale": "admin-only, no recipe exists"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "admin item, not normal gameplay"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "infinite storage capacity upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:iron_barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "tagged c:barrels + all_storage"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id and name contain iron"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier in SS progression"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron-tier, easily crafted"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary daily storage container"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and organizes items"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "base iron, functional aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "iron material visual appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard item stacks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS storage container item"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and organize items",
+            "Upgrade to higher tier barrels",
+            "Install functional upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "core SS storage block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

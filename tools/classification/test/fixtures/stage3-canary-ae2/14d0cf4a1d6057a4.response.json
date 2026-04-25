@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 140580,
+  "duration_api_ms": 141291,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:white_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active 32-channel network cable\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables have glass outer shell\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white dye variant; tech hardware\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white colorway\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap recipe, made in bulk\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used throughout ME network builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network routing infrastructure\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries AE2 network channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"evidence\": \"ae2:smart_dense_cable tag\",\n          \"rationale\": \"cable is core me_network component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"32-channel ME network backbone\",\n            \"High-throughput device connection\",\n            \"P2P tunnel attunement target\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense smart cable roles\"\n        }\n      }\n    },\n    \"ae2:wireless_access_point\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block for wireless ME access\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network hardware device\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 progression materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once, used for wireless daily\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables wireless ME network access\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"broadcasts ME network signal wirelessly\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wireless network infrastructure\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Provide wireless ME network access\",\n            \"Enable wireless terminal connectivity\",\n            \"Install boosters to extend range\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core WAP functions in AE2\"\n        }\n      }\n    },\n    \"ae2:wireless_booster\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inserted in WAP to extend range\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small tech upgrade component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap upgrade component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once per WAP setup\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"extends ME wireless range\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME wireless network upgrade\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Extend wireless terminal range\",\n            \"Stack in WAP for max coverage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wireless booster sole purpose\"\n        }\n      }\n    },\n    \"ae2:wireless_crafting_terminal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld wireless ME access + crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"complex handheld tech device\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 tech progression\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary daily-driver for ME users\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wireless network browsing + crafting\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"curio\", \"standard\"],\n          \"signal\": \"named\",\n          \"evidence\": \"curios:curio tag\",\n          \"rationale\": \"curio tag enables curio slot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wireless ME + remote autocrafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Wirelessly access ME network inventory\",\n            \"Remote autocrafting from anywhere\",\n            \"Manage network contents on the go\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wireless crafting terminal uses\"\n        }\n      }\n    },\n    \"ae2:wireless_receiver\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wireless device crafting component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted AE2 component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted in small batches for wireless\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: wireless ME devices\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME wireless network ingredient\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft wireless access points\",\n            \"Craft wireless terminals\",\n            \"ME wireless network ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in all wireless AE2 items\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "c3195631-653c-43b8-9791-557b7bb26cec",
+  "total_cost_usd": 0.18252710000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2890,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 11179,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2890,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11179,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2890,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2890
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2027,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002117,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11179,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2890,
+      "webSearchRequests": 0,
+      "costUSD": 0.18041010000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0486914d-60b1-4506-958a-ca5dc4b67a50"
+}

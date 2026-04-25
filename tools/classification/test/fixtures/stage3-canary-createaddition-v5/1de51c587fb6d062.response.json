@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 101015,
+  "duration_api_ms": 102086,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"createaddition:creative_energy\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block that generates infinite energy\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"named\",\n          \"rationale\": \"'Creative' in display name\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; unobtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative only; no survival gameplay role\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates electrical energy (FE/RF)\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create-style mechanical block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy generators typically emissive\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produces FE/RF for electrical network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Infinite energy source for testing\", \"Creative mode power supply\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative generator sole function\"\n        }\n      }\n    },\n    \"createaddition:diamond_grit\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:dusts/diamond tag; crushed diamond dust\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:dusts/diamond tag\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamonds to produce\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"single downstream use: sandpaper\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds Create processing chain\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; produced by crushing diamonds\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:mechanical_processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from Create crushing; used in processing\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Craft diamond grit sandpaper\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole known downstream use\"\n        }\n      }\n    },\n    \"createaddition:diamond_grit_sandpaper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"create:sandpaper tag; polishing tool\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"made from diamond grit\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamonds to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational polishing use\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create sandpaper polishing mechanic\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create mod processing tool\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shapeless crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:mechanical_processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"create:sandpaper tag → processing\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Polish items via Create sandpaper mechanic\", \"Intermediate processing ingredient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"create:sandpaper tag use\"\n        }\n      }\n    },\n    \"createaddition:digital_adapter\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"adapts digital/electrical to redstone signals\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized interface block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational signal bridging use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bridges digital signals and automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create-style interface block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adapter blocks typically iron/silver\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"interfaces Create electrical with digital\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Interface Create electricity with redstone\", \"Digital signal conversion\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digital adapter function\"\n        }\n      }\n    },\n    \"createaddition:electric_motor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"converts FE/RF to Create rotational power\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core automation component; craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"central to electric-powered automation\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates rotation; drives machinery\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create-style kinetic mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"motors: copper coils + iron housing\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy_conversion\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"FE/RF → rotational power conversion\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Convert FE/RF to rotational power\", \"Power Create machinery electrically\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electric motor core function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "db2b8abc-4b5d-4d47-8f24-efda4ec6a910",
+  "total_cost_usd": 0.16993775000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9285,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 8855,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9285,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8855,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9285,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9285
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2215,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002285,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8855,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9285,
+      "webSearchRequests": 0,
+      "costUSD": 0.16765275000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "212c4414-2642-46e0-bb54-23be399734a3"
+}

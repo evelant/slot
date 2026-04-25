@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 192532,
+  "duration_api_ms": 193216,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:brown_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable carries network channels/signal\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 materials + dye coloring\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cables used heavily in large nets\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network backbone cabling\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown dye variant, AE2 tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown is earthy warm tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe exists, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries AE2 channels and network power\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High-channel ME network backbone\",\n            \"Carries 32 AE2 channels\",\n            \"Color-coded cable routing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense smart cable core functions\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"rationale\": \"explicitly ME network cable tag\"\n        }\n      }\n    },\n    \"ae2:cable_anchor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small intermediate crafting component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 crafting ingredient\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in many AE2 fixture recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in AE2 network fixture crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small bracket/anchor component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"quartz_cutting recipe, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Anchor cables to block surfaces\",\n            \"Craft AE2 fixtures and decoratives\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cable anchor usage per ingredient list\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"component for AE2 cable fixtures\"\n        }\n      }\n    },\n    \"ae2:cable_bus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed AE2 block with network behavior\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe/loot; internal placed block\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable+bus network placed block\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 mechanical network component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Placed AE2 cable bus network block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"internal block for placed cables\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable bus block\"\n        }\n      }\n    },\n    \"ae2:cable_energy_acceptor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active power input for AE2 network\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 energy component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"need 1-2 per network, not many\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powers AE2 network from external power\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 energy conversion component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe exists, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"accepts and converts power into AE2\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Accept external power into ME network\",\n            \"Cable-form energy acceptor part\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy acceptor primary function\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 energy infrastructure component\"\n        }\n      }\n    },\n    \"ae2:cable_interface\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active I/O component for AE2 network\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fundamental AE2 component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used extensively in AE2 automation\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves items between network and machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network I/O component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe exists, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exchanges items between net and external\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Exchange items with external machines\",\n            \"Autocrafting pattern push/pull\",\n            \"Cable-form ME interface part\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME interface primary functions\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:external_io\", \"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for I/O and autocrafting setups\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "54aa76f6-9598-42a3-8e85-f0bae6982158",
+  "total_cost_usd": 0.25371925,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 7895,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 14792,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7895,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14792,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 7895,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 7895
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2129,
+      "outputTokens": 19,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002224,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14792,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 7895,
+      "webSearchRequests": 0,
+      "costUSD": 0.25149525,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c5a94e6b-e74c-43e0-90e9-5954c1edc903"
+}

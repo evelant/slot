@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 83027,
+  "duration_api_ms": 83906,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:toggle_bus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-toggled ME network gate bus\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap, widely deployed\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed only where gating needed\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone enables/disables network side\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 mechanical network part\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources present\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network bus part\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gates ME channel/signal flow\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone-gated ME network toggle\", \"enable/disable subnetwork sides\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use is toggling connections\"\n        }\n      }\n    },\n    \"ae2:vibration_chamber\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"burns fuel to produce AE energy\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early AE2 power solution\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"often replaced by dedicated power mods\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates AE energy from solid fuel\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 machine block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron machine casing aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 energy generation subsystem\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"outputs AE energy to network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"burn solid fuel for AE energy\", \"early-game AE2 power source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole use is energy generation\"\n        }\n      }\n    },\n    \"ae2:view_cell\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"filters ME terminal item display\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap to craft, widely used\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inserted in ME terminals constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"filters terminal display to specific items\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 storage system component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources present\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"ae_storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slots into ME terminal cell view slots\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME storage terminal component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"filter ME terminal item display\", \"organize terminal view by item set\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is display filtering\"\n        }\n      }\n    },\n    \"ae2:void_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card inserted into cells/buses\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational; not always needed\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used in overflow-prone setups\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-voids overflow on full cells\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 upgrade card\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources present\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage cell upgrade card\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"void overflow items when cell is full\", \"prevent network input backlog\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"destroys excess items on overflow\"\n        }\n      }\n    },\n    \"ae2:white_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"ae2:covered_cable tag = ME network cable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic cable, placed in bulk\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed extensively for network routing\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes ME network channels\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white-dyed ME cable variant\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white coloring reads as light\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources present\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ae2:covered_cable tag = network backbone\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME cables carry AE energy and channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"connect ME network components\", \"carry up to 8 ME channels\", \"white aesthetic network routing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use is network channel routing\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "560609a7-4486-4289-8774-9f22d52a0f9a",
+  "total_cost_usd": 0.11456134999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2773,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 6686,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2773,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6686,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2773,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2773
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1910,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0019850000000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6686,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2773,
+      "webSearchRequests": 0,
+      "costUSD": 0.11257634999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2e99ac08-1b83-4ee4-8422-aad59c7c42ad"
+}

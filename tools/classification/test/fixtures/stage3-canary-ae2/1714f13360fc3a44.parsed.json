@@ -1,0 +1,383 @@
+{
+  "items": {
+    "ae2:lime_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "channel-carrying network cable, signal role"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "cable casing is glass-based in AE2"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "signal": "pattern",
+          "rationale": "lime = bright yellow-green dye color"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "dye-colored cable variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard bulk AE2 wiring component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "laid throughout AE2 networks"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network backbone use"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe-only, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME channels and AE power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:smart_dense_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "ME network backbone (dense)",
+            "carries 32 channels",
+            "color-coded network wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "dense smart cable functions"
+        }
+      }
+    },
+    "ae2:logic_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "inscriber output used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "gold plate is primary recipe ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone used in inscriber recipe"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-toned circuit component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "inscribed circuit board aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mass-produced AE2 base component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "required by many AE2 recipes"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables AE2 network components"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced only in inscriber"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing",
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "inscriber output; used in CPUs/cells"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting storage cells and drives",
+            "crafting CPUs and terminals",
+            "core AE2 ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "seen across many AE2 recipes"
+        }
+      }
+    },
+    "ae2:logic_processor_press": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "reusable inscriber die/template"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "guess",
+          "rationale": "dark metal press appearance"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "meteorite artifact, stamping press form"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark metal press visual"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "meteorite loot; limited world source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once in inscriber, rarely moved"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "unlocks logic processor production"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in AE2 meteorite sky-stone chests"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:inscriber_presses"
+        },
+        "primary_uses": {
+          "values": [
+            "inscriber template for logic circuits",
+            "set up once per base inscriber",
+            "copiable via mysterious cube"
+          ],
+          "signal": "inferred",
+          "rationale": "standard AE2 press mechanics"
+        }
+      }
+    },
+    "ae2:magenta_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "ME network channel carrier"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "cable casing is glass-based in AE2"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "pattern",
+          "rationale": "magenta = bright saturated pink-purple"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "dye-colored cable variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 wiring"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "laid throughout AE2 networks"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network wiring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe-only, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME channels and AE power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:covered_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "ME network wiring (8 channels)",
+            "color-coded cable layout"
+          ],
+          "signal": "inferred",
+          "rationale": "covered cable standard functions"
+        }
+      }
+    },
+    "ae2:magenta_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "dense ME network channel carrier"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "cable casing is glass-based in AE2"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "pattern",
+          "rationale": "magenta = bright saturated pink-purple"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "dye-colored dense cable variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard AE2 dense wiring"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in high-channel AE2 networks"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 dense network backbone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe-only, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME channels and AE power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "tag ae2:covered_dense_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "ME dense network wiring (32 channels)",
+            "color-coded dense cable layout"
+          ],
+          "signal": "inferred",
+          "rationale": "dense covered cable functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 150629,
+  "duration_api_ms": 151341,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:quartz_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:walls tag = structural wall form\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz requires AE2 ore mining\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche building choice\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall used for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form of base block; crystalline look\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is pale and crystalline\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building certus quartz-themed walls\",\n            \"AE2 aesthetic decoration\",\n            \"connecting quartz block structures\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall block primary uses\"\n        }\n      }\n    },\n    \"ae2:red_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network active infrastructure\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables built on fluix glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard cable in all AE2 setups\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"essential for every ME network\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network channels for automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red dye variant; network cable aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting recipe only, no loot tables\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:covered_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME power and channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"connecting ME network nodes (8ch)\",\n            \"color-coded cable routing\",\n            \"covered aesthetic cable segment\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable primary uses\"\n        }\n      }\n    },\n    \"ae2:red_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network high-capacity infrastructure\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables built on fluix glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard dense cable in AE2 networks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"main trunk cable in ME networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"32-channel ME network backbone\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red dye variant; dense cable aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting recipe only, no loot tables\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:covered_dense_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME power and 32 channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"high-capacity ME trunk line (32ch)\",\n            \"color-coded dense routing\",\n            \"controller-to-subnet backbone\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense covered cable primary uses\"\n        }\n      }\n    },\n    \"ae2:red_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network basic cable\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made from fluix glass panes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest, most basic cable type\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in early ME networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic ME network channels\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red glass variant; ME cable aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red colored glass: vivid + see-through\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting recipe only, no loot tables\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:glass_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME power and up to 8 channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"basic ME network connections\",\n            \"cheapest cable option (8ch)\",\n            \"color-coded glass cable routing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass cable primary uses\"\n        }\n      }\n    },\n    \"ae2:red_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied to cables via color applicator\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires lumen crafting materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per cable during setup\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors AE2 cables for network org\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red lumen paint: dye-colored item\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red + lumen = glowing red cables\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting_shaped only, no loot tables\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag ae2:lumen_paint_balls; cable coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"applying red glow color to AE2 cables\",\n            \"color-coding ME network with glow effect\",\n            \"aesthetic cable organization\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen paint ball primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_facet\",\n      \"name\": \"dye_color\",\n      \"suggested_kind\": \"enum\",\n      \"rationale\": \"AE2 cables/paintballs come in all 16 dye colors; palette lacks specific hue values to distinguish red from blue variants\"\n    }\n  ],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:quartz_wall\",\n      \"facet\": \"material_family\",\n      \"current\": \"quartz\",\n      \"suggested\": \"certus_quartz\",\n      \"rationale\": \"ae2 namespace 'quartz' = certus quartz, not vanilla nether quartz\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "d343e699-2f90-4be3-b4c0-3ee5b8a5042b",
+  "total_cost_usd": 0.21355010000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2878,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 13251,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2878,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13251,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2878,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2878
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2015,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0021049999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13251,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2878,
+      "webSearchRequests": 0,
+      "costUSD": 0.21144510000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0881df2b-85a8-426c-ab20-9932b46e03a5"
+}

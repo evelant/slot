@@ -1,0 +1,290 @@
+{
+  "items": {
+    "ae2:yellow_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to paint AE2 cables with glow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from paint ball + basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once when coloring network cables"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colors cables for visual ID in network"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "yellow color variant; lumen tag"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "glowing"
+          ],
+          "signal": "pattern",
+          "rationale": "yellow hue; lumen = emissive glow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable coloring system"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint AE2 cables glowing yellow",
+            "Decorative ME network coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen variant used on cables/devices"
+        }
+      }
+    },
+    "ae2:yellow_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to paint AE2 cables yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from yellow dye + materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per cable coloring session"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 cables/devices yellow"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "yellow dye color variant"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "vivid"
+          ],
+          "signal": "pattern",
+          "rationale": "yellow dye hue, saturated color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable coloring system"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint AE2 cables yellow",
+            "Craft yellow lumen paint ball"
+          ],
+          "signal": "inferred",
+          "rationale": "direct use + lumen upgrade ingredient"
+        }
+      }
+    },
+    "ae2:yellow_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "ME cable carries channels and AE power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, used extensively in ME networks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "backbone of every AE2 network build"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "forms AE2 ME network infrastructure"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow color variant, industrial cable"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow cable with industrial finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE power + 8 channel signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "evidence": "tag ae2:smart_cable + ae2:p2p_attunements/me_p2p_tunnel",
+          "rationale": "core ME network cable"
+        },
+        "primary_uses": {
+          "values": [
+            "ME network backbone (8 channels)",
+            "Connect AE2 devices",
+            "Visualise channel load per cable"
+          ],
+          "signal": "inferred",
+          "rationale": "smart = displays active channel count"
+        }
+      }
+    },
+    "ae2:yellow_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "dense ME cable carries 32 channels + power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted; used in larger AE2 networks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential for high-density AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity ME network infrastructure"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow variant, dense industrial cable"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow cable with industrial finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE power + 32 channel signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:spatial_storage"
+          ],
+          "signal": "inferred",
+          "evidence": "sample_ingredient_of: ae2:network/blocks/quantum_ring",
+          "rationale": "network cable + quantum ring ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "ME network backbone (32 channels)",
+            "Scale AE2 device density",
+            "Quantum ring crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable + quantum bridge use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_facet",
+      "name": "dye_color",
+      "suggested_kind": "enum",
+      "rationale": "Rules reference dye_color for 16-color items; paint balls and colored cables need an explicit dye-color slot distinct from palette"
+    }
+  ],
+  "corrections": []
+}

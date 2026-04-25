@@ -1,0 +1,293 @@
+{
+  "items": {
+    "createaddition:creative_energy": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block that generates infinite energy"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "'Creative' in display name"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only; unobtainable in survival"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative only; no survival gameplay role"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates electrical energy (FE/RF)"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create-style mechanical block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "energy generators typically emissive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "produces FE/RF for electrical network"
+        },
+        "primary_uses": {
+          "values": [
+            "Infinite energy source for testing",
+            "Creative mode power supply"
+          ],
+          "signal": "inferred",
+          "rationale": "creative generator sole function"
+        }
+      }
+    },
+    "createaddition:diamond_grit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:dusts/diamond tag; crushed diamond dust"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "c:dusts/diamond tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamonds to produce"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "single downstream use: sandpaper"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds Create processing chain"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; produced by crushing diamonds"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:mechanical_processing"
+          ],
+          "signal": "inferred",
+          "rationale": "from Create crushing; used in processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft diamond grit sandpaper"
+          ],
+          "signal": "inferred",
+          "rationale": "sole known downstream use"
+        }
+      }
+    },
+    "createaddition:diamond_grit_sandpaper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "create:sandpaper tag; polishing tool"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "made from diamond grit"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamonds to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational polishing use"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Create sandpaper polishing mechanic"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create mod processing tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shapeless crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:mechanical_processing"
+          ],
+          "signal": "pattern",
+          "rationale": "create:sandpaper tag → processing"
+        },
+        "primary_uses": {
+          "values": [
+            "Polish items via Create sandpaper mechanic",
+            "Intermediate processing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "create:sandpaper tag use"
+        }
+      }
+    },
+    "createaddition:digital_adapter": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "adapts digital/electrical to redstone signals"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specialized interface block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational signal bridging use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "bridges digital signals and automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create-style interface block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "adapter blocks typically iron/silver"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "interfaces Create electrical with digital"
+        },
+        "primary_uses": {
+          "values": [
+            "Interface Create electricity with redstone",
+            "Digital signal conversion"
+          ],
+          "signal": "inferred",
+          "rationale": "digital adapter function"
+        }
+      }
+    },
+    "createaddition:electric_motor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "converts FE/RF to Create rotational power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "core automation component; craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "central to electric-powered automation"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates rotation; drives machinery"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create-style kinetic mechanism"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "motors: copper coils + iron housing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy_conversion"
+          ],
+          "signal": "inferred",
+          "rationale": "FE/RF → rotational power conversion"
+        },
+        "primary_uses": {
+          "values": [
+            "Convert FE/RF to rotational power",
+            "Power Create machinery electrically"
+          ],
+          "signal": "inferred",
+          "rationale": "electric motor core function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

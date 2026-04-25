@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 96606,
+  "duration_api_ms": 97743,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:printed_engineering_processor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate AE2 processor component\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"engineering processor inscribed w/ gold\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires inscriber + press + gold\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted in batches per build phase\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds into AE2 processor crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"printed circuit aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-based circuit material\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"sole source is ae2:inscriber recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"output of ae2:inscriber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting engineering processors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole downstream use is eng processor\"\n        }\n      }\n    },\n    \"ae2:printed_logic_processor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate AE2 processor component\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"logic processor inscribed w/ certus\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires inscriber + logic press\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted in batches per build phase\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds into AE2 processor crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"printed circuit aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz crystal material\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"sole source is ae2:inscriber recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"output of ae2:inscriber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting logic processors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole downstream use is logic processor\"\n        }\n      }\n    },\n    \"ae2:printed_silicon\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed silicon wafer, intermediate\"\n        },\n        \"material_family\": {\n          \"value\": \"silicon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id and display name say silicon\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires inscriber + silicon press\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed for all three processor types\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in all AE2 processor assemblies\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed silicon wafer form\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"silicon wafer grey matte finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"sole source is ae2:inscriber recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"output of ae2:inscriber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"component in all three AE2 processors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"required for logic/calc/eng processors\"\n        }\n      }\n    },\n    \"ae2:processing_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"configures machine autocrafting recipes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted and reusable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"set up once per autocraft recipe\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"drives machine-based autocrafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical configuration item\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; encoded via AE2 terminal\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"defines machine processing recipes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"define machine processing for autocrafting\",\n            \"insert into pattern provider\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core autocrafting config item\"\n        }\n      }\n    },\n    \"ae2:purple_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active ME network channel infrastructure\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable uses glass casing\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap, crafted from glass + dye\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used throughout ME networks in bulk\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes ME network channels\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"purple dye variant of covered cable\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"purple covered cable\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting_shaped only source\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ae2:covered_cable tag confirms network role\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME channels carry network signal + power\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"connecting ME network components\",\n            \"routing channels between devices\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard AE2 network cable\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "3f1c8ced-4d10-4817-8df7-6cad8927f90b",
+  "total_cost_usd": 0.12101350000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 8665,
+    "output_tokens": 7785,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7785,
+        "cache_read_input_tokens": 8665,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1540,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00163,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7785,
+      "cacheReadInputTokens": 8665,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.1193835,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "087fa675-adbe-47bb-b31d-dcaeb452e627"
+}

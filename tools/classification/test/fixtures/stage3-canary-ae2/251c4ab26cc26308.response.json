@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 148884,
+  "duration_api_ms": 149744,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:fluix_pickaxe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tagged minecraft:pickaxes\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"fluix_ id prefix, ae2 crystal\"\n        },\n        \"tier\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"named after fluix, ae2 tool tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires ae2 progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-game tool, soon replaced\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pickaxe = mining\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2 tech mod aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"iridescent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix = shimmery purple crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"smithing_transform, no loot sources\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"mining blocks\", \"mid-tier ae2 progression tool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard pickaxe function\"\n        }\n      }\n    },\n    \"ae2:fluix_shovel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tagged minecraft:shovels\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"fluix_ id prefix, ae2 crystal\"\n        },\n        \"tier\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"named after fluix, ae2 tool tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires ae2 progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shovels used occasionally\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shovel = terrain excavation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2 tech mod aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"iridescent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix = shimmery purple crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"smithing_transform, no loot sources\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"digging dirt/gravel/sand\", \"mid-tier ae2 terrain tool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard shovel function\"\n        }\n      }\n    },\n    \"ae2:fluix_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_slab suffix = building block\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"fluix_ id prefix, ae2 crystal\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires ae2 fluix block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in ae2-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for structure and trim\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown crystal material\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"iridescent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix = shimmery purple crystal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ae2-themed decorative building\", \"half-height structural slab\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab in ae2 aesthetic builds\"\n        }\n      }\n    },\n    \"ae2:fluix_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2 network backbone component\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"fluix_ id prefix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted in bulk for networks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed extensively in ae2 builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects ae2 automation devices\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2 tech infrastructure\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"iridescent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix crystal, ae2 aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources, crafting only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"me network carries items/power/channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tagged ae2:smart_cable, me network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"me network backbone (8 channels)\", \"linking ae2 devices\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core smart cable purpose\"\n        }\n      }\n    },\n    \"ae2:fluix_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2 dense network backbone\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"fluix_ id prefix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"more expensive than smart cable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for high-density runs only\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity ae2 network backbone\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2 tech infrastructure\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"iridescent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix crystal, ae2 aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources, crafting only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"me network carries items/power/channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tagged ae2:smart_dense_cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"me network dense backbone (32 ch)\", \"high-capacity device linking\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable for high channel use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "78a330d1-a797-4020-ae4f-97847ef6963d",
+  "total_cost_usd": 0.20434510000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3438,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 12460,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3438,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12460,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3438,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3438
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2575,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002665,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12460,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3438,
+      "webSearchRequests": 0,
+      "costUSD": 0.20168010000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "81168ad5-d274-4c63-bf98-fddf68a6e88e"
+}

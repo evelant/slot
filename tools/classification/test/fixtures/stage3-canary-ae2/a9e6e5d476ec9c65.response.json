@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 85535,
+  "duration_api_ms": 86195,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:red_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown at AE2 parts to apply color\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 paint balls are glass-based projectiles\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from cheap materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when coloring network parts\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors ME network cables/components\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"red member of paint_balls tag set\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"saturated red paint ball\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"paints ME network components\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Color AE2 cables and parts\", \"Craft lumen paint balls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"per recipe graph and AE2 mechanics\"\n        }\n      }\n    },\n    \"ae2:red_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network cable carrying channel signals\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME cables crafted primarily from glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable core infrastructure item\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used extensively in any AE2 build\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone of ME automation network\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored variant; tech cable aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"saturated red cable\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries AE2 channel signals\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:smart_cable = ME network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Connect ME network nodes\", \"Display channel usage count\", \"Color-coded network routing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart cable shows active channel count\"\n        }\n      }\n    },\n    \"ae2:red_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity AE2 network backbone cable\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME cables crafted primarily from glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable network infrastructure\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for high-load backbone routes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense backbone for ME automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored dense cable variant\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"saturated red dense cable\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 32-channel AE2 signals\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:spatial_storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"used in quantum_ring (spatial_storage)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"High-capacity ME network backbone\", \"Craft quantum rings\", \"Color-coded dense routing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"32-ch dense cable + quantum_ring ingredient\"\n        }\n      }\n    },\n    \"ae2:redstone_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inserted into AE2 machines to add RS control\"\n        },\n        \"material_family\": {\n          \"value\": \"redstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix redstone_ + card suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once per machine slot\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables RS control of AE2 devices\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 upgrade card aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade for AE2 network machines\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Enable redstone control on AE2 machines\", \"Toggle device operation via RS signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core purpose of redstone card upgrade\"\n        }\n      }\n    },\n    \"ae2:redstone_p2p_tunnel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"P2P tunnel routing redstone signals\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires attunement; specialized niche\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use for RS signal routing\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes redstone signals through ME\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 P2P bus aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtained by attuning ME bus with redstone\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transmits redstone signal point-to-point\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"P2P tunnels are ME network components\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Transmit RS signals through ME network\", \"Point-to-point redstone routing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone P2P core mechanic\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "d827839a-3296-4bd5-bc44-b2b23a0d4515",
+  "total_cost_usd": 0.1259986,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2664,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 7482,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2664,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7482,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2664,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2664
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1801,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001891,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7482,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2664,
+      "webSearchRequests": 0,
+      "costUSD": 0.12410759999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b283b7dd-cb03-493e-8d2c-a1149a35067e"
+}

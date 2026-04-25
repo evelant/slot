@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 213939,
+  "duration_api_ms": 215208,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:crafting_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"encoded recipe card, not a block or material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"players craft many for automation setups\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 autocrafting item\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"encodes recipes for ME network autocrafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech item aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"encoded via pattern encoding terminal\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"defines autocrafting recipes in ME network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"encode crafting recipes for ME network\",\n            \"insert into pattern providers for autocrafting\",\n            \"define automated crafting jobs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 autocrafting workflow\"\n        }\n      }\n    },\n    \"ae2:crafting_terminal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive part for crafting via ME network\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 mid-game components\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary player UI for ME crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"craft from and browse ME network inventory\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech terminal aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 dark metallic terminal appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced only via crafting recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"network part enabling player-directed crafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft items using ME network materials\",\n            \"browse and access stored items\",\n            \"upgrade to pattern encoding terminal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard crafting terminal workflow\"\n        }\n      }\n    },\n    \"ae2:crafting_unit\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural block of crafting CPU multiblock\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from basic AE2 materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed in quantity for crafting CPUs\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"forms the AE2 autocrafting CPU\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech block aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient of ae2:network/crafting/* recipes\"\n        },\n        \"multiblock_component_of\": {\n          \"values\": [\"ae2:crafting_cpu\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core block of AE2 crafting CPU\"\n        },\n        \"multiblock_role\": {\n          \"value\": \"wall\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fills body volume of crafting CPU\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"build AE2 crafting CPU multiblock\",\n            \"upgrade into storage and accelerator blocks\",\n            \"enable ME autocrafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard crafting unit usage\"\n        }\n      }\n    },\n    \"ae2:crank\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"manual hand-crank power device\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"display name: Wooden Crank\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic early-game crafted item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used pre-power-infrastructure only\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"provides manual kinetic power to AE2 machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden mechanical device\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden appearance\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powers AE2 quartz grindstone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"manually power quartz grindstone\",\n            \"hand-crank early AE2 processing machines\",\n            \"pre-automation energy source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard AE2 crank use\"\n        }\n      }\n    },\n    \"ae2:creative_energy_cell\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy-providing block for ME network\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe; name confirms creative-only\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival acquisition\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/testing use only\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"supplies infinite energy to ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech energy cell aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 energy cells glow at max charge\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"FE energy cell; fe_p2p_tunnel tag confirms\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:energy\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tagged ae2:p2p_attunements/fe_p2p_tunnel\",\n          \"evidence\": \"ae2:p2p_attunements/fe_p2p_tunnel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"provide infinite energy to ME network\",\n            \"creative mode power testing\",\n            \"attune FE P2P tunnels\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard creative energy cell use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:creative_energy_cell\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": null,\n      \"rationale\": \"creative-only; no recipe exists; origin inapplicable\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e60f8fec-a8a0-4deb-a498-fc4b855927c3",
+  "total_cost_usd": 0.2691176,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3268,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 16832,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3268,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16832,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3268,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3268
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2405,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002495,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16832,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3268,
+      "webSearchRequests": 0,
+      "costUSD": 0.2666226,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "be9062ed-a98a-4043-be64-a31c3c43f466"
+}

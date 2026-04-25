@@ -1,0 +1,298 @@
+{
+  "items": {
+    "ae2:sky_stone_small_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form of a patterned sky stone brick"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "sky stone sourced from AE2 meteors"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form used for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "small_brick sub-variant of sky stone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone is dark gray matte stone"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2 base wall construction",
+            "patterned sky stone aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "structural/aesthetic in AE2 context"
+        }
+      }
+    },
+    "ae2:sky_stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs suffix = structural building form"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "sky stone from AE2 meteors"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stair form used for construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "pattern",
+          "rationale": "undecorated base sky stone shape"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone dark gray matte stone"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2 base staircase",
+            "sky stone building ascent"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stair use in AE2 base"
+        }
+      }
+    },
+    "ae2:sky_stone_tank": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive fluid storage tank"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires sky stone from AE2 meteors"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "useful but not an everyday staple"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid tank for storing liquids"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional container block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone casing"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "tank by name and recipe stores fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "store fluids in AE2 base",
+            "early-game fluid tank"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid storage utility in AE2"
+        }
+      }
+    },
+    "ae2:sky_stone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form is structural"
+        },
+        "material_family": {
+          "value": "sky_stone",
+          "signal": "pattern",
+          "rationale": "id prefix sky_stone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "sky stone from AE2 meteors"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form for construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "pattern",
+          "rationale": "base sky stone wall, no sub-variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sky stone dark matte appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2 base perimeter wall",
+            "sky stone building accent"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall in AE2 base"
+        }
+      }
+    },
+    "ae2:small_quartz_bud": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "crystal bud, analogous to vanilla amethyst bud"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "named",
+          "rationale": "display name: Small Certus Quartz Bud"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires budding certus from AE2 meteors"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mostly decorative at small stage"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "small bud placed for crystal growth decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural crystal growth, small-stage variant"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale blue-white certus quartz crystal"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative crystal growth stage",
+            "certus quartz growth indicator"
+          ],
+          "signal": "inferred",
+          "rationale": "shows early stage of quartz growth"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:small_quartz_bud",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "overworld_cave"
+      ],
+      "rationale": "Grows on budding certus quartz in sky stone meteors; not crafted — rule_origin_from_loot_tables missed natural growth origin",
+      "confidence": 0.8
+    }
+  ]
+}

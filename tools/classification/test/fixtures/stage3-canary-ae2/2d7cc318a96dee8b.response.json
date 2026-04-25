@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 147752,
+  "duration_api_ms": 148524,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:matrix_frame\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 block; frame=structural component\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 crafted block component\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network infrastructure block\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"matrix=ME network structural block\"\n        }\n      }\n    },\n    \"ae2:matter_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate for paintball crafting\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from basic materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when coloring cables\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"paintballs color AE2 cables/parts\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic intermediate material\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to craft cable coloring items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting AE2 colored paint balls\"],\n          \"signal\": \"named\",\n          \"evidence\": \"ingredient of ae2:tools/paintballs_*\",\n          \"rationale\": \"only downstream use in recipe data\"\n        }\n      }\n    },\n    \"ae2:matter_cannon\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fires projectile nuggets at mobs\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 crafted ranged weapon\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche AE2 ranged weapon\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ranged weapon for mob damage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tech-mod ranged weapon\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ranged combat via fired nuggets\", \"mob control\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fires metal nuggets as projectiles\"\n        }\n      }\n    },\n    \"ae2:me_p2p_tunnel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes ME channels point-to-point\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 crafted network part\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when compressing channel load\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes ME channels in network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network routing component\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME P2P tunnels ME channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"evidence\": \"display_name: ME P2P Tunnel\",\n          \"rationale\": \"ME prefix confirms network subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"tunnel ME channels point-to-point\", \"compress channel usage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"P2P = point-to-point channel routing\"\n        }\n      }\n    },\n    \"ae2:medium_quartz_bud\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"growing crystal bud, like amethyst buds\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"named\",\n          \"evidence\": \"display_name: Medium Certus Quartz Bud\",\n          \"rationale\": \"explicitly named certus quartz\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in certus quartz geodes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collected when mining certus geodes\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus geodes in overworld caves\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined from certus quartz geodes\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"growing crystal bud formation\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale blue-white certus crystal\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is core AE2 material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"immature certus quartz growth stage\", \"decorative crystal bud block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"medium bud before full crystal\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:medium_quartz_bud\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_cave\"],\n      \"rationale\": \"Certus quartz geodes generate naturally in overworld caves; buds grow on budding certus quartz blocks that spawn in world gen\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "f2ba109a-2265-489b-be6e-df51122a837a",
+  "total_cost_usd": 0.19928860000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2844,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 12311,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2844,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12311,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2844,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2844
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1981,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002071,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12311,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2844,
+      "webSearchRequests": 0,
+      "costUSD": 0.19721760000000005,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7f24bba4-94a1-4f19-b87b-12522c01706d"
+}

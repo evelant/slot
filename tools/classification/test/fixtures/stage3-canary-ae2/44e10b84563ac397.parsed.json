@@ -1,0 +1,253 @@
+{
+  "items": {
+    "ae2:spatial_anchor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active block; keeps chunks loaded for spatial I/O"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per spatial system setup"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chunk-loads region for spatial automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id contains spatial; output ae2:spatial_anchor recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "keep chunks loaded for spatial I/O ops",
+            "support AE2 spatial storage multiblock"
+          ],
+          "signal": "inferred",
+          "rationale": "chunk loader for spatial subsystem"
+        }
+      }
+    },
+    "ae2:spatial_cell_component_128": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed component; ingredient for spatial cells"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "top-tier 128³ spatial component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted once per large spatial cell"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds into spatial storage cell crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id prefix spatial_cell_component"
+        },
+        "primary_uses": {
+          "values": [
+            "craft 128³ spatial storage cells",
+            "upgrade from smaller spatial components"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for 128³ spatial cell"
+        }
+      }
+    },
+    "ae2:spatial_cell_component_16": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed component; ingredient for spatial cells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier spatial component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted once per 16³ spatial cell"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds into 16³ spatial cell crafting"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id prefix spatial_cell_component"
+        },
+        "primary_uses": {
+          "values": [
+            "craft 16³ spatial storage cells",
+            "intermediate step in spatial progression"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for 16³ spatial cell"
+        }
+      }
+    },
+    "ae2:spatial_cell_component_2": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "base crafting component for spatial cells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "entry-level AE2 spatial component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted when starting spatial storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "base ingredient for spatial cell line"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id prefix spatial_cell_component"
+        },
+        "primary_uses": {
+          "values": [
+            "craft 2³ spatial storage cells",
+            "base of spatial component upgrade chain"
+          ],
+          "signal": "inferred",
+          "rationale": "smallest spatial cell component"
+        }
+      }
+    },
+    "ae2:spatial_io_port": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active I/O controller for spatial cells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 mid-game progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one per spatial storage installation"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "initiates and automates spatial cell transfers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:spatial_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "id contains spatial_io"
+        },
+        "multiblock_role": {
+          "value": "controller",
+          "signal": "inferred",
+          "rationale": "initiates pylon volume transfers"
+        },
+        "primary_uses": {
+          "values": [
+            "capture a region of blocks into a spatial cell",
+            "deploy spatial cell contents back into world",
+            "insert/remove spatial storage cells"
+          ],
+          "signal": "inferred",
+          "rationale": "primary spatial I/O interface block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

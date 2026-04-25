@@ -1,0 +1,304 @@
+{
+  "items": {
+    "ae2:advanced_card": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for upgrade cards"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "multi-step AE2 crafting chain required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed when crafting AE2 upgrade cards"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream cards configure AE2 buses"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech component aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds into distribution/energy/fuzzy/speed cards"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting AE2 upgrade cards",
+            "tier-2 card crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for 5 named upgrade cards"
+        }
+      }
+    },
+    "ae2:annihilation_core": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for network parts"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 crafting progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed building AE2 network devices"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in import buses, planes, assembler"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech sub-component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:external_io"
+          ],
+          "signal": "inferred",
+          "rationale": "used in interfaces, import bus, assembler, planes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting import buses and interfaces",
+            "crafting molecular assembler",
+            "crafting annihilation planes"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of spans network IO parts"
+        }
+      }
+    },
+    "ae2:annihilation_plane": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active cable-bus part that breaks blocks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 crafting chain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational automation part"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-breaks blocks; enchantable/mining tags"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable bus panel device"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:external_io"
+          ],
+          "signal": "inferred",
+          "rationale": "cable bus part importing blocks into ME"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-break blocks into ME network",
+            "enchantable mining automation panel"
+          ],
+          "signal": "inferred",
+          "rationale": "mining enchant tags; imports broken blocks"
+        }
+      }
+    },
+    "ae2:basic_card": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tier-1 card intermediate for upgrade cards"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "simpler recipe than advanced card"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed crafting capacity/redstone/void cards"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream upgrade cards configure AE2 devices"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds capacity/crafting/redstone/void cards"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting basic AE2 upgrade cards",
+            "tier-1 card crafting intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for 4 named basic upgrade cards"
+        }
+      }
+    },
+    "ae2:black_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active network cable carrying channels+power"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "bulk-crafted; backbone of any ME network"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed extensively to wire ME networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network backbone; P2P attunement tag"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "black dye variant of covered cable"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "solid black covering, opaque finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "ae2:covered_cable tag = ME network cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry power and data channels"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting ME network components",
+            "routing AE2 channels",
+            "color-coded cable organization"
+          ],
+          "signal": "inferred",
+          "rationale": "covered cable is standard ME wiring with dye"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

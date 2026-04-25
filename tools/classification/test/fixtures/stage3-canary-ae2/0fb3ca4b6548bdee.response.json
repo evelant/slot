@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 128576,
+  "duration_api_ms": 129383,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:magenta_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signal-carrying ME network cable infra\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"display name: 'ME Glass Cable'\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic craftable ME cable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used throughout ME network builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network connectivity\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"color variant, network infra component\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"magenta is a vivid saturated color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"crafting_shaped only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:glass_cable, network backbone\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME network channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Connect ME network components\",\n            \"Low-channel ME network routing\",\n            \"Cable color management\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass = basic 8-channel ME link\"\n        }\n      }\n    },\n    \"ae2:magenta_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies glowing color to ME cables\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen paint ball is dye-based colorant\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from regular paint ball + extra\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when decorating networks\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"paints network components aesthetically\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = glowing fancy color variant\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta vivid + lumen emissive effect\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"crafting_shaped only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag ae2:lumen_paint_balls, colors ME parts\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Paint ME cables with glowing magenta\",\n            \"Luminescent facade coloring\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = emissive paint variant\"\n        }\n      }\n    },\n    \"ae2:magenta_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies color to ME cables/facades\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"paint ball is dye-based colorant\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple dye + snowball recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when coloring network components\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"paints cables; ingredient for lumen variant\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:paint_balls, colored variant\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"magenta is a vivid saturated color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"crafting_shaped only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag ae2:paint_balls, colors ME parts\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Paint ME cables magenta\",\n            \"Ingredient for lumen paint ball\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic cable colorant\"\n        }\n      }\n    },\n    \"ae2:magenta_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME smart cable with channel visualization\"\n        },\n        \"material_family\": {\n          \"value\": \"ae2:fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart cable uses fluix wire coils\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"glass\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass cable is base ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard ME network component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in ME network builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME smart cable for channel routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored ME infrastructure component\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"magenta is a vivid saturated color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"crafting_shaped only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:smart_cable, network backbone\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME channels with usage display\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ME network routing with channel display\",\n            \"Visual channel usage monitoring\",\n            \"Cable color management\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart = shows used channels visually\"\n        }\n      }\n    },\n    \"ae2:magenta_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity ME network cable\"\n        },\n        \"material_family\": {\n          \"value\": \"ae2:fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable uses fluix as primary material\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"glass\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass/smart cable in recipe chain\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"more expensive than regular smart cable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only in high-channel trunk lines\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"32-channel ME network trunk routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored dense ME cable variant\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"magenta is a vivid saturated color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"crafting_shaped only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:smart_dense_cable, network backbone\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries 32 ME channels with visualization\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High-capacity ME network routing (32 ch)\",\n            \"Dense channel trunk lines\",\n            \"Quantum ring crafting ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense = 32-channel trunk; used in quantum ring\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "9a492fd3-a5a7-40a7-b7cf-9225a163b442",
+  "total_cost_usd": 0.17414660000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2772,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 10658,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2772,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10658,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2772,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2772
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1909,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001994,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10658,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2772,
+      "webSearchRequests": 0,
+      "costUSD": 0.17215260000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "17c4fcd6-eeab-4aca-a53e-ef632dd3a1ef"
+}

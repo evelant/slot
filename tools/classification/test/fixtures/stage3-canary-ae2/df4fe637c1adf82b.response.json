@@ -1,0 +1,59 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 53124,
+  "duration_api_ms": 54108,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"vocabulary\": [\n    {\"id\": \"ae2:me_network\", \"rationale\": \"Cables, covers, tunnels, and wireless components that form the network backbone\"},\n    {\"id\": \"ae2:autocrafting\", \"rationale\": \"Crafting CPUs, monitors, and storage blocks for automated item crafting\"},\n    {\"id\": \"ae2:storage\", \"rationale\": \"Storage cells and drives for storing items and fluids\"},\n    {\"id\": \"ae2:external_io\", \"rationale\": \"Buses for transferring items between ME network and external storage\"},\n    {\"id\": \"ae2:processing\", \"rationale\": \"Specialized machines like inscribers and quartz cutters for item processing\"},\n    {\"id\": \"ae2:energy\", \"rationale\": \"Power infrastructure for supplying energy to the ME network\"},\n    {\"id\": \"ae2:spatial_storage\", \"rationale\": \"Quantum rings and components for spatial/dimensional storage\"}\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "2b0bc588-365b-44b0-a7c8-6c5ea2e2fa13",
+  "total_cost_usd": 0.0447525,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 6666,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 6579,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 6666,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 10,
+        "output_tokens": 6579,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 6666,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 6666
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3435,
+      "outputTokens": 6597,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 6666,
+      "webSearchRequests": 0,
+      "costUSD": 0.0447525,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "90bd6ace-e649-4112-9cbf-8746255f7d42"
+}

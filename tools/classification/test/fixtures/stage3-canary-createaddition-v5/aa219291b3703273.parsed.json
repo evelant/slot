@@ -1,0 +1,347 @@
+{
+  "items": {
+    "createaddition:electrum_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:plates tag = processed plate"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id + c:plates/electrum tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable alloy sheet, mid-tier"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in rolling and charging chains"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "createaddition electricity processing chain"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard flat sheet form"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum is gold-silver alloy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot; made via pressing/charging"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity",
+            "createaddition:mechanical_processing"
+          ],
+          "signal": "inferred",
+          "rationale": "used in charging + rolling recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electrum plates via rolling",
+            "intermediate in electricity recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream recipe usage"
+        }
+      }
+    },
+    "createaddition:electrum_spool": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spools deploy wire links between poles"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_spool"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires electrum alloy"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building wire networks"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "createaddition:spools = wire deployment"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial spool form factor"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum alloy appears gold-toned"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting_shaped, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "spool lays cable that carries energy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "createaddition:spools tag = wire network"
+        },
+        "primary_uses": {
+          "values": [
+            "deploy wire connections between poles"
+          ],
+          "signal": "inferred",
+          "rationale": "spool mechanic in createaddition"
+        }
+      }
+    },
+    "createaddition:electrum_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:wires tag = wire crafting material"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id + c:wires/electrum tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "electrum alloy, not found raw"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ingredient in spool, amulet, accumulator"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in energy storage+transmission items"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic wire form"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = gold-silver alloy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via rolling/charging, no loot"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "pattern",
+          "rationale": "c:wires tag = energy-carrying wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "pattern",
+          "rationale": "c:wires/electrum + modular_accumulator_usable_wires"
+        },
+        "primary_uses": {
+          "values": [
+            "craft electrum spool for wire deployment",
+            "ingredient in modular accumulator",
+            "craft electrum amulet"
+          ],
+          "signal": "named",
+          "rationale": "listed in sample_ingredient_of"
+        }
+      }
+    },
+    "createaddition:festive_spool": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spool variant; deploys festive wire"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "rationale": "display name says Copper Spool"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "seasonal/festive variant item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche festive use"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wire spool + festive light aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "festive lights = colored spool variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "copper body + colorful festive lights"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting_shapeless, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "spool lays cable that carries energy"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "createaddition:spools tag"
+        },
+        "primary_uses": {
+          "values": [
+            "deploy festive wire connections",
+            "decorative wire network"
+          ],
+          "signal": "inferred",
+          "rationale": "festive spool variant function"
+        }
+      }
+    },
+    "createaddition:gold_goblet": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "ornate goblet, no recipes or loot"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id gold_goblet"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "guess",
+          "rationale": "no recipe/loot = unclear obtainment"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "no functional recipes found"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "named",
+          "rationale": "display name: Ornate Goblet"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material, ornate goblet"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative display item"
+          ],
+          "signal": "inferred",
+          "rationale": "no functional use detected"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

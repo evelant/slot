@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 305154,
+  "duration_api_ms": 305968,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:charged_staff\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"staff tool in AE2 misctools category\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from charged certus quartz\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires charged certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche utility, not used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for locating AE2 meteorites\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy-charged magical staff\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged certus quartz glows blue-white\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources listed in data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Charging AE2 crystals and items\", \"Locating certus quartz meteorites\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 misctools energy staff\"\n        }\n      }\n    },\n    \"ae2:charger\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crystal_processing_charger in recipe path\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard AE2 early machine uses iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"essential early AE2 machine, easy to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"required for charging certus quartz\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"automates certus quartz charging\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 machine block aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crystal_processing in recipe output path\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Charging certus quartz seeds\", \"Charging AE2 energy cells and tools\", \"Essential first AE2 machine\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charger name + crystal processing path\"\n        }\n      }\n    },\n    \"ae2:chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active ME network storage interface\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 chest primarily iron construction\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires multiple AE2 components\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used as portable cell base + ME storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME storage interface; portable cell base\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 machine block aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"storage_chest in recipe output path\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Single storage cell ME interface\", \"Crafting portable storage cells\", \"Basic ME network storage access\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME Chest + portable cell ingredient list\"\n        }\n      }\n    },\n    \"ae2:chipped_budding_quartz\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows certus quartz crystals when placed\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains budding_quartz in AE2\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found only in AE2 meteorites\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once for crystal farm, rarely moved\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows certus quartz for AE2 automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural crystal block; chipped=degraded tier\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz pale blue-white crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in AE2 meteorites on overworld\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"budding blocks immovable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Farming certus quartz buds/crystals\", \"Core AE2 crystal supply\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"budding block grows crystals over time\"\n        }\n      }\n    },\n    \"ae2:chiseled_quartz_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled stone block for building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made from farmable certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for AE2-themed aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled block for structural/decorative\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled = fancy stonecutting variant\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz light blue-white color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"AE2-themed decorative building\", \"Certus quartz architectural block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled decorative block for builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:chiseled_quartz_block\",\n      \"facet\": \"material_family\",\n      \"current\": \"quartz\",\n      \"suggested\": \"certus_quartz\",\n      \"rationale\": \"Certus quartz is distinct from vanilla nether quartz\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "03ddb182-02b9-44a0-a32c-b99f99d1a868",
+  "total_cost_usd": 0.34109185,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3851,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 21446,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3851,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 21446,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3851,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3851
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2988,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003073,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 21446,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3851,
+      "webSearchRequests": 0,
+      "costUSD": 0.33801885,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e207c791-a63a-4afb-a945-e1d90b6c3ce8"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 155889,
+  "duration_api_ms": 156598,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:certus_quartz_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:axes tag confirms axe\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix certus_quartz_\"\n        },\n        \"tier\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 first tier; upgrades to fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 certus quartz sourcing\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"transitional, replaced by fluix axe\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axe: chops wood, deals melee damage\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural quartz crystal material\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is pale blue crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources present\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"chop wood\", \"melee combat\", \"upgrade to fluix axe via smithing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard axe + AE2 upgrade path\"\n        }\n      }\n    },\n    \"ae2:certus_quartz_crystal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:gems tag; schema puts gems under material\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix certus_quartz_\"\n        },\n        \"tier\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw material for certus quartz tools\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 quartz cluster world gen\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"14+ shaped recipes; core AE2 material\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network parts; decorative quartz blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring quartz cluster drop\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 certus quartz pale blue crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"quartz_cluster loot source in caves\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"foundational material for ME components\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft AE2 network components\", \"charge into powered certus quartz\", \"decorative quartz blocks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"confirmed by wide recipe usage\"\n        }\n      }\n    },\n    \"ae2:certus_quartz_cutting_knife\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2:knife tag; durability-consuming cutter\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix certus_quartz_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from basic certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"required throughout AE2 quartz cutting\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in AE2 quartz cutting station\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"processing tool for AE2 station\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz material, pale blue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources present\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quartz cutting station ingredient tool\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"quartz cutting station ingredient\", \"crafting cable anchors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe data confirms both uses\"\n        }\n      }\n    },\n    \"ae2:certus_quartz_dust\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:dusts tag; dust = processed material\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix certus_quartz_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from quartz buds; inscriber output\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"silicon production, quartz glass, AE2 parts\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 silicon/components; quartz glass build\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural crystal ground to powder\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale white powder appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"drops from quartz buds in caves\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber output; AE2 recipe ingredient\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt/blast into silicon\", \"craft quartz glass\", \"craft AE2 quartz fiber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"confirmed by recipe data\"\n        }\n      }\n    },\n    \"ae2:certus_quartz_hoe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:hoes tag confirms hoe\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix certus_quartz_\"\n        },\n        \"tier\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 first tier; upgrades to fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 certus quartz sourcing\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoes used rarely; transitional tool\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoe tills soil for crop farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural quartz crystal material\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz pale blue crystal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources present\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"till soil for farming\", \"upgrade to fluix hoe via smithing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard hoe + AE2 upgrade path\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "c357e753-3846-413a-9251-08798e13bbda",
+  "total_cost_usd": 0.20573710000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3930,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 12397,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3930,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12397,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3930,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3930
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3067,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0031569999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12397,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3930,
+      "webSearchRequests": 0,
+      "costUSD": 0.20258010000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2ba80745-5225-4853-aeab-c7813cda25e0"
+}

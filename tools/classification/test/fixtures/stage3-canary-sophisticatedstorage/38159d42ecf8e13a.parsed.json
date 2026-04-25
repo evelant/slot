@@ -1,0 +1,379 @@
+{
+  "items": {
+    "sophisticatedstorage:decoration_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive station for storage customization"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "axe-mineable; tables are typically wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once when setting up storage decor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "customizes storage block appearance"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional crafting/decoration station"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply textures to storage containers",
+            "Customize storage block appearance"
+          ],
+          "signal": "named",
+          "rationale": "name explicitly says Decoration Table"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_customization"
+          ],
+          "signal": "inferred",
+          "rationale": "SS cosmetic customization subsystem"
+        }
+      }
+    },
+    "sophisticatedstorage:diamond_barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "tag c:barrels + all_storage"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "barrel structure is wood-based"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond investment"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core storage block used regularly"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is storing items"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "tiered variant of base barrel"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond = crystalline appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item storage container"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity tiered item storage",
+            "Barrel with upgrade slots at diamond tier"
+          ],
+          "signal": "inferred",
+          "rationale": "SS diamond barrel primary function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "inferred",
+          "rationale": "SS main storage container system"
+        }
+      }
+    },
+    "sophisticatedstorage:diamond_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "tag c:chests + all_storage"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "chest structure is wood-based"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond investment"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core storage block used regularly"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is storing items"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "tiered variant of base chest"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond = crystalline appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item storage container"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity tiered item storage",
+            "Chest with upgrade slots at diamond tier",
+            "Upgradeable to netherite or shulker box"
+          ],
+          "signal": "inferred",
+          "rationale": "SS diamond chest primary functions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "inferred",
+          "rationale": "SS main storage container system"
+        }
+      }
+    },
+    "sophisticatedstorage:diamond_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "placed block form; all_storage tag; SS context"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "material_secondary": {
+          "values": [
+            "shulker_shell"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker box base material"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond + shulker shell"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for portable storage regularly"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block + portable item transport"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "tiered variant of base shulker box"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond = crystalline appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item storage container"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable diamond-tier item storage",
+            "Shulker box with upgrade slots",
+            "Carry stored items in inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "SS diamond shulker box function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "inferred",
+          "rationale": "SS main storage container system"
+        }
+      }
+    },
+    "sophisticatedstorage:diamond_to_netherite_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "name explicitly says Tier Upgrade"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "upgrades to netherite tier"
+        },
+        "material_secondary": {
+          "values": [
+            "diamond"
+          ],
+          "signal": "pattern",
+          "rationale": "source tier is diamond"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "produces netherite-tier containers"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires netherite materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage container tier"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item, no frills"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite dark + diamond crystal visuals"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "empty loot sources; crafted shapeless"
+        },
+        "primary_uses": {
+          "values": [
+            "Upgrade diamond storage to netherite tier"
+          ],
+          "signal": "named",
+          "rationale": "name explicitly states function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "named",
+          "rationale": "name says Tier Upgrade; SS subsystem"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,381 @@
+{
+  "items": {
+    "ae2:black_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "AE2 cable physically links ME network nodes"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "all AE2 cables derive from fluix components"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "smart+dense requires extra fluix sub-parts"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "laid in bulk for high-density ME routing"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "backbone of ME item/energy network"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "color variant; sci-fi tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "pattern",
+          "rationale": "black colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME channels carry items, power, data signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:smart_dense_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity 32-channel ME routing",
+            "Visual per-channel traffic feedback",
+            "Ingredient for Quantum Ring"
+          ],
+          "signal": "inferred",
+          "rationale": "smart dense = max capacity + channel viz"
+        }
+      }
+    },
+    "ae2:blank_pattern": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "consumed when encoding autocrafting patterns"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "pattern is a paper-like template item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap to craft from basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch-made when wiring up autocrafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is ME autocrafting setup"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "blank, unencoded; no decoration"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe output only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "encoded into patterns for pattern providers"
+        },
+        "primary_uses": {
+          "values": [
+            "Encoding crafting/processing recipes",
+            "Setting up ME autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use is encoding in pattern terminal"
+        }
+      }
+    },
+    "ae2:blue_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "AE2 cable links ME network components"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables derive from fluix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic covered cable, cheap to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "laid in bulk for ME network routing"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "backbone of ME item/energy network"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "color variant; sci-fi tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "cool"
+          ],
+          "signal": "pattern",
+          "rationale": "blue colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME channels carry items, power, data signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:covered_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Basic 8-channel ME network routing",
+            "Connecting ME network components"
+          ],
+          "signal": "inferred",
+          "rationale": "standard covered cable for general use"
+        }
+      }
+    },
+    "ae2:blue_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "AE2 dense cable carries 32 channels"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables derive from fluix components"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "dense variant needs more materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in bulk for high-density ME routing"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "backbone of ME item/energy network"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "color variant; sci-fi tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "cool"
+          ],
+          "signal": "pattern",
+          "rationale": "blue colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "dense ME channels carry items, power, signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:covered_dense_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity 32-channel ME routing",
+            "Dense backbone between ME controllers"
+          ],
+          "signal": "inferred",
+          "rationale": "dense = high channel-count trunk lines"
+        }
+      }
+    },
+    "ae2:blue_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "AE2 network cable links ME components"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 glass cables made from fluix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "most basic AE2 cable, fewest materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "entry-level cable used widely in ME builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "backbone of ME item/energy network"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "color variant; sci-fi tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "blue glass, visually transparent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe output only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "ME channels carry items, power, data signals"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:glass_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "Entry-level ME network connections",
+            "Basic 8-channel routing"
+          ],
+          "signal": "inferred",
+          "rationale": "simplest and cheapest AE2 cable type"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

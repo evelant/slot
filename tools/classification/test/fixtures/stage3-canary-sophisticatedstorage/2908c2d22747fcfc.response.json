@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 168368,
+  "duration_api_ms": 169180,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"sophisticatedstorage:feeding_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag sophisticatedstorage:upgrade\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable; no rare ingredients\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once, runs continuously\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-feeds player from stored food\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional upgrade mechanism\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources in data\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Auto-feed player from stored food\",\n            \"Insert in container upgrade slot\",\n            \"Upgrade to advanced feeding tier\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeding upgrade purpose\"\n        }\n      }\n    },\n    \"sophisticatedstorage:filter_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag sophisticatedstorage:upgrade\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable; no rare ingredients\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core automation upgrade, widely used\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"filters insert/extract from containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional upgrade mechanism\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources in data\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Filter item insertion and extraction\",\n            \"Control what container accepts\",\n            \"Insert in upgrade slot\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"filter upgrade purpose\"\n        }\n      }\n    },\n    \"sophisticatedstorage:gold_barrel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"named\",\n          \"rationale\": \"tags c:barrels + all_storage\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix gold_\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold required; mid-progression\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used as primary storage block\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block for storing items\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"%s%s name + gold tier variant\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold material, warm tone\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Higher-capacity storage tier\",\n            \"Accept functional upgrades\",\n            \"Tier up to diamond barrel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold barrel in SS progression\"\n        }\n      }\n    },\n    \"sophisticatedstorage:gold_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"named\",\n          \"rationale\": \"tags c:chests + all_storage\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix gold_\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold required; mid-progression\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used as primary storage block\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block for storing items\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"%s%s name + gold tier variant\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold material, warm tone\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Higher-capacity storage tier\",\n            \"Convert to double chest or shulker\",\n            \"Accept functional upgrades\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold chest in SS progression\"\n        }\n      }\n    },\n    \"sophisticatedstorage:gold_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker keeps contents; portable\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix gold_\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs end shulker + gold upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for transport not daily storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable item transport container\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold variant of shulker box\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold material, warm tone\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tiered storage container\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Portable storage with upgrade slots\",\n            \"Transport items between locations\",\n            \"Upgrade to diamond shulker box\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold shulker in SS progression\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "520048af-55b9-457e-a91f-4ae4db9d37b3",
+  "total_cost_usd": 0.22786805000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4207,
+    "cache_read_input_tokens": 6346,
+    "output_tokens": 13784,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4207,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13784,
+        "cache_read_input_tokens": 6346,
+        "cache_creation_input_tokens": 4207,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4207
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3344,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003419,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13784,
+      "cacheReadInputTokens": 6346,
+      "cacheCreationInputTokens": 4207,
+      "webSearchRequests": 0,
+      "costUSD": 0.22444905,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "df44a9aa-0837-4630-98a9-2b01b2b1a4a3"
+}

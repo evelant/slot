@@ -1,0 +1,336 @@
+{
+  "items": {
+    "ae2:printed_engineering_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate AE2 processor component"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "engineering processor inscribed w/ gold"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires inscriber + press + gold"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted in batches per build phase"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds into AE2 processor crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "printed circuit aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-based circuit material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "sole source is ae2:inscriber recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "output of ae2:inscriber"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting engineering processors"
+          ],
+          "signal": "inferred",
+          "rationale": "sole downstream use is eng processor"
+        }
+      }
+    },
+    "ae2:printed_logic_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate AE2 processor component"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "logic processor inscribed w/ certus"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires inscriber + logic press"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted in batches per build phase"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds into AE2 processor crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "printed circuit aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz crystal material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "sole source is ae2:inscriber recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "output of ae2:inscriber"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting logic processors"
+          ],
+          "signal": "inferred",
+          "rationale": "sole downstream use is logic processor"
+        }
+      }
+    },
+    "ae2:printed_silicon": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed silicon wafer, intermediate"
+        },
+        "material_family": {
+          "value": "silicon",
+          "signal": "pattern",
+          "rationale": "id and display name say silicon"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires inscriber + silicon press"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "needed for all three processor types"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in all AE2 processor assemblies"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "processed silicon wafer form"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "silicon wafer grey matte finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "sole source is ae2:inscriber recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "output of ae2:inscriber"
+        },
+        "primary_uses": {
+          "values": [
+            "component in all three AE2 processors"
+          ],
+          "signal": "inferred",
+          "rationale": "required for logic/calc/eng processors"
+        }
+      }
+    },
+    "ae2:processing_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "configures machine autocrafting recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted and reusable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set up once per autocraft recipe"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "drives machine-based autocrafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical configuration item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; encoded via AE2 terminal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "defines machine processing recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "define machine processing for autocrafting",
+            "insert into pattern provider"
+          ],
+          "signal": "inferred",
+          "rationale": "core autocrafting config item"
+        }
+      }
+    },
+    "ae2:purple_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active ME network channel infrastructure"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "covered cable uses glass casing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap, crafted from glass + dye"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout ME networks in bulk"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "routes ME network channels"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "pattern",
+          "rationale": "purple dye variant of covered cable"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "pattern",
+          "rationale": "purple covered cable"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting_shaped only source"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "ae2:covered_cable tag confirms network role"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "ME channels carry network signal + power"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting ME network components",
+            "routing channels between devices"
+          ],
+          "signal": "inferred",
+          "rationale": "standard AE2 network cable"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

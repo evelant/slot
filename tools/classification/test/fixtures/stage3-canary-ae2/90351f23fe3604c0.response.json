@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 231486,
+  "duration_api_ms": 232348,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:semi_dark_monitor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for monitors/terminals\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from accessible AE2 materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in 5+ monitor/terminal recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network monitoring component chain\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable bus part aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"illuminated panel emits light\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, shapeless crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"panel/monitor for cable bus system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting AE2 monitors and terminals\",\n            \"decorative cable bus part\",\n            \"ambient lighting on cable buses\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in 5 monitor/terminal recipes\"\n        }\n      }\n    },\n    \"ae2:silicon\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted intermediate for AE2 processors\"\n        },\n        \"material_family\": {\n          \"value\": \"silicon\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag c:silicon; display name Silicon\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted from certus quartz dust\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavily used in AE2 crafting chains\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in AE2 processor fabrication\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial electronic material\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"silicon typically grayish matte\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only from smelting/blasting certus dust\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in inscriber processor recipes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting AE2 processors via inscriber\",\n            \"fundamental AE2 material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 crafting ingredient\"\n        }\n      }\n    },\n    \"ae2:silicon_press\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber template enabling silicon printing\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"meteorite loot; limited craftability\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed once per inscriber setup\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unlocks AE2 processor fabrication\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"meteorite artifact press\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"metal press from meteorite material\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\", \"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"meteorite chests; inscriber recipe too\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:inscriber_presses\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"inscribing printed silicon in inscriber\",\n            \"crafting processor components\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber press for silicon printing\"\n        }\n      }\n    },\n    \"ae2:singularity\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for entangled singularities\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires Matter Condenser compression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for quantum bridge/ring crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables quantum bridge networking\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exotic dense matter from a machine\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"dense compressed matter with energy\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"created via Matter Condenser machine\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quantum bridge network component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting entangled singularities\",\n            \"enabling quantum bridge connections\",\n            \"long-distance ME network linking\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transforms into entangled singularity\"\n        }\n      }\n    },\n    \"ae2:sky_dust\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dust form of AE2 meteorite material\"\n        },\n        \"material_family\": {\n          \"value\": \"sky_stone\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag c:dusts/sky_stone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires inscriber + meteorite sky stone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 256k cell and sky stone block\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in high-tier AE2 storage cells\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ground meteorite stone material\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sky stone is dark grayish meteorite\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced by inscriber from sky stone\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 256k storage cell components\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting high-tier AE2 storage cells\",\n            \"processing sky stone into components\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in 256k cell component\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "71d4234e-5866-492e-b3d7-6bc7cacf3c71",
+  "total_cost_usd": 0.25340935,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3061,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 15850,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3061,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15850,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3061,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3061
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2198,
+      "outputTokens": 19,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002293,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15850,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3061,
+      "webSearchRequests": 0,
+      "costUSD": 0.25111635,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2e90f3ff-6d4d-468b-bb06-d923f3251a1d"
+}

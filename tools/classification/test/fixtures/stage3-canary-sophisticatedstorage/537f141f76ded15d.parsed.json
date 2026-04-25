@@ -1,0 +1,292 @@
+{
+  "items": {
+    "sophisticatedstorage:stack_upgrade_tier_5": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name + tag both say upgrade"
+        },
+        "tier": {
+          "value": "tier_5",
+          "signal": "named",
+          "rationale": "display name explicitly says Tier 5"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "highest non-omega stack upgrade tier"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per container; rarely swapped"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "multiplies slot stack capacity"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade chip/circuit board aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; only crafting recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_customization"
+          ],
+          "signal": "inferred",
+          "rationale": "vocab explicitly lists stack modification"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase stack size in storage containers",
+            "Ingredient for omega stack upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "stack upgrades multiply slot capacity"
+        }
+      }
+    },
+    "sophisticatedstorage:stonecutter_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name + tag both say upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "utility upgrade; not trivial to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once; situational stone-cutting use"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutter in storage UI for stone blocks"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade chip/circuit board aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; only crafting recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "adds stonecutter processing to container"
+        },
+        "primary_uses": {
+          "values": [
+            "Embed stonecutter in storage container UI",
+            "Process stone variants without leaving storage"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecutter functionality inside storage"
+        }
+      }
+    },
+    "sophisticatedstorage:storage_connector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block that wires storage network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard network cable block"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used extensively to wire storage networks"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "links containers in storage network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cable/conduit aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_network"
+          ],
+          "signal": "inferred",
+          "rationale": "connects storage network nodes"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "links item storage containers"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect storage containers in a network",
+            "Cable between chests, barrels, and ports"
+          ],
+          "signal": "inferred",
+          "rationale": "network wiring block"
+        }
+      }
+    },
+    "sophisticatedstorage:storage_input": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "network input port; placed interactive block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard crafted network peripheral"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in every automated storage setup"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automates item insertion into storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "input port / hopper-adjacent block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_network"
+          ],
+          "signal": "inferred",
+          "rationale": "storage network input port"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "moves items into storage network"
+        },
+        "primary_uses": {
+          "values": [
+            "Dedicated item insertion point for storage network",
+            "Automated input from hoppers or pipes"
+          ],
+          "signal": "inferred",
+          "rationale": "input-only port for storage"
+        }
+      }
+    },
+    "sophisticatedstorage:storage_io": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "bidirectional network port; placed block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard crafted combined I/O port"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in automation setups"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "combined in/out port for storage network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "dual-direction port block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_network"
+          ],
+          "signal": "inferred",
+          "rationale": "storage network I/O port"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "moves items in and out of storage network"
+        },
+        "primary_uses": {
+          "values": [
+            "Bidirectional item flow in storage network",
+            "Replaces separate input and output blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "combined I/O port for storage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

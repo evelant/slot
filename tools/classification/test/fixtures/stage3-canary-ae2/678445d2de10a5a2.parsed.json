@@ -1,0 +1,390 @@
+{
+  "items": {
+    "ae2:fluid_p2p_tunnel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "block that tunnels fluids between two ME endpoints"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 P2P tunnels built from quartz/glass"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 materials, not trivially farmed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per fluid route, not spammed"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid routing in automated ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network infrastructure aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 blocks are dark metallic/matte"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot source; AE2 crafted item"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "named",
+          "rationale": "display_name: Fluid P2P Tunnel"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "P2P tunnels are ME network backbone"
+        },
+        "primary_uses": {
+          "values": [
+            "Route fluids between two ME network points",
+            "Fluid logistics via P2P link"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of a P2P fluid tunnel"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_1k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable cell inserted into ME drive/chest"
+        },
+        "tier": {
+          "value": "1k",
+          "signal": "pattern",
+          "rationale": "id/name suffix indicates capacity tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "lowest AE2 fluid cell tier, cheap to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "early-game AE2 fluid storage staple"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores fluids in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell housing is dark metallic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe_production present, no loot source"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluids inside ME drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Store fluids in ME drive or chest",
+            "Early fluid storage on ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "core use of a fluid storage cell"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_4k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable cell inserted into ME drive/chest"
+        },
+        "tier": {
+          "value": "4k",
+          "signal": "pattern",
+          "rationale": "id/name suffix indicates capacity tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "second-lowest tier, still inexpensive"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common mid-early AE2 fluid storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores fluids in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell housing is dark metallic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe_production present, no loot source"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluids inside ME drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Store fluids in ME drive or chest",
+            "Mid-tier fluid storage on ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "core use of a 4k fluid storage cell"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_16k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable cell inserted into ME drive/chest"
+        },
+        "tier": {
+          "value": "16k",
+          "signal": "pattern",
+          "rationale": "id/name suffix indicates capacity tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "higher tier, more materials required"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard mid-game AE2 fluid storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores fluids in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell housing is dark metallic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe_production present, no loot source"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluids inside ME drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Store fluids in ME drive or chest",
+            "High-capacity fluid storage on ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "core use of a 16k fluid storage cell"
+        }
+      }
+    },
+    "ae2:fluid_storage_cell_256k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable cell inserted into ME drive/chest"
+        },
+        "tier": {
+          "value": "256k",
+          "signal": "pattern",
+          "rationale": "id/name suffix indicates capacity tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "top tier; expensive to craft in AE2"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "end-game cell, fewer needed at high tier"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores fluids in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 storage cell aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cell housing is dark metallic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe_production present, no loot source"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "holds fluids inside ME drive"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Store fluids in ME drive or chest",
+            "Max-capacity fluid storage on ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "core use of a 256k fluid storage cell"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

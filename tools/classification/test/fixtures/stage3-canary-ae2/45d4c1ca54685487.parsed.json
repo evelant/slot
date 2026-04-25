@@ -1,0 +1,282 @@
+{
+  "items": {
+    "ae2:quartz_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form is structural, not purely decorative"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 certus quartz progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche AE2 building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab used for half-block construction and decor"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "shape variant of quartz bricks"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is light blue-white crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "building certus quartz structures",
+            "decorating AE2 bases",
+            "half-block height transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab uses"
+        }
+      }
+    },
+    "ae2:quartz_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form is structural"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 certus quartz progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche AE2 building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for roofing, transitions, decor"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "shape variant of quartz bricks"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is light blue-white crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "building certus quartz structures",
+            "decorating AE2 bases",
+            "roof and stairway detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs uses"
+        }
+      }
+    },
+    "ae2:quartz_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form is structural fence/border element"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 certus quartz progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche AE2 building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for borders and perimeter decor"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "shape variant of quartz bricks"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is light blue-white crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "building certus quartz structures",
+            "decorating AE2 bases",
+            "wall borders and barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall uses"
+        }
+      }
+    },
+    "ae2:quartz_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block is a structural dressed-stone form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 certus quartz progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche AE2 building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bricks for AE2 base construction and decor"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "dressed brick finish on raw certus quartz"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is light blue-white crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "building certus quartz structures",
+            "decorating AE2 bases",
+            "crafting slab/stair/wall variants"
+          ],
+          "signal": "inferred",
+          "rationale": "base block for all quartz brick shapes"
+        }
+      }
+    },
+    "ae2:quartz_cluster": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "silk-touch cluster block placed as crystal decor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires silk touch at meteorite budding quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "kept as decoration after silk-touch harvest"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed purely as crystal display"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "organically grown crystal cluster"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "certus clusters emit faint blue-white glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz clusters have subtle emissive glow"
+        },
+        "primary_uses": {
+          "values": [
+            "silk-touch crystal decor in AE2 builds",
+            "aesthetic display of certus growth"
+          ],
+          "signal": "inferred",
+          "rationale": "cluster kept for visual effect"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:quartz_cluster",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "clusters grow on budding quartz in AE2 meteorite crash sites; no crafting recipe exists",
+      "confidence": 0.85
+    }
+  ]
+}

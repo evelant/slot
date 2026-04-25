@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 92989,
+  "duration_api_ms": 94116,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:advanced_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for upgrade cards\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"multi-step AE2 crafting chain required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed when crafting AE2 upgrade cards\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream cards configure AE2 buses\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech component aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds into distribution/energy/fuzzy/speed cards\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting AE2 upgrade cards\", \"tier-2 card crafting intermediate\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for 5 named upgrade cards\"\n        }\n      }\n    },\n    \"ae2:annihilation_core\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for network parts\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 crafting progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed building AE2 network devices\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in import buses, planes, assembler\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech sub-component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:external_io\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in interfaces, import bus, assembler, planes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting import buses and interfaces\", \"crafting molecular assembler\", \"crafting annihilation planes\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of spans network IO parts\"\n        }\n      }\n    },\n    \"ae2:annihilation_plane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active cable-bus part that breaks blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 crafting chain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational automation part\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-breaks blocks; enchantable/mining tags\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable bus panel device\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:external_io\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cable bus part importing blocks into ME\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"auto-break blocks into ME network\", \"enchantable mining automation panel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mining enchant tags; imports broken blocks\"\n        }\n      }\n    },\n    \"ae2:basic_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"tier-1 card intermediate for upgrade cards\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"simpler recipe than advanced card\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed crafting capacity/redstone/void cards\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream upgrade cards configure AE2 devices\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds capacity/crafting/redstone/void cards\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting basic AE2 upgrade cards\", \"tier-1 card crafting intermediate\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for 4 named basic upgrade cards\"\n        }\n      }\n    },\n    \"ae2:black_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active network cable carrying channels+power\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bulk-crafted; backbone of any ME network\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed extensively to wire ME networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network backbone; P2P attunement tag\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"black dye variant of covered cable\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid black covering, opaque finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ae2:covered_cable tag = ME network cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables carry power and data channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"connecting ME network components\", \"routing AE2 channels\", \"color-coded cable organization\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable is standard ME wiring with dye\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "cd5f6659-3533-4c76-9e42-9d0a246e0b64",
+  "total_cost_usd": 0.13868825,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9263,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 6781,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9263,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6781,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9263,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9263
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2138,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002228,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6781,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9263,
+      "webSearchRequests": 0,
+      "costUSD": 0.13646025,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c34ca2e4-f51d-4721-af37-3a7007f4b4a0"
+}

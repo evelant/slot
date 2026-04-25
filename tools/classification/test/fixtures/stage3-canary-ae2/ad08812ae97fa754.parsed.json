@@ -1,0 +1,367 @@
+{
+  "items": {
+    "ae2:fluid_storage_cell_64k": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "AE2 cell inserts into drives, not standalone"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "primary AE2 crystal material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires mid-game AE2 progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core fluid automation storage"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "stores fluids in ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech storage device"
+        },
+        "palette": {
+          "values": [
+            "indigo"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix crystal is purple-blue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafting recipes only"
+        },
+        "storage_categories": {
+          "values": [
+            "ae_storage"
+          ],
+          "signal": "pattern",
+          "rationale": "inserts into ME Drive or ME Chest slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "output path ae2:network/cells/"
+        },
+        "primary_uses": {
+          "values": [
+            "store fluids in AE2 ME network",
+            "insert into ME Drive or ME Chest",
+            "64k fluid capacity per cell"
+          ],
+          "signal": "inferred",
+          "rationale": "core fluid cell use cases"
+        }
+      }
+    },
+    "ae2:fluix_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "tag minecraft:axes"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "id prefix fluix_"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "AE2-specific material tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires fluix crystals + smithing"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "AE2 primary focus is network, not tools"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "axes used for chopping wood and fighting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tech mod crafted tool"
+        },
+        "palette": {
+          "values": [
+            "indigo"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix crystal coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, smithing_transform only"
+        },
+        "primary_uses": {
+          "values": [
+            "chop wood and logs",
+            "melee combat weapon",
+            "AE2 tier progression tool"
+          ],
+          "signal": "inferred",
+          "rationale": "standard axe use cases"
+        }
+      }
+    },
+    "ae2:fluix_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "output path ae2:decorative/; has slabs/stairs/walls"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "id prefix fluix_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 fluix crystals"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative/structural AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-themed structural and decorative use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "crystal block; slab/stair/wall variants exist"
+        },
+        "palette": {
+          "values": [
+            "indigo",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix is vibrant purple-blue crystal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "ingredient in growth accelerator and resonance gen"
+        },
+        "primary_uses": {
+          "values": [
+            "build AE2-themed structures",
+            "craft into slabs/stairs/walls",
+            "craft growth accelerators"
+          ],
+          "signal": "inferred",
+          "rationale": "dominant recipe uses"
+        }
+      }
+    },
+    "ae2:fluix_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ME network backbone connector"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "id prefix fluix_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted cable used everywhere"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "fundamental AE2 build ingredient"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME network devices"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "network cable, dyeable to 16 colors"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix uncolored cable is teal/light-blue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME channels and network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "output path ae2:network/cables/"
+        },
+        "primary_uses": {
+          "values": [
+            "connect ME network devices",
+            "carry up to 8 network channels",
+            "dye for color-coded cable runs"
+          ],
+          "signal": "inferred",
+          "rationale": "standard covered cable use cases"
+        }
+      }
+    },
+    "ae2:fluix_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-capacity ME network backbone"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "id prefix fluix_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted cable for dense channel runs"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for high-channel-density connections"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "backbone for dense ME network segments"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dense network cable, dyeable"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix default cable color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries 32 channels and network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "output path ae2:network/cables/dense_"
+        },
+        "primary_uses": {
+          "values": [
+            "carry up to 32 ME network channels",
+            "backbone for large AE2 networks",
+            "dye for color-coded dense runs"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable key use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

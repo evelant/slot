@@ -1,0 +1,346 @@
+{
+  "items": {
+    "ae2:nether_quartz_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "minecraft:pickaxes tag"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix nether_quartz"
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 base tier; upgrades to fluix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether access for quartz"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "pickaxes used continuously while active"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "pickaxe primary role"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystalline mineral aesthetic"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "nether quartz is cream-white"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores",
+            "smithing base for fluix pickaxe"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe use + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:nether_quartz_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "minecraft:shovels tag"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix nether_quartz"
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 base tier; upgrades to fluix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether access for quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "shovels used less than pickaxes"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "digging soft blocks + terrain work"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystalline mineral aesthetic"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "nether quartz is cream-white"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt/sand/gravel",
+            "smithing base for fluix shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel use + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:nether_quartz_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "minecraft:swords tag"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix nether_quartz"
+        },
+        "tier": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 base tier; upgrades to fluix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether access for quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game weapon, soon outclassed"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "sword = combat weapon"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystalline mineral aesthetic"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "nether quartz is cream-white"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "combat with mobs",
+            "smithing base for fluix sword"
+          ],
+          "signal": "inferred",
+          "rationale": "sword use + AE2 upgrade path"
+        }
+      }
+    },
+    "ae2:nether_quartz_wrench": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "c:tools/wrench tag"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "pattern",
+          "rationale": "id prefix nether_quartz"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether access for quartz"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "wrenches used heavily during AE2 setup"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "rotates/configures AE2 infrastructure"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wrench is a mechanical tool form"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "nether quartz is cream-white"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "rotate/configure AE2 blocks",
+            "crafted into network_tool"
+          ],
+          "signal": "inferred",
+          "rationale": "wrench use + upgrade path"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "configures AE2 network components"
+        }
+      }
+    },
+    "ae2:network_tool": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld network diagnostic instrument"
+        },
+        "material_family": {
+          "value": "nether_quartz",
+          "signal": "inferred",
+          "rationale": "crafted from nether quartz wrench"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires crafted quartz wrench"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "AE2 players use it regularly"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network mgmt and diagnostics"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tech diagnostic instrument"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "quartz-based appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "diagnose AE2 network issues",
+            "configure AE2 network devices",
+            "portable ME network access"
+          ],
+          "signal": "inferred",
+          "rationale": "network tool primary functions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 network management tool"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

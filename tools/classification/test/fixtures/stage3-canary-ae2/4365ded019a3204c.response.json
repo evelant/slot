@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 68128,
+  "duration_api_ms": 69039,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:quartz_pillar_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs = structural form, primary use is building\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz must be mined or grown\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative building, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair block for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pillar sub-variant of certus quartz block\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz = pale crystalline white\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building AE2-themed structures\", \"decorative stair shapes\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pillar-textured quartz stairs for builds\"\n        }\n      }\n    },\n    \"ae2:quartz_pillar_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall = structural form, primary use is building\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz must be mined or grown\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative building, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall block for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pillar sub-variant of certus quartz block\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz = pale crystalline white\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building certus quartz wall sections\", \"decorative border walls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pillar-textured quartz wall for builds\"\n        }\n      }\n    },\n    \"ae2:quartz_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab = structural half-block form\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz must be mined or grown\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative building, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab block for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base certus quartz slab, no sub-variant\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz = pale crystalline white\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-block flooring and ceilings\", \"certus quartz slab shapes\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain quartz slab for AE2 builds\"\n        }\n      }\n    },\n    \"ae2:quartz_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs = structural form, primary use is building\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz must be mined or grown\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative building, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair block for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base certus quartz stairs, no sub-variant\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz = pale crystalline white\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"certus quartz stair shapes\", \"building AE2-themed structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain quartz stairs for AE2 builds\"\n        }\n      }\n    },\n    \"ae2:quartz_vibrant_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"pattern\",\n          \"evidence\": \"ae2:decorative/quartz_vibrant_glass\",\n          \"rationale\": \"recipe path namespace = decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz required; not freely available\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely aesthetic use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing decorative glass block\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vibrant glowing variant = fancy aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"crystal\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vibrant = emissive glow; AE2 teal tint; glass\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vibrant = emissive light-emitting glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"glowing decorative glass block\", \"AE2 aesthetic builds\", \"ambient light via glass\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emissive decorative glass for AE2 builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "84e7b673-3a0b-4b18-a33d-296c4f65d80d",
+  "total_cost_usd": 0.1179691,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4002,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 6523,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4002,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6523,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 4002,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4002
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3139,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0032289999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6523,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 4002,
+      "webSearchRequests": 0,
+      "costUSD": 0.1147401,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "dcd0254c-eb4a-4bd7-9c36-b68b648b6c8d"
+}

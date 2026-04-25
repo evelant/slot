@@ -1,0 +1,404 @@
+{
+  "items": {
+    "ae2:portable_item_cell_1k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld ME storage with built-in terminal"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cells built from certus components"
+        },
+        "tier": {
+          "value": "1k",
+          "signal": "pattern",
+          "rationale": "storage capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires mid-early AE2 progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly as portable storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable access to stored items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-teal energy cell appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting_shapeless only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "ae_storage",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "curios:curio tag; insertable in ME drives"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "portable cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "access ME items portably",
+            "standalone 1k handheld storage",
+            "equip in curio slot"
+          ],
+          "signal": "inferred",
+          "rationale": "core portable cell use cases"
+        }
+      }
+    },
+    "ae2:portable_item_cell_256k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld ME storage with built-in terminal"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cells built from certus components"
+        },
+        "tier": {
+          "value": "256k",
+          "signal": "pattern",
+          "rationale": "storage capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "top-tier AE2 cell; expensive recipe"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "high-capacity; used constantly once obtained"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable access to stored items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-teal energy cell appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting_shapeless only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "ae_storage",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "curios:curio tag; insertable in ME drives"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "portable cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "access ME items portably",
+            "standalone 256k handheld storage",
+            "equip in curio slot"
+          ],
+          "signal": "inferred",
+          "rationale": "core portable cell use cases"
+        }
+      }
+    },
+    "ae2:portable_item_cell_4k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld ME storage with built-in terminal"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cells built from certus components"
+        },
+        "tier": {
+          "value": "4k",
+          "signal": "pattern",
+          "rationale": "storage capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier AE2 cell"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly as portable storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable access to stored items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-teal energy cell appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting_shapeless only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "ae_storage",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "curios:curio tag; insertable in ME drives"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "portable cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "access ME items portably",
+            "standalone 4k handheld storage",
+            "equip in curio slot"
+          ],
+          "signal": "inferred",
+          "rationale": "core portable cell use cases"
+        }
+      }
+    },
+    "ae2:portable_item_cell_64k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld ME storage with built-in terminal"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "AE2 cells built from certus components"
+        },
+        "tier": {
+          "value": "64k",
+          "signal": "pattern",
+          "rationale": "storage capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "upper-mid AE2 progression cell"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly once obtained"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable access to stored items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-teal energy cell appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting_shapeless only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "ae_storage",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "curios:curio tag; insertable in ME drives"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "portable cell is AE2 storage subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "access ME items portably",
+            "standalone 64k handheld storage",
+            "equip in curio slot"
+          ],
+          "signal": "inferred",
+          "rationale": "core portable cell use cases"
+        }
+      }
+    },
+    "ae2:printed_calculation_processor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate inscriber output; not end product"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "printed onto certus quartz crystal"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires inscriber + press to produce"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch-crafted into processors; not carried"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: calculation processor for AE2 CPUs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "printed circuit aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "ae2:inscriber recipe; no loot source"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing",
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "made in inscriber; used for crafting CPUs"
+        },
+        "primary_uses": {
+          "values": [
+            "craft calculation processors",
+            "inscriber intermediate step"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is processor assembly"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,370 @@
+{
+  "items": {
+    "ae2:formation_plane": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active part that ejects items into world"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "AE2 bus parts use iron as primary"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires several AE2 materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche: automated world block placement"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "places blocks from ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 bus face tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-toned flat bus texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:external_io"
+          ],
+          "signal": "inferred",
+          "rationale": "I/O bus outputting items to world"
+        },
+        "primary_uses": {
+          "values": [
+            "place items into world from ME network",
+            "automated block placement",
+            "world-gen automation pipelines"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of formation plane"
+        }
+      }
+    },
+    "ae2:fuzzy_card": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "upgrade card slot item for cells/buses"
+        },
+        "material_family": {
+          "value": "redstone",
+          "signal": "inferred",
+          "rationale": "AE2 cards use redstone/logic substrate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "shapeless recipe, common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific filter setups"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables fuzzy compare in storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 circuit card aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shapeless recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily upgrades storage cells"
+        },
+        "primary_uses": {
+          "values": [
+            "fuzzy comparison in storage cells",
+            "ignore damage/NBT in bus filters",
+            "upgrade buses for fuzzy matching"
+          ],
+          "signal": "inferred",
+          "rationale": "named functionality of fuzzy card"
+        }
+      }
+    },
+    "ae2:gray_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "ME cable carries network channels"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "covered cable crafted from glass+dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted network component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed throughout any AE2 network"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME network devices"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "gray dye variant of covered cable"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray color is muted neutral"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shaped crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "ME cable carries channels + power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "network backbone cable"
+        },
+        "primary_uses": {
+          "values": [
+            "connect ME network components",
+            "carry up to 8 channels",
+            "color-coded gray network routing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard covered cable function"
+        }
+      }
+    },
+    "ae2:gray_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "dense ME cable carries 32 channels"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "dense covered cable uses glass+dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "backbone of larger AE2 networks"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "dense backbone for ME networks"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "gray dense variant of covered cable"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray is muted neutral tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shaped crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable carries channels + power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity network backbone cable"
+        },
+        "primary_uses": {
+          "values": [
+            "carry up to 32 ME channels",
+            "dense network backbone routing",
+            "high-throughput network connection"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable function"
+        }
+      }
+    },
+    "ae2:gray_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "ME glass cable carries channels"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains glass_cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheapest cable type to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "most commonly placed cable type"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ME network devices"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "gray dye variant of glass cable"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "gray glass reads as muted+translucent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shaped crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "ME cable carries channels + power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "entry-level network backbone cable"
+        },
+        "primary_uses": {
+          "values": [
+            "basic ME network connection",
+            "carry up to 8 channels",
+            "cheapest colored cable option"
+          ],
+          "signal": "inferred",
+          "rationale": "glass cable is entry-level cable"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

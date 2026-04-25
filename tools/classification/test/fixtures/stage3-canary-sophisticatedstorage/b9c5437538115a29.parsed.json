@@ -1,0 +1,360 @@
+{
+  "items": {
+    "sophisticatedstorage:advanced_jukebox_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name + tag both say upgrade"
+        },
+        "tier": {
+          "value": "advanced",
+          "signal": "named",
+          "rationale": "display name explicitly says Advanced"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier crafted upgrade, not trivial"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche music-in-storage feature"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox plays music; fits storage decor niche"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional storage upgrade, mechanical feel"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; only crafting recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "storable in normal containers when not slotted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "adds functional behavior to storage blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "play music discs from storage container",
+            "advanced jukebox control in storage",
+            "upgrade storage with jukebox functionality"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox upgrade for SS containers"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_magnet_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name + tag both say upgrade"
+        },
+        "tier": {
+          "value": "advanced",
+          "signal": "named",
+          "rationale": "display name explicitly says Advanced"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier crafted upgrade"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "magnets used constantly once placed"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-collects nearby items into storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional automation upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot; crafting + tier upgrade recipes"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item when not inserted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "adds magnet behavior to SS containers"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-collect nearby items into storage",
+            "extended magnet range vs basic tier",
+            "filter collected item types"
+          ],
+          "signal": "inferred",
+          "rationale": "advanced magnet for SS containers"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_pickup_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name + tag both say upgrade"
+        },
+        "tier": {
+          "value": "advanced",
+          "signal": "named",
+          "rationale": "display name explicitly says Advanced"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier crafted upgrade"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "pickup passively runs whenever active"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-routes dropped items into storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional automation upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting + tier upgrade sources only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item when not inserted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "adds pickup behavior to SS containers"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-pickup dropped items into storage",
+            "advanced filter for pickup item types",
+            "ingredient of advanced_magnet_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "pickup upgrade; feeds magnet recipe"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_pump_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name + tag both say upgrade"
+        },
+        "tier": {
+          "value": "advanced",
+          "signal": "named",
+          "rationale": "display name explicitly says Advanced"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier upgrade; no recipe data suggests datapack/JEI hidden"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fluid-specific, only relevant with fluid storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "pumps fluids in/out of storage containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional fluid-automation upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "guess",
+          "rationale": "no recipe data; assumed crafted like peers"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "named",
+          "rationale": "pump name implies fluid transport"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item when not inserted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "adds pump/fluid behavior to SS containers"
+        },
+        "primary_uses": {
+          "values": [
+            "pump fluids in/out of storage containers",
+            "auto-fill fluid containers from storage",
+            "advanced fluid rate/filter control"
+          ],
+          "signal": "inferred",
+          "rationale": "pump upgrade for SS fluid storage"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_void_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "display name + tag both say upgrade"
+        },
+        "tier": {
+          "value": "advanced",
+          "signal": "named",
+          "rationale": "display name explicitly says Advanced"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier crafted upgrade"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "void runs passively once installed"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-deletes excess items to prevent overflow"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional automation upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting recipes only, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item when not inserted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "adds void behavior to SS containers"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-delete excess items in storage",
+            "prevent storage from overfilling",
+            "advanced filter for what gets voided"
+          ],
+          "signal": "inferred",
+          "rationale": "void upgrade for SS containers"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

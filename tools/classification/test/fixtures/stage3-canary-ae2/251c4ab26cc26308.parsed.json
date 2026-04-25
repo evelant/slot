@@ -1,0 +1,349 @@
+{
+  "items": {
+    "ae2:fluix_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tagged minecraft:pickaxes"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "fluix_ id prefix, ae2 crystal"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "named after fluix, ae2 tool tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires ae2 progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mid-game tool, soon replaced"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "pickaxe = mining"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "ae2 tech mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix = shimmery purple crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "smithing_transform, no loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "mining blocks",
+            "mid-tier ae2 progression tool"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pickaxe function"
+        }
+      }
+    },
+    "ae2:fluix_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tagged minecraft:shovels"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "fluix_ id prefix, ae2 crystal"
+        },
+        "tier": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "named after fluix, ae2 tool tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires ae2 progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "shovels used occasionally"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel = terrain excavation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "ae2 tech mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix = shimmery purple crystal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "smithing_transform, no loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt/gravel/sand",
+            "mid-tier ae2 terrain tool"
+          ],
+          "signal": "inferred",
+          "rationale": "standard shovel function"
+        }
+      }
+    },
+    "ae2:fluix_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "_slab suffix = building block"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "fluix_ id prefix, ae2 crystal"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires ae2 fluix block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in ae2-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for structure and trim"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "grown crystal material"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix = shimmery purple crystal"
+        },
+        "primary_uses": {
+          "values": [
+            "ae2-themed decorative building",
+            "half-height structural slab"
+          ],
+          "signal": "inferred",
+          "rationale": "slab in ae2 aesthetic builds"
+        }
+      }
+    },
+    "ae2:fluix_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ae2 network backbone component"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "fluix_ id prefix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted in bulk for networks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed extensively in ae2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects ae2 automation devices"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "ae2 tech infrastructure"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix crystal, ae2 aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "me network carries items/power/channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged ae2:smart_cable, me network"
+        },
+        "primary_uses": {
+          "values": [
+            "me network backbone (8 channels)",
+            "linking ae2 devices"
+          ],
+          "signal": "inferred",
+          "rationale": "core smart cable purpose"
+        }
+      }
+    },
+    "ae2:fluix_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "ae2 dense network backbone"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "pattern",
+          "rationale": "fluix_ id prefix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "more expensive than smart cable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for high-density runs only"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity ae2 network backbone"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "ae2 tech infrastructure"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix crystal, ae2 aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "me network carries items/power/channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "tagged ae2:smart_dense_cable"
+        },
+        "primary_uses": {
+          "values": [
+            "me network dense backbone (32 ch)",
+            "high-capacity device linking"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable for high channel use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

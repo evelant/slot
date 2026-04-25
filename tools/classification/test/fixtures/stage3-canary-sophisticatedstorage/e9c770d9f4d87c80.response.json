@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 97924,
+  "duration_api_ms": 98802,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"sophisticatedstorage:gold_to_diamond_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name says 'Tier Upgrade'\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"upgrades from gold tier storage\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"diamond\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"upgrades to diamond tier\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"named\",\n          \"rationale\": \"target tier is diamond\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond crafting materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage container tier\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted tier upgrade component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade system\"\n        }\n      }\n    },\n    \"sophisticatedstorage:gold_to_netherite_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name says 'Tier Upgrade'\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"upgrades from gold tier storage\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"netherite\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"upgrades to netherite tier\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"named\",\n          \"rationale\": \"target tier is netherite\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires netherite materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage container tier\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted tier upgrade component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade system\"\n        }\n      }\n    },\n    \"sophisticatedstorage:hopper_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name ends in 'Upgrade'\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"hopper mechanic is iron-based\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted functional upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core automation upgrade, widely used\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables item auto-transfer to storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical automation upgrade\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hopper-style item transfer\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade\"\n        }\n      }\n    },\n    \"sophisticatedstorage:infinity_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name ends in 'Upgrade'\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"named\",\n          \"rationale\": \"display name says '(Admin)'\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"named\",\n          \"rationale\": \"admin-only, no recipe exists\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin item, not normal gameplay\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"infinite storage capacity upgrade\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS functional upgrade\"\n        }\n      }\n    },\n    \"sophisticatedstorage:iron_barrel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"named\",\n          \"rationale\": \"tagged c:barrels + all_storage\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id and name contain iron\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron-tier, easily crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary daily storage container\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores and organizes items\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base iron, functional aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron material visual appearance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores standard item stacks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS storage container item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store and organize items\",\n            \"Upgrade to higher tier barrels\",\n            \"Install functional upgrades\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core SS storage block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "4d5732d2-9485-4415-98eb-444ebd089701",
+  "total_cost_usd": 0.16400355,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3085,
+    "cache_read_input_tokens": 6346,
+    "output_tokens": 9882,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3085,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9882,
+        "cache_read_input_tokens": 6346,
+        "cache_creation_input_tokens": 3085,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3085
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2222,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002292,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9882,
+      "cacheReadInputTokens": 6346,
+      "cacheCreationInputTokens": 3085,
+      "webSearchRequests": 0,
+      "costUSD": 0.16171155,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "bdd54bff-32c1-47d3-888d-c72966f4f117"
+}

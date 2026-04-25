@@ -1,0 +1,325 @@
+{
+  "items": {
+    "createaddition:connector": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block that connects electrical components"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "CA copper power theme; copper subcomponents"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common copper materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed throughout CA power networks"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "electrical connector block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial connector block"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper-colored component"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "transmits electrical energy in CA"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "used in relay and light connector"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting electrical power lines",
+            "routing energy between machines"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in relay, light connector"
+        }
+      }
+    },
+    "createaddition:copper_goblet": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "guess",
+          "rationale": "no recipes/loot; function unknown"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "guess",
+          "rationale": "no known source identified"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "guess",
+          "rationale": "no functional use found"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "goblet = ornamental vessel"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "pattern",
+          "rationale": "name says copper"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative display"
+          ],
+          "signal": "guess",
+          "rationale": "no recipe or function in data"
+        }
+      }
+    },
+    "createaddition:copper_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:rods/copper tag; rolled from ingot"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id + c:rods/copper tag"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no world loot; made via rolling mill"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rolled from abundant copper ingots"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "intermediate for electrical components"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in connector and accumulator"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple rod form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "pattern",
+          "rationale": "copper material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds connector and modular accumulator"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electrical connectors",
+            "crafting modular accumulators"
+          ],
+          "signal": "inferred",
+          "rationale": "named downstream recipes"
+        }
+      }
+    },
+    "createaddition:copper_spool": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for EM machines"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix + createaddition:spools tag"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no world loot; crafted item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from copper wire"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in motors, alternators, coils"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds electric_motor, alternator, tesla_coil"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wound wire spool for EM machines"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "pattern",
+          "rationale": "copper wire spool"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "core EM machine ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electric motors and alternators",
+            "crafting tesla coils",
+            "crafting portable energy interface"
+          ],
+          "signal": "inferred",
+          "rationale": "named in multiple CA machine recipes"
+        }
+      }
+    },
+    "createaddition:copper_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:wires/copper tag; rolled from plate"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id + c:wires/copper tag"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no world loot; made via rolling mill"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rolled from copper plates"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "base material for copper spools"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds spool→motor chain"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wire form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "pattern",
+          "rationale": "copper material"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "wire for power lines and spools"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting copper spools",
+            "base CA wiring material"
+          ],
+          "signal": "inferred",
+          "rationale": "sole downstream use is copper_spool"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

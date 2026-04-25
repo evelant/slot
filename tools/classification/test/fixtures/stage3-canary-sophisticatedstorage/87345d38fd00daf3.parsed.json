@@ -1,0 +1,302 @@
+{
+  "items": {
+    "sophisticatedstorage:smoking_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:sophisticatedstorage:upgrade, name ends 'Upgrade'"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting recipes"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automates smoking food inside container"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional processing upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted functional upgrade; non-trivial recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "adds automated behaviour to storage"
+        },
+        "primary_uses": {
+          "values": [
+            "smoke food automatically in storage",
+            "add smoker function to container",
+            "upgrade to auto_smoking_upgrade tier"
+          ],
+          "signal": "inferred",
+          "rationale": "smoking upgrade = smoker inside container"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_downgrade_tier_1": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:sophisticatedstorage:upgrade, name ends 'Upgrade'"
+        },
+        "tier": {
+          "value": "tier_1",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_1"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "limits stack sizes to control item layout"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional storage upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "tier 1 = entry-level, basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behaviour"
+        },
+        "primary_uses": {
+          "values": [
+            "limit item stack sizes in storage",
+            "control item density per slot"
+          ],
+          "signal": "inferred",
+          "rationale": "downgrade = reduce max stack size"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_downgrade_tier_2": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "tier_2",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_2"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "limits stack sizes to control item layout"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional storage upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier; stronger restriction than tier 1"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behaviour"
+        },
+        "primary_uses": {
+          "values": [
+            "limit item stack sizes in storage",
+            "control item density per slot"
+          ],
+          "signal": "inferred",
+          "rationale": "downgrade tier 2 = stricter stack cap"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_downgrade_tier_3": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "tier_3",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_3"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "limits stack sizes to control item layout"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional storage upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "high-tier stack restriction upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behaviour"
+        },
+        "primary_uses": {
+          "values": [
+            "limit item stack sizes in storage",
+            "enforce single-stack-per-slot rules"
+          ],
+          "signal": "inferred",
+          "rationale": "tier 3 downgrade = max restriction"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_upgrade_omega_tier": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "omega",
+          "signal": "pattern",
+          "rationale": "id suffix _omega_tier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafting"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "maximizes stack sizes in container"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional storage upgrade"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "omega = top progression tier"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behaviour"
+        },
+        "primary_uses": {
+          "values": [
+            "maximize stack sizes in storage containers",
+            "store items in highest possible stack counts"
+          ],
+          "signal": "inferred",
+          "rationale": "omega stack upgrade = peak capacity"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

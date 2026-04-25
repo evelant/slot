@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 45252,
+  "duration_api_ms": 46228,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"sophisticatedstorage:stack_upgrade_tier_1\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag sophisticatedstorage:upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"tier_1\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _tier_1\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base tier, basic crafting mats\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craft few, install once per container\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"increases stack size in SS containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card/chip aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modifies container stack behavior\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Increase stack size in SS containers\",\n            \"Ingredient for higher stack upgrade tiers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stack upgrade name + tier 2 ingredient\"\n        }\n      }\n    },\n    \"sophisticatedstorage:stack_upgrade_tier_1_plus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag sophisticatedstorage:upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"tier_1_plus\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _tier_1_plus\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"minor step above tier 1, still early game\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once; occasional recrafts\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stack size upgrade for containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modifies container stack behavior\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Intermediate stack upgrade tier\",\n            \"Ingredient for tier 2 stack upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plus variant bridges tier 1 to tier 2\"\n        }\n      }\n    },\n    \"sophisticatedstorage:stack_upgrade_tier_2\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag sophisticatedstorage:upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"tier_2\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _tier_2\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier; requires tier 1 as ingredient\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once; mid-game upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stack size upgrade for containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modifies container stack behavior\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Greater stack size boost than tier 1\",\n            \"Ingredient for tier 3 stack upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier stack upgrade\"\n        }\n      }\n    },\n    \"sophisticatedstorage:stack_upgrade_tier_3\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag sophisticatedstorage:upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"tier_3\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _tier_3\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"upper-mid tier; multi-step recipe chain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"late mid-game install; not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stack size upgrade for containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modifies container stack behavior\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High stack size boost in containers\",\n            \"Ingredient for tier 4 stack upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upper-mid tier stack upgrade\"\n        }\n      }\n    },\n    \"sophisticatedstorage:stack_upgrade_tier_4\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag sophisticatedstorage:upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"tier_4\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _tier_4\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"late-game; long recipe chain required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"install once in late-game containers\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stack size upgrade for containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrade card aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modifies container stack behavior\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Maximum stack size boost in containers\",\n            \"Ingredient for tier 5 stack upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"penultimate tier; feeds tier 5\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "43755438-5e0b-4c3c-a945-6fc22db05d74",
+  "total_cost_usd": 0.09383475000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 8397,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 3981,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8397,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 3981,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 8397,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 8397
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2547,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0026219999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 3981,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 8397,
+      "webSearchRequests": 0,
+      "costUSD": 0.09121275000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "60ce2511-9e23-4479-a6ab-e914808eed9f"
+}

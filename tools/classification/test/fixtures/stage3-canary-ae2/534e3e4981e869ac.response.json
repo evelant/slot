@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 104593,
+  "duration_api_ms": 107832,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:pattern_encoding_terminal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active GUI terminal part, AE2 network UI\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to encode autocrafting patterns\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pattern encoding → autocrafting subsystem\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafting recipe only\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 progression materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used during setup, not repeatedly\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech terminal aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 terminals have dark metal look\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"encode autocrafting patterns\", \"manage ME autocrafting recipes\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core purpose of terminal\"\n        }\n      }\n    },\n    \"ae2:pattern_provider\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pushes patterns to machines, active block\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"distributes autocrafting jobs to machines\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pattern provider drives autocrafting\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 progression to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed per autocrafting machine setup\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 machine block aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 blocks are dark metal toned\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"push crafting patterns to machines\", \"interface autocrafting with external machines\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core pattern provider function\"\n        }\n      }\n    },\n    \"ae2:pink_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable carries signal channels\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects AE2 network devices\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"cable = me_network backbone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafting recipe only\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 infrastructure item\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used throughout any AE2 build\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink dye variant of covered cable\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a light pastel dye tone\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables carry network channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"connect AE2 network components\", \"carry up to 8 network channels\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable standard function\"\n        }\n      }\n    },\n    \"ae2:pink_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 dense cable, 32-channel capacity\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity AE2 trunk connection\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dense cable = network backbone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafting only\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable requires more resources\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"main trunk cable in large AE2 builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink dye variant of dense cable\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a light pastel dye tone\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries up to 32 network channels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"high-bandwidth AE2 trunk line\", \"carry 32 network channels\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable function\"\n        }\n      }\n    },\n    \"ae2:pink_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 glass cable, basic network connector\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects AE2 network devices\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"glass cable = network backbone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafting only\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest AE2 cable type\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used throughout AE2 builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink dye variant of glass cable\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink + glass casing is translucent\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables carry network signal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"connect AE2 network components\", \"cheapest AE2 cable variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass cable standard function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "5fc2553d-43e2-4639-bf17-66a13eb5df2d",
+  "total_cost_usd": 0.14550760000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2868,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 8718,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2868,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8718,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2868,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2868
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2005,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0020949999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8718,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2868,
+      "webSearchRequests": 0,
+      "costUSD": 0.1434126,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7a9419ca-79cc-4747-b3c8-cfbba89df8e8"
+}

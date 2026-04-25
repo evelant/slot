@@ -1,0 +1,374 @@
+{
+  "items": {
+    "ae2:black_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network cable, placed block"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 network cables built from fluix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard AE2 infrastructure cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used heavily in any AE2 network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Core AE2 network routing"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Mechanical cable, colored variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "Black cable coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Recipe output only, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag: ae2:covered_dense_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry items/power/data"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity 32-channel ME cable",
+            "Dense network routing",
+            "Color-coded cable management"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense cable primary functions"
+        }
+      }
+    },
+    "ae2:black_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network cable, placed block"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 network cables built from fluix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cheapest/most basic AE2 cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used heavily in any AE2 network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Core AE2 network routing"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Mechanical cable, colored variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "Black glass cable appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Recipe output only, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag: ae2:glass_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry items/power/data"
+        },
+        "primary_uses": {
+          "values": [
+            "Basic 8-channel ME connection",
+            "Cheapest AE2 cable type",
+            "Color-coded network layout"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass cable primary functions"
+        }
+      }
+    },
+    "ae2:black_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Applied to cables to recolor with glow"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Upgraded paint ball, extra craft step"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for cable aesthetics only"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorates AE2 cables with glow"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Colored lumen variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "Black lumen = dark + glow effect"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Recipe output only, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable coloring tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Recolor AE2 cables with glow effect",
+            "Glowing cable aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "Lumen paint ball purpose"
+        }
+      }
+    },
+    "ae2:black_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Applied to cables to recolor them"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Basic AE2 cable coloring tool"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used only for cable color mgmt"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Recolors/organizes AE2 cables"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Colored variant paint ball"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "Black matte paint ball"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Recipe output only, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cable coloring tool"
+        },
+        "primary_uses": {
+          "values": [
+            "Recolor AE2 cables",
+            "Cable color management",
+            "Ingredient for lumen paint ball"
+          ],
+          "signal": "inferred",
+          "rationale": "Paint ball core functions"
+        }
+      }
+    },
+    "ae2:black_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "AE2 network cable, placed block"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 network cables built from fluix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Standard AE2 infrastructure cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used heavily in AE2 networks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "Core AE2 network routing"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Mechanical cable, colored variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "Black cable coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "Recipe output only, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag: ae2:smart_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "item",
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry items/power/data"
+        },
+        "primary_uses": {
+          "values": [
+            "8-channel ME cable with usage display",
+            "Visual channel monitoring",
+            "Channel-aware network routing"
+          ],
+          "signal": "inferred",
+          "rationale": "Smart cable primary functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

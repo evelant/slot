@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 151321,
+  "duration_api_ms": 152198,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:not_so_mysterious_cube\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"joke/decorative variant of mysterious cube\"\n        },\n        \"material_family\": {\n          \"value\": \"certus_quartz\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 decorative blocks use certus quartz\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 mid-game materials\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no functional use, purely decorative\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named variant of mysterious cube\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz crystal glow aesthetic\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no functional use beyond decoration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative display block\", \"AE2 humor/lore item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"joke variant of meteorite mysterious cube\"\n        }\n      }\n    },\n    \"ae2:orange_covered_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"ME cable routes up to 8 network channels\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables crafted from fluix materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard craftable AE2 component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used throughout ME network builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange colored network cable\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange color\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network automation and routing\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafted from fluix\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"connecting ME network nodes\", \"routing up to 8 channels\", \"color-coding cable runs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"covered cable carries 8 channels\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:covered_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME network signals and AE2 power\"\n        }\n      }\n    },\n    \"ae2:orange_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"dense ME cable routes 32 channels\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables crafted from fluix materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard craftable AE2 component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone cable for dense network runs\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange dense network cable\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange color\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-density ME network routing\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafted\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"routing up to 32 ME channels\", \"dense network backbone\", \"color-coded cable organization\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense cable is high-capacity backbone\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:covered_dense_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME signals and AE2 power\"\n        }\n      }\n    },\n    \"ae2:orange_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"basic ME glass cable, no channel limit\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass cables use fluix glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest AE2 cable tier\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"entry-level ME cable, used everywhere\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange glass ME cable\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange translucent glass appearance\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network signal routing\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafted from fluix glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"basic ME network connection\", \"cheapest cable tier\", \"color-coded aesthetics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass cable is entry-level AE2 cable\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:glass_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries ME signals and AE2 power\"\n        }\n      }\n    },\n    \"ae2:orange_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies color and glow to AE2 components\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"paint ball is dye-based applicator\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common dye + AE2 materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when color-coding ME cable runs\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"explicitly a colored paint ball item\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange + lumen emissive property\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic color-coding of AE2 builds\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafted only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"color AE2 cables/parts orange\", \"add glow effect to cables\", \"aesthetic network customization\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen ball applies color and emissive glow\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to customize AE2 network components\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "9c0b95d9-faf9-466f-a8fb-ccda401a0a5f",
+  "total_cost_usd": 0.1894251,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2738,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 11687,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2738,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11687,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2738,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2738
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1875,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0019649999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11687,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2738,
+      "webSearchRequests": 0,
+      "costUSD": 0.18746010000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "6d60dc33-113c-402a-ae34-57de1d4c1d6e"
+}

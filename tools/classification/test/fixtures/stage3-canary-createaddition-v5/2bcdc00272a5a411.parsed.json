@@ -1,0 +1,315 @@
+{
+  "items": {
+    "createaddition:biomass": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "mixed from raw organics; refined intermediate"
+        },
+        "material_family": {
+          "value": "biomass",
+          "signal": "pattern",
+          "rationale": "id/name is literally 'biomass'"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "made from many abundant plant sources"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "key biofuel chain intermediate"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "signal": "named",
+          "evidence": "c:fuels/bio tag; ingredient of bioethanol",
+          "rationale": "tagged fuel; used in power gen chain"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "derived from organic plant matter"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "organic biomass is dark brown/green"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "output of create:mixing only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:biofuel"
+          ],
+          "signal": "named",
+          "evidence": "c:fuels/bio; ingredient of bioethanol",
+          "rationale": "core biofuel chain ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Mix into bioethanol for power generation",
+            "Compact into biomass pellets",
+            "Biofuel production chain ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "from recipe output/input data"
+        }
+      }
+    },
+    "createaddition:biomass_pellet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "compressed intermediate from biomass"
+        },
+        "material_family": {
+          "value": "biomass",
+          "signal": "pattern",
+          "rationale": "id prefixed biomass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "derived from abundant plant sources"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "biofuel storage chain step"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel chain; compressed into storage block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic compressed material"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "compressed organic pellet, brown"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "made via compacting/crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:biofuel"
+          ],
+          "signal": "inferred",
+          "rationale": "biomass fuel chain step"
+        },
+        "primary_uses": {
+          "values": [
+            "Compress into biomass pallet block for storage",
+            "Biofuel chain intermediate"
+          ],
+          "signal": "inferred",
+          "rationale": "from recipe data"
+        }
+      }
+    },
+    "createaddition:biomass_pellet_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "c:storage_blocks/biomass tag",
+          "rationale": "explicitly tagged as biomass storage block"
+        },
+        "material_family": {
+          "value": "biomass",
+          "signal": "pattern",
+          "rationale": "stores biomass pellets; id prefix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "made from common biomass pellets"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when bulk-storing pellets"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "compact block storage form"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic block"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "compressed organic block, dark brown"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:biofuel"
+          ],
+          "signal": "inferred",
+          "rationale": "biomass storage in fuel chain"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact storage of biomass pellets",
+            "Decompress back into 9 pellets"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block behavior"
+        }
+      }
+    },
+    "createaddition:brass_figurine": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "no recipes or uses; decorative figurine"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "rationale": "id/name explicitly says brass"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "guess",
+          "rationale": "figurines typically uncommon collectibles"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "no functional use found in data"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "brass crafted figurine; Create aesthetic"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "brass is warm amber/golden"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative collectible display item"
+          ],
+          "signal": "guess",
+          "rationale": "no recipe or functional data"
+        }
+      }
+    },
+    "createaddition:brass_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "evidence": "c:rods/brass tag",
+          "rationale": "rod-form crafting material"
+        },
+        "material_family": {
+          "value": "brass",
+          "signal": "pattern",
+          "evidence": "c:rods/brass tag",
+          "rationale": "id and tag explicitly brass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rolled from brass ingot"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "rod stock for crafting recipes"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create Addition metallic rod"
+        },
+        "palette": {
+          "values": [
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "brass is warm amber/golden"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "made via rolling recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:mechanical_processing"
+          ],
+          "signal": "pattern",
+          "evidence": "createaddition:rolling recipe",
+          "rationale": "produced via rolling machine"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting component for Create Addition machines"
+          ],
+          "signal": "inferred",
+          "rationale": "rod material for downstream recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

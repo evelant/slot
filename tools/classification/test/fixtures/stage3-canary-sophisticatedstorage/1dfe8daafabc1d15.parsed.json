@@ -1,0 +1,325 @@
+{
+  "items": {
+    "sophisticatedstorage:basic_to_netherite_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "id ends in _tier_upgrade"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "upgrades storage to netherite tier"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "destination tier is netherite"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite crafting = expensive"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades SS container tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mod upgrade item"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite tier = dark metallic look"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shapeless recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "Skip full tier progression in one step",
+            "Upgrade basic chest to netherite tier"
+          ],
+          "signal": "inferred",
+          "rationale": "name describes full upgrade path"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "tier upgrade for SS containers"
+        }
+      }
+    },
+    "sophisticatedstorage:blasting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "tag sophisticatedstorage:upgrade",
+          "rationale": "explicitly tagged as upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-game functional upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container slot"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "adds blast processing to storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "processing automation upgrade"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "Blast-smelt items directly in storage",
+            "Auto-process ores without external furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "blasting = blast furnace in container"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "adds processing behaviour to storage"
+        }
+      }
+    },
+    "sophisticatedstorage:chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "tag c:chests",
+          "rationale": "tagged as chest storage block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "named",
+          "evidence": "tag c:chests/wooden",
+          "rationale": "wooden chest per common tag"
+        },
+        "tier": {
+          "value": "wooden",
+          "signal": "named",
+          "evidence": "tag sophisticatedstorage:base_tier_wooden_storage",
+          "rationale": "base tier wooden storage tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "early game base storage"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core storage block throughout game"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is storing items"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "%s%s name = many wood type variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "default oak/wood chest appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "primary_uses": {
+          "values": [
+            "Base SS wooden storage container",
+            "Foundation for tier and functional upgrades",
+            "Upgradeable to copper/iron/diamond/netherite"
+          ],
+          "signal": "inferred",
+          "rationale": "base SS container, upgradeble per recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "base tier SS storage container"
+        }
+      }
+    },
+    "sophisticatedstorage:compacting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "tag sophisticatedstorage:upgrade",
+          "rationale": "explicitly tagged as upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-game automation upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-compacts items in storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "automation upgrade for storage mod"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-compact items to block form",
+            "Condense nuggets→ingots→blocks in-place"
+          ],
+          "signal": "inferred",
+          "rationale": "compacting = craft down to block form"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "adds automation behaviour to storage"
+        }
+      }
+    },
+    "sophisticatedstorage:compression_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "tag sophisticatedstorage:upgrade",
+          "rationale": "explicitly tagged as upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-game capacity upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "applied once to expand capacity"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "increases container slot count/capacity"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "capacity upgrade for storage mod"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase storage container capacity",
+            "Store more item types without extra containers"
+          ],
+          "signal": "inferred",
+          "rationale": "compression = more capacity per block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "capacity upgrade for SS containers"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

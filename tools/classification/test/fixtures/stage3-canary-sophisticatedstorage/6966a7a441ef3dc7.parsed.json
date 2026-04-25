@@ -1,0 +1,291 @@
+{
+  "items": {
+    "sophisticatedstorage:storage_link": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block linking containers into a network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted network block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per storage setup"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects containers in SS network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "network connectivity tech block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "SS network blocks are dark metal"
+        },
+        "primary_uses": {
+          "values": [
+            "link storage containers to a network",
+            "enable cross-container item routing"
+          ],
+          "signal": "inferred",
+          "rationale": "name directly implies linking role"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_network"
+          ],
+          "signal": "inferred",
+          "rationale": "SS network connectivity component"
+        }
+      }
+    },
+    "sophisticatedstorage:storage_output": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "block auto-pushing items from network"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted automation block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed per automation output point"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-pushes items out of storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "automation output block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "SS output blocks are dark metal"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "outputs items from storage to world"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-output items from storage network",
+            "feed items into adjacent inventories"
+          ],
+          "signal": "inferred",
+          "rationale": "name = output items from storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_network"
+          ],
+          "signal": "inferred",
+          "rationale": "network automation output block"
+        }
+      }
+    },
+    "sophisticatedstorage:storage_tool": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld management tool, not a block"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "has recipe, no loot source"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted utility tool"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when configuring storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "manages and configures storage blocks"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "tech management wand aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "configure and manage storage blocks",
+            "rename containers and network nodes",
+            "interact with SS storage network"
+          ],
+          "signal": "inferred",
+          "rationale": "storage config/management tool"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_network"
+          ],
+          "signal": "inferred",
+          "rationale": "tool for SS network management"
+        }
+      }
+    },
+    "sophisticatedstorage:super_packing_tape": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "consumable utility for relocating storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "has recipe, no loot source"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "super/advanced packing tape variant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when relocating storage setups"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "moves storage containers with contents"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "super = enhanced variant of packing tape"
+        },
+        "primary_uses": {
+          "values": [
+            "move storage blocks keeping contents intact",
+            "relocate entire storage setups safely"
+          ],
+          "signal": "inferred",
+          "rationale": "super packing tape = move containers"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "inferred",
+          "rationale": "works on SS storage containers"
+        }
+      }
+    },
+    "sophisticatedstorage:survival_infinity_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "evidence": "tag sophisticatedstorage:upgrade",
+          "rationale": "explicitly tagged as SS upgrade"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "infinity capability = expensive craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per container slot"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container storage behavior"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "high-end infinity capability upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "unlimited storage for one item type",
+            "remove stack count limits in survival"
+          ],
+          "signal": "inferred",
+          "rationale": "survival infinity = unlimited one item"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "functional behavior upgrade for containers"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

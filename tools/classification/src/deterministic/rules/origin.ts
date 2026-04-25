@@ -129,6 +129,12 @@ export const originRule: Rule = {
     // `blocks/<self_id>` (the block dropping itself when broken), the item
     // is crafted/placed rather than naturally generated. Emit `crafted_only`
     // unless we have a more specific signal.
+    //
+    // Guard against the AE2-canary failure: a self-drop block with NO recipe
+    // (`out_degree === 0`) isn't actually crafted. It's either world-gen
+    // (e.g. AE2 quartz_cluster, mysterious_cube — meteor-spawned) or a
+    // creative-only debug item (debug_*_gen, creative_energy_cell). We have
+    // no positive signal for either, so omit `origin` and let stage 3 decide.
     const onlySelfDrop =
       sources.length > 0 &&
       sources.every((tableId) => {
@@ -136,8 +142,11 @@ export const originRule: Rule = {
         const path = colon >= 0 ? tableId.slice(colon + 1) : tableId;
         return selfPaths.has(path);
       });
-    if (onlySelfDrop && !MATCHES_KNOWN_ORIGIN(sources, record.namespace)) {
+    const hasRecipe = (record.recipe_role?.out_degree ?? 0) > 0;
+    if (onlySelfDrop && hasRecipe && !MATCHES_KNOWN_ORIGIN(sources, record.namespace)) {
       origins.add("crafted_only");
+    } else if (onlySelfDrop && !hasRecipe && !MATCHES_KNOWN_ORIGIN(sources, record.namespace)) {
+      // self-drops, no recipe, no recognized matcher — stage 3 will handle it.
     } else {
       for (const tableId of sources) {
         const colon = tableId.indexOf(":");

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 150525,
+  "duration_api_ms": 151327,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"ae2:purple_smart_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable routes channels/signals across network\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables built on glass-core covered cable\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-game AE2 crafted network component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone cable used throughout large AE2 builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network channel-routing backbone\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"explicitly purple-colored technical cable\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"named\",\n          \"evidence\": \"Purple ME Dense Smart Cable\",\n          \"rationale\": \"display_name states Purple\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; crafting_shaped only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"named\",\n          \"evidence\": \"ae2:smart_dense_cable\",\n          \"rationale\": \"tag explicitly classifies as smart dense cable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"high-throughput 32-channel network backbone\",\n            \"connect ME network nodes\",\n            \"p2p tunnel attunement target\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense = 32 ch; p2p tag; used in quantum_ring recipe\"\n        }\n      }\n    },\n    \"ae2:quantum_entangled_singularity\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed/placed to activate quantum bridge\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ae2:transform process; expensive late-game resource\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one-time use per quantum bridge pair\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables cross-dimension ME network linking\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quantum entanglement theme; exotic transform origin\"\n        },\n        \"palette\": {\n          \"values\": [\"iridescent\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 singularity items emit energy glow\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced only via ae2:transform; no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"activates quantum network bridge\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"activate ME quantum network bridge\",\n            \"link ME networks across dimensions\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in quantum link chambers as paired keys\"\n        }\n      }\n    },\n    \"ae2:quantum_link\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active multiblock controller with network behavior\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"late-game AE2 multiblock; costly recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one per bridge; built once, stays in place\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"forms cross-dimension ME network link\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quantum-themed AE2 technology block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 advanced blocks: dark casing, active glow\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quantum bridge is ME network long-range component\"\n        },\n        \"multiblock_component_of\": {\n          \"values\": [\"ae2:quantum_network_bridge\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"center piece of 3x3 quantum bridge structure\"\n        },\n        \"multiblock_role\": {\n          \"value\": \"controller\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"center/active controller of quantum bridge\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"controller of ME quantum network bridge\",\n            \"holds quantum entangled singularity\",\n            \"link distant or cross-dimension ME networks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quantum link is the core active block of bridge\"\n        }\n      }\n    },\n    \"ae2:quantum_ring\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active multiblock frame piece for quantum bridge\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"late-game AE2; 8 needed per quantum bridge\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"8 per bridge setup; placed once\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"forms quantum network bridge structure\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ringed technical AE2 structure component\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 dark metallic casing with ring glow\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"part of quantum network bridge\"\n        },\n        \"multiblock_component_of\": {\n          \"values\": [\"ae2:quantum_network_bridge\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"8 ring pieces surround quantum link chamber\"\n        },\n        \"multiblock_role\": {\n          \"value\": \"wall\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"8 surrounding frame pieces of 3x3 multiblock\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"form ME quantum network bridge (×8)\",\n            \"long-distance ME network connection\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"surrounds quantum link to complete bridge\"\n        }\n      }\n    },\n    \"ae2:quartz_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"produces stairs/slabs/walls; primarily structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz farmable from AE2 geode clusters\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in AE2 base decoration; not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produces stairs/slabs/walls; decorative AE2 block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural crystal block, clean unadorned appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is pale blue-white crystalline\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compact certus quartz storage\",\n            \"craft decorative stairs/slabs/walls\",\n            \"transform to damaged budding quartz\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"c:storage_blocks + many building recipes + transform\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:quartz_block\",\n      \"facet\": \"material_family\",\n      \"current\": \"quartz\",\n      \"suggested\": \"certus_quartz\",\n      \"rationale\": \"Display name 'Certus Quartz Block'; in ae2 namespace all bare 'quartz' ids refer to certus, not vanilla quartz\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a8cb92a5-866a-4d67-8c5a-5217d0d19528",
+  "total_cost_usd": 0.1756153,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 9751,
+    "output_tokens": 11331,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11331,
+        "cache_read_input_tokens": 9751,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2626,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0027159999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11331,
+      "cacheReadInputTokens": 9751,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.1728993,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "344e426d-72c3-4b09-8911-435096dcc33f"
+}

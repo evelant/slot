@@ -1,0 +1,337 @@
+{
+  "items": {
+    "ae2:pattern_encoding_terminal": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active GUI terminal part, AE2 network UI"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used to encode autocrafting patterns"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "pattern encoding → autocrafting subsystem"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafting recipe only"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 progression materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during setup, not repeatedly"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech terminal aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 terminals have dark metal look"
+        },
+        "primary_uses": {
+          "values": [
+            "encode autocrafting patterns",
+            "manage ME autocrafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "core purpose of terminal"
+        }
+      }
+    },
+    "ae2:pattern_provider": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "pushes patterns to machines, active block"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "distributes autocrafting jobs to machines"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "pattern",
+          "rationale": "pattern provider drives autocrafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 progression to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed per autocrafting machine setup"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 machine block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 blocks are dark metal toned"
+        },
+        "primary_uses": {
+          "values": [
+            "push crafting patterns to machines",
+            "interface autocrafting with external machines"
+          ],
+          "signal": "inferred",
+          "rationale": "core pattern provider function"
+        }
+      }
+    },
+    "ae2:pink_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 network cable carries signal channels"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects AE2 network devices"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "cable = me_network backbone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafting recipe only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic AE2 infrastructure item"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout any AE2 build"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "pink dye variant of covered cable"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a light pastel dye tone"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry network channels"
+        },
+        "primary_uses": {
+          "values": [
+            "connect AE2 network components",
+            "carry up to 8 network channels"
+          ],
+          "signal": "inferred",
+          "rationale": "covered cable standard function"
+        }
+      }
+    },
+    "ae2:pink_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 dense cable, 32-channel capacity"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "high-capacity AE2 trunk connection"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "dense cable = network backbone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafting only"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "dense cable requires more resources"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "main trunk cable in large AE2 builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "pink dye variant of dense cable"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a light pastel dye tone"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries up to 32 network channels"
+        },
+        "primary_uses": {
+          "values": [
+            "high-bandwidth AE2 trunk line",
+            "carry 32 network channels"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable function"
+        }
+      }
+    },
+    "ae2:pink_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 glass cable, basic network connector"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "connects AE2 network devices"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "glass cable = network backbone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafting only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheapest AE2 cable type"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout AE2 builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "pink dye variant of glass cable"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "pink + glass casing is translucent"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 cables carry network signal"
+        },
+        "primary_uses": {
+          "values": [
+            "connect AE2 network components",
+            "cheapest AE2 cable variant"
+          ],
+          "signal": "inferred",
+          "rationale": "glass cable standard function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

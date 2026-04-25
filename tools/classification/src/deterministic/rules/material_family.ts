@@ -88,6 +88,23 @@ const TOOL_ARMOR_MATERIAL_PREFIX: Record<string, string> = {
   turtle: "scute", // turtle_helmet
 };
 
+/**
+ * Per-namespace prefix overrides. Checked BEFORE the generic
+ * `ID_PREFIX_TO_FAMILY` table so mod-specific naming conventions win over
+ * the vanilla defaults.
+ *
+ * AE2 canary surfaced this: in the `ae2:` namespace the bare token "quartz"
+ * refers to **certus quartz** (display names confirm: "Certus Quartz Block",
+ * "Smooth Certus Quartz Stairs"), not vanilla nether quartz.
+ */
+const NAMESPACE_PREFIX_OVERRIDES: Record<string, Array<[prefix: string, family: string]>> = {
+  ae2: [
+    ["quartz_", "certus_quartz"],
+    ["chiseled_quartz_", "certus_quartz"],
+    ["smooth_quartz_", "certus_quartz"],
+  ],
+};
+
 /** Id prefix → family. Checked last; wins only when no tag matched. */
 const ID_PREFIX_TO_FAMILY: Array<[prefix: string, family: string]> = [
   ["oak_", "wood_oak"],
@@ -290,6 +307,24 @@ export const materialFamilyRule: Rule = {
             rationale: `${prefix}${suffix}`,
           },
         ];
+      }
+    }
+
+    const nsOverrides = NAMESPACE_PREFIX_OVERRIDES[record.namespace];
+    if (nsOverrides) {
+      for (const [prefix, family] of nsOverrides) {
+        if (record.path.startsWith(prefix)) {
+          return [
+            {
+              facet: "material_family",
+              kind: "single",
+              value: family,
+              source: "rule:material_family_from_id",
+              confidence: 1,
+              rationale: `${record.namespace} ns override on prefix ${prefix}`,
+            },
+          ];
+        }
       }
     }
 

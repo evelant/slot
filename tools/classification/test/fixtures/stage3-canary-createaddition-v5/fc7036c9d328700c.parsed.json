@@ -1,0 +1,335 @@
+{
+  "items": {
+    "createaddition:gold_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed gold rod, crafting input"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "c:rods/gold tag"
+        },
+        "tier": {
+          "value": "golden",
+          "signal": "inferred",
+          "rationale": "derived from golden tool-tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rolled from farmable gold ingot"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche electrical mod component"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in electrical connectors"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial rod"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "rolling recipe from gold ingot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in large_connector"
+        }
+      }
+    },
+    "createaddition:gold_spool": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "run power wire between connectors"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id prefix gold_, made from gold wire"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common gold wire"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed when wiring power network"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "lays electrical wire connections"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial wire spool"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold wire spool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "used to run energy wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "createaddition:spools tag = power wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "connect electrical power connectors"
+          ],
+          "signal": "inferred",
+          "rationale": "spool consumed to lay wire"
+        }
+      }
+    },
+    "createaddition:gold_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "wire form of gold, intermediate"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "c:wires/gold tag"
+        },
+        "tier": {
+          "value": "golden",
+          "signal": "inferred",
+          "rationale": "derived from golden tool-tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rolled from gold plate"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used to craft gold spools"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component in power wiring system"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial wire material"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold wire"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "rolling recipe from gold plate"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "wire = power conductor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:power_transmission"
+          ],
+          "signal": "inferred",
+          "rationale": "c:wires tag + modular accumulator use"
+        }
+      }
+    },
+    "createaddition:honey_cake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "c:foods + edible_when_placed tags"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Create filling process + honey required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "non-trivial to craft"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "food for sustenance"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "honey=natural, cake=fancy food"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "honey color = amber/warm tones"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "create:filling recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "place and eat for food like vanilla cake",
+            "honey-flavored cake variant"
+          ],
+          "signal": "inferred",
+          "rationale": "food block"
+        }
+      }
+    },
+    "createaddition:iron_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed iron rod, intermediate"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "c:rods/iron tag"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron = vanilla iron tool tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rolled from common iron ingot"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific electrical machines"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "component in alternator + electric_motor"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial rod component"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "iron material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "rolling recipe from iron ingot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy_conversion"
+          ],
+          "signal": "inferred",
+          "rationale": "used in alternator and electric_motor"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

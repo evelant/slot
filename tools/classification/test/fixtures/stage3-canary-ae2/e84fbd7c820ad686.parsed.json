@@ -1,0 +1,291 @@
+{
+  "items": {
+    "ae2:chiseled_quartz_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of decorative quartz block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs AE2 certus quartz progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative build use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form implies build/decor use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "pattern",
+          "rationale": "chiseled = fancy cut variant of base"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is white/crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative slab construction",
+            "AE2-themed building"
+          ],
+          "signal": "inferred",
+          "rationale": "form + material = structural deco"
+        }
+      }
+    },
+    "ae2:chiseled_quartz_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form of decorative quartz block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs AE2 certus quartz progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative build use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form implies build/decor use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "pattern",
+          "rationale": "chiseled = fancy cut variant of base"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is white/crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative stair construction",
+            "AE2-themed building"
+          ],
+          "signal": "inferred",
+          "rationale": "form + material = structural deco"
+        }
+      }
+    },
+    "ae2:chiseled_quartz_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form of decorative quartz block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs AE2 certus quartz progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative build use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form implies build/decor use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "pattern",
+          "rationale": "chiseled = fancy cut variant of base"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is white/crystalline"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall construction",
+            "AE2-themed building"
+          ],
+          "signal": "inferred",
+          "rationale": "form + material = structural deco"
+        }
+      }
+    },
+    "ae2:color_applicator": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "evidence": "ae2:tools/network_color_applicator",
+          "rationale": "recipe path under ae2:tools namespace"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "standard AE2 tool uses iron casing"
+        },
+        "material_secondary": {
+          "values": [
+            "certus_quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tools typically embed certus quartz"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 crafting progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during network setup, not daily"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network cables for organization"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network tool, mechanical aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "typical AE2 tool metal palette"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "applies colors to ME network cables"
+        },
+        "primary_uses": {
+          "values": [
+            "apply colors to AE2 cables",
+            "organize network by color coding"
+          ],
+          "signal": "inferred",
+          "rationale": "name + network tool path confirms use"
+        }
+      }
+    },
+    "ae2:condenser": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "processes items into matter/singularities"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "standard AE2 machine material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 crafting progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set-and-forget overflow/singularity machine"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "condenses overflow, produces singularities"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial AE2 processing machine"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "typical AE2 machine metal palette"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "evidence": "ae2:network/blocks/io_condenser",
+          "rationale": "recipe path: ae2:network/blocks/io_condenser"
+        },
+        "primary_uses": {
+          "values": [
+            "convert items to matter balls",
+            "produce quantum singularities",
+            "void storage overflow"
+          ],
+          "signal": "inferred",
+          "rationale": "Matter Condenser core AE2 function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

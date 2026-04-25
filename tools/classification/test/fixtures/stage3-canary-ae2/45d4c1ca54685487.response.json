@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 99272,
+  "duration_api_ms": 100004,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:quartz_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form is structural, not purely decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 certus quartz progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche AE2 building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab used for half-block construction and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shape variant of quartz bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is light blue-white crystalline\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building certus quartz structures\", \"decorating AE2 bases\", \"half-block height transitions\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab uses\"\n        }\n      }\n    },\n    \"ae2:quartz_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form is structural\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 certus quartz progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche AE2 building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for roofing, transitions, decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shape variant of quartz bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is light blue-white crystalline\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building certus quartz structures\", \"decorating AE2 bases\", \"roof and stairway detailing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stairs uses\"\n        }\n      }\n    },\n    \"ae2:quartz_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form is structural fence/border element\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 certus quartz progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche AE2 building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall for borders and perimeter decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shape variant of quartz bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is light blue-white crystalline\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building certus quartz structures\", \"decorating AE2 bases\", \"wall borders and barriers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wall uses\"\n        }\n      }\n    },\n    \"ae2:quartz_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick block is a structural dressed-stone form\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 certus quartz progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche AE2 building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bricks for AE2 base construction and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dressed brick finish on raw certus quartz\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz is light blue-white crystalline\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building certus quartz structures\", \"decorating AE2 bases\", \"crafting slab/stair/wall variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base block for all quartz brick shapes\"\n        }\n      }\n    },\n    \"ae2:quartz_cluster\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"silk-touch cluster block placed as crystal decor\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires silk touch at meteorite budding quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"kept as decoration after silk-touch harvest\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed purely as crystal display\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organically grown crystal cluster\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus clusters emit faint blue-white glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus quartz clusters have subtle emissive glow\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"silk-touch crystal decor in AE2 builds\", \"aesthetic display of certus growth\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cluster kept for visual effect\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:quartz_cluster\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\"],\n      \"rationale\": \"clusters grow on budding quartz in AE2 meteorite crash sites; no crafting recipe exists\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "16d660b2-3683-44fe-bbc2-1732ff31cc11",
+  "total_cost_usd": 0.1115234,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 10438,
+    "output_tokens": 7000,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7000,
+        "cache_read_input_tokens": 10438,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3313,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003383,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7000,
+      "cacheReadInputTokens": 10438,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.1081404,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a79bd298-6ae8-4970-968c-98689c2b2d13"
+}

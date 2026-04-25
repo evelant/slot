@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 107162,
+  "duration_api_ms": 107904,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:fluix_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stair form = structural block\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix requires crystal processing chain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche AE2 aesthetic build choice\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs used for structure and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stair variant of base fluix block\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix is purple crystalline material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"AE2-aesthetic staircase building\", \"fluix block stair variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative stair for AE2 builds\"\n        }\n      }\n    },\n    \"ae2:fluix_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:swords\",\n          \"rationale\": \"explicitly tagged as sword\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix\"\n        },\n        \"tier\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 mod-specific progression tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires fluix + smithing template\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 players rarely focus on combat\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"sword tag = combat use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sword form, no special aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix is purple crystalline material\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is smithing_transform recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"melee combat\", \"fluix-tier sword weapon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sword for direct combat use\"\n        }\n      }\n    },\n    \"ae2:fluix_upgrade_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"smithing template unlocks tool upgrades\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from fluix materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one-time use per tool, small set\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"mining\", \"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream tools used across these activities\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech-mod upgrade component\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix purple aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is shapeless crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smithing template for fluix tools\", \"enables fluix axe/hoe/pickaxe/shovel/sword\"],\n          \"signal\": \"named\",\n          \"evidence\": \"sample_ingredient_of lists all five fluix tools\",\n          \"rationale\": \"consumed in smithing to produce fluix tools\"\n        }\n      }\n    },\n    \"ae2:fluix_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:walls\",\n          \"rationale\": \"wall tag = structural building block\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix requires crystal processing chain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche AE2 aesthetic build choice\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"walls used for structure and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wall variant of base fluix block\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix is purple crystalline material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"AE2-aesthetic wall building\", \"fluix block wall variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative wall for AE2 builds\"\n        }\n      }\n    },\n    \"ae2:formation_core\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed ingredient for AE2 network parts\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 fluix-derived core component\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires fluix crystal crafting chain\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 10+ essential AE2 components\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"evidence\": \"sample_ingredient_of: export_bus, interfaces, terminals, molecular_assembler\",\n          \"rationale\": \"downstream parts span network automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech-mod crafting core\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluix purple crystalline, emissive glow\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"only source is shaped crafting recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:autocrafting\", \"ae2:external_io\"],\n          \"signal\": \"inferred\",\n          \"evidence\": \"terminals/interfaces → me_network; molecular_assembler/pattern_providers → autocrafting; export_bus/formation_plane → external_io\",\n          \"rationale\": \"ingredient spans three AE2 subsystems\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting AE2 network components\",\n            \"key ingredient for buses and interfaces\",\n            \"used in molecular assembler and terminals\"\n          ],\n          \"signal\": \"named\",\n          \"evidence\": \"sample_ingredient_of lists interfaces, export_bus, molecular_assembler, terminals\",\n          \"rationale\": \"core AE2 mid-tier crafting material\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "23fa73a7-ee00-4f9f-a352-64e9fc5a74c5",
+  "total_cost_usd": 0.1561221,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3390,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 9260,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3390,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9260,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3390,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3390
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2527,
+      "outputTokens": 19,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002622,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9260,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3390,
+      "webSearchRequests": 0,
+      "costUSD": 0.1535001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4ceb0099-040f-4f53-a6af-06137f603838"
+}

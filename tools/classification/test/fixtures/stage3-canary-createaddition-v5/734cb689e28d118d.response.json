@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 145196,
+  "duration_api_ms": 145932,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"createaddition:iron_wire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"processed intermediate from rolling\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag c:wires/iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron-based, produced from plates\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ingredient for CA wire builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in power transmission components\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial wire material\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron wire, dark metallic look\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced via CA rolling recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:power_transmission\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wire material for power networks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting electrical connectors\", \"crafting barbed wire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in connectors and barbed wire\"\n        }\n      }\n    },\n    \"createaddition:large_connector\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"connector block for power networks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common CA materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed at each machine connection point\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connects power between machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial electrical connector\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron-based connector block\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:power_transmission\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-capacity wire connector block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"attaching wires to machines\", \"high-capacity power node\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"large variant, higher amperage\"\n        }\n      }\n    },\n    \"createaddition:liquid_blaze_burner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heat source accepting liquid fuel\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires blaze-sourced components\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heat source for Create processing chains\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powers Create heating recipes\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blaze burner with straw attachment\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blaze fire themed, light-emitting\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blaze burner emits fire/light\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:biofuel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"accepts liquid fuel via straw\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"liquid-fuel heat source for Create\", \"heating automation chains\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blaze burner variant for liquid fuels\"\n        }\n      }\n    },\n    \"createaddition:modular_accumulator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy storage block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires CA-specific crafting materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"central buffer in power setups\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores and buffers electrical energy\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modular industrial energy storage\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron machine block aesthetic\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores and outputs FE energy\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"modular energy accumulator block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"storing electrical energy\", \"buffering power supply\", \"expandable energy bank\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named accumulator = energy storage\"\n        }\n      }\n    },\n    \"createaddition:portable_energy_interface\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy transfer interface block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted, needs CA-specific components\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used wherever contraption energy needed\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powers moving Create contraptions\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial energy interface block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron machine block aesthetic\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transfers FE to/from contraptions\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\", \"createaddition:energy_conversion\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"energy interface for Create contraptions\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"transfer energy to moving contraptions\", \"portable energy access point\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable interface for contraption power\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "eeb499bb-0b6b-45a9-8359-7d5060793139",
+  "total_cost_usd": 0.20676835,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3219,
+    "cache_read_input_tokens": 6207,
+    "output_tokens": 12693,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3219,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12693,
+        "cache_read_input_tokens": 6207,
+        "cache_creation_input_tokens": 3219,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3219
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2356,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002431,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12693,
+      "cacheReadInputTokens": 6207,
+      "cacheCreationInputTokens": 3219,
+      "webSearchRequests": 0,
+      "costUSD": 0.20433735,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b2f65b63-c870-4e7c-8f04-7251f5ca0cc1"
+}

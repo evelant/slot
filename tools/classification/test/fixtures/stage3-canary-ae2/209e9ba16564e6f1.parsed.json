@@ -1,0 +1,349 @@
+{
+  "items": {
+    "ae2:cyan_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "AE2 coloring agent for network parts"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "acts as colorant for AE2 components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from dye + AE2 materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively to color network parts"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network cables/parts"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "cyan variant in ae2:paint_balls tag"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan maps to teal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, crafted only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME cables and bus parts"
+        },
+        "primary_uses": {
+          "values": [
+            "throw to recolor ME cables/parts",
+            "craft lumen paint ball variant"
+          ],
+          "signal": "inferred",
+          "rationale": "thrown to color; crafts lumen variant"
+        }
+      }
+    },
+    "ae2:cyan_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active cable, shows channel usage"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "AE2 cables built from fluix wire coil"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "standard craftable ME network component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed throughout ME network builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "ME channel backbone, p2p capable"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan colored functional network cable"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan maps to teal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tagged ae2:smart_cable, p2p_tunnel"
+        },
+        "primary_uses": {
+          "values": [
+            "connect ME network nodes",
+            "carry up to 8 channels",
+            "visualize channel usage"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable core AE2 function"
+        }
+      }
+    },
+    "ae2:cyan_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "high-capacity 32-channel active cable"
+        },
+        "material_family": {
+          "value": "fluix",
+          "signal": "inferred",
+          "rationale": "dense cables use fluix materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable backbone cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "main backbone in large AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "dense ME backbone, p2p capable"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan colored dense mechanical cable"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan maps to teal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tagged smart_dense_cable + quantum_ring"
+        },
+        "primary_uses": {
+          "values": [
+            "carry up to 32 ME channels",
+            "high-bandwidth network backbone",
+            "quantum ring crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable core functions in AE2"
+        }
+      }
+    },
+    "ae2:damaged_budding_quartz": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "geode block, grows certus crystals"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id/name explicitly certus quartz"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "AE2 geodes present but not trivial"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for crystal farming setup"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "grows certus crystals for AE2 use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "geological geode block"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz pale blue-white crystal"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 certus geodes in caves"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "source of AE2's primary crystal"
+        },
+        "primary_uses": {
+          "values": [
+            "passively grow certus quartz clusters",
+            "AE2 crystal farming",
+            "upgrade to chipped via water transform"
+          ],
+          "signal": "inferred",
+          "rationale": "budding quartz core AE2 purposes"
+        }
+      }
+    },
+    "ae2:dark_monitor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for terminals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, common AE2 build ingredient"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ingredient in 5 terminal/monitor recipes"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "builds ME network terminals/monitors"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "dark variant of illuminated panel"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark colored panel, matte finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, crafted only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used in monitors/terminals/tool"
+        },
+        "primary_uses": {
+          "values": [
+            "craft ME storage monitors",
+            "craft ME terminals",
+            "craft pattern access terminals",
+            "craft network tool"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in 5 AE2 recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

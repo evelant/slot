@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 121888,
+  "duration_api_ms": 122813,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:cable_pattern_provider\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"routes crafting patterns to adjacent machines\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 mid-game progression\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core autocrafting block, placed repeatedly\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"distributes patterns for ME autocrafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark casing with AE2 cable accent\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; pure crafting recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pattern provider is core autocrafting block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Route crafting patterns to adjacent machines\",\n            \"Enable ME network autocrafting jobs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pattern provider canonical function\"\n        }\n      }\n    },\n    \"ae2:calculation_processor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate AE2 crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"silicon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 processors are silicon-based\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable via inscriber once press obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed in 18+ AE2 recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream use in AE2 network devices\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 processor chip aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 processor dark+teal color scheme\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced only via ae2:inscriber recipe\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\", \"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"made in inscriber, used across AE2 network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft AE2 storage cells\",\n            \"Craft AE2 upgrade cards\",\n            \"Core AE2 processor ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dominant ingredient across AE2 tech tree\"\n        }\n      }\n    },\n    \"ae2:calculation_processor_press\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"reusable die/stamp used in AE2 inscriber\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in meteorite chests; one per world\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once in inscriber, rarely moved\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"meteorite-found ancient tech artifact\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark metallic press stamp\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in AE2 meteorite chest loot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:processing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:inscriber_presses links to inscriber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Stamp calculation processors in inscriber\",\n            \"Component of mysterious cube recipe\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inscriber press canonical function\"\n        }\n      }\n    },\n    \"ae2:capacity_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"card installed in AE2 device to expand capacity\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable with basic AE2 materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once per device slot\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"expands AE2 device filter/capacity slots\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 upgrade card form factor\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cards use gold-on-dark scheme\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; shapeless crafting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades AE2 network device slots\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Increase AE2 device filter slot count\",\n            \"Expand AE2 machine storage capacity\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"capacity card standard AE2 function\"\n        }\n      }\n    },\n    \"ae2:cell_component_16k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for cells and CPUs\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable; needed in quantity\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed in 8 downstream recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: storage cells and crafting CPUs\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 storage component aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cell components teal+dark scheme\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; shaped crafting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in storage cells and crafting CPU storage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft 16k ME item/fluid storage cells\",\n            \"Craft 64k cell component\",\n            \"Build crafting CPU storage blocks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in 8 storage-related recipes\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "e9f97e86-cc8c-48c2-9097-a1c32eacc234",
+  "total_cost_usd": 0.14357985,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3179,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 8491,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3179,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8491,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3179,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3179
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2316,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0024059999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8491,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3179,
+      "webSearchRequests": 0,
+      "costUSD": 0.14117385000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1ae70cf2-dfca-4d2c-8395-800cb8670c04"
+}

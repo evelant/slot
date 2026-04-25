@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 86644,
+  "duration_api_ms": 87458,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"sophisticatedstorage:iron_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"named\",\n          \"evidence\": \"c:chests + sophisticatedstorage:all_storage\",\n          \"rationale\": \"chest tag; primary function is item storage\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix iron_chest\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron is a farmable staple\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores and organizes items\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional iron container, no ornament\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron material, dark metallic finish\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS storage block tier\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"store items at iron-tier capacity\",\n            \"upgrade to gold/diamond/netherite chest\",\n            \"convert to iron shulker box\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipes and SS mod convention\"\n        }\n      }\n    },\n    \"sophisticatedstorage:iron_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker box carries items portably\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix iron_shulker_box\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron tier in SS progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs shulker shell; requires End\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable storage used often\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable; useful in exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional iron container\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron material coloring\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS storage block tier\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable iron-tier item storage\",\n            \"upgrade to gold shulker box\",\n            \"carry inventory between locations\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipes and shulker behavior\"\n        }\n      }\n    },\n    \"sophisticatedstorage:iron_to_diamond_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix tier_upgrade; upgrades storage\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"source tier from id prefix\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"diamond\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"target tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond cost; moderately expensive\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed once per chest upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage tier\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"upgrade iron storage to diamond tier\",\n            \"ingredient for netherite tier upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipes\"\n        }\n      }\n    },\n    \"sophisticatedstorage:iron_to_gold_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix tier_upgrade; upgrades storage\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"source tier from id prefix\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"target tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold is farmable mid-game\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed once per chest upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage tier\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"upgrade iron storage to gold tier\",\n            \"ingredient for diamond tier upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipes\"\n        }\n      }\n    },\n    \"sophisticatedstorage:iron_to_netherite_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix tier_upgrade; upgrades storage\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"source tier from id prefix\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"netherite\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"target tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite is endgame and very rare\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"endgame upgrade; used sparingly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades storage tier\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"SS tier upgrade subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"upgrade iron storage to netherite tier\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"display name and mod convention\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "705a3485-7868-4c02-9397-d8de745673d4",
+  "total_cost_usd": 0.1402408,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3776,
+    "cache_read_input_tokens": 6346,
+    "output_tokens": 8079,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3776,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8079,
+        "cache_read_input_tokens": 6346,
+        "cache_creation_input_tokens": 3776,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3776
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2913,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002983,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8079,
+      "cacheReadInputTokens": 6346,
+      "cacheCreationInputTokens": 3776,
+      "webSearchRequests": 0,
+      "costUSD": 0.13725779999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "26397ca5-7ec5-4ee0-9a02-f7e15f3255a4"
+}

@@ -1,0 +1,378 @@
+{
+  "items": {
+    "ae2:lime_covered_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 dense network channel cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass base of AE2 cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic AE2 materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "backbone of large AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "forms ME network backbone"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "lime-colored network infrastructure"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "pattern",
+          "rationale": "lime = bright green"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels and power"
+        },
+        "primary_uses": {
+          "values": [
+            "Dense ME network backbone (32 ch)",
+            "Connect ME devices over distance",
+            "High-throughput channel routing"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable = max channel capacity"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "AE2 covered_dense_cable tag"
+        }
+      }
+    },
+    "ae2:lime_glass_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 basic glass network cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "glass_cable tag + display name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic AE2 cable, widely crafted"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "fundamental ME network component"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "forms ME network connections"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "lime-colored glass cable"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "lime glass = green translucent"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels and power"
+        },
+        "primary_uses": {
+          "values": [
+            "Basic ME network cable (8 ch)",
+            "Connect ME devices cheaply",
+            "Entry-level AE2 wiring"
+          ],
+          "signal": "inferred",
+          "rationale": "glass = lowest AE2 cable tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "AE2 glass_cable tag"
+        }
+      }
+    },
+    "ae2:lime_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "colors+adds glow to AE2 cables"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "functions as coloring agent"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from paint ball + materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per cable recolor"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic cable coloring"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "lime lumen paint variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = luminescent green glow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "Color AE2 cables lime with glow",
+            "Luminescent cable decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = glowing paint ball variant"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used to recolor AE2 cables"
+        }
+      }
+    },
+    "ae2:lime_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "colors AE2 cables lime"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "functions as coloring agent"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per cable recolor"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic cable coloring"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "lime paint_balls tag"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "pattern",
+          "rationale": "lime = bright green"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "Color AE2 cables lime",
+            "Ingredient for lumen paint ball",
+            "Cable aesthetic customization"
+          ],
+          "signal": "inferred",
+          "rationale": "paint ball + ingredient_of lumen"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used to recolor AE2 cables"
+        }
+      }
+    },
+    "ae2:lime_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "AE2 smart network cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass base of AE2 cables"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted AE2 network component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network infrastructure"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "lime smart cable with LED display"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "lime color + LED channel indicators"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "no loot sources; shaped recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels and power"
+        },
+        "primary_uses": {
+          "values": [
+            "ME cable with live channel display",
+            "Visualize channel load per face",
+            "Connect ME devices with status LEDs"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cables show live channel load"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "AE2 smart_cable tag"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

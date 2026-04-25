@@ -1,0 +1,397 @@
+{
+  "items": {
+    "ae2:gray_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "throwable; applies glowing color to AE2 parts"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "color dye is defining functional material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one-shot per part coloring"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cosmetic coloring of ME network parts"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = glowing upgrade of plain paintball"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "gray tone with lumen glow effect"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafted recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "applies color to ME network components"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint ME parts gray with glow effect"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen variant adds glowing finish"
+        }
+      }
+    },
+    "ae2:gray_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "throwable; applies gray color to AE2 parts"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "inferred",
+          "rationale": "dye color is defining property"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common dye materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one-shot per cable/part coloring"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cosmetic coloring of ME network parts"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "exists to apply a specific color"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray is muted/desaturated tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe output; no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network components"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint ME parts gray",
+            "Ingredient for gray lumen paint ball"
+          ],
+          "signal": "inferred",
+          "rationale": "direct use + lumen upgrade path"
+        }
+      }
+    },
+    "ae2:gray_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "ME channel-carrying network cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass is primary structural material"
+        },
+        "material_secondary": {
+          "values": [
+            "fluix"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix crystal enables channel logic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mass-produced network staple"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed extensively in every ME network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "forms AE2 automation network backbone"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "tech cable in 16-color variant set"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted; no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_cable + ae2:p2p_attunements/me_p2p_tunnel",
+          "rationale": "core ME network smart cable"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries channels (signal) + AE power"
+        },
+        "primary_uses": {
+          "values": [
+            "Route ME network channels (8ch)",
+            "Shows channel load visually"
+          ],
+          "signal": "inferred",
+          "rationale": "smart variant displays channel usage"
+        }
+      }
+    },
+    "ae2:gray_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "high-capacity ME channel cable (32ch)"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass primary structural material"
+        },
+        "material_secondary": {
+          "values": [
+            "fluix"
+          ],
+          "signal": "inferred",
+          "rationale": "fluix for dense channel routing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable network trunk cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "main trunk in any large ME network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "high-density AE2 network backbone"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "tech cable in 16-color variant set"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray dense cable; visually heavier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted; no loot sources listed"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:smart_dense_cable + ae2:p2p_attunements/me_p2p_tunnel",
+          "rationale": "dense ME network trunk cable"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "32 channels + AE energy"
+        },
+        "primary_uses": {
+          "values": [
+            "High-capacity ME trunk routing (32ch)",
+            "Quantum ring crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "trunk use + quantum ring recipe"
+        }
+      }
+    },
+    "ae2:green_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "covered ME network cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass base with fabric-style cover"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic craftable network cable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard ME network routing cable"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "forms AE2 ME network backbone"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "covered cable in 16-color variant set"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "pattern",
+          "rationale": "green color variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted; no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "evidence": "tag ae2:covered_cable + ae2:p2p_attunements/me_p2p_tunnel",
+          "rationale": "ME network covered cable"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries channels and AE energy"
+        },
+        "primary_uses": {
+          "values": [
+            "Route ME network channels with cover",
+            "Aesthetic green cable variant"
+          ],
+          "signal": "inferred",
+          "rationale": "covered = aesthetic/concealed routing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_facet",
+      "name": "dye_color",
+      "suggested_kind": "enum",
+      "rationale": "AE2 paint balls and colored cables exist in all 16 dye colors; a dye_color enum (white|orange|magenta|...|black) enables exact color filtering that palette approximations cannot provide"
+    }
+  ],
+  "corrections": []
+}

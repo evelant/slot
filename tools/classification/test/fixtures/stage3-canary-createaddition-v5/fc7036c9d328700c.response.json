@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 166826,
+  "duration_api_ms": 167549,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"createaddition:gold_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed gold rod, crafting input\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:rods/gold tag\"\n        },\n        \"tier\": {\n          \"value\": \"golden\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from golden tool-tier material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled from farmable gold ingot\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche electrical mod component\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in electrical connectors\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial rod\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"rolling recipe from gold ingot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:power_transmission\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in large_connector\"\n        }\n      }\n    },\n    \"createaddition:gold_spool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"run power wire between connectors\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix gold_, made from gold wire\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common gold wire\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed when wiring power network\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lays electrical wire connections\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial wire spool\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold wire spool\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped crafting only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to run energy wire\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:power_transmission\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"createaddition:spools tag = power wiring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"connect electrical power connectors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spool consumed to lay wire\"\n        }\n      }\n    },\n    \"createaddition:gold_wire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wire form of gold, intermediate\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:wires/gold tag\"\n        },\n        \"tier\": {\n          \"value\": \"golden\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from golden tool-tier material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled from gold plate\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to craft gold spools\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"component in power wiring system\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial wire material\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold wire\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"rolling recipe from gold plate\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wire = power conductor\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:power_transmission\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"c:wires tag + modular accumulator use\"\n        }\n      }\n    },\n    \"createaddition:honey_cake\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"c:foods + edible_when_placed tags\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create filling process + honey required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-trivial to craft\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food for sustenance\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"honey=natural, cake=fancy food\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"honey color = amber/warm tones\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"create:filling recipe only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"place and eat for food like vanilla cake\", \"honey-flavored cake variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food block\"\n        }\n      }\n    },\n    \"createaddition:iron_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed iron rod, intermediate\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:rods/iron tag\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron = vanilla iron tool tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled from common iron ingot\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific electrical machines\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"component in alternator + electric_motor\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial rod component\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron material\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"rolling recipe from iron ingot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy_conversion\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in alternator and electric_motor\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "ccdbab12-7c7a-4f80-8e1d-497aa8dffec6",
+  "total_cost_usd": 0.22970160000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3106,
+    "cache_read_input_tokens": 6207,
+    "output_tokens": 14258,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3106,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14258,
+        "cache_read_input_tokens": 6207,
+        "cache_creation_input_tokens": 3106,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3106
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2243,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0023130000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14258,
+      "cacheReadInputTokens": 6207,
+      "cacheCreationInputTokens": 3106,
+      "webSearchRequests": 0,
+      "costUSD": 0.22738860000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "84992492-1601-43c2-9542-f3ea1645f756"
+}

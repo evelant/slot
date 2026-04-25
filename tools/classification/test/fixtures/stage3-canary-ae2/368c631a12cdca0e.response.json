@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 114790,
+  "duration_api_ms": 115677,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:quartz_fiber\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed AE2 component, not raw\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires certus quartz AE2 progression\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in cables and wireless\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable infrastructure\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quartz-based fiber material\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table, only crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting AE2 network cables\", \"crafting wireless network parts\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient of glass_fluix, wireless_part\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"used in cables and wireless parts\"\n        }\n      }\n    },\n    \"ae2:quartz_fixture\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged lamp fixture, primarily decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires charged certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for AE2 aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative light fixture\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged glowing AE2 fixture\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light, pale quartz coloring\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged quartz fixture emits light\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative AE2 light source\", \"aesthetic base lighting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged fixture = light + decor\"\n        }\n      }\n    },\n    \"ae2:quartz_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tagged c:glass_blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from sand and certus quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in 30+ AE2 recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable glass + AE2 machine ingredient\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple transparent quartz glass\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clear quartz glass block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting AE2 machines and cells\", \"crafting AE2 network blocks\", \"decorative glass block\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"heavily used across AE2 recipes\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient in cells, energy, spatial blocks\"\n        }\n      }\n    },\n    \"ae2:quartz_pillar\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pillar block for structural/decorative use\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires certus quartz AE2 material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative certus quartz pillar\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pillar form of certus quartz block\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale white quartz pillar\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative pillar building\", \"stonecuttable into slabs/stairs/walls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus pillar with many sub-forms\"\n        }\n      }\n    },\n    \"ae2:quartz_pillar_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form = building block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from certus quartz pillar\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative slab\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for detailed AE2 builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab variant of quartz pillar\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale certus quartz\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative half-block for detailed building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"certus pillar slab for detail work\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "d07119de-0adc-4187-95e9-50d23aa47b01",
+  "total_cost_usd": 0.15316185000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4231,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 8797,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4231,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8797,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 4231,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4231
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3368,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003453,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8797,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 4231,
+      "webSearchRequests": 0,
+      "costUSD": 0.14970885,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "594028ef-c652-4764-9436-a2327e82ce1b"
+}

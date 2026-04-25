@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 96760,
+  "duration_api_ms": 97695,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"sophisticatedstorage:basic_to_netherite_tier_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends in _tier_upgrade\"\n        },\n        \"material_family\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"upgrades storage to netherite tier\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"destination tier is netherite\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite crafting = expensive\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed once per container upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"upgrades SS container tier\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mod upgrade item\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite tier = dark metallic look\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; shapeless recipe only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Skip full tier progression in one step\",\n            \"Upgrade basic chest to netherite tier\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"name describes full upgrade path\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_tier_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tier upgrade for SS containers\"\n        }\n      }\n    },\n    \"sophisticatedstorage:blasting_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag sophisticatedstorage:upgrade\",\n          \"rationale\": \"explicitly tagged as upgrade\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-game functional upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once per container slot\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adds blast processing to storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"processing automation upgrade\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Blast-smelt items directly in storage\",\n            \"Auto-process ores without external furnace\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blasting = blast furnace in container\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"adds processing behaviour to storage\"\n        }\n      }\n    },\n    \"sophisticatedstorage:chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag c:chests\",\n          \"rationale\": \"tagged as chest storage block\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag c:chests/wooden\",\n          \"rationale\": \"wooden chest per common tag\"\n        },\n        \"tier\": {\n          \"value\": \"wooden\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag sophisticatedstorage:base_tier_wooden_storage\",\n          \"rationale\": \"base tier wooden storage tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early game base storage\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core storage block throughout game\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is storing items\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"%s%s name = many wood type variants\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"default oak/wood chest appearance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Base SS wooden storage container\",\n            \"Foundation for tier and functional upgrades\",\n            \"Upgradeable to copper/iron/diamond/netherite\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base SS container, upgradeble per recipes\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"base tier SS storage container\"\n        }\n      }\n    },\n    \"sophisticatedstorage:compacting_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag sophisticatedstorage:upgrade\",\n          \"rationale\": \"explicitly tagged as upgrade\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-game automation upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"installed once per container\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-compacts items in storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"automation upgrade for storage mod\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Auto-compact items to block form\",\n            \"Condense nuggets→ingots→blocks in-place\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compacting = craft down to block form\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"adds automation behaviour to storage\"\n        }\n      }\n    },\n    \"sophisticatedstorage:compression_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag sophisticatedstorage:upgrade\",\n          \"rationale\": \"explicitly tagged as upgrade\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-game capacity upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied once to expand capacity\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"increases container slot count/capacity\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"capacity upgrade for storage mod\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Increase storage container capacity\",\n            \"Store more item types without extra containers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compression = more capacity per block\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"capacity upgrade for SS containers\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "c9d4e02f-ba6b-459b-9887-e1112cb51ae8",
+  "total_cost_usd": 0.15806474999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 10101,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 7814,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10101,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7814,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 10101,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 10101
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2892,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002967,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7814,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 10101,
+      "webSearchRequests": 0,
+      "costUSD": 0.15509774999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "70dd852b-c03f-4a1f-bc1a-3848f95a3a23"
+}

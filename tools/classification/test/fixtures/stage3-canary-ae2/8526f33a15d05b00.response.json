@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 120104,
+  "duration_api_ms": 122230,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:black_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable, placed block\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cables built from fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard AE2 infrastructure cable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used heavily in any AE2 network\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core AE2 network routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mechanical cable, colored variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Black cable coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Recipe output only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Tag: ae2:covered_dense_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables carry items/power/data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"High-capacity 32-channel ME cable\", \"Dense network routing\", \"Color-coded cable management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dense cable primary functions\"\n        }\n      }\n    },\n    \"ae2:black_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable, placed block\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cables built from fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cheapest/most basic AE2 cable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used heavily in any AE2 network\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core AE2 network routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mechanical cable, colored variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Black glass cable appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Recipe output only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Tag: ae2:glass_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables carry items/power/data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Basic 8-channel ME connection\", \"Cheapest AE2 cable type\", \"Color-coded network layout\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Glass cable primary functions\"\n        }\n      }\n    },\n    \"ae2:black_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Applied to cables to recolor with glow\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Upgraded paint ball, extra craft step\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for cable aesthetics only\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Decorates AE2 cables with glow\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Colored lumen variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Black lumen = dark + glow effect\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Recipe output only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable coloring tool\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Recolor AE2 cables with glow effect\", \"Glowing cable aesthetics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Lumen paint ball purpose\"\n        }\n      }\n    },\n    \"ae2:black_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Applied to cables to recolor them\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Basic AE2 cable coloring tool\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used only for cable color mgmt\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Recolors/organizes AE2 cables\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Colored variant paint ball\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Black matte paint ball\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Recipe output only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable coloring tool\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Recolor AE2 cables\", \"Cable color management\", \"Ingredient for lumen paint ball\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Paint ball core functions\"\n        }\n      }\n    },\n    \"ae2:black_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cable, placed block\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 network cables built from fluix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard AE2 infrastructure cable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used heavily in AE2 networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core AE2 network routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mechanical cable, colored variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Black cable coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Recipe output only, no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Tag: ae2:smart_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\", \"energy\", \"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cables carry items/power/data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"8-channel ME cable with usage display\", \"Visual channel monitoring\", \"Channel-aware network routing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Smart cable primary functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "f6afd344-3e05-4603-b71a-7f86e9132ac1",
+  "total_cost_usd": 0.19579975,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 8917,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 10698,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8917,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10698,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 8917,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 8917
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1792,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001882,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10698,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 8917,
+      "webSearchRequests": 0,
+      "costUSD": 0.19391775,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "05da28b8-9de8-4a3b-b531-5dc9adc3adad"
+}

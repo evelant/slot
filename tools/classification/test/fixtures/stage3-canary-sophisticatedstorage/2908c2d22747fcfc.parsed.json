@@ -1,0 +1,325 @@
+{
+  "items": {
+    "sophisticatedstorage:feeding_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable; no rare ingredients"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "installed once, runs continuously"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-feeds player from stored food"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade mechanism"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources in data"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-feed player from stored food",
+            "Insert in container upgrade slot",
+            "Upgrade to advanced feeding tier"
+          ],
+          "signal": "inferred",
+          "rationale": "feeding upgrade purpose"
+        }
+      }
+    },
+    "sophisticatedstorage:filter_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable; no rare ingredients"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core automation upgrade, widely used"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "filters insert/extract from containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade mechanism"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources in data"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "Filter item insertion and extraction",
+            "Control what container accepts",
+            "Insert in upgrade slot"
+          ],
+          "signal": "inferred",
+          "rationale": "filter upgrade purpose"
+        }
+      }
+    },
+    "sophisticatedstorage:gold_barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "tags c:barrels + all_storage"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id prefix gold_"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "gold tier in SS progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold required; mid-progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used as primary storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "block for storing items"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "%s%s name + gold tier variant"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material, warm tone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tiered storage container"
+        },
+        "primary_uses": {
+          "values": [
+            "Higher-capacity storage tier",
+            "Accept functional upgrades",
+            "Tier up to diamond barrel"
+          ],
+          "signal": "inferred",
+          "rationale": "gold barrel in SS progression"
+        }
+      }
+    },
+    "sophisticatedstorage:gold_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "rationale": "tags c:chests + all_storage"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id prefix gold_"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "gold tier in SS progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold required; mid-progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used as primary storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "block for storing items"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "%s%s name + gold tier variant"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material, warm tone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tiered storage container"
+        },
+        "primary_uses": {
+          "values": [
+            "Higher-capacity storage tier",
+            "Convert to double chest or shulker",
+            "Accept functional upgrades"
+          ],
+          "signal": "inferred",
+          "rationale": "gold chest in SS progression"
+        }
+      }
+    },
+    "sophisticatedstorage:gold_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "shulker keeps contents; portable"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id prefix gold_"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "gold tier in SS progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs end shulker + gold upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for transport not daily storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable item transport container"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "gold variant of shulker box"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material, warm tone"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tiered storage container"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable storage with upgrade slots",
+            "Transport items between locations",
+            "Upgrade to diamond shulker box"
+          ],
+          "signal": "inferred",
+          "rationale": "gold shulker in SS progression"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

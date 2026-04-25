@@ -1,0 +1,324 @@
+{
+  "items": {
+    "sophisticatedstorage:advanced_alchemy_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:upgrade + display name suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced tier; non-trivial craft mats"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once per container slot"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "brewing",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "alchemy = brewing automation in storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade chip aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "SS advanced tier uses gold materials"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe/tier-up only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade category"
+        },
+        "primary_uses": {
+          "values": [
+            "Automate alchemy in storage containers",
+            "Advanced potion ingredient processing"
+          ],
+          "signal": "inferred",
+          "rationale": "alchemy upgrade function"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_compacting_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:upgrade + display name suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced tier; non-trivial craft mats"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once per container slot"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-compacts items into block form"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade chip aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "SS advanced tier uses gold materials"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe/tier-up only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade category"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-compact items into block form",
+            "Advanced compacting with more filters"
+          ],
+          "signal": "inferred",
+          "rationale": "compacting upgrade function"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_feeding_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:upgrade + display name suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced tier; non-trivial craft mats"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once per container slot"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-feeds player from food in storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade chip aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "SS advanced tier uses gold materials"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe/tier-up only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade category"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-feed player from storage food",
+            "Advanced food filter/priority options"
+          ],
+          "signal": "inferred",
+          "rationale": "feeding upgrade function"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_filter_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:upgrade + display name suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced tier; non-trivial craft mats"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once per container slot"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "controls item flow in/out of storage"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade chip aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "SS advanced tier uses gold materials"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe/tier-up only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade category"
+        },
+        "primary_uses": {
+          "values": [
+            "Filter items entering/leaving storage",
+            "Advanced filter with more item slots"
+          ],
+          "signal": "inferred",
+          "rationale": "filter upgrade function"
+        }
+      }
+    },
+    "sophisticatedstorage:advanced_hopper_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag:upgrade + display name suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "advanced tier; tier-up from basic hopper"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once per container slot"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "auto-transfers items; advanced hopper logic"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade chip aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "SS advanced tier uses gold materials"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "tier-up only; no loot/world source"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS functional upgrade category"
+        },
+        "primary_uses": {
+          "values": [
+            "Auto-transfer items into/out of storage",
+            "Advanced hopper with speed & filter"
+          ],
+          "signal": "inferred",
+          "rationale": "hopper upgrade function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,311 @@
+{
+  "items": {
+    "ae2:white_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active 32-channel network cable"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "AE2 cables have glass outer shell"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "white dye variant; tech hardware"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white colorway"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources listed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap recipe, made in bulk"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout ME network builds"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network routing infrastructure"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 network channels"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "evidence": "ae2:smart_dense_cable tag",
+          "rationale": "cable is core me_network component"
+        },
+        "primary_uses": {
+          "values": [
+            "32-channel ME network backbone",
+            "High-throughput device connection",
+            "P2P tunnel attunement target"
+          ],
+          "signal": "inferred",
+          "rationale": "dense smart cable roles"
+        }
+      }
+    },
+    "ae2:wireless_access_point": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block for wireless ME access"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "network hardware device"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 progression materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed once, used for wireless daily"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "enables wireless ME network access"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "broadcasts ME network signal wirelessly"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "wireless network infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "Provide wireless ME network access",
+            "Enable wireless terminal connectivity",
+            "Install boosters to extend range"
+          ],
+          "signal": "inferred",
+          "rationale": "core WAP functions in AE2"
+        }
+      }
+    },
+    "ae2:wireless_booster": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "inserted in WAP to extend range"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "small tech upgrade component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap upgrade component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "installed once per WAP setup"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "extends ME wireless range"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "ME wireless network upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "Extend wireless terminal range",
+            "Stack in WAP for max coverage"
+          ],
+          "signal": "inferred",
+          "rationale": "wireless booster sole purpose"
+        }
+      }
+    },
+    "ae2:wireless_crafting_terminal": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "handheld wireless ME access + crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "complex handheld tech device"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe only"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 tech progression"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary daily-driver for ME users"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "wireless network browsing + crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "curio",
+            "standard"
+          ],
+          "signal": "named",
+          "evidence": "curios:curio tag",
+          "rationale": "curio tag enables curio slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network",
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "wireless ME + remote autocrafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Wirelessly access ME network inventory",
+            "Remote autocrafting from anywhere",
+            "Manage network contents on the go"
+          ],
+          "signal": "inferred",
+          "rationale": "core wireless crafting terminal uses"
+        }
+      }
+    },
+    "ae2:wireless_receiver": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "wireless device crafting component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic crafted AE2 component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted in small batches for wireless"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: wireless ME devices"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "ME wireless network ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft wireless access points",
+            "Craft wireless terminals",
+            "ME wireless network ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "used in all wireless AE2 items"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

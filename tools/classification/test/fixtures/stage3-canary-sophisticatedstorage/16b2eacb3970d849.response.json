@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 57247,
+  "duration_api_ms": 57983,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"sophisticatedstorage:limited_copper_barrel_1\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS barrel variant with item-count limiting\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _copper_\"\n        },\n        \"tier\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"copper in SS barrel tier progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper mid-tier, requires crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage blocks used regularly once placed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limits item counts; useful in automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Limited prefix = capped-slot variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material = bright copper tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores regular items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS storage block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cap item type counts in storage\",\n            \"Mid-tier automated storage\",\n            \"Upgrade to limited iron barrel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS limited barrel core usage\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_copper_barrel_2\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS barrel variant with item-count limiting\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _copper_\"\n        },\n        \"tier\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"copper in SS barrel tier progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper mid-tier, requires crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage blocks used regularly once placed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limits item counts; useful in automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Limited prefix = capped-slot variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material = bright copper tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores regular items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS storage block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cap item type counts in storage\",\n            \"Mid-tier automated storage\",\n            \"Upgrade to limited iron barrel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS limited barrel core usage\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_copper_barrel_3\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS barrel variant with item-count limiting\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _copper_\"\n        },\n        \"tier\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"copper in SS barrel tier progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper mid-tier, requires crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage blocks used regularly once placed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limits item counts; useful in automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Limited prefix = capped-slot variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material = bright copper tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores regular items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS storage block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cap item type counts in storage\",\n            \"Mid-tier automated storage\",\n            \"Upgrade to limited iron barrel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS limited barrel core usage\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_copper_barrel_4\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS barrel variant with item-count limiting\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _copper_\"\n        },\n        \"tier\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"copper in SS barrel tier progression\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper mid-tier, requires crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage blocks used regularly once placed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limits item counts; useful in automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Limited prefix = capped-slot variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material = bright copper tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores regular items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS storage block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cap item type counts in storage\",\n            \"Mid-tier automated storage\",\n            \"Upgrade to limited iron barrel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS limited barrel core usage\"\n        }\n      }\n    },\n    \"sophisticatedstorage:limited_diamond_barrel_1\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS barrel variant with item-count limiting\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _diamond_\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"diamond in SS barrel tier progression\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond tier requires significant resources\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-tier storage used regularly once placed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"limits item counts; useful in automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Limited prefix = capped-slot variant\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond = cyan-teal crystal appearance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores regular items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS storage block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cap item type counts in storage\",\n            \"High-tier automated storage\",\n            \"Upgrade to limited netherite barrel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"SS limited diamond barrel usage\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "97582592-0f4a-4c53-8f10-1ea00a6a9a55",
+  "total_cost_usd": 0.09306255,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4289,
+    "cache_read_input_tokens": 6346,
+    "output_tokens": 4771,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4289,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 4771,
+        "cache_read_input_tokens": 6346,
+        "cache_creation_input_tokens": 4289,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4289
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3426,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0035009999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 4771,
+      "cacheReadInputTokens": 6346,
+      "cacheCreationInputTokens": 4289,
+      "webSearchRequests": 0,
+      "costUSD": 0.08956154999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "67622ff4-331e-4d3a-b130-fffd419bcde7"
+}

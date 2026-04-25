@@ -1,0 +1,306 @@
+{
+  "items": {
+    "sophisticatedstorage:stack_upgrade_tier_1": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "tier_1",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_1"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "base tier, basic crafting mats"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "craft few, install once per container"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "increases stack size in SS containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade card/chip aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "Increase stack size in SS containers",
+            "Ingredient for higher stack upgrade tiers"
+          ],
+          "signal": "inferred",
+          "rationale": "stack upgrade name + tier 2 ingredient"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_upgrade_tier_1_plus": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "tier_1_plus",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_1_plus"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "minor step above tier 1, still early game"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once; occasional recrafts"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size upgrade for containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade card aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "Intermediate stack upgrade tier",
+            "Ingredient for tier 2 stack upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "plus variant bridges tier 1 to tier 2"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_upgrade_tier_2": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "tier_2",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_2"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier; requires tier 1 as ingredient"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once; mid-game upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size upgrade for containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade card aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "Greater stack size boost than tier 1",
+            "Ingredient for tier 3 stack upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-tier stack upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_upgrade_tier_3": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "tier_3",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_3"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "upper-mid tier; multi-step recipe chain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "late mid-game install; not everyday"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size upgrade for containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade card aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "High stack size boost in containers",
+            "Ingredient for tier 4 stack upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "upper-mid tier stack upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:stack_upgrade_tier_4": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "rationale": "tag sophisticatedstorage:upgrade"
+        },
+        "tier": {
+          "value": "tier_4",
+          "signal": "pattern",
+          "rationale": "id suffix _tier_4"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "late-game; long recipe chain required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "install once in late-game containers"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "stack size upgrade for containers"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrade card aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "modifies container stack behavior"
+        },
+        "primary_uses": {
+          "values": [
+            "Maximum stack size boost in containers",
+            "Ingredient for tier 5 stack upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "penultimate tier; feeds tier 5"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

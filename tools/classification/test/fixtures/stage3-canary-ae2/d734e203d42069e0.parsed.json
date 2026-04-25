@@ -1,0 +1,351 @@
+{
+  "items": {
+    "ae2:blue_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown/applied to paint AE2 components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic AE2 materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively for cable aesthetics"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors AE2 network for org/aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "rationale": "Blue = colored paint item"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = emissive; blue = vivid"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only from crafting recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "paints AE2 cables/facades"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint AE2 cables with glowing blue",
+            "Decorate facades with emissive color"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen paint ball core use"
+        }
+      }
+    },
+    "ae2:blue_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown/used to apply blue paint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic AE2 materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when color-coding cables"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "color-codes ME network components"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "rationale": "Blue = colored paint item"
+        },
+        "palette": {
+          "values": [
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "blue paint = cool tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only from crafting recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "paints AE2 network components"
+        },
+        "primary_uses": {
+          "values": [
+            "Paint AE2 cables and facades blue",
+            "Craft into blue lumen paint ball",
+            "Color-code ME network segments"
+          ],
+          "signal": "inferred",
+          "rationale": "standard paint ball uses"
+        }
+      }
+    },
+    "ae2:blue_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "functional AE2 network cable device"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted in quantity for ME builds"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core wiring for any AE2 setup"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "ME routing + redstone p2p attunement"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "blue colored technical cable"
+        },
+        "palette": {
+          "values": [
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "blue cable = cool tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only from crafting recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:smart_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME channels and AE2 energy"
+        },
+        "primary_uses": {
+          "values": [
+            "Route 8 AE2 channels with color coding",
+            "Connect ME network components",
+            "Visualize active channel usage"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable primary functions"
+        }
+      }
+    },
+    "ae2:blue_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "high-capacity AE2 network cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted for dense network segments"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "trunk line cable for large AE2 builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "dense ME routing + p2p attunement"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "blue colored dense cable"
+        },
+        "palette": {
+          "values": [
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "blue dense cable = cool tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only from crafting recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:smart_dense_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries 32 AE2 channels + ME energy"
+        },
+        "primary_uses": {
+          "values": [
+            "Route 32 AE2 channels (dense trunk)",
+            "Connect high-throughput ME segments",
+            "Quantum ring crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "dense cable AE2 functions"
+        }
+      }
+    },
+    "ae2:brown_covered_cable": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "basic AE2 covered network cable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic ME cable, widely crafted"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used throughout basic ME builds"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "basic ME network cable routing"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "brown covered mechanical cable"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown = earthy tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "only from crafting recipe"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "tag ae2:covered_cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "carries AE2 channels + ME energy"
+        },
+        "primary_uses": {
+          "values": [
+            "Route ME channels with brown cover",
+            "Connect AE2 components aesthetically"
+          ],
+          "signal": "inferred",
+          "rationale": "covered cable ME functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

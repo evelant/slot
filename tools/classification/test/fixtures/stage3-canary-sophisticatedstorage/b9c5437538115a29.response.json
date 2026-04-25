@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 59424,
+  "duration_api_ms": 60126,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"sophisticatedstorage:advanced_jukebox_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name + tag both say upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"advanced\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name explicitly says Advanced\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier crafted upgrade, not trivial\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche music-in-storage feature\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox plays music; fits storage decor niche\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional storage upgrade, mechanical feel\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; only crafting recipes\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storable in normal containers when not slotted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adds functional behavior to storage blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"play music discs from storage container\",\n            \"advanced jukebox control in storage\",\n            \"upgrade storage with jukebox functionality\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox upgrade for SS containers\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_magnet_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name + tag both say upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"advanced\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name explicitly says Advanced\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier crafted upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"magnets used constantly once placed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-collects nearby items into storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional automation upgrade\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot; crafting + tier upgrade recipes\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item when not inserted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adds magnet behavior to SS containers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"auto-collect nearby items into storage\",\n            \"extended magnet range vs basic tier\",\n            \"filter collected item types\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"advanced magnet for SS containers\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_pickup_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name + tag both say upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"advanced\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name explicitly says Advanced\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier crafted upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pickup passively runs whenever active\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-routes dropped items into storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional automation upgrade\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting + tier upgrade sources only\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item when not inserted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adds pickup behavior to SS containers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"auto-pickup dropped items into storage\",\n            \"advanced filter for pickup item types\",\n            \"ingredient of advanced_magnet_upgrade\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pickup upgrade; feeds magnet recipe\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_pump_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name + tag both say upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"advanced\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name explicitly says Advanced\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier upgrade; no recipe data suggests datapack/JEI hidden\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid-specific, only relevant with fluid storage\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pumps fluids in/out of storage containers\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional fluid-automation upgrade\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe data; assumed crafted like peers\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"named\",\n          \"rationale\": \"pump name implies fluid transport\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item when not inserted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adds pump/fluid behavior to SS containers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"pump fluids in/out of storage containers\",\n            \"auto-fill fluid containers from storage\",\n            \"advanced fluid rate/filter control\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pump upgrade for SS fluid storage\"\n        }\n      }\n    },\n    \"sophisticatedstorage:advanced_void_upgrade\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name + tag both say upgrade\"\n        },\n        \"tier\": {\n          \"value\": \"advanced\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name explicitly says Advanced\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier crafted upgrade\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"void runs passively once installed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"auto-deletes excess items to prevent overflow\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional automation upgrade\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting recipes only, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item when not inserted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"sophisticatedstorage:storage_functional_upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adds void behavior to SS containers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"auto-delete excess items in storage\",\n            \"prevent storage from overfilling\",\n            \"advanced filter for what gets voided\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"void upgrade for SS containers\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "aa88b179-c85b-4ed1-bab5-70c0599ee7f5",
+  "total_cost_usd": 0.10063075,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9597,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 4144,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9597,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 4144,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9597,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9597
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2388,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002473,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 4144,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9597,
+      "webSearchRequests": 0,
+      "costUSD": 0.09815775,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d3c65c70-4911-4476-8290-76c24a95167b"
+}

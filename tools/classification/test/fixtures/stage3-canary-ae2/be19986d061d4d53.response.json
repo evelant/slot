@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 89562,
+  "duration_api_ms": 90256,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:smithing_table_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 encoded pattern consumed by autocrafting\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"encoded from blank pattern, easily crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"set up once per smithing recipe needed\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"drives ME autocrafting for smithing ops\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical automation artefact\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"encoded from blank pattern in pattern terminal\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pattern inserted into pattern providers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"encode smithing upgrades for ME autocrafting\",\n            \"insert into pattern provider to automate smithing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 smithing autocrafting workflow\"\n        }\n      }\n    },\n    \"ae2:smooth_quartz_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth polished block, primarily structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted from certus quartz, farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when building AE2-themed structures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic block\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth uniform surface, no ornament\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/pale certus quartz aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"build AE2-themed structures\",\n            \"craft smooth quartz slabs, stairs, walls\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and derivative crafting\"\n        }\n      }\n    },\n    \"ae2:smooth_quartz_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form, primarily structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from smooth certus quartz block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-height structural and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth uniform surface\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/pale certus quartz aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height floors and ceilings\",\n            \"AE2-themed decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab use cases\"\n        }\n      }\n    },\n    \"ae2:smooth_quartz_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair form, primarily structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from smooth certus quartz block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairways and rooflines\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth uniform surface\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/pale certus quartz aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"stairways in AE2-themed structures\",\n            \"decorative rooflines and corners\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stairs use cases\"\n        }\n      }\n    },\n    \"ae2:smooth_quartz_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form, primarily structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from smooth certus quartz block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fencing and border use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth uniform surface\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/pale certus quartz aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative fencing in AE2 builds\",\n            \"wall borders and barriers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wall use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"ae2:smooth_quartz_block\",\n      \"facet\": \"material_family\",\n      \"current\": \"quartz\",\n      \"suggested\": \"certus_quartz\",\n      \"rationale\": \"display name 'Smooth Certus Quartz Block'; AE2 certus quartz is distinct from vanilla nether quartz\",\n      \"confidence\": 0.95\n    },\n    {\n      \"item\": \"ae2:smooth_quartz_slab\",\n      \"facet\": \"material_family\",\n      \"current\": \"quartz\",\n      \"suggested\": \"certus_quartz\",\n      \"rationale\": \"display name 'Smooth Certus Quartz Slab'; AE2-specific material\",\n      \"confidence\": 0.95\n    },\n    {\n      \"item\": \"ae2:smooth_quartz_stairs\",\n      \"facet\": \"material_family\",\n      \"current\": \"quartz\",\n      \"suggested\": \"certus_quartz\",\n      \"rationale\": \"display name 'Smooth Certus Quartz Stairs'; AE2-specific material\",\n      \"confidence\": 0.95\n    },\n    {\n      \"item\": \"ae2:smooth_quartz_wall\",\n      \"facet\": \"material_family\",\n      \"current\": \"quartz\",\n      \"suggested\": \"certus_quartz\",\n      \"rationale\": \"display name 'Smooth Certus Quartz Wall'; AE2-specific material\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "1aa1ed9f-c93c-4260-b7f9-c492c2af4ca9",
+  "total_cost_usd": 0.12187384999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3903,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 6815,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3903,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6815,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3903,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3903
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3040,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003125,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6815,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3903,
+      "webSearchRequests": 0,
+      "costUSD": 0.11874884999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "71502a52-44b8-4911-a016-cb38b7140d67"
+}

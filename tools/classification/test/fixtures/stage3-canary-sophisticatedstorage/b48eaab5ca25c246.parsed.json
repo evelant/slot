@@ -1,0 +1,368 @@
+{
+  "items": {
+    "sophisticatedstorage:jukebox_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "named",
+          "evidence": "sophisticatedstorage:upgrade tag",
+          "rationale": "explicitly tagged as upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires jukebox in recipe chain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche audio feature for storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "adds music playback to storage block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional mod upgrade item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; recipe-only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_functional_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "functional upgrade in SS system"
+        },
+        "primary_uses": {
+          "values": [
+            "Add jukebox to storage container",
+            "Play music discs from storage",
+            "Upgrade to advanced jukebox upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "name + ingredient_of chain"
+        }
+      }
+    },
+    "sophisticatedstorage:limited_barrel_1": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "sophisticatedstorage:all_storage tag",
+          "rationale": "all_storage tag; barrel container"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "generic_wood_storage recipe type"
+        },
+        "tier": {
+          "value": "1",
+          "signal": "named",
+          "evidence": "display_name: Limited Barrel I",
+          "rationale": "roman numeral I = size tier 1"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core mod storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "barrel storage container"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; 10+ wood variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "generic wood barrel appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS storage container subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Barrel limited to 1 item type",
+            "Restricted-slot mod storage",
+            "Upgradeable to copper/iron tier"
+          ],
+          "signal": "inferred",
+          "rationale": "limited barrel tier I semantics"
+        }
+      }
+    },
+    "sophisticatedstorage:limited_barrel_2": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "sophisticatedstorage:all_storage tag",
+          "rationale": "all_storage tag; barrel container"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "generic_wood_storage recipe type"
+        },
+        "tier": {
+          "value": "2",
+          "signal": "named",
+          "evidence": "display_name: Limited Barrel II",
+          "rationale": "roman numeral II = size tier 2"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core mod storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "barrel storage container"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; 10+ wood variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "generic wood barrel appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS storage container subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Barrel limited to 2 item types",
+            "Restricted-slot mod storage",
+            "Upgradeable to copper/iron tier"
+          ],
+          "signal": "inferred",
+          "rationale": "limited barrel tier II semantics"
+        }
+      }
+    },
+    "sophisticatedstorage:limited_barrel_3": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "sophisticatedstorage:all_storage tag",
+          "rationale": "all_storage tag; barrel container"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "generic_wood_storage recipe type"
+        },
+        "tier": {
+          "value": "3",
+          "signal": "named",
+          "evidence": "display_name: Limited Barrel III",
+          "rationale": "roman numeral III = size tier 3"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core mod storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "barrel storage container"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; 10+ wood variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "generic wood barrel appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS storage container subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Barrel limited to 3 item types",
+            "Restricted-slot mod storage",
+            "Upgradeable to copper/iron tier"
+          ],
+          "signal": "inferred",
+          "rationale": "limited barrel tier III semantics"
+        }
+      }
+    },
+    "sophisticatedstorage:limited_barrel_4": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "sophisticatedstorage:all_storage tag",
+          "rationale": "all_storage tag; barrel container"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "generic_wood_storage recipe type"
+        },
+        "tier": {
+          "value": "4",
+          "signal": "named",
+          "evidence": "display_name: Limited Barrel IV",
+          "rationale": "roman numeral IV = size tier 4"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core mod storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "barrel storage container"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; 10+ wood variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "generic wood barrel appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS storage container subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Barrel limited to 4 item types",
+            "Restricted-slot mod storage",
+            "Upgradeable to copper/iron tier"
+          ],
+          "signal": "inferred",
+          "rationale": "limited barrel tier IV semantics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

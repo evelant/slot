@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 105356,
+  "duration_api_ms": 106067,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:controller\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"manages ME network channels & routing\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2-specific fluix/certus mats\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per base network\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"drives ME network + channel logic\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense technical hub block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark casing with animated channel lights\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe path: blocks/controller\"\n        },\n        \"multiblock_role\": {\n          \"value\": \"controller\",\n          \"signal\": \"named\",\n          \"rationale\": \"display_name is ME Controller\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"central ME network control block\",\n            \"provides network channel capacity\",\n            \"scalable multiblock controller array\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 network function\"\n        }\n      }\n    },\n    \"ae2:conversion_monitor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive network IO cable part\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe exists, no loot sources\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafted AE2 part\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche manual IO use case\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"manual item IO with ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable panel part\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\", \"ae2:external_io\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe path: parts/monitors_conversion\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"manual item extraction from ME network\",\n            \"insert items into ME storage\",\n            \"displays single stored item on panel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"conversion monitor AE2 functionality\"\n        }\n      }\n    },\n    \"ae2:crafting_accelerator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting CPU multiblock component\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 crafting materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"built into crafting CPU once\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"speeds up autocrafting jobs only\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 CPU co-processing unit\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe path: cpu_crafting_accelerator\"\n        },\n        \"multiblock_component_of\": {\n          \"values\": [\"ae2:crafting_cpu\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe path: cpu_crafting_accelerator\"\n        },\n        \"multiblock_role\": {\n          \"value\": \"core\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inner CPU unit boosting throughput\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"parallelizes autocrafting tasks\",\n            \"crafting CPU multiblock component\",\n            \"increases crafting job throughput\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"co-processing unit function\"\n        }\n      }\n    },\n    \"ae2:crafting_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"card inserted into buses/interfaces\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe exists, no loot sources\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 upgrade card\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inserted in many interfaces/exporters\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables autocrafting in AE2 parts\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"circuit card upgrade item\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe path: materials/cardcrafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"enables autocrafting in export buses\",\n            \"on-demand crafting requests from interfaces\",\n            \"upgrade card for AE2 network parts\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting card AE2 function\"\n        }\n      }\n    },\n    \"ae2:crafting_monitor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting CPU display/interaction block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 crafting materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one per crafting CPU build\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shows and cancels active craft jobs\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 monitor display block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark panel with active-job light display\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe path: cpu_crafting_monitor\"\n        },\n        \"multiblock_component_of\": {\n          \"values\": [\"ae2:crafting_cpu\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe path: cpu_crafting_monitor\"\n        },\n        \"multiblock_role\": {\n          \"value\": \"port\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"access/display face of crafting CPU\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"displays active crafting job status\",\n            \"cancel in-progress crafting jobs\",\n            \"crafting CPU multiblock component\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"monitor role in crafting CPU\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "128191c9-b732-492f-a5aa-568972641117",
+  "total_cost_usd": 0.13559659999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3052,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 7999,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3052,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7999,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 3052,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3052
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2189,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0022789999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7999,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 3052,
+      "webSearchRequests": 0,
+      "costUSD": 0.13331759999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "63ad7a32-07a0-4c95-8718-6c2c84d319ac"
+}

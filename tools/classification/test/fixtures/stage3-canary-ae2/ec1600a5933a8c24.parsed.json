@@ -1,0 +1,341 @@
+{
+  "items": {
+    "ae2:pink_lumen_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown/applied to tint ME cables with glow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from paint ball + dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for aesthetic cable coloring"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network cables aesthetically"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "named color variant in id and tag"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "glowing"
+          ],
+          "signal": "pattern",
+          "rationale": "pink=coral; lumen=emissive glow effect"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped craft only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "paints ME network cable segments"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply glowing pink color to ME cables",
+            "Color network components with emissive tint"
+          ],
+          "signal": "inferred",
+          "rationale": "lumen = glow variant of paint ball"
+        }
+      }
+    },
+    "ae2:pink_paint_ball": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown/applied to color ME cables pink"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from pink dye + basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for cable color aesthetics"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "colors ME network cables"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "named color variant in id and tag"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "pattern",
+          "rationale": "pink=coral; bright saturated dye color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shaped craft only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "paints ME network cable segments"
+        },
+        "primary_uses": {
+          "values": [
+            "Color ME cables pink",
+            "Ingredient for Pink Lumen Paint Ball"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient_of lumen variant; cable coloring"
+        }
+      }
+    },
+    "ae2:pink_smart_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "ME network cable routing channels"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from glass/quartz; widely used"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core ME network infrastructure piece"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "routes ME channels for automation setups"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored cable; mechanical network component"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "pattern",
+          "rationale": "pink=coral; bright AE2 dye color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shaped craft only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries ME channels and AE2 network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "ME Smart Cable = AE2 network backbone"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME network devices",
+            "Route up to 8 channels",
+            "Display channel usage visually"
+          ],
+          "signal": "inferred",
+          "rationale": "smart cable visualizes channel load"
+        }
+      }
+    },
+    "ae2:pink_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "dense ME cable routing 32 channels"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic AE2 materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for ME network trunk lines"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "routes dense ME channels for automation"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "colored; thick mechanical trunk cable"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "pattern",
+          "rationale": "pink=coral; bright AE2 dye color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shaped craft only"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "carries 32 ME channels and network power"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "named",
+          "rationale": "Dense ME Smart Cable = AE2 backbone"
+        },
+        "primary_uses": {
+          "values": [
+            "Route up to 32 channels in ME network",
+            "Connect dense trunk lines",
+            "Crafting component for Quantum Ring"
+          ],
+          "signal": "inferred",
+          "rationale": "dense=32ch; ingredient_of quantum_ring"
+        }
+      }
+    },
+    "ae2:portable_fluid_cell_16k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld portable fluid storage cell"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 cell housing + components"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "actively used for portable fluid transport"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "stores/transports fluids; links to ME network"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "curio"
+          ],
+          "signal": "named",
+          "evidence": "curios:curio tag",
+          "rationale": "fluid cell with curios:curio tag"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shapeless craft only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "portable AE2 fluid storage cell"
+        },
+        "primary_uses": {
+          "values": [
+            "Store up to 16k fluid units portably",
+            "Access fluid storage outside ME network",
+            "Wearable as curio accessory"
+          ],
+          "signal": "inferred",
+          "rationale": "portable+curio tag; 16k fluid capacity"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,311 @@
+{
+  "items": {
+    "ae2:facade": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "covers cables to mimic surrounding blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted freely with any block + anchor"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when hiding cable runs"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "purely aesthetic cable cover"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "takes appearance of whatever block is used"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted with anchor+block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "AE2 cable aesthetic attachment"
+        },
+        "primary_uses": {
+          "values": [
+            "Hide ME cables behind block textures",
+            "Aesthetic cable concealment"
+          ],
+          "signal": "inferred",
+          "rationale": "facade sole purpose is hiding cables"
+        }
+      }
+    },
+    "ae2:fe_p2p_tunnel": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active point-to-point energy routing device"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, accessible mid-game"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per energy routing need"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "automates FE/RF routing through ME"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 network routing hardware"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; AE2 P2P is crafted"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "pattern",
+          "rationale": "FE = Forge Energy; tunnels RF/FE"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "P2P tunnel is core ME network component"
+        },
+        "primary_uses": {
+          "values": [
+            "Tunnel RF/FE power through ME network",
+            "Point-to-point energy routing",
+            "Reduce channel usage for power lines"
+          ],
+          "signal": "inferred",
+          "rationale": "FE P2P tunnel sole function"
+        }
+      }
+    },
+    "ae2:flawed_budding_quartz": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "world-generated growing medium, not refined"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "meteorite-sourced; second-lowest of 4 tiers"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once as crystal farm anchor"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "passively grows certus quartz crystals"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring growing crystal block"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is pale blue-white crystal"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from meteorite blocks; transform from higher tier"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "certus quartz is foundational AE2 resource"
+        },
+        "primary_uses": {
+          "values": [
+            "Passively grow certus quartz crystals",
+            "AE2 crystal farm block",
+            "Degrades one tier when mined"
+          ],
+          "signal": "inferred",
+          "rationale": "budding quartz core function in AE2"
+        }
+      }
+    },
+    "ae2:flawless_budding_quartz": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "meteorite-only growing medium, uncraftable"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "meteorite-exclusive, cannot be crafted or moved"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in-situ as permanent crystal farm"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "fastest passive certus quartz growth rate"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "rarest growing crystal, meteorite-exclusive"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz is pale blue-white crystal"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "found exclusively in AE2 skystone meteorites"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "pattern",
+          "rationale": "top certus quartz source for AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "Highest-rate certus quartz crystal growth",
+            "Permanent in-situ crystal farm",
+            "Cannot be crafted or relocated intact"
+          ],
+          "signal": "inferred",
+          "rationale": "flawless budding quartz unique properties"
+        }
+      }
+    },
+    "ae2:fluid_cell_housing": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafted intermediate for fluid storage cells"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "straightforward crafting recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted when building fluid cell capacity"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "all outputs are ME fluid storage cells"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 metallic cell housing component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "crafting recipe output, no loot sources"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "ingredient for all AE2 fluid storage cells"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ME fluid storage cells (1k–256k)",
+            "Component for portable fluid cells"
+          ],
+          "signal": "pattern",
+          "rationale": "all sample_ingredient_of are fluid cells"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

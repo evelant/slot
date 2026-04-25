@@ -1,0 +1,199 @@
+{
+  "items": {
+    "ae2:debug_card": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "Dev. prefix = AE2 developer debug item"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only dev tool, no recipe/drop"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "only useful in mod dev context"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe, no loot, Dev. prefix"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "card type implies network debug use"
+        }
+      }
+    },
+    "ae2:debug_cube_gen": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "Dev. prefix = AE2 developer debug block"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only dev block, no recipe"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "only useful in mod dev context"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe, Dev. prefix"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "cube/block gen for network stress testing"
+        }
+      }
+    },
+    "ae2:debug_energy_gen": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "Dev. prefix = AE2 developer debug block"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only dev block, no recipe"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "only useful in mod dev context"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe, Dev. prefix"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "EnergyGen = AE2 energy subsystem debug"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "EnergyGen name implies power output"
+        }
+      }
+    },
+    "ae2:debug_eraser": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "Dev. prefix = AE2 developer debug tool"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only dev tool, no recipe/drop"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "only useful in mod dev context"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe, no loot, Dev. prefix"
+        }
+      }
+    },
+    "ae2:debug_item_gen": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "Dev. prefix = AE2 developer debug block"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only dev block, no recipe"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "only useful in mod dev context"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe, Dev. prefix"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "ItemGen feeds items into ME network tests"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "item generation for AE2 automation testing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:debug_cube_gen",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [],
+      "rationale": "creative-only debug block; no recipe exists, loot-table rule false-positive",
+      "confidence": 0.8
+    },
+    {
+      "item": "ae2:debug_energy_gen",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [],
+      "rationale": "creative-only debug block; no recipe exists, loot-table rule false-positive",
+      "confidence": 0.8
+    },
+    {
+      "item": "ae2:debug_item_gen",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [],
+      "rationale": "creative-only debug block; no recipe exists, loot-table rule false-positive",
+      "confidence": 0.8
+    }
+  ]
+}

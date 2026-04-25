@@ -1,0 +1,267 @@
+{
+  "items": {
+    "ae2:creative_storage_cell": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "storage cell inserted into ME drives/chests"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival recipe"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative mode only"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "holds items in ME network"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "creative tier = top-end item"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "ae_storage"
+          ],
+          "signal": "inferred",
+          "rationale": "sits in inventory and ME drive slots"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "storage cell → ae2:storage subsystem"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "named",
+          "rationale": "display_name begins with 'Creative'"
+        }
+      }
+    },
+    "ae2:crystal_resonance_generator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active generator block"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "crystal resonance = AE2 certus quartz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, early AE2 setup item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per power setup"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates AE energy from crystals"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "machine/generator block"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz crystals, emits light"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "passive AE energy generator"
+        },
+        "primary_uses": {
+          "values": [
+            "generate AE energy passively",
+            "early-game AE2 power source"
+          ],
+          "signal": "inferred",
+          "rationale": "crystal resonance = AE energy gen"
+        }
+      }
+    },
+    "ae2:cut_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural/decorative block"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "display_name: Cut Certus Quartz Block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from certus quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche deco block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2-themed structural deco"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cut_ prefix = variant of base block"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz = pale blue crystal"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2 themed builds",
+            "stonecutting into finer variants"
+          ],
+          "signal": "inferred",
+          "rationale": "many stonecutting outputs"
+        }
+      }
+    },
+    "ae2:cut_quartz_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab building block"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "display_name: Cut Certus Quartz Slab"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from cut certus quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche deco slab"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs used in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cut_ prefix = variant form"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz pale blue crystal"
+        }
+      }
+    },
+    "ae2:cut_quartz_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs building block"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "display_name: Cut Certus Quartz Stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from cut certus quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche deco stairs"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cut_ prefix = variant form"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz pale blue crystal"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

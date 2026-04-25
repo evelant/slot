@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 110287,
+  "duration_api_ms": 110990,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:portable_fluid_cell_1k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld portable fluid storage device\"\n        },\n        \"tier\": {\n          \"value\": \"1k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 capacity tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires AE2 tech progression\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for fluid logistics\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable fluid store and retrieval\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech-mod aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 fluid cell blue-teal coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"shapeless craft, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"curio\"],\n          \"signal\": \"named\",\n          \"rationale\": \"inventory + curios:curio tag\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell stores and transports fluids\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 portable storage cell subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Portable 1k fluid storage off-network\", \"Access stored fluids without ME drive\", \"Wear in curio slot for quick access\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 portable cell function\"\n        }\n      }\n    },\n    \"ae2:portable_fluid_cell_256k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld portable fluid storage device\"\n        },\n        \"tier\": {\n          \"value\": \"256k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 capacity tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"256k components are deep-progression expensive\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for fluid logistics\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable fluid store and retrieval\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech-mod aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 fluid cell blue-teal coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"shapeless craft, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"curio\"],\n          \"signal\": \"named\",\n          \"rationale\": \"inventory + curios:curio tag\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell stores and transports fluids\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 portable storage cell subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Portable 256k fluid storage off-network\", \"Access stored fluids without ME drive\", \"Wear in curio slot for quick access\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 portable cell function\"\n        }\n      }\n    },\n    \"ae2:portable_fluid_cell_4k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld portable fluid storage device\"\n        },\n        \"tier\": {\n          \"value\": \"4k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 capacity tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early-mid AE2 cell tier\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for fluid logistics\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable fluid store and retrieval\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech-mod aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 fluid cell blue-teal coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"shapeless craft, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"curio\"],\n          \"signal\": \"named\",\n          \"rationale\": \"inventory + curios:curio tag\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell stores and transports fluids\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 portable storage cell subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Portable 4k fluid storage off-network\", \"Access stored fluids without ME drive\", \"Wear in curio slot for quick access\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 portable cell function\"\n        }\n      }\n    },\n    \"ae2:portable_fluid_cell_64k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld portable fluid storage device\"\n        },\n        \"tier\": {\n          \"value\": \"64k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 capacity tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier AE2 progression cell\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for fluid logistics\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable fluid store and retrieval\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech-mod aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 fluid cell blue-teal coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"shapeless craft, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"curio\"],\n          \"signal\": \"named\",\n          \"rationale\": \"inventory + curios:curio tag\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid cell stores and transports fluids\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 portable storage cell subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Portable 64k fluid storage off-network\", \"Access stored fluids without ME drive\", \"Wear in curio slot for quick access\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 portable cell function\"\n        }\n      }\n    },\n    \"ae2:portable_item_cell_16k\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld portable item storage device\"\n        },\n        \"tier\": {\n          \"value\": \"16k\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"AE2 capacity tier from id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier AE2 progression cell\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for item logistics\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable item store and retrieval\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 tech-mod aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 item cell blue-teal coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"named\",\n          \"rationale\": \"shapeless craft, no loot sources\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"curio\"],\n          \"signal\": \"named\",\n          \"rationale\": \"inventory + curios:curio tag\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"item cell stores and transports items\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 portable storage cell subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Portable 16k item storage off-network\", \"Access stored items without ME drive\", \"Wear in curio slot for quick access\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 portable cell function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "a68bb45e-ff89-455d-85a8-f19f6c79c01a",
+  "total_cost_usd": 0.1460081,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2506,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 8867,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2506,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8867,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2506,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2506
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1643,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001718,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8867,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2506,
+      "webSearchRequests": 0,
+      "costUSD": 0.1442901,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2f72ee11-2df0-42b0-b742-46627325c37f"
+}

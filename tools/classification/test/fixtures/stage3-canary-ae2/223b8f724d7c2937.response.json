@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 69994,
+  "duration_api_ms": 70694,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:memory_card\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copies/pastes config between AE2 devices\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable mid-game item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used during network setup, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"configures AE2 network components\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digital config device aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; shaped crafting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"configures ME network parts\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"copy settings from AE2 machine\",\n            \"paste settings to AE2 machine\",\n            \"configure P2P tunnels and buses\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function in AE2\"\n        }\n      }\n    },\n    \"ae2:meteorite_compass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigation tool locating meteorites\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early-game, made in charger\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early AE2 only; discarded after use\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"points toward Certus Quartz meteorite\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged device aesthetic\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced in ae2:charger, no loot source\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 progression item for skystone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"locate Certus Quartz meteorites\",\n            \"early AE2 progression navigation\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is meteorite finding\"\n        }\n      }\n    },\n    \"ae2:missing_content\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeholder for unregistered mod content\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"error placeholder, not legitimately obtainable\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"not a real obtainable item\"\n        }\n      }\n    },\n    \"ae2:molecular_assembler\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"automated crafting machine block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable; multiple needed per setup\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core to every AE2 autocrafting setup\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"executes crafting jobs from ME network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial automation machine\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:autocrafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary autocrafting executor in AE2\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"automated item crafting via ME network\",\n            \"AE2 autocrafting CPU worker node\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function of molecular assembler\"\n        }\n      }\n    },\n    \"ae2:monitor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for terminals/monitors\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable intermediate component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed when building AE2 network parts\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for AE2 terminals and monitors\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"illuminated panel, tech aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright illuminated panel display name\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, shapeless crafting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in network terminals and panels\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft AE2 terminals and storage monitors\",\n            \"ingredient for network tool\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in 5 AE2 network part recipes\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "65ad7a42-630d-417b-b8c2-777ab28ea73d",
+  "total_cost_usd": 0.10118609999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2714,
+    "cache_read_input_tokens": 6262,
+    "output_tokens": 5813,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2714,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 5813,
+        "cache_read_input_tokens": 6262,
+        "cache_creation_input_tokens": 2714,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2714
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1851,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001926,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 5813,
+      "cacheReadInputTokens": 6262,
+      "cacheCreationInputTokens": 2714,
+      "webSearchRequests": 0,
+      "costUSD": 0.09926009999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0e96a9eb-32a7-4575-b018-83410ad53be6"
+}

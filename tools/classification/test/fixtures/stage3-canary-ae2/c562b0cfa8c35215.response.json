@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 120114,
+  "duration_api_ms": 122302,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"ae2:brown_covered_dense_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 channel-routing network cable block\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core AE2 fluix-based cable\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wool\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"covered = wool-wrapped exterior\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires fluix processing chain\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"backbone runs need many dense cables\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network channel routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"brown dye variant of dense cable\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe only, no loot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:covered_dense_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 channels+energy through cables\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"32-channel ME network backbone cabling\", \"high-bandwidth network routing\", \"P2P ME tunnel attunable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dense = max channel count cable\"\n        }\n      }\n    },\n    \"ae2:brown_glass_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic AE2 8-channel network cable\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains glass_cable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheapest AE2 cable variant\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used extensively in early AE2 layouts\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME network channel routing\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"brown dye variant of glass cable\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\", \"opaque_glass\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown glass cable appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe only, no loot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:glass_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 channels+energy through cables\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"basic 8-channel ME network connection\", \"cheap short-run cable\", \"P2P ME tunnel attunable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass = entry-level AE2 cable\"\n        }\n      }\n    },\n    \"ae2:brown_lumen_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown to apply glowing color to cables\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple craft from brown paint ball\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one-time cosmetic use per cable\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies glowing color to AE2 cables\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"lumen = glowing colored paint variant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown lumen emits light\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe only, no loot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:lumen_paint_balls\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply glowing brown color to AE2 cables\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lumen = emissive cable paint\"\n        }\n      }\n    },\n    \"ae2:brown_paint_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown to color AE2 cables\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made from cheap dye and base materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one-time cosmetic use per cable\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colors AE2 cables brown\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"brown dye paint variant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain brown paint tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe only, no loot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:paint_balls\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"color AE2 cables brown\", \"craft brown lumen paint ball\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base brown paint + lumen ingredient\"\n        }\n      }\n    },\n    \"ae2:brown_smart_cable\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 cable with channel usage display\"\n        },\n        \"material_family\": {\n          \"value\": \"fluix\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart cable built on fluix network material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"more components than glass cable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"preferred for organized visible networks\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ME channel cable with visual feedback\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\", \"mechanical\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"brown dye variant of smart cable\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"shaped recipe only, no loot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"ae2:me_network\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag ae2:smart_cable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"AE2 channels+energy through cables\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ME cable with per-channel usage display\", \"monitor channel fill visually\", \"P2P ME tunnel attunable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smart = shows channel fill on cable\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "46d3e3b1-1aee-4a08-809a-4e10e687cb6c",
+  "total_cost_usd": 0.17501475000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 8917,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 9313,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8917,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9313,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 8917,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 8917
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1792,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001872,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9313,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 8917,
+      "webSearchRequests": 0,
+      "costUSD": 0.17314275,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1de56b30-da93-42fb-81af-07cbcd15f972"
+}

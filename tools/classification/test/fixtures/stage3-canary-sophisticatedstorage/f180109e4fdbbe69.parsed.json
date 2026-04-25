@@ -1,0 +1,335 @@
+{
+  "items": {
+    "sophisticatedstorage:iron_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "c:chests + sophisticatedstorage:all_storage",
+          "rationale": "chest tag; primary function is item storage"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id prefix iron_chest"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier in SS progression"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron is a farmable staple"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "storage used constantly"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and organizes items"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional iron container, no ornament"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron material, dark metallic finish"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS storage block tier"
+        },
+        "primary_uses": {
+          "values": [
+            "store items at iron-tier capacity",
+            "upgrade to gold/diamond/netherite chest",
+            "convert to iron shulker box"
+          ],
+          "signal": "inferred",
+          "rationale": "from recipes and SS mod convention"
+        }
+      }
+    },
+    "sophisticatedstorage:iron_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "shulker box carries items portably"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id prefix iron_shulker_box"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron tier in SS progression"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs shulker shell; requires End"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "portable storage used often"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "portable; useful in exploration"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional iron container"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron material coloring"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_container"
+          ],
+          "signal": "pattern",
+          "rationale": "SS storage block tier"
+        },
+        "primary_uses": {
+          "values": [
+            "portable iron-tier item storage",
+            "upgrade to gold shulker box",
+            "carry inventory between locations"
+          ],
+          "signal": "inferred",
+          "rationale": "from recipes and shulker behavior"
+        }
+      }
+    },
+    "sophisticatedstorage:iron_to_diamond_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "id suffix tier_upgrade; upgrades storage"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "source tier from id prefix"
+        },
+        "material_secondary": {
+          "values": [
+            "diamond"
+          ],
+          "signal": "pattern",
+          "rationale": "target tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond cost; moderately expensive"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed once per chest upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage tier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade iron storage to diamond tier",
+            "ingredient for netherite tier upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "from recipes"
+        }
+      }
+    },
+    "sophisticatedstorage:iron_to_gold_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "id suffix tier_upgrade; upgrades storage"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "source tier from id prefix"
+        },
+        "material_secondary": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "target tier from id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "gold is farmable mid-game"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed once per chest upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage tier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade iron storage to gold tier",
+            "ingredient for diamond tier upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "from recipes"
+        }
+      }
+    },
+    "sophisticatedstorage:iron_to_netherite_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "id suffix tier_upgrade; upgrades storage"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "source tier from id prefix"
+        },
+        "material_secondary": {
+          "values": [
+            "netherite"
+          ],
+          "signal": "pattern",
+          "rationale": "target tier from id suffix"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite is endgame and very rare"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "endgame upgrade; used sparingly"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage tier"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade iron storage to netherite tier"
+          ],
+          "signal": "inferred",
+          "rationale": "display name and mod convention"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

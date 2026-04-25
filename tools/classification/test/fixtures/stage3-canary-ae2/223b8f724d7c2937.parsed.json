@@ -1,0 +1,247 @@
+{
+  "items": {
+    "ae2:memory_card": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "copies/pastes config between AE2 devices"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable mid-game item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during network setup, not daily"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "configures AE2 network components"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "digital config device aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shaped crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "configures ME network parts"
+        },
+        "primary_uses": {
+          "values": [
+            "copy settings from AE2 machine",
+            "paste settings to AE2 machine",
+            "configure P2P tunnels and buses"
+          ],
+          "signal": "inferred",
+          "rationale": "core function in AE2"
+        }
+      }
+    },
+    "ae2:meteorite_compass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigation tool locating meteorites"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "early-game, made in charger"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early AE2 only; discarded after use"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "points toward Certus Quartz meteorite"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "charged device aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced in ae2:charger, no loot source"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 progression item for skystone"
+        },
+        "primary_uses": {
+          "values": [
+            "locate Certus Quartz meteorites",
+            "early AE2 progression navigation"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is meteorite finding"
+        }
+      }
+    },
+    "ae2:missing_content": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "placeholder for unregistered mod content"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "error placeholder, not legitimately obtainable"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "not a real obtainable item"
+        }
+      }
+    },
+    "ae2:molecular_assembler": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "automated crafting machine block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable; multiple needed per setup"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core to every AE2 autocrafting setup"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "executes crafting jobs from ME network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial automation machine"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:autocrafting"
+          ],
+          "signal": "inferred",
+          "rationale": "primary autocrafting executor in AE2"
+        },
+        "primary_uses": {
+          "values": [
+            "automated item crafting via ME network",
+            "AE2 autocrafting CPU worker node"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of molecular assembler"
+        }
+      }
+    },
+    "ae2:monitor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for terminals/monitors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable intermediate component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed when building AE2 network parts"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for AE2 terminals and monitors"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "illuminated panel, tech aesthetic"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "bright illuminated panel display name"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, shapeless crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "used in network terminals and panels"
+        },
+        "primary_uses": {
+          "values": [
+            "craft AE2 terminals and storage monitors",
+            "ingredient for network tool"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in 5 AE2 network part recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

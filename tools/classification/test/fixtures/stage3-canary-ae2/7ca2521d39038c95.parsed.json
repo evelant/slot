@@ -1,0 +1,325 @@
+{
+  "items": {
+    "ae2:green_smart_dense_cable": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "ME network cable carries channels/signals"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "AE2 cables use glass as core material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from basic glass and metals"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Needed throughout ME network builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "ME network backbone for automation"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Green dye variant, mechanical look"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "named",
+          "rationale": "Green in display name"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources present"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:me_network"
+          ],
+          "signal": "inferred",
+          "rationale": "Core ME network infrastructure cable"
+        },
+        "transport_medium": {
+          "values": [
+            "energy",
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "Carries ME channels and energy"
+        },
+        "primary_uses": {
+          "values": [
+            "Connect ME network nodes at high bandwidth",
+            "32-channel dense network backbone",
+            "Attune P2P tunnels to ME mode"
+          ],
+          "signal": "inferred",
+          "rationale": "Dense smart cable functions"
+        }
+      }
+    },
+    "ae2:growth_accelerator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Active crystal acceleration block"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "AE2 machines typically use iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed once per crystal farm setup"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Accelerates crystal farm automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 machine block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Typical AE2 machine dark iron palette"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "crystal_processing in recipe path"
+        },
+        "primary_uses": {
+          "values": [
+            "Speed up certus quartz crystal growth",
+            "Essential for AE2 crystal farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Crystal growth acceleration block"
+        }
+      }
+    },
+    "ae2:guide": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "In-game reference guide/manual item"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Found in AE2 meteor craters"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Consulted as reference, rarely used"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "mysterious_cube loot from AE2 meteors"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "Alien artifact found in meteor ruins"
+        },
+        "primary_uses": {
+          "values": [
+            "In-game AE2 mod documentation",
+            "Learn AE2 mechanics and recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 guide book item"
+        }
+      }
+    },
+    "ae2:import_bus": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "Active part that pulls items into ME"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "AE2 bus parts use iron in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable basic AE2 network part"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used at every ME import connection"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Core AE2 item import automation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources, recipe only"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 machine part aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard AE2 part dark iron palette"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:external_io"
+          ],
+          "signal": "inferred",
+          "rationale": "Imports items from external to ME"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "Moves items into ME network"
+        },
+        "primary_uses": {
+          "values": [
+            "Pull items from adjacent inventory to ME",
+            "Automate item import into ME network"
+          ],
+          "signal": "inferred",
+          "rationale": "Core AE2 import bus function"
+        }
+      }
+    },
+    "ae2:inscriber": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Machine block for crafting ME processors"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "Inscriber recipe uses iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable early AE2 machine"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Essential for all AE2 processor crafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Automates ME processor production"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 processing machine aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard AE2 machine dark iron palette"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "inscribers in recipe output path name"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft ME logic/calc/engineering processors",
+            "Essential early AE2 progression machine",
+            "Process certus prints into circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "Core AE2 inscriber machine function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

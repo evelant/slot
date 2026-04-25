@@ -1,0 +1,426 @@
+{
+  "items": {
+    "ae2:portable_fluid_cell_1k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld portable fluid storage device"
+        },
+        "tier": {
+          "value": "1k",
+          "signal": "pattern",
+          "rationale": "AE2 capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires AE2 tech progression"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable fluid store and retrieval"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 fluid cell blue-teal coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "shapeless craft, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "inventory + curios:curio tag"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell stores and transports fluids"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 portable storage cell subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable 1k fluid storage off-network",
+            "Access stored fluids without ME drive",
+            "Wear in curio slot for quick access"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 portable cell function"
+        }
+      }
+    },
+    "ae2:portable_fluid_cell_256k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld portable fluid storage device"
+        },
+        "tier": {
+          "value": "256k",
+          "signal": "pattern",
+          "rationale": "AE2 capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "256k components are deep-progression expensive"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable fluid store and retrieval"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 fluid cell blue-teal coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "shapeless craft, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "inventory + curios:curio tag"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell stores and transports fluids"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 portable storage cell subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable 256k fluid storage off-network",
+            "Access stored fluids without ME drive",
+            "Wear in curio slot for quick access"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 portable cell function"
+        }
+      }
+    },
+    "ae2:portable_fluid_cell_4k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld portable fluid storage device"
+        },
+        "tier": {
+          "value": "4k",
+          "signal": "pattern",
+          "rationale": "AE2 capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "early-mid AE2 cell tier"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable fluid store and retrieval"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 fluid cell blue-teal coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "shapeless craft, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "inventory + curios:curio tag"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell stores and transports fluids"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 portable storage cell subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable 4k fluid storage off-network",
+            "Access stored fluids without ME drive",
+            "Wear in curio slot for quick access"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 portable cell function"
+        }
+      }
+    },
+    "ae2:portable_fluid_cell_64k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld portable fluid storage device"
+        },
+        "tier": {
+          "value": "64k",
+          "signal": "pattern",
+          "rationale": "AE2 capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier AE2 progression cell"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for fluid logistics"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable fluid store and retrieval"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 fluid cell blue-teal coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "shapeless craft, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "inventory + curios:curio tag"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid cell stores and transports fluids"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 portable storage cell subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable 64k fluid storage off-network",
+            "Access stored fluids without ME drive",
+            "Wear in curio slot for quick access"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 portable cell function"
+        }
+      }
+    },
+    "ae2:portable_item_cell_16k": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "handheld portable item storage device"
+        },
+        "tier": {
+          "value": "16k",
+          "signal": "pattern",
+          "rationale": "AE2 capacity tier from id suffix"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mid-tier AE2 progression cell"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for item logistics"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable item store and retrieval"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 tech-mod aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 item cell blue-teal coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "named",
+          "rationale": "shapeless craft, no loot sources"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "curio"
+          ],
+          "signal": "named",
+          "rationale": "inventory + curios:curio tag"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "item cell stores and transports items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 portable storage cell subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable 16k item storage off-network",
+            "Access stored items without ME drive",
+            "Wear in curio slot for quick access"
+          ],
+          "signal": "inferred",
+          "rationale": "core AE2 portable cell function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

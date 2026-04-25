@@ -1,0 +1,366 @@
+{
+  "items": {
+    "sophisticatedstorage:basic_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to storage to raise its tier"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "SS basic tier is the wooden base"
+        },
+        "tier": {
+          "value": "basic",
+          "signal": "pattern",
+          "rationale": "id contains basic_tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "earliest-progression upgrade item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage containers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional, no aesthetic theme"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "basic/wooden tier aesthetic"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe-produced only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade family"
+        },
+        "primary_uses": {
+          "values": [
+            "base ingredient for SS tier upgrade chain",
+            "upgrade storage to basic tier"
+          ],
+          "signal": "inferred",
+          "rationale": "bottom of upgrade progression"
+        }
+      }
+    },
+    "sophisticatedstorage:basic_to_copper_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to raise storage to copper tier"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id names copper as target tier"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper_tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper is an early-game material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage containers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper material visual"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe-produced only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade family"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade storage from basic to copper tier",
+            "ingredient for iron tier upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-chain tier upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:basic_to_iron_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to raise storage to iron tier"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id names iron as target tier"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id contains iron_tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron is a common mid-game material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage containers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron material visual"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe-produced only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade family"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade storage from basic to iron tier",
+            "ingredient for gold tier upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-chain tier upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:basic_to_gold_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to raise storage to gold tier"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id names gold as target tier"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id contains gold_tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold requires deliberate farming"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage containers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material visual"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe-produced only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade family"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade storage from basic to gold tier",
+            "ingredient for diamond tier upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "upper-mid-chain tier upgrade"
+        }
+      }
+    },
+    "sophisticatedstorage:basic_to_diamond_tier_upgrade": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied to raise storage to diamond tier"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id names diamond as target tier"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id contains diamond_tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "diamond is a rare resource"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per container upgrade"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades storage containers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "functional upgrade item"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond visual theme"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe-produced only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedstorage:storage_tier_upgrade"
+          ],
+          "signal": "pattern",
+          "rationale": "SS tier upgrade family"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade storage from basic to diamond tier",
+            "ingredient for netherite tier upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "near-top-chain tier upgrade"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

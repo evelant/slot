@@ -1,0 +1,306 @@
+{
+  "items": {
+    "ae2:charged_staff": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "staff tool in AE2 misctools category"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "inferred",
+          "rationale": "crafted from charged certus quartz"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires charged certus quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche utility, not used constantly"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used for locating AE2 meteorites"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "energy-charged magical staff"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "charged certus quartz glows blue-white"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources listed in data"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging AE2 crystals and items",
+            "Locating certus quartz meteorites"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 misctools energy staff"
+        }
+      }
+    },
+    "ae2:charger": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "pattern",
+          "rationale": "crystal_processing_charger in recipe path"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "standard AE2 early machine uses iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "essential early AE2 machine, easy to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "required for charging certus quartz"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "automates certus quartz charging"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 machine block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:processing"
+          ],
+          "signal": "pattern",
+          "rationale": "crystal_processing in recipe output path"
+        },
+        "primary_uses": {
+          "values": [
+            "Charging certus quartz seeds",
+            "Charging AE2 energy cells and tools",
+            "Essential first AE2 machine"
+          ],
+          "signal": "inferred",
+          "rationale": "charger name + crystal processing path"
+        }
+      }
+    },
+    "ae2:chest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active ME network storage interface"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "AE2 chest primarily iron construction"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires multiple AE2 components"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used as portable cell base + ME storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ME storage interface; portable cell base"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "AE2 machine block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "ae2:storage"
+          ],
+          "signal": "pattern",
+          "rationale": "storage_chest in recipe output path"
+        },
+        "primary_uses": {
+          "values": [
+            "Single storage cell ME interface",
+            "Crafting portable storage cells",
+            "Basic ME network storage access"
+          ],
+          "signal": "inferred",
+          "rationale": "ME Chest + portable cell ingredient list"
+        }
+      }
+    },
+    "ae2:chipped_budding_quartz": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "grows certus quartz crystals when placed"
+        },
+        "material_family": {
+          "value": "certus_quartz",
+          "signal": "pattern",
+          "rationale": "id contains budding_quartz in AE2"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found only in AE2 meteorites"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once for crystal farm, rarely moved"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "grows certus quartz for AE2 automation"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural crystal block; chipped=degraded tier"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz pale blue-white crystal"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in AE2 meteorites on overworld"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "budding blocks immovable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "Farming certus quartz buds/crystals",
+            "Core AE2 crystal supply"
+          ],
+          "signal": "inferred",
+          "rationale": "budding block grows crystals over time"
+        }
+      }
+    },
+    "ae2:chiseled_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled stone block for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "made from farmable certus quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for AE2-themed aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled block for structural/decorative"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled = fancy stonecutting variant"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "certus quartz light blue-white color"
+        },
+        "primary_uses": {
+          "values": [
+            "AE2-themed decorative building",
+            "Certus quartz architectural block"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled decorative block for builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "ae2:chiseled_quartz_block",
+      "facet": "material_family",
+      "current": "quartz",
+      "suggested": "certus_quartz",
+      "rationale": "Certus quartz is distinct from vanilla nether quartz",
+      "confidence": 0.85
+    }
+  ]
+}
