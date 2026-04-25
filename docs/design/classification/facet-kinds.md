@@ -3,8 +3,9 @@
 Formal specification of how facet values are authored, validated, and merged
 across classification layers. Referenced by:
 
+- [README.md](README.md) — overview of the classification system as a whole
 - [docs/plans/item-classification.md](../../plans/item-classification.md) — the planning document
-- [layer-format.schema.json](layer-format.schema.json) — the JSON Schema that validates layer files
+- [tools/classification/layer.schema.json](../../../tools/classification/layer.schema.json) — the canonical JSON Schema that validates layer files
 - [schema-changelog.md](schema-changelog.md) — versioning policy
 
 Eight kinds are defined. `item_ref` / `item_ref_multi` / `numeric` are reserved for

@@ -2,9 +2,10 @@
 
 Policy for evolving the classification facet schema. Referenced by:
 
+- [README.md](README.md) — overview of the classification system as a whole
 - [docs/plans/item-classification.md](../../plans/item-classification.md)
 - [facet-kinds.md](facet-kinds.md) — kind definitions
-- [layer-format.schema.json](layer-format.schema.json) — wire format
+- [tools/classification/layer.schema.json](../../../tools/classification/layer.schema.json) — canonical wire format
 
 ## Current version
 
@@ -90,7 +91,8 @@ preserve `player_island` intent. Concretely:
 ## Schema-proposals review cadence
 
 The pipeline's stage 3 emits `schema_proposals` in each output file (see
-[layer-format.schema.json](layer-format.schema.json)). Review cadence:
+[tools/classification/layer.schema.json](../../../tools/classification/layer.schema.json)).
+Review cadence:
 
 - **Per run.** Pipeline prints a summary count at the end of each invocation.
 - **Quarterly.** Curator reviews accumulated proposals across runs; triages as

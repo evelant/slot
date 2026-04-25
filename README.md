@@ -52,6 +52,10 @@ Design:
   atlas: islands, homes, lenses, progressive disclosure.
 - [docs/design/kits.md](docs/design/kits.md) — task-oriented Kits (unifies
   earlier "collections + loadouts").
+- [docs/design/classification/README.md](docs/design/classification/README.md)
+  — item classification system overview: data layout, facet catalog, layer
+  format, and where the dataset comes from. Powers atlas-homing and future
+  semantic search / theme detection / clutter review.
 
 Plans:
 
@@ -61,6 +65,9 @@ Plans:
   prototype slices and blocking decisions.
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit prototype
   slices.
+- [docs/plans/item-classification.md](docs/plans/item-classification.md) —
+  classification pipeline + runtime planning doc (long-form). Read
+  [the design overview](docs/design/classification/README.md) first.
 
 Decisions (ADR-style):
 
