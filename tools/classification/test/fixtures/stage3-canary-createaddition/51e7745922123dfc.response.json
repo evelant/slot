@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 189370,
+  "duration_api_ms": 190184,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"createaddition:redstone_relay\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"relays/converts redstone signals\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted standard mod component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed when building signal networks\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"relay = signal routing/conversion\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create-style industrial part\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical Create metal block aesthetic\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electrical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bridges redstone and electrical systems\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"relay redstone signals\", \"convert redstone to electrical\", \"signal routing in automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"relay implies signal passthrough/bridge\"\n        }\n      }\n    },\n    \"createaddition:rolling_mill\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"machine that processes materials\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted, standard processing machine\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"set-and-forget processing machine\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"processes materials in automated lines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial rolling machine\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axe-mineable implies wood frame+metal\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"material processing subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"roll wires and coils\", \"process materials for electrical parts\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolling mill = flatten/draw metal stock\"\n        }\n      }\n    },\n    \"createaddition:seed_oil\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed fluid from compacting seeds\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced only via create:compacting\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable from seeds via compacting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed as fuel in generators\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oil = fuel for combustion generators\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant-derived oil\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant oil is amber/golden-toned\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"it's a fluid; stored in fluid tanks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electrical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fuel source for electrical generators\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fuel for combustion generators\", \"fill buckets for transport\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oil = fuel in Create electrical systems\"\n        }\n      }\n    },\n    \"createaddition:seed_oil_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket transports fluid for use\"\n        },\n        \"material_family\": {\n          \"value\": \"seed_oil\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains seed_oil\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"buckets are iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable fluid + common iron bucket\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"transport/fill tanks with seed oil\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oil fuels generators; belt compatible\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\", \"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket holds fluid; also a standard item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"transport seed oil\", \"fill fluid tanks\", \"fuel combustion generators\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket = portable fluid delivery\"\n        }\n      }\n    },\n    \"createaddition:small_light_connector\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active wire connector in electrical net\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable, standard electrical part\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed at every wire connection point\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wire connector for electrical network\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial electrical connector\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"has built-in light; warm glow aesthetic\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"named\",\n          \"evidence\": \"Small Connector With Light\",\n          \"rationale\": \"display name explicitly states light\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electrical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wire connector for electrical network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"connect electrical wires\", \"distribute power to machines\", \"illuminate while connected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"connector+light dual function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "f9d353df-7618-46eb-9fcc-f5e73ca187c2",
+  "total_cost_usd": 0.26985614999999996,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3057,
+    "cache_read_input_tokens": 6048,
+    "output_tokens": 16953,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3057,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16953,
+        "cache_read_input_tokens": 6048,
+        "cache_creation_input_tokens": 3057,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3057
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2194,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002274,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16953,
+      "cacheReadInputTokens": 6048,
+      "cacheCreationInputTokens": 3057,
+      "webSearchRequests": 0,
+      "costUSD": 0.26758214999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7cd6cb87-2fb5-4451-8598-7fa952c28508"
+}

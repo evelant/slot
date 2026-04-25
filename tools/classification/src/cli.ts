@@ -11,6 +11,8 @@ import {
   VANILLA_NAMESPACE,
 } from "./extract/vanilla/extractor.ts";
 import type { ItemExtractRecord } from "./extract/record.ts";
+import { loadModSourceBundle } from "./extract/mod/source.ts";
+import { extractFromModBundle } from "./extract/mod/extractor.ts";
 import { runDeterministic, type LayerFile } from "./deterministic/run.ts";
 import { validateLayer, validateLayerFile } from "./schema/validate.ts";
 import {
@@ -129,39 +131,41 @@ async function main() {
 
       const stages = parseStages(args.values.stages);
 
+      const stage3CliOpts: Stage3CliOptions = {
+        model: args.values.model,
+        batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
+        concurrency: args.values.concurrency ? Number(args.values.concurrency) : undefined,
+        effort: parseEffort(args.values.effort),
+        thinkingBudget: args.values["thinking-budget"]
+          ? Number(args.values["thinking-budget"])
+          : undefined,
+        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
+        sample: args.values.sample,
+        fixtureDir: args.values["fixture-dir"],
+        useReplay: args.values["use-replay"] ?? false,
+        recordReplay: args.values["record-replay"] ?? false,
+        dryRun: args.values["dry-run"] ?? false,
+        retryModel: args.values["retry-model"],
+        retryEffort: parseEffort(args.values["retry-effort"]),
+        retryThreshold: args.values["retry-threshold"]
+          ? Number(args.values["retry-threshold"])
+          : undefined,
+        retryBatchSize: args.values["retry-batch-size"]
+          ? Number(args.values["retry-batch-size"])
+          : undefined,
+        retryFixtureDir: args.values["retry-fixture-dir"],
+        retryUseReplay: args.values["retry-use-replay"],
+        retryRecordReplay: args.values["retry-record-replay"],
+      };
+
       if (mod === "minecraft") {
-        await runVanilla(sourcePath, outDir, stages, {
-          model: args.values.model,
-          batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
-          concurrency: args.values.concurrency ? Number(args.values.concurrency) : undefined,
-          effort: parseEffort(args.values.effort),
-          thinkingBudget: args.values["thinking-budget"]
-            ? Number(args.values["thinking-budget"])
-            : undefined,
-          disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
-          sample: args.values.sample,
-          fixtureDir: args.values["fixture-dir"],
-          useReplay: args.values["use-replay"] ?? false,
-          recordReplay: args.values["record-replay"] ?? false,
-          dryRun: args.values["dry-run"] ?? false,
-          retryModel: args.values["retry-model"],
-          retryEffort: parseEffort(args.values["retry-effort"]),
-          retryThreshold: args.values["retry-threshold"]
-            ? Number(args.values["retry-threshold"])
-            : undefined,
-          retryBatchSize: args.values["retry-batch-size"]
-            ? Number(args.values["retry-batch-size"])
-            : undefined,
-          retryFixtureDir: args.values["retry-fixture-dir"],
-          retryUseReplay: args.values["retry-use-replay"],
-          retryRecordReplay: args.values["retry-record-replay"],
-        });
+        await runVanilla(sourcePath!, outDir, stages, stage3CliOpts);
         return;
       }
-      console.error(
-        `classify: unknown mod '${mod}'. Only 'minecraft' is implemented today.`,
-      );
-      process.exit(2);
+      // Any other mod id → mod-source extractor (createaddition, mekanism, …).
+      // The source path should be the mod's repo root; the loader walks
+      // src/main/resources + src/generated/resources for the given namespace.
+      await runMod(mod!, sourcePath!, outDir, stages, stage3CliOpts);
       return;
     }
 
@@ -262,6 +266,95 @@ async function runVanilla(
       bundle,
       namespace: VANILLA_NAMESPACE,
     });
+    layer.generated_by = TOOL_VERSION;
+    layer.generated_at = new Date().toISOString();
+    const validation = validateLayer(layer);
+    if (!validation.ok) {
+      console.error(`[stage2] layer failed schema validation`);
+      for (const err of validation.errors.slice(0, 10)) console.error(`  ${err}`);
+      process.exit(1);
+    }
+    writeFileSync(partialPath, JSON.stringify(layer, null, 2) + "\n");
+    console.log(`[stage2] ${Object.keys(layer.entries).length} items with ≥1 facet → ${partialPath}`);
+    console.log(`[stage2] coverage:`);
+    const facetOrder = Object.keys(coverage).sort((a, b) => coverage[b]! - coverage[a]!);
+    for (const facet of facetOrder) {
+      const pct = ((coverage[facet]! / records.length) * 100).toFixed(1);
+      console.log(`  ${facet.padEnd(22)} ${String(coverage[facet]).padStart(5)}/${records.length} (${pct}%)`);
+    }
+    if (warnings.length > 0) {
+      console.log(`[stage2] ${warnings.length} warnings:`);
+      for (const w of warnings.slice(0, 20)) console.log(`  ${w}`);
+      if (warnings.length > 20) console.log(`  … and ${warnings.length - 20} more`);
+    }
+    stage2Layer = layer;
+  } else if (stages.stage3) {
+    if (!existsSync(partialPath)) {
+      console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 2,3`);
+      process.exit(1);
+    }
+    stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
+    console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
+  }
+
+  if (stages.stage3 && stage2Layer) {
+    await executeStage3(records, stage2Layer, completePath, stage3Opts);
+  }
+
+  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+/**
+ * Run the pipeline against a mod source tree (createaddition, mekanism, …).
+ * Mirrors `runVanilla` but uses the mod-source bundle loader and writes
+ * outputs under `<modid>.*` filenames so multiple mods can coexist in
+ * the same `out/` directory.
+ *
+ * Stage-2 still runs against the mod's bundle; some rules will fire and
+ * some won't (we have no item_components data from source). That's
+ * expected — the goal of this pass is to measure how well stage 3 handles
+ * modded items, not to perfect stage 2 for them.
+ */
+async function runMod(
+  modNamespace: string,
+  modPath: string,
+  outDir: string,
+  stages: StageSelection,
+  stage3Opts: Stage3CliOptions,
+) {
+  const start = Date.now();
+  console.log(`[${modNamespace}] loading mod source bundle from ${modPath}`);
+  const bundle = loadModSourceBundle({ modPath, modNamespace });
+  console.log(`[${modNamespace}] roots: ${bundle.roots.length}; items: ${bundle.registries.item?.length ?? 0}; tags(item): ${Object.keys(bundle.itemTags).length}; recipes: ${Object.keys(bundle.recipes).length}`);
+
+  const ndjsonPath = join(outDir, `${modNamespace}.items.ndjson`);
+  const metaPath = join(outDir, `${modNamespace}.items.meta.json`);
+  const partialPath = join(outDir, `${modNamespace}.facets.partial.json`);
+  const completePath = join(outDir, `${modNamespace}.facets.complete.json`);
+  mkdirSync(dirname(ndjsonPath), { recursive: true });
+
+  let records: ItemExtractRecord[];
+  if (stages.stage1) {
+    const { records: extracted, meta } = extractFromModBundle(bundle, TOOL_VERSION);
+    records = extracted;
+    const ndjson = records.map((r) => JSON.stringify(r)).join("\n") + "\n";
+    writeFileSync(ndjsonPath, ndjson);
+    writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n");
+    console.log(`[stage1] ${records.length} items → ${ndjsonPath}`);
+  } else {
+    records = readNdjson(ndjsonPath);
+    console.log(`[stage1] (skipped; loaded ${records.length} records from ${ndjsonPath})`);
+  }
+
+  let stage2Layer: LayerFile | null = null;
+  if (stages.stage2) {
+    const { layer, coverage, warnings } = runDeterministic({
+      records,
+      bundle,
+      namespace: modNamespace,
+    });
+    layer.layer = "per-mod";
+    layer.source = modNamespace;
     layer.generated_by = TOOL_VERSION;
     layer.generated_at = new Date().toISOString();
     const validation = validateLayer(layer);

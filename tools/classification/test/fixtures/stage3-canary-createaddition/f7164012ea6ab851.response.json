@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 317865,
+  "duration_api_ms": 318477,
+  "num_turns": 7,
+  "result": "{\n  \"items\": {\n    \"createaddition:accumulator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"named 'accumulator'=energy storage battery block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create-tier machine, non-trivial craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed in every CA electrical setup\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"FE energy buffer in Create automation networks\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create-style industrial machine aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create machines use iron/copper casing\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; Create machines are crafted\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"part of CA electricity storage system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store and supply FE electrical energy\",\n            \"Buffer power between generators and machines\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named function: accumulates electrical energy\"\n        }\n      }\n    },\n    \"createaddition:alternator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"converts Create rotation to FE electricity\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires Create mechanical crafting setup\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core generator in every CA power network\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"converts Create SU to FE for machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"kinetic-to-electric generator device\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"alternator coils=copper, casing=iron\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary generator in CA electricity system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Convert Create rotation to FE electricity\",\n            \"Power electrical machines in CreateAddition\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named function: SU to FE conversion\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"outputs FE electrical energy to network\"\n        }\n      }\n    },\n    \"createaddition:barbed_wire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"damages entities on contact; active defense block\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"barbed wire is traditionally iron/steel\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple iron shaped craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational defense or mob farm use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"defense block and mob farm damage layer\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial wire/metal block\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray iron wire appearance\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"barbed wire by definition hurts entities\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Damage entities on contact\",\n            \"Defense perimeter block\",\n            \"Mob farm damage layer\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"named item implies damage-dealing wire\"\n        }\n      }\n    },\n    \"createaddition:bioethanol\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed fluid fuel refined from crops\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced from farmable crops via mixing\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed continuously as generator fuel\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biofuel for CA power generators\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bio-derived from organic/crop materials\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biofuel fluids appear amber/yellow\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"create:mixing output; not found naturally\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"create:mixing produces fluids stored in tanks\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary liquid fuel in CA power system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Biofuel for CreateAddition generators\",\n            \"Fluid fuel from crops via mixing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole function is as combustible generator fuel\"\n        }\n      }\n    },\n    \"createaddition:bioethanol_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket delivers biofuel to tanks/machines\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bioethanol + iron bucket; both common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to fill tanks and generators\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"delivers biofuel for power generation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron bucket containing bio-derived fluid\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"amber biofuel visible in bucket icon\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"fluid\"],\n          \"signal\": \"named\",\n          \"evidence\": \"c:buckets + create:upright_on_belt\",\n          \"rationale\": \"bucket: standard inv + fluid container slot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"delivers fuel for CA electricity system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Transport bioethanol to tanks and machines\",\n            \"Belt-transportable biofuel container\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"c:buckets + upright_on_belt confirm function\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"bucket form transports contained fluid\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "82da1146-590a-49d1-8ba2-8322fb92cc9a",
+  "total_cost_usd": 0.34707959999999993,
+  "usage": {
+    "input_tokens": 5,
+    "cache_creation_input_tokens": 8674,
+    "cache_read_input_tokens": 15847,
+    "output_tokens": 20513,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8674,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 1,
+        "output_tokens": 19840,
+        "cache_read_input_tokens": 8277,
+        "cache_creation_input_tokens": 397,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 397
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2018,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002088,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 5,
+      "outputTokens": 20513,
+      "cacheReadInputTokens": 15847,
+      "cacheCreationInputTokens": 8674,
+      "webSearchRequests": 0,
+      "costUSD": 0.34499159999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "cfca2fff-8147-4355-9f98-b886623b6832"
+}

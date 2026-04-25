@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 171031,
+  "duration_api_ms": 171966,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"createaddition:bronze_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"rod form suffix = processed material\"\n        },\n        \"material_family\": {\n          \"value\": \"bronze\",\n          \"signal\": \"named\",\n          \"rationale\": \"name explicitly states Bronze\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bronze mid-tier alloy, farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rods widely used in Create crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electricity/automation mod context\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial rod, no decoration\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bronze = warm golden-brown metal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"alloy, no natural loot sources\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting electrical/mechanical parts\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create mod rod = crafting ingredient\"\n        }\n      }\n    },\n    \"createaddition:cake_base\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate food processing step\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cake base = wheat/flour primary\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wheat abundant; compacting easy\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used in cake production chain\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food chain; made via Create compacting\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw/unfinished food form\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"output of create:compacting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:food\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food processing sub-chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smoke into baked cake base\"],\n          \"signal\": \"named\",\n          \"rationale\": \"sole use: smoking/cake_base_baked\"\n        }\n      }\n    },\n    \"createaddition:cake_base_baked\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate before final cake product\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"baked cake base = wheat grain\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from common wheat\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only for final cake production\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food chain; filling via Create\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"baked but unfilled intermediate\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"output of smoking recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:food\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food processing sub-chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fill to make cake variants\"],\n          \"signal\": \"named\",\n          \"rationale\": \"ingredient of 3 filling/cake recipes\"\n        }\n      }\n    },\n    \"createaddition:capacitor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for electrical machines\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"guess\",\n          \"rationale\": \"capacitors use copper; no recipe data\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires mechanical_crafting step\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in select electrical builds\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"motor/alternator/tesla_coil uses\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial electrical component\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper+metal capacitor construction\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot; shaped crafting only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"motor, alternator, tesla coil chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft electric motor\",\n            \"craft alternator\",\n            \"craft tesla coil\",\n            \"craft modular accumulator\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"listed in sample_ingredient_of\"\n        }\n      }\n    },\n    \"createaddition:chocolate_cake\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"tagged c:foods; edible_when_placed\"\n        },\n        \"material_family\": {\n          \"value\": \"chocolate\",\n          \"signal\": \"named\",\n          \"rationale\": \"name + filling/chocolate_cake output\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires Create filling process\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty food, not a staple\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food + placeable block aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"multi-step crafted cake = fancy\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chocolate brown color scheme\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"output of create:filling only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:food\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create food processing chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"eat as placed food block\",\n            \"food display decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block food like vanilla cake\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "1c108775-a723-4c5b-9aee-032fd30998ba",
+  "total_cost_usd": 0.23852299999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 8940,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 13526,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8940,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13526,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 8940,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 8940
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2029,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002099,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13526,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 8940,
+      "webSearchRequests": 0,
+      "costUSD": 0.236424,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f3ebf223-bc61-4cd5-8a43-6691ca851dc8"
+}

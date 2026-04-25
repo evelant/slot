@@ -1,0 +1,313 @@
+{
+  "items": {
+    "createaddition:redstone_relay": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "relays/converts redstone signals"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted standard mod component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when building signal networks"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "relay = signal routing/conversion"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create-style industrial part"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "typical Create metal block aesthetic"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electrical"
+          ],
+          "signal": "inferred",
+          "rationale": "bridges redstone and electrical systems"
+        },
+        "primary_uses": {
+          "values": [
+            "relay redstone signals",
+            "convert redstone to electrical",
+            "signal routing in automation"
+          ],
+          "signal": "inferred",
+          "rationale": "relay implies signal passthrough/bridge"
+        }
+      }
+    },
+    "createaddition:rolling_mill": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "machine that processes materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted, standard processing machine"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "set-and-forget processing machine"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "processes materials in automated lines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial rolling machine"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "axe-mineable implies wood frame+metal"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:processing"
+          ],
+          "signal": "inferred",
+          "rationale": "material processing subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "roll wires and coils",
+            "process materials for electrical parts"
+          ],
+          "signal": "inferred",
+          "rationale": "rolling mill = flatten/draw metal stock"
+        }
+      }
+    },
+    "createaddition:seed_oil": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed fluid from compacting seeds"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced only via create:compacting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable from seeds via compacting"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "consumed as fuel in generators"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "oil = fuel for combustion generators"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-derived oil"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "plant oil is amber/golden-toned"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "it's a fluid; stored in fluid tanks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electrical"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel source for electrical generators"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for combustion generators",
+            "fill buckets for transport"
+          ],
+          "signal": "inferred",
+          "rationale": "oil = fuel in Create electrical systems"
+        }
+      }
+    },
+    "createaddition:seed_oil_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket transports fluid for use"
+        },
+        "material_family": {
+          "value": "seed_oil",
+          "signal": "pattern",
+          "rationale": "id contains seed_oil"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "buckets are iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable fluid + common iron bucket"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "transport/fill tanks with seed oil"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "oil fuels generators; belt compatible"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket holds fluid; also a standard item"
+        },
+        "primary_uses": {
+          "values": [
+            "transport seed oil",
+            "fill fluid tanks",
+            "fuel combustion generators"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket = portable fluid delivery"
+        }
+      }
+    },
+    "createaddition:small_light_connector": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active wire connector in electrical net"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, standard electrical part"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed at every wire connection point"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "wire connector for electrical network"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial electrical connector"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "has built-in light; warm glow aesthetic"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "named",
+          "evidence": "Small Connector With Light",
+          "rationale": "display name explicitly states light"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electrical"
+          ],
+          "signal": "inferred",
+          "rationale": "wire connector for electrical network"
+        },
+        "primary_uses": {
+          "values": [
+            "connect electrical wires",
+            "distribute power to machines",
+            "illuminate while connected"
+          ],
+          "signal": "inferred",
+          "rationale": "connector+light dual function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

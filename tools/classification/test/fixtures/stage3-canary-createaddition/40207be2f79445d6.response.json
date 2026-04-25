@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 316028,
+  "duration_api_ms": 316986,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"createaddition:electrum_amulet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wearable trinket with passive effect\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix electrum_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from processed electrum\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational wearable\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornamental amulet form\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = gold-silver alloy\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources found\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create:Add electrical system item\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"curio\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"amulet implies curio slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"wearable trinket with passive effect\",\n            \"Create:Addition curio accessory\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"amulet in automation mod\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = electrical material\"\n        }\n      }\n    },\n    \"createaddition:electrum_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"named\",\n          \"evidence\": \"c:storage_blocks/electrum\",\n          \"rationale\": \"c:storage_blocks tag\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix electrum_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from electrum ingots\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"compact storage or decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard metal storage block\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = gold-silver alloy\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingot compression + metal decor\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compact electrum ingot storage\",\n            \"decorative metal block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage block standard uses\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = electrical material\"\n        }\n      }\n    },\n    \"createaddition:electrum_ingot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingot = processed material\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix electrum_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold + silver alloy processing\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core craft ingredient in mod\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard ingot form\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = gold-silver alloy\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrical comps + beacon payment\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting electrical components\",\n            \"crafting electrum blocks and rods\",\n            \"beacon payment item\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"beacon tag + mod recipes\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = electrical material\"\n        }\n      }\n    },\n    \"createaddition:electrum_nugget\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"nugget = sub-ingot material\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix electrum_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"from processed electrum\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use, ingot sub-unit\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard nugget form\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = gold-silver alloy\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sub-unit of electrical material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"9x craft into electrum ingot\",\n            \"sub-ingot denomination\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nugget standard use pattern\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = electrical material\"\n        }\n      }\n    },\n    \"createaddition:electrum_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"rod = processed metal component\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix electrum_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled from electrum ingots\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific use in connectors\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"machined rod for connectors\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = gold-silver alloy\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"named\",\n          \"evidence\": \"createaddition:large_connector_usable_rods\",\n          \"rationale\": \"large connector tag = automation\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting large electrical connectors\",\n            \"Create:Addition wiring component\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"large_connector_usable_rods tag\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum = electrical material\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "5170276f-98ce-4da1-8e9c-5d67aec97aab",
+  "total_cost_usd": 0.38618315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3689,
+    "cache_read_input_tokens": 6048,
+    "output_tokens": 24508,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3689,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 24508,
+        "cache_read_input_tokens": 6048,
+        "cache_creation_input_tokens": 3689,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3689
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2826,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0029059999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 24508,
+      "cacheReadInputTokens": 6048,
+      "cacheCreationInputTokens": 3689,
+      "webSearchRequests": 0,
+      "costUSD": 0.38327714999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f4607a79-35df-4654-810b-332a90afa2f1"
+}

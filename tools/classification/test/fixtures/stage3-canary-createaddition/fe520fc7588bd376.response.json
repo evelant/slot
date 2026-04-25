@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 122932,
+  "duration_api_ms": 123727,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"createaddition:creative_energy\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"named Creative Generator = energy source block\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only = unobtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once for creative test rigs\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"infinite FE for testing automation chains\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generator machine block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create machine palette + energy glow\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"Creative Generator implies creative mode only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"FE generation subsystem of CA\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits FE into the network\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"infinite FE source for creative testing\",\n            \"power Create machines without fuel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative generator = unlimited power test\"\n        }\n      }\n    },\n    \"createaddition:diamond_grit\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:dusts/diamond tag → processed dust\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:dusts/diamond tag + display name\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from rare diamonds\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"single downstream use: sandpaper\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create crushing chain ingredient\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crushed mineral dust\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond dust = pale crystalline look\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced by crushing diamond, no world spawn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft diamond grit sandpaper\",\n            \"Create crushing chain by-product of diamond\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole recipe output is sandpaper\"\n        }\n      }\n    },\n    \"createaddition:diamond_grit_sandpaper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"create:sandpaper tag = polishing tool\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"diamond grit = diamond abrasive\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"paper\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sandpaper substrate is paper\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond crushing chain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche Create polishing use case\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create polishing/processing workflow\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial abrasive tool\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shapeless crafted from diamond grit\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"create:polishing\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"create:sandpaper tag → polishing subsystem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"polish items via Create sandpaper mechanic\",\n            \"high-tier abrasive in Create recipes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"create:sandpaper tag defines use\"\n        }\n      }\n    },\n    \"createaddition:digital_adapter\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"adapter block bridging Create signals\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from Create-tier materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche bridge role in advanced setups\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bridges Create kinetics and signal systems\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digital interface machine\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical Create machine coloring\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"interfaces Create energy/signal network\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\", \"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adapts between energy and digital signal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"interface Create network with external mods\",\n            \"read speed/stress as digital signal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digital adapter = Create network interface\"\n        }\n      }\n    },\n    \"createaddition:electric_motor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"converts FE to Create rotational force\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires create:mechanical_crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core FE→rotation bridge in CA setups\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates Create rotation from electrical FE\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electric motor = mechanical device\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create motor = iron body + copper coils\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core of createaddition FE↔rotation system\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"energy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumes FE, outputs Create rotation\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"convert FE to Create rotational force\",\n            \"power Create machines from RF/FE sources\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose: FE to rotation conversion\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "ac673f33-0cdd-42bb-bae9-bae3487d4241",
+  "total_cost_usd": 0.1622709,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3078,
+    "cache_read_input_tokens": 6048,
+    "output_tokens": 9774,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3078,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9774,
+        "cache_read_input_tokens": 6048,
+        "cache_creation_input_tokens": 3078,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3078
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2215,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002295,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9774,
+      "cacheReadInputTokens": 6048,
+      "cacheCreationInputTokens": 3078,
+      "webSearchRequests": 0,
+      "costUSD": 0.1599759,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2c666c46-fa01-477c-ab68-c5464f9e1318"
+}

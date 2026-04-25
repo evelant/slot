@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 174049,
+  "duration_api_ms": 175201,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"createaddition:biomass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed organic intermediate ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"biomass\",\n          \"signal\": \"named\",\n          \"rationale\": \"item is literally named Biomass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable from crops/plants/flowers\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active intermediate in fuel chain\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bio fuel tag; Create automation chain\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic biological material\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic brown-green biomass\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"mixing recipe only; no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:biofuel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biofuel production chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Processed into bioethanol for power\",\n            \"Compacted into biomass pellets\",\n            \"Bio fuel source (c:fuels/bio)\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs + fuel tag\"\n        }\n      }\n    },\n    \"createaddition:biomass_pellet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed biomass intermediate material\"\n        },\n        \"material_family\": {\n          \"value\": \"biomass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"pellet form of biomass material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made from farmable biomass\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage and fuel chain use\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pallet block storage; bio fuel chain\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed organic pellet\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biomass earthy brown tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"compacting recipe only; no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:biofuel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biofuel storage/production chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Compact form of biomass\",\n            \"Crafting biomass pallet block\",\n            \"Fuel pellet for bio systems\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe chain + fuel use\"\n        }\n      }\n    },\n    \"createaddition:biomass_pellet_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"named\",\n          \"rationale\": \"c:storage_blocks tag\"\n        },\n        \"material_family\": {\n          \"value\": \"biomass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"storage block for biomass pellets\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common pellets\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bulk storage compression use\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pellet compression storage block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed organic biomass block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"earthy organic appearance\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:biofuel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biofuel storage chain\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Compact storage for biomass pellets\",\n            \"9-pellet compression block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage_blocks tag + recipe pattern\"\n        }\n      }\n    },\n    \"createaddition:brass_figurine\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative figurine; no utility recipes\"\n        },\n        \"material_family\": {\n          \"value\": \"brass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Brass in item name\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe or loot source known\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative collectible, no utility\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"figurine for decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brass=mechanical; figurine=fancy\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brass has amber/golden tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Decorative brass collectible\",\n            \"Display item\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"figurine with no known utility\"\n        }\n      }\n    },\n    \"createaddition:brass_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:rods tag; metal rod crafting material\"\n        },\n        \"material_family\": {\n          \"value\": \"brass\",\n          \"signal\": \"named\",\n          \"rationale\": \"c:rods/brass tag + name\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled from common brass\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"component material for Create recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create mechanical component material\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"metal rod for mechanical mod\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brass amber/golden color\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"rolling recipe only; no loot sources\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:rolling\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced by rolling recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Crafting Create:Addition components\",\n            \"Rolled brass metal rod\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rod tag + rolling recipe\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "51f6de92-ca44-4ecc-84ff-9f810fdc877c",
+  "total_cost_usd": 0.25495675,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9265,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 14518,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9265,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14518,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9265,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9265
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2354,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0024340000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14518,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9265,
+      "webSearchRequests": 0,
+      "costUSD": 0.25252275,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c106a287-645a-490d-9a63-5c52cd850f5f"
+}

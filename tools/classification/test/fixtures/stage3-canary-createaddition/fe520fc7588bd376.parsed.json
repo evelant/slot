@@ -1,0 +1,332 @@
+{
+  "items": {
+    "createaddition:creative_energy": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "named Creative Generator = energy source block"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only = unobtainable in survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once for creative test rigs"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "infinite FE for testing automation chains"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "generator machine block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "Create machine palette + energy glow"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Creative Generator implies creative mode only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "FE generation subsystem of CA"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "emits FE into the network"
+        },
+        "primary_uses": {
+          "values": [
+            "infinite FE source for creative testing",
+            "power Create machines without fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "creative generator = unlimited power test"
+        }
+      }
+    },
+    "createaddition:diamond_grit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:dusts/diamond tag → processed dust"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "c:dusts/diamond tag + display name"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from rare diamonds"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "single downstream use: sandpaper"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Create crushing chain ingredient"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crushed mineral dust"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond dust = pale crystalline look"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "produced by crushing diamond, no world spawn"
+        },
+        "primary_uses": {
+          "values": [
+            "craft diamond grit sandpaper",
+            "Create crushing chain by-product of diamond"
+          ],
+          "signal": "inferred",
+          "rationale": "sole recipe output is sandpaper"
+        }
+      }
+    },
+    "createaddition:diamond_grit_sandpaper": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "create:sandpaper tag = polishing tool"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "diamond grit = diamond abrasive"
+        },
+        "material_secondary": {
+          "values": [
+            "paper"
+          ],
+          "signal": "inferred",
+          "rationale": "sandpaper substrate is paper"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond crushing chain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche Create polishing use case"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Create polishing/processing workflow"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial abrasive tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "shapeless crafted from diamond grit"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create:polishing"
+          ],
+          "signal": "pattern",
+          "rationale": "create:sandpaper tag → polishing subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "polish items via Create sandpaper mechanic",
+            "high-tier abrasive in Create recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "create:sandpaper tag defines use"
+        }
+      }
+    },
+    "createaddition:digital_adapter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "adapter block bridging Create signals"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from Create-tier materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche bridge role in advanced setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "bridges Create kinetics and signal systems"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "digital interface machine"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "typical Create machine coloring"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "interfaces Create energy/signal network"
+        },
+        "transport_medium": {
+          "values": [
+            "signal",
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "adapts between energy and digital signal"
+        },
+        "primary_uses": {
+          "values": [
+            "interface Create network with external mods",
+            "read speed/stress as digital signal"
+          ],
+          "signal": "inferred",
+          "rationale": "digital adapter = Create network interface"
+        }
+      }
+    },
+    "createaddition:electric_motor": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "converts FE to Create rotational force"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires create:mechanical_crafting"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core FE→rotation bridge in CA setups"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "generates Create rotation from electrical FE"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "electric motor = mechanical device"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "Create motor = iron body + copper coils"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "core of createaddition FE↔rotation system"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "consumes FE, outputs Create rotation"
+        },
+        "primary_uses": {
+          "values": [
+            "convert FE to Create rotational force",
+            "power Create machines from RF/FE sources"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose: FE to rotation conversion"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

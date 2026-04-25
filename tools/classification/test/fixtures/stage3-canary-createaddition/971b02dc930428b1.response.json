@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 203896,
+  "duration_api_ms": 204789,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"createaddition:electrum_sheet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:plates tag; processed sheet form of electrum\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"named\",\n          \"rationale\": \"id and display name explicitly say electrum\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mod alloy; non-trivial to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in rolling and charging chains\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create Addition electrical chain component\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat processed metal sheet\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum is gold+silver alloy, golden hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressed/charged from ingot; no loot source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"rolled into electrum plate\",\n            \"intermediate electrical material\",\n            \"charging process input\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream recipe roles in Create Addition\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electrical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create Addition power system\"\n        }\n      }\n    },\n    \"createaddition:electrum_spool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed deploying wire connections between poles\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"named\",\n          \"rationale\": \"id and display name say electrum\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires electrum wire to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed per wire connection placed\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"establishes electrical power links\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial wire deployment spool\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum alloy, golden appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting_shaped only, no loot source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"connecting electrical poles with wire\",\n            \"building power network links\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spools tag = wire deployment in Create Addition\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electrical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create Addition power network\"\n        }\n      }\n    },\n    \"createaddition:electrum_wire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:wires tag; ingredient in multiple recipes\"\n        },\n        \"material_family\": {\n          \"value\": \"electrum\",\n          \"signal\": \"named\",\n          \"rationale\": \"id and display name say electrum\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mod alloy wire, non-trivial to produce\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in spool, accumulator, amulet\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all downstream uses are electrical\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw industrial wire form\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electrum alloy appears golden\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rolled/charged; no loot source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting electrum spools\",\n            \"crafting modular accumulator\",\n            \"crafting electrum amulet\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of covers key uses\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electrical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create Addition electrical system\"\n        }\n      }\n    },\n    \"createaddition:festive_spool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spool tag; deploys decorative festive wire\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name explicitly says Copper Spool\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"seasonal/festive themed variant item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"festive use, not everyday deployment\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative wire; same system as other spools\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"festive variant with multicolor lights\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper base + vibrant festive lights\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafting_shapeless only, no loot source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"placing festive decorative wire lights\",\n            \"seasonal wire decoration between poles\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"festive lights spool for decor connections\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electrical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Create Addition wire system variant\"\n        }\n      }\n    },\n    \"createaddition:gold_goblet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornate item; no functional recipes or use\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix gold_; Ornate Goblet display name\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe or loot source in data at all\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no functional use data found\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"named\",\n          \"rationale\": \"display name says Ornate\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold material, ornate golden goblet\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe or loot source found anywhere\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative display item\",\n            \"collectible ornamental piece\"\n          ],\n          \"signal\": \"guess\",\n          \"rationale\": \"no functional data; ornate name = decor\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b2abf15b-54f7-490e-af5c-d92aae354bd4",
+  "total_cost_usd": 0.25880664999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2795,
+    "cache_read_input_tokens": 6048,
+    "output_tokens": 16300,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2795,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16300,
+        "cache_read_input_tokens": 6048,
+        "cache_creation_input_tokens": 2795,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2795
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1932,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16300,
+      "cacheReadInputTokens": 6048,
+      "cacheCreationInputTokens": 2795,
+      "webSearchRequests": 0,
+      "costUSD": 0.25680464999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f21a6d08-d142-4608-bb38-5808b1e3f7b7"
+}

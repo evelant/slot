@@ -1,0 +1,332 @@
+{
+  "items": {
+    "createaddition:bronze_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "rod form suffix = processed material"
+        },
+        "material_family": {
+          "value": "bronze",
+          "signal": "named",
+          "rationale": "name explicitly states Bronze"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "bronze mid-tier alloy, farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "rods widely used in Create crafting"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "electricity/automation mod context"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial rod, no decoration"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bronze = warm golden-brown metal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "alloy, no natural loot sources"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electrical/mechanical parts"
+          ],
+          "signal": "inferred",
+          "rationale": "Create mod rod = crafting ingredient"
+        }
+      }
+    },
+    "createaddition:cake_base": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate food processing step"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "inferred",
+          "rationale": "cake base = wheat/flour primary"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "wheat abundant; compacting easy"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only used in cake production chain"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "food chain; made via Create compacting"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw/unfinished food form"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "output of create:compacting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:food"
+          ],
+          "signal": "inferred",
+          "rationale": "food processing sub-chain"
+        },
+        "primary_uses": {
+          "values": [
+            "smoke into baked cake base"
+          ],
+          "signal": "named",
+          "rationale": "sole use: smoking/cake_base_baked"
+        }
+      }
+    },
+    "createaddition:cake_base_baked": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate before final cake product"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "inferred",
+          "rationale": "baked cake base = wheat grain"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "derived from common wheat"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only for final cake production"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "food chain; filling via Create"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "baked but unfilled intermediate"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "output of smoking recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:food"
+          ],
+          "signal": "inferred",
+          "rationale": "food processing sub-chain"
+        },
+        "primary_uses": {
+          "values": [
+            "fill to make cake variants"
+          ],
+          "signal": "named",
+          "rationale": "ingredient of 3 filling/cake recipes"
+        }
+      }
+    },
+    "createaddition:capacitor": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingredient for electrical machines"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "guess",
+          "rationale": "capacitors use copper; no recipe data"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires mechanical_crafting step"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in select electrical builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "motor/alternator/tesla_coil uses"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial electrical component"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "copper+metal capacitor construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot; shaped crafting only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "motor, alternator, tesla coil chain"
+        },
+        "primary_uses": {
+          "values": [
+            "craft electric motor",
+            "craft alternator",
+            "craft tesla coil",
+            "craft modular accumulator"
+          ],
+          "signal": "named",
+          "rationale": "listed in sample_ingredient_of"
+        }
+      }
+    },
+    "createaddition:chocolate_cake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "tagged c:foods; edible_when_placed"
+        },
+        "material_family": {
+          "value": "chocolate",
+          "signal": "named",
+          "rationale": "name + filling/chocolate_cake output"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires Create filling process"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty food, not a staple"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "food + placeable block aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "multi-step crafted cake = fancy"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "chocolate brown color scheme"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "output of create:filling only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:food"
+          ],
+          "signal": "inferred",
+          "rationale": "Create food processing chain"
+        },
+        "primary_uses": {
+          "values": [
+            "eat as placed food block",
+            "food display decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "block food like vanilla cake"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

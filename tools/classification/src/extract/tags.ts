@@ -58,6 +58,12 @@ export function buildItemTagClosure(
  * Shared core for `buildItemTagClosure` and `buildItemTagMembership`:
  * returns both the item→transitive-tag-closure map and the
  * item→direct-tag-only map computed off the same data.
+ *
+ * Each input tag map key may be either a short id (no colon — interpreted
+ * as `${defaultNamespace}:${shortId}`) or a fully-qualified id with a
+ * colon (used as-is). The fully-qualified form is needed for modded data
+ * where a single bundle carries tags from multiple namespaces (e.g. a
+ * Create addon contributes to both `createaddition:` and `c:` tag spaces).
  */
 function buildTagIndices(
   itemTags: Record<string, TagJson>,
@@ -71,8 +77,8 @@ function buildTagIndices(
   // tag id -> set of sub-tag ids it references
   const subTagRefs = new Map<string, Set<string>>();
 
-  for (const [shortId, def] of Object.entries(itemTags)) {
-    const tagId = `${defaultNamespace}:${shortId}`;
+  for (const [rawId, def] of Object.entries(itemTags)) {
+    const tagId = rawId.includes(":") ? rawId : `${defaultNamespace}:${rawId}`;
     const members = directMembers.get(tagId) ?? new Set<string>();
     const subs = subTagRefs.get(tagId) ?? new Set<string>();
 

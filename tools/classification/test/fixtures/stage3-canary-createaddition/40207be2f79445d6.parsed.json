@@ -1,0 +1,352 @@
+{
+  "items": {
+    "createaddition:electrum_amulet": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "wearable trinket with passive effect"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from processed electrum"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational wearable"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "ornamental amulet form"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = gold-silver alloy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources found"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "Create:Add electrical system item"
+        },
+        "storage_categories": {
+          "values": [
+            "curio"
+          ],
+          "signal": "inferred",
+          "rationale": "amulet implies curio slot"
+        },
+        "primary_uses": {
+          "values": [
+            "wearable trinket with passive effect",
+            "Create:Addition curio accessory"
+          ],
+          "signal": "inferred",
+          "rationale": "amulet in automation mod"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = electrical material"
+        }
+      }
+    },
+    "createaddition:electrum_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "named",
+          "evidence": "c:storage_blocks/electrum",
+          "rationale": "c:storage_blocks tag"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from electrum ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "compact storage or decoration"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard metal storage block"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = gold-silver alloy"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "ingot compression + metal decor"
+        },
+        "primary_uses": {
+          "values": [
+            "compact electrum ingot storage",
+            "decorative metal block"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block standard uses"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = electrical material"
+        }
+      }
+    },
+    "createaddition:electrum_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot = processed material"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold + silver alloy processing"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core craft ingredient in mod"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard ingot form"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = gold-silver alloy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "electrical comps + beacon payment"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting electrical components",
+            "crafting electrum blocks and rods",
+            "beacon payment item"
+          ],
+          "signal": "inferred",
+          "rationale": "beacon tag + mod recipes"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = electrical material"
+        }
+      }
+    },
+    "createaddition:electrum_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "nugget = sub-ingot material"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "from processed electrum"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use, ingot sub-unit"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard nugget form"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = gold-silver alloy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "sub-unit of electrical material"
+        },
+        "primary_uses": {
+          "values": [
+            "9x craft into electrum ingot",
+            "sub-ingot denomination"
+          ],
+          "signal": "inferred",
+          "rationale": "nugget standard use pattern"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = electrical material"
+        }
+      }
+    },
+    "createaddition:electrum_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "rod = processed metal component"
+        },
+        "material_family": {
+          "value": "electrum",
+          "signal": "pattern",
+          "rationale": "id prefix electrum_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rolled from electrum ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific use in connectors"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "machined rod for connectors"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = gold-silver alloy"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "named",
+          "evidence": "createaddition:large_connector_usable_rods",
+          "rationale": "large connector tag = automation"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting large electrical connectors",
+            "Create:Addition wiring component"
+          ],
+          "signal": "inferred",
+          "rationale": "large_connector_usable_rods tag"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:energy"
+          ],
+          "signal": "inferred",
+          "rationale": "electrum = electrical material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

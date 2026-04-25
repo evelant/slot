@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 238971,
+  "duration_api_ms": 239764,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"createaddition:spool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate component for wire spools\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"metal spool; likely iron construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from basic materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for wire spool crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wire spools connect electrical machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial spool component\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dull metallic grey spool\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; crafting recipe only\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wire spools are for electrical wiring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting copper/electrum/gold wire spools\", \"base for all CreateAddition wire types\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all 3 wire spool variants consume this\"\n        }\n      }\n    },\n    \"createaddition:straw\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe use; drops from burner block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtained only from one specific block\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no known recipe consumption\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"straw is a natural organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried straw is pale yellow/tan\"\n        }\n      }\n    },\n    \"createaddition:tesla_coil\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active electrical machine block\"\n        },\n        \"material_family\": {\n          \"value\": \"zinc\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mod uses zinc for electrical machines\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires mechanical crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized electric/defense block\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shocks entities; uses electrical energy\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial electrical machine\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper coils on metal frame\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tesla coil shocks nearby mobs/players\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"part of Create:Addition electric system\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"electric damage to nearby mobs\", \"Create:Addition energy system defense\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shocks entities using electrical power\"\n        }\n      }\n    },\n    \"createaddition:zinc_sheet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"c:plates tag = processed sheet material\"\n        },\n        \"material_family\": {\n          \"value\": \"zinc\",\n          \"signal\": \"named\",\n          \"evidence\": \"c:plates/zinc\",\n          \"rationale\": \"explicitly tagged as zinc plate\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressed from basic zinc ingot\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific capacitor recipes only\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"capacitors are for CA electrical system\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed industrial sheet metal\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"zinc has a dull silver finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"produced by create:pressing; no loot\"\n        },\n        \"mod_subsystem\": {\n          \"values\": [\"createaddition:electricity\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"capacitors are electrical components\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting capacitors\", \"Create:Addition electrical components\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"both capacitor recipes use zinc sheet\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "4a5d8053-7db3-41ad-8567-1d860f56b176",
+  "total_cost_usd": 0.27082815,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 2609,
+    "cache_read_input_tokens": 6048,
+    "output_tokens": 17160,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2609,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17160,
+        "cache_read_input_tokens": 6048,
+        "cache_creation_input_tokens": 2609,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2609
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 1746,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.001821,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17160,
+      "cacheReadInputTokens": 6048,
+      "cacheCreationInputTokens": 2609,
+      "webSearchRequests": 0,
+      "costUSD": 0.26900715,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b06147fc-6c50-4c02-8696-ad059fe00a5a"
+}

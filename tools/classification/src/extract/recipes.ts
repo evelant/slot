@@ -67,8 +67,21 @@ export function buildRecipeRoles(
       for (const value of Object.values(recipe.shapes)) ingest(value);
     }
 
-    const resultId = extractResultId(recipe.result, defaultNamespace);
-    if (resultId) {
+    // Vanilla pre-1.21 uses `result: <obj|string>`; modded recipes (e.g.
+    // Create's rolling, mekanism's pressing) often use `results: [{id}, ...]`.
+    // Walk both shapes.
+    const resultIds = new Set<string>();
+    for (const single of [extractResultId(recipe.result, defaultNamespace)]) {
+      if (single) resultIds.add(single);
+    }
+    const resultsArr = (recipe as Record<string, unknown>).results;
+    if (Array.isArray(resultsArr)) {
+      for (const r of resultsArr) {
+        const id = extractResultId(r as RecipeJson["result"], defaultNamespace);
+        if (id) resultIds.add(id);
+      }
+    }
+    for (const resultId of resultIds) {
       const bucket = outputOf.get(resultId) ?? new Set<string>();
       bucket.add(recipeId);
       outputOf.set(resultId, bucket);

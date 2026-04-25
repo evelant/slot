@@ -1,0 +1,340 @@
+{
+  "items": {
+    "createaddition:accumulator": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "named 'accumulator'=energy storage battery block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Create-tier machine, non-trivial craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed in every CA electrical setup"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "FE energy buffer in Create automation networks"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Create-style industrial machine aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "Create machines use iron/copper casing"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; Create machines are crafted"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "part of CA electricity storage system"
+        },
+        "primary_uses": {
+          "values": [
+            "Store and supply FE electrical energy",
+            "Buffer power between generators and machines"
+          ],
+          "signal": "inferred",
+          "rationale": "named function: accumulates electrical energy"
+        }
+      }
+    },
+    "createaddition:alternator": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "converts Create rotation to FE electricity"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires Create mechanical crafting setup"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core generator in every CA power network"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "converts Create SU to FE for machines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "kinetic-to-electric generator device"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "alternator coils=copper, casing=iron"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "primary generator in CA electricity system"
+        },
+        "primary_uses": {
+          "values": [
+            "Convert Create rotation to FE electricity",
+            "Power electrical machines in CreateAddition"
+          ],
+          "signal": "inferred",
+          "rationale": "named function: SU to FE conversion"
+        },
+        "transport_medium": {
+          "values": [
+            "energy"
+          ],
+          "signal": "inferred",
+          "rationale": "outputs FE electrical energy to network"
+        }
+      }
+    },
+    "createaddition:barbed_wire": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "damages entities on contact; active defense block"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "barbed wire is traditionally iron/steel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "simple iron shaped craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational defense or mob farm use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "defense block and mob farm damage layer"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial wire/metal block"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray iron wire appearance"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "barbed wire by definition hurts entities"
+        },
+        "primary_uses": {
+          "values": [
+            "Damage entities on contact",
+            "Defense perimeter block",
+            "Mob farm damage layer"
+          ],
+          "signal": "inferred",
+          "rationale": "named item implies damage-dealing wire"
+        }
+      }
+    },
+    "createaddition:bioethanol": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed fluid fuel refined from crops"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "produced from farmable crops via mixing"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "consumed continuously as generator fuel"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "biofuel for CA power generators"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "bio-derived from organic/crop materials"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "biofuel fluids appear amber/yellow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "create:mixing output; not found naturally"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "pattern",
+          "rationale": "create:mixing produces fluids stored in tanks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "primary liquid fuel in CA power system"
+        },
+        "primary_uses": {
+          "values": [
+            "Biofuel for CreateAddition generators",
+            "Fluid fuel from crops via mixing"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function is as combustible generator fuel"
+        }
+      }
+    },
+    "createaddition:bioethanol_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket delivers biofuel to tanks/machines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "bioethanol + iron bucket; both common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used to fill tanks and generators"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "delivers biofuel for power generation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "iron bucket containing bio-derived fluid"
+        },
+        "palette": {
+          "values": [
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "amber biofuel visible in bucket icon"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "named",
+          "evidence": "c:buckets + create:upright_on_belt",
+          "rationale": "bucket: standard inv + fluid container slot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "delivers fuel for CA electricity system"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport bioethanol to tanks and machines",
+            "Belt-transportable biofuel container"
+          ],
+          "signal": "inferred",
+          "rationale": "c:buckets + upright_on_belt confirm function"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "pattern",
+          "rationale": "bucket form transports contained fluid"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

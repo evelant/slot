@@ -1,0 +1,248 @@
+{
+  "items": {
+    "createaddition:spool": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate component for wire spools"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "metal spool; likely iron construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for wire spool crafting"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "wire spools connect electrical machines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial spool component"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dull metallic grey spool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafting recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "wire spools are for electrical wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting copper/electrum/gold wire spools",
+            "base for all CreateAddition wire types"
+          ],
+          "signal": "inferred",
+          "rationale": "all 3 wire spool variants consume this"
+        }
+      }
+    },
+    "createaddition:straw": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "guess",
+          "rationale": "no recipe use; drops from burner block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "obtained only from one specific block"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "guess",
+          "rationale": "no known recipe consumption"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "straw is a natural organic material"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dried straw is pale yellow/tan"
+        }
+      }
+    },
+    "createaddition:tesla_coil": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active electrical machine block"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "inferred",
+          "rationale": "mod uses zinc for electrical machines"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires mechanical crafting"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized electric/defense block"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "shocks entities; uses electrical energy"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial electrical machine"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "copper coils on metal frame"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "tesla coil shocks nearby mobs/players"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "part of Create:Addition electric system"
+        },
+        "primary_uses": {
+          "values": [
+            "electric damage to nearby mobs",
+            "Create:Addition energy system defense"
+          ],
+          "signal": "inferred",
+          "rationale": "shocks entities using electrical power"
+        }
+      }
+    },
+    "createaddition:zinc_sheet": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "c:plates tag = processed sheet material"
+        },
+        "material_family": {
+          "value": "zinc",
+          "signal": "named",
+          "evidence": "c:plates/zinc",
+          "rationale": "explicitly tagged as zinc plate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "pressed from basic zinc ingot"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific capacitor recipes only"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "capacitors are for CA electrical system"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "processed industrial sheet metal"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "zinc has a dull silver finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced by create:pressing; no loot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electricity"
+          ],
+          "signal": "inferred",
+          "rationale": "capacitors are electrical components"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting capacitors",
+            "Create:Addition electrical components"
+          ],
+          "signal": "inferred",
+          "rationale": "both capacitor recipes use zinc sheet"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

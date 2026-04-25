@@ -1,0 +1,334 @@
+{
+  "items": {
+    "createaddition:gold_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "rod form processed from gold ingot"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "c:rods/gold tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "gold farmable via mining/piglins"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche electrical crafting ingredient"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in large_connector electrical block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "engineered mod electrical component"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via rolling recipe only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electrical"
+          ],
+          "signal": "inferred",
+          "rationale": "charging + large_connector recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft large connectors",
+            "charge into electrified rod"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe data shows these two uses"
+        }
+      }
+    },
+    "createaddition:gold_spool": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spool deploys wire between machines"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "gold in name/id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "gold is farmable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for electrical wiring connections"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "spools connect electrical machinery"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "engineered electrical component"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "produced via crafting_shaped only"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electrical"
+          ],
+          "signal": "inferred",
+          "rationale": "createaddition:spools tag implies wiring"
+        },
+        "primary_uses": {
+          "values": [
+            "string wire between electrical machines"
+          ],
+          "signal": "inferred",
+          "rationale": "createaddition spools deploy wire"
+        }
+      }
+    },
+    "createaddition:gold_wire": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "wire = processed electrical material"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "c:wires/gold tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "gold farmable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in spools and charging"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "modular_accumulator_usable_wires tag"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "electrical wire component"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "made via rolling from gold plate"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electrical"
+          ],
+          "signal": "inferred",
+          "rationale": "modular_accumulator and charging use"
+        },
+        "primary_uses": {
+          "values": [
+            "wind into gold spools",
+            "modular accumulator component",
+            "charge into electrified wire"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe data shows these uses"
+        }
+      }
+    },
+    "createaddition:honey_cake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "c:foods tag, edible food"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires create:filling process"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "non-trivial crafting for a food"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "honey-based food, farming activity"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "honey-based food, natural ingredient"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "honey golden-amber color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "made via create:filling only"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for saturation when placed",
+            "decorative honey-themed cake block"
+          ],
+          "signal": "inferred",
+          "rationale": "edible_when_placed tag, upright_on_belt"
+        }
+      }
+    },
+    "createaddition:iron_rod": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "rod form processed from iron ingot"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "c:rods/iron tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron abundant in overworld mining"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific mechanical crafting"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "used in alternator and electric_motor"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mod electrical mechanical component"
+        },
+        "palette": {
+          "values": [
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "iron color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "made via rolling from iron ingot"
+        },
+        "mod_subsystem": {
+          "values": [
+            "createaddition:electrical"
+          ],
+          "signal": "inferred",
+          "rationale": "alternator + electric_motor recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft alternators",
+            "craft electric motors"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of recipe data"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}
