@@ -138,10 +138,7 @@ public final class SlotWorkspaceViewModelCodec {
                 compoundTag.getInt("carriedFreeSlotCount"),
                 compoundTag.getInt("carriedSlotCapacity"),
                 islands.isEmpty()
-                        ? SlotWorkspaceAtlasLayout.fittedIslands(
-                        SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
-                        List.of()
-                )
+                        ? SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty())
                         : islands,
                 atlasItems,
                 triageItems,
@@ -338,10 +335,6 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putInt("totalCount", item.totalCount());
         tag.putInt("firstSlotIndex", item.firstSlotIndex());
         tag.putString("islandId", item.islandId());
-        tag.putInt("x", item.x());
-        tag.putInt("y", item.y());
-        tag.putInt("width", item.width());
-        tag.putInt("height", item.height());
         tag.putBoolean("recent", item.recent());
         tag.putBoolean("playerPlaced", item.playerPlaced());
         tag.putBoolean("carried", item.carried());
@@ -398,10 +391,6 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getInt("totalCount"),
                 tag.getInt("firstSlotIndex"),
                 tag.getString("islandId"),
-                tag.getInt("x"),
-                tag.getInt("y"),
-                tag.getInt("width"),
-                tag.getInt("height"),
                 tag.getBoolean("recent"),
                 tag.getBoolean("playerPlaced"),
                 tag.getBoolean("carried"),

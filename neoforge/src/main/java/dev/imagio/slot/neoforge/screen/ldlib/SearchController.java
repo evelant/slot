@@ -259,27 +259,31 @@ final class SearchController {
     private List<AtlasSearchIndex.SearchRow> collectRows() {
         ArrayList<AtlasSearchIndex.SearchRow> rows = new ArrayList<>();
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+            dev.imagio.slot.atlas.lod.AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
             rows.add(new AtlasSearchIndex.SearchRow(
                     item.name(),
                     item.identity().itemId(),
                     AtlasSearchIndex.Pool.PRIMARY,
                     item.carried(),
-                    item.x(),
-                    item.y(),
-                    item.width(),
-                    item.height()
+                    place.x(),
+                    place.y(),
+                    place.width(),
+                    place.height()
             ));
         }
         for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
+            dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement placement =
+                    host.currentLayout.islandPlacementOf(island.islandId());
+            int x = placement != null ? placement.x() : island.x();
+            int y = placement != null ? placement.y() : island.y();
+            int w = placement != null ? placement.width() : island.width();
+            int h = placement != null ? placement.height() : island.height();
             rows.add(new AtlasSearchIndex.SearchRow(
                     island.label(),
                     island.islandId(),
                     AtlasSearchIndex.Pool.SECONDARY,
                     island.carriedCount() > 0,
-                    island.x(),
-                    island.y(),
-                    island.width(),
-                    island.height()
+                    x, y, w, h
             ));
         }
         return rows;

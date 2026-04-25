@@ -266,15 +266,11 @@ class SlotWorkspaceLdlibModelTest {
         assertTrue(apple.playerPlaced());
         assertTrue(apple.carried());
         assertEquals(3, apple.totalCount());
-        assertEquals(machines.x() + 16, apple.x());
-        assertEquals(machines.y() + 60, apple.y());
-        assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, apple.width());
-        assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, apple.height());
+        // Position/size moved to client-side AtlasLayout as of ADR 0005;
+        // wire format no longer carries them on AtlasItem.
         assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, stone.islandId());
         assertTrue(stone.carried());
         assertEquals(17, stone.totalCount());
-        assertEquals(SlotWorkspaceAtlasLayout.CARD_WIDTH, stone.width());
-        assertEquals(SlotWorkspaceAtlasLayout.CARD_HEIGHT, stone.height());
         assertEquals(SlotWorkspaceAtlasLayout.ISLAND_TRIAGE, torch.islandId());
         assertTrue(torch.carried());
         assertEquals(16, torch.totalCount());
@@ -322,10 +318,8 @@ class SlotWorkspaceLdlibModelTest {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
                 "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
-        List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.fittedIslands(
-                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap()),
-                List.of()
-        );
+        List<SlotWorkspaceViewModel.AtlasIsland> islands =
+                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap());
         SlotWorkspaceViewModel.AtlasIsland fixture = islands.stream()
                 .filter(island -> island.islandId().equals(materials.id()))
                 .findFirst()
@@ -349,10 +343,8 @@ class SlotWorkspaceLdlibModelTest {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
                 "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
-        List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.fittedIslands(
-                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap()),
-                List.of()
-        );
+        List<SlotWorkspaceViewModel.AtlasIsland> islands =
+                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap());
         SlotWorkspaceViewModel.AtlasIsland fixture = islands.stream()
                 .filter(island -> island.islandId().equals(materials.id()))
                 .findFirst()
@@ -376,50 +368,9 @@ class SlotWorkspaceLdlibModelTest {
         assertTrue(topLeft.x() >= fixture.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
         assertTrue(topLeft.y() >= fixture.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
         assertTrue(beyondRight.localX() > fixture.width(),
-                "drop past right edge should preserve requested localX so fitIsland can grow the island");
+                "drop past right edge should preserve requested localX as the canonical-order seed");
         assertTrue(beyondRight.localY() > fixture.height(),
-                "drop past bottom edge should preserve requested localY so fitIsland can grow the island");
-    }
-
-    @Test
-    void fittedIslandsGrowWhenContentsReachCurrentEdge() {
-        WorkflowDomainRuntime runtime = runtime();
-        VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
-                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
-        List<SlotWorkspaceViewModel.AtlasIsland> base = SlotWorkspaceAtlasLayout.fittedIslands(
-                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap()),
-                List.of()
-        );
-        SlotWorkspaceViewModel.AtlasIsland fixture = base.stream()
-                .filter(island -> island.islandId().equals(materials.id()))
-                .findFirst()
-                .orElseThrow();
-
-        SlotWorkspaceViewModel.AtlasItem edgeItem = new SlotWorkspaceViewModel.AtlasItem(
-                SlotWorkspaceViewModel.IdentityRef.from(ItemIdentity.of("minecraft:stone")),
-                new ItemStack("minecraft:stone", 1, 64),
-                "Stone",
-                1,
-                0,
-                materials.id(),
-                fixture.x() + fixture.width() - SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X - SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                fixture.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
-                SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                SlotWorkspaceAtlasLayout.CARD_HEIGHT,
-                false,
-                false,
-                false,
-                List.of()
-        );
-
-        List<SlotWorkspaceViewModel.AtlasIsland> fitted = SlotWorkspaceAtlasLayout.fittedIslands(base, List.of(edgeItem));
-        SlotWorkspaceViewModel.AtlasIsland grown = fitted.stream()
-                .filter(island -> island.islandId().equals(materials.id()))
-                .findFirst()
-                .orElseThrow();
-
-        assertTrue(grown.width() > fixture.width());
-        assertEquals(1, grown.itemCount());
+                "drop past bottom edge should preserve requested localY as the canonical-order seed");
     }
 
     @Test
@@ -488,8 +439,10 @@ class SlotWorkspaceLdlibModelTest {
 
         assertEquals(960, moved.x());
         assertEquals(280, moved.y());
-        assertEquals(984, item.x());
-        assertEquals(340, item.y());
+        // The atlas item's island binding is preserved; per ADR 0005 its
+        // exact world coordinates are computed client-side by AtlasLayout
+        // and no longer carried on AtlasItem.
+        assertEquals(island.id(), item.islandId());
     }
 
     @Test

@@ -11,6 +11,8 @@ import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
+import dev.imagio.slot.atlas.lod.AtlasLayoutResult;
+import dev.imagio.slot.atlas.lod.Band;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -53,7 +55,7 @@ final class AtlasCardBuilder {
             boolean searchMatch
     ) {
         return switch (budget.level()) {
-            case REGION -> regionAtlasBody(atlas, item, budget, searchMatch);
+            case PIP, REGION -> regionAtlasBody(atlas, item, budget, searchMatch);
             case BROWSE -> browseAtlasBody(atlas, item, budget, searchMatch);
             case READ -> readAtlasBody(atlas, item, budget, searchMatch);
             case INSPECT -> inspectAtlasBody(atlas, item, budget, searchMatch);
@@ -62,8 +64,9 @@ final class AtlasCardBuilder {
     }
 
     AtlasRenderBudget atlasBudget(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         float scale = animationTargetScale(atlas);
-        int screenBudget = Math.max(1, Math.round(Math.min(item.width(), item.height()) * scale));
+        int screenBudget = Math.max(1, Math.round(Math.min(place.width(), place.height()) * scale));
         return AtlasRenderBudget.forScreenBudget(screenBudget);
     }
 
@@ -99,11 +102,12 @@ final class AtlasCardBuilder {
             AtlasRenderBudget budget,
             boolean searchMatch
     ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         UIElement body = atlasBodyContainer();
-        float cardBound = Math.min(item.width(), item.height());
+        float cardBound = Math.min(place.width(), place.height());
         float shell = Math.min(cardBound, atlas.worldUnitsForPixels(budget.shellPx()));
-        float shellLeft = centeredWorld(item.width(), shell);
-        float shellTop = centeredWorld(item.height(), shell);
+        float shellLeft = centeredWorld(place.width(), shell);
+        float shellTop = centeredWorld(place.height(), shell);
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
         body.addChild(slotPreview(atlas, item, budget).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -119,11 +123,12 @@ final class AtlasCardBuilder {
             AtlasRenderBudget budget,
             boolean searchMatch
     ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         UIElement body = atlasBodyContainer();
-        float cardBound = Math.min(item.width(), item.height());
+        float cardBound = Math.min(place.width(), place.height());
         float shell = Math.min(cardBound, atlas.worldUnitsForPixels(budget.shellPx()));
-        float shellLeft = centeredWorld(item.width(), shell);
-        float shellTop = centeredWorld(item.height(), shell);
+        float shellLeft = centeredWorld(place.width(), shell);
+        float shellTop = centeredWorld(place.height(), shell);
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
         body.addChild(slotPreview(atlas, item, budget).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -139,6 +144,7 @@ final class AtlasCardBuilder {
             AtlasRenderBudget budget,
             boolean searchMatch
     ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         UIElement body = atlasBodyContainer();
         float sidePad = atlas.worldUnitsForPixels(1f);
         float gap = atlas.worldUnitsForPixels(1f);
@@ -150,7 +156,7 @@ final class AtlasCardBuilder {
         float labelScreenHeight = budget.primaryLineHeightPx() * labelLines + (labelLines > 1 ? 1f : 0f);
         float labelHeight = atlas.worldUnitsForPixels(labelScreenHeight);
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
-        float shellLeft = (item.width() - shell) / 2f;
+        float shellLeft = (place.width() - shell) / 2f;
         body.addChild(slotPreview(atlas, item, shellPx, iconPx).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(shellLeft)
@@ -168,7 +174,7 @@ final class AtlasCardBuilder {
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(sidePad)
                 .top(shellTop + shell + gap)
-                .width(item.width() - sidePad * 2f)
+                .width(place.width() - sidePad * 2f)
                 .height(labelHeight)));
         addOverlaySignals(body, atlas, item, budget);
         return body;
@@ -180,6 +186,7 @@ final class AtlasCardBuilder {
             AtlasRenderBudget budget,
             boolean searchMatch
     ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         UIElement body = atlasBodyContainer();
         float sidePad = atlas.worldUnitsForPixels(1f);
         float gap = atlas.worldUnitsForPixels(1f);
@@ -194,7 +201,7 @@ final class AtlasCardBuilder {
         float primaryHeight = atlas.worldUnitsForPixels(budget.primaryLineHeightPx() * 2f + 1f);
         float secondaryHeight = atlas.worldUnitsForPixels(budget.secondaryLineHeightPx());
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
-        float shellLeft = (item.width() - shell) / 2f;
+        float shellLeft = (place.width() - shell) / 2f;
         body.addChild(slotPreview(atlas, item, shellPx, iconPx).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(shellLeft)
@@ -213,7 +220,7 @@ final class AtlasCardBuilder {
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(sidePad)
                 .top(cursorTop)
-                .width(item.width() - sidePad * 2f)
+                .width(place.width() - sidePad * 2f)
                 .height(primaryHeight)));
         if (showSecondary) {
             body.addChild(anchorTextBand(
@@ -229,7 +236,7 @@ final class AtlasCardBuilder {
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(sidePad)
                     .top(cursorTop + primaryHeight + gap)
-                    .width(item.width() - sidePad * 2f)
+                    .width(place.width() - sidePad * 2f)
                     .height(secondaryHeight)));
         }
         addOverlaySignals(body, atlas, item, budget);
@@ -242,6 +249,7 @@ final class AtlasCardBuilder {
             AtlasRenderBudget budget,
             boolean searchMatch
     ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         UIElement body = atlasBodyContainer();
         float topPad = atlas.worldUnitsForPixels(2f);
         float sidePad = atlas.worldUnitsForPixels(2f);
@@ -279,7 +287,7 @@ final class AtlasCardBuilder {
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(sidePad)
                 .top(primaryTop)
-                .width(item.width() - sidePad * 2f)
+                .width(place.width() - sidePad * 2f)
                 .height(nameHeight)));
         cursorTop += nameHeight;
         if (hasSecondary) {
@@ -298,7 +306,7 @@ final class AtlasCardBuilder {
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(sidePad)
                     .top(secondaryTop)
-                    .width(item.width() - sidePad * 2f)
+                    .width(place.width() - sidePad * 2f)
                     .height(auxLineHeight)));
             cursorTop += auxLineHeight;
         }
@@ -318,7 +326,7 @@ final class AtlasCardBuilder {
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(sidePad)
                     .top(auxiliaryTop)
-                    .width(item.width() - sidePad * 2f)
+                    .width(place.width() - sidePad * 2f)
                     .height(auxLineHeight)));
             cursorTop += auxLineHeight;
         }
@@ -338,7 +346,7 @@ final class AtlasCardBuilder {
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(sidePad)
                     .top(containerTop)
-                    .width(item.width() - sidePad * 2f)
+                    .width(place.width() - sidePad * 2f)
                     .height(auxLineHeight)));
             cursorTop += auxLineHeight;
         }
@@ -351,7 +359,7 @@ final class AtlasCardBuilder {
                         .positionType(TaffyPosition.ABSOLUTE)
                         .left(sidePad)
                         .top(presenceTop)
-                        .width(item.width() - sidePad * 2f)
+                        .width(place.width() - sidePad * 2f)
                         .height(auxLineHeight)));
             }
         }
@@ -424,7 +432,8 @@ final class AtlasCardBuilder {
             float shellPx,
             float iconPx
     ) {
-        float cardBound = Math.min(item.width(), item.height());
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+        float cardBound = Math.min(place.width(), place.height());
         float shell = Math.min(cardBound, atlas.worldUnitsForPixels(shellPx));
         float inset = Math.min(shell * 0.5f, atlas.worldUnitsForPixels(1f));
         float icon = Math.max(0f, Math.min(shell - inset * 2f, atlas.worldUnitsForPixels(iconPx)));
@@ -488,10 +497,11 @@ private void addCommonAtlasSignals(
         // paint order within a parent), so addOverlaySignals must be
         // called AFTER the slotPreview is added to keep overlays on top.
         if (searchMatch) {
-            float sideInset = Math.min(item.width() * 0.04f, atlas.worldUnitsForPixels(2f));
-            float bottomInset = Math.min(item.height() * 0.04f, atlas.worldUnitsForPixels(1f));
-            float barHeight = Math.min(item.height() * 0.08f, atlas.worldUnitsForPixels(2f));
-            float barWidth = Math.max(item.width() * 0.4f, item.width() - sideInset * 2f);
+            AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+            float sideInset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+            float bottomInset = Math.min(place.height() * 0.04f, atlas.worldUnitsForPixels(1f));
+            float barHeight = Math.min(place.height() * 0.08f, atlas.worldUnitsForPixels(2f));
+            float barWidth = Math.max(place.width() * 0.4f, place.width() - sideInset * 2f);
             body.addChild(panel(ACCENT).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
                     .left(sideInset)
@@ -517,9 +527,10 @@ private void addCommonAtlasSignals(
         }
         int proximateCount = proximateChestCount(item);
         if (proximateCount > 0) {
-            float inset = Math.min(item.width() * 0.04f, atlas.worldUnitsForPixels(2f));
-            float pipSizeRaw = Math.min(item.width() * 0.22f, atlas.worldUnitsForPixels(10f));
-            float pipSize = Math.max(pipSizeRaw, item.width() * 0.08f);
+            AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+            float inset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+            float pipSizeRaw = Math.min(place.width() * 0.22f, atlas.worldUnitsForPixels(10f));
+            float pipSize = Math.max(pipSizeRaw, place.width() * 0.08f);
             final float finalPipSize = pipSize;
             UIElement pip = panel(LINK_THREAD_COLOR).layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
@@ -532,7 +543,7 @@ private void addCommonAtlasSignals(
             // the depth buffer.
             pip.style(style -> style.zIndex(260));
             pip.setAllowHitTest(false);
-            if (budget.level() != DisclosureLevel.REGION) {
+            if (budget.level() != Band.REGION) {
                 Label count = label(String.valueOf(Math.min(proximateCount, 999)), TEXT);
                 count.layout(layout -> layout.widthPercent(100).heightPercent(100));
                 count.setAllowHitTest(false);
@@ -548,6 +559,44 @@ private void addCommonAtlasSignals(
             }
             body.addChild(pip);
         }
+        if (RelevanceDebugOverlay.enabled()) {
+            addRelevanceDebugBadge(body, atlas, item);
+        }
+    }
+
+    void addRelevanceDebugBadge(
+            UIElement body,
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.AtlasItem item
+    ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+        String text = RelevanceDebugOverlay.formatScore(
+                RelevanceDebugOverlay.scoreFor(item, host.viewModel, host.searchController.normalizedQuery())
+        );
+        float inset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+        float badgeHeight = Math.min(place.height() * 0.22f, atlas.worldUnitsForPixels(10f));
+        float badgeWidth = Math.min(place.width() * 0.6f, atlas.worldUnitsForPixels(28f));
+        UIElement badge = panel(0xCC0C141A).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(inset)
+                .bottom(inset)
+                .width(badgeWidth)
+                .height(badgeHeight));
+        badge.style(style -> style.zIndex(280));
+        badge.setAllowHitTest(false);
+        Label scoreLabel = label(text, ACCENT);
+        scoreLabel.layout(layout -> layout.widthPercent(100).heightPercent(100));
+        scoreLabel.setAllowHitTest(false);
+        float requestedFontPx = badgeHeight * 0.75f * atlas.getScale();
+        float fontWorld = clampScreenFontPx(requestedFontPx) / Math.max(0.0001f, atlas.getScale());
+        scoreLabel.textStyle(style -> style
+                .textColor(ACCENT)
+                .textShadow(false)
+                .fontSize(fontWorld)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+        badge.addChild(scoreLabel);
+        body.addChild(badge);
     }
 
     void addContainerFullnessBar(
@@ -555,14 +604,15 @@ private void addCommonAtlasSignals(
             SlotAtlasGraphView atlas,
             SlotWorkspaceViewModel.AtlasItem item
     ) {
-        float inset = Math.min(item.width() * 0.04f, atlas.worldUnitsForPixels(2f));
-        float trackWidth = item.width() - inset * 2f;
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+        float inset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+        float trackWidth = place.width() - inset * 2f;
         if (trackWidth <= 0f) {
             return;
         }
         float barHeight = Math.max(
                 atlas.worldUnitsForPixels(2f),
-                Math.min(item.height() * 0.06f, atlas.worldUnitsForPixels(4f)));
+                Math.min(place.height() * 0.06f, atlas.worldUnitsForPixels(4f)));
         int capacity = Math.max(0, item.containerSlotCapacity());
         int free = Math.max(0, item.containerFreeSlotCount());
         int filled = Math.max(0, capacity - free);
@@ -733,21 +783,14 @@ private void addCommonAtlasSignals(
     }
 
     void applyAtlasCardLayout(Button button, SlotWorkspaceViewModel.AtlasItem item) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         button.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(item.x())
-                .top(item.y())
-                .width(item.width())
-                .height(item.height())
+                .left(place.x())
+                .top(place.y())
+                .width(place.width())
+                .height(place.height())
                 .paddingAll(0));
-    }
-
-    void applyAtlasCardGhostScale(Button button, SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
-        float scale = host.ghostScaleFor(item, budget);
-        button.transform(transform -> {
-            transform.pivot(0.5f, 0.5f);
-            transform.scale(scale);
-        });
     }
 
     Button atlasCardButton(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
@@ -757,7 +800,6 @@ private void addCommonAtlasSignals(
         AtlasRenderBudget initialBudget = atlasBudget(atlas, item);
         Button button = button("", true, cardChromeColor(initialBudget.level(), selected, searchMatch, item.recent(), item.carried(), !host.searchController.normalizedQuery().isBlank()));
         applyAtlasCardLayout(button, item);
-        applyAtlasCardGhostScale(button, item, initialBudget);
         button.noText();
         button.style(style -> style.zIndex(2));
         button.setOnClick(event -> {
@@ -856,12 +898,6 @@ private void addCommonAtlasSignals(
             // either way it's continuous, not a jump.
             if (signature != lastSignature[0] && !host.cameraController.isAnimating()) {
                 rebuildAtlasBody(body, atlas, item, budget, activeSearchMatch);
-                // Refresh the ghost-shrink transform too — scale only
-                // changes at the DETAIL↔INSPECT boundary, which the
-                // budget signature already tracks. Layout stays at
-                // full cell size; only the transform pivot/scale
-                // change.
-                applyAtlasCardGhostScale(button, item, budget);
                 body.markTaffyStyleDirty();
                 button.markTaffyStyleDirty();
                 lastSignature[0] = signature;
@@ -880,6 +916,7 @@ private void addCommonAtlasSignals(
     }
 
     void addAtlasItemChips(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         List<ChipSuggestion> chips = item.chipSuggestions();
         if (chips.isEmpty()) {
             return;
@@ -888,14 +925,14 @@ private void addCommonAtlasSignals(
         int chipGap = 1;
         for (int index = 0; index < chips.size(); index++) {
             ChipSuggestion chip = chips.get(index);
-            int top = item.y() + item.height() + 2 + index * (chipHeight + chipGap);
+            int top = place.y() + place.height() + 2 + index * (chipHeight + chipGap);
             Button chipButton = button("", true, chip.color());
             chipButton.noText();
             chipButton.layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
-                    .left(item.x())
+                    .left(place.x())
                     .top(top)
-                    .width(item.width())
+                    .width(place.width())
                     .height(chipHeight)
                     .paddingAll(1)
                     .gapAll(2)

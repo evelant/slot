@@ -1,7 +1,9 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
+import dev.imagio.slot.atlas.lod.Band;
+
 record AtlasRenderBudget(
-        DisclosureLevel level,
+        Band level,
         int cellBudgetPx,
         float shellPx,
         float iconPx,
@@ -17,7 +19,7 @@ record AtlasRenderBudget(
         int clamped = Math.max(1, cellBudgetPx);
         if (clamped >= WorkspaceTheme.DETAIL_CELL_PX) {
             return new AtlasRenderBudget(
-                    DisclosureLevel.DETAIL,
+                    Band.DETAIL,
                     clamped,
                     clamp(clamped * 0.42f, 30f, 54f),
                     clamp(clamped * 0.36f, 24f, 48f),
@@ -32,7 +34,7 @@ record AtlasRenderBudget(
         }
         if (clamped >= WorkspaceTheme.INSPECT_CELL_PX) {
             return new AtlasRenderBudget(
-                    DisclosureLevel.INSPECT,
+                    Band.INSPECT,
                     clamped,
                     clamp(clamped * 0.40f, 26f, 44f),
                     clamp(clamped * 0.34f, 20f, 38f),
@@ -47,7 +49,7 @@ record AtlasRenderBudget(
         }
         if (clamped >= WorkspaceTheme.READ_CELL_PX) {
             return new AtlasRenderBudget(
-                    DisclosureLevel.READ,
+                    Band.READ,
                     clamped,
                     clamp(clamped * 0.70f, 14f, 32f),
                     clamp(clamped * 0.62f, 12f, 28f),
@@ -62,7 +64,7 @@ record AtlasRenderBudget(
         }
         if (clamped >= WorkspaceTheme.BROWSE_CELL_PX) {
             return new AtlasRenderBudget(
-                    DisclosureLevel.BROWSE,
+                    Band.BROWSE,
                     clamped,
                     clamp(clamped - 4f, 22f, 46f),
                     clamp(clamped - 8f, 18f, 40f),
@@ -76,7 +78,7 @@ record AtlasRenderBudget(
             );
         }
         return new AtlasRenderBudget(
-                DisclosureLevel.REGION,
+                Band.REGION,
                 clamped,
                 clamp(clamped - 2f, 16f, 34f),
                 clamp(clamped - 6f, 12f, 28f),

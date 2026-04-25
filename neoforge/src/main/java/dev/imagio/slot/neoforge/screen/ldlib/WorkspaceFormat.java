@@ -13,6 +13,7 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.WARNING;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.shorten;
 
 import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
+import dev.imagio.slot.atlas.lod.Band;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.network.chat.Component;
@@ -280,7 +281,7 @@ final class WorkspaceFormat {
 
 
     static int cardChromeColor(
-            DisclosureLevel level,
+            Band level,
             boolean selected,
             boolean searchMatch,
             boolean recent,
@@ -295,13 +296,13 @@ final class WorkspaceFormat {
     }
 
     private static int cardChromeBaseColor(
-            DisclosureLevel level,
+            Band level,
             boolean selected,
             boolean searchMatch,
             boolean recent,
             boolean searchActive
     ) {
-        if (level == DisclosureLevel.REGION) {
+        if (level == Band.REGION) {
             if (selected) {
                 return 0x68435F55;
             }

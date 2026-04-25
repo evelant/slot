@@ -26,6 +26,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCameraHistoryKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleUndoRedoKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleRelevanceDebugOverlayKey, true);
         host.root.addEventListener(UIEvents.MOUSE_DOWN, this::handleCameraHistoryMouse, true);
         host.root.addEventListener(UIEvents.CHAR_TYPED, event -> {
             if (event.codePoint >= '1' && event.codePoint <= '9') {
@@ -173,6 +174,19 @@ final class HotkeyRouter {
             event.stopPropagation();
             host.rpc.sendRedo();
         }
+    }
+
+    void handleRelevanceDebugOverlayKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesRelevanceDebugOverlay(event.keyCode, event.scanCode)) {
+            return;
+        }
+        event.stopPropagation();
+        RelevanceDebugOverlay.toggle();
+        host.rebuild();
     }
 
     void handleCameraHistoryMouse(UIEvent event) {

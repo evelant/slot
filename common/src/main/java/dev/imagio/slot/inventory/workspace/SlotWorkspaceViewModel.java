@@ -144,10 +144,7 @@ public record SlotWorkspaceViewModel(
                 SlotWorkspaceAtlasLayout.CANVAS_HEIGHT,
                 0,
                 0,
-                SlotWorkspaceAtlasLayout.fittedIslands(
-                        SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
-                        List.of()
-                ),
+                SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
                 List.of(),
                 List.of(),
                 List.of(),
@@ -243,10 +240,28 @@ public record SlotWorkspaceViewModel(
 
         List<AtlasItemAccumulator> accumulators = groupedAtlasEntries(resolvedAuthority, visualHomeMap);
         Map<ItemIdentity, Integer> recentRankByIdentity = recentRankByIdentity(recents);
+        // Canonical order for the atlas pack: per-island, by the assignment's
+        // (localY, localX) — this preserves Phase-1 player intent until
+        // VisualHomeAssignment grows an explicit `ordinal` field in Phase 2g.
+        // Items without an assignment (Triage candidates) sort separately by
+        // recents → name.
         accumulators.sort(Comparator
-                .comparingInt((AtlasItemAccumulator accumulator) -> recentRankByIdentity.getOrDefault(accumulator.identity(), Integer.MAX_VALUE))
-                .thenComparing(accumulator -> accumulator.name().toLowerCase(Locale.ROOT))
-                .thenComparing(accumulator -> accumulator.identity().itemId())
+                .comparing((AtlasItemAccumulator a) -> {
+                    VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
+                    return hm == null ? "" : hm.islandId();
+                })
+                .thenComparingInt(a -> {
+                    VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
+                    return hm == null
+                            ? recentRankByIdentity.getOrDefault(a.identity(), Integer.MAX_VALUE)
+                            : hm.localY();
+                })
+                .thenComparingInt(a -> {
+                    VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
+                    return hm == null ? 0 : hm.localX();
+                })
+                .thenComparing(a -> a.name().toLowerCase(Locale.ROOT))
+                .thenComparing(a -> a.identity().itemId())
                 .thenComparingInt(AtlasItemAccumulator::firstSlotIndex));
 
         List<AtlasIsland> layoutIslands = SlotWorkspaceAtlasLayout.baseIslands(visualHomeMap);
@@ -282,10 +297,6 @@ public record SlotWorkspaceViewModel(
                         accumulator.totalCount(),
                         accumulator.firstSlotIndex(),
                         SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                        0,
-                        0,
-                        SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                        SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                         recentIdentities.contains(accumulator.identity()),
                         false,
                         accumulator.carried(),
@@ -297,21 +308,14 @@ public record SlotWorkspaceViewModel(
                 ));
                 continue;
             }
-            SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.resolvePlacement(
-                    layoutIslands,
-                    assignment.islandId(),
-                    assignment.localX(),
-                    assignment.localY()
-            );
-            String islandId = placement.islandId();
+            String islandId = assignment.islandId();
             boolean playerPlaced = assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
             // Orphaned assignment (target island deleted) — fall back to triage rather than render an unrooted card.
             CarriedContainerInfo containerInfo = containerResolver.apply(accumulator.identity());
             boolean isContainer = containerInfo != null;
             int containerFree = isContainer ? containerInfo.freeSlots() : 0;
             int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
-            if (SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId)
-                    && SlotWorkspaceAtlasLayout.island(layoutIslands, islandId) == null) {
+            if (SlotWorkspaceAtlasLayout.island(layoutIslands, islandId) == null) {
                 triageItems.add(new AtlasItem(
                         IdentityRef.from(accumulator.identity()),
                         accumulator.displayStack(),
@@ -319,10 +323,6 @@ public record SlotWorkspaceViewModel(
                         accumulator.totalCount(),
                         accumulator.firstSlotIndex(),
                         SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                        0,
-                        0,
-                        SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                        SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                         recentIdentities.contains(accumulator.identity()),
                         false,
                         accumulator.carried(),
@@ -341,10 +341,6 @@ public record SlotWorkspaceViewModel(
                     accumulator.totalCount(),
                     accumulator.firstSlotIndex(),
                     islandId,
-                    placement.x(),
-                    placement.y(),
-                    SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                    SlotWorkspaceAtlasLayout.CARD_HEIGHT,
                     recentIdentities.contains(accumulator.identity()),
                     playerPlaced,
                     accumulator.carried(),
@@ -356,18 +352,18 @@ public record SlotWorkspaceViewModel(
             ));
         }
 
-        atlasItems.sort(Comparator
-                .comparing(AtlasItem::islandId)
-                .thenComparingInt(AtlasItem::y)
-                .thenComparingInt(AtlasItem::x)
-                .thenComparing(item -> item.name().toLowerCase(Locale.ROOT)));
+        // Atlas items already arrive in canonical order from the accumulator
+        // pre-sort above. Triage gets its recents-driven sort applied here.
         triageItems.sort(Comparator
-                .comparingInt((AtlasItem item) -> recentRankByIdentity.getOrDefault(item.identity(), Integer.MAX_VALUE))
+                .comparingInt((AtlasItem item) -> recentRankByIdentity.getOrDefault(item.identity().toIdentity(), Integer.MAX_VALUE))
                 .thenComparing(item -> item.name().toLowerCase(Locale.ROOT))
                 .thenComparing(item -> item.identity().itemId()));
 
-        List<AtlasIsland> fittedIslands = SlotWorkspaceAtlasLayout.fittedIslands(layoutIslands, atlasItems);
-        List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(fittedIslands, atlasItems);
+        // Server-side island chrome ships authored bounds; the client packer
+        // computes the actual rendered size + position via AtlasLayout. The
+        // `carriedCount` count badge is still domain-relevant, so we keep
+        // the carried-counts pass.
+        List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(layoutIslands, atlasItems);
 
         List<ClaimedChestTile> tiles = claimedChestTiles(
                 resolvedWorkflow.claimedChestMap(),
@@ -923,6 +919,14 @@ public record SlotWorkspaceViewModel(
         }
     }
 
+    /**
+     * Per-identity atlas projection. Position and cell size are
+     * computed client-side by
+     * {@code dev.imagio.slot.atlas.lod.AtlasLayout}; this record
+     * carries only the authoritative + presentation-input data the
+     * client needs to run scoring and layout. See
+     * {@code docs/decisions/0005-relevance-score-and-layout-locality.md}.
+     */
     public record AtlasItem(
             IdentityRef identity,
             ItemStack displayStack,
@@ -930,10 +934,6 @@ public record SlotWorkspaceViewModel(
             int totalCount,
             int firstSlotIndex,
             String islandId,
-            int x,
-            int y,
-            int width,
-            int height,
             boolean recent,
             boolean playerPlaced,
             boolean carried,
@@ -950,8 +950,6 @@ public record SlotWorkspaceViewModel(
             totalCount = Math.max(0, totalCount);
             firstSlotIndex = Math.max(0, firstSlotIndex);
             islandId = islandId == null ? "" : islandId;
-            width = Math.max(SlotWorkspaceAtlasLayout.CARD_WIDTH, width);
-            height = Math.max(SlotWorkspaceAtlasLayout.CARD_HEIGHT, height);
             chipSuggestions = chipSuggestions == null ? List.of() : List.copyOf(chipSuggestions);
             presence = presence == null ? List.of() : List.copyOf(presence);
             containerFreeSlotCount = isCarriedContainer ? Math.max(0, containerFreeSlotCount) : 0;
@@ -965,16 +963,12 @@ public record SlotWorkspaceViewModel(
                 int totalCount,
                 int firstSlotIndex,
                 String islandId,
-                int x,
-                int y,
-                int width,
-                int height,
                 boolean recent,
                 boolean playerPlaced,
                 boolean carried,
                 List<ChipSuggestion> chipSuggestions
         ) {
-            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId, x, y, width, height,
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, chipSuggestions, List.of(), false, 0, 0);
         }
 
@@ -985,22 +979,18 @@ public record SlotWorkspaceViewModel(
                 int totalCount,
                 int firstSlotIndex,
                 String islandId,
-                int x,
-                int y,
-                int width,
-                int height,
                 boolean recent,
                 boolean playerPlaced,
                 boolean carried,
                 List<ChipSuggestion> chipSuggestions,
                 List<ChestPresenceEntry> presence
         ) {
-            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId, x, y, width, height,
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, chipSuggestions, presence, false, 0, 0);
         }
 
         public AtlasItem withPresence(List<ChestPresenceEntry> entries) {
-            return new AtlasItem(identity, displayStack, name, totalCount, firstSlotIndex, islandId, x, y, width, height,
+            return new AtlasItem(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, chipSuggestions, entries, isCarriedContainer,
                     containerFreeSlotCount, containerSlotCapacity);
         }

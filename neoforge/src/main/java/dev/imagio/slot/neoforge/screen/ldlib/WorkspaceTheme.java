@@ -71,11 +71,6 @@ final class WorkspaceTheme {
     static final float SIDE_CAMERA_INSET_PX = 48f;
     static final float GHOST_CARD_ALPHA = 0.18f;
     static final int GHOST_ICON_OVERLAY_COLOR = 0xC8060A0E;
-    // Ghost (non-carried) atlas cards render at this fraction of their
-    // allocated cell size at every disclosure level EXCEPT DETAIL. Keeps
-    // the close-up view showing 1:1 "this is the home slot" while pushed-
-    // out zooms de-emphasise homes the player doesn't currently hold.
-    static final float GHOST_SHRINK_SCALE = 0.6f;
     static final int DRAG_START_THRESHOLD_PX = 4;
 
     static final int[] ISLAND_PALETTE = {

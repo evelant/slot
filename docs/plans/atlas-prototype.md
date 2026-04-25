@@ -293,7 +293,8 @@ flicker or compete with item icons.
 ### Screen Regions
 
 - atlas canvas occupies most of the screen
-- `Triage` / intake region near the default camera
+- docked Triage panel on a fixed edge (left edge in current prototype),
+  camera-anchored and not part of the pannable atlas
 - top-left floating search/navigation capsule
 - top-right compact camera controls and optional minimap toggle
 - right-side or bottom fixed hotbar/action rail
@@ -313,7 +314,7 @@ Projection panel placement guidance:
 - cleanup tray → bottom or lower-side edge surface
 - trash/void confirmation → edge drawer or modal tray separate from the atlas
 - optional recent-activity ribbon → compact top or side surface only if home
-  pulses plus intake region are insufficient
+  pulses plus the docked Triage panel are insufficient
 
 ### Navigation Model
 

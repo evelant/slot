@@ -736,8 +736,10 @@ final class IslandChestBuilder {
             }
             float originScreenX = slotElement.getPositionX() + slotW / 2f;
             float originScreenY = slotElement.getPositionY() + slotH / 2f;
-            int worldTargetX = endpoints.atlasItem().x() + endpoints.atlasItem().width() / 2;
-            int worldTargetY = endpoints.atlasItem().y() + endpoints.atlasItem().height() / 2;
+            dev.imagio.slot.atlas.lod.AtlasLayoutResult.ItemPlacement endpointPlace =
+                    host.placementFor(endpoints.atlasItem());
+            int worldTargetX = endpointPlace.x() + endpointPlace.width() / 2;
+            int worldTargetY = endpointPlace.y() + endpointPlace.height() / 2;
             float targetScreenX = atlas.screenX(worldTargetX);
             float targetScreenY = atlas.screenY(worldTargetY);
             float dx = targetScreenX - originScreenX;

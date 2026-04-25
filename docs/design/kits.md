@@ -12,6 +12,10 @@ task) and "loadouts" (hotbar arrangements). Kits are the user-facing answer to
 in the right places for each one."
 
 For the atlas and visual memory model Kits sit on top of, see [atlas.md](atlas.md).
+For how Kit activation feeds the atlas relevance score (Kit-belt and bring
+items boost their homes; Kit-missing items keep their ghosts visible
+instead of shrinking), see
+[relevance-lod.md § Relevance contributors](relevance-lod.md).
 For the host/UI boundary, see [../architecture/host-ui.md](../architecture/host-ui.md).
 
 ## What Changed

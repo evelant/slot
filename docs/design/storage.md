@@ -1,6 +1,6 @@
 # Storage And Atlas Scale Design
 
-Last updated: 2026-04-17
+Last updated: 2026-04-25
 
 Status: current design direction for scaling the atlas to thousands of items
 and integrating external storage via island-to-chest linking.
@@ -14,10 +14,20 @@ document extends that model in two connected directions:
 - integrating external storage (base chests) as a lightweight companion to the
   island/home system, not as a second organization axis
 
+The atlas-scale half of this doc has since been generalized into
+[relevance-lod.md](relevance-lod.md), which replaces "carried high, ghost
+low" with a per-item relevance score that combines carried, kit-relevant,
+shopping-list, search, and proximity contributions. The "Asymmetric LOD"
+section below is the seed of that model and remains accurate as the
+single-contributor v1 implementation; the storage-areas direction in the
+new doc is the planned extension to external storage.
+
 For the atlas concept, item homes, and the triage/home loop, see
-[atlas.md](atlas.md). For the task-oriented bring-list semantics the storage
-model leans on, see [kits.md](kits.md). For the near-term engineering sequence,
-see [../plans/current.md](../plans/current.md).
+[atlas.md](atlas.md). For the unified relevance-driven LOD model that
+generalizes the scale story, see [relevance-lod.md](relevance-lod.md). For
+the task-oriented bring-list semantics the storage model leans on, see
+[kits.md](kits.md). For the near-term engineering sequence, see
+[../plans/current.md](../plans/current.md).
 
 ## Core Bets
 
@@ -46,6 +56,11 @@ memory the atlas is built on. The response is visual prominence, camera, and
 transient emphasis — not layout change.
 
 ### Asymmetric LOD For Carried vs Ghost
+
+This is the v1 of relevance-driven LOD with a single contributor
+("carried") and two effective bands ("full" vs "ghost"). The general
+model and direction live in [relevance-lod.md](relevance-lod.md);
+everything below describes the version landed in the current prototype.
 
 Ghosts and carried items share the same stable anchor geometry but not the
 same screen-budget rules:
@@ -82,16 +97,30 @@ to that region.
 
 Region bounds stay fixed; badges are label decoration, not geometry changes.
 
-### Optional Pocket Lens (brainstorm only, not for prototype)
+### Optional Pocket Lens (folded into relevance-lod.md)
 
 A transient modifier-held lens de-emphasizes ghosts to near-invisible and
 leaves carried items full-bright at their homes. Releasing restores the full
 atlas. This is a view modifier, not a view mode — nothing moves.
 
-Useful when the carried constellation is what the player needs to see, at
-the cost of regional context.
+In the relevance-driven model, the Pocket Lens is "set every contributor
+except `carried` to zero for the duration of the modifier hold." Same
+mechanism, no new primitives. See
+[relevance-lod.md § Relevance contributors](relevance-lod.md).
 
 ## Atlas Topology For Storage
+
+> **Direction:** the storage-zone topology described below is being
+> reshaped into player-named **storage areas** (Main Base, Mountain Mine,
+> Oil Derrick, Warehouse). Areas join the relevance/LOD model: they
+> default to chip size and expand on proximity, search, or kit-driven
+> intent. Inside an expanded area, individual chest tiles also follow the
+> relevance model — chests in proximity render full live contents, others
+> stay compact unless they hold high-scoring items. See
+> [relevance-lod.md § Storage areas](relevance-lod.md). The text below
+> describes the current implementation (single storage zone, emergent
+> base clusters); migration drops existing claimed chests into a default
+> "Main Base" area.
 
 Chests participate in the same pan-navigable atlas canvas, not a separate
 continent. Two spatial zones share the atlas:

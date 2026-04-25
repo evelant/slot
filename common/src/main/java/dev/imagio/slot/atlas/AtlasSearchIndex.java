@@ -40,6 +40,27 @@ public final class AtlasSearchIndex {
         return search(rows, query, DEFAULT_MIN_QUERY_CHARS);
     }
 
+    /**
+     * True if {@code name} matches {@code query} under the same rules
+     * {@link #search} uses (lowercased substring, minimum query
+     * length). Used by relevance scoring to precompute per-identity
+     * match membership without paying for the full ranked search.
+     */
+    public static boolean matches(String name, String query, int minQueryChars) {
+        if (name == null || query == null) {
+            return false;
+        }
+        String needle = query.toLowerCase(Locale.ROOT);
+        if (needle.length() < Math.max(1, minQueryChars)) {
+            return false;
+        }
+        return name.toLowerCase(Locale.ROOT).contains(needle);
+    }
+
+    public static boolean matches(String name, String query) {
+        return matches(name, query, DEFAULT_MIN_QUERY_CHARS);
+    }
+
     public static List<SearchRow> search(List<SearchRow> rows, String query, int minQueryChars) {
         if (rows == null || rows.isEmpty() || query == null) {
             return List.of();

@@ -27,6 +27,11 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
 import dev.imagio.slot.atlas.AtlasSearchIndex;
 import dev.imagio.slot.atlas.FitCarriedCamera;
+import dev.imagio.slot.atlas.lod.AtlasLayout;
+import dev.imagio.slot.atlas.lod.AtlasLayoutConfig;
+import dev.imagio.slot.atlas.lod.AtlasLayoutResult;
+import dev.imagio.slot.atlas.lod.AtlasRelevance;
+import dev.imagio.slot.atlas.lod.Band;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestTileDrag;
@@ -68,6 +73,15 @@ final class SlotWorkspaceUiController {
     final UIElement content;
 
     SlotWorkspaceViewModel viewModel;
+    /**
+     * Latest client-side atlas layout, recomputed every refresh from
+     * {@link #viewModel} + the active search query. Per
+     * {@code docs/decisions/0005-relevance-score-and-layout-locality.md},
+     * positions and cell sizes for atlas items live here, not on
+     * {@link SlotWorkspaceViewModel.AtlasItem}. Use
+     * {@link #placementFor(SlotWorkspaceViewModel.AtlasItem)} to look up.
+     */
+    AtlasLayoutResult currentLayout = AtlasLayoutResult.EMPTY;
     final Observable<String> localStatus = new Observable<>("");
     final Observable<SlotWorkspaceViewModel.IdentityRef> selectedAtlasIdentity = new Observable<>(null);
     SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
@@ -213,8 +227,65 @@ final class SlotWorkspaceUiController {
         }
     }
 
+    /**
+     * Re-run the client-side atlas layout pass. Must be called any
+     * time the inputs change: a new view model arrives, the search
+     * query is submitted/cleared, the kit activates, etc. Reads the
+     * search query from {@link #searchController}; cheap enough to
+     * call every {@link #rebuildNow()} for now (revisit if hot).
+     */
+    void recomputeLayout() {
+        currentLayout = AtlasLayout.layout(
+                viewModel,
+                searchController.normalizedQuery(),
+                AtlasRelevance.DEFAULT_CONTRIBUTORS,
+                AtlasLayoutConfig.DEFAULT
+        );
+    }
+
+    /**
+     * World-space placement for an atlas item under the current
+     * layout. Falls back to a baseline placeholder when the item
+     * isn't part of the latest layout (e.g., triage items, freshly
+     * arrived items the layout pass hasn't yet seen).
+     */
+    AtlasLayoutResult.ItemPlacement placementFor(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null) {
+            return PLACEMENT_FALLBACK;
+        }
+        AtlasLayoutResult.ItemPlacement placement = currentLayout.placementOf(item.identity());
+        return placement == null ? fallbackPlacement(item) : placement;
+    }
+
+    private static final AtlasLayoutResult.ItemPlacement PLACEMENT_FALLBACK =
+            new AtlasLayoutResult.ItemPlacement(
+                    "",
+                    0,
+                    0,
+                    SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                    SlotWorkspaceAtlasLayout.CARD_HEIGHT,
+                    0f
+            );
+
+    private static AtlasLayoutResult.ItemPlacement fallbackPlacement(SlotWorkspaceViewModel.AtlasItem item) {
+        // Sane default for items the layout pass hasn't (yet) seen — Triage
+        // items, freshly-arrived items, etc. Coordinates are zero-relative;
+        // callers that need world positions should be reading from
+        // {@link AtlasLayoutResult} directly (this fallback is for inner-card
+        // sizing math that only consumes width/height).
+        return new AtlasLayoutResult.ItemPlacement(
+                item.islandId(),
+                0,
+                0,
+                SlotWorkspaceAtlasLayout.CARD_WIDTH,
+                SlotWorkspaceAtlasLayout.CARD_HEIGHT,
+                0f
+        );
+    }
+
     void rebuildNow() {
         rebuildPending = false;
+        recomputeLayout();
         if (selectedAtlasIdentity.get() != null && viewModel.atlasItem(selectedAtlasIdentity.get()) == null) {
             selectedAtlasIdentity.set(null);
         }
@@ -316,39 +387,6 @@ final class SlotWorkspaceUiController {
 
 
 
-    /**
-     * Resolve the ghost-shrink scale factor for an atlas card based on
-     * its carried state and the current disclosure level. Returns 1.0
-     * for carried items (always full size) and for ghost items at
-     * DETAIL zoom (where we want 1:1 clarity on the home slot); returns
-     * {@link #GHOST_SHRINK_SCALE} otherwise so pushed-out zooms
-     * de-emphasise items the player doesn't currently hold.
-     */
-    static float ghostScaleFor(SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
-        if (item == null || budget == null || item.carried()) {
-            return 1f;
-        }
-        return budget.level() == DisclosureLevel.DETAIL ? 1f : GHOST_SHRINK_SCALE;
-    }
-
-    /**
-     * Apply the atlas card's outer button layout at its full
-     * cell-allocated size. Ghost-shrink is done via a render-time
-     * transform in {@link #applyAtlasCardGhostScale} so taffy sees the
-     * card at full size — the card's inner widgets (shell, icon,
-     * chips, accent bars, etc.) position themselves absolutely using
-     * {@code item.width()}/{@code item.height()}-derived offsets, so
-     * shrinking via layout would leave them anchored to the scaled
-     * button's top-left and drift. {@code Transform2D} scales
-     * rendering + hit-testing around a pivot without touching layout.
-     */
-
-    /**
-     * Ghost cards render at {@link #GHOST_SHRINK_SCALE} × their full
-     * layout size, scaled around the element centre so neighbours stay
-     * aligned with the original cell grid. Non-ghosts / DETAIL zoom
-     * reset the transform to identity.
-     */
 
 
 

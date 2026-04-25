@@ -3,6 +3,7 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
 
 import dev.imagio.slot.atlas.FitCarriedCamera;
+import dev.imagio.slot.atlas.lod.AtlasLayoutResult;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 
@@ -79,8 +80,9 @@ final class CameraNavigator {
         if (viewportWidth <= 0f || viewportHeight <= 0f) {
             return null;
         }
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         FitCarriedCamera.Camera camera = FitCarriedCamera.fit(
-                FitCarriedCamera.Rect.of(item.x(), item.y(), item.width(), item.height()),
+                FitCarriedCamera.Rect.of(place.x(), place.y(), place.width(), place.height()),
                 viewportWidth,
                 viewportHeight,
                 CARRIED_FIT_MIN_SCALE,
@@ -111,11 +113,19 @@ final class CameraNavigator {
     AtlasCamera computeOverviewCamera(float viewportWidth, float viewportHeight) {
         ArrayList<FitCarriedCamera.Rect> fitRects = new ArrayList<>();
         for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
-            fitRects.add(FitCarriedCamera.Rect.of(island.x(), island.y(), island.width(), island.height()));
+            AtlasLayoutResult.IslandPlacement placement = host.currentLayout.islandPlacementOf(island.islandId());
+            if (placement != null) {
+                fitRects.add(FitCarriedCamera.Rect.of(
+                        placement.x(), placement.y(), placement.width(), placement.height()));
+            } else {
+                fitRects.add(FitCarriedCamera.Rect.of(
+                        island.x(), island.y(), island.width(), island.height()));
+            }
         }
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
             if (item.carried()) {
-                fitRects.add(FitCarriedCamera.Rect.of(item.x(), item.y(), item.width(), item.height()));
+                AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+                fitRects.add(FitCarriedCamera.Rect.of(place.x(), place.y(), place.width(), place.height()));
             }
         }
         if (fitRects.isEmpty()) {

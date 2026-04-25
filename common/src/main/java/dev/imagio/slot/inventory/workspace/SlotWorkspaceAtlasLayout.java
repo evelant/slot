@@ -46,13 +46,9 @@ public final class SlotWorkspaceAtlasLayout {
     private static final int TRIAGE_MIN_HEIGHT = 260;
     public static final int PLAYER_ISLAND_MIN_WIDTH = 180;
     // Empty-island floor sized to ~2 rows so a single-row island reads as two
-    // rows tall rather than three. Fitted height takes over once content
-    // exceeds this (see fitIsland).
+    // rows tall rather than three. The client-side AtlasLayout packer takes
+    // over once content overflows.
     public static final int PLAYER_ISLAND_MIN_HEIGHT = 72;
-    private static final int ISLAND_TRAILING_BUFFER_X = CARD_WIDTH + CARD_GAP;
-    // Half a card of drop-buffer below the last row — enough to register a
-    // drop without inflating the island by a full extra row.
-    private static final int ISLAND_TRAILING_BUFFER_Y = CARD_HEIGHT / 2;
 
     private SlotWorkspaceAtlasLayout() {
     }
@@ -78,22 +74,6 @@ public final class SlotWorkspaceAtlasLayout {
                     )));
         }
         return List.copyOf(islands);
-    }
-
-    public static List<SlotWorkspaceViewModel.AtlasIsland> fittedIslands(
-            List<SlotWorkspaceViewModel.AtlasIsland> baseIslands,
-            List<SlotWorkspaceViewModel.AtlasItem> atlasItems
-    ) {
-        List<SlotWorkspaceViewModel.AtlasIsland> resolvedIslands = baseIslands == null ? List.of() : baseIslands;
-        List<SlotWorkspaceViewModel.AtlasItem> resolvedItems = atlasItems == null ? List.of() : atlasItems;
-        ArrayList<SlotWorkspaceViewModel.AtlasIsland> fitted = new ArrayList<>(resolvedIslands.size());
-        for (SlotWorkspaceViewModel.AtlasIsland island : resolvedIslands) {
-            if (island == null) {
-                continue;
-            }
-            fitted.add(fitIsland(island, resolvedItems));
-        }
-        return List.copyOf(fitted);
     }
 
     public static Placement placementForOrdinal(
@@ -234,44 +214,6 @@ public final class SlotWorkspaceAtlasLayout {
                 PLAYER_ISLAND_MIN_HEIGHT,
                 PLAYER_COLOR,
                 iconIdentity
-        );
-    }
-
-    private static SlotWorkspaceViewModel.AtlasIsland fitIsland(
-            SlotWorkspaceViewModel.AtlasIsland island,
-            List<SlotWorkspaceViewModel.AtlasItem> atlasItems
-    ) {
-        int minWidth = minIslandWidth(island.kind());
-        int minHeight = minIslandHeight(island.kind());
-        int maxRight = island.x() + ISLAND_CONTENT_PADDING_X;
-        int maxBottom = island.y() + ISLAND_CONTENT_TOP;
-        int itemCount = 0;
-        for (SlotWorkspaceViewModel.AtlasItem item : atlasItems) {
-            if (item == null || !island.islandId().equals(item.islandId())) {
-                continue;
-            }
-            itemCount++;
-            maxRight = Math.max(maxRight, item.x() + item.width());
-            maxBottom = Math.max(maxBottom, item.y() + item.height());
-        }
-
-        int fittedWidth = itemCount == 0
-                ? minWidth
-                : maxRight - island.x() + ISLAND_CONTENT_PADDING_X + ISLAND_TRAILING_BUFFER_X;
-        int fittedHeight = itemCount == 0
-                ? minHeight
-                : maxBottom - island.y() + ISLAND_CONTENT_PADDING_Y + ISLAND_TRAILING_BUFFER_Y;
-
-        return new SlotWorkspaceViewModel.AtlasIsland(
-                island.islandId(),
-                island.label(),
-                island.kind(),
-                island.x(),
-                island.y(),
-                Math.max(minWidth, fittedWidth),
-                Math.max(minHeight, fittedHeight),
-                island.color(),
-                itemCount
         );
     }
 

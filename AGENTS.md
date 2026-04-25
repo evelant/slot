@@ -134,14 +134,16 @@ writing new UI or action code.
   `addEventListener(UIEvents.CLICK, ...)` instead — LDLib dispatches
   `CLICK` from `ModularUI` on `MOUSE_UP` after `DRAG_PERFORM`, and only
   when release target equals press target.
-- **Atlas card widgets must not grow.** The widget's world-space
-  footprint is strictly `item.width() × item.height()`. LOD adjusts
-  detail (disclosure level) but never widget size. Everything rendered
-  inside a card — shell, inner panel, icon — must clamp to card bounds,
-  including caller-site `centeredWorld(...)` math.
-  `AtlasRenderBudget.forScreenBudget` has px floors (e.g. `shellPx` min
-  16) that translate to world units larger than the card at low zoom if
-  unclamped.
+- **Atlas card render must stay inside its allocated cell.** The
+  widget's world-space footprint is strictly `item.width() × item.height()`
+  — set at layout time by the band picker (see
+  [docs/design/relevance-lod.md](docs/design/relevance-lod.md)). Cell
+  size *can* vary per item (band-driven); what must not happen is
+  rendering escaping the cell. Everything drawn inside — shell, inner
+  panel, icon — must clamp to card bounds, including caller-site
+  `centeredWorld(...)` math. `AtlasRenderBudget.forScreenBudget` has
+  px floors (e.g. `shellPx` min 16) that translate to world units
+  larger than the card at low zoom if unclamped.
 - **LDLib2 `GraphView` has no pan bounds.** `offsetX` / `offsetY` are
   unbounded `float`; content children render at arbitrary positive or
   negative world coords. Do not impose artificial canvas-size clamps on

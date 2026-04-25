@@ -85,6 +85,17 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    // Toggles the per-card relevance-score debug overlay. Unbound by default —
+    // dev-only switch surfaced through the Controls menu so it doesn't compete
+    // with player-facing bindings.
+    private static final KeyMapping RELEVANCE_DEBUG_OVERLAY = new KeyMapping(
+            "key.slot.relevance_debug_overlay",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
     private SlotAtlasKeyMappings() {
     }
 
@@ -97,6 +108,7 @@ public final class SlotAtlasKeyMappings {
         event.register(CYCLE_KIT_PAGE);
         event.register(UNDO);
         event.register(REDO);
+        event.register(RELEVANCE_DEBUG_OVERLAY);
     }
 
     public static KeyMapping openVanillaInventoryMapping() {
@@ -129,6 +141,10 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesRedo(int keyCode, int scanCode) {
         return keyMatches(REDO, keyCode, scanCode);
+    }
+
+    public static boolean matchesRelevanceDebugOverlay(int keyCode, int scanCode) {
+        return keyMatches(RELEVANCE_DEBUG_OVERLAY, keyCode, scanCode);
     }
 
     /** Returns the user's current display label for the undo binding (e.g. "Z", "Ctrl+Z"). */

@@ -165,8 +165,8 @@ Status:
   and assignments, deletes all claimed chests (breaking their blocks
   in loaded chunks), and empties player main/hotbar/offhand/armor.
   Backpack items stay in place but their contents are emptied via
-  the `Capabilities.ItemHandler.ITEM` capability. Triage island
-  stays as the built-in.
+  the `Capabilities.ItemHandler.ITEM` capability. The docked Triage
+  panel re-populates with the now-unhomed carried items.
 - command gated on `source.hasPermission(2)` (op)
 - generator and resolver live in `dev.imagio.slot.debug`
   (`RealisticAtlasGenerator`, `SemanticBucketResolver`,
@@ -411,7 +411,7 @@ Deliverables:
 - domain type `ChestLink(islandId, storageId)`; per-player, not persisted
   yet
 - dropdown menu on chest tiles: "Link to island…" lists the player's
-  non-Triage islands; "Unlink…" lists currently linked islands
+  islands; "Unlink…" lists currently linked islands
 - server-side contents snapshot reader: walks a claim's anchors, reads
   the live `IItemHandler` snapshot from the first resolvable anchor,
   **filters empty slots out at the source** so only filled stacks are

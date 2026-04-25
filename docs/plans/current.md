@@ -7,18 +7,30 @@ short operational handoff, read [../status.md](../status.md) first.
 
 **Active plan:** core-workflow UX pass landed (all six slices in
 [core-workflow-ux.md](core-workflow-ux.md), plus playtest follow-ups
-documented in [../status.md](../status.md)). Two parallel tracks are now
-active:
+documented in [../status.md](../status.md)). Three parallel tracks are
+now active:
 
-1. **Classification → atlas-homing integration.** First vanilla
+1. **Relevance-LOD prototype.** Phase 1 (core machinery) landed —
+   `Band` + score abstractions + `WeightedGridPacker` + debug overlay
+   in `common/`. Phase 2 (wire all available contributors, move
+   layout client-side, drop position/size from `AtlasItem` wire
+   format) is in flight. See
+   [relevance-lod-prototype.md](relevance-lod-prototype.md) for the
+   sequence and
+   [../decisions/0005-relevance-score-and-layout-locality.md](../decisions/0005-relevance-score-and-layout-locality.md)
+   for the architectural choice that shapes Phase 2.
+2. **Classification → atlas-homing integration.** First vanilla
    classification dataset is committed at
    [`tools/classification/datasets/minecraft/`](../../tools/classification/datasets/minecraft/)
    (1536 items, 30 facets). Next is loading it through a runtime
    `FacetIndex` in `common/` and wiring the `role`-based homing rule
-   into the atlas behind a feature flag, replacing the `SemanticBucketResolver`
-   keyword path. See [item-classification.md](item-classification.md)
-   milestones 6 (FacetIndex) and 7 (atlas wiring).
-2. **Kit prototype slice 4** — resume per [kit-prototype.md](kit-prototype.md).
+   into the atlas behind a feature flag, replacing the
+   `SemanticBucketResolver` keyword path. See
+   [item-classification.md](item-classification.md) milestones 6
+   (FacetIndex) and 7 (atlas wiring). Sequenced after relevance-LOD
+   Phase 2 per
+   [relevance-lod-prototype.md](relevance-lod-prototype.md).
+3. **Kit prototype slice 4** — resume per [kit-prototype.md](kit-prototype.md).
 
 For product goals, see [../product/direction.md](../product/direction.md).
 For current architecture, see [../architecture/overview.md](../architecture/overview.md).
@@ -202,8 +214,9 @@ Exit criteria:
 
 - `:common:testClasses` and `:neoforge:testClasses` both compile clean
 - zero automatic categorization exists in the codebase
-- opening the atlas on a fresh profile shows only the Triage island with
-  every item inside it
+- opening the atlas on a fresh profile shows no islands; every carried
+  item appears in the docked Triage panel (per
+  [core-workflow-ux.md slice 1](core-workflow-ux.md))
 
 ### 2b. Template Predicate Layer (Headless)
 
@@ -471,7 +484,8 @@ This phase is complete when:
 
 - the LDLib atlas is the primary player-inventory workspace manually and in
   tests
-- a fresh profile opens to Triage only, with no pre-seeded non-Triage islands
+- a fresh profile opens with no atlas islands; carried items appear in
+  the docked Triage panel
 - chip-accept and manual-assign both drive the same home-assignment pipeline
   and both feed the learned-rule store
 - after the player places a few items, new similar items get learned chips

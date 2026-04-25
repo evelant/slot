@@ -125,7 +125,7 @@ Currently landed:
     `unlinkIslandFromChest` gates on claim + island existence;
     `WorkflowDomainRuntime.chestLinkWorkflow()` accessor
   - link UI: "Link" button on each chest tile header opens a popover
-    listing all non-Triage islands with per-row Link/Unlink; proximity-
+    listing all islands with per-row Link/Unlink; proximity-
     driven link threads (rotated panels via LDLib2 `Transform2D`) fan
     out from each proximate linked tile to island centers; linked
     islands get a 2-world-unit accent frame when any linked chest is
@@ -219,14 +219,40 @@ Current prototype validation point:
 - the first atlas styling pass has known issues: aliased/flickering background
   texture, overly large item-card padding/text, and text overflow at detail zoom
 - the current prototype direction is triage-first visual memory with
-  **no silent auto-homing**: a fresh atlas contains only the Triage island,
-  and a small set of conservative per-card suggestion chips (driven by item
-  class / tag / component signals, never id substring matching) lets the
-  player materialize Food / Tools / Weapons / Armor / Materials / Storage
-  islands on demand; everything beyond those six seeds is player-authored
-  or driven by rules learned from the player's own manual placements
+  **no silent auto-homing**: a fresh atlas contains no islands at all,
+  and unhomed carried items appear in the docked Triage panel (a fixed
+  left-edge overlay, not an atlas region — see core-workflow-ux.md
+  slice 1). A small set of conservative per-card suggestion chips
+  (driven by item class / tag / component signals, never id substring
+  matching) lets the player materialize Food / Tools / Weapons / Armor /
+  Materials / Storage islands on demand; everything beyond those six
+  seeds is player-authored or driven by rules learned from the player's
+  own manual placements
 
 ## Current Focus
+
+**Relevance-LOD prototype** — Phase 1 (core machinery) and Phase 2.1
+(contributors + client-side layout + wire-format diet) **landed**
+2026-04-25. The atlas now renders relevance-shaped client-side via
+`AtlasLayout`; carried / search-match / kit-member / kit-missing /
+recently-touched contributors all fire; `AtlasItem` no longer carries
+position/size on the wire; `ghostScaleFor` and the freeform fitted-
+island path are gone. The transitional drag-drop path still uses
+`VisualHomeAssignment.localX/localY` as a canonical-order sort key.
+
+Next is **Phase 2.2** — replace the transitional sort key with an
+explicit per-assignment `int ordinal`, switch drag-drop to push-insert
+semantics, drop authored island width/height in favour of auto-square
+layout, delete the freeform placement helpers
+(`SlotWorkspaceAtlasLayout.placementForOrdinal/placementForDrop/...`).
+See [plans/relevance-lod-prototype.md](plans/relevance-lod-prototype.md)
+for the sequence and
+[decisions/0005-relevance-score-and-layout-locality.md](decisions/0005-relevance-score-and-layout-locality.md)
+for the architectural choice the wire-format diet flows from.
+
+Manual playtest deferred — verify in-game that activating a kit
+visibly grows kit-relevant items, search match pops, and pickups
+don't make the atlas convulse mid-session.
 
 Atlas navigation (all four slices from
 [plans/atlas-navigation.md](plans/atlas-navigation.md)) is

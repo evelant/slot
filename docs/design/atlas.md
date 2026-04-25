@@ -1,18 +1,21 @@
 # Atlas Design
 
-Last updated: 2026-04-16
+Last updated: 2026-04-25
 
 Status: current design direction for SLOT's primary player-inventory surface.
 
 SLOT's primary inventory UI is a pan/zoom **atlas**: item identities get
-stable visual "homes" on a large canvas. New identities arrive in a
-first-class `Triage` island; the player places them in existing islands or
-creates new ones. Placed homes become authoritative visual placement and are
-not silently moved.
+stable visual "homes" on a large canvas. New identities arrive in a docked
+**Triage panel** (a fixed-edge overlay, not an atlas region); the player
+places them into existing islands or creates new ones. Placed homes become
+authoritative visual placement and are not silently moved.
 
 This is the living concept document. For the engineering slices, see
-[../plans/atlas-prototype.md](../plans/atlas-prototype.md). For how atlas
-homes interact with task-oriented groupings (Kits), see [kits.md](kits.md).
+[../plans/atlas-prototype.md](../plans/atlas-prototype.md). For how the
+atlas manages density at modded scale via per-item relevance scoring, see
+[relevance-lod.md](relevance-lod.md). For how atlas homes interact with
+task-oriented groupings (Kits), see [kits.md](kits.md). For how external
+storage joins the atlas, see [storage.md](storage.md).
 
 ## Why An Atlas
 
@@ -86,10 +89,18 @@ icons:
 - category neighborhoods
 - Kit boards
 - hotbar/equipment rack
-- intake shore / `Triage` island for arrivals
 - active external source islands
 - muted last-seen external islands
 - player-defined labels, paths, and dividers
+
+Unhomed items do not live on the atlas — they live in the docked
+**Triage panel** (see
+[../plans/core-workflow-ux.md § Slice 1](../plans/core-workflow-ux.md)).
+The panel is a fixed-edge overlay optimized for sequential processing of
+arrivals, not an atlas region. Earlier drafts of this doc placed Triage as
+an "intake shore" island; that approach lost to a list-shaped panel
+because triage is one-by-one work and lists are easier than grids for
+that.
 
 ### Spaces And Islands
 
@@ -233,8 +244,9 @@ projection, not a second location:
 - unhomed items resolve explicitly to `Triage`, never pretend to have a
   location
 
-The inverse rule: unhomed items need a **real place on the atlas**
-(`Triage` island / intake shore), not a floating projection panel.
+The inverse rule: unhomed items live in the docked **Triage panel**, not
+on the atlas. The panel is a stable, one-place surface for sequential
+arrivals processing; the atlas is for items the player has placed.
 
 ### Projection Surfaces And Triggers
 
@@ -243,8 +255,8 @@ Prefer a small set of clear surfaces:
 - **Search results tray** — attached to the search capsule, opens when
   in-place spotlight isn't precise enough
 - **Recent activity ribbon** (optional) — for assigned items that only
-  need review/dismissal; the real "where new things are" is the atlas
-  intake region
+  need review/dismissal; the real "where new things are" is the docked
+  Triage panel
 - **Collection/Kit sideboard** — opened explicitly; mirrors for present
   items, ghosts for missing
 - **Cleanup tray** — opened via cleanup mode; groups junk candidates and
@@ -280,11 +292,15 @@ Lenses change emphasis, not the map.
 
 ### First Contact
 
-New unhomed items appear in the `Triage` island. This is not a failure
-state — it's the normal place where SLOT asks the player what an item
-means in their organization.
+New unhomed items appear in the docked **Triage panel** (a fixed-edge
+overlay, see
+[../plans/core-workflow-ux.md § Slice 1](../plans/core-workflow-ux.md)).
+This is not a failure state — it's the normal place where SLOT asks the
+player what an item means in their organization. The panel is shaped as
+a list, not a grid, because triage is one-item-at-a-time processing and
+lists are easier to scan top-to-bottom than grids.
 
-From Triage, the player can:
+From the Triage panel, the player can:
 
 - assign to an existing island
 - create a new island from the selected item
@@ -295,12 +311,13 @@ From Triage, the player can:
 
 ### No Silent Auto-Homing
 
-Nothing is homed without a player tap. A fresh atlas contains **only** the
-Triage island; there are no pre-created category islands waiting for items
-to fall into them. This rule is intentionally stricter than "conservative
-auto-homing" — prior prototypes showed that string-matching item ids (even
-with a small whitelist) misclassifies enough in modded packs to erode
-trust on day one.
+Nothing is homed without a player tap. A fresh atlas contains **no
+islands at all** — every carried item is unhomed and lives in the docked
+Triage panel until the player places it. There are no pre-created
+category islands waiting for items to fall into them. This rule is
+intentionally stricter than "conservative auto-homing" — prior prototypes
+showed that string-matching item ids (even with a small whitelist)
+misclassifies enough in modded packs to erode trust on day one.
 
 A bad silent home is worse than visible triage.
 
@@ -389,14 +406,22 @@ undo — the player has already invested in them.
 
 ## Handling Scale
 
-A stable atlas can become too large. Layers, not endless zoom alone:
+A stable atlas can become too large. The primary mechanism is
+**relevance-driven LOD** — see [relevance-lod.md](relevance-lod.md). Each
+item's render band is picked from camera scale plus a per-item relevance
+score (carried, kit-relevant, search-matched, shopping-list, …). High
+relevance gets visual budget; low relevance shrinks toward pip-scale.
+Islands repack around their relevant items in canonical order, so the
+atlas continuously deforms toward what's relevant *right now* without
+moving any home.
+
+Supporting layers, beneath that mechanism:
 
 - **Locality by category** — global map shows categories as pockets;
   items have stable pocket-local homes; zoom/search within a pocket
-- **Importance layers** — top-level visible: hotbar/loadout, favorites,
-  recent, selected task items, pinned, currently-present carried.
-  Collapsed: old seen, rare components, external-only, category long tail
-- **Semantic zoom** — disclosure changes with zoom; anchors don't
+- **Semantic zoom** — disclosure changes with zoom; anchors don't.
+  Camera zoom is one input to the LOD band picker; relevance is the
+  other (see [relevance-lod.md § LOD bands](relevance-lod.md))
 - **Overflow shelves** — when a pocket is full, unpinned items go to a
   stable overflow shelf in the same category
 
@@ -541,8 +566,8 @@ Good animations (animate spatial meaning):
 
 - camera fly to search result
 - icon trail from source to hotbar
-- item entering the intake region
-- item moving from `Triage` to permanent home
+- item entering the docked Triage panel
+- item moving from Triage to permanent home
 - category pocket zoom-in
 - source island becoming active when opened
 
@@ -596,7 +621,8 @@ competes with item icons.
 ## Screen Regions (Preferred Layout)
 
 - atlas canvas takes most of the screen
-- `Triage` / intake region lives on the atlas near the default camera
+- docked Triage panel sits on a fixed edge (left edge in the current
+  prototype), camera-anchored and not part of the pannable atlas
 - top-left floating search/navigation capsule
 - top-right compact camera controls and optional minimap toggle
 - right-side or bottom fixed hotbar/action rail
@@ -645,7 +671,8 @@ across all of them, with caveats noted.
   modes
 - ambiguous icon families — differentiator tokens at `Read` zoom plus
   inspector
-- new pickup triage — intake region makes "what did I just get" visible
+- new pickup triage — docked Triage panel makes "what did I just get"
+  visible at a fixed location
 - junk cleanup — cleanup lens tints in place; cleanup tray groups
   actions
 - avoiding ground drop re-pickup — recent pulse + Triage membership

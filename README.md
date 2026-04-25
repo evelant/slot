@@ -79,6 +79,9 @@ Decisions (ADR-style):
   — atlas replaces the list-first prototype as the primary surface.
 - [docs/decisions/0004-kits-supersede-collections-loadouts.md](docs/decisions/0004-kits-supersede-collections-loadouts.md)
   — Kits unify the earlier collections + loadouts split.
+- [docs/decisions/0005-relevance-score-and-layout-locality.md](docs/decisions/0005-relevance-score-and-layout-locality.md)
+  — relevance score is a derivation; layout is client-owned; AtlasItem
+  drops position/size from the wire.
 
 Research and assessments:
 
