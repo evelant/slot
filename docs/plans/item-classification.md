@@ -1385,3 +1385,11 @@ continue with mod expansion. If the abstraction isn't working, rewind.
 5. **Precomputed-vs-runtime conflict.** When EMI reports `processing_in: create:milling` for an item but our precomputed per-mod layer doesn't, who wins? Probably union (both are additive signals for a multi-value facet), but explicit conflict rules needed for any single-value facet where this overlaps.
 6. **`worn_effect` facet — new proposal.** Flagged by the Sonnet-30 v3 canary: no facet currently captures "turtle_helmet grants water breathing when worn" or "leather_boots grant freeze immunity." These are meaningful gameplay properties that affect home/island decisions. Proposed shape: `multi_free_text` listing effect/property ids keyed by wear-slot semantics. `environmental_property` conflates item-physics (fireproof) with worn effects, which doesn't scale to modded armor. Decide between `worn_effect` as a new facet vs widening `environmental_property`.
 7. **`environmental_property: powder_snow_walkable`** — flagged by multiple canary runs (leather boots). Add to the enum in the next schema bump.
+8. **Schema additions surfaced by the Sonnet-102 v4 canary** (2026-04-24) — all real gaps; review for v1.1:
+   - `combat_bonus: fall_bonus_damage` (mace's fall-attack damage scaling).
+   - `environmental_property: gravity_affected` (anvil/sand/gravel; common physics property no current value captures).
+   - `environmental_property: piglin_loved` (gold items; piglins admire/pick up — distinct from `piglin_pacifying`/`piglin_barters_with`).
+   - `environmental_property: oxidizes_over_time` (copper variants without waxing).
+   - `environmental_property: item_blast_proof` (nether_star, netherite items; `damage_resistant #is_explosion`).
+   - `origin: fishing` (gameplay/fishing/treasure loot — currently only `mob_drop`/`overworld_ocean`/etc. are available).
+   - `spawn_interaction: spawns_linked_mob` (creaking_heart spawns a mob bound to the block's lifetime; current `allows_spawning` implies passive surface spawning, doesn't capture this).
