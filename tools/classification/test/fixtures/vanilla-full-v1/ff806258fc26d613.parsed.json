@@ -1,0 +1,313 @@
+{
+  "items": {
+    "minecraft:green_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "holds multiple item types in one slot"
+        },
+        "dye_color": {
+          "value": "green",
+          "signal": "pattern",
+          "rationale": "id prefix green_ + bundles tag"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "pattern",
+          "rationale": "bundle base recipe uses rabbit hide"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "everyday inventory management tool"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "core use is organizing inventory"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed hide bundle, organic material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green colored item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, transmute only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "sits in regular inventory slots"
+        },
+        "primary_uses": {
+          "values": [
+            "portable multi-item storage",
+            "inventory slot compression"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle use cases"
+        }
+      }
+    },
+    "minecraft:green_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are aesthetic lighting decor"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "pattern",
+          "rationale": "candles crafted from honeycomb+string"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative/lighting use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for atmosphere and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wax candle, organic material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green colored item"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candle emits light level 3-12"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting decoration",
+            "birthday cake candles"
+          ],
+          "signal": "inferred",
+          "rationale": "core candle use cases"
+        }
+      }
+    },
+    "minecraft:green_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "carpets are floor decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common decorating element"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor covering and structural decor"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool carpet, organic material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green colored item"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "floor decoration",
+            "llama carpet equip",
+            "vibration dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "core carpet use cases"
+        }
+      }
+    },
+    "minecraft:green_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "concrete is a primary building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular building block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as building structure"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid color smooth block"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "green matte smooth surface"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "player-made via powder+water contact"
+        },
+        "primary_uses": {
+          "values": [
+            "vibrant colored building block",
+            "pixel art construction",
+            "interior decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete use cases"
+        }
+      }
+    },
+    "minecraft:green_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block, converts to concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "intermediate for concrete production"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to produce concrete for building"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid colored sandy block"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "green sandy-textured block"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand when unsupported"
+        },
+        "primary_uses": {
+          "values": [
+            "create green concrete via water contact",
+            "gravity-affected building block"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete powder use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

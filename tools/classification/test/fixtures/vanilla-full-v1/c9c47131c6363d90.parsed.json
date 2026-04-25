@@ -1,0 +1,277 @@
+{
+  "items": {
+    "minecraft:iron_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot suffix + iron_tool_materials tag"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron_tool_materials tag = iron tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core mid-game crafting staple"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "combat",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: armor/weapons/tools/rails"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned standard metal ingot"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey-silver matte iron appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting iron tools, armor, and weapons",
+            "beacon payment item",
+            "smithing trim material",
+            "crafting rails, buckets, anvils, mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "56 recipe usages across game systems"
+        }
+      }
+    },
+    "minecraft:iron_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "_leggings suffix + leg_armor tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard mid-game armor piece"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "leg armor worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned standard iron armor"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron metal matte finish"
+        },
+        "primary_uses": {
+          "values": [
+            "mid-tier leg armor protection",
+            "trimmable for cosmetic customization",
+            "smelt or blast into iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "combat / trim / recycling uses"
+        }
+      }
+    },
+    "minecraft:iron_nautilus_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "display name ends in 'armor'; wearable"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "iron prefix; smelts to iron nuggets"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "iron prefix + smelts to iron nuggets"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ocean structures only; not craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean loot; no crafting recipe"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor for combat; ocean exploration reward"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean-themed variant of iron armor"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "iron material base; ocean origin"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean exploration structure reward",
+            "iron-tier armor protection",
+            "smelt for iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "loot-only ocean armor with recycling use"
+        }
+      }
+    },
+    "minecraft:iron_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "nugget suffix + metal_nuggets tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific recipes not every session"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in lanterns and chains"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "small plain metal fragment"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "small grey iron shard appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting lanterns and soul lanterns",
+            "crafting iron chains",
+            "combining 9 into one iron ingot",
+            "piglin bartering currency"
+          ],
+          "signal": "inferred",
+          "rationale": "primary downstream crafting targets"
+        }
+      }
+    },
+    "minecraft:iron_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore obtained directly from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "mined constantly throughout gameplay"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "actively mined; sole end-use is smelting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "world-generated raw ore block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "grey stone with iron ore vein coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt or blast into iron ingots",
+            "core early-to-mid game resource"
+          ],
+          "signal": "inferred",
+          "rationale": "only use is processing into ingots"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

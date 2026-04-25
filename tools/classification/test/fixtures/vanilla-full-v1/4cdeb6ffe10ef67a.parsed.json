@@ -1,0 +1,278 @@
+{
+  "items": {
+    "minecraft:diamond_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "compressed 9-diamond material block"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "same tier as constituent diamonds"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "costs 9 diamonds; significant mid-game expense"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "beacon base or compact storage, not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "beacon pyramid + compact diamond storage"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "prestige compressed material block"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "crystal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue-teal crystalline appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact diamond storage",
+            "Beacon pyramid base",
+            "Craft back to 9 diamonds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard compressed block uses"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "blast resistance 30, like iron block"
+        }
+      }
+    },
+    "minecraft:diamond_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "tag minecraft:foot_armor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond mining; mid-game effort"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn constantly as end-game armor"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protective armor for combat and exploration"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "high-tier shiny gear"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "crystal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue diamond appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Foot protection in combat",
+            "Depth Strider or Feather Falling",
+            "Upgrade to netherite boots"
+          ],
+          "signal": "inferred",
+          "rationale": "armor uses + enchanting + upgrade path"
+        }
+      }
+    },
+    "minecraft:diamond_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "tag minecraft:chest_armor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires 8 diamonds; mid-game investment"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn constantly as end-game armor"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protective armor for combat and exploration"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "high-tier prestigious armor"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "crystal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue diamond appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Main body protection",
+            "Best pre-netherite chest armor",
+            "Upgrade to netherite chestplate"
+          ],
+          "signal": "inferred",
+          "rationale": "chest armor + upgrade path"
+        }
+      }
+    },
+    "minecraft:diamond_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "tag minecraft:head_armor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond mining; mid-game"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn constantly as end-game armor"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protective armor for combat and exploration"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "high-tier prestigious armor"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "crystal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue diamond appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Head protection in combat",
+            "Respiration and Aqua Affinity base",
+            "Upgrade to netherite helmet"
+          ],
+          "signal": "inferred",
+          "rationale": "head armor + water enchants + upgrade"
+        }
+      }
+    },
+    "minecraft:diamond_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "tag minecraft:hoes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond cost; overkill for basic farming"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hoe used situationally"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "tills soil; mines hoe-mineable blocks fast"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool form, no ornate features"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "crystal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue diamond appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Till soil for farming",
+            "Fast mine leaves and hay blocks",
+            "Upgrade to netherite hoe"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe farming + speed mining + upgrade"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

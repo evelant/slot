@@ -1,0 +1,325 @@
+{
+  "items": {
+    "minecraft:purple_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable item container holds multiple stacks"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "base bundle recipe also uses string"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "pattern",
+          "rationale": "id prefix purple_ + bundles tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for regular inventory management"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable multi-stack item container"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed variant of base bundle"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple hue maps to violet"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, only transmute craft"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard inventory items"
+        },
+        "primary_uses": {
+          "values": [
+            "portable multi-stack item storage",
+            "organize inventory during exploration",
+            "carry partial stacks together"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle mechanics"
+        }
+      }
+    },
+    "minecraft:purple_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles primarily serve aesthetic/decor role"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific decor builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative light source"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wax candle, organic beeswax form"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "purple dye + emits light when lit"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "candles emit light when lit"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative ambient lighting",
+            "cake candle decoration",
+            "atmosphere in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core candle gameplay role"
+        }
+      }
+    },
+    "minecraft:purple_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin wool floor covering, primarily decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific decor or builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor decor and vibration dampening"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool, organic texture"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple dye color"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "piston_movable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag dampens_vibrations; thin block moves"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "thin block; mobs cannot spawn on carpets"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative floor covering",
+            "dampen sculk vibrations",
+            "llama saddle decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core carpet uses"
+        }
+      }
+    },
+    "minecraft:purple_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colorful structural material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular vibrant building block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural building material"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed concrete color variant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "purple hue, flat solid finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "formed via powder+water, no loot source"
+        },
+        "primary_uses": {
+          "values": [
+            "vibrant solid building material",
+            "colorful decorative structures",
+            "flat-color pixel art builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete gameplay role"
+        }
+      }
+    },
+    "minecraft:purple_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable gravity block, concrete precursor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate step toward concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed to create concrete blocks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed concrete powder variant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "purple hue, grainy powder texture"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand/gravel"
+        },
+        "primary_uses": {
+          "values": [
+            "convert to purple concrete via water",
+            "gravity-affected building block",
+            "sand-substitute filler block"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete powder uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

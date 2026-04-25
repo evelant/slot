@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 150841,
+  "duration_api_ms": 151575,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:white_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid full block; primary use is building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavily used in builds and crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic block uses\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal-sourced; exists in 16 dye colors\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white wool: pale, non-reflective texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:dampens_vibrations\",\n          \"rationale\": \"dampens sculk vibration signals\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"build walls and soft structures\",\n            \"craft beds, carpets, and banners\",\n            \"silence sculk vibration detection\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wool gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:wild_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"smithing_template suffix = upgrade role\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied once per armor piece, cosmetic\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor trims are purely cosmetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wild pattern = jungle vine/leaf motif\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply wild armor trim at smithing table\",\n            \"duplicate via diamond + template crafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing template standard uses\"\n        }\n      }\n    },\n    \"minecraft:wildflowers\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower block picked from world as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used selectively for dye or bee food\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bee_food tag; yellow dye recipe; garden decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"multi-color wildflower cluster\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow/warm flower tones, bright colors\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft yellow dye\",\n            \"feed bees\",\n            \"meadow and garden decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bee_food + flowers tags, dye recipe\"\n        }\n      }\n    },\n    \"minecraft:wind_charge\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"throwable consumable with burst effect\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational use in combat and traversal\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"knockback and player propulsion uses\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wind/breeze elemental ability item\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue-white wind swirl, emissive texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"throw to push entities away\",\n            \"boost player jump and propulsion\",\n            \"activate wind-sensitive blocks at range\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wind charge core gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:witch_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg suffix = creative-only admin\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs not obtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; no survival loot source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when building farms or testing\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"witch farm setup; creative world building\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg visual form\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"witch spawn egg is dark purple\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn witches in creative mode\",\n            \"set up witch mob farms\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg primary function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "05444ada-027d-4ee1-b5e1-a55faf9198ba",
+  "total_cost_usd": 0.17529415,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4117,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10311,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4117,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10311,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4117,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4117
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3254,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003334,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10311,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4117,
+      "webSearchRequests": 0,
+      "costUSD": 0.17196015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "036e90fb-7477-4d15-b864-504f269794f2"
+}

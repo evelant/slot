@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:copper_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore block obtained directly from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity=common; abundant in caves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "processed once into ingots, not held long"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: copper tools(mining)+blocks(building)"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated stone ore block"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "copper veins on stone background"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into copper ingots",
+            "ingredient for copper tools and blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "ore → ingot pipeline"
+        }
+      }
+    },
+    "minecraft:copper_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:pickaxes + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "trivially crafted from copper ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier quickly surpassed by iron"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "pattern",
+          "rationale": "pickaxe tag → mines stone and ores"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "made of copper"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shaped recipe exists"
+        },
+        "primary_uses": {
+          "values": [
+            "mine stone and ores",
+            "harvest copper-tier blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe function at copper tier"
+        }
+      }
+    },
+    "minecraft:copper_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:shovels + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "trivially crafted from copper ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier; niche digging use"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "digs soft blocks underground; shapes terrain"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "made of copper"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shaped recipe exists"
+        },
+        "primary_uses": {
+          "values": [
+            "dig dirt/sand/gravel/snow",
+            "create dirt paths",
+            "clear terrain"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel function"
+        }
+      }
+    },
+    "minecraft:copper_spear": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:spears + weapon component"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "form": {
+          "value": "spear",
+          "signal": "pattern",
+          "rationale": "id suffix _spear"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix + repairable copper_tool_materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "craftable + village_weaponsmith loot"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier; early game only"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon used for combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard weapon, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "made of copper"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "thrown lunge attack",
+            "early-game weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "spear + enchantable/lunge tag implies throw"
+        }
+      }
+    },
+    "minecraft:copper_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:swords + weapon component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "trivially crafted from copper ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier; quickly surpassed by iron"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "swords tag → melee combat use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sword"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "made of copper"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shaped recipe exists"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "kill mobs",
+            "early-game combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword function at copper tier"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

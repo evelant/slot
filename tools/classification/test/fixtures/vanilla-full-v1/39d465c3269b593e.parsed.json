@@ -1,0 +1,362 @@
+{
+  "items": {
+    "minecraft:yellow_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive sleep/respawn mechanic"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from wool and planks"
+        },
+        "material_secondary": {
+          "values": [
+            "planks"
+          ],
+          "signal": "inferred",
+          "rationale": "planks required in bed recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every night in survival"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in bases; sets respawn point"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dye-color variant of bed"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow is a warm hue"
+        },
+        "primary_uses": {
+          "values": [
+            "Sleep to skip night",
+            "Set player spawn point",
+            "Bedroom decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed gameplay uses"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "mobs cannot spawn on beds"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool and wood components are flammable"
+        }
+      }
+    },
+    "minecraft:yellow_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable multi-item container"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in base bundle recipe"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "id prefix yellow_ + bundles tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "inventory management tool"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "compresses inventory slots"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dye-transmute color variant"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow is a warm hue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no world loot; only via crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Hold multiple item stacks in one slot",
+            "Compress inventory",
+            "Organize disparate items"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle core purpose"
+        }
+      }
+    },
+    "minecraft:yellow_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative ambient light source"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "crafted from honeycomb + string"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string in candle recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for ambiance and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed; wax is a natural material"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow hue; emits warm glow when lit"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from honeycomb+string+dye"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candle emits light level 3"
+        },
+        "primary_uses": {
+          "values": [
+            "Ambient colored lighting",
+            "Decoration on cakes",
+            "Mood lighting in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "candle primary gameplay uses"
+        }
+      }
+    },
+    "minecraft:yellow_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin decorative floor covering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor decoration in bases/builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool carpet"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow is a warm hue"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "mobs cannot spawn on carpets"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "rationale": "wool burns; dampens_vibrations tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Floor decoration",
+            "Llama decoration/armor",
+            "Dampen sculk vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet gameplay uses"
+        }
+      }
+    },
+    "minecraft:yellow_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colored building material"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id suffix _concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular building block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block for construction"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid dyed block, uniform texture"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bright saturated yellow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder+water; no world gen"
+        },
+        "primary_uses": {
+          "values": [
+            "Colorful solid building block",
+            "Pixel art construction",
+            "Modern architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete primary building uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

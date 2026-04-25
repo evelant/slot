@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 109450,
+  "duration_api_ms": 110511,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:red_nether_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form; structural use\"\n        },\n        \"material_family\": {\n          \"value\": \"red_nether_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from red_nether_bricks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs nether fortress materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural slab + aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red variant of nether brick\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark red brick texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether brick cannot catch fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed slab floors/ceilings\", \"decorative step detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical slab use cases\"\n        }\n      }\n    },\n    \"minecraft:red_nether_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stair form; structural use\"\n        },\n        \"material_family\": {\n          \"value\": \"red_nether_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from red_nether_bricks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs nether fortress materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural stairs + aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red variant of nether brick\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark red brick texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether brick cannot catch fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed stairways\", \"decorative step shaping\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical stair use cases\"\n        }\n      }\n    },\n    \"minecraft:red_nether_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"wall form; structural use\"\n        },\n        \"material_family\": {\n          \"value\": \"red_nether_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from red_nether_bricks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs nether fortress materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural wall + aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red variant of nether brick\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark red brick texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether brick cannot catch fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed fencing/barriers\", \"decorative wall detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical wall block use cases\"\n        }\n      }\n    },\n    \"minecraft:red_nether_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full brick block for building\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"primary recipe ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"nether_wart\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe: nether_brick + nether_wart\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs nether fortress materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block + stonecutting source\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red variant of nether bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark red brick texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether brick cannot catch fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed building block\", \"source for slab/stair/wall variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block + stonecutting upstream\"\n        }\n      }\n    },\n    \"minecraft:red_sand\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found naturally in badlands biome\"\n        },\n        \"material_family\": {\n          \"value\": \"sand\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:sand; sand variant\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"exclusive to badlands biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when badlands available\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed, smelted to glass, sandstone\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring sand variant\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish-orange sand color\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"surface layer of badlands biome\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sand falls like gravel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt into glass\", \"craft red sandstone\", \"building/decoration in badlands style\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sand downstream uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7752f939-d541-48b2-88cf-245ae10d64f0",
+  "total_cost_usd": 0.16882925,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9331,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 8672,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9331,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8672,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9331,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9331
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3669,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0037489999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8672,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9331,
+      "webSearchRequests": 0,
+      "costUSD": 0.16508024999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2f7ae758-9f6d-4395-ad31-54af1b1e78b6"
+}

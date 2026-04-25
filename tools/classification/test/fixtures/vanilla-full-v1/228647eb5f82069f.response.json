@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 182438,
+  "duration_api_ms": 183500,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:piglin_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only mob spawner\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival loot or recipe\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg id → spawns named mob\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival obtainment\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in adventure maps or testing\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piglin egg: gold base, dark accent\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn a Piglin mob\", \"adventure map mob setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg's only gameplay purpose\"\n        }\n      }\n    },\n    \"minecraft:pillager_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only mob spawner\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival loot or recipe\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg id → spawns named mob\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival obtainment\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in adventure maps or testing\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pillager egg: dark gray tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn a Pillager mob\", \"adventure map mob setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg's only gameplay purpose\"\n        }\n      }\n    },\n    \"minecraft:pink_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are primarily decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"banner recipe uses 6 wool\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted from wool\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative, used situationally\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall decor and shield pattern use\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dye-color variants\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a warm pastel hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"wall decoration\", \"shield customization\", \"banner pattern layering\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"banner's main uses\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fits standard inventory slots\"\n        }\n      }\n    },\n    \"minecraft:pink_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sets spawn, skips night\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"bed recipe requires wool\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"bed recipe requires wood planks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted from wool and wood\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every night in survival\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sets spawn point during exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dye-color variants\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a warm pastel hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"skip night\", \"set spawn point\", \"decorative bedroom block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bed's core gameplay functions\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fits standard inventory slots\"\n        }\n      }\n    },\n    \"minecraft:pink_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundles hold multiple stacked items\"\n        },\n        \"dye_color\": {\n          \"value\": \"pink\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix pink + bundles tag\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rabbit hide obtainable from rabbits\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for inventory mgmt\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundles manage inventory capacity\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dye-color variants\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a warm pastel hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; transmute recipe only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"carry mixed item stacks\", \"reduce inventory slot use\", \"color-coded storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle's core gameplay purpose\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fits standard inventory slots\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "35e597b9-ea81-4b47-b93f-8e757da48278",
+  "total_cost_usd": 0.21302690000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3966,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12874,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3966
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12874,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3966,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3966,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3103,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003188,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12874,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3966,
+      "webSearchRequests": 0,
+      "costUSD": 0.20983890000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "021e9d62-ad21-467d-ac38-2e7094bc1bb1"
+}

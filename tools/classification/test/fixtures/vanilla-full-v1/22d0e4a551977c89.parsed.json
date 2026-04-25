@@ -1,0 +1,271 @@
+{
+  "items": {
+    "minecraft:hay_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed block for build, deco, compact storage"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "pattern",
+          "rationale": "compressed from 9 wheat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "horse food, target crafting, deco"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "horse food, farm scenes, wheat compression"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "agricultural origin"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-yellow straw coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "hay is highly flammable; piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "Compact wheat storage (9:1)",
+            "Feed horses and llamas",
+            "Craft target block",
+            "Reduce fall damage",
+            "Farm scene decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core vanilla uses"
+        }
+      }
+    },
+    "minecraft:heart_of_the_sea": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "sole crafting component for conduit"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used once to craft one conduit"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "conduit built for ocean exploration buffs"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oceanic treasure with magical glow"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "aqua",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "teal pearl with emissive texture"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft a conduit",
+            "Enable underwater haste/vision buff",
+            "Ocean monument preparation"
+          ],
+          "signal": "inferred",
+          "rationale": "all uses flow through conduit crafting"
+        }
+      }
+    },
+    "minecraft:heart_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingredient for decorated pot crafting"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "few players actively farm sherds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applies pattern to decorated pot"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact, heart motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta-toned pottery fragment"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply heart pattern to decorated pot",
+            "Collect full sherd set"
+          ],
+          "signal": "inferred",
+          "rationale": "only two meaningful in-game uses"
+        }
+      }
+    },
+    "minecraft:heartbreak_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingredient for decorated pot crafting"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "few players actively farm sherds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applies pattern to decorated pot"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact, broken heart motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta-toned pottery fragment"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply heartbreak pattern to decorated pot",
+            "Collect full sherd set"
+          ],
+          "signal": "inferred",
+          "rationale": "only two meaningful in-game uses"
+        }
+      }
+    },
+    "minecraft:heavy_core": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "sole crafting component for mace"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used once to craft one mace"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted into mace melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "epic ominous vault reward; dense metal"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark dense iron-like appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft the mace weapon",
+            "Rare ominous trial vault reward"
+          ],
+          "signal": "inferred",
+          "rationale": "only meaningful use is mace crafting"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:hay_block",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "village"
+      ],
+      "rationale": "Hay bales generate naturally as structure blocks in plains/savanna villages; obtainable without crafting",
+      "confidence": 0.85
+    }
+  ]
+}

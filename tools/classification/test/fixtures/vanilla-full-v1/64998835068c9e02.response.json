@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 146758,
+  "duration_api_ms": 147493,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:deepslate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stone variant; placed as structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Niche dark-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed as structure or base for variants\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Raw columnar stone texture\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark gray stone finish\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Generates deep underground y<0\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build dark stone structures\", \"stonecutting into 17+ deepslate variants\", \"deep underground construction aesthetic\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"17 stonecutting outputs; solid build block\"\n        }\n      }\n    },\n    \"minecraft:deepslate_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Slab form; half-height structural use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Niche dark brick aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed for structure or decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Processed brick pattern, refined form\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark gray brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height deepslate brick surface\", \"decorative deepslate construction\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Slab form of deepslate bricks\"\n        }\n      }\n    },\n    \"minecraft:deepslate_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs form; structural/aesthetic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Niche dark brick aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs placed for structure or decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Processed brick pattern, refined form\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark gray brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircase with deepslate brick aesthetic\", \"decorative deepslate construction\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stair form of deepslate bricks\"\n        }\n      }\n    },\n    \"minecraft:deepslate_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wall form; structural/aesthetic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Niche dark brick aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wall placed for structure or decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Processed brick pattern, refined form\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark gray brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"perimeter walls with deepslate aesthetic\", \"decorative deepslate construction\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wall form of deepslate bricks\"\n        }\n      }\n    },\n    \"minecraft:deepslate_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Brick-patterned stone block; structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for dark brick aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed as brick block or input for variants\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Polished brick pattern, refined stone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark gray brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dark brick building block\", \"crafting brick slabs/stairs/walls\", \"ancient city aesthetic builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Base for 10 derived brick recipes\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:deepslate_bricks\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"ancient_city\"],\n      \"rationale\": \"Deepslate bricks generate naturally in ancient city structures\",\n      \"confidence\": 0.75\n    },\n    {\n      \"item\": \"minecraft:deepslate_brick_slab\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"ancient_city\"],\n      \"rationale\": \"Deepslate brick slabs generate in ancient city structures\",\n      \"confidence\": 0.72\n    },\n    {\n      \"item\": \"minecraft:deepslate_brick_stairs\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"ancient_city\"],\n      \"rationale\": \"Deepslate brick stairs generate in ancient city structures\",\n      \"confidence\": 0.72\n    },\n    {\n      \"item\": \"minecraft:deepslate_brick_wall\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"ancient_city\"],\n      \"rationale\": \"Deepslate brick walls generate in ancient city structures\",\n      \"confidence\": 0.70\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "30440a4f-2844-467f-9a1e-f9865692e3f1",
+  "total_cost_usd": 0.1818639,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5658,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10261,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5658,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10261,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5658,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5658
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4795,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004875,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10261,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5658,
+      "webSearchRequests": 0,
+      "costUSD": 0.1769889,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "600b47c1-40cd-49ae-b0aa-8d721f5dbd3a"
+}

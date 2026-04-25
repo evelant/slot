@@ -1,0 +1,302 @@
+{
+  "items": {
+    "minecraft:light_blue_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass panes are structural window elements"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "_stained_glass_pane suffix → glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant sand/glass"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific window build designs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as windows and room dividers"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant of glass pane"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue semi-transparent glass"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative windows",
+            "colored light diffusion",
+            "building partitions"
+          ],
+          "signal": "inferred",
+          "rationale": "core glass pane use cases"
+        }
+      }
+    },
+    "minecraft:light_blue_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "terracotta is a solid structural block"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from terracotta + dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific build styles"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as colored structural block"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed variant of base terracotta"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "warm",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta has warm earthy matte texture"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building block",
+            "crafting glazed terracotta",
+            "decorative floors and walls"
+          ],
+          "signal": "inferred",
+          "rationale": "standard terracotta use cases"
+        }
+      }
+    },
+    "minecraft:light_blue_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid placeable block for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable from sheep, easily dyed"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used for builds and crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "built with; obtained via sheep farming"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed natural fiber block"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a soft pastel tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "rationale": "wool burnable; dampens_vibrations tag"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decorating",
+            "crafting beds and carpets",
+            "vibration dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "core wool gameplay uses"
+        }
+      }
+    },
+    "minecraft:light_gray_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are primarily decorative"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from wool and stick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from wool and sticks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decor in specific spots"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall decor and shield decoration use"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool banner, organic material"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray is pale and muted"
+        },
+        "primary_uses": {
+          "values": [
+            "wall and ceiling decoration",
+            "shield decoration",
+            "faction marking"
+          ],
+          "signal": "inferred",
+          "rationale": "standard banner use cases"
+        }
+      }
+    },
+    "minecraft:light_gray_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "beds have active sleep/spawn mechanics"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "wool top layer defines bed color"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted with wood planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from wool and wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every night and to set spawn"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in homes; sets respawn for travel"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool bed, organic look"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray is pale and muted"
+        },
+        "primary_uses": {
+          "values": [
+            "sleeping to skip night",
+            "setting respawn point",
+            "detonates in nether and end"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed mechanics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

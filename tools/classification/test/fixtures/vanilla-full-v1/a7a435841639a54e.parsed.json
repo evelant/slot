@@ -1,0 +1,328 @@
+{
+  "items": {
+    "minecraft:pink_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are primarily aesthetic light sources"
+        },
+        "material_family": {
+          "value": "wax",
+          "signal": "inferred",
+          "rationale": "crafted from honeycomb (wax) + string"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is ambient decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "wax/organic origin + pink dye"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a soft, light tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from honeycomb+string+dye"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when lit (1-3 levels)"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient decorative lighting",
+            "cake decoration (placed on cake)",
+            "counting marker (up to 4 per block)"
+          ],
+          "signal": "inferred",
+          "rationale": "known candle gameplay functions"
+        }
+      }
+    },
+    "minecraft:pink_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin wool layer, primarily aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in decorative builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "floor decor + sculk vibration suppression"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wool material + pink dye color"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a soft/light tone"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "carpets prevent mob spawning below"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative floor covering",
+            "llama equipment (saddle carpet)",
+            "suppressing sculk sensor vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "standard carpet gameplay roles"
+        }
+      }
+    },
+    "minecraft:pink_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid uniform block for construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id suffix _concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in decorative builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colored construction material"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid uniform pink, no texture variation"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pink reads as light/pastel"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "powder+water contact; not naturally found"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building material",
+            "pixel art and decorative architecture",
+            "smooth flat-colored surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "typical concrete block usage"
+        }
+      }
+    },
+    "minecraft:pink_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable gravity block, converts to concrete"
+        },
+        "material_family": {
+          "value": "concrete_powder",
+          "signal": "pattern",
+          "rationale": "id suffix _concrete_powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate step toward concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to produce concrete for building"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "uniform pink powder block"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "powder is a soft pink tone"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand/gravel when unsupported"
+        },
+        "primary_uses": {
+          "values": [
+            "producing pink concrete via water contact",
+            "gravity-based building mechanic"
+          ],
+          "signal": "inferred",
+          "rationale": "standard concrete powder functions"
+        }
+      }
+    },
+    "minecraft:pink_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed crafting/dyeing ingredient"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "id suffix _dye, tag minecraft:dyes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when dyeing items"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeing wool/carpet/beds/armor/blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "sourced from flowers + pink dye color"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a soft/pastel tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "from peony, pink tulip, pink petals"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing wool, carpet, and beds pink",
+            "leather armor color customization",
+            "firework star coloring",
+            "banner patterns via loom"
+          ],
+          "signal": "inferred",
+          "rationale": "standard dye downstream uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

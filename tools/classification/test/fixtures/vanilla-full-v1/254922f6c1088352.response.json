@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 125892,
+  "duration_api_ms": 126801,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cracked_deepslate_tiles\": {\n      \"facets\": {\n        \"role\": {\"value\": \"building_block\", \"signal\": \"inferred\", \"rationale\": \"stone block for decorative building\"},\n        \"material_family\": {\"value\": \"deepslate\", \"signal\": \"pattern\", \"rationale\": \"id prefix deepslate\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"named\", \"rationale\": \"rarity component=common\"},\n        \"frequency\": {\"value\": \"occasional\", \"signal\": \"inferred\", \"rationale\": \"niche aesthetic building block\"},\n        \"activity\": {\"values\": [\"building\", \"decorating\"], \"signal\": \"inferred\", \"rationale\": \"decorative stone building block\"},\n        \"flavor\": {\"values\": [\"variant\"], \"signal\": \"pattern\", \"rationale\": \"cracked = damaged variant of tiles\"},\n        \"palette\": {\"values\": [\"dark\", \"matte\"], \"signal\": \"inferred\", \"rationale\": \"deepslate is very dark gray stone\"},\n        \"primary_uses\": {\"values\": [\"decorative dark stone building\", \"cracked aged aesthetic\"], \"signal\": \"inferred\", \"rationale\": \"used by builders for aged look\"}\n      }\n    },\n    \"minecraft:cracked_nether_bricks\": {\n      \"facets\": {\n        \"role\": {\"value\": \"building_block\", \"signal\": \"inferred\", \"rationale\": \"nether brick building block variant\"},\n        \"material_family\": {\"value\": \"nether_brick\", \"signal\": \"pattern\", \"rationale\": \"id contains nether_bricks\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"named\", \"rationale\": \"rarity component=common\"},\n        \"frequency\": {\"value\": \"occasional\", \"signal\": \"inferred\", \"rationale\": \"niche nether aesthetic block\"},\n        \"activity\": {\"values\": [\"building\", \"decorating\"], \"signal\": \"inferred\", \"rationale\": \"nether-themed decorative building\"},\n        \"flavor\": {\"values\": [\"variant\"], \"signal\": \"pattern\", \"rationale\": \"cracked = damaged variant\"},\n        \"palette\": {\"values\": [\"dark\", \"warm\"], \"signal\": \"inferred\", \"rationale\": \"dark reddish-brown nether brick\"},\n        \"primary_uses\": {\"values\": [\"nether-themed builds\", \"cracked aged aesthetic\"], \"signal\": \"inferred\", \"rationale\": \"cracked nether brick for builders\"}\n      }\n    },\n    \"minecraft:cracked_polished_blackstone_bricks\": {\n      \"facets\": {\n        \"role\": {\"value\": \"building_block\", \"signal\": \"inferred\", \"rationale\": \"polished blackstone building block\"},\n        \"material_family\": {\"value\": \"blackstone\", \"signal\": \"pattern\", \"rationale\": \"id contains blackstone\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"named\", \"rationale\": \"rarity component=common\"},\n        \"frequency\": {\"value\": \"occasional\", \"signal\": \"inferred\", \"rationale\": \"niche dark stone aesthetic block\"},\n        \"activity\": {\"values\": [\"building\", \"decorating\"], \"signal\": \"inferred\", \"rationale\": \"dark stone decorative building\"},\n        \"flavor\": {\"values\": [\"variant\"], \"signal\": \"pattern\", \"rationale\": \"cracked = damaged variant\"},\n        \"palette\": {\"values\": [\"dark\", \"matte\"], \"signal\": \"inferred\", \"rationale\": \"blackstone is very dark, near-black\"},\n        \"primary_uses\": {\"values\": [\"dark stone builds\", \"cracked aesthetic variant\"], \"signal\": \"inferred\", \"rationale\": \"cracked polished blackstone for builders\"}\n      }\n    },\n    \"minecraft:cracked_stone_bricks\": {\n      \"facets\": {\n        \"role\": {\"value\": \"building_block\", \"signal\": \"inferred\", \"rationale\": \"stone brick building block\"},\n        \"material_family\": {\"value\": \"stone\", \"signal\": \"pattern\", \"rationale\": \"id prefix stone\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"named\", \"rationale\": \"rarity component=common\"},\n        \"frequency\": {\"value\": \"occasional\", \"signal\": \"inferred\", \"rationale\": \"common variant building block\"},\n        \"activity\": {\"values\": [\"building\", \"decorating\"], \"signal\": \"inferred\", \"rationale\": \"decorative stone building block\"},\n        \"flavor\": {\"values\": [\"variant\"], \"signal\": \"pattern\", \"rationale\": \"cracked = damaged variant\"},\n        \"palette\": {\"values\": [\"matte\", \"light\"], \"signal\": \"inferred\", \"rationale\": \"light gray stone brick texture\"},\n        \"origin\": {\"values\": [\"stronghold\"], \"signal\": \"inferred\", \"rationale\": \"generates naturally in strongholds\"},\n        \"primary_uses\": {\"values\": [\"stronghold-style builds\", \"aged stone aesthetic\", \"dungeon theming\"], \"signal\": \"inferred\", \"rationale\": \"cracked stone for dungeon builds\"}\n      }\n    },\n    \"minecraft:crafter\": {\n      \"facets\": {\n        \"role\": {\"value\": \"mechanism\", \"signal\": \"inferred\", \"rationale\": \"redstone-powered auto-crafting device\"},\n        \"material_family\": {\"value\": \"iron\", \"signal\": \"inferred\", \"rationale\": \"primary ingredient is iron ingots\"},\n        \"material_secondary\": {\"values\": [\"redstone\"], \"signal\": \"inferred\", \"rationale\": \"redstone dust is direct ingredient\"},\n        \"rarity\": {\"value\": \"common\", \"signal\": \"named\", \"rationale\": \"rarity component=common\"},\n        \"frequency\": {\"value\": \"occasional\", \"signal\": \"inferred\", \"rationale\": \"used in automation setups\"},\n        \"activity\": {\"values\": [\"automation\", \"redstone\"], \"signal\": \"inferred\", \"rationale\": \"redstone-powered auto-crafter\"},\n        \"flavor\": {\"values\": [\"mechanical\"], \"signal\": \"inferred\", \"rationale\": \"automation machine block\"},\n        \"palette\": {\"values\": [\"iron_dark\", \"matte\"], \"signal\": \"inferred\", \"rationale\": \"iron-gray mechanical appearance\"},\n        \"primary_uses\": {\"values\": [\"automated crafting on redstone pulse\", \"item automation pipelines\"], \"signal\": \"inferred\", \"rationale\": \"core use: autocraft items via redstone\"}\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "280c7ad6-7a41-425f-bca6-5dc500007393",
+  "total_cost_usd": 0.17210765,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4143,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10091,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4143,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10091,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4143,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4143
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3280,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00335,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10091,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4143,
+      "webSearchRequests": 0,
+      "costUSD": 0.16875765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "76fc54ea-7c13-41d2-907d-34fe932936df"
+}

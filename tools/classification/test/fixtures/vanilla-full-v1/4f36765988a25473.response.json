@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 190609,
+  "duration_api_ms": 191508,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:test_instance_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"test block; no recipes/loot/gameplay use\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"test block, no survival obtainment\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no actual player utility\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"featureless cube_all test block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"developer/testing placeholder\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no gameplay purpose evident\"\n        }\n      }\n    },\n    \"minecraft:tide_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"smithing_template suffix → upgrade role\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per armor piece\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor trims are purely cosmetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean/tide motif on template\"\n        },\n        \"palette\": {\n          \"values\": [\"aqua\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tide/ocean visual theme\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply tide trim to armor\", \"duplicate template via crafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing template standard uses\"\n        }\n      }\n    },\n    \"minecraft:tinted_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"glass block variant, cube_all model\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id and model indicate glass type\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"amethyst\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted with amethyst shards + glass\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"useful niche building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"builds + mob farm ceilings\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"special-property glass variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark tinted see-through block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"light-blocking transparent building\", \"mob farm ceilings\", \"aesthetic dark glass builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unique light-block + see-through combo\"\n        }\n      }\n    },\n    \"minecraft:tipped_arrow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"ammunition\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:arrows; projectile item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly in ranged combat\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ranged potion delivery in combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"potion-enhanced arrow variant\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"iridescent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing potion-colored tip\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply potion effects at range\", \"ranged combat debuffing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ranged potion delivery\"\n        }\n      }\n    },\n    \"minecraft:tnt\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active explosive mechanism block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"material_family\": {\n          \"value\": \"gunpowder\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gunpowder is key functional ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"sand\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sand + gunpowder craft recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational use, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terrain clearing, traps, cannons\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iconic classic design\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sandy beige + red texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"ignitable_by_fire\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fire triggers detonation; pistons push it\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"terrain demolition\", \"combat traps\", \"TNT minecart crafting\", \"redstone cannons\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core gameplay uses of TNT\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "868b0b85-20f6-4019-8971-143641d43f0a",
+  "total_cost_usd": 0.24545090000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3870,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15067,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3870,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15067,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3870
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3007,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0030770000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15067,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3870,
+      "webSearchRequests": 0,
+      "costUSD": 0.24237390000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "5f1a83e9-4494-4ed2-baea-7b78ab782c2b"
+}

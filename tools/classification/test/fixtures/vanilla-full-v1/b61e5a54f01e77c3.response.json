@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 201486,
+  "duration_api_ms": 202153,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:brown_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"schema lists candles as decorative_block\"\n        },\n        \"material_family\": {\n          \"value\": \"wax\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles crafted from honeycomb/wax\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative use, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for atmosphere and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed, one of 16 colors, wax origin\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown is earthy warm tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lit candles emit light\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative lighting\", \"atmosphere building\", \"cake topping\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"known candle gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:brown_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"schema lists carpets as decorative_block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorated builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor and llama decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool, one of 16 colors, organic\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown wool earthy warm tone\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpet occupies surface, blocks mob spawns\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:dampens_vibrations\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"floor decoration\", \"llama decoration\", \"vibration dampening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpet main gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:brown_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete is structural building material\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_concrete suffix in id\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"construction and colored decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed solid block, one of 16 colors\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown concrete muted earthy tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"made by wetting concrete powder, no loot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"colored construction block\", \"hard-surface decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete primary gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:brown_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"precursor for concrete building material\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_concrete_powder id, same family as concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"transitional, not an end-use block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"step in making concrete\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed powder, one of 16 colors\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown powder muted earthy tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand/gravel when unsupported\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting brown concrete\", \"sand-like fill block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete powder uses\"\n        }\n      }\n    },\n    \"minecraft:brown_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"schema explicitly lists dyes as material\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:dyes + _dye id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when dyeing items\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to color blocks and items\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye item, one of 16, cocoa-derived\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown earthy tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot source, crafted from cocoa beans\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dyeing items brown\", \"crafting colored blocks\", \"firework star color\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye downstream uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "68badd97-a0d2-4a31-9a45-c2dfb64657d4",
+  "total_cost_usd": 0.25120865,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4599,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15220,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4599,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15220,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4599,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4599
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3736,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038060000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15220,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4599,
+      "webSearchRequests": 0,
+      "costUSD": 0.24740264999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "79ef6cfe-55a4-459f-96ec-79addcee1cf5"
+}

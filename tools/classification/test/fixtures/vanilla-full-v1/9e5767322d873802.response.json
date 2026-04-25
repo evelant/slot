@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 217519,
+  "duration_api_ms": 218203,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:camel_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs instantiate mob entities\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; survival inaccessible\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for targeted mob spawning\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob farm / breeding population setup\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"camel is a natural desert mob\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"camel tan/desert tones on egg\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs not survival-obtainable\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg summons linked camel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Spawn a camel mob\",\n            \"Mob farm / breeding setup\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core spawn egg function\"\n        }\n      }\n    },\n    \"minecraft:campfire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooks food, emits light, smoke signal\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from logs and sticks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"coal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coal/charcoal in the recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from widely available materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"useful but not used every session\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooking, ambiance, smoke signaling\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood and fire aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\", \"emissive\", \"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fire glow and dark charred logs\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light; waterloggable block\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mobs on campfire block take damage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cook up to 4 food items without fuel\",\n            \"Ambient decorative lighting\",\n            \"Smoke column signal via hay bale\",\n            \"Damage mobs walking over it\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core campfire mechanics\"\n        }\n      }\n    },\n    \"minecraft:candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is aesthetic lighting\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from honeycomb as wax\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string forms the wick\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"honeycomb accessible from beehives\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative; not a session staple\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for lighting and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural wax; uncolored base variant\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\", \"emissive\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale cream wax with warm candlelight\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lit candle emits light level 3\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Decorative ambient lighting\",\n            \"Place on cake for cosmetic birthday effect\",\n            \"Dye to create colored candle variants\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core candle functions\"\n        }\n      }\n    },\n    \"minecraft:carrot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"explicit minecraft:food + consumable component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable staple crop\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"eaten and farmed constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmed/bred with mobs; villager trades\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural vegetable crop\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange carrot with earthy green top\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tags: pig_food, rabbit_food, horse_food\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Eat as food (3 hunger, 3.6 saturation)\",\n            \"Breed and lure pigs, rabbits, horses\",\n            \"Craft golden carrot or rabbit stew\",\n            \"Craft carrot on a stick\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core carrot uses\"\n        }\n      }\n    },\n    \"minecraft:carrot_on_a_stick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to steer and boost saddled pigs\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from fishing rod (wood base)\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"carrot\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carrot attached as the lure\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple craft from common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use: only for pig riding\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"steers pigs as mounts\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural materials, whimsical design\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources in item data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Steer saddled pig while riding\",\n            \"Boost pig movement speed\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole function is pig steering\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "df0c14a6-8f74-4f78-9873-67841fb65493",
+  "total_cost_usd": 0.24302915000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3817,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14922,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3817,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14922,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3817,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3817
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2954,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003029,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14922,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3817,
+      "webSearchRequests": 0,
+      "costUSD": 0.24000015000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d2b05545-cd5a-4ea1-9121-1989ba4e9871"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 132236,
+  "duration_api_ms": 133169,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:scrape_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found via archaeology brushing, not crafted\"\n        },\n        \"material_family\": {\n          \"value\": \"ceramic\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pottery sherds are fired ceramic\"\n        },\n        \"origin\": {\n          \"values\": [\"archaeology_site\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brushed from suspicious sand/gravel\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag decorated_pot_ingredients confirms use\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artefact\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pottery texture and warm clay tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Craft/decorate decorated pots\", \"Archaeology collection item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole use is decorated_pot ingredient\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use in decorated pots only\"\n        }\n      }\n    },\n    \"minecraft:sculk\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full solid block, no active mechanics\"\n        },\n        \"material_family\": {\n          \"value\": \"sculk\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is exactly sculk\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for dark aesthetic builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep dark biome organism\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark block with teal highlights\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Build with deep dark aesthetic\", \"Decorative dark block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no functional behaviour when placed\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche building material\"\n        }\n      }\n    },\n    \"minecraft:sculk_catalyst\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spreads sculk when mobs die nearby\"\n        },\n        \"material_family\": {\n          \"value\": \"sculk\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sculk\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sculk farming via XP drops; deco builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep dark organism\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pulses with light when blooming\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light when activated\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spread sculk via mob XP drops\", \"Sculk farming setup\", \"Deep dark decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core mechanic is sculk spread\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche sculk farm use\"\n        }\n      }\n    },\n    \"minecraft:sculk_sensor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"detects vibrations, emits redstone signal\"\n        },\n        \"material_family\": {\n          \"value\": \"sculk\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sculk\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wireless redstone detection\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sculk-based sensor device\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glows when activated\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transmits redstone signal on vibration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Detect vibrations wirelessly\", \"Wireless redstone trigger\", \"Craft calibrated sculk sensor\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core redstone utility + crafting role\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialist redstone component\"\n        }\n      }\n    },\n    \"minecraft:sculk_shrieker\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shrieks on vibration; emits redstone signal\"\n        },\n        \"material_family\": {\n          \"value\": \"sculk\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sculk\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone output + deep dark aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"threatening deep dark organism\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sculk dark teal palette\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Emit redstone signal on vibration\", \"Deep dark themed decoration\", \"Warning level mechanic block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shrieks + redstone signal on trigger\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche redstone/deco use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a5981e5a-3508-464c-bd85-3511f35d2d0c",
+  "total_cost_usd": 0.17392314999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3921,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10282,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3921,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10282,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3921,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3921
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3058,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003133,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10282,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3921,
+      "webSearchRequests": 0,
+      "costUSD": 0.17079014999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "61b28e60-a4b2-435d-95f5-5da01bebeea8"
+}

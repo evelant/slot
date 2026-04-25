@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 171332,
+  "duration_api_ms": 172353,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:glow_ink_sac\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop, unprocessed\"\n        },\n        \"material_family\": {\n          \"value\": \"ink\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _ink_sac\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glow squids in specific underwater caves\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche: glow frames and glowing signs\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glow item frames, glowing sign text\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bioluminescent blue-green glow\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft glow item frames\", \"apply glow to sign text\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla uses\"\n        }\n      }\n    },\n    \"minecraft:glow_item_frame\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"entity for glowing wall item display\"\n        },\n        \"material_family\": {\n          \"value\": \"leather\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base item frame uses leather\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\", \"ink\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sticks and glow ink sac in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted from common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative niche use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall-mounted glowing item display\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing upgrade of standard item frame\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"outline glows in the dark\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafted only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"display items with glowing outline\", \"map room markers\", \"decorative item showcase\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item frame uses with glow\"\n        }\n      }\n    },\n    \"minecraft:glow_lichen\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for light/decor, no crafting use\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cave-specific; needs shears/Silk Touch\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche lighting/decoration use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cave ambient light and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic cave growth\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"mint\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale glowing green appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\", \"deep_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates on cave walls underground\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 7\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"cave ambient lighting\", \"spread via bone meal for coverage\", \"decorative cave surface texture\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical player uses\"\n        }\n      }\n    },\n    \"minecraft:glow_squid_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg = creative-only admin item\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs not obtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival loot\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin/creative use only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn glow squids in creative or via commands\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole function\"\n        }\n      }\n    },\n    \"minecraft:glowstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block for structure and light\"\n        },\n        \"material_family\": {\n          \"value\": \"glowstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is glowstone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether-only, requires travel\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used for lighting in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light source; redstone lamp ingredient\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally generating nether block\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm yellow-orange glow, level 15\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"max light level 15 emission\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"bright light source in builds\", \"craft redstone lamp\", \"craft and charge respawn anchor\", \"nether-themed building block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"common vanilla uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:glow_lichen\",\n      \"facet\": \"required_tool\",\n      \"current\": \"axe\",\n      \"suggested\": \"shears\",\n      \"rationale\": \"Glow lichen drops via shears or Silk Touch; axe tag reflects mining speed, not drop method\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "f007c968-7419-4d40-94ed-2fd8f061df1e",
+  "total_cost_usd": 0.2254574,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3384,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13887,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3384,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13887,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3384,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3384
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2521,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002606,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13887,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3384,
+      "webSearchRequests": 0,
+      "costUSD": 0.2228514,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "868a7819-0abb-4d72-96fb-b29ead5471ce"
+}

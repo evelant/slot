@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 159446,
+  "duration_api_ms": 160132,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:angler_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological collectible for decorated pots\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag decorated_pot_ingredients\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found via archaeology\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay pottery coloring\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorated pot use\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting decorated pots\", \"archaeology collectible\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag decorated_pot_ingredients; archaeology loot\"\n        }\n      }\n    },\n    \"minecraft:anvil\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive repair/enchant/rename block\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from iron blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"costs ~31 iron ingots to craft\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combines and repairs enchanted items\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial iron tool block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls when block below removed\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core mid/late-game utility block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"repairing tools and armor\", \"combining enchantments\", \"renaming items\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core anvil mechanics\"\n        }\n      }\n    },\n    \"minecraft:apple\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:consumable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from leaves, found in village chests\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag horse_food; animal husbandry use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic fruit item\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red and green apple coloring\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic food consumed regularly\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"eating for hunger restoration\", \"feeding horses\", \"crafting golden apple\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food component; horse_food tag; golden_apple recipe\"\n        }\n      }\n    },\n    \"minecraft:archer_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological collectible for decorated pots\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag decorated_pot_ingredients\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found via archaeology\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay pottery coloring\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorated pot use\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting decorated pots\", \"archaeology collectible\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag decorated_pot_ingredients; archaeology loot\"\n        }\n      }\n    },\n    \"minecraft:armadillo_scute\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw drop from brushed/shedding armadillos\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"armadillos shed scutes regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafts wolf armor for combat pets\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural animal material\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armadillo brown/tan coloring\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for wolf armor crafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting wolf armor\", \"repairing wolf armor\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag repairs_wolf_armor; wolf_armor recipe\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:armadillo_scute\",\n      \"facet\": \"origin\",\n      \"current\": [\"archaeology_site\"],\n      \"suggested\": [\"mob_drop\"],\n      \"rationale\": \"Loot from mob brush/shed, not archaeology\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b158cb2d-cb29-408f-8c83-8b81afe5020f",
+  "total_cost_usd": 0.1993559,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3810,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12013,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3810,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12013,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3810,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3810
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2947,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003017,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12013,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3810,
+      "webSearchRequests": 0,
+      "costUSD": 0.1963389,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c404b717-6535-404c-8497-b39c90c5f114"
+}

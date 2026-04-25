@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 141823,
+  "duration_api_ms": 142879,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:creeper_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs place mobs; a utility action\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unobtainable in survival; creative-only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used selectively in creative/testing\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mob theme\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creeper is dark green\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs not in survival loot\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"id pattern *_spawn_egg places named mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spawn a creeper instantly\", \"Creative mob placement and testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function of all spawn eggs\"\n        }\n      }\n    },\n    \"minecraft:crimson_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:buttons; emits pulse\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant nether planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed selectively as redstone triggers\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pulse trigger; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; nether variant of button\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crimson is deep red-brown wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-immovable small block; relevant in redstone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Trigger momentary redstone pulse\", \"Decorative wood-tone switch\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard button use cases\"\n        }\n      }\n    },\n    \"minecraft:crimson_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"doors are structural passage elements\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common nether planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard component in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural use; can be redstone-operated\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood door; nether crimson variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crimson is deep red-brown wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Block passage between rooms\", \"Mob barrier\", \"Redstone-operable entrance\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door use cases\"\n        }\n      }\n    },\n    \"minecraft:crimson_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fences are structural barrier blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common nether planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in builds and animal pens\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier; used in animal enclosures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; nether crimson variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crimson is deep red-brown wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Animal containment fencing\", \"Decorative barrier\", \"Build perimeter\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence use cases\"\n        }\n      }\n    },\n    \"minecraft:crimson_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence gate is structural; pairs with fences\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common nether planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed at fence openings; not everywhere\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence enclosures; supports redstone control\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; nether crimson variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crimson is deep red-brown wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Gate for fence enclosures\", \"Mob-proof opening in barrier\", \"Redstone-operable gate\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence gate use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:crimson_button\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft\",\n      \"confidence\": 0.8\n    },\n    {\n      \"item\": \"minecraft:crimson_door\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft\",\n      \"confidence\": 0.8\n    },\n    {\n      \"item\": \"minecraft:crimson_fence\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft\",\n      \"confidence\": 0.8\n    },\n    {\n      \"item\": \"minecraft:crimson_fence_gate\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "8014c6cf-f9ac-4c3b-b69c-225f10ab490a",
+  "total_cost_usd": 0.16929090000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4510,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9787,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4510,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9787,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4510,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4510
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3647,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0037170000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9787,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4510,
+      "webSearchRequests": 0,
+      "costUSD": 0.16557390000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0b2c98a4-93fa-46a2-93b6-1c85ea7e3147"
+}

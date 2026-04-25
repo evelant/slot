@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 115309,
+  "duration_api_ms": 116341,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:wolf_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns mob on use; no structural purpose\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when intentionally spawning\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wolves serve as combat companions\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal mob egg\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"all spawn eggs spawn linked mob\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no craft recipe or loot table source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spawn a wolf mob\", \"Creative/command-only item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg core function\"\n        }\n      }\n    },\n    \"minecraft:wooden_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:axes + tool component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from basic wood\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early-game staple, replaced gradually\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chops blocks, disables shields, strips logs\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic unadorned tool\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden head and handle\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Chop wood blocks\", \"Strip logs\", \"Disable shields in combat\", \"Early-game weapon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axe core functions\"\n        }\n      }\n    },\n    \"minecraft:wooden_hoe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:hoes + tool component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from basic wood\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used mainly for farming setup\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tills soil; breaks leaves/plants fast\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic unadorned tool\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden construction\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Till soil for crops\", \"Break leaves and plants quickly\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoe core functions\"\n        }\n      }\n    },\n    \"minecraft:wooden_pickaxe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:pickaxes + tool component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from basic wood\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"first pickaxe crafted every new game\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mines stone and cobblestone\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic unadorned tool\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden construction\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Mine stone and cobblestone\", \"First pickaxe in progression\", \"Unlock stone-tier crafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pickaxe core functions\"\n        }\n      }\n    },\n    \"minecraft:wooden_shovel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:shovels + tool component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from basic wood\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"regularly used for earthworks\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digs soil; creates paths\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic unadorned tool\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden construction\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table sources in data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Dig dirt, gravel, sand\", \"Create dirt paths\", \"Extinguish campfires\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shovel core functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "fe9d633a-27bc-4593-8639-e97f1e10d9a5",
+  "total_cost_usd": 0.15254565,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4831,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8568,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4831,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8568,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4831,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4831
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3968,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004053,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8568,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4831,
+      "webSearchRequests": 0,
+      "costUSD": 0.14849265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "96975e14-0b4a-49ad-9293-2b6d7835639c"
+}

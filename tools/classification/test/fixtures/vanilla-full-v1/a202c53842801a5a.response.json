@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 174554,
+  "duration_api_ms": 175421,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:chest_minecart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rail vehicle that carries items\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"minecart body is iron\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest component is wood\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific rail setups\"\n        },\n        \"activity\": {\n          \"values\": [\"logistics\", \"automation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"item transport via rails\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rail vehicle\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron minecart body\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted from chest+minecart\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds items like a chest\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports items along rails\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Rail-based item transport\",\n            \"Automated item logistics\",\n            \"Storage on rail networks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest-on-rails function\"\n        }\n      }\n    },\n    \"minecraft:chicken\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food component present\"\n        },\n        \"material_family\": {\n          \"value\": \"meat\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag minecraft:meat\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common farmable food source\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chicken farm output\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw poultry pinkish tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cook into cooked chicken\",\n            \"Wolf food\",\n            \"Emergency raw food (hunger risk)\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food + wolf_food tag + hunger effect\"\n        }\n      }\n    },\n    \"minecraft:chicken_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs are utility items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when setting up farms\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns chickens for mob farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard egg appearance\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg always spawns linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Instantly spawn a chicken\",\n            \"Mob farm setup\",\n            \"Creative/admin use\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core spawn egg function\"\n        }\n      }\n    },\n    \"minecraft:chipped_anvil\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive repair/rename/enchant block\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from iron blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for gear maintenance\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combines enchantments and renames\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"degraded variant of anvil\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron-colored block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"anvils fall like gravel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Rename items\",\n            \"Combine enchanted books/items\",\n            \"Repair tools with materials\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core anvil functions\"\n        }\n      }\n    },\n    \"minecraft:chiseled_bookshelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores books; emits comparator signal\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from planks and slabs\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche redstone/book-storage use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"storage_management\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"comparator signal + book storage + decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; chiseled bookshelf variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wood planks color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block burns\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid full-cube wood block\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds books as items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store up to 6 books/maps\",\n            \"Redstone comparator signal\",\n            \"Decorative bookshelf variant\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core chiseled bookshelf functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "98c313ff-2242-43af-b873-83c3b4b102b9",
+  "total_cost_usd": 0.2271959,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3550,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13951,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3550,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13951,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3550,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3550
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2687,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002762,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13951,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3550,
+      "webSearchRequests": 0,
+      "costUSD": 0.22443390000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "771ba4b8-d1f6-4f1b-a624-6a8b2cc6acb9"
+}

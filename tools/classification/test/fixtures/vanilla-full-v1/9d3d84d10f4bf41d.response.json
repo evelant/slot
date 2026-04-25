@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 99152,
+  "duration_api_ms": 100061,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:orange_tulip\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower picked raw from overworld; not processed\"\n        },\n        \"material_family\": {\n          \"value\": \"flower\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small_flowers tag; botanical world item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for dye/stew, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decor; bee_food supports bee farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"botanical plant item\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange tulip coloration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft orange dye\",\n            \"suspicious stew ingredient\",\n            \"bee food for bee farms\",\n            \"placed as decorative flower\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient_of list + bee_food tag\"\n        }\n      }\n    },\n    \"minecraft:orange_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid wool block; primary use is building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common building/crafting material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed variant; animal-derived material\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange dyed wool coloration\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"sculk_silent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool is flammable; dampens_vibrations tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"build and decorate structures\",\n            \"craft beds, carpets, banners\",\n            \"sculk vibration dampening\",\n            \"re-dye to other wool colors\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient_of list + dampens_vibrations tag\"\n        }\n      }\n    },\n    \"minecraft:oxeye_daisy\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower picked raw from overworld surface\"\n        },\n        \"material_family\": {\n          \"value\": \"flower\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small_flowers tag; botanical world item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for dye/banner/stew; not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decor; bee_food supports bee farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"botanical plant item\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white petals with yellow center\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft light gray dye\",\n            \"flower banner pattern\",\n            \"suspicious stew ingredient\",\n            \"bee food for bee farms\",\n            \"placed as decorative flower\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient_of list + bee_food tag\"\n        }\n      }\n    },\n    \"minecraft:oxidized_chiseled_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid decorative-structural copper block\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains copper; chiseled variant\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative block, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for visual appeal in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled variant; natural oxidation patina\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fully oxidized copper is teal-green\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative building with aged copper look\",\n            \"wax to preserve oxidized appearance\",\n            \"stonecutting from oxidized copper blocks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient_of waxed variant; stonecutting output\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full copper block at final oxidation stage\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id copper + tag minecraft:copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative/building use, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for copper aesthetic in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural oxidation patina; weathering stage\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal-green fully oxidized copper color\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized copper generates in trial chambers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft oxidized copper variants\",\n            \"build with aged copper aesthetic\",\n            \"wax to lock oxidized appearance\",\n            \"stonecutting into decorative variants\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient_of list; multiple variant recipes\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "1f430aab-4468-4bbd-8301-e247664dc44c",
+  "total_cost_usd": 0.14777515,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4993,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8199,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4993
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8199,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4993,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4993,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4130,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00421,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8199,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4993,
+      "webSearchRequests": 0,
+      "costUSD": 0.14356515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d15e6d39-b0e6-4f3e-b13d-b920f3b64600"
+}

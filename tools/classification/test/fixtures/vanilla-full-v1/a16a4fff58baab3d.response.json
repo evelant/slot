@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 304719,
+  "duration_api_ms": 305402,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:dragon_head\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"skulls tag; schema lists heads as decorative\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare end trophy, mostly placed\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as trophy/cosmetic block\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark dragon; ancient End lore\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark scales, glowing eyes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"place as End trophy decoration\",\n            \"worn cosmetically on head\",\n            \"firework star dragon shape ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:dried_ghast\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"hydrates in water to spawn Happy Ghast\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"piglin barter or crafted; not trivial\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per Happy Ghast desired\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows into rideable flying Happy Ghast\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried creature/mob form\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dusty dried nether creature\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fully hydrated → spawns Happy Ghast\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"hydrate in water to spawn Happy Ghast\",\n            \"obtain rideable flying mount\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole functional purpose\"\n        }\n      }\n    },\n    \"minecraft:dried_kelp\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food component present\"\n        },\n        \"material_family\": {\n          \"value\": \"kelp\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id: dried_kelp\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"infinite kelp farms in ocean\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common food, fuel, bulk craft\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary product of kelp farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried ocean plant\"\n        },\n        \"palette\": {\n          \"values\": [\"olive\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried green-brown seaweed\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed from ocean-sourced kelp\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"quick low-hunger food (1 point)\",\n            \"craft dried kelp block for fuel\",\n            \"mild furnace fuel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:dried_kelp_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid cube block; build and fuel storage\"\n        },\n        \"material_family\": {\n          \"value\": \"kelp\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix dried_kelp\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from infinitely farmable kelp\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"top-tier kelp-farm fuel block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"power_generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"construction + 200s burn fuel\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed plant block\"\n        },\n        \"palette\": {\n          \"values\": [\"olive\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark dried seaweed block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"efficient furnace fuel (200s)\",\n            \"build with natural block aesthetic\",\n            \"bulk kelp storage/transport form\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:dripstone_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid cube block for cave construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dripstone caves generate frequently\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche cave-aesthetic building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cave-theme construction block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural cave mineral block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm tan/brown cave stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"cave-aesthetic building block\",\n            \"craft into pointed dripstone\",\n            \"dripstone cave decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:dripstone_block\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_cave\"],\n      \"rationale\": \"Dripstone blocks generate naturally in dripstone cave biomes; crafted_only is wrong\",\n      \"confidence\": 0.92\n    },\n    {\n      \"item\": \"minecraft:dried_ghast\",\n      \"facet\": \"origin\",\n      \"current\": [\"trading\"],\n      \"suggested\": [\"trading\", \"nether\"],\n      \"rationale\": \"Dried ghast block generates naturally in the nether; blocks/ loot table signals natural gen\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7d735558-dac5-41c1-a71b-a027612f34b1",
+  "total_cost_usd": 0.3232599,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4314,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 20113,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4314,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 20113,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4314,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4314
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3451,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0035310000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 20113,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4314,
+      "webSearchRequests": 0,
+      "costUSD": 0.3197289,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a4fc1fd9-7282-42c0-b10f-7418cc129c94"
+}

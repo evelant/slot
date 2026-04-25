@@ -1,0 +1,270 @@
+{
+  "items": {
+    "minecraft:fox_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only mob spawner item"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival without commands"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used occasionally for mob setup"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mob farm or animal pen setup"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents an animal"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "right-click use spawns a fox"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn fox mob in creative",
+            "creative mob farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "core function is fox spawning"
+        }
+      }
+    },
+    "minecraft:friend_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "brushed raw from archaeology site as-is"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "pattern",
+          "rationale": "tag decorated_pot_ingredients confirms use"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact with engraved motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "fired ceramic clay appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "pattern decorated pots",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "used in decorated pot crafting"
+        }
+      }
+    },
+    "minecraft:frog_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only mob spawner item"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival without commands"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used occasionally for mob setup"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "froglight farm setup via frog spawning"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents an animal"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "right-click use spawns a frog"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn frog mob in creative",
+            "froglight farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "core function is frog spawning"
+        }
+      }
+    },
+    "minecraft:frogspawn": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "biologically laid by frogs; raw world block"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "hatches tadpoles; swamp build deco"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "biological wildlife element"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "semi-transparent egg mass, brown tones"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "frogs lay in swamp/mangrove surface water"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "block hatches into tadpoles"
+        },
+        "primary_uses": {
+          "values": [
+            "hatch tadpoles for frog farms",
+            "swamp/mangrove decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "produces tadpoles when hatched"
+        }
+      }
+    },
+    "minecraft:furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active smelting and cooking device"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "crafted from 8 cobblestone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially craftable, found in villages"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core progression block used constantly"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "smelts ores, cooks food, auto-smelters"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian stone processing device"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark cobblestone/brick texture"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt ores and raw materials",
+            "cook food items",
+            "craft blast furnace and smoker"
+          ],
+          "signal": "inferred",
+          "rationale": "core smelting block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:fox_spawn_egg",
+      "facet": "is_creative_only",
+      "current": null,
+      "suggested": true,
+      "rationale": "vanilla spawn eggs are creative-only in survival",
+      "confidence": 0.95
+    },
+    {
+      "item": "minecraft:frog_spawn_egg",
+      "facet": "is_creative_only",
+      "current": null,
+      "suggested": true,
+      "rationale": "vanilla spawn eggs are creative-only in survival",
+      "confidence": 0.95
+    }
+  ]
+}

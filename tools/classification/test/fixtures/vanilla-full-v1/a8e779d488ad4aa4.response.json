@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 132112,
+  "duration_api_ms": 133066,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:resin_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form of a brick block\"\n        },\n        \"material_family\": {\n          \"value\": \"resin_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix resin_brick_*\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from pale garden resin\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative slab in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for structural/decorative use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic origin, shaped variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"resin is orange-amber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height building block\", \"ingredient for chiseled resin bricks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab build use + chiseled recipe\"\n        }\n      }\n    },\n    \"minecraft:resin_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs form of a brick block\"\n        },\n        \"material_family\": {\n          \"value\": \"resin_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix resin_brick_*\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from pale garden resin\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative stairs in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for structural/decorative use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic origin, shaped variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"resin is orange-amber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircase building element\", \"decorative building accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs use in themed builds\"\n        }\n      }\n    },\n    \"minecraft:resin_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"wall form of a brick block\"\n        },\n        \"material_family\": {\n          \"value\": \"resin_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix resin_brick_*\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from pale garden resin\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative wall in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall for building/decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic origin, shaped variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"resin is orange-amber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative fence/barrier\", \"building wall accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall use in themed builds\"\n        }\n      }\n    },\n    \"minecraft:resin_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"base brick block; model cube_all\"\n        },\n        \"material_family\": {\n          \"value\": \"resin_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is resin_bricks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from pale garden resin\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"building block in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick block for building/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic resin material\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"resin is orange-amber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building block\", \"stonecutting into slab/stair/wall/chiseled\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base block + stonecutting source\"\n        }\n      }\n    },\n    \"minecraft:resin_clump\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops raw from creaking_heart block\"\n        },\n        \"material_family\": {\n          \"value\": \"resin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix resin\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires locating pale garden biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"batch-used to craft resin bricks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: resin bricks for building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic raw material\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"resin has orange-amber color\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creaking_heart in pale garden; stage2 adds woodland_mansion\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft resin blocks and bricks\", \"smelt into resin brick item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for resin_block, resin_brick\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b80026b6-9f28-422d-9dcf-2e8977cff6dc",
+  "total_cost_usd": 0.18806290000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4522,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11034,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4522,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11034,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4522,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4522
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3659,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003739,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11034,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4522,
+      "webSearchRequests": 0,
+      "costUSD": 0.18432390000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b0467429-3eba-4b26-be27-d096d443c3b2"
+}

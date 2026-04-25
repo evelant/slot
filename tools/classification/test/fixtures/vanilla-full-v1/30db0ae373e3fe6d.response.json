@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 277079,
+  "duration_api_ms": 278012,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:end_stone_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick variant for structural construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"component explicitly declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"End-aesthetic builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and decorative End block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"processed brick form of end stone\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale cream yellowish brick texture\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full solid opaque block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building End-themed structures\",\n            \"stonecutting into slabs/stairs/walls\",\n            \"decorative End masonry\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical brick building block uses\"\n        }\n      }\n    },\n    \"minecraft:ender_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"personal inter-dim storage block\"\n        },\n        \"material_family\": {\n          \"value\": \"obsidian\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 8 obsidian blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires obsidian mining + eye of ender\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core personal stash in most playthroughs\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"personal inter-dimensional storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical glowing personal storage block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark obsidian body with green glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\", \"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blast_res=600, piston cannot move\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full solid block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"personal cross-dimensional storage\",\n            \"protecting valuables from loss\",\n            \"shared ender inventory access point\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"defining use cases of ender chest\"\n        }\n      }\n    },\n    \"minecraft:ender_dragon_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only boss spawn egg\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival source, creative mode only\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival obtainability, admin only\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin/testing scenarios only\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"end boss spawn egg, ominous by nature\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark purple/black dragon color scheme\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawning Ender Dragon for admin/testing\",\n            \"creative mode boss encounter setup\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only use is spawning the boss\"\n        }\n      }\n    },\n    \"minecraft:ender_eye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigation + portal activation tool\"\n        },\n        \"material_family\": {\n          \"value\": \"ender_pearl\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary component is ender pearl\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires enderman + nether blaze farming\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mainly one-time End portal activation\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"finds stronghold, activates End Portal\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical navigation artifact\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"characteristic teal green glow\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted pearl+blaze\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"locating strongholds by throwing\",\n            \"activating End Portal frames\",\n            \"crafting ender chest and end crystal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of Eye of Ender\"\n        }\n      }\n    },\n    \"minecraft:ender_pearl\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"throwable teleportation item\"\n        },\n        \"material_family\": {\n          \"value\": \"ender\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ender-realm mob drop material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"enderman mob drop, requires farming\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used constantly by players for mobility\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teleportation traversal across terrain\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical mob drop with natural origin\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"characteristic teal/aqua color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"teleportation for fast traversal\",\n            \"crafting Eye of Ender\",\n            \"escaping danger or crossing gaps\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of ender pearl\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "fb7ec3d8-ccd1-4567-9d67-5c4ce19989fe",
+  "total_cost_usd": 0.33592015000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3993,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 21059,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3993,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 21059,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3993,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3993
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3130,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003205,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 21059,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3993,
+      "webSearchRequests": 0,
+      "costUSD": 0.33271515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8f271be3-d027-4071-97d3-87d873cc4d05"
+}

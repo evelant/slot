@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:mossy_cobblestone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall form tag = structural block"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "pattern",
+          "rationale": "id contains cobblestone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mossy variant, niche aesthetic use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for structure and ruin aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of plain cobblestone wall"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray cobblestone + muted moss green"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall borders",
+            "ruin/dungeon aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy wall = aged structural detail"
+        }
+      }
+    },
+    "minecraft:mossy_stone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form tag = structural block"
+        },
+        "material_family": {
+          "value": "stone_brick",
+          "signal": "pattern",
+          "rationale": "id contains stone_brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mossy variant, niche aesthetic use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for structure and ruin aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of stone brick slab"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone + muted moss green"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring detail",
+            "stronghold/ruin aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy slab for aged building detail"
+        }
+      }
+    },
+    "minecraft:mossy_stone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs form tag = structural block"
+        },
+        "material_family": {
+          "value": "stone_brick",
+          "signal": "pattern",
+          "rationale": "id contains stone_brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mossy variant, niche aesthetic use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for structure and ruin aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of stone brick stairs"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone + muted moss green"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase building",
+            "stronghold/ruin aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy stairs for aged building detail"
+        }
+      }
+    },
+    "minecraft:mossy_stone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall form tag = structural block"
+        },
+        "material_family": {
+          "value": "stone_brick",
+          "signal": "pattern",
+          "rationale": "id contains stone_brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mossy variant, niche aesthetic use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for structure and ruin aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of stone brick wall"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone + muted moss green"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall borders",
+            "stronghold/ruin aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy wall for aged structural detail"
+        }
+      }
+    },
+    "minecraft:mossy_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block used for building structures"
+        },
+        "material_family": {
+          "value": "stone_brick",
+          "signal": "pattern",
+          "rationale": "id contains stone_bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mossy variant for specific aesthetics"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in stronghold-aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of plain stone bricks"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone + muted moss green"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generates in strongholds"
+        },
+        "primary_uses": {
+          "values": [
+            "stronghold/ruin aesthetic building",
+            "ingredient for mossy slab/stair/wall"
+          ],
+          "signal": "inferred",
+          "rationale": "base block + stonecutting input"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

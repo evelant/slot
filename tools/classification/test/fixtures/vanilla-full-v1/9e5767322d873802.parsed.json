@@ -1,0 +1,339 @@
+{
+  "items": {
+    "minecraft:camel_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs instantiate mob entities"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; survival inaccessible"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for targeted mob spawning"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mob farm / breeding population setup"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "camel is a natural desert mob"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "camel tan/desert tones on egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "spawn eggs not survival-obtainable"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg summons linked camel"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a camel mob",
+            "Mob farm / breeding setup"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawn egg function"
+        }
+      }
+    },
+    "minecraft:campfire": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "cooks food, emits light, smoke signal"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from logs and sticks"
+        },
+        "material_secondary": {
+          "values": [
+            "coal"
+          ],
+          "signal": "inferred",
+          "rationale": "coal/charcoal in the recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from widely available materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "useful but not used every session"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cooking, ambiance, smoke signaling"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood and fire aesthetic"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing",
+            "emissive",
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "fire glow and dark charred logs"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light; waterloggable block"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "mobs on campfire block take damage"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook up to 4 food items without fuel",
+            "Ambient decorative lighting",
+            "Smoke column signal via hay bale",
+            "Damage mobs walking over it"
+          ],
+          "signal": "inferred",
+          "rationale": "core campfire mechanics"
+        }
+      }
+    },
+    "minecraft:candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is aesthetic lighting"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "crafted from honeycomb as wax"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string forms the wick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "honeycomb accessible from beehives"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative; not a session staple"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for lighting and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "natural wax; uncolored base variant"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing",
+            "emissive",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale cream wax with warm candlelight"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candle emits light level 3"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative ambient lighting",
+            "Place on cake for cosmetic birthday effect",
+            "Dye to create colored candle variants"
+          ],
+          "signal": "inferred",
+          "rationale": "core candle functions"
+        }
+      }
+    },
+    "minecraft:carrot": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "explicit minecraft:food + consumable component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable staple crop"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "eaten and farmed constantly"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "farmed/bred with mobs; villager trades"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural vegetable crop"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "orange carrot with earthy green top"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "pattern",
+          "rationale": "tags: pig_food, rabbit_food, horse_food"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat as food (3 hunger, 3.6 saturation)",
+            "Breed and lure pigs, rabbits, horses",
+            "Craft golden carrot or rabbit stew",
+            "Craft carrot on a stick"
+          ],
+          "signal": "inferred",
+          "rationale": "core carrot uses"
+        }
+      }
+    },
+    "minecraft:carrot_on_a_stick": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "used to steer and boost saddled pigs"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from fishing rod (wood base)"
+        },
+        "material_secondary": {
+          "values": [
+            "carrot"
+          ],
+          "signal": "inferred",
+          "rationale": "carrot attached as the lure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "simple craft from common materials"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche use: only for pig riding"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "steers pigs as mounts"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural materials, whimsical design"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources in item data"
+        },
+        "primary_uses": {
+          "values": [
+            "Steer saddled pig while riding",
+            "Boost pig movement speed"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function is pig steering"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

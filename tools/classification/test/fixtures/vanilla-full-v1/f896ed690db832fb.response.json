@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 276556,
+  "duration_api_ms": 277376,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:acacia_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural fence w/ open/close access\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant wood, easy to make\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds, not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as fence gate in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-brown wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block burns and catches fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Building fences and enclosures\", \"Controlling player and mob access\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence gate primary functions\"\n        }\n      }\n    },\n    \"minecraft:acacia_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sign form is decorative/communicative\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chains (iron) in hanging sign recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted; needs wood + iron chains\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for labeling areas, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"labeling and decorative builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood item burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Labeling storage areas and rooms\", \"Decorative signage in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hanging sign use cases\"\n        }\n      }\n    },\n    \"minecraft:acacia_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw foliage collected from trees\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"every tree yields many leaves\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decor or composting, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decor placement or composting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"foliage from trees\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia leaves yellow-green hue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves are flammable blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decoration and tree canopy aesthetics\", \"Composting for bone meal\", \"Crafting leaf litter\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaf use cases\"\n        }\n      }\n    },\n    \"minecraft:acacia_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw log harvested from trees\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"logs from trees everywhere in overworld\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fundamental early-game resource\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as logs; processed to planks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-brown bark\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns and catches fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Crafting acacia planks\", \"Fuel for furnaces\", \"Decorative log blocks in builds\", \"Crafting charcoal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"log downstream uses\"\n        }\n      }\n    },\n    \"minecraft:acacia_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary processed structural wood\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one crafting step from abundant logs\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fundamental building/crafting material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary structural building block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"undecorated processed wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia warm orange-tan planks\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Building structures and floors\", \"Crafting wood items and tools\", \"Fuel for furnaces\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plank primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:acacia_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_acacia\",\n      \"rationale\": \"id prefix acacia_ identifies material; wooden_tool_materials tag is generic across all plank types and does not indicate oak\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "f0546da4-59be-4bcc-b380-44547f0df6ce",
+  "total_cost_usd": 0.32084499999999994,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 11232,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 18295,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11232,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 18295,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 11232,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 11232
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4211,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0042910000000000005,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 18295,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 11232,
+      "webSearchRequests": 0,
+      "costUSD": 0.31655399999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0c826b70-c8a7-4448-9142-2923ea3ff2d6"
+}

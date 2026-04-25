@@ -1,0 +1,280 @@
+{
+  "items": {
+    "minecraft:cobbled_deepslate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form = structural building element"
+        },
+        "material_family": {
+          "value": "cobbled_deepslate",
+          "signal": "pattern",
+          "rationale": "id prefix cobbled_deepslate_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not daily necessity"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used for construction and detail"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "rough dark stone aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "cobbled deepslate is very dark gray"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "decorative dark-stone architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs shape + deepslate material"
+        }
+      }
+    },
+    "minecraft:cobbled_deepslate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form = structural building element"
+        },
+        "material_family": {
+          "value": "cobbled_deepslate",
+          "signal": "pattern",
+          "rationale": "id prefix cobbled_deepslate_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not daily necessity"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "walls used for construction and borders"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "rough dark stone aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "cobbled deepslate is very dark gray"
+        },
+        "primary_uses": {
+          "values": [
+            "wall and barrier construction",
+            "decorative borders and edging"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form + deepslate material"
+        }
+      }
+    },
+    "minecraft:cobblestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block; primary use as structure material"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "tag minecraft:stone_tool_materials"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "drops ubiquitously from mining stone"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used constantly early/mid game"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for building; crafts stone-tier tools"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic undecorated gray stone block"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray-brown cobbled texture"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from mining stone throughout overworld"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting stone-tier tools",
+            "basic building material",
+            "ingredient in many crafting recipes"
+          ],
+          "signal": "inferred",
+          "rationale": "stone_tool_materials + 20 shaped recipes"
+        }
+      }
+    },
+    "minecraft:cobblestone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form = structural building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not daily necessity"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs for floors, roofs, detailing"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic undecorated cobblestone"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray-brown cobbled texture"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring and roofing",
+            "architectural detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form applied to cobblestone material"
+        }
+      }
+    },
+    "minecraft:cobblestone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form = structural building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not daily necessity"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for staircases and detailing"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic undecorated cobblestone"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray-brown cobbled texture"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "architectural detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form applied to cobblestone material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

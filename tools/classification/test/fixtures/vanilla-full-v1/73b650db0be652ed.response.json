@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 112461,
+  "duration_api_ms": 113437,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:oak_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural enclosure block, placed in world\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant oak wood\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific builds, not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural fence element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, organic origin\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak is medium warm brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood fence ignites and burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building animal pens and enclosures\",\n            \"decorative border and structural edge\",\n            \"connecting to fence gates for entry\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"common fence use cases\"\n        }\n      }\n    },\n    \"minecraft:oak_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes on interact or redstone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant oak wood\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when building fenced enclosures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds; redstone-toggleable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material with gate mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak wood medium warm brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood construction ignites and burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"gated entry to fenced enclosures\",\n            \"redstone-controlled access point\",\n            \"player/mob passthrough in fence lines\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence gate use cases\"\n        }\n      }\n    },\n    \"minecraft:oak_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"labeling/aesthetic, not structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from stripped logs and chains\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for labeling, not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for text labels and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary material is wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak wood medium brown tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"labeling locations and storage areas\",\n            \"decorative hanging text displays\",\n            \"shop or area signage in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical sign use cases\"\n        }\n      }\n    },\n    \"minecraft:oak_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"harvested from trees unchanged, raw form\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"every oak tree has hundreds of leaves\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds and composting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"build foliage decor; compostable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"literal tree foliage\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak leaves render green\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves ignite and burn quickly\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"foliage decoration in builds\",\n            \"composter input for bonemeal\",\n            \"crafting leaf litter\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical leaf use cases\"\n        }\n      }\n    },\n    \"minecraft:oak_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw tree resource picked from world\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"forests everywhere; most common log type\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary wood source, used every session\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed directly as log pillars/structure\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw unprocessed tree log\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak log medium brown, dark end grain\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood logs burn as fuel or in fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting oak planks and wood products\",\n            \"building log cabin structures\",\n            \"fuel and charcoal smelting source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core log use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "3c8d90ac-e2e1-4fc7-b692-788af56d1491",
+  "total_cost_usd": 0.14318765,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4783,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7960,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4783
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7960,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4783,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4783,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3920,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7960,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4783,
+      "webSearchRequests": 0,
+      "costUSD": 0.13919265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "405ff162-584d-4a2b-849c-c0d8195e53a2"
+}

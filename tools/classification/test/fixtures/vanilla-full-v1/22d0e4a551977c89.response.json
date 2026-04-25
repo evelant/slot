@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 145957,
+  "duration_api_ms": 146743,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:hay_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block for build, deco, compact storage\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"compressed from 9 wheat\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse food, target crafting, deco\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse food, farm scenes, wheat compression\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"agricultural origin\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-yellow straw coloring\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hay is highly flammable; piston movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Compact wheat storage (9:1)\",\n            \"Feed horses and llamas\",\n            \"Craft target block\",\n            \"Reduce fall damage\",\n            \"Farm scene decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core vanilla uses\"\n        }\n      }\n    },\n    \"minecraft:heart_of_the_sea\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole crafting component for conduit\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once to craft one conduit\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"conduit built for ocean exploration buffs\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oceanic treasure with magical glow\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"aqua\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal pearl with emissive texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft a conduit\",\n            \"Enable underwater haste/vision buff\",\n            \"Ocean monument preparation\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all uses flow through conduit crafting\"\n        }\n      }\n    },\n    \"minecraft:heart_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for decorated pot crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"few players actively farm sherds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies pattern to decorated pot\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact, heart motif\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta-toned pottery fragment\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Apply heart pattern to decorated pot\",\n            \"Collect full sherd set\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only two meaningful in-game uses\"\n        }\n      }\n    },\n    \"minecraft:heartbreak_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for decorated pot crafting\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"few players actively farm sherds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies pattern to decorated pot\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact, broken heart motif\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta-toned pottery fragment\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Apply heartbreak pattern to decorated pot\",\n            \"Collect full sherd set\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only two meaningful in-game uses\"\n        }\n      }\n    },\n    \"minecraft:heavy_core\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole crafting component for mace\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once to craft one mace\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted into mace melee weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"epic ominous vault reward; dense metal\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark dense iron-like appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft the mace weapon\",\n            \"Rare ominous trial vault reward\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only meaningful use is mace crafting\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:hay_block\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"village\"],\n      \"rationale\": \"Hay bales generate naturally as structure blocks in plains/savanna villages; obtainable without crafting\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "62737f93-2f4d-4e10-8edb-d33184e33ace",
+  "total_cost_usd": 0.16138390000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3998,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9422,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3998,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9422,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3998,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3998
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3135,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0032050000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9422,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3998,
+      "webSearchRequests": 0,
+      "costUSD": 0.1581789,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "60d19297-4261-44a6-8bb7-b8249e269a0d"
+}

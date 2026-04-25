@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 137639,
+  "duration_api_ms": 138528,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pumpkin\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally grown crop, raw plant block\"\n        },\n        \"material_family\": {\n          \"value\": \"pumpkin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is pumpkin\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"multiple uses but not daily necessity\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crop/seed source, placeable, carvable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic plant block\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange pumpkin reads as warm tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft pumpkin pie or seeds\",\n            \"carve into jack o'lantern\",\n            \"wear as helmet to avoid enderman aggro\",\n            \"place as decorative block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard pumpkin gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:pumpkin_pie\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:food + consumable component\"\n        },\n        \"material_family\": {\n          \"value\": \"pumpkin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary ingredient is pumpkin\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"good food: 8 hunger, 4.8 saturation\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"product of farming crop ingredients\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"baked food from crops\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-brown pie appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"eat for 8 hunger + 4.8 saturation\",\n            \"efficient stackable crop food\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food item; nutrition from component\"\n        }\n      }\n    },\n    \"minecraft:pumpkin_seeds\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farming seed, raw plant input for crops\"\n        },\n        \"material_family\": {\n          \"value\": \"pumpkin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"derived from pumpkin\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"replanted repeatedly for pumpkin farms\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted as crop; feeds chickens/parrots\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic seed\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small tan/beige seed sprite\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"plant pumpkin crops\",\n            \"feed chickens and parrots\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"seed form + chicken/parrot food tags\"\n        }\n      }\n    },\n    \"minecraft:purple_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banner primary use is aesthetic display\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 6 wool blocks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted with a stick\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for builds and shield decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall decor; used in shield patterns\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed color variant of banner\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple dye corresponds to violet hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"wall/ceiling decoration\",\n            \"shield pattern decoration\",\n            \"duplicate banner patterns\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"banner gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:purple_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sleeping/respawn = active function\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary ingredient is 3 wool\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted with 3 planks (any wood)\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every night to skip darkness\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base home + respawn for exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed color variant of bed\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple dye = violet hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"sleep to skip night and reset thunder\",\n            \"set player respawn point\",\n            \"explosive when used in Nether or End\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bed core gameplay mechanics\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "9f9d3100-d8d3-4266-bcde-6907970c3873",
+  "total_cost_usd": 0.1873089,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4518,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10985,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4518
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10985,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4518,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4518,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3655,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0037349999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10985,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4518,
+      "webSearchRequests": 0,
+      "costUSD": 0.1835739,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "6380580e-4449-497f-a3f3-53e41220426a"
+}

@@ -1,0 +1,282 @@
+{
+  "items": {
+    "minecraft:eye_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applies armor trim pattern via smithing table"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "stronghold origin, ancient civilization theme"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing template item texture is gold-colored"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare find, used once per armor piece"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply eye trim pattern to armor",
+            "Duplicate smithing template via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "core smithing template uses"
+        }
+      }
+    },
+    "minecraft:farmland": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "enables crop growth, active hydration mechanic"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "inferred",
+          "rationale": "tilled from dirt, reverts to dirt when dry"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "required soil block for all crop growth"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic soil block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown tilled soil appearance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative-only; placed in farm build layouts"
+        },
+        "primary_uses": {
+          "values": [
+            "Enable crop growth on farm plots",
+            "Creative-mode farm terrain building"
+          ],
+          "signal": "inferred",
+          "rationale": "core farmland uses"
+        }
+      }
+    },
+    "minecraft:feather": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed animal material"
+        },
+        "material_family": {
+          "value": "feather",
+          "signal": "pattern",
+          "rationale": "id is feather, is the primary material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "decorating",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "arrows=combat; fireworks=decor; brush=archaeology"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic animal drop"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white/cream feather appearance in-game"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed constantly for arrow crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft arrows for combat",
+            "Craft books and quills",
+            "Craft brushes for archaeology"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream recipe uses"
+        }
+      }
+    },
+    "minecraft:fermented_spider_eye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed ingredient; crafted from raw components"
+        },
+        "material_family": {
+          "value": "spider_eye",
+          "signal": "pattern",
+          "rationale": "primary base ingredient is spider eye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; produced by shapeless crafting"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "used to brew negative/inverted potions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fermented ingredient"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark brownish fermented eye appearance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific potion brewing recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "Brew potions of weakness",
+            "Invert or corrupt potion effects"
+          ],
+          "signal": "inferred",
+          "rationale": "core brewing uses"
+        }
+      }
+    },
+    "minecraft:fern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "aesthetic plant; no functional block behavior"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "non-wood organic plant material"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "covers taiga forest floors in vast numbers"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally spawns in taiga and jungle biomes"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "decor plant; compostable for bone meal"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wild vegetation"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "typical green plant color"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for decorating, not every play session"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorate builds with natural foliage",
+            "Compost for bone meal"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses for fern"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

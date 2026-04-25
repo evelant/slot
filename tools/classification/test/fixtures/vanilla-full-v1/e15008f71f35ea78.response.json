@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 144368,
+  "duration_api_ms": 145282,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:smoker\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active cooking station; interactive use\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"furnace (cobblestone) is core ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"4 logs in crafting recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic logs + furnace; easy to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for food cooking\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food cooking; hopper-automatable\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional utility block, no decoration\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone/brick tones with orange fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"cook food 2x faster than furnace\", \"automate food smelting with hoppers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function\"\n        }\n      }\n    },\n    \"minecraft:smooth_basalt\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid stone variant for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"basalt\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains basalt\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelt basalt or mine geode outer shells\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche dark-stone aesthetic use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark stone building/decor block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted variant of natural basalt\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray-black smooth stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dark decorative building block\", \"outer layer of amethyst geode structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use cases\"\n        }\n      }\n    },\n    \"minecraft:smooth_quartz\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block primarily for building\"\n        },\n        \"material_family\": {\n          \"value\": \"quartz\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix smooth_quartz\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether quartz is abundant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific white/ivory builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white stone aesthetic block\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth processed quartz variant\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cream-white smooth stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"white/ivory decorative building\", \"source for quartz slabs and stairs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases\"\n        }\n      }\n    },\n    \"minecraft:smooth_quartz_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab tag = structural building element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific quartz build use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural slab for floors/ceilings\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab variant of smooth quartz\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cream-white smooth stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height quartz floors and ceilings\", \"smooth white aesthetic builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab primary use cases\"\n        }\n      }\n    },\n    \"minecraft:smooth_quartz_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs tag = structural building element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific quartz build use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural stair element\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs variant of smooth quartz\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cream-white smooth stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"quartz staircases in white builds\", \"smooth aesthetic stair detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs primary use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:smooth_basalt\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"overworld_cave\"],\n      \"rationale\": \"smooth basalt generates naturally as outer shell of amethyst geodes in overworld caves; can be mined directly\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:smooth_basalt\",\n      \"facet\": \"y_level_range\",\n      \"current\": \"nether_surface\",\n      \"suggested\": \"overworld_underground\",\n      \"rationale\": \"id-pattern rule matched 'basalt' to nether, but smooth_basalt occurs in overworld geodes (y -64 to 30), not nether surface\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "8317839c-9fbd-46e7-a2a3-79033be40273",
+  "total_cost_usd": 0.18932815,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4421,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11151,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4421,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11151,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4421,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4421
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3558,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003628,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11151,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4421,
+      "webSearchRequests": 0,
+      "costUSD": 0.18570015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e03f7470-8e17-46a6-a614-6a5b4942f7b3"
+}

@@ -1,0 +1,280 @@
+{
+  "items": {
+    "minecraft:waxed_weathered_copper_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoors primarily used as architectural gates"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "rarity component maps to common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific copper-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "architectural gate; redstone-operable"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed weathered variant; patina look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered stage = green oxidized"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "copper trapdoors move with pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "Architectural hatch or gate in builds",
+            "Copper-themed building accent",
+            "Redstone-operable entry point"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor uses"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "cube_all model = full structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "rarity component maps to common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative structural full block"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cut pattern variant; weathered patina"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered stage = green oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative copper wall or floor block",
+            "Stonecutting source for copper variants",
+            "Permanent weathered look via wax"
+          ],
+          "signal": "inferred",
+          "rationale": "full block + stonecutting hub role"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slabs tag = structural building form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "rarity component maps to common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "half-height structural/decorative use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant; weathered copper patina"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered stage = green oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height copper flooring or roofing",
+            "Decorative copper building accent",
+            "Chiseled copper crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "slab uses + sample_ingredient_of chiseled"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag = structural building form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "rarity component maps to common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "staircase/decorative structural use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant; weathered copper patina"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered stage = green oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "Copper-themed staircase block",
+            "Decorative roofline or facade accent"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs building uses"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_lightning_rod": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redirects lightning; emits redstone signal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "pattern",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "rarity component maps to common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per structure for protection"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "lightning protection + redstone output"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "functional rod device; weathered patina"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered stage = green oxidized"
+        },
+        "environmental_property": {
+          "values": [
+            "conducts_lightning"
+          ],
+          "signal": "inferred",
+          "rationale": "lightning rod redirects strikes"
+        },
+        "primary_uses": {
+          "values": [
+            "Redirect lightning strikes away from builds",
+            "Redstone signal source on lightning hit",
+            "Fire prevention around structures"
+          ],
+          "signal": "inferred",
+          "rationale": "core lightning rod functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

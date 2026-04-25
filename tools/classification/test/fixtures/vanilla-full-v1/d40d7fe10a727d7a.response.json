@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 123369,
+  "duration_api_ms": 124333,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:diamond_horse_armor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips on horses as protective armor\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"loot-only, many tables, not craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when riding horses\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse protection in mounted combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond tier implies high-quality item\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond blue-crystal visual\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Protect horses in combat\",\n            \"Upgrade to netherite horse armor\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor function + smithing upgrade path\"\n        }\n      }\n    },\n    \"minecraft:diamond_leggings\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:leg_armor\",\n          \"rationale\": \"explicit leg armor tag\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable but requires diamonds\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core combat gear at diamond tier\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is combat protection\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard armor piece, no special theme\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond blue-crystal appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Leg armor in combat\",\n            \"Apply armor trims for aesthetics\",\n            \"Upgrade to netherite leggings\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combat + 18 trim recipes + smithing path\"\n        }\n      }\n    },\n    \"minecraft:diamond_nautilus_armor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"named armor, smiths into netherite variant\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"nautilus\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"nautilus in item id/name\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean loot only, not craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-context armor\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean loot, armor for aquatic play\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nautilus=natural; diamond tier=fancy\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond + nautilus ocean aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Armor found in ocean structures\",\n            \"Upgrade to netherite nautilus armor\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean loot + smithing upgrade path\"\n        }\n      }\n    },\n    \"minecraft:diamond_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw ore block mined from world\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"precious but findable by mining\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined specifically when needed\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined to obtain diamonds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally generated ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue diamond veins in dark stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Mine/smelt for diamonds\",\n            \"XP source when smelting\",\n            \"Decorative ore block display\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelting yields diamonds + XP\"\n        }\n      }\n    },\n    \"minecraft:diamond_pickaxe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:pickaxes\",\n          \"rationale\": \"explicit pickaxe tag\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable but requires diamonds\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary mining tool mid-late game\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"evidence\": \"minecraft:weapon component present\",\n          \"rationale\": \"pickaxe + weapon component\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard tool, no special aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond blue-crystal appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Mining all stone and ore blocks\",\n            \"Upgrade to netherite pickaxe\",\n            \"Secondary melee weapon\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tool + smithing + weapon component\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "3ffe7dc6-99ab-4a7d-8076-9a0d6677358e",
+  "total_cost_usd": 0.16804115000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5289,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9457,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5289,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9457,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5289,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5289
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4426,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004496,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9457,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5289,
+      "webSearchRequests": 0,
+      "costUSD": 0.16354515000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e26b1e9f-8a14-40e5-9f7c-90d2d13b3bcc"
+}

@@ -1,0 +1,338 @@
+{
+  "items": {
+    "minecraft:fire_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "coral fan placed for ocean aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underwater decor use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic in ocean builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic underwater plant form"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "fire coral is vivid warm red-orange"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "warm ocean biome coral reefs"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral fans waterlog when placed"
+        },
+        "primary_uses": {
+          "values": [
+            "underwater ocean decoration",
+            "warm ocean biome building accent"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic decor for ocean builds"
+        }
+      }
+    },
+    "minecraft:firefly_bush": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glowing bush; primarily aesthetic"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "natural foliage bush block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche swamp/garden decor"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for ambient glow and decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic glowing plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "green foliage with firefly glow"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "swamp biome surface plant"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "firefly bush emits ambient light"
+        },
+        "primary_uses": {
+          "values": [
+            "swamp/garden ambient decoration",
+            "soft ambient light source"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative glowing bush"
+        }
+      }
+    },
+    "minecraft:firework_rocket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "multi-use: elytra boost, display, crossbow"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "paper is required crafting base"
+        },
+        "material_secondary": {
+          "values": [
+            "gunpowder"
+          ],
+          "signal": "inferred",
+          "rationale": "gunpowder required in all rocket recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "elytra users consume constantly"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "elytra boost, crossbow ammo, fireworks show"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "colorful celebratory pyrotechnic"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "colorful explosive light display"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; always crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "boost elytra flight",
+            "fireworks display/celebration",
+            "crossbow ammunition"
+          ],
+          "signal": "inferred",
+          "rationale": "three major distinct uses"
+        }
+      }
+    },
+    "minecraft:firework_star": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting intermediate for firework rockets"
+        },
+        "material_family": {
+          "value": "gunpowder",
+          "signal": "inferred",
+          "rationale": "gunpowder required base in star recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only made when crafting fireworks"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream use is fireworks display"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "customizable colored firework effect item"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "carries dye color, visually vivid"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; always crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient in firework rockets",
+            "customize firework burst color and shape"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is firework customization"
+        }
+      }
+    },
+    "minecraft:fishing_rod": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "enchantable/fishing tag + _rod id suffix"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from sticks (wood)"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string required in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core fishing tool used throughout game"
+        },
+        "activity": {
+          "values": [
+            "fishing",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "fishing + fisherman villager trades"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple utilitarian tool, no variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown sticks and string, plain look"
+        },
+        "primary_uses": {
+          "values": [
+            "fishing for fish and treasure loot",
+            "craft carrot on a stick",
+            "craft warped fungus on a stick"
+          ],
+          "signal": "inferred",
+          "rationale": "fishing + two derivative crafts"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

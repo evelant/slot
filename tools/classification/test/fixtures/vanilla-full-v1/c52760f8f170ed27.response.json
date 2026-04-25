@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 124127,
+  "duration_api_ms": 125147,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:prismarine_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form = structural barrier block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche structural variant, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural barrier\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean-derived material, natural aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prismarine is distinctively teal/cyan\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building walls and barriers\", \"ocean monument-style builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall block for structure/decoration\"\n        }\n      }\n    },\n    \"minecraft:prize_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology collectible for decorated pots\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology find, narrow use case\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for decorated pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology item with historical motif\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay/terracotta earth tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting decorated pots\", \"collecting all sherd variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pot ingredient and collectible\"\n        }\n      }\n    },\n    \"minecraft:pufferfish\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw fish from world, not processed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mainly brewing; harmful as direct food\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water breathing potion ingredient\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean creature, natural origin\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright orange-yellow fish coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"brewing water breathing potions\", \"wolf food\", \"dolphin feeding\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"potion ingredient and mob food\"\n        }\n      }\n    },\n    \"minecraft:pufferfish_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket holding a live pufferfish mob\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"all vanilla buckets are iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"catchable in any ocean biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mob transport use\"\n        },\n        \"activity\": {\n          \"values\": [\"fishing\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fishing acquisition; aquarium decoration\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pufferfish inhabit ocean biomes\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries a live mob entity\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"transporting live pufferfish\", \"releasing fish in aquarium builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"live fish transport container\"\n        }\n      }\n    },\n    \"minecraft:pufferfish_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival loot source; creative only\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used in creative/testing contexts\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg spawns its named mob type\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning pufferfish in creative\", \"map and adventure testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative mode mob spawner\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "30c9076b-6897-48a7-98cd-5fa15928f633",
+  "total_cost_usd": 0.17193215,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3645,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10237,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3645
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10237,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3645,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3645,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2782,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0028520000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10237,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3645,
+      "webSearchRequests": 0,
+      "costUSD": 0.16908015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "45f53774-ac04-4010-8659-73c9ad8b2b53"
+}

@@ -1,0 +1,285 @@
+{
+  "items": {
+    "minecraft:axolotl_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to spawn specific mob in world"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs not obtainable in survival"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/command access only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mob-spawning use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "axolotls aid aquatic combat; aquariums"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents living aquatic creature"
+        },
+        "palette": {
+          "values": [
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "axolotl is pink/magenta"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn axolotl in world",
+            "Aquatic combat assistance",
+            "Aquarium decoration setup"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg use cases"
+        }
+      }
+    },
+    "minecraft:azalea": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "3D bush block placed for aesthetics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "found near lush cave openings"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche garden/cave-finder use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative bush; signals lush cave below"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "pattern",
+          "rationale": "plant/shrub block"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "green leaves with pink flowers"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "plant material is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative garden bush",
+            "Locate lush caves below",
+            "Grow azalea trees"
+          ],
+          "signal": "inferred",
+          "rationale": "main player use cases"
+        }
+      }
+    },
+    "minecraft:azalea_leaves": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "leaf block placed for foliage aesthetics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on azalea trees"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative foliage use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "foliage for natural-style builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "leaf with unique floral overlay texture"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green leaf block"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "Foliage decoration in builds",
+            "Craft leaf litter",
+            "Natural tree canopy aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "main use cases incl. recipe data"
+        }
+      }
+    },
+    "minecraft:azure_bluet": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower picked directly from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common plains/mountain flower"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used occasionally for dye or stew"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "dye crafting, bee food, flower farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "pattern",
+          "rationale": "small flower, natural aesthetic"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white petals, pale yellow center"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft light_gray_dye",
+            "Suspicious stew ingredient",
+            "Bee attraction",
+            "Decorative flower placement"
+          ],
+          "signal": "inferred",
+          "rationale": "from recipe consumption data + bee_food tag"
+        }
+      }
+    },
+    "minecraft:baked_potato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "minecraft:food + minecraft:consumable components",
+          "rationale": "food item with nutrition and saturation"
+        },
+        "material_family": {
+          "value": "potato",
+          "signal": "pattern",
+          "rationale": "cooked from raw potato"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily farmed and cooked"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "mid-tier food consumed regularly"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "product of potato farm + cooking"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic cooked food, no special look"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown cooked potato tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Restore 5 hunger + 6 saturation",
+            "Rabbit stew ingredient",
+            "Mid-tier food source"
+          ],
+          "signal": "inferred",
+          "rationale": "food component values + recipe data"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

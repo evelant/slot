@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 148367,
+  "duration_api_ms": 149076,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:magma_cube_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns mob on use; functional tool\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival obtain path\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mob farm setup use\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob farm initialization\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mob egg aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magma cube is orange-red and glowing\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs are creative-only\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"id _spawn_egg -> spawns its linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn magma cubes\", \"mob farm initialization\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg core uses\"\n        }\n      }\n    },\n    \"minecraft:mangrove_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"suffix _boat; water vehicle\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap craft from 5 planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational water travel item\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water traversal and world exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood variant of boat\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove has distinctive reddish wood\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted from planks\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player across water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel\", \"ocean/river crossing\", \"craft into chest boat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat primary use cases\"\n        }\n      }\n    },\n    \"minecraft:mangrove_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:buttons; emits redstone pulse\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one plank yields one button\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in circuits/doors as needed\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone trigger; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove wood variant button\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish-brown hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone pulse trigger\", \"door/gate activation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical wooden button uses\"\n        }\n      }\n    },\n    \"minecraft:mangrove_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"transport\", \"container_portable\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat+chest: dual transport/storage role\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from boat + chest\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for water cargo transport\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel + item carrying\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove wood variant with chest\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish wood\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from boat+chest, no loot sources\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves player and stores/carries items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with cargo\", \"item transport on water\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest boat primary use cases\"\n        }\n      }\n    },\n    \"minecraft:mangrove_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive block: opens/closes on click\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 6 planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in most builds for entrances\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural entrance; redstone-openable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove wood variant door\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish-brown color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood door: piston-movable and flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building entrances\", \"redstone-controlled access\", \"base architecture\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"door standard use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "fe8ceae7-3dfc-4b19-ac7e-2bb7af4e6d10",
+  "total_cost_usd": 0.19106165000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3887,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11435,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3887,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11435,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3887,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3887
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3024,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003104,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11435,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3887,
+      "webSearchRequests": 0,
+      "costUSD": 0.18795765000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "78a5595a-7d0a-40f1-b05f-fdb6512dcf55"
+}

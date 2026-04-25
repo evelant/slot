@@ -1,0 +1,266 @@
+{
+  "items": {
+    "minecraft:wolf_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawns mob on use; no structural purpose"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when intentionally spawning"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "wolves serve as combat companions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "animal mob egg"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "all spawn eggs spawn linked mob"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no craft recipe or loot table source"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a wolf mob",
+            "Creative/command-only item"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core function"
+        }
+      }
+    },
+    "minecraft:wooden_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:axes + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "early-game staple, replaced gradually"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "chops blocks, disables shields, strips logs"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic unadorned tool"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden head and handle"
+        },
+        "primary_uses": {
+          "values": [
+            "Chop wood blocks",
+            "Strip logs",
+            "Disable shields in combat",
+            "Early-game weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "axe core functions"
+        }
+      }
+    },
+    "minecraft:wooden_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:hoes + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used mainly for farming setup"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "tills soil; breaks leaves/plants fast"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic unadorned tool"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Till soil for crops",
+            "Break leaves and plants quickly"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe core functions"
+        }
+      }
+    },
+    "minecraft:wooden_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:pickaxes + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic wood"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "first pickaxe crafted every new game"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mines stone and cobblestone"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic unadorned tool"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden construction"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine stone and cobblestone",
+            "First pickaxe in progression",
+            "Unlock stone-tier crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe core functions"
+        }
+      }
+    },
+    "minecraft:wooden_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:shovels + tool component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "regularly used for earthworks"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "digs soil; creates paths"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic unadorned tool"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot table sources in data"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt, gravel, sand",
+            "Create dirt paths",
+            "Extinguish campfires"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel core functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

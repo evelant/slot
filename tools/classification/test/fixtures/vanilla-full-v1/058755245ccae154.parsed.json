@@ -1,0 +1,267 @@
+{
+  "items": {
+    "minecraft:end_rod": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "light-emitting decor, like candles"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires end city or nether+end craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative light source"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for light and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "end-themed elegant rod"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "white rod that emits light"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 14"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lighting in builds",
+            "end-themed decoration",
+            "ceiling/wall-mountable light source"
+          ],
+          "signal": "inferred",
+          "rationale": "core player use cases"
+        }
+      }
+    },
+    "minecraft:end_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid stone block used directly in builds"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End dimension access"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "end-themed builds; not everyday use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "built with or processed into bricks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural end dimension stone"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale yellowish-white grainy stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building end-themed structures",
+            "crafting end stone bricks",
+            "eye armor trim ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:end_stone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag; structural half-block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from end stone; end-gated"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche end-themed slab"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "processed brick slab variant"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale end stone brick color"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height end stone brick surfaces",
+            "end city-themed architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "slab use cases"
+        }
+      }
+    },
+    "minecraft:end_stone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag; structural stair form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from end stone; end-gated"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche end-themed stair block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "processed brick stairs variant"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale end stone brick color"
+        },
+        "primary_uses": {
+          "values": [
+            "staircases in end-themed builds",
+            "end city-style architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "stair use cases"
+        }
+      }
+    },
+    "minecraft:end_stone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall tag; structural wall form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from end stone; end-gated"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche end-themed wall block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "processed brick wall variant"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale end stone brick color"
+        },
+        "primary_uses": {
+          "values": [
+            "low barriers and perimeters",
+            "end city-themed wall sections"
+          ],
+          "signal": "inferred",
+          "rationale": "wall use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

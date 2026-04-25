@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:crimson_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs = structural building shape"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicit component value"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific nether builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "staircase shapes for building/decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether wood variant of stairs"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson = deep red warm wood"
+        },
+        "primary_uses": {
+          "values": [
+            "build nether-themed structures",
+            "decorative staircase shapes"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for building and aesthetics"
+        }
+      }
+    },
+    "minecraft:crimson_stem": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "log obtained from world as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicit component value"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary nether wood log → planks"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft planks and build"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw nether log form"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson = deep red warm wood"
+        },
+        "primary_uses": {
+          "values": [
+            "craft crimson planks and hyphae",
+            "placed as decorative log",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "log → planks, placed log, fuel"
+        }
+      }
+    },
+    "minecraft:crimson_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "has open/close interactive mechanic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicit component value"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "openable hatch + redstone activation"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether wood variant of trapdoor"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson = deep red warm wood"
+        },
+        "primary_uses": {
+          "values": [
+            "openable floor/wall hatches",
+            "redstone-controlled passages",
+            "decorative wood panel"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor use cases"
+        }
+      }
+    },
+    "minecraft:crossbow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "id crossbow + form=weapon in stage2"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "primary body structure is sticks/wood"
+        },
+        "material_secondary": {
+          "values": [
+            "iron",
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ingot + string in crafting recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicit component value"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary ranged weapon used regularly"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "ranged combat weapon"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cocking/loading mechanical device"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "wood body with dark iron fittings"
+        },
+        "primary_uses": {
+          "values": [
+            "ranged combat",
+            "load firework rockets as projectiles",
+            "long-range mob engagement"
+          ],
+          "signal": "inferred",
+          "rationale": "crossbow primary use cases"
+        }
+      }
+    },
+    "minecraft:crying_obsidian": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable solid block, blast-resistant"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "signal": "pattern",
+          "rationale": "id suffix _obsidian, variant of obsidian"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond pick + piglin bartering source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mainly consumed for respawn anchors"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative + respawn anchor for nether"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing purple crying obsidian block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "violet",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark base with glowing violet particles"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_max",
+            "emits_light",
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "blast res 1200; light lvl 10; immovable"
+        },
+        "primary_uses": {
+          "values": [
+            "craft respawn anchors",
+            "decorative blast-resistant block",
+            "glowing nether structure element"
+          ],
+          "signal": "inferred",
+          "rationale": "crying obsidian use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

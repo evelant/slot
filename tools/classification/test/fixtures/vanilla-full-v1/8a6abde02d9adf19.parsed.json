@@ -1,0 +1,296 @@
+{
+  "items": {
+    "minecraft:cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "processed copper block for construction"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific copper builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block for construction/decor"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cut pattern variant of copper block"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh unoxidized copper tone"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "building copper-themed structures",
+            "crafting cut copper variants",
+            "wax to preserve appearance"
+          ],
+          "signal": "inferred",
+          "rationale": "block + ingredient for slabs/stairs"
+        }
+      }
+    },
+    "minecraft:cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of cut copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific copper builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction and detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cut copper slab variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh unoxidized copper tone"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height copper floors and roofs",
+            "detailed copper builds",
+            "ingredient for chiseled copper"
+          ],
+          "signal": "inferred",
+          "rationale": "slab use + recipe for chiseled"
+        }
+      }
+    },
+    "minecraft:cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form of cut copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific copper builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction and detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cut copper stairs variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh unoxidized copper tone"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "copper staircases and roofing",
+            "detailed copper architecture",
+            "wax to preserve appearance"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs use cases"
+        }
+      }
+    },
+    "minecraft:cut_red_sandstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cut variant of red sandstone"
+        },
+        "material_family": {
+          "value": "red_sandstone",
+          "signal": "pattern",
+          "rationale": "id prefix cut_red_sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific desert builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cut pattern variant of red sandstone"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish sandy desert tone"
+        },
+        "primary_uses": {
+          "values": [
+            "building desert-themed structures",
+            "decorative red sandstone walls",
+            "crafting slabs and stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "block + ingredient for variants"
+        }
+      }
+    },
+    "minecraft:cut_red_sandstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of cut red sandstone"
+        },
+        "material_family": {
+          "value": "red_sandstone",
+          "signal": "pattern",
+          "rationale": "id prefix cut_red_sandstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific desert builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction and detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cut red sandstone slab variant"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish sandy desert tone"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height red sandstone floors/roofs",
+            "desert-themed detailed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "slab use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

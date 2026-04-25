@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 147492,
+  "duration_api_ms": 148325,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:exposed_chiseled_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled pattern = primarily ornate accent\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix exposed_copper_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper craftable from common raw material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative copper block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative copper accent in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled = ornate oxidation variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exposed = first oxidation stage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes further unless waxed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative copper accent block\", \"wax to lock oxidation stage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical chiseled copper usage\"\n        }\n      }\n    },\n    \"minecraft:exposed_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid copper block for structures\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:copper on item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper craftable from common raw material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche oxidized copper block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper block for builds and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidation variant with natural patina\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exposed = first oxidation stage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes further unless waxed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building with oxidized copper look\", \"stonecutting into cut/chiseled variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses of exposed copper block\"\n        }\n      }\n    },\n    \"minecraft:exposed_copper_bars\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier like iron bars\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper craftable from common raw material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative barrier\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper bar barrier or window grille\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial bar form, oxidized variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exposed = first oxidation stage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes further unless waxed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper decorative barrier or window grille\", \"wax to lock oxidation stage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bars primary usage\"\n        }\n      }\n    },\n    \"minecraft:exposed_copper_bulb\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-toggled light source\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper craftable from common raw material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized redstone lamp\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-toggled copper lamp in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical light device, oxidized variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exposed = first oxidation stage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bulb emits light; copper oxidizes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone-toggled light source\", \"copper aesthetic lamp\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper bulb primary use\"\n        }\n      }\n    },\n    \"minecraft:exposed_copper_chain\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chains primarily decorative connectors\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper craftable from common raw material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative niche use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative chain block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical chain form, oxidized variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exposed = first oxidation stage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes further unless waxed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative chain block\", \"hang lanterns or bells\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chain primary usage\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "15155355-dc63-426d-99a6-40ad9c08d34d",
+  "total_cost_usd": 0.20260015,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4833,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11905,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4833,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11905,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4833,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4833
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3970,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004045,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11905,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4833,
+      "webSearchRequests": 0,
+      "costUSD": 0.19855515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "22b04281-32da-4a08-b5d7-766d0a75bd61"
+}

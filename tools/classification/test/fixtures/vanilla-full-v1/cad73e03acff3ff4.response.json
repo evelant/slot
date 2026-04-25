@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 103523,
+  "duration_api_ms": 104202,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:mangrove_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"displays editable text; interactive block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed situationally for labeling\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for text labels in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mangrove wood aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish-pink wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden item, ignites\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"label storage and locations\", \"decorative text display\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sign use cases\"\n        }\n      }\n    },\n    \"minecraft:mangrove_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-height structural building form\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used heavily in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is structural building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"geometric shape variant of wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden slab, ignites\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height floors and ceilings\", \"roof detail work\", \"crafting barrel/composter/lectern\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical slab uses + ingredient list\"\n        }\n      }\n    },\n    \"minecraft:mangrove_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair-shaped structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs used heavily in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"geometric shape variant of wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden stairs, ignites\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircase construction\", \"roof slopes and eaves\", \"decorative building edges\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stair use cases\"\n        }\n      }\n    },\n    \"minecraft:mangrove_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes; redstone operable gate\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed situationally, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"access hatch + redstone-controlled gate\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove wood aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden trapdoor, ignites\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"access hatches in floors\", \"decorative openings\", \"redstone-controlled barriers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard trapdoor use cases\"\n        }\n      }\n    },\n    \"minecraft:mangrove_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw log form harvested from mangrove trees\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds and crafting chains\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as log structure or processed further\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed bark-all-sides wood form\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish-pink bark\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood log, ignites\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"placed log structure building\", \"crafting mangrove planks\", \"charcoal and fuel production\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard log use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "5f4c9b2a-b136-49db-b1c1-73b429b464fc",
+  "total_cost_usd": 0.13894789999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5022,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7601,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5022,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7601,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5022,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5022
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4159,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004244,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7601,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5022,
+      "webSearchRequests": 0,
+      "costUSD": 0.1347039,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "5b9bbfbf-fc61-4d00-9fde-3a5aac2c6b88"
+}

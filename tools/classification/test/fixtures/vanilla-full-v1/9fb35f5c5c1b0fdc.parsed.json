@@ -1,0 +1,273 @@
+{
+  "items": {
+    "minecraft:bolt_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "smithing template applies cosmetic trim upgrade"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor piece trimmed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "cosmetic upgrade item"
+        },
+        "primary_uses": {
+          "values": [
+            "apply bolt armor trim at smithing table",
+            "duplicate with diamonds and copper block"
+          ],
+          "signal": "inferred",
+          "rationale": "core smithing template uses"
+        }
+      }
+    },
+    "minecraft:bone": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "common skeleton drop"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "bone meal used constantly in farms"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "primary downstream use is bone meal"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw biological material"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "off-white bone coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "craft bone meal for farming",
+            "tame wolves",
+            "compact into bone blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "core bone use cases"
+        }
+      }
+    },
+    "minecraft:bone_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid opaque block used in structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "craftable from common mob drops"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche fossil/bone themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative structural block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "biological fossil material"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "cream striped column block"
+        },
+        "primary_uses": {
+          "values": [
+            "fossil/bone-themed decorative builds",
+            "compact bone storage"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of bone block"
+        }
+      }
+    },
+    "minecraft:bone_meal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed ingredient: fertilizer and dye source"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "obtained from bones or composting"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly to fertilize crops"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is fertilizing plants"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "derived from natural bone material"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "white powder appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "fertilize crops and plants for faster growth",
+            "craft white dye",
+            "craft bone blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "core bone meal use cases"
+        }
+      }
+    },
+    "minecraft:book": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "primarily an intermediate crafting ingredient"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "crafted from 3 paper + 1 leather"
+        },
+        "material_secondary": {
+          "values": [
+            "leather"
+          ],
+          "signal": "inferred",
+          "rationale": "leather binding in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "widely available, easily crafted"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed for enchanting table and bookshelves"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "enchanting table/shelf; librarian trades"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic undecorated item"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "tan/cream book cover color"
+        },
+        "primary_uses": {
+          "values": [
+            "craft enchanting table",
+            "craft bookshelf for enchanting bonus",
+            "enchant at enchanting table",
+            "craft writable book"
+          ],
+          "signal": "inferred",
+          "rationale": "core book use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:bone_block",
+      "facet": "origin",
+      "current": [
+        "bastion",
+        "nether"
+      ],
+      "suggested": [
+        "bastion",
+        "nether",
+        "overworld_cave"
+      ],
+      "rationale": "Bone blocks generate in overworld fossil structures underground; loot-table scan misses world-gen origin",
+      "confidence": 0.8
+    }
+  ]
+}

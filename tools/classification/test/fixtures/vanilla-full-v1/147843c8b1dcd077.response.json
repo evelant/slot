@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 138381,
+  "duration_api_ms": 139495,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:stripped_oak_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped log placed as structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak trees extremely common worldwide\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular wood building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural + aesthetic log building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of natural log\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm medium-brown oak wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak trees on overworld surface, axe-stripped\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"structural log building\",\n            \"craft planks and hanging signs\",\n            \"smelt into charcoal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient list + building use\"\n        }\n      }\n    },\n    \"minecraft:stripped_oak_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural all-bark wood block\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant oak logs\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"less used than logs in typical builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"uniform texture used aesthetically\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of full-bark wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm medium-brown oak tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"aesthetic building with uniform texture\",\n            \"craft oak planks\",\n            \"fuel source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient list + building use\"\n        }\n      }\n    },\n    \"minecraft:stripped_pale_oak_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped log placed as structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale garden biome rarer than oak biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche biome wood, occasional use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural + pale aesthetic building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of pale oak log\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak is whitish light-colored wood\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale garden biome on overworld surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"pale aesthetic log building\",\n            \"craft pale oak planks and signs\",\n            \"smelt into charcoal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient list + building use\"\n        }\n      }\n    },\n    \"minecraft:stripped_pale_oak_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural all-bark wood block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from uncommon pale oak logs\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche aesthetic block, occasional use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"uniform pale texture used aesthetically\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of pale oak wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak whitish light-colored wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"pale aesthetic uniform-texture building\",\n            \"craft pale oak planks\",\n            \"fuel source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient list + building use\"\n        }\n      }\n    },\n    \"minecraft:stripped_spruce_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped log placed as structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce very common in taiga biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common dark wood building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural + aesthetic log building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of spruce log\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce is a dark-brown wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce trees on taiga overworld surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dark wood structural building\",\n            \"craft spruce planks and signs\",\n            \"smelt into charcoal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient list + building use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "8375c4c0-50e1-454f-869a-d11c3b4c7bec",
+  "total_cost_usd": 0.18453964999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5635,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10447,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5635,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10447,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5635,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5635
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4772,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004847000000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10447,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5635,
+      "webSearchRequests": 0,
+      "costUSD": 0.17969264999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "139140e9-8769-4998-ad3c-0b3e426223d9"
+}

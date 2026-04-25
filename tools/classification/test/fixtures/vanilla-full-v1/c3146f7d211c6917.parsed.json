@@ -1,0 +1,261 @@
+{
+  "items": {
+    "minecraft:white_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid full block; primary use is building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in builds and crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and aesthetic block uses"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "animal-sourced; exists in 16 dye colors"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white wool: pale, non-reflective texture"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:dampens_vibrations",
+          "rationale": "dampens sculk vibration signals"
+        },
+        "primary_uses": {
+          "values": [
+            "build walls and soft structures",
+            "craft beds, carpets, and banners",
+            "silence sculk vibration detection"
+          ],
+          "signal": "inferred",
+          "rationale": "core wool gameplay uses"
+        }
+      }
+    },
+    "minecraft:wild_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "smithing_template suffix = upgrade role"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "applied once per armor piece, cosmetic"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wild pattern = jungle vine/leaf motif"
+        },
+        "primary_uses": {
+          "values": [
+            "apply wild armor trim at smithing table",
+            "duplicate via diamond + template crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing template standard uses"
+        }
+      }
+    },
+    "minecraft:wildflowers": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower block picked from world as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively for dye or bee food"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bee_food tag; yellow dye recipe; garden decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "multi-color wildflower cluster"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow/warm flower tones, bright colors"
+        },
+        "primary_uses": {
+          "values": [
+            "craft yellow dye",
+            "feed bees",
+            "meadow and garden decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "bee_food + flowers tags, dye recipe"
+        }
+      }
+    },
+    "minecraft:wind_charge": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "throwable consumable with burst effect"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational use in combat and traversal"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "knockback and player propulsion uses"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "wind/breeze elemental ability item"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-white wind swirl, emissive texture"
+        },
+        "primary_uses": {
+          "values": [
+            "throw to push entities away",
+            "boost player jump and propulsion",
+            "activate wind-sensitive blocks at range"
+          ],
+          "signal": "inferred",
+          "rationale": "wind charge core gameplay functions"
+        }
+      }
+    },
+    "minecraft:witch_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix = creative-only admin"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "spawn eggs not obtainable in survival"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; no survival loot source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building farms or testing"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "witch farm setup; creative world building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg visual form"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "witch spawn egg is dark purple"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn witches in creative mode",
+            "set up witch mob farms"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg primary function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

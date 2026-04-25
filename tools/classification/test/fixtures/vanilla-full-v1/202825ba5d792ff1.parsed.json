@@ -1,0 +1,283 @@
+{
+  "items": {
+    "minecraft:polished_andesite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag; structural placement"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "andesite abundant; trivial to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only in specific builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural stair block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "polished form of andesite"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray polished stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairways",
+            "architectural trim",
+            "structural steps"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs shape = stair use cases"
+        }
+      }
+    },
+    "minecraft:polished_basalt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block placed for decoration/structure"
+        },
+        "material_family": {
+          "value": "basalt",
+          "signal": "pattern",
+          "rationale": "id prefix polished_basalt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basalt plentiful in nether"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether-theme builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural/deco block"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "polished volcanic column stone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gray with column banding"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed builds",
+            "basalt column decoration",
+            "dark stone floors"
+          ],
+          "signal": "inferred",
+          "rationale": "nether stone decorative block"
+        }
+      }
+    },
+    "minecraft:polished_blackstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed structural block; also craft base"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "rationale": "id prefix polished_blackstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "blackstone common in nether"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether builds and crafting base"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "polished form of blackstone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "very dark purple-black stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building nether structures",
+            "crafting blackstone variants",
+            "dark decorative floor"
+          ],
+          "signal": "inferred",
+          "rationale": "nether block and craft ingredient"
+        }
+      }
+    },
+    "minecraft:polished_blackstone_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag; structural half-block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common nether stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether-theme builds only"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as half-height structural slab"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "brick pattern adds refinement"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark blackstone brick texture"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height nether floors",
+            "decorative slab trim",
+            "architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form for build detail"
+        }
+      }
+    },
+    "minecraft:polished_blackstone_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag; structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common nether stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether-theme builds only"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as stair block in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "brick stairs more refined"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark blackstone brick texture"
+        },
+        "primary_uses": {
+          "values": [
+            "building dark stairways",
+            "architectural nether detail",
+            "decorative steps"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form for nether builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:polished_blackstone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "bastion"
+      ],
+      "rationale": "generates naturally in bastion remnant structures",
+      "confidence": 0.75
+    }
+  ]
+}

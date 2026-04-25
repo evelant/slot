@@ -1,0 +1,307 @@
+{
+  "items": {
+    "minecraft:netherite_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot form, refined from scrap"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "top-tier tool/armor material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires deep nether mining chain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for major upgrades"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "upgrades gear, netherite block, trims"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "utilitarian ingot, no decoration"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "characteristic dark netherite look"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant #is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade tools/armor to netherite tier",
+            "craft netherite block",
+            "armor trim material",
+            "beacon payment"
+          ],
+          "signal": "inferred",
+          "rationale": "tags and recipe data confirm"
+        }
+      }
+    },
+    "minecraft:netherite_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "suffix _leggings, equip_slot=legs"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite tier, extensive nether grind"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn continuously once obtained"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for damage reduction"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard armor silhouette"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark netherite coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, smithing only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant #is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "highest-tier leg armor",
+            "worn for combat protection"
+          ],
+          "signal": "inferred",
+          "rationale": "armor piece for legs slot"
+        }
+      }
+    },
+    "minecraft:netherite_nautilus_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "suffix _armor, smithing_transform output"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "netherite prefix in id"
+        },
+        "material_secondary": {
+          "values": [
+            "nautilus_shell"
+          ],
+          "signal": "inferred",
+          "rationale": "nautilus in name implies shell material"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "netherite prefix indicates tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "special smithing + netherite required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "guess",
+          "rationale": "unclear use case, minimal data"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "armor class item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, smithing only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant #is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "special netherite nautilus armor piece"
+          ],
+          "signal": "guess",
+          "rationale": "no recipe/tag data to confirm use"
+        }
+      }
+    },
+    "minecraft:netherite_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:pickaxes, tool component"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite tier requires nether grind"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for all mining when obtained"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mining tool + backup weapon component"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "standard pickaxe form"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark netherite coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, smithing only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant #is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "mine any block including obsidian",
+            "fastest mining speed tier",
+            "break ores for drops"
+          ],
+          "signal": "inferred",
+          "rationale": "tool component and tag confirm"
+        }
+      }
+    },
+    "minecraft:netherite_scrap": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "intermediate smelting product"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ancient debris extremely rare in nether"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only used to craft netherite ingot"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: netherite gear for combat"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "raw scrap appearance"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark muted netherite scrap texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant #is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "craft netherite ingot (4 scrap + 4 gold)"
+          ],
+          "signal": "inferred",
+          "rationale": "sole downstream use is netherite ingot"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,301 @@
+{
+  "items": {
+    "minecraft:mud_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block; source of slab/stair/wall"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "pattern",
+          "rationale": "id prefix + crafted from packed mud"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche biome block; not everyday use"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for constructing structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "earth-derived brick material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown/tan mud brick texture"
+        },
+        "primary_uses": {
+          "values": [
+            "building mud brick structures",
+            "crafting mud brick stairs/slabs/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "block + ingredient for variants"
+        }
+      }
+    },
+    "minecraft:muddy_mangrove_roots": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block; structural/decorative"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "named",
+          "evidence": "tag minecraft:mud",
+          "rationale": "directly in minecraft:mud tag"
+        },
+        "material_secondary": {
+          "values": [
+            "mangrove_wood"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from mangrove roots + mud"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche biome-themed block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove swamp build/decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic root+mud composite"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy",
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark roots embedded in mud"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating mangrove swamp builds",
+            "adding organic texture to structures"
+          ],
+          "signal": "inferred",
+          "rationale": "thematic decoration block"
+        }
+      }
+    },
+    "minecraft:mule_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "right-click to place linked mob"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only for spawning specific mob"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "mules are pack/transport animals"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg item"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg places linked mob on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning mules in creative mode",
+            "mob farm or stable setup"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use of spawn eggs"
+        }
+      }
+    },
+    "minecraft:mushroom_stem": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid axe-mineable block; log analog"
+        },
+        "material_family": {
+          "value": "mushroom",
+          "signal": "pattern",
+          "rationale": "id prefix mushroom_stem"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires finding/growing huge mushrooms"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche; no crafting recipes at all"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom-themed builds/decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fungal block"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "whitish/tan with brown speckles"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "huge mushrooms in overworld biomes"
+        },
+        "primary_uses": {
+          "values": [
+            "building mushroom-themed structures",
+            "decorative organic block"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetics/building"
+        }
+      }
+    },
+    "minecraft:mushroom_stew": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "component minecraft:consumable set"
+        },
+        "material_family": {
+          "value": "mushroom",
+          "signal": "inferred",
+          "rationale": "crafted from red+brown mushrooms+bowl"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "non-stackable; less practical than bread"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mushrooms farmed; main mushroom food"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mushroom-based food"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish warm stew coloring"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "mooshroom right-click with bowl"
+        },
+        "primary_uses": {
+          "values": [
+            "restoring 6 hunger + 7.2 saturation",
+            "early-game food source",
+            "mooshroom milk product"
+          ],
+          "signal": "inferred",
+          "rationale": "food consumption primary purpose"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 118114,
+  "duration_api_ms": 119106,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:bamboo_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Interactive text-writing block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cheap craft from abundant bamboo\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed selectively for labels/nav\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in builds and for signage\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo is organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo light yellow-cream tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:wooden_signs tag → flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"text labels and wayfinding markers\",\n            \"player communication signs\",\n            \"decorative area marking\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core sign use cases\"\n        }\n      }\n    },\n    \"minecraft:bamboo_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Slab form → structural building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cheap craft from abundant bamboo\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Slabs heavily used in all builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Construction and architectural detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo light yellow-cream tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:wooden_slabs tag → flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height floors and roofing\",\n            \"detailed architectural layering\",\n            \"crafting bamboo mosaic and barrels\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core slab uses + sampled recipe outputs\"\n        }\n      }\n    },\n    \"minecraft:bamboo_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Stairs form → structural building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cheap craft from abundant bamboo\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs used heavily in construction\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Staircase and roofline builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo light yellow-cream tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:wooden_stairs tag → flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"architectural staircases\",\n            \"roofline detailing\",\n            \"stepped landscape transitions\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core stairs use cases\"\n        }\n      }\n    },\n    \"minecraft:bamboo_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Interactive openable/closable block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cheap craft from bamboo planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used selectively for access points\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Access hatches and redstone-toggled\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bamboo light yellow-cream tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:wooden_trapdoors tag → flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"vertical access hatches\",\n            \"mob filters in farms\",\n            \"redstone-toggled doors\",\n            \"aesthetic architectural detail\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core trapdoor use cases\"\n        }\n      }\n    },\n    \"minecraft:barrel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"27-slot item storage container block\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Made from generic planks+slabs, no fixed wood type\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Craftable and found in fishing villages\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Storage containers used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary use is storing items in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Rustic wooden container, simple design\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Medium-brown barrel wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Wood construction → flammable block\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Holds standard item stacks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"27-slot item storage\",\n            \"opens even when blocked above\",\n            \"fishing village storage furniture\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Key barrel features vs chest\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "be577b9e-3c79-47ab-9704-0fc4da72d74e",
+  "total_cost_usd": 0.1525019,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4686,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8611,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4686,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8611,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4686,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4686
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3823,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003908,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8611,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4686,
+      "webSearchRequests": 0,
+      "costUSD": 0.1485939,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "245def52-7e20-4c89-8af7-638a97d2870d"
+}

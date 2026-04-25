@@ -1,0 +1,282 @@
+{
+  "items": {
+    "minecraft:barrier": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only invisible wall block"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only for map/admin use"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to wall off adventure map areas"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "invisible in world, no aesthetics"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_max",
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "indestructible, unpushable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "Invisible collision walls for adventure maps",
+            "Admin-only boundary block"
+          ],
+          "signal": "inferred",
+          "rationale": "sole creative-only use case"
+        }
+      }
+    },
+    "minecraft:basalt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "solid columnar nether stone block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "generates abundantly in nether"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether aesthetic building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for nether-themed structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural stone with polished variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gray columnar nether stone"
+        },
+        "primary_uses": {
+          "values": [
+            "Building nether-themed structures",
+            "Craft or cut to polished basalt",
+            "Stonecutting into slab/stair variants"
+          ],
+          "signal": "inferred",
+          "rationale": "nether building block with variants"
+        }
+      }
+    },
+    "minecraft:bat_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn eggs are mob-spawning utilities"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, unobtainable in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "bats are passive; rarely spawned"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "spawn eggs absent from survival loot"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg summons its linked mob"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "animal/mob themed spawn item"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "bat egg is dark brown/black toned"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn bats in creative/map contexts"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is spawning bats"
+        }
+      }
+    },
+    "minecraft:beacon": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "grants area status effect buffs"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass is dominant recipe ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "obsidian",
+            "nether_star"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe uses obsidian + nether_star"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per base, rarely moved"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "buffs aid combat, mining, building"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing end-game prestige block"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "glowing",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "glass crystal with teal glow beam"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 15"
+        },
+        "primary_uses": {
+          "values": [
+            "Grants area status effect buffs",
+            "End-game prestige structure centerpiece",
+            "Haste/Speed/Strength/Regen buffs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary gameplay purpose of beacon"
+        }
+      }
+    },
+    "minecraft:bedrock": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only indestructible block"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival mode"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only placed in admin/creative builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for indestructible creative builds"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "primordial indestructible foundation"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark mottled gray texture"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_max",
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "indestructible, unpushable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "Indestructible boundary/floor for maps",
+            "Creative mode admin builds"
+          ],
+          "signal": "inferred",
+          "rationale": "creative-only indestructible block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

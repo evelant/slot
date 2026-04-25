@@ -1,0 +1,238 @@
+{
+  "items": {
+    "minecraft:gunpowder": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "mob drop; not processed or refined"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "key ingredient in TNT/fireworks/fire charges"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "TNT=mining+combat; fireworks=decorating"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw powder from mobs/nature"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gray speckled powder appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "craft TNT for explosions/mining",
+            "craft firework rockets and stars",
+            "craft fire charges"
+          ],
+          "signal": "inferred",
+          "rationale": "covers all major recipe downstream uses"
+        }
+      }
+    },
+    "minecraft:guster_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable loom item to apply banner pattern"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively per banner project"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "loom banner pattern application only"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "trial chamber origin; guster storm motif"
+        },
+        "primary_uses": {
+          "values": [
+            "apply guster motif to banner in loom"
+          ],
+          "signal": "inferred",
+          "rationale": "provides_banner_patterns confirms sole use"
+        }
+      }
+    },
+    "minecraft:guster_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible; decorated_pot face"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "single-use per decorated pot face slot"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as face on decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "pottery sherd is archaeological artifact"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site",
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "brushed from suspicious gravel in trials"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate pots with guster face motif"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_sherds tag confirms use"
+        }
+      }
+    },
+    "minecraft:hanging_roots": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "aesthetic cave plant; no crafting or functional use"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "pattern",
+          "rationale": "is a plant/organic block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underground decoration item"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for lush cave aesthetic only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic underground cave plant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish root coloration"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in lush caves underground"
+        },
+        "primary_uses": {
+          "values": [
+            "cave/lush cave build decoration",
+            "underground aesthetic accent"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative block with no recipe use"
+        }
+      }
+    },
+    "minecraft:happy_ghast_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn egg; no survival loot or recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/admin use only"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot tables or crafting recipes"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg mechanic always spawns linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn happy ghast in creative/admin builds"
+          ],
+          "signal": "inferred",
+          "rationale": "universal spawn egg function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

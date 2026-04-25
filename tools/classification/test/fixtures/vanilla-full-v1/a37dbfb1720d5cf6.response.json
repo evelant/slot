@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 233359,
+  "duration_api_ms": 234359,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:furnace_minecart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fuel-powered vehicle for rail transport\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecart recipe requires iron ingots\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"stone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"furnace component is cobblestone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted, niche-use item\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"largely obsoleted by powered rails\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves carts on tracks via fuel\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fuel-burning locomotive vehicle\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray iron minecart body\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, shapeless recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"propel minecarts without powered rails\",\n            \"legacy fuel-based rail transport\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core furnace minecart function\"\n        }\n      }\n    },\n    \"minecraft:ghast_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only spawn egg\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe or loot table\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtainable only via creative/commands\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche admin/map-making use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard egg model, no special look\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ghast egg is white/cream\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn ghasts in creative mode\",\n            \"mob testing and adventure maps\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg standard function\"\n        }\n      }\n    },\n    \"minecraft:ghast_tear\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop, not refined\"\n        },\n        \"material_family\": {\n          \"value\": \"ghast_tear\",\n          \"signal\": \"named\",\n          \"rationale\": \"unique named reagent\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether + ghast kill required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific high-value crafts\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"regen potions + end crystal for dragon\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical mob drop with brew use\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue-white translucent teardrop\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"brew potions of regeneration\",\n            \"craft end crystals\",\n            \"craft dried ghast\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all known downstream uses\"\n        }\n      }\n    },\n    \"minecraft:gilded_blackstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid full-cube block for structure\"\n        },\n        \"material_family\": {\n          \"value\": \"blackstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix is blackstone\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold veins in texture, piglin_loved tag\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bastion-only, not craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether building / decor use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether themed structure block\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-veined natural stone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark body with gold vein accents\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_loved\",\n          \"rationale\": \"directly tagged piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"nether and bastion decoration\",\n            \"dark themed building material\",\n            \"fortune-drops gold nuggets when mined\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed transparent structural block\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is glass\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sand is everywhere, trivial to smelt\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ubiquitous in building and crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"windows, greenhouses, decor panes\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clear uncolored glass block\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transparent placed block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"windows and transparent structures\",\n            \"stained glass base ingredient\",\n            \"beacon construction\",\n            \"daylight detector crafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top downstream glass uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "77a6911c-c327-4b18-bcc9-e94ae2571c20",
+  "total_cost_usd": 0.27984064999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3571,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 17454,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3571,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17454,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3571,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3571
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2708,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002783,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17454,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3571,
+      "webSearchRequests": 0,
+      "costUSD": 0.27705765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7fbfb67c-b720-4c48-bc97-dc9da7b25ffc"
+}

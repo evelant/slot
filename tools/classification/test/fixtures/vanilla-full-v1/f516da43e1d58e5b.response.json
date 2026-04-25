@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 209381,
+  "duration_api_ms": 210240,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:gold_nugget\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"processed gold fragment, refined from items\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific recipes, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden carrot/glistering melon→potions; firework star\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material, warm yellow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold item; piglins attracted to all gold\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft gold ingot (9 nuggets)\",\n            \"craft golden carrot for night vision potions\",\n            \"craft glistering melon for healing potions\",\n            \"firework star shimmer effect\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sample_ingredient_of list\"\n        }\n      }\n    },\n    \"minecraft:gold_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw ore block mined from world\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"routinely mined in gold supply loop\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"player mines it to obtain raw gold\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally generated ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold veins in stone matrix\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved (inherited)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mine to obtain raw gold\",\n            \"smelt (Silk Touch) directly into gold ingot\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelting recipe + standard ore loop\"\n        }\n      }\n    },\n    \"minecraft:golden_apple\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:food + minecraft:consumable components\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"costs 8 gold ingots; chest-loot or expensive craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"saved for emergencies or horse breeding\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"healing in fights; horse taming in field\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prestigious golden food with special effects\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold coloring\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved (direct)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"regen II (5s) + absorption I (2min) in combat\",\n            \"horse breeding and taming\",\n            \"PvP absorption buffer\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumable effects + horse_food/tempt tags\"\n        }\n      }\n    },\n    \"minecraft:golden_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:axes tag, primarily a chopping tool\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"low durability limits sustained use\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chops wood + explicit weapon component\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved (direct)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"fast wood and log chopping (speed 12)\",\n            \"high-enchantability weapon via sharp_weapon tag\",\n            \"nether tool safe around piglins\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tool speed + enchantable/sharp_weapon + piglin_loved\"\n        }\n      }\n    },\n    \"minecraft:golden_boots\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"named\",\n          \"rationale\": \"foot_armor tag, equip_slot=feet\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily worn in nether for piglin safety\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor for combat; nether pacification for exploration\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\", \"piglin_pacifying\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tags piglin_loved + piglin_safe_armor (both direct)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"prevent piglin aggression when worn in nether\",\n            \"basic foot armor protection\",\n            \"armor trimming canvas\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piglin_safe_armor + trimmable_armor + foot_armor\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "de766ec9-ea1c-4844-9ae1-3f182f869c69",
+  "total_cost_usd": 0.25623915,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 6037,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15100,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 6037,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15100,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 6037,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 6037
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5174,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0052439999999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15100,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 6037,
+      "webSearchRequests": 0,
+      "costUSD": 0.25099515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7dc79ebe-0028-47f6-b7a3-4d9873092176"
+}

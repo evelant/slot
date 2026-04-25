@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 143267,
+  "duration_api_ms": 144230,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:crimson_fungus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Grows in nether, harvested as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Nether-only, not craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for hoglin breeding/tree growth\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Feeds hoglins, grows crimson trees\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Organic fungus from nether biome\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Reddish-orange crimson fungus cap\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:hoglin_food\",\n          \"rationale\": \"Hoglins attracted to hoglin_food\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Grow huge crimson fungi with bonemeal\",\n            \"Feed and breed hoglins\",\n            \"Nether decor plant\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core crimson fungus gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Signs display text, mostly decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"Explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for labeling, not constant use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Labeling and nether decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wood-based nether material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crimson = deep red wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:non_flammable_wood\",\n          \"rationale\": \"Non-flammable wood tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Label chests and areas\",\n            \"Nether-themed build decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Hanging sign primary uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_hyphae\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Log-family block for building/crafting\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"Explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in nether builds and crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary use is structural building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Organic nether wood-type block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dark reddish crimson bark texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:non_flammable_wood\",\n          \"rationale\": \"Non-flammable wood tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Nether-themed building material\",\n            \"Craft crimson planks and campfires\",\n            \"All-bark decorative log block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Hyphae log block uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_nylium\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Terrain block used in nether builds\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"Explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Nether terrain/fungus farming use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Terrain block + nether fungi surface\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Natural nether terrain block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Reddish nether terrain coloration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Nether terrain building block\",\n            \"Grow nether fungi with bonemeal\",\n            \"Decorative nether ground cover\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Nylium terrain and farming uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag minecraft:planks\",\n          \"rationale\": \"Planks tag = standard building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"Explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core crafting ingredient for many items\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary use is building and crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wood-based building block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crimson = deep red wood planks\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:non_flammable_wood\",\n          \"rationale\": \"Non-flammable wood tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Nether-themed building and decoration\",\n            \"Core wood crafting ingredient\",\n            \"Non-flammable wood alternative\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Versatile planks building uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:crimson_fungus\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_crimson\",\n      \"suggested\": \"omit\",\n      \"rationale\": \"Crimson fungus is a nether plant, not a wood product; id prefix rule incorrectly assigned wood_crimson\",\n      \"confidence\": 0.9\n    },\n    {\n      \"item\": \"minecraft:crimson_nylium\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_crimson\",\n      \"suggested\": \"netherrack\",\n      \"rationale\": \"Nylium is overgrown netherrack terrain, not wood; id prefix crimson_ rule misfired\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:crimson_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_crimson\",\n      \"rationale\": \"Planks are crimson wood; wooden_tool_materials tag incorrectly resolved to oak\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "98ef31dd-9f82-49af-afa1-48231f3d9d87",
+  "total_cost_usd": 0.21239315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5141,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12460,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5141,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12460,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5141,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5141
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4278,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004358,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12460,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5141,
+      "webSearchRequests": 0,
+      "costUSD": 0.20803515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "3ae86e87-7ffc-4f7d-bc05-4a2e7b4bb649"
+}

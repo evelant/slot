@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 134192,
+  "duration_api_ms": 135284,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cyan_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural colored block for building\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative structure\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed terracotta variant\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan terracotta is muted teal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building colored structures\", \"terracotta decoration\", \"smelting to glazed terracotta\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard terracotta use cases\"\n        }\n      }\n    },\n    \"minecraft:cyan_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural/decorative block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"beds, carpets, banners, building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as block; crafts carpets/beds/banners\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan is teal-range color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dampens_vibrations tag; wool is flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting beds, carpets, banners\", \"building with colored blocks\", \"sound dampening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wool use cases\"\n        }\n      }\n    },\n    \"minecraft:damaged_anvil\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"repairs/renames items like other anvils\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"anvils are crafted from iron blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires anvil degradation to reach\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"regularly used for repairs/enchants\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combines enchantments, renames, repairs\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy iron mechanical tool\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron gray appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"repairing items\", \"combining enchantments\", \"renaming items\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard anvil use cases\"\n        }\n      }\n    },\n    \"minecraft:dandelion\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower picked raw from world\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows widely on overworld surface\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for dye/stew occasionally\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmed for dye, used in flower pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural plant\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow flower, warm tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting yellow dye\", \"making suspicious stew\", \"flower pot decoration\", \"bee and rabbit food\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard dandelion use cases\"\n        }\n      }\n    },\n    \"minecraft:danger_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for decorated pots\"\n        },\n        \"material_family\": {\n          \"value\": \"pottery\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _pottery_sherd\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for decorated pots\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to craft decorated pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay/pottery appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting decorated pots\", \"archaeological collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sherd's only uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "6eeb619a-c1fb-4486-8dd2-c3143f27887a",
+  "total_cost_usd": 0.17517790000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4402,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10213,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4402,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10213,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4402,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4402
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3539,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003619,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10213,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4402,
+      "webSearchRequests": 0,
+      "costUSD": 0.17155890000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "061dd5c3-7afc-4c5f-8bd5-fcd89e35892f"
+}

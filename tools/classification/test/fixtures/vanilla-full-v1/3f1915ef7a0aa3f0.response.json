@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 188490,
+  "duration_api_ms": 189178,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:redstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dust extracted from ore; dusts = material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in dozens of recipes routinely\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"circuits, automated machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no special aesthetic beyond function\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red-toned dust\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redstone circuits and mechanisms\",\n            \"crafting clocks compasses rails\",\n            \"armor trim material (smithing)\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ingredient; trim tag in components\"\n        }\n      }\n    },\n    \"minecraft:redstone_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed storage form; emits signal\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moveable power source in machines\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-mechanical aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright saturated red\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key for slimestone flying machines\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compact moveable redstone power source\",\n            \"piston flying machine component\",\n            \"compact storage of 9 redstone dust\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"canonical redstone block usage\"\n        }\n      }\n    },\n    \"minecraft:redstone_lamp\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light when redstone-powered\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular controlled lighting block\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"controlled light for builds and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-powered lamp; mechanical\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"amber glow when lit\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light level 15 when powered\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"glowstone\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from 1 glowstone + 4 redstone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redstone-controlled lighting\",\n            \"indicator light in circuits\",\n            \"decorative illumination\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard lamp use cases\"\n        }\n      }\n    },\n    \"minecraft:redstone_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"ore found in world; suffix _ore\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined when found; not routine use\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined for redstone dust\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural cave ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone+red; glows when triggered\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glows lvl 9 when triggered by entity\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mine for redstone dust\",\n            \"silk touch collection or display\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ore; primary purpose is dust extraction\"\n        }\n      }\n    },\n    \"minecraft:redstone_torch\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core inverter/power in circuits\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"staple in any redstone build\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inverter and ingredient in key items\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone variant of torch; mechanical\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red glow; emits faint light\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light level 7 when active\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stick (wood) + redstone in recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redstone signal inverter (NOT gate)\",\n            \"constant low-strength power source\",\n            \"crafting repeaters and comparators\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"canonical redstone torch uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "ed42b527-44a9-41ff-b48b-438bf5efbf0c",
+  "total_cost_usd": 0.2254439,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4798,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13439,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4798,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13439,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4798,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4798
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3935,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0040100000000000005,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13439,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4798,
+      "webSearchRequests": 0,
+      "costUSD": 0.2214339,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "5ff00688-9cde-44d2-b00d-81a12b700bd7"
+}

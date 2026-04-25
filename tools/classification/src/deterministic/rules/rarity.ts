@@ -23,6 +23,13 @@ const RARITY_OVERRIDES: Record<string, string> = {
   // are many End ships per world. Sonnet-v4 flagged this — emit `rare`
   // (acquisition tier matching `requires_exploration`) instead of unique.
   "minecraft:dragon_head": "rare",
+  // Vanilla v1 canary catches.
+  // creeper_head requires charged-creeper kill of a creeper — once per world
+  // typical; the component reports `uncommon` which understates it.
+  "minecraft:creeper_head": "rare",
+  // totem_of_undying drops only from evokers (woodland mansions / raids);
+  // milestone item, not "uncommon".
+  "minecraft:totem_of_undying": "rare",
 };
 
 export const rarityRule: Rule = {

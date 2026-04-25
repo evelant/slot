@@ -1,0 +1,334 @@
+{
+  "items": {
+    "minecraft:black_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are decorative light sources"
+        },
+        "material_family": {
+          "value": "wax",
+          "signal": "inferred",
+          "rationale": "crafted from honeycomb (beeswax)"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "candle recipe requires string + dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, placed occasionally"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for ambient lighting and decor"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wax candle, natural material"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "shapeless crafting only, no world loot"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candles emit light level 3 per unit"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting and atmosphere",
+            "decoration on cakes",
+            "decorative colored light source"
+          ],
+          "signal": "inferred",
+          "rationale": "candle primary uses"
+        }
+      }
+    },
+    "minecraft:black_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "carpet is primarily floor decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for decor and llama gear"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor covering, llama decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool, natural fiber"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "black wool, matte textile finish"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:dampens_vibrations",
+          "rationale": "suppresses sculk sensor vibrations"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet prevents mob spawning on surface"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative floor covering",
+            "llama carpet decoration",
+            "blocking sculk vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet primary uses"
+        }
+      }
+    },
+    "minecraft:black_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid structural block for building"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id suffix _concrete + tag minecraft:concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "very popular solid-color building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and pixel art builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid flat-colored plain block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "black, flat matte surface"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "formed by water contact with concrete powder"
+        },
+        "primary_uses": {
+          "values": [
+            "structural building",
+            "pixel art and pattern builds",
+            "decorative accent blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete primary uses"
+        }
+      }
+    },
+    "minecraft:black_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block; precursor to concrete"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id + tag minecraft:concrete_powders"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "crafted mainly as step to make concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to produce concrete for building"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed powder block"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand when unsupported"
+        },
+        "primary_uses": {
+          "values": [
+            "converting to black concrete via water",
+            "intermediate crafting step"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder primary uses"
+        }
+      }
+    },
+    "minecraft:black_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed dye used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "id suffix _dye + tag minecraft:dyes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed when dyeing items black"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to dye blocks and items black"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye item"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black dye"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from ink sac or wither rose; never drops directly"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing items and blocks black",
+            "crafting black colored block variants",
+            "firework star coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "dye primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

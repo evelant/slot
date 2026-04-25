@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 138726,
+  "duration_api_ms": 139556,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:dead_tube_coral\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely aesthetic ocean plant item\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _coral\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-build use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean-themed decoration only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead variant of live coral\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is pale gray\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean-themed decoration\", \"aquarium builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic dead coral plant\"\n        }\n      }\n    },\n    \"minecraft:dead_tube_coral_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral block used for aesthetic builds\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _coral_block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-themed building\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decoration and ocean-theme building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead variant of live coral block\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is pale gray\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean-themed building blocks\", \"reef decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full-block dead coral form\"\n        }\n      }\n    },\n    \"minecraft:dead_tube_coral_fan\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fan-shaped coral for ocean decor\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _coral_fan\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-build use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean-themed decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead fan variant of live coral\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is pale gray\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean-themed decoration\", \"wall coral detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat fan shape for ocean builds\"\n        }\n      }\n    },\n    \"minecraft:debug_stick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only block state cycling tool\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used by admins/map-makers\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cycles block states during map-making\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"cycle block states\", \"adjust block properties\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin tool for block state editing\"\n        }\n      }\n    },\n    \"minecraft:decorated_pot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores 1 item stack; interactive\"\n        },\n        \"material_family\": {\n          \"value\": \"brick\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from bricks or pottery sherds\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative storage in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative pot with item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological pottery with sherd art\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta/brick warm brown tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative item storage\", \"pottery sherd showcase\", \"themed build prop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated storage in themed builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7e38bcf5-187d-41a3-bf34-63df552121c6",
+  "total_cost_usd": 0.17740690000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3406,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10677,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3406,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10677,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3406,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3406
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2543,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0026230000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10677,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3406,
+      "webSearchRequests": 0,
+      "costUSD": 0.17478390000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "94ffc917-7d57-45db-9f2a-964adc69b392"
+}

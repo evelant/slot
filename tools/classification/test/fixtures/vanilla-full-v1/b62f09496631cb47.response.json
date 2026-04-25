@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 180931,
+  "duration_api_ms": 181837,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:weathered_copper_lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lantern = aesthetic lighting; no interaction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific oxidation-stage aesthetic\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetics and lighting\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"variant + weathered organic aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper teal + light emission\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"oxidizes_over_time\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lantern glows; copper oxidizes; waterloggable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Decorative copper-themed lighting\",\n            \"Weathered aesthetic builds\",\n            \"Wax to preserve oxidation stage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use cases\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes; redstone-activatable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific oxidation-stage aesthetic\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural hatch + redstone activation\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"variant + weathered organic aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper teal-green appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes; trapdoors waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Functional hatch in copper builds\",\n            \"Redstone-activated door\",\n            \"Weathered copper aesthetic\",\n            \"Wax to freeze oxidation stage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use cases\"\n        }\n      }\n    },\n    \"minecraft:weathered_cut_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural copper block for builds\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix weathered_cut_copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific oxidation-stage aesthetic\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut variant, weathered organic look\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper teal-green appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered stage still oxidizes further\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Building with weathered copper aesthetic\",\n            \"Stonecutting source for cut variants\",\n            \"Wax to freeze oxidation stage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use cases\"\n        }\n      }\n    },\n    \"minecraft:weathered_cut_copper_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab = structural building element\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix weathered_cut_copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific oxidation-stage aesthetic\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural detail in copper builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut slab variant, weathered look\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper teal-green\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes; slabs waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Half-height weathered copper detail\",\n            \"Source for chiseled copper crafting\",\n            \"Architectural slab in copper builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use cases\"\n        }\n      }\n    },\n    \"minecraft:weathered_cut_copper_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs = structural building element\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix weathered_cut_copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"explicit rarity component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific oxidation-stage aesthetic\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural stairs in copper builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair variant, weathered organic look\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper teal-green\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes; stairs waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Weathered copper staircase\",\n            \"Architectural copper detail\",\n            \"Wax to freeze oxidation stage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7e030095-f156-4ddf-a763-949cdbeb984e",
+  "total_cost_usd": 0.2220279,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5182,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13090,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5182,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13090,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5182,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5182
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4319,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004389,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13090,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5182,
+      "webSearchRequests": 0,
+      "costUSD": 0.2176389,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "38d24662-3c43-4533-bf91-1ca7736a1d1a"
+}

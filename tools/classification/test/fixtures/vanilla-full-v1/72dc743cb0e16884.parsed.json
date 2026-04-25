@@ -1,0 +1,268 @@
+{
+  "items": {
+    "minecraft:diorite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs = primary structural shape"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche stone variant, used sparingly"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used in structures and builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "shaped variant of diorite block"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite is pale gray/white matte"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairways",
+            "decorative edging",
+            "architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stair block uses"
+        }
+      }
+    },
+    "minecraft:diorite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall = structural fencing block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche stone variant"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "walls used in perimeters and builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "wall variant of diorite block"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "diorite is pale gray/white matte"
+        },
+        "primary_uses": {
+          "values": [
+            "perimeter fencing",
+            "decorative walls",
+            "garden borders"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wall block uses"
+        }
+      }
+    },
+    "minecraft:dirt": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw world material, not refined"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "id=dirt, base terrain material"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "fills entire overworld subsurface"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly in farming/building"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "tilled for crops, fill terrain"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed earth material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown dirt texture"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "abundant on overworld surface"
+        },
+        "primary_uses": {
+          "values": [
+            "farming soil base",
+            "terraforming fills",
+            "coarse dirt crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "main dirt gameplay uses"
+        }
+      }
+    },
+    "minecraft:dirt_path": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primarily aesthetic path block"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "derived from dirt block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "simple terrain variant, creative only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for decorative paths"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "marks decorative paths visually"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "worn dirt texture"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "pale worn dirt appearance"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "drops dirt not item, no loot table"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative pathways",
+            "village road aesthetics",
+            "landscape design"
+          ],
+          "signal": "inferred",
+          "rationale": "typical dirt path uses"
+        }
+      }
+    },
+    "minecraft:disc_fragment_5": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "sole use is assembling music_disc_5"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "9 needed per disc, rare find"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "found only in ancient city"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "disc fragment dark/muted appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting music_disc_5"
+          ],
+          "signal": "inferred",
+          "rationale": "only use is assembling the disc"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

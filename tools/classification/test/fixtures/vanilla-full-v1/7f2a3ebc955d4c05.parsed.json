@@ -1,0 +1,291 @@
+{
+  "items": {
+    "minecraft:rabbit_hide": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed hide"
+        },
+        "material_family": {
+          "value": "hide",
+          "signal": "inferred",
+          "rationale": "raw animal hide, not yet leather"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use: 4 needed per leather"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "from rabbit farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw animal hide"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown/tan hide texture"
+        },
+        "primary_uses": {
+          "values": [
+            "craft 4x into leather"
+          ],
+          "signal": "pattern",
+          "rationale": "sole recipe use: ingredient_of leather"
+        }
+      }
+    },
+    "minecraft:rabbit_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawns rabbit mob on right-click"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival recipe"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/admin access only"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to seed rabbit mob farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns an animal mob"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "rabbit egg is brown/orange-spotted"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → spawns rabbit"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival obtainment in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn rabbits",
+            "mob farm bootstrapping"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg uses"
+        }
+      }
+    },
+    "minecraft:rabbit_stew": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "minecraft:food + minecraft:consumable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "multi-ingredient, less used than simpler foods"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "all ingredients come from farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked stew, natural ingredients"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown stew served in bowl"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, shapeless recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "high saturation food (10 nutrition/12 sat)",
+            "feed wolves"
+          ],
+          "signal": "named",
+          "rationale": "food component + wolf_food tag"
+        }
+      }
+    },
+    "minecraft:rail": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "placed block enabling minecart travel"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "crafted from 6 iron ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "stick"
+          ],
+          "signal": "pattern",
+          "rationale": "1 stick in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "tracks need many rails"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "lays minecart track infrastructure"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "iron rail for minecart vehicles"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron rail appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "rails can be pushed by pistons"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "minecarts carry all three"
+        },
+        "primary_uses": {
+          "values": [
+            "lay minecart tracks",
+            "item transport automation",
+            "player transit networks"
+          ],
+          "signal": "inferred",
+          "rationale": "core rail functions"
+        }
+      }
+    },
+    "minecraft:raiser_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "smithing template applies armor trim"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "single use per armor piece"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "found via trail ruins archaeology"
+        },
+        "primary_uses": {
+          "values": [
+            "apply raiser trim pattern to armor",
+            "armor cosmetic customization"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing trim template purpose"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

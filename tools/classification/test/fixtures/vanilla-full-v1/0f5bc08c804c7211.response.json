@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 80734,
+  "duration_api_ms": 81487,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:bamboo\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant; schema lists bamboo\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific crafts, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"scaffolding→building; commonly farmed\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo cane is distinctly green\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft scaffolding\", \"craft bamboo blocks and planks\", \"craft sticks\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs + is_fuel tag\"\n        }\n      }\n    },\n    \"minecraft:bamboo_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cube_column model; structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche build material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural column block for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo wood variant type\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo is pale yellow-green\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"crafting bamboo planks\", \"decorative pillar\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural + planks ingredient\"\n        }\n      }\n    },\n    \"minecraft:bamboo_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:wooden_buttons\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in redstone builds, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers redstone; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone activation device\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo material color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"trigger redstone circuits\", \"open doors and trapdoors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard button function\"\n        }\n      }\n    },\n    \"minecraft:bamboo_chest_raft\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:chest_boats\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational water travel item\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raft moves player; chest holds items\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo craft + functional chest\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo material coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted only\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest holds standard items\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports player + chest storage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with inventory storage\", \"carry items across rivers and oceans\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest raft = transport + storage\"\n        }\n      }\n    },\n    \"minecraft:bamboo_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural access element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"doors used in nearly every build\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural; openable by redstone\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building entrances\", \"access control\", \"redstone-triggered door\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wooden door functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "3a991b76-9368-41db-8842-1fc9750c64c3",
+  "total_cost_usd": 0.1237974,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4424,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 6781,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4424,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6781,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4424,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4424
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3561,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003636,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6781,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4424,
+      "webSearchRequests": 0,
+      "costUSD": 0.1201614,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d79db8a8-001e-4004-a9f9-6b663e8e5978"
+}

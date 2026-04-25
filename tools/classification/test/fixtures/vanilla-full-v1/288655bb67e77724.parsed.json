@@ -1,0 +1,310 @@
+{
+  "items": {
+    "minecraft:vault": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "key-activated loot dispensing block"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "dark iron-cage metallic appearance"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only item, no survival source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "adventure/creative map builders use it"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "core to trial chamber progression"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "metallic mechanism in ancient structure"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron vault appearance"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "block naturally placed in trial chambers"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "heavy structure block, not piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "key-gated loot dispensing",
+            "trial chamber progression",
+            "adventure map building"
+          ],
+          "signal": "inferred",
+          "rationale": "accepts trial keys, grants loot once"
+        }
+      }
+    },
+    "minecraft:verdant_froglight": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "emissive decorative column block"
+        },
+        "material_family": {
+          "value": "froglight",
+          "signal": "pattern",
+          "rationale": "id suffix _froglight, unique material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires frog+magma_cube interaction"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative light, used selectively"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "light source for aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic frog-produced material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "verdant=green; bright light emission"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 15"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative green light source",
+            "ambient lighting accent in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing green decorative block"
+        }
+      }
+    },
+    "minecraft:vex_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applies cosmetic trim to armor"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "inferred",
+          "rationale": "duplicated using diamonds at crafting table"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor trim application"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "vex motif: illager-linked hostile look"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "silvery smithing template texture"
+        },
+        "primary_uses": {
+          "values": [
+            "applying vex trim at smithing table",
+            "duplicating via diamond recipe"
+          ],
+          "signal": "inferred",
+          "rationale": "armor cosmetic upgrade template"
+        }
+      }
+    },
+    "minecraft:vex_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "spawn egg = creative-only admin item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "spawn eggs unobtainable in survival"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in creative testing and setup"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "vex is a hostile combat mob"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "vex: hostile illager-summoned spirit"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "vex bluish-white ghostly coloring"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn eggs spawn their mob on use"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning vex in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "creative mob spawner for vex"
+        }
+      }
+    },
+    "minecraft:villager_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "spawn egg = creative-only admin item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "spawn eggs unobtainable in survival"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in creative NPC setup"
+        },
+        "activity": {
+          "values": [
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "villagers are the primary trading NPCs"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard overworld NPC, no special feel"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "warm skin tones, brown/green robes"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn eggs spawn their mob on use"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning villager in creative mode",
+            "setting up trading posts in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "creative NPC spawner for villager"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

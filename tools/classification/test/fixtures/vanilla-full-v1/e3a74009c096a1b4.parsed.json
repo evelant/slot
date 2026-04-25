@@ -1,0 +1,237 @@
+{
+  "items": {
+    "minecraft:shaper_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "template applies cosmetic trim to armor"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "applied once per armor piece"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "sourced from archaeology trail ruins"
+        },
+        "primary_uses": {
+          "values": [
+            "apply shaper trim pattern to armor",
+            "duplicate template via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "core smithing template uses"
+        }
+      }
+    },
+    "minecraft:sheaf_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "found raw via archaeology brushing"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "tag decorated_pot_ingredients confirms use"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche use in decorated pot crafting"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay pottery fragment, earthy tones"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient in decorated pots",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "tag decorated_pot_ingredients"
+        }
+      }
+    },
+    "minecraft:shears": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "minecraft:tool component present"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "crafted from 2 iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "shear sheep; break leaves/cobwebs"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used often for wool, leaves, vines"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple iron tool, no decoration"
+        },
+        "palette": {
+          "values": [
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-colored metal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "shearing sheep for wool",
+            "harvesting leaves and vines",
+            "cutting cobwebs efficiently",
+            "shearing snow golems and mooshrooms"
+          ],
+          "signal": "inferred",
+          "rationale": "standard shears gameplay uses"
+        }
+      }
+    },
+    "minecraft:sheep_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources, no recipe; creative only"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; unavailable in survival"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → spawns named mob"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn sheep for wool/mutton farms"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used to initialize farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents a natural overworld mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning sheep in creative or via commands",
+            "setting up wool or mutton farms"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core use"
+        }
+      }
+    },
+    "minecraft:shelter_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "found raw via archaeology brushing"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "tag decorated_pot_ingredients confirms use"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche use in decorated pot crafting"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay pottery fragment, earthy tones"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient in decorated pots",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "tag decorated_pot_ingredients"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

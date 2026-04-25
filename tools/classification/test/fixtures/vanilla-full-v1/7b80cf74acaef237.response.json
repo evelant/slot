@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 125750,
+  "duration_api_ms": 126501,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:tall_dry_grass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"tall plant placed as dry-biome decoration\"\n        },\n        \"material_family\": {\n          \"value\": \"grass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _grass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"available in dry/badlands biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use only\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative plant\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural world plant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dry yellow-tan grass appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in dry/badlands biomes\"\n        }\n      }\n    },\n    \"minecraft:tall_grass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"tall grass placed for decoration\"\n        },\n        \"material_family\": {\n          \"value\": \"grass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _grass\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in virtually every biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use only\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative plant\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural world plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard green grass color\"\n        }\n      }\n    },\n    \"minecraft:target\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits variable redstone on projectile hit\"\n        },\n        \"material_family\": {\n          \"value\": \"hay\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from hay bale center\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone dust in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"hay + redstone both accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche redstone build component\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone signal source; archery training\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hay body with redstone function\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow hay with red/white rings\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"variable redstone signal from projectile hits\", \"archery training and aim testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core target block functions\"\n        }\n      }\n    },\n    \"minecraft:terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fired clay structural building block\"\n        },\n        \"material_family\": {\n          \"value\": \"clay\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted from clay blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"badlands gen + craftable from clay\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular building and dye base\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"uncolored fired clay block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brownish-orange fired clay color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building and decoration\", \"crafting 16 stained terracotta colors\", \"crafting armor trim smithing templates\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream uses of plain terracotta\"\n        }\n      }\n    },\n    \"minecraft:test_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe/loot; epic rarity; dev block\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival acquisition path exists\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no legitimate survival use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:tall_grass\",\n      \"facet\": \"origin\",\n      \"current\": [\"village\"],\n      \"suggested\": [\"village\", \"overworld_surface\"],\n      \"rationale\": \"tall grass generates on overworld surface in most biomes; village is secondary\",\n      \"confidence\": 0.95\n    },\n    {\n      \"item\": \"minecraft:terracotta\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"overworld_surface\"],\n      \"rationale\": \"terracotta generates naturally and abundantly in badlands biomes\",\n      \"confidence\": 0.92\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c19e8a18-2e76-47ee-ba19-a81895c3b09a",
+  "total_cost_usd": 0.16736540000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3672,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9924,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3672,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9924,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3672,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3672
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2809,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002879,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9924,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3672,
+      "webSearchRequests": 0,
+      "costUSD": 0.16448640000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c5a47ed2-36b6-4aec-83b1-f2e6754c6796"
+}

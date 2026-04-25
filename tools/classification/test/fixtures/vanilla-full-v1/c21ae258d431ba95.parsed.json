@@ -1,0 +1,306 @@
+{
+  "items": {
+    "minecraft:stripped_cherry_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural wood log, stripped form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core building/crafting material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally and decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood; stripped is a form variant"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry inner wood is light pinkish-warm"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry grove biome on surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "craft cherry planks",
+            "build wood structures",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "logs to planks, building, smelting fuel"
+        }
+      }
+    },
+    "minecraft:stripped_cherry_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural all-bark wood block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "bark variant, less used than logs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally and decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood; bark variant form"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry bark is light pinkish-warm tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "build bark-textured structures",
+            "craft cherry planks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "bark block for building, planks, fuel"
+        }
+      }
+    },
+    "minecraft:stripped_crimson_hyphae": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "nether all-bark wood block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "bark variant, less used than stems"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally and decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "fungal wood; stripped bark variant"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson is bold saturated red-purple"
+        },
+        "primary_uses": {
+          "values": [
+            "build nether bark structures",
+            "craft crimson planks"
+          ],
+          "signal": "inferred",
+          "rationale": "bark block for building, planks crafting"
+        }
+      }
+    },
+    "minecraft:stripped_crimson_stem": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "nether log equivalent, structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core nether building/crafting material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally and decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "fungal wood; stripped stem variant"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson is bold saturated red-purple"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson forest biome in the nether"
+        },
+        "primary_uses": {
+          "values": [
+            "craft crimson planks",
+            "build nether structures",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "stems to planks, building, smelting fuel"
+        }
+      }
+    },
+    "minecraft:stripped_dark_oak_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural wood log, stripped form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core building/crafting material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally and decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood; stripped is a form variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak inner wood is deep dark brown"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak forest biome on surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "craft dark oak planks",
+            "build dark structures",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "logs to planks, building, smelting fuel"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

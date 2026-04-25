@@ -1,0 +1,298 @@
+{
+  "items": {
+    "minecraft:cherry_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "planks are primary structural wood unit"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly in wood construction"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "50 downstream recipes; end-use is building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry planks are warm pinkish light wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "all wooden planks are burnable"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures and furniture",
+            "crafting wood items and blocks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "49 shaped recipes confirm broad use"
+        }
+      }
+    },
+    "minecraft:cherry_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "pressure plates emit redstone signal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in specific redstone setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "entity detection; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material with mechanical redstone role"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood: warm pinkish light tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block, burnable"
+        },
+        "primary_uses": {
+          "values": [
+            "entity detection for redstone",
+            "door and gate triggers",
+            "mob farm inputs"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wooden pressure plate uses"
+        }
+      }
+    },
+    "minecraft:cherry_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "drops from leaves, world-obtained raw item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted when tree supply needed"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "tree farming for cherry wood supply"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "living plant, organic origin"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "pink cherry blossom + green foliage"
+        },
+        "primary_uses": {
+          "values": [
+            "growing cherry trees for wood",
+            "flower pot decoration",
+            "bone meal tree farming"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sapling uses"
+        }
+      }
+    },
+    "minecraft:cherry_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive; stores/displays items (nbt_variation)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed decorative builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "display items; decorative item storage"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood construction"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood: warm pinkish light tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block, burnable"
+        },
+        "primary_uses": {
+          "values": [
+            "display items decoratively",
+            "decorative item storage",
+            "library and room theming"
+          ],
+          "signal": "inferred",
+          "rationale": "shelves for display and ambiance"
+        }
+      }
+    },
+    "minecraft:cherry_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs display text, primary purpose is decor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for labeling, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "labeling and aesthetic use in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, organic"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood tone: warm pinkish light"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block, burnable"
+        },
+        "primary_uses": {
+          "values": [
+            "label areas and rooms",
+            "text display in builds",
+            "decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sign use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:cherry_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_cherry",
+      "rationale": "ID is cherry_planks; rule incorrectly mapped wooden_tool_materials tag to oak for all wood types",
+      "confidence": 0.95
+    }
+  ]
+}

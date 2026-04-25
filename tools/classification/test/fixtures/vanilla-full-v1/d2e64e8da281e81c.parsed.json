@@ -1,0 +1,286 @@
+{
+  "items": {
+    "minecraft:chiseled_sulfur": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled stone-type block, structural/decorative"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id suffix _sulfur"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled = ornate variant of base block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur is pale yellowish stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative variant, selective use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled blocks placed for builds/decor"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent in structures",
+            "sulfur-family building block"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled block typical uses"
+        }
+      }
+    },
+    "minecraft:chiseled_tuff": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled tuff stone, structural/decorative"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "rationale": "id suffix _tuff"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled = ornate tuff variant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "tuff is gray-brown igneous stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative variant, selective use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled blocks for builds/decor"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative tuff building accent",
+            "tuff-family structure block"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled tuff typical uses"
+        }
+      }
+    },
+    "minecraft:chiseled_tuff_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "chiseled tuff brick, structural/decorative"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "rationale": "id contains tuff"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled bricks = refined ornate tuff variant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "tuff is gray-brown stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative variant, selective use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled bricks for builds/decor"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative tuff brick accent",
+            "refined tuff building block"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled tuff brick uses"
+        }
+      }
+    },
+    "minecraft:chorus_flower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw End plant, collected for farming/planting"
+        },
+        "material_family": {
+          "value": "chorus_plant",
+          "signal": "pattern",
+          "rationale": "id prefix chorus_"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic End plant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "chorus flower is pale purple"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End-only, requires end portal access"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up chorus farms"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "planted to grow chorus; flower decor"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow chorus plants",
+            "decorative End flower"
+          ],
+          "signal": "inferred",
+          "rationale": "main chorus flower uses"
+        }
+      }
+    },
+    "minecraft:chorus_fruit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has food + consumable component",
+          "evidence": "minecraft:food + minecraft:consumable"
+        },
+        "material_family": {
+          "value": "chorus_plant",
+          "signal": "pattern",
+          "rationale": "id prefix chorus_"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fruit with random teleport effect"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "chorus fruit is purple"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End-only, requires end portal access"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational teleport or End sustenance"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "teleport aids exploration; downstream building via popped fruit"
+        },
+        "primary_uses": {
+          "values": [
+            "random teleport on consumption",
+            "food source in the End",
+            "smelt into popped chorus fruit"
+          ],
+          "signal": "inferred",
+          "rationale": "core chorus fruit uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

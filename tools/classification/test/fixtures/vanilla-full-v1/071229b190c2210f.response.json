@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 218176,
+  "duration_api_ms": 219223,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:skeleton_skull\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"schema cites heads as decorative_block example\"\n        },\n        \"material_family\": {\n          \"value\": \"bone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"skeleton skull is bone material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use; rare charged-creeper source\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as skull for decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"skull=ominous; bone mob drop=natural\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bone-white coloration\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"charged_creeper/skeleton loot table\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"skull display in builds\",\n            \"wearable helmet reducing skeleton detection\",\n            \"noteblock instrument modifier\",\n            \"firework star ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"known skull gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:skeleton_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs summon mobs; utility\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/testing scenarios only\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn skeleton mobs in creative\",\n            \"mob testing and debugging\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg utility\"\n        }\n      }\n    },\n    \"minecraft:skull_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed in loom to stamp skull pattern on banner\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; produced via shapeless craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche banner decoration use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loom banner pattern application\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"skull motif is ominous\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply skull motif to banners in loom\",\n            \"themed banner crafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"provides_banner_patterns component confirms\"\n        }\n      }\n    },\n    \"minecraft:skull_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"sherd crafting material for decorated pots\"\n        },\n        \"material_family\": {\n          \"value\": \"clay\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pottery sherds are fired clay/ceramic\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorated pot crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorated pot crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unearthed via archaeology; ancient motif\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorate pottery via decorated pot crafting\",\n            \"archaeology collectible\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_ingredients tag\"\n        }\n      }\n    },\n    \"minecraft:slime_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop; unprocessed crafting input\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable from slime chunks and swamps\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"key ingredient in many core recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sticky piston, slime block, frog food\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slimeball is bright green\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"frog_food tag; lures and breeds frogs\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft sticky pistons for redstone\",\n            \"craft slime blocks for builds and bounce\",\n            \"craft magma cream for brewing\",\n            \"feed and breed frogs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of and frog_food tag\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "79e3a050-7a41-4208-bf71-15e05b27639a",
+  "total_cost_usd": 0.23645865,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3619,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14547,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3619,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14547,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3619,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3619
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2756,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0028260000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14547,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3619,
+      "webSearchRequests": 0,
+      "costUSD": 0.23363265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f7a63966-f324-415d-8a40-330df94d5cb5"
+}

@@ -35,16 +35,21 @@ export const isCreativeOnlyRule: Rule = {
   id: "is_creative_only",
   facets: ["is_creative_only"],
   run({ record }) {
-    if (!VANILLA_CREATIVE_ONLY.has(record.id)) return [];
-    return [
-      {
-        facet: "is_creative_only",
-        kind: "single",
-        value: true,
-        source: "rule:is_creative_only_hardcoded",
-        confidence: 1,
-        rationale: "known vanilla creative-only item",
-      },
-    ];
+    // Spawn eggs are creative-only in vanilla survival (no recipe, no loot).
+    // Vanilla v1 canary surfaced fox_/frog_/etc. as misclassified.
+    const isSpawnEgg = record.path.endsWith("_spawn_egg");
+    if (isSpawnEgg || VANILLA_CREATIVE_ONLY.has(record.id)) {
+      return [
+        {
+          facet: "is_creative_only",
+          kind: "single",
+          value: true,
+          source: "rule:is_creative_only_hardcoded",
+          confidence: 1,
+          rationale: isSpawnEgg ? "spawn egg id pattern" : "known vanilla creative-only item",
+        },
+      ];
+    }
+    return [];
   },
 };

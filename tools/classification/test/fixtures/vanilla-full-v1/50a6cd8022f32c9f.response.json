@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 179492,
+  "duration_api_ms": 180228,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:iron_pickaxe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:pickaxes + form=tool\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common in component\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core progression tool, used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mines blocks; weapon component usable\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard unadorned iron tool\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron = dark gray metal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mining stone and ores\",\n            \"harvesting iron-tier blocks\",\n            \"smelt into iron nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pickaxe core gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:iron_shovel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:shovels + form=tool\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common in component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly, less than pickaxe\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digs terrain; creates grass paths\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard unadorned iron tool\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron = dark gray metal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"digging dirt, sand, gravel\",\n            \"creating grass paths\",\n            \"smelt into iron nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shovel core gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:iron_spear\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:spears + weapon component\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix iron_; repairs via iron_tools\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix iron_; repairable with iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common in component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"viable combat weapon, loot-accessible\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weapon with melee + lunge enchant\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard iron weapon\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron = dark gray metal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"melee combat\",\n            \"lunge/thrown attacks\",\n            \"smelt into iron nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spear = melee + lunge enchant\"\n        }\n      }\n    },\n    \"minecraft:iron_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:swords + form=weapon\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common in component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard combat weapon, used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary melee weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard iron sword\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron = dark gray metal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"melee combat\",\n            \"cutting cobwebs\",\n            \"smelt into iron nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sword combat + cobweb instant mine\"\n        }\n      }\n    },\n    \"minecraft:iron_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive gate; requires redstone\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix iron_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common in component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific builds and redstone setups\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural gate + redstone activated\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron grate = mechanical aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron = dark gray metal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redstone-controlled access point\",\n            \"mob farm entry/exit control\",\n            \"hidden floors and passages\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone gate + structural uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "1de460a8-09fa-41e7-9a50-0c1d2779880b",
+  "total_cost_usd": 0.25740465,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5695,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15286,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5695,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15286,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5695,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5695
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4832,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004902,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15286,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5695,
+      "webSearchRequests": 0,
+      "costUSD": 0.25250265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2fc2fcc3-dda4-4076-8c14-3a2db9ed81de"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 171063,
+  "duration_api_ms": 173948,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:blue_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is windows/structure\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as windows or decorative element\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed colored variant of plain glass\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass is translucent; blue is cool tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building colored windows\", \"filtering light with color\", \"decorating interiors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical stained glass player uses\"\n        }\n      }\n    },\n    \"minecraft:blue_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pane is thin window/structural element\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _stained_glass_pane\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin pane for windows or dividers\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored variant of plain glass pane\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass is translucent; blue is cool tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-full blocks waterlog in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"thin window panes\", \"decorative dividers\", \"building facades\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical glass pane player uses\"\n        }\n      }\n    },\n    \"minecraft:blue_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta is a solid building block\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _terracotta; tag terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural or decorative block\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed clay with earthy natural feel\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta dyes give muted earthy tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"badlands-style builds\", \"smelting into glazed terracotta\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical terracotta player uses\"\n        }\n      }\n    },\n    \"minecraft:blue_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool placed as solid building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"many downstream uses: beds, banners\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds and crafting decor items\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool with natural organic feel\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue is a cool color tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\"],\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag minecraft:dampens_vibrations\",\n          \"rationale\": \"dampens_vibrations → sculk silent\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting beds and banners\", \"building and decorating\", \"crafting carpets\", \"dampens sculk vibrations\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool's top player uses\"\n        }\n      }\n    },\n    \"minecraft:bogged_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are utility mob-spawners\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no loot/craft source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only in creative/admin contexts\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources or recipes found\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob spawn egg, organic theme\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs spawn their linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning bogged skeletons\", \"creative/admin mob placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical spawn egg player uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "94fc9b20-eea4-4b89-9570-ecffdd0f1a89",
+  "total_cost_usd": 0.2177114,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4388,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13053,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4388,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13053,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4388,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4388
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3525,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0036049999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13053,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4388,
+      "webSearchRequests": 0,
+      "costUSD": 0.2141064,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c3aec20d-4641-4451-8b38-ebbb274970dc"
+}

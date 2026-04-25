@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 167991,
+  "duration_api_ms": 168849,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:jungle_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trapdoor placed as structural element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component: minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds; redstone-activatable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle wood has dark brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; movable; trapdoors waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"access point in builds\",\n            \"redstone-activated door\",\n            \"decorative opening\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main trapdoor uses\"\n        }\n      }\n    },\n    \"minecraft:jungle_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark log block for building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component: minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"less used than planks typically\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative log block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle is a dark-toned wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative all-bark pillar block\",\n            \"crafting into jungle planks\",\n            \"fuel source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical wood block uses\"\n        }\n      }\n    },\n    \"minecraft:kelp\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw aquatic plant gathered as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant in ocean biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when near ocean or farming\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown in kelp farms for dried kelp\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic ocean plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green aquatic plant\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelt into dried kelp for food/fuel\",\n            \"kelp farm for compressed fuel blocks\",\n            \"composting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main kelp downstream uses\"\n        }\n      }\n    },\n    \"minecraft:knowledge_book\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only recipe-unlock item\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/admin use only\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing book with special powers\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden/amber book appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"unlock recipe knowledge for player\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose of knowledge book\"\n        }\n      }\n    },\n    \"minecraft:ladder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed on walls for climbing\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from sticks (generic wood)\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component: minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly in mines and builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds; enables climbing\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wooden stick construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generic mid-tone wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ladders waterlog; piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"vertical climbing on walls\",\n            \"building access shafts\",\n            \"mine shaft traversal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main ladder use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:jungle_wood\",\n      \"facet\": \"origin\",\n      \"current\": [\"overworld_surface\"],\n      \"suggested\": [\"crafted_only\"],\n      \"rationale\": \"jungle trees spawn jungle_log; all-bark wood variant is crafted only\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e6104631-3b89-4765-a47a-62633b87e1b6",
+  "total_cost_usd": 0.21406365,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4319,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12832,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4319,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12832,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4319,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4319
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3456,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003531,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12832,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4319,
+      "webSearchRequests": 0,
+      "costUSD": 0.21053265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "03500830-734e-4666-9c0f-798d83c4957e"
+}

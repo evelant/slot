@@ -1,0 +1,283 @@
+{
+  "items": {
+    "minecraft:dropper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "redstone-powered item ejector block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "crafted primarily from cobblestone"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe contains redstone dust"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core block in automation builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "ejects items on redstone pulse"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional stone mechanism block"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "cobblestone-textured, grey-brown"
+        },
+        "primary_uses": {
+          "values": [
+            "eject items when redstone powered",
+            "automation and item routing",
+            "ingredient for crafter block"
+          ],
+          "signal": "inferred",
+          "rationale": "primary automation block usage"
+        }
+      }
+    },
+    "minecraft:drowned_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot table or recipe source"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival gameplay"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in creative/admin context"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg appearance"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns drowned on right-click"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn drowned mobs in creative mode",
+            "mob farm and map testing"
+          ],
+          "signal": "inferred",
+          "rationale": "creative/admin-only usage"
+        }
+      }
+    },
+    "minecraft:dune_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied at smithing table to trim armor"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor piece cosmetically"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "adds cosmetic trim pattern to armor"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "desert pyramid find; ornate armor deco"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dune desert aesthetic motif"
+        },
+        "primary_uses": {
+          "values": [
+            "apply dune trim pattern to armor",
+            "duplicate template via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "standard smithing template functions"
+        }
+      }
+    },
+    "minecraft:echo_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for recovery compass"
+        },
+        "material_family": {
+          "value": "echo_shard",
+          "signal": "pattern",
+          "rationale": "named shard material from deep dark"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used to craft recovery compass"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "crafts recovery compass for navigation"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "deep dark eerie glow, ancient city find"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan-teal eerie luminescence"
+        },
+        "primary_uses": {
+          "values": [
+            "craft recovery compass (8 per compass)",
+            "rare reward from ancient city exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "sole downstream use is recovery compass"
+        }
+      }
+    },
+    "minecraft:egg": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw drop from chickens, unprocessed"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "chickens lay eggs constantly"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in baking and as throwable"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "food recipes; chicken-farm byproduct"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic animal product"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "white/cream egg color"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "12.5% chance to spawn baby chicken"
+        },
+        "primary_uses": {
+          "values": [
+            "craft cake and pumpkin pie",
+            "throw to potentially spawn baby chickens",
+            "chicken farm passive byproduct"
+          ],
+          "signal": "inferred",
+          "rationale": "main gameplay uses of egg"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:egg",
+      "facet": "origin",
+      "current": [
+        "trial_chamber",
+        "village"
+      ],
+      "suggested": [
+        "trial_chamber",
+        "village",
+        "mob_drop"
+      ],
+      "rationale": "loot source minecraft:gameplay/chicken_lay confirms mob_drop is primary origin",
+      "confidence": 0.95
+    }
+  ]
+}

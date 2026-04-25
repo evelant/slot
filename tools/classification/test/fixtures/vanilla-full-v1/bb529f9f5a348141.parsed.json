@@ -1,0 +1,262 @@
+{
+  "items": {
+    "minecraft:pale_oak_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor is structural/passable block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds but not daily staple"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally; redstone-activatable"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "pattern",
+          "rationale": "pale oak is distinctly ashen/pale wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; trapdoors movable and waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "building entryways and passages",
+            "redstone-activated doors",
+            "decorative architectural accent"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor gameplay uses"
+        }
+      }
+    },
+    "minecraft:pale_oak_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log-form block placed structurally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core build and craft material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily placed as structure"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw wood block from tree"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "pattern",
+          "rationale": "pale oak has ashen pale appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative log pillars",
+            "crafting pale oak planks",
+            "smelting into charcoal",
+            "campfire and smoker crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of confirms downstream uses"
+        }
+      }
+    },
+    "minecraft:panda_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "spawn eggs are creative-only items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot or recipe source"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival acquisition"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used rarely even in creative"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg spawns its named mob"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents a natural animal"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning pandas in creative mode",
+            "mob farm setup via commands"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg function"
+        }
+      }
+    },
+    "minecraft:paper": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed crafting ingredient"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "pattern",
+          "rationale": "item is the paper material itself"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "books, maps, banners, fireworks all need it"
+        },
+        "activity": {
+          "values": [
+            "trading",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "maps for exploration; traded with cartographers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple utilitarian flat material"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "paper is off-white/ivory in appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting books and bookshelves",
+            "crafting maps and cartography items",
+            "crafting banner patterns",
+            "crafting firework rockets"
+          ],
+          "signal": "inferred",
+          "rationale": "confirmed by sample_ingredient_of list"
+        }
+      }
+    },
+    "minecraft:parched_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "spawn eggs are creative-only items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot or recipe source"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival acquisition"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used rarely even in creative"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg spawns its named mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning parched mob in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

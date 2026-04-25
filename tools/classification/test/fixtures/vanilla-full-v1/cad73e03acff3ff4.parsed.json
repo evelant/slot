@@ -1,0 +1,289 @@
+{
+  "items": {
+    "minecraft:mangrove_sign": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "displays editable text; interactive block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed situationally for labeling"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for text labels in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mangrove wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish-pink wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden item, ignites"
+        },
+        "primary_uses": {
+          "values": [
+            "label storage and locations",
+            "decorative text display"
+          ],
+          "signal": "inferred",
+          "rationale": "core sign use cases"
+        }
+      }
+    },
+    "minecraft:mangrove_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-height structural building form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs used heavily in most builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is structural building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "geometric shape variant of wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden slab, ignites"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "roof detail work",
+            "crafting barrel/composter/lectern"
+          ],
+          "signal": "inferred",
+          "rationale": "typical slab uses + ingredient list"
+        }
+      }
+    },
+    "minecraft:mangrove_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair-shaped structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs used heavily in most builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and aesthetic building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "geometric shape variant of wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden stairs, ignites"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "roof slopes and eaves",
+            "decorative building edges"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair use cases"
+        }
+      }
+    },
+    "minecraft:mangrove_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes; redstone operable gate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed situationally, not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "access hatch + redstone-controlled gate"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden trapdoor, ignites"
+        },
+        "primary_uses": {
+          "values": [
+            "access hatches in floors",
+            "decorative openings",
+            "redstone-controlled barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor use cases"
+        }
+      }
+    },
+    "minecraft:mangrove_wood": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw log form harvested from mangrove trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in builds and crafting chains"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as log structure or processed further"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed bark-all-sides wood form"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish-pink bark"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood log, ignites"
+        },
+        "primary_uses": {
+          "values": [
+            "placed log structure building",
+            "crafting mangrove planks",
+            "charcoal and fuel production"
+          ],
+          "signal": "inferred",
+          "rationale": "standard log use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 163311,
+  "duration_api_ms": 164290,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:vault\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"key-activated loot dispensing block\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron-cage metallic appearance\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only item, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"adventure/creative map builders use it\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core to trial chamber progression\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"metallic mechanism in ancient structure\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron vault appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block naturally placed in trial chambers\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy structure block, not piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"key-gated loot dispensing\", \"trial chamber progression\", \"adventure map building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"accepts trial keys, grants loot once\"\n        }\n      }\n    },\n    \"minecraft:verdant_froglight\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emissive decorative column block\"\n        },\n        \"material_family\": {\n          \"value\": \"froglight\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _froglight, unique material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires frog+magma_cube interaction\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative light, used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light source for aesthetic builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic frog-produced material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"verdant=green; bright light emission\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 15\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative green light source\", \"ambient lighting accent in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing green decorative block\"\n        }\n      }\n    },\n    \"minecraft:vex_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies cosmetic trim to armor\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"duplicated using diamonds at crafting table\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per armor trim application\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor trims are purely cosmetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vex motif: illager-linked hostile look\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"silvery smithing template texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"applying vex trim at smithing table\", \"duplicating via diamond recipe\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor cosmetic upgrade template\"\n        }\n      }\n    },\n    \"minecraft:vex_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg = creative-only admin item\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs unobtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in creative testing and setup\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vex is a hostile combat mob\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vex: hostile illager-summoned spirit\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vex bluish-white ghostly coloring\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs spawn their mob on use\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning vex in creative mode\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative mob spawner for vex\"\n        }\n      }\n    },\n    \"minecraft:villager_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg = creative-only admin item\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs unobtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in creative NPC setup\"\n        },\n        \"activity\": {\n          \"values\": [\"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"villagers are the primary trading NPCs\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard overworld NPC, no special feel\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm skin tones, brown/green robes\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs spawn their mob on use\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning villager in creative mode\", \"setting up trading posts in creative\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative NPC spawner for villager\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "4544a3bc-2cad-4b8e-8793-81c6a010b512",
+  "total_cost_usd": 0.20530115000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3289,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12574,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3289,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12574,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3289,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3289
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2426,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002501,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12574,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3289,
+      "webSearchRequests": 0,
+      "costUSD": 0.20280015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "37f41b98-5b18-43f6-8791-d11debad74bc"
+}

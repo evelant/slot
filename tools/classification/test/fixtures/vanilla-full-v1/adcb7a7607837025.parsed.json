@@ -1,0 +1,305 @@
+{
+  "items": {
+    "minecraft:dark_oak_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plate is a redstone input device"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common dark oak planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational in redstone/entry builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers circuits; placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone function + wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak is dark brown wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; plates pop off pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "trigger redstone on entity step",
+            "automatic door activation",
+            "mob/player detection circuit"
+          ],
+          "signal": "inferred",
+          "rationale": "core pressure plate gameplay uses"
+        }
+      }
+    },
+    "minecraft:dark_oak_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant drop, grown into trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "drops from dark oak leaves regularly"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when establishing tree farm"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "tree-farm for wood supply"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "living plant item"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling sprite is green foliage"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "plant material, catches fire"
+        },
+        "primary_uses": {
+          "values": [
+            "grow dark oak trees for wood",
+            "sustain tree farm",
+            "decorative potted plant"
+          ],
+          "signal": "inferred",
+          "rationale": "core sapling gameplay uses"
+        }
+      }
+    },
+    "minecraft:dark_oak_shelf": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "shelf_inventory model + has_nbt_variation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common dark oak planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when decorating storage areas"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "display + hold items"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain wooden furniture piece"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak dark-brown wood tone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard item stacks"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; wood block is piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "display and store items decoratively",
+            "organize items with wood aesthetic",
+            "interior decoration with storage"
+          ],
+          "signal": "inferred",
+          "rationale": "core shelf gameplay uses"
+        }
+      }
+    },
+    "minecraft:dark_oak_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs are text/labeling decorations"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common dark oak planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed situationally for labels/decor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "labeling and wayfinding in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain wooden signage"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak dark-brown wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; signs pop off pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "label rooms, chests, or paths",
+            "wayfinding text display",
+            "decorative text element in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core sign gameplay uses"
+        }
+      }
+    },
+    "minecraft:dark_oak_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form = structural building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant dark oak planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs used heavily in most builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant of dark oak planks"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak dark-brown wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; slabs are piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floor or ceiling layer",
+            "roof and stair-step detailing",
+            "crafting barrel, composter, lectern"
+          ],
+          "signal": "inferred",
+          "rationale": "core slab gameplay uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

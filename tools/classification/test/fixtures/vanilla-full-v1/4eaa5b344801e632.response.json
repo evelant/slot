@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 310649,
+  "duration_api_ms": 311368,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:soul_torch\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"passive light source; schema lists candles as decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed often for lighting in nether/dark areas\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for light and nether aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"soul-themed torch variant, ethereal blue flame\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue soul flame emission\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"repels_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_repellents\",\n          \"rationale\": \"piglins flee soul fire items\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"torch emits light level 10\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"light source in dark/nether areas\",\n            \"repel piglins when placed\",\n            \"craft soul lantern\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light + piglin repellent + lantern ingredient\"\n        }\n      }\n    },\n    \"minecraft:spawner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"actively spawns mobs when placed\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; unobtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob farm setup, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob farm core block, automated drops\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron cage structure, eerie dungeon origin\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron cage with spinning mob flame\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\", \"mineshaft\", \"nether_fortress\", \"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates in dungeons/fortresses/strongholds\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function is mob spawning\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mob farm construction\",\n            \"automated mob spawning in creative\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core spawner utility\"\n        }\n      }\n    },\n    \"minecraft:spectral_arrow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"ammunition\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:arrows\",\n          \"rationale\": \"arrows tag = ammunition role\"\n        },\n        \"material_family\": {\n          \"value\": \"glowstone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from glowstone dust\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires glowstone + bastion/bartering\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized arrow, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fired from bow for combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing special arrow variant\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spectral luminescent white-glow effect\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply glowing effect to targets\",\n            \"track mobs through walls\",\n            \"combat with bow or crossbow\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing effect is core purpose\"\n        }\n      }\n    },\n    \"minecraft:spider_eye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop; schema lists string/bone as natural_resource\"\n        },\n        \"material_family\": {\n          \"value\": \"spider\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix spider_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable spider mob drop\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brewing ingredient, rarely eaten\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"→ fermented spider eye → potions\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw biological mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brownish-red spider eye coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft fermented spider eye\",\n            \"brewing ingredient chain\",\n            \"emergency food (applies poison)\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fermented eye is primary downstream use\"\n        }\n      }\n    },\n    \"minecraft:spider_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn spider mobs on right-click\"\n        },\n        \"material_family\": {\n          \"value\": \"spider\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix spider_\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg = creative-only in vanilla\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative mode mob spawning/farm setup\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn spiders for mob farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biological mob egg\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spider dark gray/brown egg coloring\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg = creative-only in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn spiders in creative mode\",\n            \"mob farm setup and testing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core spawn egg utility\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"environmental_property\",\n      \"value\": \"piglin_repellent\",\n      \"rationale\": \"Tag piglin_repellents causes piglins to flee; distinct from piglin_pacifying (prevents aggression); soul torch, soul lantern, soul campfire all need this\"\n    },\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"combat_bonus\",\n      \"value\": \"inflicts_glowing\",\n      \"rationale\": \"Spectral arrow applies Glowing status effect to hit entities; not representable in current combat_bonus enum\"\n    }\n  ],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "33af3bd5-be6e-45d3-b0d0-f3e309f1b500",
+  "total_cost_usd": 0.31111415,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3757,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 19480,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3757,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 19480,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3757,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3757
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2894,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002969,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 19480,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3757,
+      "webSearchRequests": 0,
+      "costUSD": 0.30814515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "571e2c02-5b3e-40d2-a20e-c5d881e00bea"
+}

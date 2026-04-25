@@ -1,0 +1,337 @@
+{
+  "items": {
+    "minecraft:large_fern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "tall plant; no ingredient uses, purely aesthetic"
+        },
+        "material_family": {
+          "value": "fern",
+          "signal": "pattern",
+          "rationale": "id contains 'fern'"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, not an everyday necessity"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "no ingredient uses; placed for aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic plant block"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "ferns are green"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorating builds with natural plants",
+            "Composting for bonemeal"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:lava_bucket": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable bucket holding lava fluid"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "bucket crafted from 3 iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common fuel and lava-source tool"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "lava sources, cobble/obsidian gen"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian bucket, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "lava is visually warm, glowing, emissive"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave",
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "lava sources in caves and nether"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory item that holds fluid"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "moves lava from source to destination"
+        },
+        "primary_uses": {
+          "values": [
+            "Fuel for furnaces and smelting",
+            "Creating lava sources",
+            "Obsidian and cobblestone generation"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:lead": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "leashes mobs to fence posts"
+        },
+        "material_family": {
+          "value": "string",
+          "signal": "inferred",
+          "rationale": "string is primary craft ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "slimeball"
+          ],
+          "signal": "inferred",
+          "rationale": "slimeball used in crafting recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific mob-handling use case"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "animal husbandry and mob transport"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple rope utility item"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "rope/string earthy brown tones"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "guides and moves mobs"
+        },
+        "primary_uses": {
+          "values": [
+            "Leashing mobs to fence posts",
+            "Moving animals between areas",
+            "Preventing mobs from wandering"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:leaf_litter": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin ground-cover; no ingredient uses"
+        },
+        "material_family": {
+          "value": "leaves",
+          "signal": "pattern",
+          "rationale": "id is leaf_litter; fallen leaf material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aesthetic decoration only"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative ground cover"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "fallen leaf organic material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "green/earthy fallen leaf tones"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaf material is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "Forest floor decoration",
+            "Composting for bonemeal"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:leather": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, not a refined product"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many diverse recipes"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "enchanting",
+            "storage_management",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor, books, bundles, item frames"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic animal product"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown leather tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting leather armor",
+            "Crafting books for enchanting",
+            "Crafting bundles for storage",
+            "Crafting item frames",
+            "Trading with leatherworker villagers"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream crafting uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:leaf_litter",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "leaf_litter generates naturally in forest biomes; not crafted_only",
+      "confidence": 0.85
+    }
+  ]
+}

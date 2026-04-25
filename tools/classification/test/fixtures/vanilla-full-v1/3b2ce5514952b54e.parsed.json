@@ -1,0 +1,269 @@
+{
+  "items": {
+    "minecraft:waxed_copper_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes; interactive mechanic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in copper builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; redstone-activatable"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "door mechanism; copper cut variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "base copper, bright orange-brown"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoors waterlog when in water"
+        },
+        "primary_uses": {
+          "values": [
+            "copper door/hatch mechanism",
+            "decorative trapdoor in builds",
+            "redstone-activated entry"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor uses"
+        }
+      }
+    },
+    "minecraft:waxed_cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "construction and copper aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cut texture variant of copper"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "base copper, bright orange-brown"
+        },
+        "primary_uses": {
+          "values": [
+            "copper building exterior",
+            "crafting copper slabs and stairs",
+            "decorative copper surface"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses for cut copper"
+        }
+      }
+    },
+    "minecraft:waxed_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab = structural half-block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in copper builds for detailing"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "half-block construction and detail"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cut copper slab variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "base copper, bright orange-brown"
+        },
+        "primary_uses": {
+          "values": [
+            "half-block copper detailing",
+            "copper roof or floor build",
+            "ingredient for chiseled copper"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab + chiseled ingredient"
+        }
+      }
+    },
+    "minecraft:waxed_cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs = structural stair block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in copper builds for transitions"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "staircase construction and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cut copper stairs variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "base copper, bright orange-brown"
+        },
+        "primary_uses": {
+          "values": [
+            "copper staircase construction",
+            "copper roof transition detail",
+            "decorative copper steps"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair uses"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full solid block; structural use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative accent block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled pattern; primarily decorative"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled=ornate; exposed oxide state"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed: slight patina, less vibrant"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative chiseled copper accent",
+            "building with exposed copper tone",
+            "ornamental block pattern"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled copper primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

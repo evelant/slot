@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 206082,
+  "duration_api_ms": 207454,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:axolotl_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn specific mob in world\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs not obtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/command access only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mob-spawning use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axolotls aid aquatic combat; aquariums\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"represents living aquatic creature\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axolotl is pink/magenta\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spawn axolotl in world\", \"Aquatic combat assistance\", \"Aquarium decoration setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg use cases\"\n        }\n      }\n    },\n    \"minecraft:azalea\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"3D bush block placed for aesthetics\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found near lush cave openings\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche garden/cave-finder use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative bush; signals lush cave below\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"plant/shrub block\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green leaves with pink flowers\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant material is flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative garden bush\", \"Locate lush caves below\", \"Grow azalea trees\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main player use cases\"\n        }\n      }\n    },\n    \"minecraft:azalea_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaf block placed for foliage aesthetics\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant on azalea trees\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative foliage use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"foliage for natural-style builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaf with unique floral overlay texture\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green leaf block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves are flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Foliage decoration in builds\", \"Craft leaf litter\", \"Natural tree canopy aesthetics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases incl. recipe data\"\n        }\n      }\n    },\n    \"minecraft:azure_bluet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower picked directly from world\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common plains/mountain flower\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used occasionally for dye or stew\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye crafting, bee food, flower farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"small flower, natural aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white petals, pale yellow center\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Craft light_gray_dye\", \"Suspicious stew ingredient\", \"Bee attraction\", \"Decorative flower placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipe consumption data + bee_food tag\"\n        }\n      }\n    },\n    \"minecraft:baked_potato\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:food + minecraft:consumable components\",\n          \"rationale\": \"food item with nutrition and saturation\"\n        },\n        \"material_family\": {\n          \"value\": \"potato\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"cooked from raw potato\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily farmed and cooked\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-tier food consumed regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"product of potato farm + cooking\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic cooked food, no special look\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown cooked potato tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Restore 5 hunger + 6 saturation\", \"Rabbit stew ingredient\", \"Mid-tier food source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food component values + recipe data\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "8d846688-7f49-4250-8dc1-ece734b74195",
+  "total_cost_usd": 0.22631265,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3863,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13793,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3863,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13793,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3863,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3863
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3000,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003075,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13793,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3863,
+      "webSearchRequests": 0,
+      "costUSD": 0.22323765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "70bfda2b-3872-4745-99ab-af26a520ba0c"
+}

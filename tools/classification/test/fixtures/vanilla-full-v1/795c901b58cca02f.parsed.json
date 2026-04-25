@@ -1,0 +1,273 @@
+{
+  "items": {
+    "minecraft:snort_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "Shard-type ingredient for decorated pots"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "Pottery sherds are fired clay artifacts"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used to craft decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Archaeological artifact from ruins"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "Clay pottery has warm earthy tones"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Specific use: crafting decorated pots"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft decorated pots",
+            "Archaeology collection"
+          ],
+          "signal": "inferred",
+          "rationale": "Tag decorated_pot_ingredients defines use"
+        }
+      }
+    },
+    "minecraft:snout_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "Smithing template applies cosmetic trim upgrade"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Snout trim is purely cosmetic on armor"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "Piglin snout pattern; bastion origin"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Bastion piglin gold-and-dark aesthetic"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used once per armor piece trimmed"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply snout trim to armor",
+            "Duplicate via diamond crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing_trim use + shaped duplication recipe"
+        }
+      }
+    },
+    "minecraft:snow": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Thin layer block; primarily aesthetic use"
+        },
+        "material_family": {
+          "value": "snow",
+          "signal": "pattern",
+          "rationale": "id is minecraft:snow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Snow layers for winter builds and decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural world block"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "White cold-toned snow appearance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in winter-themed builds"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative snow layering",
+            "Craft snow blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "Thin layers for aesthetics; inputs to snow_block"
+        }
+      }
+    },
+    "minecraft:snow_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full solid block used in structures"
+        },
+        "material_family": {
+          "value": "snow",
+          "signal": "pattern",
+          "rationale": "id contains snow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural snow builds and winter decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural world block"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "White cold-toned snow appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "slippery"
+          ],
+          "signal": "pattern",
+          "rationale": "Tag sulfur_cube_archetype/fast_sliding"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for snow builds or golem crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "Build snow structures",
+            "Craft snow layers",
+            "Construct snow golems"
+          ],
+          "signal": "inferred",
+          "rationale": "Building, crafting, snow golem base block"
+        }
+      }
+    },
+    "minecraft:snow_golem_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Spawn egg: places snow golem mob"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "No survival loot or recipe; creative-only"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "Snow golems attack mobs with snowballs"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard spawn egg appearance"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Creative-only; rarely used item"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "All spawn eggs place their linked mob"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "No loot sources or crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn snow golems",
+            "Snow golem mob farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "Core use: placing snow golem entities"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

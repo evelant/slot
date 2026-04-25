@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 123460,
+  "duration_api_ms": 124250,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:stripped_spruce_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full-bark log block used structurally\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood used heavily in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is structural building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural wood, stripped bark variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce = medium reddish-brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"crafting spruce planks\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block downstream uses\"\n        }\n      }\n    },\n    \"minecraft:stripped_warped_hyphae\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full-bark nether wood block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in nether-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural building block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether fungal wood, stripped form\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood has teal/cyan color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building nether-themed structures\", \"crafting warped planks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream warped wood uses\"\n        }\n      }\n    },\n    \"minecraft:stripped_warped_stem\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether stem log block for building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly in nether builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether fungal stem, stripped\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped stem has teal/cyan color\"\n        },\n        \"origin\": {\n          \"values\": [\"nether\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped forest biome is in the nether\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building nether structures\", \"crafting warped planks and hyphae\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream warped wood uses\"\n        }\n      }\n    },\n    \"minecraft:structure_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only structure manipulation block\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mapmakers/admins only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"save/load structure templates\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical admin block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"save/load structures\", \"adventure map creation\", \"structure template editing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core admin building tool\"\n        }\n      }\n    },\n    \"minecraft:structure_void\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only void marker for structures\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized mapmaking use only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in structure template authoring\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical structure placeholder\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"appears nearly invisible when placed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"marks void in structure templates\", \"prevents overwriting existing blocks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structure void semantic function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:stripped_spruce_wood\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\"],\n      \"rationale\": \"Obtained by axe-stripping spruce wood in the overworld, not crafted from materials\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:stripped_warped_hyphae\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"nether\"],\n      \"rationale\": \"Obtained by stripping warped hyphae in nether warped forest biome\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:stripped_warped_hyphae\",\n      \"facet\": \"form\",\n      \"current\": \"stripped_log\",\n      \"suggested\": \"stripped_wood\",\n      \"rationale\": \"Hyphae is the all-bark wood form; stem is the log form — same distinction as oak_wood vs oak_log\",\n      \"confidence\": 0.82\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "bf223cfd-f58c-4045-b401-77b9a92d0e96",
+  "total_cost_usd": 0.1784459,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4790,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10308,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4790,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10308,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4790,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4790
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3927,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004007,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10308,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4790,
+      "webSearchRequests": 0,
+      "costUSD": 0.17443889999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d85c98f0-0761-4c6f-a74d-e0473a899f5c"
+}

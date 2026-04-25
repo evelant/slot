@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 218172,
+  "duration_api_ms": 218946,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:snowball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"ammunition\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown projectile, consumed on throw\"\n        },\n        \"material_family\": {\n          \"value\": \"snow\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix snow\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational; blazes/happy ghasts\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown at blazes, ender dragon\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural snow material\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/icy appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"throw at blazes for extra damage\",\n            \"craft snow blocks\",\n            \"feed and tame happy ghasts\",\n            \"knock back mobs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses\"\n        }\n      }\n    },\n    \"minecraft:soul_campfire\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooks food, emits light, active block\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily wood in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"soul_sand\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"soul sand/soil required in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche vs regular campfire\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as light source and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"eerie soul fire aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue-teal soul fire glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 10\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\", \"repels_mobs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"burns standing entities; piglin_repellents tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"soul fire light source (level 10)\",\n            \"repel piglins\",\n            \"cook food\",\n            \"blue fire decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses\"\n        }\n      }\n    },\n    \"minecraft:soul_lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic light source, no interaction\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from iron nuggets\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for soul aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for light and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"soul fire glow, iron cage design\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"emissive\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal glow, dark iron cage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 10\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"repels_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_repellents\",\n          \"rationale\": \"piglin_repellents tag explicit\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"soul fire light source (level 10)\",\n            \"soul aesthetic decoration\",\n            \"repel piglins\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses\"\n        }\n      }\n    },\n    \"minecraft:soul_sand\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gathered raw from nether, not processed\"\n        },\n        \"material_family\": {\n          \"value\": \"soul_sand\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = soul_sand\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific nether tasks\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether wart, wither summon, bubbles\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw nether terrain block\"\n        },\n        \"palette\": {\n          \"values\": [\"muddy\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark muddy nether sand texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"slows_walking\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"entities sink and slow on soul sand\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"grow nether wart\",\n            \"summon wither boss\",\n            \"downward bubble column\",\n            \"soul fire base block\",\n            \"craft soul campfire and torch\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses\"\n        }\n      }\n    },\n    \"minecraft:soul_soil\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gathered raw from nether\"\n        },\n        \"material_family\": {\n          \"value\": \"soul_soil\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = soul_soil\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"less versatile than soul sand\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"soul fire base, nether builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw nether soil block\"\n        },\n        \"palette\": {\n          \"values\": [\"muddy\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark earthy nether soil\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"soul fire base block\",\n            \"craft soul campfire and torch\",\n            \"nether building and decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:soul_campfire\",\n      \"facet\": \"origin\",\n      \"current\": [\"nether\"],\n      \"suggested\": [\"crafted_only\"],\n      \"rationale\": \"crafted only; sole loot source is self-drop, not natural nether gen\",\n      \"confidence\": 0.75\n    },\n    {\n      \"item\": \"minecraft:soul_lantern\",\n      \"facet\": \"origin\",\n      \"current\": [\"nether\"],\n      \"suggested\": [\"crafted_only\"],\n      \"rationale\": \"crafted only; sole loot source is self-drop, not natural nether gen\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b670c7e4-f846-42c3-9b75-c58866f9e2a4",
+  "total_cost_usd": 0.26222315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4521,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15979,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4521,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15979,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4521,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4521
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3658,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003728,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15979,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4521,
+      "webSearchRequests": 0,
+      "costUSD": 0.25849515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "9358fa08-9d35-46cf-acce-a5bb33bbae36"
+}

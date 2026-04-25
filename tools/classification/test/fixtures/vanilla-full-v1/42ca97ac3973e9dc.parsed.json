@@ -1,0 +1,344 @@
+{
+  "items": {
+    "minecraft:light_blue_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed dye used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "tag minecraft:dyes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from blue orchid or blue+white dye"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "19 total recipe uses across dye applications"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "dyes decor items; wandering traders sell dyes"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 vanilla dye colors"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a soft, cool-toned pastel"
+        },
+        "primary_uses": {
+          "values": [
+            "dye wool, beds, glass, and concrete",
+            "firework star color",
+            "dye leather armor and horse armor",
+            "re-dye other light_blue colored items"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of list"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "small stackable dye item"
+        }
+      }
+    },
+    "minecraft:light_blue_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glazed pattern; no crafting output; ornamental"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _glazed_terracotta; smelted from terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "clay->terracotta->stained->glazed chain is accessible"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for patterned decorative builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive glazed ornate pattern + dyed variant"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue glaze, soft cool tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta pushed but not pulled by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative patterned walls and floors",
+            "interior and exterior decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "no downstream recipes; placed for aesthetics"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard placeable block item"
+        }
+      }
+    },
+    "minecraft:light_blue_harness": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equips Happy Ghast to enable multi-player riding"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "pattern",
+          "rationale": "id prefix + dye_*_harness recipe pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable; no rare materials implied"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only used when riding Happy Ghasts"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables aerial Happy Ghast travel"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 dyed harness variants"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue color, soft tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_loot_sources empty; crafted only"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "allows players to ride Happy Ghast"
+        },
+        "primary_uses": {
+          "values": [
+            "equip Happy Ghast to enable riding",
+            "tempt and lead Happy Ghasts"
+          ],
+          "signal": "inferred",
+          "rationale": "harnesses + happy_ghast_tempt_items tags"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "minecraft:light_blue_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is portable block storage"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "crafted from 2 shulker shells + chest"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End city shulker shell farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core portable storage; used heavily post-End"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory expansion for adventuring and hauling"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed variant of shulker box"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue color"
+        },
+        "primary_uses": {
+          "values": [
+            "portable inventory expansion",
+            "retain items when broken (survive death)",
+            "color-code storage organization"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box use cases"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item slot"
+        }
+      }
+    },
+    "minecraft:light_blue_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural glass for windows and builds"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id suffix _stained_glass; smelted from sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from glass + common dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building colored windows"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for colored windows and decor"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed glass variant"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "see-through glass with light blue tint"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows and skylights",
+            "decorative transparent builds",
+            "craft light blue stained glass panes"
+          ],
+          "signal": "inferred",
+          "rationale": "glass window use + pane ingredient"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard placeable block item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

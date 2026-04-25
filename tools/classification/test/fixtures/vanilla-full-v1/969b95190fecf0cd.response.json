@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 203616,
+  "duration_api_ms": 204527,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:granite_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form = structural block for builds\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component explicit\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used selectively in stone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and stone aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural stone in wall form variant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"granite has warm pinkish-brown tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building decorative stone walls\", \"granite-themed structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical wall block uses\"\n        }\n      }\n    },\n    \"minecraft:grass_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable terrain block\"\n        },\n        \"material_family\": {\n          \"value\": \"dirt\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dirt base with grass layer on top\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covers most of every overworld surface\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in nature builds, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terrain builds; sheep graze, grass spreads to dirt\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural terrain block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown dirt base + green grass top\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top layer of overworld terrain\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"allows_spawning\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"canonical mob and animal spawn surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"natural terrain decoration\", \"nature and garden builds\", \"mob spawn surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical grass block uses\"\n        }\n      }\n    },\n    \"minecraft:gravel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw world material, not processed\"\n        },\n        \"material_family\": {\n          \"value\": \"gravel\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id=gravel\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widespread in overworld\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for flint and concrete powder\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete powder crafting; path/terrain use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw rock material\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey-brown gravel texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls when block below is removed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"flint source when mined\", \"crafting concrete powder\", \"path decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main gravel uses\"\n        }\n      }\n    },\n    \"minecraft:gray_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are primarily decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wool and sticks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick = wood forms the banner pole\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component explicit\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed decoratively, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decoration; shield customization\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored banner\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray is muted and moderately dark\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorating builds and structures\", \"shield customization\", \"banner pattern duplication\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main banner uses\"\n        }\n      }\n    },\n    \"minecraft:gray_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bed has active sleep and respawn function\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wool and planks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks form the bed frame\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component explicit\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used nightly to skip darkness\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sets respawn for exploration; placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored bed variant\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray is muted and cool-toned\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"skip night cycle\", \"set respawn point\", \"recolor with dye\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main bed uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:gravel\",\n      \"facet\": \"origin\",\n      \"current\": [\"trading\"],\n      \"suggested\": [\"trading\", \"overworld_surface\", \"overworld_cave\", \"overworld_ocean\"],\n      \"rationale\": \"Gravel generates naturally in overworld rivers, beaches, and caves; stage2 only caught piglin_bartering loot table\",\n      \"confidence\": 0.9\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7d1a4cdc-9ab6-4de7-a464-b239a94a0672",
+  "total_cost_usd": 0.25458265,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4663,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15424,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4663,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15424,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4663,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4663
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3800,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038799999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15424,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4663,
+      "webSearchRequests": 0,
+      "costUSD": 0.25070265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "626a70e7-fbfe-492d-8756-c948f3e39370"
+}

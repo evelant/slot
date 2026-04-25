@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 118735,
+  "duration_api_ms": 119436,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:pale_oak_sapling\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from leaves, planted raw, not refined\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted occasionally to grow trees\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted to grow wood supply\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic plant item\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale muted green sapling sprite\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"plant pale oak trees\", \"grow renewable wood supply\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sapling core functions\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant/wood item burns\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"has_nbt_variation implies item storage/state\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche furniture/display block\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"display/store items aesthetically\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wood furniture block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak is very light wood tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"display books or items\", \"pale oak furniture decoration\", \"interior build detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf display/storage uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block burns\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sign accepts text, click events; interactive\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when labeling is needed\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"labels and decor in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wood sign\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak light wood color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"label locations with text\", \"decorate builds\", \"wayfinding markers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sign standard uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood sign burns\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag wooden_slabs, form=slab\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs are core building staple\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic wood slab form\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak very light wood tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height floors and ceilings\", \"decorative half-block builds\", \"ingredient for barrels/composters/lecterns\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab building and crafting uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood slab burns\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bottom slabs prevent mob spawning\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag wooden_stairs, form=stairs\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs heavily used in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic wood stair block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak very light wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"stair blocks for elevation changes\", \"decorative roofing shapes\", \"furniture building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair standard uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood stairs burn\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-full stair blocks prevent spawning\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "5a30067f-e3b2-4362-9479-0aacf9ede386",
+  "total_cost_usd": 0.14506615,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4629,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8134,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4629
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8134,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4629,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4629,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3766,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003841,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8134,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4629,
+      "webSearchRequests": 0,
+      "costUSD": 0.14122515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b2ee260c-ca25-4da1-89e2-2031f58c1604"
+}

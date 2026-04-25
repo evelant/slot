@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 152163,
+  "duration_api_ms": 152936,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:oak_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-height structural block for builds\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used heavily in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and decorative use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"undecorated organic oak wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak is medium warm-brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; slab is piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height floors and ceilings\",\n            \"decorative steps and rooflines\",\n            \"crafting barrels and bookshelves\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core slab use cases\"\n        }\n      }\n    },\n    \"minecraft:oak_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs are structural building blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs used heavily in roofs and steps\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairways and decorative rooflines\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"undecorated organic oak wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak is medium warm-brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; stairs are piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"stairways and multi-level access\",\n            \"decorative rooflines and arches\",\n            \"corner and step detailing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core stairs use cases\"\n        }\n      }\n    },\n    \"minecraft:oak_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural hatch; primarily building use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used situationally in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hatches in builds; redstone activation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"undecorated organic oak wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak is medium warm-brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; trapdoor is piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"hatch openings in floors and ceilings\",\n            \"decorative table tops and panels\",\n            \"redstone-activated barriers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core trapdoor use cases\"\n        }\n      }\n    },\n    \"minecraft:oak_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark log variant; structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in wood-heavy builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative columns and structural use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain all-bark organic block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak is medium warm-brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; block is piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"all-bark decorative columns and walls\",\n            \"crafting oak planks and charcoal\",\n            \"fuel in furnaces and smokers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core oak wood block use cases\"\n        }\n      }\n    },\n    \"minecraft:observer\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits pulse on block state change\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobblestone-dominant recipe (6 blocks)\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"nether_quartz\", \"redstone_dust\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"recipe requires quartz and redstone\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires nether quartz; needs nether trip\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific redstone builds only\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sensor for redstone automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"electronic sensor device aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray stone body with quartz face\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piston movement triggers pulse output\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"detecting block state changes\",\n            \"clock circuits and pulse generators\",\n            \"crop and tree farm automation\",\n            \"piston extender chains\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core observer use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "3194d73e-966f-424d-baa2-ccdad2bc9bfb",
+  "total_cost_usd": 0.17468315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4761,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10067,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4761
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10067,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4761,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4761,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3898,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003968,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10067,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4761,
+      "webSearchRequests": 0,
+      "costUSD": 0.17071515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "65eedfc6-218e-4496-b3ec-85bec75acc24"
+}

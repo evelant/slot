@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 126376,
+  "duration_api_ms": 127047,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:brown_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"laid by chickens; raw unprocessed mob drop\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:gameplay/chicken_lay\",\n          \"rationale\": \"loot table: chicken lays eggs\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common; chickens easily farmed\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common ingredient in cake/pie; throwable\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtained from chicken farms; food recipes downstream\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown-toned egg shell\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting cake and pumpkin pie\",\n            \"throwable projectile; chance to spawn chick\",\n            \"chicken-farm renewable product\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient list + standard egg throw mechanic\"\n        }\n      }\n    },\n    \"minecraft:brown_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"glazed_terracotta = patterned decorative block\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix + smelted from brown terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use only\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta is structural/aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed = patterned colored terracotta variant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown glazed; muted earth tones with pattern\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative patterned wall/floor block\",\n            \"directional-pattern building element\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta primary gameplay purpose\"\n        }\n      }\n    },\n    \"minecraft:brown_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips on happy ghast to enable riding; saddle-like\"\n        },\n        \"dye_color\": {\n          \"value\": \"brown\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix + harnesses tag; dyeable to all 16 colors\"\n        },\n        \"material_family\": {\n          \"value\": \"leather\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness equipment conventionally leather\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources listed; crafted only\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common; craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used specifically when riding happy ghasts\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness enables flying ghast riding\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leather harness with dye color\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown leather item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"equip happy ghast to enable riding\",\n            \"tempt and attract happy ghasts\",\n            \"dye to any of 16 harness colors\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harnesses + tempt_items tag + dye recipes\"\n        }\n      }\n    },\n    \"minecraft:brown_mushroom\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows naturally in world; raw fungal plant\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\", \"overworld_surface\", \"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark caves/swamps; mooshroom+bogged shearing\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common; farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in stews and fermented spider eye\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food stews + fermented spider eye for potions\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic fungal plant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown-toned mushroom cap\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mushroom stew ingredient\",\n            \"fermented spider eye crafting\",\n            \"suspicious stew ingredient\",\n            \"rabbit stew ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of covers stews and brewing\"\n        }\n      }\n    },\n    \"minecraft:brown_mushroom_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid full block; used for natural structures/builds\"\n        },\n        \"material_family\": {\n          \"value\": \"mushroom\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = brown_mushroom_block\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\", \"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"giant mushrooms in swamp/dark forest/caves\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common; mineable from giant mushrooms\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche organic building/decorating use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block for natural-style builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mushroom cap material\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown mushroom block; warm earthy tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"natural-look organic building block\",\n            \"decorative mushroom-biome structure element\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipes; purely structural or decorative use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "aeb403ce-b64d-4191-bc37-18dce497dcf2",
+  "total_cost_usd": 0.1517414,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3928,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8801,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3928,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8801,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3928,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3928
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3065,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00314,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8801,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3928,
+      "webSearchRequests": 0,
+      "costUSD": 0.1486014,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "160e9701-56e7-463f-bdb0-11db276d8989"
+}

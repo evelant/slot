@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 140795,
+  "duration_api_ms": 143175,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:iron_ingot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingot suffix + iron_tool_materials tag\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron_tool_materials tag = iron tier\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core mid-game crafting staple\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"combat\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: armor/weapons/tools/rails\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unadorned standard metal ingot\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey-silver matte iron appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting iron tools, armor, and weapons\",\n            \"beacon payment item\",\n            \"smithing trim material\",\n            \"crafting rails, buckets, anvils, mechanisms\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"56 recipe usages across game systems\"\n        }\n      }\n    },\n    \"minecraft:iron_leggings\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_leggings suffix + leg_armor tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard mid-game armor piece\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leg armor worn for combat protection\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unadorned standard iron armor\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey iron metal matte finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mid-tier leg armor protection\",\n            \"trimmable for cosmetic customization\",\n            \"smelt or blast into iron nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combat / trim / recycling uses\"\n        }\n      }\n    },\n    \"minecraft:iron_nautilus_armor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"display name ends in 'armor'; wearable\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron prefix; smelts to iron nuggets\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron prefix + smelts to iron nuggets\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean structures only; not craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean loot; no crafting recipe\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor for combat; ocean exploration reward\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean-themed variant of iron armor\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron material base; ocean origin\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ocean exploration structure reward\",\n            \"iron-tier armor protection\",\n            \"smelt for iron nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loot-only ocean armor with recycling use\"\n        }\n      }\n    },\n    \"minecraft:iron_nugget\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"nugget suffix + metal_nuggets tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific recipes not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in lanterns and chains\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small plain metal fragment\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small grey iron shard appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting lanterns and soul lanterns\",\n            \"crafting iron chains\",\n            \"combining 9 into one iron ingot\",\n            \"piglin bartering currency\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary downstream crafting targets\"\n        }\n      }\n    },\n    \"minecraft:iron_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore obtained directly from world\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined constantly throughout gameplay\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"actively mined; sole end-use is smelting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"world-generated raw ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey stone with iron ore vein coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelt or blast into iron ingots\",\n            \"core early-to-mid game resource\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only use is processing into ingots\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "2cc645c1-3704-498d-a286-997b6dac964f",
+  "total_cost_usd": 0.16611715000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5785,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9171,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5785,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9171,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5785,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5785
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4922,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.005002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9171,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5785,
+      "webSearchRequests": 0,
+      "costUSD": 0.16111515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e0a86f07-3ff4-45f6-96dd-88917ec2e33c"
+}

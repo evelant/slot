@@ -42,7 +42,9 @@ const MATCHERS: Matcher[] = [
       p.startsWith("soul_") ||
       p.startsWith("crimson_") ||
       p.startsWith("warped_") ||
-      p === "basalt" || p.startsWith("polished_basalt") || p.startsWith("smooth_basalt") ||
+      // smooth_basalt is intentionally NOT here — it forms in overworld
+      // amethyst geodes, NOT nether. Vanilla v1 canary catch.
+      p === "basalt" || p.startsWith("polished_basalt") ||
       p === "blackstone" || p.startsWith("polished_blackstone") || p.startsWith("chiseled_polished_blackstone") || p === "gilded_blackstone" ||
       p === "magma_block" ||
       p === "glowstone" ||
@@ -53,13 +55,24 @@ const MATCHERS: Matcher[] = [
   // end-exclusive
   {
     test: (p) =>
-      p.startsWith("end_") ||
+      // `end_portal_frame` is intentionally excluded — it generates in
+      // overworld strongholds, not the End. The `end_` prefix here means
+      // "destination of" the portal, not "located in." Vanilla v1 canary catch.
+      (p.startsWith("end_") && p !== "end_portal_frame") ||
       p.startsWith("purpur") ||
       p === "chorus_plant" || p === "chorus_flower" || p === "chorus_fruit" ||
       p === "dragon_egg" ||
       p === "dragon_head",
     bucket: "end_islands",
   },
+  // overworld-underground items missed by the "deep" pattern: smooth_basalt
+  // forms in amethyst geodes (y -64 to 30) not in the nether.
+  {
+    test: (p) => p === "smooth_basalt" || p.startsWith("smooth_basalt"),
+    bucket: "underground",
+  },
+  // end_portal_frame is in strongholds, which sit in the overworld underground
+  { test: (p) => p === "end_portal_frame", bucket: "underground" },
 ];
 
 export const yLevelRangeRule: Rule = {

@@ -1,0 +1,317 @@
+{
+  "items": {
+    "minecraft:crimson_fungus": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Grows in nether, harvested as-is"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Nether-only, not craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for hoglin breeding/tree growth"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Feeds hoglins, grows crimson trees"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Organic fungus from nether biome"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "Reddish-orange crimson fungus cap"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:hoglin_food",
+          "rationale": "Hoglins attracted to hoglin_food"
+        },
+        "primary_uses": {
+          "values": [
+            "Grow huge crimson fungi with bonemeal",
+            "Feed and breed hoglins",
+            "Nether decor plant"
+          ],
+          "signal": "inferred",
+          "rationale": "Core crimson fungus gameplay uses"
+        }
+      }
+    },
+    "minecraft:crimson_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Signs display text, mostly decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "Explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for labeling, not constant use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Labeling and nether decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood-based nether material"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "Crimson = deep red wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:non_flammable_wood",
+          "rationale": "Non-flammable wood tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Label chests and areas",
+            "Nether-themed build decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Hanging sign primary uses"
+        }
+      }
+    },
+    "minecraft:crimson_hyphae": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Log-family block for building/crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "Explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in nether builds and crafting"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is structural building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Organic nether wood-type block"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Dark reddish crimson bark texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:non_flammable_wood",
+          "rationale": "Non-flammable wood tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Nether-themed building material",
+            "Craft crimson planks and campfires",
+            "All-bark decorative log block"
+          ],
+          "signal": "inferred",
+          "rationale": "Hyphae log block uses"
+        }
+      }
+    },
+    "minecraft:crimson_nylium": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Terrain block used in nether builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "Explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Nether terrain/fungus farming use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "Terrain block + nether fungi surface"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural nether terrain block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "Reddish nether terrain coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "Nether terrain building block",
+            "Grow nether fungi with bonemeal",
+            "Decorative nether ground cover"
+          ],
+          "signal": "inferred",
+          "rationale": "Nylium terrain and farming uses"
+        }
+      }
+    },
+    "minecraft:crimson_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "evidence": "tag minecraft:planks",
+          "rationale": "Planks tag = standard building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "Explicit rarity component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Core crafting ingredient for many items"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is building and crafting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Wood-based building block"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "Crimson = deep red wood planks"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:non_flammable_wood",
+          "rationale": "Non-flammable wood tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Nether-themed building and decoration",
+            "Core wood crafting ingredient",
+            "Non-flammable wood alternative"
+          ],
+          "signal": "inferred",
+          "rationale": "Versatile planks building uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:crimson_fungus",
+      "facet": "material_family",
+      "current": "wood_crimson",
+      "suggested": "omit",
+      "rationale": "Crimson fungus is a nether plant, not a wood product; id prefix rule incorrectly assigned wood_crimson",
+      "confidence": 0.9
+    },
+    {
+      "item": "minecraft:crimson_nylium",
+      "facet": "material_family",
+      "current": "wood_crimson",
+      "suggested": "netherrack",
+      "rationale": "Nylium is overgrown netherrack terrain, not wood; id prefix crimson_ rule misfired",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:crimson_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_crimson",
+      "rationale": "Planks are crimson wood; wooden_tool_materials tag incorrectly resolved to oak",
+      "confidence": 0.95
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "items": {
+    "minecraft:red_sandstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural stone block for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed mesa builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "red variant of sandstone; natural stone"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-orange sandy texture"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stackable block"
+        },
+        "primary_uses": {
+          "values": [
+            "building mesa/badlands-style structures",
+            "crafting slabs, stairs, walls, chiseled",
+            "decorative walling and flooring"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of the block"
+        }
+      }
+    },
+    "minecraft:red_sandstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form used for building and detail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and detail"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant; natural stone look"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-orange sandy texture"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stackable block"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring and roofing",
+            "detail work in red sandstone builds",
+            "ingredient for chiseled_red_sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "typical slab uses in building"
+        }
+      }
+    },
+    "minecraft:red_sandstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are structural building blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant; natural stone look"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-orange sandy texture"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stackable block"
+        },
+        "primary_uses": {
+          "values": [
+            "stairways in mesa-style builds",
+            "decorative roof slopes",
+            "corner detail in red sandstone builds"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stair uses in building"
+        }
+      }
+    },
+    "minecraft:red_sandstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form for borders and building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building element"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for borders and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant; natural stone look"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-orange sandy texture"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stackable block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative boundary walls",
+            "fencing in mesa-theme builds",
+            "border detail in red sandstone builds"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wall uses in building"
+        }
+      }
+    },
+    "minecraft:red_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable storage; retains contents"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs shulker shell from end mob"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used for inventory management"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage; sorting and transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed variant of base shulker box"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red coloring"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits standard inventory and chest slots"
+        },
+        "primary_uses": {
+          "values": [
+            "portable inventory extension",
+            "color-coded storage organization",
+            "item transport between locations"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:red_sandstone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "overworld_surface"
+      ],
+      "rationale": "Generates naturally below red sand in badlands biome",
+      "confidence": 0.82
+    }
+  ]
+}

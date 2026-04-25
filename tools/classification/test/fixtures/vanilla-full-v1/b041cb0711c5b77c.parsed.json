@@ -1,0 +1,329 @@
+{
+  "items": {
+    "minecraft:red_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed pigment refined from plants"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "named",
+          "rationale": "component minecraft:dye=red"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common surface flowers"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "24+ downstream crafting recipes"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "dyes wool, glass, terracotta, concrete"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "pure pigment, one of 16 dyes"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "poppies, tulips, rose bush, beetroot"
+        },
+        "primary_uses": {
+          "values": [
+            "dye wool, glass, terracotta, beds",
+            "color leather armor and horse armor",
+            "firework star color/fade",
+            "craft red concrete and carpet"
+          ],
+          "signal": "inferred",
+          "rationale": "24 shapeless/dye/transmute recipes"
+        }
+      }
+    },
+    "minecraft:red_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glazed pattern is primarily aesthetic"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix glazed_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "smelted from easily obtained terracotta"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block, no crafting uses"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "patterned block for themed structures"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "ornate glazed directional pattern"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red glaze with warm tones"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative patterned flooring and walls",
+            "directional block pixel art",
+            "building themed structures"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipes; pure place-and-decorate use"
+        }
+      }
+    },
+    "minecraft:red_harness": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "equips Happy Ghast to enable riding"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "harness is a leather-based wearable"
+        },
+        "dye_color": {
+          "value": "red",
+          "signal": "named",
+          "rationale": "display name: Red Harness"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires a Happy Ghast to be useful"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables aerial riding of Happy Ghasts"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "leather item with applied dye color"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "red leather coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; made via crafting"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:happy_ghast_tempt_items"
+        },
+        "primary_uses": {
+          "values": [
+            "equip Happy Ghast for player riding",
+            "tempt and lead Happy Ghasts",
+            "redye to alternate harness colors"
+          ],
+          "signal": "inferred",
+          "rationale": "tempt tag + dye transmute recipes"
+        }
+      }
+    },
+    "minecraft:red_mushroom": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "grows in world, picked up as-is"
+        },
+        "material_family": {
+          "value": "mushroom",
+          "signal": "pattern",
+          "rationale": "id = red_mushroom"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "found in caves, dark forest, mooshroom"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in a handful of stew recipes"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "growable fungus harvested for stews"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic world fungus"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red cap"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "dark forest/mushroom island + dark caves"
+        },
+        "primary_uses": {
+          "values": [
+            "craft mushroom stew",
+            "craft rabbit stew",
+            "craft suspicious stew",
+            "grow large red mushroom"
+          ],
+          "signal": "inferred",
+          "rationale": "19 shapeless recipes, mostly stews"
+        }
+      }
+    },
+    "minecraft:red_mushroom_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid full block, used structurally"
+        },
+        "material_family": {
+          "value": "mushroom",
+          "signal": "pattern",
+          "rationale": "id = red_mushroom_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "drops freely from large mushrooms"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building/decorating use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block for mushroom-themed builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mushroom cap block"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "red cap with white spot dots"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "large mushrooms in dark forest and caves"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom blocks are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "build mushroom-themed structures",
+            "decorative red spotted block",
+            "composting material"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipes; placed for build/decor"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,316 @@
+{
+  "items": {
+    "minecraft:brown_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "placed portable storage container"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End shulker kills to craft"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core storage once obtained"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable item storage and transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "brown-dyed shulker variant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "desaturated brown shell color"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker boxes resist pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "portable inventory expansion",
+            "color-coded item organization",
+            "transporting items in bulk"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box use cases"
+        }
+      }
+    },
+    "minecraft:brown_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural window/glass block"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from sand + brown dye"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows and decorative glass"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "stained = dye-colored glass"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown-tinted semi-transparent"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative windows",
+            "colored light filtering",
+            "building facades"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stained glass uses"
+        }
+      }
+    },
+    "minecraft:brown_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "thin glass panel for windows"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains stained_glass_pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from brown stained glass"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "preferred window form"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "window panels and facades"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "stained = dye-colored pane"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown-tinted semi-transparent"
+        },
+        "primary_uses": {
+          "values": [
+            "thin window panels",
+            "decorative facades",
+            "colored light filtering"
+          ],
+          "signal": "inferred",
+          "rationale": "pane used more than full block"
+        }
+      }
+    },
+    "minecraft:brown_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "hardened clay building block"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id ends in _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable or found in badlands"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular earthy building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "earthy building and decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed earthen ceramic material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown terracotta tone"
+        },
+        "primary_uses": {
+          "values": [
+            "earthy-toned building",
+            "decorative block patterns",
+            "badlands-style aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "main terracotta use cases"
+        }
+      }
+    },
+    "minecraft:brown_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block used for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "from sheep or dyeing white wool"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "building, crafting, fuel uses"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for builds and decor"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed natural animal material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "natural brown wool color"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wool is flammable material"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decorating",
+            "vibration/sculk dampening",
+            "crafting beds, banners, carpets",
+            "emergency fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "main wool player uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:brown_terracotta",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "generates naturally as badlands terrain",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "items": {
+    "minecraft:spruce_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural block; open/close is secondary"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheaply crafted from spruce planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in wood-heavy builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "built into structures; redstone-activatable"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce is dark gray-brown wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; thin block waterloggable"
+        },
+        "primary_uses": {
+          "values": [
+            "building hidden passages and doors",
+            "redstone-controlled entrances",
+            "aesthetic wooden decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor use cases"
+        }
+      }
+    },
+    "minecraft:spruce_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "all-bark log block used for structure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "natural in spruce trees; craftable from logs"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in spruce-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative wood block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural all-bark wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce bark is dark gray-brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; log blocks are piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "building dark-toned wood structures",
+            "crafting planks and charcoal",
+            "decorative all-bark log accent"
+          ],
+          "signal": "inferred",
+          "rationale": "typical all-bark wood block uses"
+        }
+      }
+    },
+    "minecraft:spyglass": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "handheld optical scouting tool"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "crafted from 2 copper ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "amethyst_shard"
+          ],
+          "signal": "inferred",
+          "rationale": "amethyst shard forms the lens"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper and amethyst readily available"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "useful but not an essential daily tool"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "zooms in to scout terrain and mobs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted metal optical instrument"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "copper tube with amethyst lens"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only recipe output"
+        },
+        "primary_uses": {
+          "values": [
+            "zoom in on distant terrain",
+            "spot mobs and structures from afar",
+            "scouting during exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "primary spyglass gameplay use"
+        }
+      }
+    },
+    "minecraft:squid_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative/command only"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in survival mode"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when needed for setup or testing"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg summons its linked mob on use"
+        },
+        "palette": {
+          "values": [
+            "indigo",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "squid egg is dark navy/indigo colored"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn squids in creative mode",
+            "mob farm setup and testing"
+          ],
+          "signal": "inferred",
+          "rationale": "typical spawn egg use cases"
+        }
+      }
+    },
+    "minecraft:stick": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed wood used as crafting ingredient"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "generic wood; crafted from any plank type"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "drops from leaves; crafted from any plank"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used in 109 shaped crafting recipes"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "building",
+            "farming",
+            "fishing",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: tools, weapons, rails, rods"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple unadorned wooden stick"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale tan wood color"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting tools and weapons",
+            "crafting fences, signs, and torches",
+            "crafting rails and fishing rods"
+          ],
+          "signal": "inferred",
+          "rationale": "most common downstream crafting uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

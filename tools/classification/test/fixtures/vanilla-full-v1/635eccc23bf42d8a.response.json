@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 117020,
+  "duration_api_ms": 117973,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:cherry_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"planks are primary structural wood unit\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used constantly in wood construction\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"50 downstream recipes; end-use is building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry planks are warm pinkish light wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all wooden planks are burnable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures and furniture\", \"crafting wood items and blocks\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"49 shaped recipes confirm broad use\"\n        }\n      }\n    },\n    \"minecraft:cherry_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"pressure plates emit redstone signal\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in specific redstone setups\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"entity detection; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material with mechanical redstone role\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood: warm pinkish light tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block, burnable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"entity detection for redstone\", \"door and gate triggers\", \"mob farm inputs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wooden pressure plate uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_sapling\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from leaves, world-obtained raw item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted when tree supply needed\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tree farming for cherry wood supply\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"living plant, organic origin\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink cherry blossom + green foliage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"growing cherry trees for wood\", \"flower pot decoration\", \"bone meal tree farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sapling uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive; stores/displays items (nbt_variation)\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in themed decorative builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"display items; decorative item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood: warm pinkish light tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block, burnable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"display items decoratively\", \"decorative item storage\", \"library and room theming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelves for display and ambiance\"\n        }\n      }\n    },\n    \"minecraft:cherry_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs display text, primary purpose is decor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for labeling, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"labeling and aesthetic use in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, organic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood tone: warm pinkish light\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block, burnable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"label areas and rooms\", \"text display in builds\", \"decorative signage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sign use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:cherry_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_cherry\",\n      \"rationale\": \"ID is cherry_planks; rule incorrectly mapped wooden_tool_materials tag to oak for all wood types\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "3e13418c-2ec5-4b18-8c3c-7b1612a07f29",
+  "total_cost_usd": 0.14845915,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4677,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8345,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4677,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8345,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4677,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4677
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3814,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003889,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8345,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4677,
+      "webSearchRequests": 0,
+      "costUSD": 0.14457015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "bec6cff8-f5da-4023-9645-22d2bf10015b"
+}

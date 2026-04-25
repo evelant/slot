@@ -1,0 +1,347 @@
+{
+  "items": {
+    "minecraft:note_block": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "plays notes on activation; interactive"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "any wood planks + redstone in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "1 redstone dust in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche music-build use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone trigger; sound decoration"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical music device"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak-tone wood texture"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood construction; flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "play musical notes when activated",
+            "redstone-controlled note sequences",
+            "decorative sound block in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core note block gameplay"
+        }
+      }
+    },
+    "minecraft:oak_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "suffix _boat; tag minecraft:boats"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when crossing water bodies"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel vehicle"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood, natural material"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafting only"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries players and mobs on water"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "water vehicle"
+        },
+        "primary_uses": {
+          "values": [
+            "cross rivers and oceans",
+            "transport mobs over water",
+            "crafting oak chest boat"
+          ],
+          "signal": "inferred",
+          "rationale": "standard boat gameplay"
+        }
+      }
+    },
+    "minecraft:oak_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "tag minecraft:buttons; pulse source"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in redstone/door setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone input; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "simple mechanical input device"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden; flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "send momentary redstone pulse",
+            "open doors and gates",
+            "simple circuit input"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button gameplay"
+        }
+      }
+    },
+    "minecraft:oak_chest_boat": {
+      "facets": {
+        "role": {
+          "values": [
+            "transport",
+            "container_portable"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "vehicle + built-in chest storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche: water transport runs"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "travel + carry items on water"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood + chest, natural materials"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from boat + chest; no loot"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player/mobs over water"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "27-slot chest inventory"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "water vehicle"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with item storage",
+            "transport items across water bodies",
+            "mobile 27-slot chest"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat core gameplay"
+        }
+      }
+    },
+    "minecraft:oak_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural entrance; opens on interact"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed in nearly every build"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural; redstone-controllable"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wood door"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden; flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "control building entrances",
+            "redstone-activatable access gate",
+            "base security and aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door gameplay"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

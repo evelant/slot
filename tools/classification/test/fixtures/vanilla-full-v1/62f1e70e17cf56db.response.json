@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 113082,
+  "duration_api_ms": 113844,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:diamond_shovel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:shovels + tool component\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond tier requires deep mining\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shovels used regularly for digging\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digs soil/gravel; terraforming\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard tool, no special theme\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond cyan-blue crystal appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Dig dirt/sand/gravel fast\", \"Terraforming terrain\", \"Upgrade to netherite shovel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core shovel use cases\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item slot\"\n        }\n      }\n    },\n    \"minecraft:diamond_spear\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:spears + weapon component\"\n        },\n        \"material_family\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix diamond_ + diamond_tool_materials\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"repairable with #diamond_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond tier weapon\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized vs sword; lunge playstyle niche\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spears tag + melee_weapon enchantable\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard weapon, no special theme\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond blue-crystal look\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Melee combat\", \"Lunge attack (enchantable)\", \"Upgrade to netherite spear\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spear combat use cases\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item slot\"\n        }\n      }\n    },\n    \"minecraft:diamond_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:swords + weapon component\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond tier weapon\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary combat weapon used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"swords tag + weapon/sweeping enchants\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sword aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond blue-crystal look\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Melee combat\", \"Mob killing\", \"Sweeping edge attacks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sword use cases\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item slot\"\n        }\n      }\n    },\n    \"minecraft:diorite\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone block; primary use is structural building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates abundantly in overworld blobs\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when white stone aesthetic wanted\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone block for builds; deco variety\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally generated stone variant\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/light-gray speckled stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"White stone aesthetic building\", \"Craft polished diorite/slabs/stairs\", \"Stone variety in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core diorite uses\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard block slot\"\n        }\n      }\n    },\n    \"minecraft:diorite_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for architectural building detail\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common diorite\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific diorite-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-height element for builds/detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab shape variant of diorite base block\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/light-gray stone slab\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Half-height building element\", \"Architectural stonework detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab use cases\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard block slot\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:diorite\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_cave\", \"overworld_surface\"],\n      \"rationale\": \"Diorite generates naturally as world-gen blobs in overworld; loot-table rule missed world-gen sources and only saw self-drop\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "0228794d-002f-4c37-9405-4c2a336ee1ff",
+  "total_cost_usd": 0.15909115000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5409,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8822,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5409,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8822,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5409,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5409
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4546,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004621,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8822,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5409,
+      "webSearchRequests": 0,
+      "costUSD": 0.15447015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "668bd9ff-3d33-46de-97c7-851aeb562b0f"
+}

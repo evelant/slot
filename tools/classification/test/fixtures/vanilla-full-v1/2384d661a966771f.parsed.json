@@ -1,0 +1,327 @@
+{
+  "items": {
+    "minecraft:dark_prismarine_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid stair form; structural use"
+        },
+        "material_family": {
+          "value": "prismarine_dark",
+          "signal": "pattern",
+          "rationale": "id prefix dark_prismarine"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dark variant of prismarine family"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark teal-green ocean stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed build use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stair block for ocean structures"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed stair construction",
+            "decorative stair form of dark prismarine"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stair for ocean builds"
+        }
+      }
+    },
+    "minecraft:daylight_detector": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone signal from sunlight"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted with wood slabs"
+        },
+        "material_secondary": {
+          "values": [
+            "glass",
+            "quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe uses glass panes + nether quartz"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "functional sensor of natural material"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm wood tones with glass top"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized redstone use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "outputs signal for day/night circuits"
+        },
+        "primary_uses": {
+          "values": [
+            "day/night redstone triggering",
+            "daylight-driven automation",
+            "inverted night detector"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone daylight sensor"
+        }
+      }
+    },
+    "minecraft:dead_brain_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "non-solid coral plant; purely aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains _coral"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dead (gray) variant of brain coral"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral is grayish-beige"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally spawns in warm ocean reefs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean decor use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative ocean-themed block"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral plants have waterlogged state"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed decoration",
+            "underwater build aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative coral plant piece"
+        }
+      }
+    },
+    "minecraft:dead_brain_coral_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full solid cube; structurally placeable"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains _coral_block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dead variant of brain coral block"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral block is grayish-beige"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from coral blocks in warm oceans"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean build use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "solid cube for ocean builds"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed building block",
+            "underwater structure construction"
+          ],
+          "signal": "inferred",
+          "rationale": "solid coral cube block"
+        }
+      }
+    },
+    "minecraft:dead_brain_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "non-solid fan coral; purely aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains _coral_fan"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dead variant of brain coral fan"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral fan is grayish-beige"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally spawns in warm ocean reefs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean decor use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative fan-shaped coral"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral fans have waterlogged state"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed decoration",
+            "underwater wall/floor detail"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative coral fan piece"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

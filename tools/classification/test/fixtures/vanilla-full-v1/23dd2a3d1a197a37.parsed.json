@@ -1,0 +1,324 @@
+{
+  "items": {
+    "minecraft:powder_snow_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "bucket form used to place powder snow"
+        },
+        "material_family": {
+          "value": "powder_snow",
+          "signal": "pattern",
+          "rationale": "id contains powder_snow"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "all buckets are iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational trap/cold-biome build use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "place snow blocks; freeze/trap mobs"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural snow material"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white/light snowy appearance"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "powder snow forms on cold biome surfaces"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block freezes/damages mobs"
+        },
+        "primary_uses": {
+          "values": [
+            "place powder snow blocks",
+            "trap and freeze mobs",
+            "extinguish fire on entities"
+          ],
+          "signal": "inferred",
+          "rationale": "core powder snow bucket uses"
+        }
+      }
+    },
+    "minecraft:powered_rail": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "requires redstone signal to boost minecarts"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "recipe uses 6 gold ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone",
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe: stick + redstone dust"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold cost restricts availability"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in dedicated minecart systems"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-activated minecart booster"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical rail infrastructure"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-colored rail strips"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "moves players/mobs via minecart"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "rails moved by pistons; waterloggable"
+        },
+        "primary_uses": {
+          "values": [
+            "accelerate minecarts",
+            "build high-speed rail networks"
+          ],
+          "signal": "inferred",
+          "rationale": "core powered rail uses"
+        }
+      }
+    },
+    "minecraft:prismarine": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural block for ocean-themed builds"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ocean monument or guardian farming"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "ocean/aquatic themed building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean structure construction and decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic ocean-origin material"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "animated teal/aqua shimmering texture"
+        },
+        "primary_uses": {
+          "values": [
+            "build ocean-themed structures",
+            "craft prismarine slabs/stairs/walls",
+            "craft tide armor trim template"
+          ],
+          "signal": "inferred",
+          "rationale": "main prismarine uses incl. trim ingredient"
+        }
+      }
+    },
+    "minecraft:prismarine_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form for structural decoration"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from ocean monument material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aquatic build floor/ceiling detailing"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for ocean-themed construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant of prismarine bricks"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "same teal/aqua as base prismarine"
+        },
+        "primary_uses": {
+          "values": [
+            "floor/ceiling detailing in ocean builds",
+            "half-height prismarine brick aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "typical slab use cases"
+        }
+      }
+    },
+    "minecraft:prismarine_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form for structural decoration"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from ocean monument material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aquatic build stairways"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for ocean-themed construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant of prismarine bricks"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "same teal/aqua as base prismarine"
+        },
+        "primary_uses": {
+          "values": [
+            "stairways in ocean-themed builds",
+            "prismarine brick architectural detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stairs use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:prismarine",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "ocean_monument"
+      ],
+      "rationale": "Prismarine generates naturally in ocean monuments; crafted_only is wrong",
+      "confidence": 0.95
+    }
+  ]
+}

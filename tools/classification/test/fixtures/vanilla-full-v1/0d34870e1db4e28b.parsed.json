@@ -1,0 +1,322 @@
+{
+  "items": {
+    "minecraft:chiseled_cinnabar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "chiseled stone block variant"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id suffix _cinnabar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative variant used selectively"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled stone used in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "chiseled = patterned stone variant"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "cinnabar = red-orange mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building",
+            "cinnabar aesthetic structures"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled stone for decoration"
+        }
+      }
+    },
+    "minecraft:chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "chiseled copper block"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains _copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building variant used selectively"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "copper block for builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "chiseled = patterned variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "unoxidized copper is orange-bright"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper blocks oxidize in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "copper-themed building",
+            "wax to lock patina stage"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled copper decorative block"
+        }
+      }
+    },
+    "minecraft:chiseled_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "chiseled stone variant"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "rationale": "id contains _deepslate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative block used selectively"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dark stone for underground builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "chiseled = patterned variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is dark grey stone"
+        },
+        "primary_uses": {
+          "values": [
+            "deep-cave aesthetic building",
+            "underground structure decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled deepslate for dark stone builds"
+        }
+      }
+    },
+    "minecraft:chiseled_nether_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "chiseled nether brick block"
+        },
+        "material_family": {
+          "value": "nether_brick",
+          "signal": "pattern",
+          "rationale": "id nether_bricks suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether building used selectively"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "nether aesthetic building block"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled skull-pattern nether aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "nether brick = dark reddish-brown"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "nether brick material is non-flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed building",
+            "fireproof decorative masonry"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled nether bricks for nether builds"
+        }
+      }
+    },
+    "minecraft:chiseled_polished_blackstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "chiseled stone block variant"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "rationale": "id contains blackstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether decorative block used selectively"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone for dark aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "chiseled + polished = 2-step variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone is very dark stone"
+        },
+        "primary_uses": {
+          "values": [
+            "dark nether-aesthetic building",
+            "polished blackstone decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled polished blackstone for dark builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:chiseled_copper",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "trial_chamber"
+      ],
+      "rationale": "trial chambers generate with chiseled copper blocks",
+      "confidence": 0.75
+    },
+    {
+      "item": "minecraft:chiseled_polished_blackstone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "bastion"
+      ],
+      "rationale": "bastion remnants contain chiseled polished blackstone",
+      "confidence": 0.7
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:lectern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "holds books; librarian job site block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "any wood slabs + bookshelf in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "bookshelf"
+          ],
+          "signal": "inferred",
+          "rationale": "bookshelf is required recipe component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per base; not every session"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "book display + librarian job site"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wood block, no fancy aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural brown oak-toned wood"
+        },
+        "primary_uses": {
+          "values": [
+            "Hold books for reading",
+            "Librarian villager job site",
+            "Display written books"
+          ],
+          "signal": "inferred",
+          "rationale": "core lectern mechanics"
+        }
+      }
+    },
+    "minecraft:lever": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "basic on/off redstone signal input"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "inferred",
+          "rationale": "cobblestone is primary recipe component"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "stick (wood) in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common redstone toggle in many builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary redstone switch; used in builds"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "simple mechanical toggle device"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray cobblestone + brown stick appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Toggle redstone signal on/off",
+            "Permanent power source switch",
+            "Basic redstone input"
+          ],
+          "signal": "inferred",
+          "rationale": "core lever mechanics"
+        }
+      }
+    },
+    "minecraft:light": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "named",
+          "rationale": "creative-only hardcoded admin item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative builders use for invisible lighting"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "creative build ambient lighting tool"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "invisible light source; no physical form"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "emits variable light 0-15; barely visible"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "produces light level 0-15 via NBT"
+        },
+        "primary_uses": {
+          "values": [
+            "Invisible ambient light in creative builds",
+            "Variable light level 0-15"
+          ],
+          "signal": "inferred",
+          "rationale": "core use of minecraft:light block"
+        }
+      }
+    },
+    "minecraft:light_blue_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are primarily aesthetic wall decor"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "6 wool + 1 stick in banner recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "stick in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decoration; not daily use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall decor + shield decoration use"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool banner, fabric-look aesthetic"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a pale/pastel blue tone"
+        },
+        "primary_uses": {
+          "values": [
+            "Wall or ceiling decoration",
+            "Shield decoration",
+            "Faction or team marker",
+            "Banner pattern base"
+          ],
+          "signal": "inferred",
+          "rationale": "core banner mechanics"
+        }
+      }
+    },
+    "minecraft:light_blue_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sleep to skip night; sets spawn point"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "3 wool in bed recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "3 planks in bed recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every night cycle in survival"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "home furnishing + spawn reset for explorers"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool color variant of bed"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a pale/pastel blue tone"
+        },
+        "primary_uses": {
+          "values": [
+            "Sleep to skip night",
+            "Set respawn point",
+            "Home base furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed mechanics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

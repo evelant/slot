@@ -1,0 +1,275 @@
+{
+  "items": {
+    "minecraft:pointed_dripstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable cave block; building/trap primary use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche: traps, cauldrons, cave builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; stalactite drip fills cauldrons"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cave stalactite/stalagmite formation"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish-gray dripstone color"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns in dripstone caves underground"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "tips deal damage to entities landing on them"
+        },
+        "primary_uses": {
+          "values": [
+            "cave building and decoration",
+            "spike trap setup for mob damage",
+            "stalactite drip-fill cauldrons water/lava",
+            "craft into dripstone blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "core gameplay uses"
+        }
+      }
+    },
+    "minecraft:poisonous_potato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has food+consumable components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never eaten; poison risk deters use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unassuming potato appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "potato-brown coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "desperate emergency food (2 hunger, 60% poison)",
+            "byproduct of potato crop farming"
+          ],
+          "signal": "inferred",
+          "rationale": "only practical use is starvation fallback"
+        }
+      }
+    },
+    "minecraft:polar_bear_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only admin items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "spawn eggs unobtainable in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used occasionally for spawning/testing"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents a natural overworld mob"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "polar bear white/cream coloring"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns polar bear on use"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn polar bears in creative mode",
+            "mob testing and map building"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg purposes"
+        }
+      }
+    },
+    "minecraft:polished_andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone block for construction"
+        },
+        "material_family": {
+          "value": "andesite",
+          "signal": "pattern",
+          "rationale": "id prefix polished_andesite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in stone-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction and stone detailing"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "simple polished variant of andesite"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "gray polished stone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors",
+            "crafting into slabs and stairs",
+            "decorative stone accent detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard polished stone building uses"
+        }
+      }
+    },
+    "minecraft:polished_andesite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab for building and architectural detail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs heavily used in construction"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "floors, roofs, decorative stepping"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant of polished andesite"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "gray polished stone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors and thin roofs",
+            "half-block stair-like steps",
+            "decorative stone building detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab building uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

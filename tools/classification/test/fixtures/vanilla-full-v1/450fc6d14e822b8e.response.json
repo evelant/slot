@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 155870,
+  "duration_api_ms": 156895,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:netherite_shovel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _shovel + tag minecraft:shovels\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite requires scarce ancient debris\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shovel used situationally, not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"digs terrain, creates path blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard functional tool aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"netherite dark matte finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; smithing_transform only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"named\",\n          \"rationale\": \"damage_resistant types=#is_fire component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"digging dirt/sand/gravel/snow\", \"creating path blocks\", \"snow layer clearing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shovel mechanics\"\n        }\n      }\n    },\n    \"minecraft:netherite_spear\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:spears + weapon component\"\n        },\n        \"material_family\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix netherite_\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"repairable with #netherite_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite tier; smithing_transform only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized weapon, not default loadout\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weapon with melee + lunge enchantability\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard functional weapon aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"netherite dark matte finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; smithing_transform only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"named\",\n          \"rationale\": \"damage_resistant types=#is_fire component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"melee combat\", \"charged lunge attacks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weapon component + enchantable/lunge tag\"\n        }\n      }\n    },\n    \"minecraft:netherite_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _sword + tag minecraft:swords\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite tier requires ancient debris\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"top-tier melee weapon, used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary melee weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard weapon aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"netherite dark matte finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; smithing_transform only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"named\",\n          \"rationale\": \"damage_resistant types=#is_fire component\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"melee combat and mob killing\", \"cobweb clearing\", \"sweeping-edge AoE attacks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobweb rule + sweeping enchantable tag\"\n        }\n      }\n    },\n    \"minecraft:netherite_upgrade_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed in smithing to upgrade gear tier\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed once per piece upgrade\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing templates are ancient artifacts\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark template texture matches netherite\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"upgrading diamond gear to netherite\", \"duplicating via shaped crafting\"],\n          \"signal\": \"named\",\n          \"rationale\": \"sample_ingredient_of lists netherite upgrades\"\n        }\n      }\n    },\n    \"minecraft:netherrack\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether equivalent of stone; placed for structure\"\n        },\n        \"material_family\": {\n          \"value\": \"netherrack\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = netherrack\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fills vast portions of the Nether\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for nether builds and fire sources\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether-themed builds; eternal fire decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw nether terrain block\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish-brown porous texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fire placed on netherrack burns indefinitely\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed building\", \"eternal fire source\", \"nether brick crafting ingredient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core nether block uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"environmental_property\",\n      \"value\": \"sustains_fire\",\n      \"rationale\": \"ignitable_by_fire doesn't capture netherrack's unique property that fire placed on it never extinguishes; distinct mechanic from merely being ignitable\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "860887bf-7b44-4776-b7b1-3f3ca62fced0",
+  "total_cost_usd": 0.21171745000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4801,
+    "cache_read_input_tokens": 4939,
+    "output_tokens": 12537,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4801
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12537,
+        "cache_read_input_tokens": 4939,
+        "cache_creation_input_tokens": 4801,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4801,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4078,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004168,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12537,
+      "cacheReadInputTokens": 4939,
+      "cacheCreationInputTokens": 4801,
+      "webSearchRequests": 0,
+      "costUSD": 0.20754945000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1fb564ec-a1ef-4abf-bcdb-3344d3e89d2b"
+}

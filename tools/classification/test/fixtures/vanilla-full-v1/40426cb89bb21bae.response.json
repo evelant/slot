@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 138651,
+  "duration_api_ms": 139746,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:note_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"plays notes on activation; interactive\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"any wood planks + redstone in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"1 redstone dust in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche music-build use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone trigger; sound decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical music device\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak-tone wood texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood construction; flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"play musical notes when activated\",\n            \"redstone-controlled note sequences\",\n            \"decorative sound block in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core note block gameplay\"\n        }\n      }\n    },\n    \"minecraft:oak_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"suffix _boat; tag minecraft:boats\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when crossing water bodies\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel vehicle\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood, natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafting only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries players and mobs on water\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water vehicle\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"cross rivers and oceans\",\n            \"transport mobs over water\",\n            \"crafting oak chest boat\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard boat gameplay\"\n        }\n      }\n    },\n    \"minecraft:oak_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:buttons; pulse source\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in redstone/door setups\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone input; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple mechanical input device\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden; flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"send momentary redstone pulse\",\n            \"open doors and gates\",\n            \"simple circuit input\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard button gameplay\"\n        }\n      }\n    },\n    \"minecraft:oak_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"transport\", \"container_portable\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vehicle + built-in chest storage\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche: water transport runs\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"travel + carry items on water\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood + chest, natural materials\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from boat + chest; no loot\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player/mobs over water\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"27-slot chest inventory\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water vehicle\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"water travel with item storage\",\n            \"transport items across water bodies\",\n            \"mobile 27-slot chest\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest boat core gameplay\"\n        }\n      }\n    },\n    \"minecraft:oak_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural entrance; opens on interact\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in nearly every build\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural; redstone-controllable\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wood door\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden; flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"control building entrances\",\n            \"redstone-activatable access gate\",\n            \"base security and aesthetics\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door gameplay\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "bc428272-38ec-469b-befc-b519459bc2a5",
+  "total_cost_usd": 0.19718970000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3932,
+    "cache_read_input_tokens": 4939,
+    "output_tokens": 11845,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3932
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11845,
+        "cache_read_input_tokens": 4939,
+        "cache_creation_input_tokens": 3932,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3932,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3209,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0032790000000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11845,
+      "cacheReadInputTokens": 4939,
+      "cacheCreationInputTokens": 3932,
+      "webSearchRequests": 0,
+      "costUSD": 0.19391070000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1562f182-7904-4f10-9353-c594d40c4bd0"
+}

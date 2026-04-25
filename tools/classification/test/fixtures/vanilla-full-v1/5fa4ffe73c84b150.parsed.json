@@ -1,0 +1,306 @@
+{
+  "items": {
+    "minecraft:red_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full glass block used structurally as windows"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "stained glass = glass base material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively for aesthetic windows"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structures and colored aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-tinted glass block"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "glass translucency + vivid red"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent block prevents mob spawning"
+        },
+        "primary_uses": {
+          "values": [
+            "colored decorative windows",
+            "light filtering",
+            "building facades"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stained glass player uses"
+        }
+      }
+    },
+    "minecraft:red_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "thin pane used as window architecture"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "pane is glass form with dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for window details, not universal"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "architectural window and decorative element"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-tinted glass pane"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "translucent red glass"
+        },
+        "primary_uses": {
+          "values": [
+            "thin window panes",
+            "decorative partitions",
+            "colored building element"
+          ],
+          "signal": "inferred",
+          "rationale": "common pane use cases"
+        }
+      }
+    },
+    "minecraft:red_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "dyed terracotta block for building"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "tag minecraft:terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific aesthetic build styles"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for colored structures and decor"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed earthy clay block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta base yields warm earthy tone"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building block",
+            "smelt into glazed terracotta",
+            "decorative structures"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of shows glazed terracotta"
+        }
+      }
+    },
+    "minecraft:red_tulip": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower gathered from world unprocessed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational use for dye or stew"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream red dye used for coloring; placed as decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic flower with vivid color"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red-pink tulip bloom"
+        },
+        "primary_uses": {
+          "values": [
+            "craft red dye",
+            "suspicious stew ingredient",
+            "decorative flower planting"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of shows dye and stew"
+        }
+      }
+    },
+    "minecraft:red_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wool block used in building and crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "beds, carpets, banners all require wool"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "builds + downstream beds/carpets/banners"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed natural sheep fiber"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red wool"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "dampens_vibrations tag; wool is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "build colored structures",
+            "craft beds and carpets",
+            "craft banners"
+          ],
+          "signal": "inferred",
+          "rationale": "major crafting outputs from wool"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:red_terracotta",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "overworld_surface"
+      ],
+      "rationale": "Red terracotta generates naturally in badlands biome strata",
+      "confidence": 0.85
+    }
+  ]
+}

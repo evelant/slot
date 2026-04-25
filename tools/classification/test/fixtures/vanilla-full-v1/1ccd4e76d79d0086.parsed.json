@@ -1,0 +1,313 @@
+{
+  "items": {
+    "minecraft:cherry_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab is a structural half-block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "cherry-specific builds only"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "floors, ceilings, detail work"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood from nature"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry planks are pink/light-warm"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden_slabs tag → flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors and ceilings",
+            "decorative half-step detailing",
+            "crafting composter and barrel"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab uses + recipe outputs"
+        }
+      }
+    },
+    "minecraft:cherry_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are structural corner blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "cherry-specific builds only"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "rooflines, arches, level transitions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood from nature"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry planks are pink/light-warm"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden_stairs tag → flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building rooflines and arches",
+            "connecting floor levels",
+            "decorative stairways in cherry aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair end-uses"
+        }
+      }
+    },
+    "minecraft:cherry_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "trapdoor opens/closes interactively"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "openable block with redstone control"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood from nature"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry planks are pink/light-warm"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden_trapdoors tag → flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "openable floor or ceiling hatches",
+            "redstone-triggered passages",
+            "decorative panel in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor end-uses"
+        }
+      }
+    },
+    "minecraft:cherry_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full-cube log variant placed structurally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative use, less common than planks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "all-bark column used aesthetically"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry bark is warm medium-dark"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:logs_that_burn",
+          "rationale": "explicit burn tag on item"
+        },
+        "primary_uses": {
+          "values": [
+            "all-bark decorative wood column",
+            "crafting cherry planks and charcoal",
+            "structural accent in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard log block uses"
+        }
+      }
+    },
+    "minecraft:chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "primary vanilla item storage block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from 8 wooden planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core storage used by every player"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and organizes items"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "generic undecorated chest"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "standard oak-toned chest texture"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block, catches fire"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard item stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "storing and organizing items",
+            "double chest with adjacent chest",
+            "crafting hopper and chest minecart"
+          ],
+          "signal": "inferred",
+          "rationale": "core chest end-uses + recipe outputs"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

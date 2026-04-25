@@ -1,0 +1,281 @@
+{
+  "items": {
+    "minecraft:sculk_vein": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin overlay, no active function, pure decor"
+        },
+        "material_family": {
+          "value": "sculk",
+          "signal": "pattern",
+          "rationale": "id prefix sculk_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; fills deep dark"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche deep dark aesthetic use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for sculk ambiance"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic spreading organism"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "near-black blue-grey sculk texture"
+        },
+        "primary_uses": {
+          "values": [
+            "deep dark themed decoration",
+            "sculk aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "atmosphere/decor only"
+        }
+      }
+    },
+    "minecraft:sea_lantern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is emitting light lvl 15"
+        },
+        "material_family": {
+          "value": "prismarine",
+          "signal": "inferred",
+          "rationale": "crafted from prismarine crystals/shards"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs ocean monument prismarine mats"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular bright decorative light source"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "light source and ocean theme builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing prismarine aesthetic"
+        },
+        "palette": {
+          "values": [
+            "aqua",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-white pulsing light block"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light level 15"
+        },
+        "primary_uses": {
+          "values": [
+            "bright light source (level 15)",
+            "ocean-themed decoration",
+            "underwater lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "top-tier decorative light block"
+        }
+      }
+    },
+    "minecraft:sea_pickle": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ocean organism, smelted for dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; warm ocean floors"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche lime dye input and light use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for underwater light/decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean organism"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow-green glow when placed underwater"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light_underwater"
+          ],
+          "signal": "inferred",
+          "rationale": "glows when placed in water"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into lime dye",
+            "underwater decoration",
+            "underwater light source"
+          ],
+          "signal": "inferred",
+          "rationale": "dye ingredient and decorative block"
+        }
+      }
+    },
+    "minecraft:seagrass": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ocean plant, no crafting recipe output"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "covers entire ocean floors densely"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mainly used for turtle breeding"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:turtle_food",
+          "rationale": "feeds and breeds turtles"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green underwater grass"
+        },
+        "primary_uses": {
+          "values": [
+            "breed and feed turtles",
+            "compost material"
+          ],
+          "signal": "inferred",
+          "rationale": "turtle food tag and compostable"
+        }
+      }
+    },
+    "minecraft:sentry_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied at smithing table to trim armor"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "one cosmetic use per armor piece"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "minimal template item appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "apply sentry trim pattern to armor",
+            "duplicate with diamonds and base material"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing trim application/duplication"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:sea_lantern",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "ocean_monument"
+      ],
+      "rationale": "silk touch mines block from ocean monuments",
+      "confidence": 0.75
+    }
+  ]
+}

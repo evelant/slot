@@ -1,0 +1,296 @@
+{
+  "items": {
+    "minecraft:cracked_deepslate_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone block for decorative building"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "rationale": "id prefix deepslate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aesthetic building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone building block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cracked = damaged variant of tiles"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is very dark gray stone"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative dark stone building",
+            "cracked aged aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "used by builders for aged look"
+        }
+      }
+    },
+    "minecraft:cracked_nether_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "nether brick building block variant"
+        },
+        "material_family": {
+          "value": "nether_brick",
+          "signal": "pattern",
+          "rationale": "id contains nether_bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether aesthetic block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "nether-themed decorative building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cracked = damaged variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dark reddish-brown nether brick"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed builds",
+            "cracked aged aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked nether brick for builders"
+        }
+      }
+    },
+    "minecraft:cracked_polished_blackstone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished blackstone building block"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "rationale": "id contains blackstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche dark stone aesthetic block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dark stone decorative building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cracked = damaged variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone is very dark, near-black"
+        },
+        "primary_uses": {
+          "values": [
+            "dark stone builds",
+            "cracked aesthetic variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked polished blackstone for builders"
+        }
+      }
+    },
+    "minecraft:cracked_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone brick building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "id prefix stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "common variant building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone building block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cracked = damaged variant"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray stone brick texture"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "generates naturally in strongholds"
+        },
+        "primary_uses": {
+          "values": [
+            "stronghold-style builds",
+            "aged stone aesthetic",
+            "dungeon theming"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked stone for dungeon builds"
+        }
+      }
+    },
+    "minecraft:crafter": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "redstone-powered auto-crafting device"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "primary ingredient is iron ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone dust is direct ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in automation setups"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-powered auto-crafter"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "automation machine block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-gray mechanical appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "automated crafting on redstone pulse",
+            "item automation pipelines"
+          ],
+          "signal": "inferred",
+          "rationale": "core use: autocraft items via redstone"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

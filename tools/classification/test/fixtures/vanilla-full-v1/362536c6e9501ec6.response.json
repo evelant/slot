@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 284853,
+  "duration_api_ms": 285757,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:crafting_table\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive crafting station block\"\n        },\n        \"material_family\": {\n          \"value\": \"wood_oak\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"textured and crafted with oak planks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially crafted from any wood planks\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used throughout entire playthrough\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple utilitarian wooden workbench\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak plank tones dominant\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block; burns; piston moves it\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft items and blocks\", \"early-game essential station\", \"ingredient for crafter block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"universal crafting interface\"\n        }\n      }\n    },\n    \"minecraft:creaking_heart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns linked Creaking mob at night\"\n        },\n        \"material_family\": {\n          \"value\": \"pale_oak\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale garden tree heart; pale oak material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in pale garden biome only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use for Creaking mob spawning\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Creaking mob farm; pale garden builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale wood with supernatural spawning property\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale wood; glows orange when active\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns Creaking when active at night\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-type block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn Creaking mobs at night\", \"pale garden tree component\", \"decorative pale-wood build block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unique biome-specific mob-spawning block\"\n        }\n      }\n    },\n    \"minecraft:creaking_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs are utility items\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for mob farm setup or testing\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table or recipe in survival\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob farm setup; hostile mob testing\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs are mob-specific colored variants\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"right-click spawns Creaking mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn Creaking mob on demand\", \"mob farm or test setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"direct controlled mob spawning\"\n        }\n      }\n    },\n    \"minecraft:creeper_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"template consumed in loom to apply pattern\"\n        },\n        \"material_family\": {\n          \"value\": \"paper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banner patterns are paper-substrate items\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot source; crafted from paper+creeper head\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per creeper-pattern banner\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies creeper face pattern to banners in loom\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creeper face is ominous; one of many patterns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply creeper face pattern to banner\", \"loom pattern ingredient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"single-purpose banner decoration item\"\n        }\n      }\n    },\n    \"minecraft:creeper_head\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"trophy\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare mob head; displayed or worn as achievement\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily placed as decorative trophy\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trophy display; crafts banner pattern and fireworks\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iconic ominous creeper face; mob-derived\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green creeper skin with dark pixel spots\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:charged_creeper/creeper loot source\",\n          \"rationale\": \"charged creeper kill drops creeper head\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"display as mob trophy\", \"craft creeper banner pattern\", \"craft creeper firework star\", \"wear on head\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trophy with secondary crafting utility\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:crafting_table\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"village\", \"crafted_only\"],\n      \"rationale\": \"Crafting tables generate in village structures\",\n      \"confidence\": 0.80\n    },\n    {\n      \"item\": \"minecraft:creaking_heart\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\", \"crafted_only\"],\n      \"rationale\": \"Naturally generates in Pale Oak trees in Pale Garden biome\",\n      \"confidence\": 0.90\n    },\n    {\n      \"item\": \"minecraft:creeper_head\",\n      \"facet\": \"rarity\",\n      \"current\": \"uncommon\",\n      \"suggested\": \"rare\",\n      \"rationale\": \"Requires charged creeper to kill a creeper; very rare event\",\n      \"confidence\": 0.80\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "1991905b-7059-48a4-a61f-74a1032aea33",
+  "total_cost_usd": 0.3171293999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3716,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 19894,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3716,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 19894,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3716,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3716
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2853,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002928,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 19894,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3716,
+      "webSearchRequests": 0,
+      "costUSD": 0.3142013999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "870fe25a-7819-4ff4-aec6-5e1c809dc375"
+}

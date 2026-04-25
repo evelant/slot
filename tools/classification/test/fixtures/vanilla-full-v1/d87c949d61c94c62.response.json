@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 107662,
+  "duration_api_ms": 108458,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:smooth_sandstone_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs are structural building elements\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shaped form of smooth sandstone block\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sandstone is beige/sandy, smooth=matte\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"staircase construction\",\n            \"decorative desert-style facades\",\n            \"height transitions in sandstone builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stair use cases\"\n        }\n      }\n    },\n    \"minecraft:smooth_stone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted stone used primarily for building\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id=smooth_stone, base material is stone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in builds and key recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat featureless gray surface\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light gray matte stone appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building clean stone structures\",\n            \"crafting blast furnace\",\n            \"crafting smooth stone slabs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream recipe targets\"\n        }\n      }\n    },\n    \"minecraft:smooth_stone_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs are structural half-height blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs are among most-used build elements\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"undecorated slab form of smooth stone\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light gray matte appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height floors and ceilings\",\n            \"stair-free height transitions\",\n            \"crafting armor stands\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core slab build uses + armor stand recipe\"\n        }\n      }\n    },\n    \"minecraft:sniffer_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare egg that hatches an ancient mob\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed rarely; mainly for breeding sniffers\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hatch sniffers for ancient seed farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ancient creature egg from archaeology\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brownish-red egg coloration\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hatches into sniffer when placed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"hatch into sniffer mob\",\n            \"obtain torchflower/pitcher plant seeds\",\n            \"sniffer mob breeding\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sniffer sniffs ancient seeds; eggs breed\"\n        }\n      }\n    },\n    \"minecraft:sniffer_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs are creative-only admin items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot source, no recipe, spawn egg id\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg summons its linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn sniffer mob in creative mode\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose of spawn eggs\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "31fd7f2b-026f-45d3-9edd-eec76c763449",
+  "total_cost_usd": 0.1322024,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4124,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7436,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4124,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7436,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4124,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4124
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3261,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0033410000000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7436,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4124,
+      "webSearchRequests": 0,
+      "costUSD": 0.1288614,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1525e803-4ae8-4a03-b179-96b9c1e47b32"
+}

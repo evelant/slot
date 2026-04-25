@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 255081,
+  "duration_api_ms": 256545,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:tnt_minecart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"explosive device; transport is incidental\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecart body crafted from 5 iron ingots\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"tnt\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"TNT block is the explosive payload\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche demolition/trap use\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blasting ores and setting combat traps\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cart+explosive contraption\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey iron cart with red/warm TNT\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot_sources; recipe_production present\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"explosion damages nearby entities\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Demolition blasting on rails\",\n            \"Combat trap on minecart tracks\",\n            \"Mining large ore veins quickly\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core TNT minecart use cases\"\n        }\n      }\n    },\n    \"minecraft:torch\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is active light emission\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stick is structural element\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sticks+coal; placed by thousands\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed constantly in caves and builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"mining\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lighting for builds, caves, decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple stick+coal aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm orange flame, actively emits light\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light lvl 14; pops off when piston pushes\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"torch light prevents hostile mob spawning\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Illuminate dark areas\",\n            \"Block mob spawning in bases\",\n            \"Cave exploration lighting\",\n            \"Craft lanterns and jack o lanterns\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core torch use cases\"\n        }\n      }\n    },\n    \"minecraft:torchflower\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant obtained from world\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires sniffer seed progression\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for dye/stew occasionally\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown for dye and decorative display\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare ornate flower from ancient seeds\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-amber flower coloration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft orange dye\",\n            \"Make suspicious stew\",\n            \"Rare decorative flower\",\n            \"Attracts bees\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye source and decorative uses\"\n        }\n      }\n    },\n    \"minecraft:torchflower_seeds\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw seeds dug by sniffer; unprocessed\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sniffer-dug; sniffers require archaeology\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted once sniffer farm established\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted to grow torchflower\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple seed from rare ancient plant\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-amber seed appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Plant to grow torchflower\",\n            \"Feed sniffer to breed\",\n            \"Feed chickens and parrots\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planting and animal feeding uses\"\n        }\n      }\n    },\n    \"minecraft:totem_of_undying\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed on lethal hit to prevent death\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoarded; consumed only on near-death\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"held in offhand during dangerous fights\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ancient artifact with magical death prevention\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden yellow totem aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Prevent death when held in offhand\",\n            \"Survive raids and boss fights\",\n            \"Obtained by killing evokers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"death-prevention utility item\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:totem_of_undying\",\n      \"facet\": \"rarity\",\n      \"current\": \"uncommon\",\n      \"suggested\": \"rare\",\n      \"rationale\": \"Evokers only in woodland mansions/raids; milestone drop\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "1d9c9a34-0473-4077-9637-873640171cc9",
+  "total_cost_usd": 0.2771698999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3814,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 17199,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3814,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17199,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3814,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3814
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2951,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003026,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17199,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3814,
+      "webSearchRequests": 0,
+      "costUSD": 0.27414389999999994,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "deb90f7d-7f80-4b0e-b739-42b9fff01e35"
+}

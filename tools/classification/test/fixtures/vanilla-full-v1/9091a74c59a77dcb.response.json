@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 133411,
+  "duration_api_ms": 134181,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:crimson_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressure plates emit redstone signal on step\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific redstone setups\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers signal, placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood mechanical redstone input\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark red-purple nether wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"trigger redstone on entity step\", \"detect player/mob presence\", \"nether-themed redstone builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core pressure plate uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_roots\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether flora, no crafting use, can be potted\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for nether-themed decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely decorative nether plant\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic nether vegetation\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright crimson red plant\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether biome decoration\", \"potted plant display\", \"crimson forest ambiance\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative flora uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive item display block like lectern\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for display/storage in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative storage for nether builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional wood furniture block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"maroon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark crimson wood\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items on shelf surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"display books/items decoratively\", \"nether-themed interior storage\", \"decorative item showcase\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf block primary uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs display text, primarily decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific labeling contexts\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed signs label/decorate builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wood sign\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"maroon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark crimson wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"text labeling in world\", \"waypoint marking\", \"nether-themed decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sign primary uses\"\n        }\n      }\n    },\n    \"minecraft:crimson_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form = structural building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs heavily used in construction\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab variant of crimson planks\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"maroon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark crimson wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height building element\", \"crafting barrels and lecterns\", \"nether-themed construction\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "55f5fcd6-838f-4efc-9019-703bb0aadb2b",
+  "total_cost_usd": 0.1771994,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4856,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10204,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4856,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10204,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4856,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4856
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3993,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004073,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10204,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4856,
+      "webSearchRequests": 0,
+      "costUSD": 0.1731264,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "78c5e2e8-7d2b-41b0-9ebe-756268663574"
+}

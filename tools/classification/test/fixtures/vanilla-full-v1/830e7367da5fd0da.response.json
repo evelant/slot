@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 194729,
+  "duration_api_ms": 195548,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:jungle_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs have write/click text interaction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for labeling, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds for text/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; one of 8 wood variants\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle wood warm medium-brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood item; is_fuel implies flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"label areas with text\", \"decorate builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core hanging sign use cases\"\n        }\n      }\n    },\n    \"minecraft:jungle_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves placed for aesthetic foliage\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in tree/hedge builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"foliage for builds and landscapes\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic leaf block\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green foliage appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves are flammable in Minecraft\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorate builds with foliage\", \"craft leaf litter\", \"source saplings and sticks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses of jungle leaves\"\n        }\n      }\n    },\n    \"minecraft:jungle_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw log from tree, unprocessed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"key material; used in many recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as log in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood; one of many log variants\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle log warm medium-brown bark\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft jungle planks\", \"build log structures\", \"make charcoal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top uses from ingredient list\"\n        }\n      }\n    },\n    \"minecraft:jungle_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks primary structural material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"50+ recipes; ubiquitous in building\"\n        },\n        \"tier\": {\n          \"value\": \"wooden\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:wooden_tool_materials\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary structural and crafting block\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat planks; jungle wood variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle planks orange-brown warm tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood planks are flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build structures\", \"craft furniture and tools\", \"make stairs and slabs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core plank use cases\"\n        }\n      }\n    },\n    \"minecraft:jungle_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressure plates emit redstone signal\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific redstone setups\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers redstone; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional sensor made of wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood pressure plate; is_fuel=true\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"detect player/mob steps\", \"trigger redstone circuits\", \"activate doors or traps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core pressure plate use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:jungle_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_jungle\",\n      \"rationale\": \"id is jungle_planks; oak assigned generically from wooden_tool_materials tag\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d3a68e50-69b3-4e9a-8234-19be40f5fcac",
+  "total_cost_usd": 0.22955765,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5023,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13642,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5023,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13642,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5023,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5023
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4160,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004235,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13642,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5023,
+      "webSearchRequests": 0,
+      "costUSD": 0.22532265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e7a353d9-5908-4498-b192-6334f46b3714"
+}

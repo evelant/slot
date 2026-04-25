@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 159432,
+  "duration_api_ms": 160512,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:raw_iron\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"mined raw ore chunk, unprocessed\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw form of iron-tier material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted constantly into iron ingot\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"combat\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream iron ingot activities\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore chunk appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rusty brownish-orange ore chunk\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt into iron ingot\", \"compact into raw iron block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard raw ore uses\"\n        }\n      }\n    },\n    \"minecraft:raw_iron_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"9:1 compact storage of raw iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used mainly for inventory compaction\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is ore compaction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed raw ore aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rough raw ore texture, muted tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"compact 9 raw iron into 1 block\", \"uncraft back to 9 raw iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bulk storage and retrieval\"\n        }\n      }\n    },\n    \"minecraft:recovery_compass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigational tool pointing to death spot\"\n        },\n        \"material_family\": {\n          \"value\": \"echo_shard\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"8 echo shards dominate the recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"contains a compass (iron+redstone)\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only consulted after dying\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigate back to death point\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animated compass mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coppery glow with spin animation\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; only crafted\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"navigate to last death location\", \"recover dropped items after death\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is post-death navigation\"\n        }\n      }\n    },\n    \"minecraft:red_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is aesthetic display\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"6 wool is dominant recipe ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick pole component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative, not every-session use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"marking territory and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored with pattern options\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red is warm and vivid\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decoration and territory marking\", \"shield decoration\", \"pattern layering display\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard banner use cases\"\n        }\n      }\n    },\n    \"minecraft:red_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"skips night, sets spawn point\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 red wool in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 planks in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every in-game night cycle\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sets respawn; placed in shelters\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored variant\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red is warm and vivid\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"skip night cycle\", \"set respawn point\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed mechanics\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b165246e-0d92-4e20-b1a1-8fd74fd810e2",
+  "total_cost_usd": 0.20926115,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4649,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12407,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4649
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12407,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4649,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4649,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3786,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038659999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12407,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4649,
+      "webSearchRequests": 0,
+      "costUSD": 0.20539515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "42d158f7-14c6-4d5f-9f2b-01ff509a36a6"
+}

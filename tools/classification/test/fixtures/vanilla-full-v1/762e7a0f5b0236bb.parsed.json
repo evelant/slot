@@ -1,0 +1,353 @@
+{
+  "items": {
+    "minecraft:saddle": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "equips to animals enabling player riding"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "saddle is leather-based visually"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "loot/fishing only; not normally crafted"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up animal rides"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables riding horses, pigs, striders"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple functional equipment item"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown leather tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Ride horses, donkeys, mules",
+            "Ride pigs with carrot on stick",
+            "Ride striders in nether"
+          ],
+          "signal": "inferred",
+          "rationale": "core saddle use cases"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits standard inventory"
+        }
+      }
+    },
+    "minecraft:salmon": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw fish from world; not processed"
+        },
+        "material_family": {
+          "value": "salmon",
+          "signal": "pattern",
+          "rationale": "id suffix matches species name"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common; fishable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food; often cooked and eaten"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to feed/tame cats, ocelots, wolves"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw natural food item"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "salmon orange-pink coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat raw for 2 hunger",
+            "Cook into cooked salmon (6 hunger)",
+            "Feed/tame cats, ocelots, wolves"
+          ],
+          "signal": "inferred",
+          "rationale": "food component + animal food tags"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "minecraft:salmon_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "transports and releases live salmon mob"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket is iron; outer material"
+        },
+        "material_secondary": {
+          "values": [
+            "salmon",
+            "water"
+          ],
+          "signal": "inferred",
+          "rationale": "contains live salmon in water"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche fish transport; rarely needed"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "aqua-farm or collecting fish mobs"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plain iron bucket with natural content"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "iron bucket gray + salmon orange"
+        },
+        "primary_uses": {
+          "values": [
+            "Transport live salmon mob",
+            "Release salmon in new water location"
+          ],
+          "signal": "inferred",
+          "rationale": "fish bucket core functionality"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries a live fish mob entity"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "minecraft:salmon_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix = creative admin item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "spawn eggs only obtainable in creative"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative only; not in survival loot"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for creative/map-making purposes"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn eggs have distinctive mob colors"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "salmon orange-pink egg appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn salmon mob in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg single purpose"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn eggs always spawn their linked mob"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    },
+    "minecraft:sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw block from world; unprocessed"
+        },
+        "material_family": {
+          "value": "sand",
+          "signal": "pattern",
+          "rationale": "id is minecraft:sand"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "massive quantities in deserts/beaches"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "glass, concrete, TNT = very common uses"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed; smelts glass; concrete material"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain natural terrain block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "light tan desert color"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt into glass",
+            "Craft concrete powder",
+            "TNT ingredient",
+            "Terrain/desert building"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting + building downstream uses"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "sand falls when unsupported"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:sand",
+      "facet": "origin",
+      "current": [
+        "desert_temple"
+      ],
+      "suggested": [
+        "desert_temple",
+        "overworld_surface"
+      ],
+      "rationale": "blocks/sand loot source = overworld_surface drop",
+      "confidence": 0.95
+    }
+  ]
+}

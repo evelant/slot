@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 89662,
+  "duration_api_ms": 90644,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pale_oak_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits brief redstone pulse on press\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted freely from pale oak planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used selectively in redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"activates circuits; mounted on structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pale oak = grayish-white wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block; movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone pulse trigger\", \"activating doors and gates\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core redstone input device\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _boat = vehicle\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from pale oak + chest\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when water travel needed\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel + onboard item storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood boat\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pale oak wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; only crafting recipe\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"onboard chest holds standard items\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest occupies 2nd seat; player drives\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat floats; wood is flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with onboard storage\", \"mobile item transport across rivers/oceans\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat + chest combined function\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive openable/closable block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from pale oak planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed at every building entrance\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is building entrances\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood door\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pale oak wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden door; flammable and piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building entrances and exits\", \"mob barrier with player-accessible passage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door use cases\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier/enclosure block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from pale oak planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used for enclosures and decor\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal pens and yard enclosures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood fence\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pale oak wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden fence; flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"animal pens and enclosures\", \"garden/yard borders\", \"decorative structural accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence use cases\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"openable/closable interactive gate\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from pale oak planks + sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"paired with fences in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"access point in fenced enclosures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood gate\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pale oak wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden gate; flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"openable gate for fenced areas\", \"mob containment access point\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence gate use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "e5e9b4e5-390d-44da-ab5b-63a32f599000",
+  "total_cost_usd": 0.1348539,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4418,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7520,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4418
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7520,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4418,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4418,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3555,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00363,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7520,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4418,
+      "webSearchRequests": 0,
+      "costUSD": 0.1312239,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ba3165f8-0cf3-43b2-81f5-2c2a0385125b"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 70756,
+  "duration_api_ms": 71511,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cut_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed copper block for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix cut_copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific copper builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block for construction/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut pattern variant of copper block\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fresh unoxidized copper tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building copper-themed structures\",\n            \"crafting cut copper variants\",\n            \"wax to preserve appearance\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block + ingredient for slabs/stairs\"\n        }\n      }\n    },\n    \"minecraft:cut_copper_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form of cut copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific copper builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for construction and detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut copper slab variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fresh unoxidized copper tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height copper floors and roofs\",\n            \"detailed copper builds\",\n            \"ingredient for chiseled copper\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab use + recipe for chiseled\"\n        }\n      }\n    },\n    \"minecraft:cut_copper_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form of cut copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific copper builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for construction and detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut copper stairs variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fresh unoxidized copper tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"copper staircases and roofing\",\n            \"detailed copper architecture\",\n            \"wax to preserve appearance\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs use cases\"\n        }\n      }\n    },\n    \"minecraft:cut_red_sandstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut variant of red sandstone\"\n        },\n        \"material_family\": {\n          \"value\": \"red_sandstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix cut_red_sandstone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific desert builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut pattern variant of red sandstone\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish sandy desert tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building desert-themed structures\",\n            \"decorative red sandstone walls\",\n            \"crafting slabs and stairs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block + ingredient for variants\"\n        }\n      }\n    },\n    \"minecraft:cut_red_sandstone_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form of cut red sandstone\"\n        },\n        \"material_family\": {\n          \"value\": \"red_sandstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix cut_red_sandstone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific desert builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for construction and detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut red sandstone slab variant\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish sandy desert tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height red sandstone floors/roofs\",\n            \"desert-themed detailed builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "230b1fa3-4af9-4fa8-a3e7-96697bb66233",
+  "total_cost_usd": 0.12357615,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5189,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 6524,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5189,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6524,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5189,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5189
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4326,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004401,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6524,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5189,
+      "webSearchRequests": 0,
+      "costUSD": 0.11917515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f12d71e0-e598-4c30-b284-7d43c5821f7d"
+}

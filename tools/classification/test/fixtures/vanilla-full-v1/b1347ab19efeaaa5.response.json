@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 103256,
+  "duration_api_ms": 104271,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:waxed_copper_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest variant holds items like regular chest\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant, not the primary chest\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest used to store items\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper = mechanical look; waxed variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed = stays bright orange copper\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard inventory items\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chests cannot be pushed by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"store items in copper-themed chest\", \"decorative copper storage block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest variant\"\n        }\n      }\n    },\n    \"minecraft:waxed_copper_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"door is an architectural building element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant, not the default door choice\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in copper-themed structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper mechanical look; waxed variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed keeps bright copper color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"doors are piston-movable in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper-themed architectural door\", \"building copper structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"door variant of copper\"\n        }\n      }\n    },\n    \"minecraft:waxed_copper_golem_statue\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue is purely ornamental\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornamental statue for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper golem = mechanical; ornate statue form\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed keeps bright copper color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative copper golem statue\", \"ornamental build accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue decor\"\n        }\n      }\n    },\n    \"minecraft:waxed_copper_grate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grate is structural building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper grate used in thematic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and decorative copper block\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper grate industrial look; waxed variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed keeps bright copper color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper grates waterlog; regular block piston rules\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative grate in copper builds\", \"waterloggable copper grate\", \"semi-transparent copper panel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grate block uses\"\n        }\n      }\n    },\n    \"minecraft:waxed_copper_lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lantern is decorative light source\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper lantern used for themed lighting\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative lighting in copper builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper lantern mechanical feel; waxed variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed copper + emits warm light\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lanterns are light-emitting blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper-themed light source\", \"decorative lantern for builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light-emitting decor block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "a93dae1d-263c-403f-9ba6-12061da35264",
+  "total_cost_usd": 0.14078115,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4549,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7873,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4549,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7873,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4549,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4549
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3686,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003771,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7873,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4549,
+      "webSearchRequests": 0,
+      "costUSD": 0.13701015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4592c9c0-16a8-4c18-a0b9-57de08261b89"
+}

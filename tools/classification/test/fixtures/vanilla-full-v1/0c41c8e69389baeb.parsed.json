@@ -1,0 +1,291 @@
+{
+  "items": {
+    "minecraft:infested_mossy_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed block, structural stone appearance"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "mossy stone bricks base material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "silk touch + stronghold only"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never used intentionally"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "infested blocks generate in strongholds"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "named",
+          "rationale": "Infested → spawns silverfish on break"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "mossy variant of stone bricks"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "grey stone with green moss"
+        },
+        "primary_uses": {
+          "values": [
+            "silk touch collection",
+            "hidden trap in custom maps"
+          ],
+          "signal": "inferred",
+          "rationale": "niche uses only"
+        }
+      }
+    },
+    "minecraft:infested_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed block, identical to plain stone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "stone base material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "silk touch + stronghold only"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never used intentionally"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "infested blocks generate in strongholds"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "named",
+          "rationale": "Infested → spawns silverfish on break"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "pattern",
+          "rationale": "identical texture to plain stone"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "grey stone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "silk touch collection",
+            "hidden trap in custom maps"
+          ],
+          "signal": "inferred",
+          "rationale": "niche uses only"
+        }
+      }
+    },
+    "minecraft:infested_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed block, stone bricks appearance"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "stone bricks base material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "silk touch + stronghold only"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never used intentionally"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "infested blocks generate in strongholds"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "named",
+          "rationale": "Infested → spawns silverfish on break"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "pattern",
+          "rationale": "identical texture to stone bricks"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "grey stone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "silk touch collection",
+            "hidden trap in custom maps"
+          ],
+          "signal": "inferred",
+          "rationale": "niche uses only"
+        }
+      }
+    },
+    "minecraft:ink_sac": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed"
+        },
+        "material_family": {
+          "value": "ink",
+          "signal": "pattern",
+          "rationale": "contains squid ink"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "squids common; also fishing junk"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for black dye or writable books"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "black dye for colored blocks and items"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob drop"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black ink"
+        },
+        "primary_uses": {
+          "values": [
+            "craft black dye",
+            "craft writable book"
+          ],
+          "signal": "inferred",
+          "rationale": "only two recipe uses from data"
+        }
+      }
+    },
+    "minecraft:iron_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "suffix _axe + tool component present"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "everyday woodcutting and log stripping"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "tree harvesting + melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard mid-tier iron tool"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron finish"
+        },
+        "primary_uses": {
+          "values": [
+            "chop and strip wood",
+            "melee combat (disables shields)",
+            "break decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "axe dual role: tool + weapon"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

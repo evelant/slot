@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 138141,
+  "duration_api_ms": 139434,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:white_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"shulker_boxes tag; container block form\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker_shell\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from shulker shells\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires End progression to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core portable storage once unlocked\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable container for sorting/transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dyed variant of base shulker box\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white coloring\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items in any slot\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"push_reaction BLOCK in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable item storage container\",\n            \"organize items by category\",\n            \"transport large item quantities\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core shulker box use cases\"\n        }\n      }\n    },\n    \"minecraft:white_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"transparent structural/decorative block\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stained variant of base glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component: common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dyed glass variant\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white transparent glass block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative transparent window block\",\n            \"colored light filtering\",\n            \"building facades and skylights\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stained glass uses\"\n        }\n      }\n    },\n    \"minecraft:white_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin structural glass form\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"pane form of stained glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component: common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dyed glass pane variant\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white transparent pane\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass panes waterlog in Java Edition\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"thin decorative window element\",\n            \"space-efficient glass alternative\",\n            \"detailed facades and borders\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard glass pane uses\"\n        }\n      }\n    },\n    \"minecraft:white_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid colored structural block\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"terracotta tag, id suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component: common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dyed terracotta variant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale earthy terracotta tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colored building and decoration block\",\n            \"craft into white glazed terracotta\",\n            \"badlands and adobe style builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard terracotta uses\"\n        }\n      }\n    },\n    \"minecraft:white_tulip\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower found growing in world\"\n        },\n        \"material_family\": {\n          \"value\": \"flower\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"small_flowers tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in plains and forest biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific dye or stew use\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown for dye, placed as decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural flower item\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white soft-toned flower\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"bee_food tag; bees seek flowers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"light gray dye source\",\n            \"suspicious stew ingredient\",\n            \"decorative flower and pot plant\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs and flower use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:white_terracotta\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"overworld_surface\"],\n      \"rationale\": \"White terracotta generates naturally in badlands biome layer strata\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "0de994e4-f7cd-4700-8871-df8ab0f58f92",
+  "total_cost_usd": 0.18909815000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4561,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11091,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4561,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11091,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4561,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4561
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3698,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003773,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11091,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4561,
+      "webSearchRequests": 0,
+      "costUSD": 0.18532515000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "6df7c439-885e-4ef9-a164-7d07b77f835f"
+}

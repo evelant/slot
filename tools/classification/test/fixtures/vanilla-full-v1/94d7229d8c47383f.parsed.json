@@ -1,0 +1,304 @@
+{
+  "items": {
+    "minecraft:bamboo_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural fence block for enclosures/borders"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for specific builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for structural enclosures and borders"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo = organic natural material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo is pale/light-colored wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood product; ignites in fire"
+        },
+        "primary_uses": {
+          "values": [
+            "Livestock pens and mob enclosures",
+            "Garden and path borders",
+            "Decorative barriers in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gameplay uses"
+        }
+      }
+    },
+    "minecraft:bamboo_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural gate element of fence systems"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed alongside fences, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural gate; redstone-operable open/close"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo organic material; gate is functionally plain"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo pale wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood product; ignites in fire"
+        },
+        "primary_uses": {
+          "values": [
+            "Entry points in bamboo fence lines",
+            "Redstone-controlled automatic gates",
+            "Mob access control in pens"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gate gameplay uses"
+        }
+      }
+    },
+    "minecraft:bamboo_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs are primarily decorative/labeling blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as needed for labeling"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "text labeling and aesthetic decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo natural; hanging chain style more elaborate than signs"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo light wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo wood product burns"
+        },
+        "primary_uses": {
+          "values": [
+            "Text labels in builds",
+            "Decorative overhead signage",
+            "Wayfinding markers in structures"
+          ],
+          "signal": "inferred",
+          "rationale": "hanging sign primary uses"
+        }
+      }
+    },
+    "minecraft:bamboo_mosaic": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cube block used in construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty decorative-patterned block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive patterned block for aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo natural; mosaic weave pattern is ornate"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo pale with warm yellowish tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo wood product burns"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative bamboo flooring",
+            "Feature walls and accent panels",
+            "Unique patterned structural block"
+          ],
+          "signal": "inferred",
+          "rationale": "mosaic block primary uses"
+        }
+      }
+    },
+    "minecraft:bamboo_mosaic_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of decorative mosaic block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty decorative slab"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative half-block for builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo natural; mosaic pattern is ornate"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo pale warm yellowish tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo wood slab burns"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height mosaic flooring",
+            "Decorative step and accent slab",
+            "Aesthetic bamboo surface detail"
+          ],
+          "signal": "inferred",
+          "rationale": "mosaic slab primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:bamboo_mosaic",
+      "facet": "is_fuel",
+      "current": false,
+      "suggested": true,
+      "rationale": "bamboo_mosaic is bamboo wood; bamboo_mosaic_slab (same material) correctly has is_fuel:true; all bamboo wood products are burnable fuel",
+      "confidence": 0.85
+    }
+  ]
+}

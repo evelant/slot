@@ -1,0 +1,313 @@
+{
+  "items": {
+    "minecraft:bee_nest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "houses bees, produces honey/honeycomb"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "wood-based natural nest structure"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "spawns in specific flower biomes only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per bee farm setup"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "honey and honeycomb farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring nest"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "brown wood with honey amber tones"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "generates in trees near flowers"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "bees return to their home nest"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based block, combustible"
+        },
+        "primary_uses": {
+          "values": [
+            "bee farming for honey and honeycomb",
+            "relocating bee colonies with silk touch",
+            "passive bee habitat in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core bee nest uses"
+        }
+      }
+    },
+    "minecraft:bee_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs instantiate mob entities"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up bee farms"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to set up bee farms"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "bee-patterned two-tone spawn egg"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow-amber base with dark spots"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "_spawn_egg; no loot or recipe source"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning bees in creative mode",
+            "creative bee farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn eggs spawn the named mob"
+        }
+      }
+    },
+    "minecraft:beef": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "food+consumable component, eaten directly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily farmed from cows"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common early/mid-game food source"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from cow farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw animal product"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "red-pink raw meat coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "eating raw for low sustenance",
+            "cooking into cooked beef",
+            "wolf food"
+          ],
+          "signal": "inferred",
+          "rationale": "main raw beef uses"
+        }
+      }
+    },
+    "minecraft:beehive": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "houses bees, produces honey/honeycomb"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from planks"
+        },
+        "material_secondary": {
+          "values": [
+            "honeycomb"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe requires honeycomb"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable once honeycomb is obtained"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per bee farm setup"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "core bee honey/wax farming block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "bee-themed crafted housing"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "brown wood with honey amber"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "bees return to their home hive"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based crafted block"
+        },
+        "primary_uses": {
+          "values": [
+            "bee housing in player-built farms",
+            "honey bottle farming",
+            "honeycomb farming"
+          ],
+          "signal": "inferred",
+          "rationale": "core beehive uses"
+        }
+      }
+    },
+    "minecraft:beetroot": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "food+consumable component, edible crop"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable crop"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "growable food crop"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "grown as a crop"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural vegetable crop"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark red root vegetable"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for low sustenance",
+            "crafting beetroot soup",
+            "crafting red dye",
+            "pig food"
+          ],
+          "signal": "inferred",
+          "rationale": "main beetroot uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

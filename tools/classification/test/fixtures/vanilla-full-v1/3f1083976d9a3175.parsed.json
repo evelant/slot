@@ -1,0 +1,273 @@
+{
+  "items": {
+    "minecraft:fletching_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "fletcher job site, interactive behavior"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted from planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once to assign villager job"
+        },
+        "activity": {
+          "values": [
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "enables fletcher villager trades"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood and stone construction"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "brown plank appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based block, is_fuel=true"
+        },
+        "primary_uses": {
+          "values": [
+            "fletcher villager job site block",
+            "enables trading arrows, bows, crossbows"
+          ],
+          "signal": "inferred",
+          "rationale": "sole vanilla use"
+        }
+      }
+    },
+    "minecraft:flint": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw drop from gravel, unprocessed"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "pattern",
+          "rationale": "id = flint"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "~10% drop from abundant gravel"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "key ingredient in arrows and tools"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "arrows=combat; flint_and_steel=portals"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from gravel (overworld common)"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray-charcoal flint color"
+        },
+        "primary_uses": {
+          "values": [
+            "craft arrows",
+            "craft flint and steel",
+            "craft fletching table"
+          ],
+          "signal": "pattern",
+          "rationale": "sample_ingredient_of confirms"
+        }
+      }
+    },
+    "minecraft:flint_and_steel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "fire-starting tool, has durability"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "steel=iron; recipe uses iron ingot"
+        },
+        "material_secondary": {
+          "values": [
+            "flint"
+          ],
+          "signal": "inferred",
+          "rationale": "flint in name and recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap craft, found in common chests"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mainly used for portal lighting"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "portals=exploration; creeper_igniters"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple functional tool, no decoration"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "iron+flint coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "light nether portals",
+            "start fires and ignite campfires",
+            "ignite creepers"
+          ],
+          "signal": "inferred",
+          "rationale": "creeper_igniters tag + fire use"
+        }
+      }
+    },
+    "minecraft:flow_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied at smithing table to trim armor"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor trim application"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trimming is cosmetic only"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from ominous trial vault only"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "flow pattern = vivid teal swirl"
+        },
+        "primary_uses": {
+          "values": [
+            "apply flow armor trim at smithing table",
+            "duplicate template at crafting table"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing_trim + self-copy recipe"
+        }
+      }
+    },
+    "minecraft:flow_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable loom input for banner patterns"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when decorating banners"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "loom banner decoration use"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ominous vault source; organic flow motif"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "flow motif turquoise/teal vivid"
+        },
+        "primary_uses": {
+          "values": [
+            "apply flow pattern to banners in loom"
+          ],
+          "signal": "named",
+          "rationale": "provides_banner_patterns component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

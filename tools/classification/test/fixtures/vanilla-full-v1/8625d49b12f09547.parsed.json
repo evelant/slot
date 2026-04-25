@@ -1,0 +1,359 @@
+{
+  "items": {
+    "minecraft:yellow_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "converts to concrete; structural building use"
+        },
+        "material_family": {
+          "value": "concrete_powder",
+          "signal": "pattern",
+          "rationale": "id suffix _concrete_powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific concrete builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed to produce concrete structures"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye-colored block variants"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright saturated yellow"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand when unsupported"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stackable block item"
+        },
+        "primary_uses": {
+          "values": [
+            "produce yellow concrete via water contact",
+            "colored structural building block"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:yellow_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag minecraft:dyes; crafting ingredient"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "named",
+          "rationale": "component minecraft:dye=yellow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational dyeing use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "dyes blocks, armor, fireworks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye color variants"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stackable item"
+        },
+        "primary_uses": {
+          "values": [
+            "dye wool, concrete powder, terracotta",
+            "dye leather armor and horse armor",
+            "firework star coloring",
+            "craft yellow concrete powder"
+          ],
+          "signal": "inferred",
+          "rationale": "based on recipe consumption list"
+        }
+      }
+    },
+    "minecraft:yellow_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "patterned glazed block; purely aesthetic"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _glazed_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative choice"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative accent builds"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "patterned glaze; dyed color variant"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "glossy"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow; shiny glazed surface"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stackable block item"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative patterned floors and walls",
+            "yellow accent decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:yellow_harness": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equips happy ghast to enable player flight"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "harnesses crafted from wool in 1.21.5"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "signal": "pattern",
+          "rationale": "id prefix yellow_; dyeable via crafting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires happy ghast / dried ghast content"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "happy ghast system rarely engaged"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables aerial transit on happy ghast"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool harness"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources listed"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory item"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "enables player riding on happy ghast"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghast for player riding",
+            "enable aerial transportation",
+            "tempt happy ghasts"
+          ],
+          "signal": "inferred",
+          "rationale": "tag happy_ghast_tempt_items + riding mechanic"
+        }
+      }
+    },
+    "minecraft:yellow_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "portable container block with 27 slots"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "inferred",
+          "rationale": "crafted from shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires end progression + shulker shells"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "essential storage tool once obtained"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable inventory expansion"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dyed shulker box variants"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard items, 27 slots"
+        },
+        "primary_uses": {
+          "values": [
+            "portable 27-slot inventory expansion",
+            "color-coded organized storage",
+            "carry many items in one inventory slot"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:yellow_dye",
+      "facet": "origin",
+      "current": [
+        "archaeology_site",
+        "village"
+      ],
+      "suggested": [
+        "archaeology_site",
+        "village",
+        "overworld_surface"
+      ],
+      "rationale": "crafted from dandelion/sunflower/wildflowers",
+      "confidence": 0.85
+    }
+  ]
+}

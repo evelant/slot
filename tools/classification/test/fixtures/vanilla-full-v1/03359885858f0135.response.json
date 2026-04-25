@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 299495,
+  "duration_api_ms": 300345,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:poppy\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant gathered raw from world\"\n        },\n        \"material_family\": {\n          \"value\": \"flower\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small_flowers tag; plant category\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant on overworld surface biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye/stew use, not daily essential\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red dye for decor; bee food for farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic plant item\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright red petals, warm hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft red dye\",\n            \"brew suspicious stew (blindness)\",\n            \"flower pot decoration\",\n            \"bee food\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of + block + tags\"\n        }\n      }\n    },\n    \"minecraft:porkchop\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:food + minecraft:consumable\"\n        },\n        \"material_family\": {\n          \"value\": \"pork\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"porkchop id; pig/hoglin mob drop\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pigs very common, trivially farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"meat staple consumed regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pig/wolf breeding; travel food supply\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw meat, organic mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pinkish-red raw meat tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"cook into cooked porkchop\",\n            \"eat raw for hunger restore\",\n            \"feed and breed wolves\",\n            \"piglin food item\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tags and cooking recipes\"\n        }\n      }\n    },\n    \"minecraft:potato\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:food + minecraft:consumable\"\n        },\n        \"material_family\": {\n          \"value\": \"potato\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = potato\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable crop; zombie/village drop\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common planted crop, regularly grown\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"villager_plantable_seeds; food for travel\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw vegetable crop\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown/beige raw potato colours\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"plant as crop for farming\",\n            \"cook into baked potato\",\n            \"eat raw (low nutrition)\",\n            \"pig food\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"seed tag + cooking recipes + pig_food\"\n        }\n      }\n    },\n    \"minecraft:potent_sulfur\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"guess\",\n          \"rationale\": \"cube_all block; no known function\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"name contains sulfur\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"guess\",\n          \"rationale\": \"crafted, origin crafted_only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"guess\",\n          \"rationale\": \"no downstream recipe consumption known\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"full cube block default activity\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"basic cube, no special known traits\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"sulfur is yellow-amber in colour\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"build/decorate with sulfur-themed block\"\n          ],\n          \"signal\": \"guess\",\n          \"rationale\": \"no recipe consumption found\"\n        }\n      }\n    },\n    \"minecraft:potion\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:consumable; animation=drink\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires brewing stand or chest loot\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly in combat/exploration\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"brewing\", \"exploration\", \"magic\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"potions span combat, travel, brewing\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical brewed consumable\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"glowing\", \"iridescent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"liquid glass bottle, glows, colour varies\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"drink for status effects\",\n            \"combat and exploration buffs\",\n            \"convert to splash via brewing stand\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard potion use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"origin\",\n      \"value\": \"brewing_stand\",\n      \"rationale\": \"Potions are primarily obtained via brewing stand; no existing origin value captures this production method\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "0f3580ba-b64c-4c4e-804f-33921513ec0a",
+  "total_cost_usd": 0.29340289999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4342,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 18114,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4342
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 18114,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4342,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4342,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3479,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003554,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 18114,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4342,
+      "webSearchRequests": 0,
+      "costUSD": 0.28984889999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "58faa168-1b95-4c4c-94fa-b9355c52fbc7"
+}

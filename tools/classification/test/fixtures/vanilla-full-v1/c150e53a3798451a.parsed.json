@@ -1,0 +1,327 @@
+{
+  "items": {
+    "minecraft:item_frame": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed on walls to display items"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted from sticks (wood)"
+        },
+        "material_secondary": {
+          "values": [
+            "leather"
+          ],
+          "signal": "inferred",
+          "rationale": "leather is a recipe ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used for chest labeling"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "display + comparator output"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood and leather construction"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "light wood frame + leather tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot source, recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "display items on walls",
+            "label storage containers",
+            "redstone comparator output"
+          ],
+          "signal": "inferred",
+          "rationale": "core vanilla usage patterns"
+        }
+      }
+    },
+    "minecraft:jack_o_lantern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "decorative light-emitting pumpkin block"
+        },
+        "material_family": {
+          "value": "pumpkin",
+          "signal": "pattern",
+          "rationale": "made from carved pumpkin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally for decor/light"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetics and light"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural pumpkin material"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "amber",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "orange pumpkin with glowing carved face"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 15"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "placed to complete snow/iron golem"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative light source",
+            "snow/iron golem creation",
+            "Halloween-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "main vanilla uses"
+        }
+      }
+    },
+    "minecraft:jigsaw": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only world gen configuration tool"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used by map makers/developers"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "configures structure generation placement"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical/admin block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark grey block texture"
+        },
+        "primary_uses": {
+          "values": [
+            "world gen structure placement config",
+            "creative/admin map making"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is world gen editing"
+        }
+      }
+    },
+    "minecraft:jukebox": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive block that plays music discs"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted primarily from planks"
+        },
+        "material_secondary": {
+          "values": [
+            "diamond"
+          ],
+          "signal": "inferred",
+          "rationale": "one diamond required in recipe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamond to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed situationally for music"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "music ambiance + comparator signal"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood box with mechanical disc player"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark wood exterior texture"
+        },
+        "primary_uses": {
+          "values": [
+            "play music discs",
+            "redstone comparator signal source",
+            "ambient music decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core jukebox uses"
+        }
+      }
+    },
+    "minecraft:jungle_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "water travel vehicle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when water travel is needed"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water movement and biome exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood boat, jungle wood variant"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood reddish-brown hue"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "floats on water surface"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries players and mobs on water"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot source, crafted from planks"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel across rivers and oceans",
+            "transport mobs on water",
+            "explore water biomes quickly"
+          ],
+          "signal": "inferred",
+          "rationale": "main boat uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,250 @@
+{
+  "items": {
+    "minecraft:quartz_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full-block column; structural placed use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from nether quartz; nether trip needed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific quartz-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural column or decor"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "pillar variant of base quartz block"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/off-white quartz with matte finish"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "solid opaque full-height block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative columns in builds",
+            "quartz-themed structures",
+            "stonecutting into other quartz forms"
+          ],
+          "signal": "inferred",
+          "rationale": "pillar used architecturally"
+        }
+      }
+    },
+    "minecraft:quartz_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag = structural building form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether quartz farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs are heavily used in most builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "half-height structural and decorative use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "slab variant of quartz block"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/off-white quartz texture"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "quartz-themed detailing",
+            "crafting chiseled quartz block"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab use plus chiseled recipe"
+        }
+      }
+    },
+    "minecraft:quartz_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag = structural building form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether quartz farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs heavily used in most builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "staircase and decorative edge use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "stair variant of quartz block"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/off-white quartz texture"
+        },
+        "primary_uses": {
+          "values": [
+            "staircases in quartz builds",
+            "decorative quartz edges",
+            "quartz-themed architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair uses"
+        }
+      }
+    },
+    "minecraft:rabbit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "minecraft:food + minecraft:consumable in component_highlights",
+          "rationale": "has food+consumable components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rabbits spawn in many biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "usually cooked first; low raw saturation"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "sourced from rabbit farms for food"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw animal product"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into cooked rabbit",
+            "emergency hunger restore",
+            "wolf and pet food"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat primary uses"
+        }
+      }
+    },
+    "minecraft:rabbit_foot": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop; no processing, used in brewing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "~10% drop rate; needs looting for reliable supply"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "jump boost potions are niche; rarely used"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "brews Potion of Leaping"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob drop item"
+        },
+        "primary_uses": {
+          "values": [
+            "brew Potion of Leaping",
+            "brewing ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "sole recognized use is brewing"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

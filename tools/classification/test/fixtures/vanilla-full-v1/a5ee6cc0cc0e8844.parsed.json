@@ -1,0 +1,269 @@
+{
+  "items": {
+    "minecraft:mourner_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible for decorated pots"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "pottery sherd = fired clay"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "found via archaeology excavation"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay pottery visual tone"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "pattern",
+          "rationale": "tag decorated_pot_ingredients"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specific sherd from archaeology only"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use is decorated_pot ingredient"
+        }
+      }
+    },
+    "minecraft:mud": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw world block, primary use as input"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "pattern",
+          "rationale": "id = mud"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic world block"
+        },
+        "palette": {
+          "values": [
+            "muddy",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark wet earth texture"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove swamp biome native block"
+        },
+        "environmental_property": {
+          "values": [
+            "slows_walking"
+          ],
+          "signal": "inferred",
+          "rationale": "entities sink and slow in mud"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for packed mud & muddy roots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mangrove crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting packed mud",
+            "crafting muddy mangrove roots",
+            "placed as building block"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of confirms recipes"
+        }
+      }
+    },
+    "minecraft:mud_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag = building_block"
+        },
+        "material_family": {
+          "value": "mud_brick",
+          "signal": "pattern",
+          "rationale": "id prefix mud_brick"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "earthy material, slab variant form"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dried mud brick warm brown tone"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mangrove build style"
+        },
+        "primary_uses": {
+          "values": [
+            "building with mud brick aesthetic",
+            "decorative half-height slab"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form of mud brick set"
+        }
+      }
+    },
+    "minecraft:mud_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag = building_block"
+        },
+        "material_family": {
+          "value": "mud_brick",
+          "signal": "pattern",
+          "rationale": "id prefix mud_brick"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "earthy material, stairs variant form"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dried mud brick warm brown tone"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mangrove build style"
+        },
+        "primary_uses": {
+          "values": [
+            "building with mud brick aesthetic",
+            "decorative staircase"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form of mud brick set"
+        }
+      }
+    },
+    "minecraft:mud_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "walls tag = building_block"
+        },
+        "material_family": {
+          "value": "mud_brick",
+          "signal": "pattern",
+          "rationale": "id prefix mud_brick"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "earthy material, wall variant form"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dried mud brick warm brown tone"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mangrove build style"
+        },
+        "primary_uses": {
+          "values": [
+            "building with mud brick aesthetic",
+            "decorative border wall"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form of mud brick set"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

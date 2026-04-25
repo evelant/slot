@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 137959,
+  "duration_api_ms": 138774,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cherry_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab is a structural half-block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry-specific builds only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floors, ceilings, detail work\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood from nature\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry planks are pink/light-warm\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden_slabs tag → flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building floors and ceilings\",\n            \"decorative half-step detailing\",\n            \"crafting composter and barrel\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab uses + recipe outputs\"\n        }\n      }\n    },\n    \"minecraft:cherry_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs are structural corner blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry-specific builds only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rooflines, arches, level transitions\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood from nature\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry planks are pink/light-warm\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden_stairs tag → flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building rooflines and arches\",\n            \"connecting floor levels\",\n            \"decorative stairways in cherry aesthetic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stair end-uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trapdoor opens/closes interactively\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"openable block with redstone control\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood from nature\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry planks are pink/light-warm\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden_trapdoors tag → flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"openable floor or ceiling hatches\",\n            \"redstone-triggered passages\",\n            \"decorative panel in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard trapdoor end-uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full-cube log variant placed structurally\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative use, less common than planks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark column used aesthetically\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry bark is warm medium-dark\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:logs_that_burn\",\n          \"rationale\": \"explicit burn tag on item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"all-bark decorative wood column\",\n            \"crafting cherry planks and charcoal\",\n            \"structural accent in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard log block uses\"\n        }\n      }\n    },\n    \"minecraft:chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary vanilla item storage block\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 8 wooden planks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core storage used by every player\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores and organizes items\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generic undecorated chest\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard oak-toned chest texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block, catches fire\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores standard item stacks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"storing and organizing items\",\n            \"double chest with adjacent chest\",\n            \"crafting hopper and chest minecart\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core chest end-uses + recipe outputs\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "cacb0d57-f5d0-40ae-86b7-edd473e84154",
+  "total_cost_usd": 0.17287289999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5122,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9831,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5122,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9831,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5122,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5122
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4259,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004344,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9831,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5122,
+      "webSearchRequests": 0,
+      "costUSD": 0.16852889999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e2188b14-2eb1-40e4-b4d3-5816afdac47c"
+}

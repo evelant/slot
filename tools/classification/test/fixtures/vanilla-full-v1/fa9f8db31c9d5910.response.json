@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 153875,
+  "duration_api_ms": 154800,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:magenta_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle is a portable item container\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundles crafted from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string used in bundle recipe\"\n        },\n        \"dye_color\": {\n          \"value\": \"magenta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix magenta_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"actively used for inventory management\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle organizes and carries items\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed; made from organic hide\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta is a vivid bright hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot sources listed\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds regular stackable items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable container for multiple item types\",\n            \"inventory consolidation and organization\",\n            \"carry unstackable items together\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle core gameplay purpose\"\n        }\n      }\n    },\n    \"minecraft:magenta_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles are primarily aesthetic light decor\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles crafted from honeycomb\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string as wick in candle recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for ambiance, not daily use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles used for decorative lighting\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wax candle; organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta is vivid\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loot tables are block self-drops only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light when lit (level 3)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ambient lighting and decoration\",\n            \"birthday cake candles\",\n            \"colorful light source accent\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"candle gameplay purposes\"\n        }\n      }\n    },\n    \"minecraft:magenta_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpets are floor decoration\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once for decor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpets decorate floors and builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool carpet; organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta is vivid\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\", \"piston_movable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag dampens_vibrations; thin movable block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"floor and interior decoration\",\n            \"llama equipment slot decoration\",\n            \"vibration dampening for sculk sensors\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpet main uses\"\n        }\n      }\n    },\n    \"minecraft:magenta_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete is a structural building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular colorful building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete used for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid dyed block, smooth uniform surface\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta vivid; concrete has matte finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colorful structural building\",\n            \"smooth solid-color surfaces\",\n            \"decorative construction accent\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete building uses\"\n        }\n      }\n    },\n    \"minecraft:magenta_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"precursor block for concrete production\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate; converted to concrete quickly\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"converted to concrete for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed powder block, uniform color\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta vivid; powder has matte look\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand/gravel blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"water conversion to magenta concrete\",\n            \"gravity-based building techniques\",\n            \"colored powder block construction\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete powder main uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c8f02424-ccf3-4919-9152-647e4e2b66d3",
+  "total_cost_usd": 0.2013404,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4372,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11967,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4372,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11967,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4372,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4372
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3509,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003584,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11967,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4372,
+      "webSearchRequests": 0,
+      "costUSD": 0.1977564,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "9ba60b8c-ff19-4fa0-9ed9-6aad7fa45782"
+}

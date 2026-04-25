@@ -1,0 +1,335 @@
+{
+  "items": {
+    "minecraft:lime_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "dye = processed crafting material"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "named",
+          "rationale": "component minecraft:dye = lime"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when dyeing, not every session"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dyes wool, beds, carpets, armor"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dye item is inherently colored"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "lime = bright vivid green"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot; smelted/crafted only"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing wool, beds, carpets",
+            "firework star coloring",
+            "leather armor dyeing",
+            "dyeing harnesses"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of entries"
+        }
+      }
+    },
+    "minecraft:lime_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glazed terracotta = aesthetic patterns"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix + smelted from terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "patterned block for decor & building"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed = patterned decorative variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "lime green glaze"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta can't be piston-moved"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall and floor patterns",
+            "building accent block"
+          ],
+          "signal": "inferred",
+          "rationale": "primary appeal is aesthetic patterning"
+        }
+      }
+    },
+    "minecraft:lime_harness": {
+      "facets": {
+        "role": {
+          "values": [
+            "transport",
+            "utility"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "enables ghast riding; equip not vehicle"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "dyeable harness likely leather-based"
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "pattern",
+          "rationale": "id prefix lime_ + harness tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only useful with a happy ghast"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables aerial travel via happy ghast"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed leather harness equipment"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "lime colored harness"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted only"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "allows player to ride happy ghast"
+        },
+        "primary_uses": {
+          "values": [
+            "equip on happy ghast to ride it",
+            "enables aerial player transport"
+          ],
+          "signal": "inferred",
+          "rationale": "happy_ghast_tempt_items tag context"
+        }
+      }
+    },
+    "minecraft:lime_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "pattern",
+          "rationale": "shulker box = portable storage container"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "inferred",
+          "rationale": "crafted from shulker shells"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker box recipe uses planks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs end exploration for shulker shells"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core late-game inventory management item"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "primary role is portable storage"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed shulker box variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "lime colored shulker box"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard item stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "retains contents when broken",
+            "color-coded inventory organization"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box use cases"
+        }
+      }
+    },
+    "minecraft:lime_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural window element"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id suffix _stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds but not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colored windows and building accents"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "stained glass = colored glass variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "lime tinted transparent glass"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows and skylights",
+            "building decoration",
+            "light filtering"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stained glass uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

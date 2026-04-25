@@ -1,0 +1,282 @@
+{
+  "items": {
+    "minecraft:suspicious_sand": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "brush interaction yields archaeology loot"
+        },
+        "material_family": {
+          "value": "sand",
+          "signal": "pattern",
+          "rationale": "tag minecraft:sand + id contains sand"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only at specific archaeology structures"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one-time use per spawned instance"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeology is exploration-based"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "sand texture hiding random loot"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "sand-colored block texture"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site",
+            "desert_temple",
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "desert wells, temples, warm ocean ruins"
+        },
+        "primary_uses": {
+          "values": [
+            "brush to extract archaeology loot",
+            "one-time archaeology interaction"
+          ],
+          "signal": "inferred",
+          "rationale": "brush mechanic is sole purpose"
+        }
+      }
+    },
+    "minecraft:suspicious_stew": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food + consumable components present"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "craftable from common flowers"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational, flower-variant effects"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from farmed flowers"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "17 flower variants, natural stew"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown bowl stew appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "food with variable status effects",
+            "flower-based effect delivery",
+            "eatable when full (can_always_eat)"
+          ],
+          "signal": "inferred",
+          "rationale": "nutrition + status effect per flower"
+        }
+      }
+    },
+    "minecraft:sweet_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food component present"
+        },
+        "material_family": {
+          "value": "sweet_berry",
+          "signal": "pattern",
+          "rationale": "id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "farmable taiga berry"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "low nutrition, not primary food source"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "grown on sweet berry bushes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wild berry from taiga biome"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red berries"
+        },
+        "primary_uses": {
+          "values": [
+            "low-tier food source",
+            "fox breeding and feeding",
+            "plant sweet berry bushes"
+          ],
+          "signal": "inferred",
+          "rationale": "eaten, used for foxes, or planted"
+        }
+      }
+    },
+    "minecraft:tadpole_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "transports tadpoles to new locations"
+        },
+        "material_family": {
+          "value": "water",
+          "signal": "inferred",
+          "rationale": "bucket of water containing a mob"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "caught easily in swamps"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used for frog farm setup"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "frog farm setup via tadpole transport"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "living creature in a bucket"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "caught in swamps and lush caves"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries a living tadpole"
+        },
+        "spawn_interaction": {
+          "values": [
+            "mob_transport"
+          ],
+          "signal": "inferred",
+          "rationale": "releases tadpole on use"
+        },
+        "primary_uses": {
+          "values": [
+            "transport tadpoles to new biomes",
+            "frog farm setup",
+            "release to spawn a tadpole"
+          ],
+          "signal": "inferred",
+          "rationale": "capture and relocate tadpoles"
+        }
+      }
+    },
+    "minecraft:tadpole_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative/admin only"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only item"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use only"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of many mob-specific spawn eggs"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn tadpoles in creative/admin mode"
+          ],
+          "signal": "inferred",
+          "rationale": "instantly spawns a tadpole"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

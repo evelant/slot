@@ -1,0 +1,300 @@
+{
+  "items": {
+    "minecraft:copper_torch": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "primary use is emitting light level 14"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "players place many torches for lighting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in bases and dark caves"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of regular torch"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "copper hue + warm flame glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light 14; copper oxidizes"
+        },
+        "primary_uses": {
+          "values": [
+            "lighting caves and structures",
+            "preventing mob spawning via light",
+            "crafting copper lantern"
+          ],
+          "signal": "inferred",
+          "rationale": "core torch uses; ingredient_of copper_lantern"
+        }
+      }
+    },
+    "minecraft:copper_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "architectural element, opens/closes"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds but not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "architectural; redstone-activatable"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; hinged moving component"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh unoxidized copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; trapdoors piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "building entry and exit points",
+            "redstone-controlled openings",
+            "decorative copper architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor uses in copper aesthetic"
+        }
+      }
+    },
+    "minecraft:cornflower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "picked from world, unprocessed flower"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "pattern",
+          "rationale": "tag small_flowers; flower block item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye or stew, not daily"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "farmed for blue dye; decorative placement"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "flower; distinctly blue-colored"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue flower; cool hue"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting blue dye",
+            "crafting suspicious stew",
+            "bee food and pot decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe_ingredient blue_dye and suspicious_stew"
+        }
+      }
+    },
+    "minecraft:cow_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to instantly spawn a cow"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, rarely used in play"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns cows for livestock farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "animal-themed spawn egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources or recipes in survival"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg mechanic spawns named mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning cows in creative mode",
+            "map-making and adventure maps"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawn egg use cases"
+        }
+      }
+    },
+    "minecraft:cracked_deepslate_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural/decorative stone block variant"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "rationale": "id contains deepslate_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires smelting deepslate bricks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aesthetic use in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for aged/dark stone builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked variant; worn aged aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "deep charcoal stone, muted tones"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative dark stone building",
+            "ancient or ruined build aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "cracked look used for worn/aged builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

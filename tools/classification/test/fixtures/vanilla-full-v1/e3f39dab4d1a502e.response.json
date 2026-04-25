@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 174665,
+  "duration_api_ms": 176333,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:warped_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"pressure_plate form → redstone trigger\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific redstone setups\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trigger signal + nether build element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fungal nether wood aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood is teal/cyan\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:non_flammable_wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redstone signal trigger on step\",\n            \"nether-themed redstone circuits\",\n            \"mob detection in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressure plate core function\"\n        }\n      }\n    },\n    \"minecraft:warped_roots\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no crafting use; purely decorative plant\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether decoration item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as nether decor; no other use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic nether forest plant\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped biome teal/cyan palette\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"nether warped forest decoration\",\n            \"potted plant display\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipes; decorative only\"\n        }\n      }\n    },\n    \"minecraft:warped_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores/displays items (has_nbt_variation)\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty display-storage block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"storage_management\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"item display + nether builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood fungal aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood teal palette\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:non_flammable_wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"display items on shelf\",\n            \"decorative nether build storage\",\n            \"accessible item showcase\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf + has_nbt_variation\"\n        }\n      }\n    },\n    \"minecraft:warped_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs are decorative/informational\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for labeling, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for text labels and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood teal palette\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:non_flammable_wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"label areas and rooms\",\n            \"nether build wall accent\",\n            \"clickable text signage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sign core function\"\n        }\n      }\n    },\n    \"minecraft:warped_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form → structural building element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs widely used in construction\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary role is structural\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood teal palette\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:non_flammable_wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height building block\",\n            \"step and stair alternative\",\n            \"nether build structural element\",\n            \"ingredient for barrel/lectern/composter\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form + sample_ingredient_of list\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "c2ba8009-099e-44da-b794-0f937ffabe8a",
+  "total_cost_usd": 0.20032989999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4834,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11753,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4834,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11753,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4834,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4834
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3971,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004051,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11753,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4834,
+      "webSearchRequests": 0,
+      "costUSD": 0.19627889999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "adc83d87-54f9-4144-a92e-9ed101720b0f"
+}

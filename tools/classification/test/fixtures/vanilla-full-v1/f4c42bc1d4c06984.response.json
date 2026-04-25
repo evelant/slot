@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 180261,
+  "duration_api_ms": 181040,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:dropper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-powered item ejector block\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted primarily from cobblestone\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe contains redstone dust\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core block in automation builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ejects items on redstone pulse\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional stone mechanism block\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobblestone-textured, grey-brown\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"eject items when redstone powered\",\n            \"automation and item routing\",\n            \"ingredient for crafter block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary automation block usage\"\n        }\n      }\n    },\n    \"minecraft:drowned_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table or recipe source\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unobtainable in survival gameplay\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used in creative/admin context\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg appearance\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns drowned on right-click\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn drowned mobs in creative mode\",\n            \"mob farm and map testing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/admin-only usage\"\n        }\n      }\n    },\n    \"minecraft:dune_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied at smithing table to trim armor\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per armor piece cosmetically\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"adds cosmetic trim pattern to armor\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"desert pyramid find; ornate armor deco\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dune desert aesthetic motif\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply dune trim pattern to armor\",\n            \"duplicate template via crafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard smithing template functions\"\n        }\n      }\n    },\n    \"minecraft:echo_shard\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting ingredient for recovery compass\"\n        },\n        \"material_family\": {\n          \"value\": \"echo_shard\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"named shard material from deep dark\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used to craft recovery compass\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafts recovery compass for navigation\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep dark eerie glow, ancient city find\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan-teal eerie luminescence\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft recovery compass (8 per compass)\",\n            \"rare reward from ancient city exploration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole downstream use is recovery compass\"\n        }\n      }\n    },\n    \"minecraft:egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw drop from chickens, unprocessed\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chickens lay eggs constantly\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in baking and as throwable\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food recipes; chicken-farm byproduct\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/cream egg color\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"12.5% chance to spawn baby chicken\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft cake and pumpkin pie\",\n            \"throw to potentially spawn baby chickens\",\n            \"chicken farm passive byproduct\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main gameplay uses of egg\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:egg\",\n      \"facet\": \"origin\",\n      \"current\": [\"trial_chamber\", \"village\"],\n      \"suggested\": [\"trial_chamber\", \"village\", \"mob_drop\"],\n      \"rationale\": \"loot source minecraft:gameplay/chicken_lay confirms mob_drop is primary origin\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "4b0384f2-3462-4f5d-9a54-2dcbb7b7222c",
+  "total_cost_usd": 0.22138415000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3917,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13447,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3917,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13447,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3917,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3917
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3054,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0031339999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13447,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3917,
+      "webSearchRequests": 0,
+      "costUSD": 0.21825015000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "aa3bc0bf-d824-443a-95e6-423706e8280d"
+}

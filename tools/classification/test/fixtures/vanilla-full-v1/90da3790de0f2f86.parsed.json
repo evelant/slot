@@ -1,0 +1,275 @@
+{
+  "items": {
+    "minecraft:shulker_shell": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed form"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "pattern",
+          "rationale": "named directly after source mob"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End city mob, 50% drop chance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected until shulker boxes made"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "sole end-use is shulker box craft"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob drop material"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "shulkers are distinctly purple"
+        },
+        "origin": {
+          "values": [
+            "end_city"
+          ],
+          "signal": "inferred",
+          "rationale": "shulkers only spawn in End cities"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting shulker boxes",
+            "portable storage crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "only recipe use is shulker box"
+        }
+      }
+    },
+    "minecraft:shulker_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn eggs place mobs on use"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/command only in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used rarely, mostly admin/creative"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used for controlled mob farm setup"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a natural mob"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker-themed purple egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot table source"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning shulker mobs",
+            "mob farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "minecraft:silence_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applies cosmetic trim via smithing"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used once per armor trim application"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "silence/warden theme, ancient city"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warden-inspired dark + cyan motif"
+        },
+        "primary_uses": {
+          "values": [
+            "applying silence trim to armor",
+            "self-duplication via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "cosmetic trim + template duplication"
+        }
+      }
+    },
+    "minecraft:silverfish_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn eggs place mobs on use"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/command only in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use primarily"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns hostile mob for farms/tests"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a natural hostile creature"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "silverfish are gray-silver colored"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot table source"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning silverfish mobs",
+            "hostile mob farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "minecraft:skeleton_horse_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn eggs place mobs on use"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/command only in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use primarily"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "skeleton horses are rideable mounts"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns an undead natural creature"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "skeleton horses are bone-white"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot table source"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning skeleton horses",
+            "undead mount for exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "rideable skeleton horse spawner"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

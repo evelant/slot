@@ -1,0 +1,241 @@
+{
+  "items": {
+    "minecraft:skeleton_skull": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "schema cites heads as decorative_block example"
+        },
+        "material_family": {
+          "value": "bone",
+          "signal": "inferred",
+          "rationale": "skeleton skull is bone material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use; rare charged-creeper source"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as skull for decoration"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "skull=ominous; bone mob drop=natural"
+        },
+        "palette": {
+          "values": [
+            "ivory"
+          ],
+          "signal": "inferred",
+          "rationale": "bone-white coloration"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "rationale": "charged_creeper/skeleton loot table"
+        },
+        "primary_uses": {
+          "values": [
+            "skull display in builds",
+            "wearable helmet reducing skeleton detection",
+            "noteblock instrument modifier",
+            "firework star ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "known skull gameplay uses"
+        }
+      }
+    },
+    "minecraft:skeleton_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn eggs summon mobs; utility"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/testing scenarios only"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg texture"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn skeleton mobs in creative",
+            "mob testing and debugging"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg utility"
+        }
+      }
+    },
+    "minecraft:skull_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "consumed in loom to stamp skull pattern on banner"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; produced via shapeless craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche banner decoration use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "loom banner pattern application"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "skull motif is ominous"
+        },
+        "primary_uses": {
+          "values": [
+            "apply skull motif to banners in loom",
+            "themed banner crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "provides_banner_patterns component confirms"
+        }
+      }
+    },
+    "minecraft:skull_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "sherd crafting material for decorated pots"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "pottery sherds are fired clay/ceramic"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorated pot crafting"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in decorated pot crafting"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "unearthed via archaeology; ancient motif"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate pottery via decorated pot crafting",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_ingredients tag"
+        }
+      }
+    },
+    "minecraft:slime_ball": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop; unprocessed crafting input"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable from slime chunks and swamps"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "key ingredient in many core recipes"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "sticky piston, slime block, frog food"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mob drop material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "slimeball is bright green"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "frog_food tag; lures and breeds frogs"
+        },
+        "primary_uses": {
+          "values": [
+            "craft sticky pistons for redstone",
+            "craft slime blocks for builds and bounce",
+            "craft magma cream for brewing",
+            "feed and breed frogs"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of and frog_food tag"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

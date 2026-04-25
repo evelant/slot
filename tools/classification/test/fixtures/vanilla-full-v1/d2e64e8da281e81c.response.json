@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 157192,
+  "duration_api_ms": 158125,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:chiseled_sulfur\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled stone-type block, structural/decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _sulfur\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled = ornate variant of base block\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sulfur is pale yellowish stone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative variant, selective use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled blocks placed for builds/decor\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative accent in structures\",\n            \"sulfur-family building block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled block typical uses\"\n        }\n      }\n    },\n    \"minecraft:chiseled_tuff\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled tuff stone, structural/decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"tuff\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _tuff\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled = ornate tuff variant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tuff is gray-brown igneous stone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative variant, selective use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled blocks for builds/decor\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative tuff building accent\",\n            \"tuff-family structure block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled tuff typical uses\"\n        }\n      }\n    },\n    \"minecraft:chiseled_tuff_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled tuff brick, structural/decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"tuff\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains tuff\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled bricks = refined ornate tuff variant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tuff is gray-brown stone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative variant, selective use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled bricks for builds/decor\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative tuff brick accent\",\n            \"refined tuff building block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled tuff brick uses\"\n        }\n      }\n    },\n    \"minecraft:chorus_flower\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw End plant, collected for farming/planting\"\n        },\n        \"material_family\": {\n          \"value\": \"chorus_plant\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix chorus_\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic End plant\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chorus flower is pale purple\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"End-only, requires end portal access\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when setting up chorus farms\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted to grow chorus; flower decor\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"plant to grow chorus plants\",\n            \"decorative End flower\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main chorus flower uses\"\n        }\n      }\n    },\n    \"minecraft:chorus_fruit\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has food + consumable component\",\n          \"evidence\": \"minecraft:food + minecraft:consumable\"\n        },\n        \"material_family\": {\n          \"value\": \"chorus_plant\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix chorus_\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic fruit with random teleport effect\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chorus fruit is purple\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"End-only, requires end portal access\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational teleport or End sustenance\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teleport aids exploration; downstream building via popped fruit\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"random teleport on consumption\",\n            \"food source in the End\",\n            \"smelt into popped chorus fruit\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core chorus fruit uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "449f97ce-9999-41fd-bb4d-bef4a59fb863",
+  "total_cost_usd": 0.20974790000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4202,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12581,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4202,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12581,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4202,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4202
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3339,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003419,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12581,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4202,
+      "webSearchRequests": 0,
+      "costUSD": 0.2063289,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b7ad9402-c160-4ec7-9903-2787e06ab31d"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 121504,
+  "duration_api_ms": 122299,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:waxed_oxidized_chiseled_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block, structural/decorative use\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs oxidation wait + honeycomb wax\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in themed copper builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"accent block in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled = ornate design variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fully oxidized = teal-green finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative accent in copper builds\",\n            \"permanent oxidized aesthetic\",\n            \"chiseled texture feature block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic building use\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base copper block, structural + source block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs oxidation wait + honeycomb wax\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper builds and variant crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block + cut into sub-variants\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed oxidized state of copper\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fully oxidized = teal-green finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building with oxidized copper aesthetic\",\n            \"stonecutting into cut/chiseled variants\",\n            \"permanent waxed oxidized look\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"building block and crafting source\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper_bars\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bars form decorative barriers, like iron bars\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs oxidation wait + honeycomb wax\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche copper-themed aesthetic use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrier and decorative element\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant of bars concept\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fully oxidized = teal-green finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed from base bars, no natural loot\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bars block type is waterloggable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative copper barrier / window\",\n            \"permanent oxidized bar aesthetic\",\n            \"cell or fence accent detail\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic barrier use\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper_bulb\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-toggled light source\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs oxidation wait + honeycomb wax\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in redstone lighting setups\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-controlled light in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone device, oxidized state variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized teal + dim light emission\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light level 4 when lit\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redstone-toggled dim light source\",\n            \"copper-themed atmospheric lighting\",\n            \"permanent oxidized light fixture\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional lighting + decor\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper_chain\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chains primarily aesthetic / connective\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs oxidation wait + honeycomb wax\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative hanging element\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hanging lanterns/bells, decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant of chain, industrial feel\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fully oxidized = teal-green finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"waxed from base chain, no natural loot\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chain block type is waterloggable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"hang lanterns and bells decoratively\",\n            \"copper-themed chain aesthetic\",\n            \"permanent oxidized teal chain\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative vertical connector\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "284ff2a5-4929-484b-96a1-3ae02b167988",
+  "total_cost_usd": 0.15924065000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5031,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8951,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5031,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8951,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5031,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5031
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4168,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004253,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8951,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5031,
+      "webSearchRequests": 0,
+      "costUSD": 0.15498765000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "dbf94fe8-f16e-4a12-8c7d-04707f55dbf4"
+}

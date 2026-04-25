@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 213852,
+  "duration_api_ms": 214636,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:wither_rose\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant flower collected from world\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower in small_flowers tag\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires wither to kill mobs\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"black dye, stew, niche decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower used for decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark wither-themed flower\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black petals, dark wither theme\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wither places rose on mob kill\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"contact deals wither damage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft black dye\", \"suspicious stew ingredient\", \"decorative flower\", \"wither damage trap\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipes plus block damage property\"\n        }\n      }\n    },\n    \"minecraft:wither_skeleton_skull\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"trophy\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob head, worn or used to summon wither\"\n        },\n        \"material_family\": {\n          \"value\": \"bone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wither skeleton is skeletal\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wither summoning, banner pattern\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"summon wither; worn/displayed\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark wither skull\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark wither skeleton coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"summon the wither boss\", \"skull banner pattern\", \"head cosmetic\", \"noteblock instrument\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting uses and wither summoning\"\n        }\n      }\n    },\n    \"minecraft:wither_skeleton_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns wither skeletons on use\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs not in survival loot\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche admin use only\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn for fights or mob farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg form\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wither skeleton dark palette\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"all spawn eggs spawn linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn wither skeletons\", \"mob farm setup\", \"creative testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg primary function\"\n        }\n      }\n    },\n    \"minecraft:wither_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns the wither boss on use\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs not in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"boss spawn egg, very specific use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns wither boss for combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns the wither boss\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wither is dark/black colored\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"all spawn eggs spawn linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn the wither boss\", \"boss fight testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boss spawn egg primary function\"\n        }\n      }\n    },\n    \"minecraft:wolf_armor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips on wolves as armor\"\n        },\n        \"material_family\": {\n          \"value\": \"armadillo_scute\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from armadillo scutes\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"armadillos in specific biomes only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used by wolf-keeping players\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protects wolves in combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural scute material; dyeable\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural armadillo scute coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural spawn, crafted from scutes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"protect tamed wolves in combat\", \"dyeable wolf cosmetic\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wolf armor function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "4d437dac-007d-420c-bb3d-4e578a290053",
+  "total_cost_usd": 0.2382564,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3568,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14682,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3568,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14682,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3568,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3568
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2705,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00279,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14682,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3568,
+      "webSearchRequests": 0,
+      "costUSD": 0.23546640000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f43ae56b-5b17-40ba-8554-3ca41af3a01c"
+}

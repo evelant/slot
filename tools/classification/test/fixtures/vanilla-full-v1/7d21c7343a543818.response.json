@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 116262,
+  "duration_api_ms": 116962,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pink_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornate glazed pattern, aesthetic primary\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _glazed_terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block for aesthetic builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"directional glazed pattern + dye tint\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"glossy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink soft tone + shiny glaze finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Decorative patterned tile in builds\",\n            \"Colorful wall/floor covering\",\n            \"Themed room decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta core use\"\n        }\n      }\n    },\n    \"minecraft:pink_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equip on happy ghast to enable riding\"\n        },\n        \"dye_color\": {\n          \"value\": \"pink\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix pink_ + tag harnesses\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized mob equipment\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables riding happy ghast\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyeable harness item\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink = soft pastel tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"allows players to ride ghast\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Equip on Happy Ghast to allow riding\",\n            \"Dye to recolor harness\",\n            \"Tempt/tame Happy Ghast\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness core functions\"\n        }\n      }\n    },\n    \"minecraft:pink_petals\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower picked from world as-is\"\n        },\n        \"material_family\": {\n          \"value\": \"flower\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:flowers\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche dye source / decor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown/harvested, dye + decor use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant + pink tint\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"soft pink petal tone\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry grove biome surface plant\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:bee_food\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft pink dye\",\n            \"Decorative ground cover block\",\n            \"Attract and feed bees\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye source + bee food + decor\"\n        }\n      }\n    },\n    \"minecraft:pink_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable storage retaining contents\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:shulker_boxes\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires end mob drop to craft base\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core logistics/storage item\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable storage + item transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored storage block\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink = soft warm tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Portable storage keeping contents on break\",\n            \"Color-coded storage organization\",\n            \"Bulk item transport in inventory\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker box primary functions\"\n        }\n      }\n    },\n    \"minecraft:pink_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural glass element in builds\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative build material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"windows/panels in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tinted glass variant\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink tone + see-through glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Colored windows in builds\",\n            \"Tinted light filtering\",\n            \"Decorative glass panels\",\n            \"Crafting stained glass panes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stained glass primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "3aa18e05-a2d0-44c2-a74d-9f26c62f70d5",
+  "total_cost_usd": 0.16314990000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4334,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9433,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4334
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9433,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4334,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4334,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3471,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003546,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9433,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4334,
+      "webSearchRequests": 0,
+      "costUSD": 0.15960390000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ba82b39b-efc5-4ba8-b189-1b32df20aa03"
+}

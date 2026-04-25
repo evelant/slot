@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 191707,
+  "duration_api_ms": 192578,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:dispenser\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-activated item dispensing device\"\n        },\n        \"material_family\": {\n          \"value\": \"cobblestone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"7 cobblestone dominate recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone dust in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific contraptions only\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fires via redstone; core automation block\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone machine block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-gray cobblestone texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dispense items and projectiles\", \"redstone automation\", \"trap building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core dispensing functionality\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pistons can push dispensers\"\n        }\n      }\n    },\n    \"minecraft:dolphin_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only spawn egg, no survival source\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe or loot table entry\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unavailable in survival mode\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used rarely outside creative\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn mobs for farms/creative builds\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg always spawns its linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn dolphins in creative\", \"mob farm setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg function\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dolphin gray-teal coloring\"\n        }\n      }\n    },\n    \"minecraft:donkey_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only spawn egg, no survival source\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe or loot table entry\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unavailable in survival mode\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used rarely outside creative\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn mobs for farms/creative builds\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg always spawns its linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn donkeys in creative\", \"mob farm setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg function\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"donkey brown coloring\"\n        }\n      }\n    },\n    \"minecraft:dragon_breath\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collected raw from dragon breath cloud\"\n        },\n        \"origin\": {\n          \"values\": [\"end\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harvested in End from dragon attack\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole use: brew lingering potions\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical dragon essence in a bottle\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple glowing bottle\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"brew lingering potions\", \"end boss encounter reward\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only crafting use is lingering potions\"\n        }\n      }\n    },\n    \"minecraft:dragon_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"trophy\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unique proof of defeating Ender Dragon\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one per world, purely displayed\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative trophy block\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ancient relic from dragon boss\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep black speckled texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"trophy for defeating Ender Dragon\", \"rare decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prestige display item only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand when unsupported\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d689fd29-3167-4cb3-a42e-48d9c9e385d5",
+  "total_cost_usd": 0.2138284,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3240,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13158,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3240,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13158,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3240,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3240
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2377,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002452,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13158,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3240,
+      "webSearchRequests": 0,
+      "costUSD": 0.2113764,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "471bc3b3-9dcd-4381-a5fd-e29950a2dee3"
+}

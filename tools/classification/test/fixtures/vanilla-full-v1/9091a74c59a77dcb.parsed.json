@@ -1,0 +1,270 @@
+{
+  "items": {
+    "minecraft:crimson_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plates emit redstone signal on step"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers signal, placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood mechanical redstone input"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark red-purple nether wood"
+        },
+        "primary_uses": {
+          "values": [
+            "trigger redstone on entity step",
+            "detect player/mob presence",
+            "nether-themed redstone builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core pressure plate uses"
+        }
+      }
+    },
+    "minecraft:crimson_roots": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "nether flora, no crafting use, can be potted"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for nether-themed decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative nether plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic nether vegetation"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright crimson red plant"
+        },
+        "primary_uses": {
+          "values": [
+            "nether biome decoration",
+            "potted plant display",
+            "crimson forest ambiance"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative flora uses"
+        }
+      }
+    },
+    "minecraft:crimson_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive item display block like lectern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for display/storage in builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative storage for nether builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional wood furniture block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "maroon"
+          ],
+          "signal": "inferred",
+          "rationale": "dark crimson wood"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items on shelf surface"
+        },
+        "primary_uses": {
+          "values": [
+            "display books/items decoratively",
+            "nether-themed interior storage",
+            "decorative item showcase"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf block primary uses"
+        }
+      }
+    },
+    "minecraft:crimson_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs display text, primarily decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific labeling contexts"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed signs label/decorate builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wood sign"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "maroon"
+          ],
+          "signal": "inferred",
+          "rationale": "dark crimson wood"
+        },
+        "primary_uses": {
+          "values": [
+            "text labeling in world",
+            "waypoint marking",
+            "nether-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "sign primary uses"
+        }
+      }
+    },
+    "minecraft:crimson_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form = structural building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs heavily used in construction"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant of crimson planks"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "maroon"
+          ],
+          "signal": "inferred",
+          "rationale": "dark crimson wood"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height building element",
+            "crafting barrels and lecterns",
+            "nether-themed construction"
+          ],
+          "signal": "inferred",
+          "rationale": "slab primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

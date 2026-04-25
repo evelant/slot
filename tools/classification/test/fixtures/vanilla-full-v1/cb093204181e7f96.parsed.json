@@ -1,0 +1,335 @@
+{
+  "items": {
+    "minecraft:gray_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "holds mixed item stacks in one slot"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "bundle recipe uses rabbit hide as body"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle recipe ties with string"
+        },
+        "dye_color": {
+          "value": "gray",
+          "signal": "pattern",
+          "rationale": "id prefix gray_bundle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core inventory management tool"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "carries mixed stacks, aids logistics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "gray dyed variant of base bundle"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray tone reads as muted and dark"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot sources in data"
+        },
+        "primary_uses": {
+          "values": [
+            "carry mixed item stacks in one slot",
+            "inventory management",
+            "transmute dye color to other bundles"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle functions"
+        }
+      }
+    },
+    "minecraft:gray_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "schema lists candles as decorative_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally for decor/light"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is decorative lighting"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed + organic wax aesthetic"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray is muted and dark"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "only loot sources are block drops"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "candles emit light when lit"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting decoration",
+            "cake birthday candle",
+            "atmospheric dyed decor"
+          ],
+          "signal": "inferred",
+          "rationale": "core candle uses"
+        }
+      }
+    },
+    "minecraft:gray_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin floor covering, primarily aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used for floor decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor decor and mob spawn control"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "gray dyed wool carpet"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray tone is muted and dark"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent block prevents mob spawn"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "floor and wall decoration",
+            "equip llamas as saddle",
+            "block mob spawning on surfaces",
+            "absorb sculk sensor vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "core carpet functions"
+        }
+      }
+    },
+    "minecraft:gray_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colored block for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular building material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid dyed block, flat uniform texture"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray reads as muted and dark"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "forms from powder+water, not worldgen"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "blast resistance ~9, comparable to stone"
+        },
+        "primary_uses": {
+          "values": [
+            "colored solid building block",
+            "blast-resistant construction",
+            "modern and industrial builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete uses"
+        }
+      }
+    },
+    "minecraft:gray_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block, precursor to concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed to produce concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate step in concrete builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid dyed powder block, no pattern"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray is muted and dark"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand when unsupported"
+        },
+        "primary_uses": {
+          "values": [
+            "convert to concrete via water contact",
+            "gravity-based building tricks",
+            "colored sand-like construction block"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete powder uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

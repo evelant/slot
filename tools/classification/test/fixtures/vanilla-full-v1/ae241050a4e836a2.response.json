@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 147719,
+  "duration_api_ms": 148650,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:sugar\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed from sugar cane or honey bottle\"\n        },\n        \"material_family\": {\n          \"value\": \"sugar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is sugar, refined crafting ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in cake, pie, brewing\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fermented eye→brewing; cake/pie→farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural ingredient derived from plant\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white granular powder\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting cake and pumpkin pie\", \"brewing via fermented spider eye\", \"feeding horses\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of + horse_food tag\"\n        }\n      }\n    },\n    \"minecraft:sugar_cane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant harvested directly from world\"\n        },\n        \"material_family\": {\n          \"value\": \"sugar_cane\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id matches material name exactly\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmed constantly for sugar and paper\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown in farms; paper→books→trading\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant from the world\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green stalks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting sugar for food and brewing\", \"crafting paper for books and maps\", \"farming along water edges\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of: paper, sugar\"\n        }\n      }\n    },\n    \"minecraft:sulfur\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full block, pickaxe-mined, stonecuttable to variants\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is sulfur\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base material for polished/brick variants\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds many stonecutting decorative recipes\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw natural mineral block\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sulfur is yellow-ochre mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"stonecutting into slabs, stairs, walls\", \"crafting polished and brick variants\", \"building sulfur-themed structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wide stonecutting recipe list in sample_ingredient_of\"\n        }\n      }\n    },\n    \"minecraft:sulfur_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab tag + brick derivative block\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sulfur\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized aesthetic building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for structure and detail work\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick slab variant of sulfur block\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sulfur brick, yellow-ochre tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height floors and roofs in sulfur brick style\", \"architectural detailing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form function\"\n        }\n      }\n    },\n    \"minecraft:sulfur_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs tag + brick derivative block\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sulfur\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized aesthetic building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for structure and roofing detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick stairs variant of sulfur block\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sulfur brick, yellow-ochre tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircases in sulfur brick style\", \"architectural roofing and trim detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:sulfur\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_cave\"],\n      \"rationale\": \"loot source blocks/sulfur + sulfur_from_sulfur_spikes confirm natural world spawn; crafted_only is wrong\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "2ce38260-9628-4e5b-833e-dde7f7953ec9",
+  "total_cost_usd": 0.18790515,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4433,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11052,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4433,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11052,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4433,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4433
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3570,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003645,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11052,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4433,
+      "webSearchRequests": 0,
+      "costUSD": 0.18426014999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "264534d8-fa6e-49a4-aad4-82a5d30f8405"
+}

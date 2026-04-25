@@ -1,0 +1,267 @@
+{
+  "items": {
+    "minecraft:wayfinder_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applies cosmetic trim upgrade via smithing"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used intentionally when trimming armor"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative template for armor trimming"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply wayfinder trim to armor",
+            "Duplicate template via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing template core uses"
+        }
+      }
+    },
+    "minecraft:weathered_chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chiseled pattern = primarily aesthetic"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper has teal-green patina"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled = fancy decorative copper variant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty aesthetic block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative structure element"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered can still oxidize further"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative chiseled copper block",
+            "Oxidized copper aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled copper core uses"
+        }
+      }
+    },
+    "minecraft:weathered_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full copper block for construction"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id starts with weathered_copper"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered stage = teal patina"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally oxidized copper variant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty aesthetic copper stage"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered→oxidized via natural process"
+        },
+        "primary_uses": {
+          "values": [
+            "Build with oxidized copper",
+            "Craft weathered copper variants",
+            "Decorative oxidized block"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper core uses"
+        }
+      }
+    },
+    "minecraft:weathered_copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bars used as barrier/structural elements"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper = teal patina"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of bar form"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty aesthetic copper bars"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "barriers and decorative windows"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "bars waterlog; weathered→oxidized naturally"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative copper barrier/window",
+            "Oxidized copper aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "copper bars core uses"
+        }
+      }
+    },
+    "minecraft:weathered_copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redstone-toggled light source block"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper = teal patina"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-functional copper light variant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty lighting block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "light source with redstone toggle"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "bulb emits light; copper oxidizes"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone-controlled light source",
+            "Decorative copper lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "copper bulb core uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,288 @@
+{
+  "items": {
+    "minecraft:sandstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural stone block for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular desert/arid build material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction and sandy aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural stone appearance"
+        },
+        "palette": {
+          "values": [
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "cream/sand-toned color"
+        },
+        "primary_uses": {
+          "values": [
+            "building desert-themed structures",
+            "crafting sandstone variants",
+            "decorative sandy aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:sandstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-height structural slab form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs are widely used for detail work"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "half-blocks used in build detailing"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "form variant of base sandstone"
+        },
+        "palette": {
+          "values": [
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "cream/sand-toned color"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height detail in sandy builds",
+            "crafting chiseled sandstone"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:sandstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair-form structural building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs widely used in rooflines and steps"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "roofs, steps, and architectural detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "form variant of base sandstone"
+        },
+        "palette": {
+          "values": [
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "cream/sand-toned color"
+        },
+        "primary_uses": {
+          "values": [
+            "stairways and rooflines",
+            "decorative stepped detail in desert builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:sandstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall-form structural building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls less used than stairs/slabs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative fencing and borders"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "form variant of base sandstone"
+        },
+        "palette": {
+          "values": [
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "cream/sand-toned color"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative borders and fencing",
+            "sandy-themed wall accents"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:scaffolding": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "temporary climbable construction block"
+        },
+        "material_family": {
+          "value": "bamboo",
+          "signal": "inferred",
+          "rationale": "crafted primarily from bamboo"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting recipe binds bamboo with string"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during builds then removed"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to reach heights during construction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo material with chain-fall mechanic"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light tan bamboo color"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected",
+            "waterlogs",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "falls in chain; waterloggable; bamboo burns"
+        },
+        "primary_uses": {
+          "values": [
+            "temporary climbing structure",
+            "reaching build heights",
+            "chain-demolish by removing base"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:sandstone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "Sandstone naturally generates in desert/beach biomes; rule missed world-gen origin",
+      "confidence": 0.95
+    }
+  ]
+}

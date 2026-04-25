@@ -1,0 +1,328 @@
+{
+  "items": {
+    "minecraft:dark_oak_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are primary structural building forms"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common; cheap wood craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs used heavily in most builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "shapes roofs, paths, and interiors"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; dark oak variant of stairs"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak is dark warm brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; stairs waterlog in Java"
+        },
+        "primary_uses": {
+          "values": [
+            "building roofs and step structures",
+            "interior stair decoration",
+            "reducing step height in paths"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stair use cases"
+        }
+      }
+    },
+    "minecraft:dark_oak_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes; right-click and redstone interactive"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common; cheap wood craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds, not ubiquitous"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "door function and redstone gate use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; dark oak variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak dark warm brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; trapdoors waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-powered floor/ceiling doors",
+            "decorative hatches and covers",
+            "mob-proof crawl entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "typical trapdoor use cases"
+        }
+      }
+    },
+    "minecraft:dark_oak_wood": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw log-form block from trees; logs listed as natural_resource"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common; dark forest abundant"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "processed into planks and charcoal regularly"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative all-bark log block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw all-bark wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "all-bark dark oak; earthy dark brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood logs are burnable"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting dark oak planks",
+            "smelting into charcoal",
+            "decorative all-bark log building"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses per recipe ingredient data"
+        }
+      }
+    },
+    "minecraft:dark_prismarine": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "decorative stone block for ocean-themed builds"
+        },
+        "material_family": {
+          "value": "prismarine",
+          "signal": "pattern",
+          "rationale": "id prefix dark_prismarine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires ocean monument or shard farming"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean-style structures and decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dark variant of prismarine; natural stone feel"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark teal-green prismarine color"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_low"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-type block; modest blast resistance"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed structure building",
+            "crafting dark prismarine slabs/stairs",
+            "dark decorative accent blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "typical prismarine use cases"
+        }
+      }
+    },
+    "minecraft:dark_prismarine_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form for flat structural/decorative use"
+        },
+        "material_family": {
+          "value": "prismarine",
+          "signal": "pattern",
+          "rationale": "id prefix dark_prismarine"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from uncommon dark prismarine"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "half-height structural and decorative use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dark prismarine variant slab"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "inherits dark teal from dark prismarine"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_low",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "stone resistance; slabs waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height ocean-themed flooring",
+            "flat dark prismarine surfaces",
+            "stair alternative in ocean builds"
+          ],
+          "signal": "inferred",
+          "rationale": "typical slab use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:dark_prismarine",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "ocean_monument"
+      ],
+      "rationale": "Dark prismarine generates naturally in ocean monuments and drops when mined with a pickaxe; crafted_only misses the primary natural source",
+      "confidence": 0.85
+    }
+  ]
+}

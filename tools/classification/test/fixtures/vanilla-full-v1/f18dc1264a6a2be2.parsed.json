@@ -1,0 +1,292 @@
+{
+  "items": {
+    "minecraft:chiseled_quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid carved block for structural/decorative use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from nether quartz, easily farmed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively as accent in fancy builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "carved pattern is ornate quartz variant"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "quartz reads as off-white/pale"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent in fancy builds",
+            "structural wall/floor block",
+            "stonecutting into slabs/stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "typical chiseled block end-uses"
+        }
+      }
+    },
+    "minecraft:chiseled_red_sandstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid carved block for structural/decorative use"
+        },
+        "material_family": {
+          "value": "red_sandstone",
+          "signal": "pattern",
+          "rationale": "id contains red_sandstone segment"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant red sandstone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche accent use in desert builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative sandstone block for structures"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled is ornate red sandstone variant"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-orange sandy tones"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent in desert/mesa builds",
+            "structural wall block"
+          ],
+          "signal": "inferred",
+          "rationale": "typical chiseled sandstone uses"
+        }
+      }
+    },
+    "minecraft:chiseled_resin_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid carved brick block for building"
+        },
+        "material_family": {
+          "value": "resin",
+          "signal": "pattern",
+          "rationale": "id contains resin segment"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "resin needs pale garden biome + creaking"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative brick block placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled organic resin material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin is orange-amber colored"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent in pale garden builds",
+            "structural wall block"
+          ],
+          "signal": "inferred",
+          "rationale": "typical uses for chiseled resin bricks"
+        }
+      }
+    },
+    "minecraft:chiseled_sandstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid carved block for structural/decorative use"
+        },
+        "material_family": {
+          "value": "sandstone",
+          "signal": "pattern",
+          "rationale": "id contains sandstone segment"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant sandstone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche accent use in desert builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative sandstone block for structures"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled is ornate sandstone variant"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale yellow-tan sandy tones"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent in desert builds",
+            "structural wall block"
+          ],
+          "signal": "inferred",
+          "rationale": "typical chiseled sandstone uses"
+        }
+      }
+    },
+    "minecraft:chiseled_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid carved stone block for building"
+        },
+        "material_family": {
+          "value": "stone_bricks",
+          "signal": "pattern",
+          "rationale": "id suffix + tag minecraft:stone_bricks"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "generates naturally in stronghold structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively as accent in stone builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative stone block for structures"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled is ornate stone bricks variant"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "neutral grey stone tones"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent in stone builds",
+            "structural wall block",
+            "crafting lodestone"
+          ],
+          "signal": "inferred",
+          "rationale": "typical uses + lodestone recipe ingredient"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

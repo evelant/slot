@@ -1,0 +1,273 @@
+{
+  "items": {
+    "minecraft:armadillo_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "summons mob on use; no other function"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative/commands only in vanilla"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; rarely actively used"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mob farm setup; wolf scute farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents a living creature"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in vanilla survival"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn armadillos",
+            "mob farm population",
+            "wolf armor scute farming"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses of spawn egg"
+        }
+      }
+    },
+    "minecraft:armor_stand": {
+      "facets": {
+        "role": {
+          "values": [
+            "functional_block",
+            "decorative_block"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "interactive entity but used primarily for display"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "primarily crafted from sticks"
+        },
+        "material_secondary": {
+          "values": [
+            "stone"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth stone slab required in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap, abundant crafting materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for display, not regularly consumed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily displays armor aesthetically"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wood and stone construction"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot source listed"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying armor and equipment",
+            "decorative poses",
+            "map art builds"
+          ],
+          "signal": "inferred",
+          "rationale": "common player uses"
+        }
+      }
+    },
+    "minecraft:arms_up_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "tag decorated_pot_ingredients confirms ingredient"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when crafting decorated pots"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds into decorated pot crafting"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact with historic motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta-toned desert archaeology item"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "archaeology collection"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player uses"
+        }
+      }
+    },
+    "minecraft:arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "pattern",
+          "rationale": "tag minecraft:arrows; fired from bows/crossbows"
+        },
+        "material_family": {
+          "value": "flint",
+          "signal": "inferred",
+          "rationale": "primary crafting material in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "wood",
+            "feather"
+          ],
+          "signal": "inferred",
+          "rationale": "stick and feather in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted or looted everywhere"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "consumed in nearly every ranged combat"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use as ranged weapon ammunition"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic unmodified arrow"
+        },
+        "primary_uses": {
+          "values": [
+            "bow ammunition",
+            "crossbow ammunition",
+            "crafting tipped/spectral arrows"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:axolotl_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "transports live mob; releases on use"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket is made of iron"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires locating lush cave axolotl"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when collecting or deploying axolotls"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "combat",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "collection; aquatic combat aid; mob farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "contains a living aquatic creature"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "axolotls found in lush caves"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting axolotls",
+            "releasing axolotls for combat aid",
+            "axolotl farm stocking"
+          ],
+          "signal": "inferred",
+          "rationale": "common player uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 116049,
+  "duration_api_ms": 116984,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:phantom_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only spawn egg, no survival source\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources or recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/map-building use only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns a living mob\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"phantom is dark blue-indigo\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn phantoms in creative mode\", \"adventure map mob setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg core function\"\n        }\n      }\n    },\n    \"minecraft:pig_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only spawn egg, no survival source\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources or recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/map-building use only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns a living mob\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pig is pink/warm-toned\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn pigs in creative mode\", \"adventure map mob setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg core function\"\n        }\n      }\n    },\n    \"minecraft:piglin_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"reusable loom pattern template\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche banner decorating use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in loom to decorate banners\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piglin/nether hostile-themed motif\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piglin motif is gold-themed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply piglin motif to banner in loom\"],\n          \"signal\": \"named\",\n          \"rationale\": \"provides_banner_patterns component\"\n        }\n      }\n    },\n    \"minecraft:piglin_brute_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only spawn egg, no survival source\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources or recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/map-building use only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns a living mob\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-armored brute with dark body\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn piglin brutes in creative mode\", \"adventure map mob setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg core function\"\n        }\n      }\n    },\n    \"minecraft:piglin_head\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"trophy\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob skull head, rare decorative trophy\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\", \"nether\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged creeper kills piglin in nether\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decor/note block/firework use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decor, note block instrument\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob head with hostile nether-piglin theme\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piglins are distinctly gold-toned\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative wall or room display\",\n            \"note block snout instrument\",\n            \"firework star ingredient\",\n            \"wearable novelty helmet\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"skull: decor, noteblock, firework, wear\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "0f560615-bbd0-4f0d-bcb0-6dfb47a7b6f5",
+  "total_cost_usd": 0.16033015,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3193,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9606,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3193
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9606,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3193,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3193,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2330,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00241,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9606,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3193,
+      "webSearchRequests": 0,
+      "costUSD": 0.15792015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "03f78a1a-4ca3-45ea-89a0-101c8d26ea1d"
+}

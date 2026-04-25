@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 181484,
+  "duration_api_ms": 182142,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:blackstone_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form = structural element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"walls used selectively in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural + aesthetic wall use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone variant, natural nether material\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone = very dark gray stone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_low\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-tier blast resistance ~6\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed walls and barriers\", \"decorative borders and edging\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical wall block applications\"\n        }\n      }\n    },\n    \"minecraft:blade_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology collectible, 20 variants to collect\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rarely placed; collected for completion\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for purely decorative pottery\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological dig find\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay/pottery warm earth tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft decorated pots\", \"archaeology collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting + collectible motivation\"\n        }\n      }\n    },\n    \"minecraft:blast_furnace\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active smelting block with interaction\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe requires iron ingots + furnace\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ore-processing block, used daily\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ore processing + auto-smelting setups\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial smelting machine aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron block with furnace face\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 13 when active\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt ores at 2x speed\", \"smelt metal armor and tools\", \"automated ore processing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core blast furnace functions\"\n        }\n      }\n    },\n    \"minecraft:blaze_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed from blaze rods; intermediate ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"blaze\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix blaze_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires nether blaze source\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brewing fuel + ender eyes used often\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"combat\", \"magic\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brewing fuel; fire charges; ender eyes\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mob-derived material\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-yellow glowing powder\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table; crafted from blaze rods\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fuel for brewing stands\", \"craft eyes of ender\", \"craft fire charges\", \"craft magma cream\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary downstream crafting uses\"\n        }\n      }\n    },\n    \"minecraft:blaze_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop, not processed\"\n        },\n        \"material_family\": {\n          \"value\": \"blaze\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix blaze_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether mob drop; needs blaze farm\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core nether resource for brewing/crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"combat\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brewing stand; fire items; end rods\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange glowing rod from blazes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft blaze powder\", \"craft brewing stands\", \"fuel source (12 items)\", \"craft end rods\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream crafting uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "38ce8945-0296-4bb9-98ea-4f27c4e08702",
+  "total_cost_usd": 0.1949894,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3976,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11669,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3976,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11669,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3976,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3976
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3113,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003188,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11669,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3976,
+      "webSearchRequests": 0,
+      "costUSD": 0.1918014,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "33708ae0-268d-48b4-8319-e7a107a5812f"
+}

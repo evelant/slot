@@ -1,0 +1,303 @@
+{
+  "items": {
+    "minecraft:copper_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:axes + tool rules component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper is transitional mid-tier"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "axe mines; weapon component for combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard axe silhouette, no special styling"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper material color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_loot_sources is empty"
+        },
+        "primary_uses": {
+          "values": [
+            "chop wood and axe-mineables",
+            "disable shields in combat",
+            "copper tier tool progression"
+          ],
+          "signal": "inferred",
+          "rationale": "core axe gameplay roles"
+        }
+      }
+    },
+    "minecraft:copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:bars; structural barrier like iron bars"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use as window/fence bars"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative structural barriers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard bars form, mirrors iron bars"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper ages through oxidation stages"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative window and fence bars",
+            "copper structural barrier",
+            "oxidizing decorative element"
+          ],
+          "signal": "inferred",
+          "rationale": "typical bars placement purposes"
+        }
+      }
+    },
+    "minecraft:copper_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "Block of Copper = compressed ingot storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally for builds or storage"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in structures; oxidizes decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidizes naturally through weathering stages"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh copper color base state"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper ages through oxidation stages"
+        },
+        "primary_uses": {
+          "values": [
+            "compress 9 copper ingots for storage",
+            "build with oxidizing copper aesthetic",
+            "stonecutting into cut copper variants"
+          ],
+          "signal": "inferred",
+          "rationale": "primary block usage patterns"
+        }
+      }
+    },
+    "minecraft:copper_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:foot_armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier armor, transitional"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "armor worn for protection in combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard boots silhouette"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper material color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_loot_sources is empty"
+        },
+        "primary_uses": {
+          "values": [
+            "foot armor protection",
+            "copper armor set completion",
+            "apply armor trims for aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "armor gameplay purposes"
+        }
+      }
+    },
+    "minecraft:copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redstone-toggled light source block"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche redstone lighting use case"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-controlled decorative light"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "toggle-able copper lamp mechanism"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "copper base color; glows when active"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; emits light when powered"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-controlled light source",
+            "compact toggle-able lamp",
+            "oxidizing decorative light block"
+          ],
+          "signal": "inferred",
+          "rationale": "core bulb gameplay uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

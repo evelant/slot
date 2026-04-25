@@ -1,0 +1,296 @@
+{
+  "items": {
+    "minecraft:purple_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass pane used for windows and walls"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "stained glass variant crafted from glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; easily crafted"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not every session"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows and colored glass decor"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "explicitly stained/colored variant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "purple hue; glass is translucent"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes support waterlogging"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent block prevents mob spawning"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows and glass walls",
+            "colored light filtering",
+            "decorating structures"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glass pane uses"
+        }
+      }
+    },
+    "minecraft:purple_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colored block for building"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "tag minecraft:terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colored terracotta for builds and decor"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed terracotta variant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "purple matte earthy terracotta surface"
+        },
+        "primary_uses": {
+          "values": [
+            "building colored structures",
+            "decorating",
+            "smelting into glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "standard terracotta uses"
+        }
+      }
+    },
+    "minecraft:purple_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wool placed as building/decorating block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; mob drop"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wool for building and colored decor"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed and sheep-derived natural material"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple dye color"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "rationale": "wool burns; dampens_vibrations tag",
+          "evidence": "tag minecraft:dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decorating",
+            "dampening sculk vibrations",
+            "crafting carpets and beds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wool use cases"
+        }
+      }
+    },
+    "minecraft:purpur_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid end block for building"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires end access; progression-gated"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in end builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "end-themed building and decor"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive ornate end material"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "purpur's purple matte surface"
+        },
+        "primary_uses": {
+          "values": [
+            "end-themed building",
+            "stonecutting into purpur variants",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "standard purpur block uses"
+        }
+      }
+    },
+    "minecraft:purpur_pillar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "column-form end block for building"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires end access; progression-gated"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in end builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative column for end builds"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "pillar-form variant of purpur block"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "purpur's purple matte surface"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative columns and pillars",
+            "end-themed building",
+            "crafting purpur slabs and stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "pillar-form purpur uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

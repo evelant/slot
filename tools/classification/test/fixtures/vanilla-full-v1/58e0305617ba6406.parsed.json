@@ -1,0 +1,312 @@
+{
+  "items": {
+    "minecraft:light_gray_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "panes used for windows and facades"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "stained glass pane id+form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from sand and dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not every session"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows and decorative panes"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "stained = colored variant"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray tone, glass is translucent"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes waterlog in water"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows and facades",
+            "decorative colored panes",
+            "light filtering"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glass pane uses"
+        }
+      }
+    },
+    "minecraft:light_gray_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block for construction"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "terracotta tag + id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common clay"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "construction and decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed clay, earthy texture"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray earthy tone"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building block",
+            "smelting into glazed terracotta",
+            "decorating structures"
+          ],
+          "signal": "inferred",
+          "rationale": "standard terracotta uses"
+        }
+      }
+    },
+    "minecraft:light_gray_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "primarily placed as structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable from sheep"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "beds, carpets, building staple"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "building block and decor material"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool, natural material"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "soft light gray tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "inferred",
+          "rationale": "wool burns; dampens_vibrations tag"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decorating",
+            "crafting beds and carpets",
+            "sound dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wool uses"
+        }
+      }
+    },
+    "minecraft:light_weighted_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits proportional redstone signal"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "crafted from 2 gold ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "gold farmable via piglins/zombified"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized redstone use"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "entity-count signal emitter"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone mechanism"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "made of gold"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved",
+          "rationale": "has piglin_loved tag"
+        },
+        "primary_uses": {
+          "values": [
+            "proportional entity-count signal",
+            "redstone circuits",
+            "item sorter triggers"
+          ],
+          "signal": "inferred",
+          "rationale": "weighted pressure plate mechanics"
+        }
+      }
+    },
+    "minecraft:lightning_rod": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redirects lightning, active behaviour"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "crafted from 3 copper ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper abundant in caves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per structure"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "lightning protection + redstone pulse"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional mechanism"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper, default unoxidized state"
+        },
+        "environmental_property": {
+          "values": [
+            "conducts_lightning",
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "redirects strikes; copper oxidizes"
+        },
+        "primary_uses": {
+          "values": [
+            "redirect lightning from structures",
+            "redstone pulse on lightning strike",
+            "prevent fire from lightning"
+          ],
+          "signal": "inferred",
+          "rationale": "lightning rod functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

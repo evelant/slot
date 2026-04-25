@@ -1,0 +1,281 @@
+{
+  "items": {
+    "minecraft:heavy_weighted_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plate = redstone signal source"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "heavy plate crafted from iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component says common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche contraption use only"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "entity-count signal drives contraptions"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "flat iron plate with mechanical function"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "iron finish, flat surface"
+        },
+        "primary_uses": {
+          "values": [
+            "proportional redstone output by entity count",
+            "entity detection in redstone circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "core mechanic of heavy weighted plate"
+        }
+      }
+    },
+    "minecraft:hoglin_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only admin items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival source for any spawn egg"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative mode only; no survival drop"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only in creative or admin play"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "hoglins spawn in the nether crimson forest"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "animal-type mob egg"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "hoglin is brownish-orange in color"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn hoglin mob in creative mode",
+            "mob farm testing and setup"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose of spawn eggs"
+        }
+      }
+    },
+    "minecraft:honey_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed block; physics props are secondary"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires bee farm to produce"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche redstone/automation use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "flying machines, sticky pistons, decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic bee-product block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-amber honey color"
+        },
+        "environmental_property": {
+          "values": [
+            "slows_walking",
+            "piston_sticky"
+          ],
+          "signal": "inferred",
+          "rationale": "slows entities; sticks to pistons like slime"
+        },
+        "primary_uses": {
+          "values": [
+            "slows entities walking over or on sides",
+            "piston-sticky for flying machines",
+            "decorative honey aesthetic",
+            "reverts to honey bottles via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "core honey block gameplay functions"
+        }
+      }
+    },
+    "minecraft:honey_bottle": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has food + consumable components"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component says common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational anti-poison use"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "counters poison met in caves/mineshafts"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural bee product in glass bottle"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "amber honey in translucent glass bottle"
+        },
+        "primary_uses": {
+          "values": [
+            "removes poison status effect on drink",
+            "restores 6 hunger points",
+            "crafts honey block or sugar"
+          ],
+          "signal": "named",
+          "rationale": "remove_effects:poison explicit in component"
+        }
+      }
+    },
+    "minecraft:honeycomb": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "harvested directly from beehives as-is"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires bee farming or wild hive luck"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for waxing copper and candles"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "wax copper; candles; beehive crafting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw bee harvest, organic resource"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-amber honeycomb color"
+        },
+        "primary_uses": {
+          "values": [
+            "wax copper blocks to prevent oxidation",
+            "craft candles",
+            "craft beehives",
+            "craft honeycomb block"
+          ],
+          "signal": "inferred",
+          "rationale": "top downstream uses from ingredient list"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,272 @@
+{
+  "items": {
+    "minecraft:polished_granite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form = structural building use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs placed for structure/arch"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished = processed granite variant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "granite has pinkish warm stone tones"
+        },
+        "primary_uses": {
+          "values": [
+            "structural stone stair building",
+            "architectural accent in stone builds"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used in construction"
+        }
+      }
+    },
+    "minecraft:polished_sulfur": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cube_all model = full placeable block"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix polished_sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building material, not daily use"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block + source for sulfur forms"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished = processed sulfur block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur is bright yellow-amber"
+        },
+        "primary_uses": {
+          "values": [
+            "full-cube building block",
+            "crafting sulfur bricks and forms",
+            "stonecutting source for slabs/stairs/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "many derivative recipes from this block"
+        }
+      }
+    },
+    "minecraft:polished_sulfur_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab = half-height structural block"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix polished_sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slab placed for structure/decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished sulfur half-slab form"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "inherits sulfur yellow-amber color"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height sulfur building accent",
+            "floor and detail work in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs used for fine architectural detail"
+        }
+      }
+    },
+    "minecraft:polished_sulfur_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form = structural building use"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix polished_sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs placed for structure/arch"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished sulfur stair form"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "inherits sulfur yellow-amber color"
+        },
+        "primary_uses": {
+          "values": [
+            "stair-shaped sulfur building block",
+            "architectural accent in sulfur builds"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used for vertical access and detail"
+        }
+      }
+    },
+    "minecraft:polished_sulfur_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form = structural building block"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix polished_sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall placed for fencing/borders"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished sulfur wall form"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "inherits sulfur yellow-amber color"
+        },
+        "primary_uses": {
+          "values": [
+            "wall-form sulfur building block",
+            "garden borders and path edging"
+          ],
+          "signal": "inferred",
+          "rationale": "walls used for fencing and borders"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

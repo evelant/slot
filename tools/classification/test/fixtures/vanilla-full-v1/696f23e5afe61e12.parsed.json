@@ -1,0 +1,361 @@
+{
+  "items": {
+    "minecraft:snowball": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "inferred",
+          "rationale": "thrown projectile, consumed on throw"
+        },
+        "material_family": {
+          "value": "snow",
+          "signal": "pattern",
+          "rationale": "id prefix snow"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational; blazes/happy ghasts"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "thrown at blazes, ender dragon"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural snow material"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white/icy appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "throw at blazes for extra damage",
+            "craft snow blocks",
+            "feed and tame happy ghasts",
+            "knock back mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:soul_campfire": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "cooks food, emits light, active block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "primarily wood in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "soul_sand"
+          ],
+          "signal": "inferred",
+          "rationale": "soul sand/soil required in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche vs regular campfire"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as light source and decor"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "eerie soul fire aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-teal soul fire glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 10"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities",
+            "repels_mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "burns standing entities; piglin_repellents tag"
+        },
+        "primary_uses": {
+          "values": [
+            "soul fire light source (level 10)",
+            "repel piglins",
+            "cook food",
+            "blue fire decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:soul_lantern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "aesthetic light source, no interaction"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from iron nuggets"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for soul aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for light and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "soul fire glow, iron cage design"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "emissive",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "teal glow, dark iron cage"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 10"
+        },
+        "spawn_interaction": {
+          "values": [
+            "repels_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_repellents",
+          "rationale": "piglin_repellents tag explicit"
+        },
+        "primary_uses": {
+          "values": [
+            "soul fire light source (level 10)",
+            "soul aesthetic decoration",
+            "repel piglins"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:soul_sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "gathered raw from nether, not processed"
+        },
+        "material_family": {
+          "value": "soul_sand",
+          "signal": "pattern",
+          "rationale": "id = soul_sand"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific nether tasks"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "nether wart, wither summon, bubbles"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw nether terrain block"
+        },
+        "palette": {
+          "values": [
+            "muddy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark muddy nether sand texture"
+        },
+        "environmental_property": {
+          "values": [
+            "slows_walking"
+          ],
+          "signal": "inferred",
+          "rationale": "entities sink and slow on soul sand"
+        },
+        "primary_uses": {
+          "values": [
+            "grow nether wart",
+            "summon wither boss",
+            "downward bubble column",
+            "soul fire base block",
+            "craft soul campfire and torch"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    },
+    "minecraft:soul_soil": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "gathered raw from nether"
+        },
+        "material_family": {
+          "value": "soul_soil",
+          "signal": "pattern",
+          "rationale": "id = soul_soil"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "less versatile than soul sand"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "soul fire base, nether builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw nether soil block"
+        },
+        "palette": {
+          "values": [
+            "muddy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark earthy nether soil"
+        },
+        "primary_uses": {
+          "values": [
+            "soul fire base block",
+            "craft soul campfire and torch",
+            "nether building and decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core player uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:soul_campfire",
+      "facet": "origin",
+      "current": [
+        "nether"
+      ],
+      "suggested": [
+        "crafted_only"
+      ],
+      "rationale": "crafted only; sole loot source is self-drop, not natural nether gen",
+      "confidence": 0.75
+    },
+    {
+      "item": "minecraft:soul_lantern",
+      "facet": "origin",
+      "current": [
+        "nether"
+      ],
+      "suggested": [
+        "crafted_only"
+      ],
+      "rationale": "crafted only; sole loot source is self-drop, not natural nether gen",
+      "confidence": 0.75
+    }
+  ]
+}

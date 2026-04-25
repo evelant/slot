@@ -1,0 +1,270 @@
+{
+  "items": {
+    "minecraft:deepslate_coal_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "ore mined raw from world, not processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "coal veins abundant even in deep layers"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined on sight, not used directly"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe ore, active use is mining it"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw geological block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark charcoal deepslate base with coal"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for coal via smelting/blasting",
+            "decorative dark ore block in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "ore→coal pipeline; aesthetic use"
+        }
+      }
+    },
+    "minecraft:deepslate_copper_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore block mined from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper generates in large veins"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined on sight, processed afterward"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "mined; copper used heavily for building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw geological block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy",
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "dark deepslate base, copper orange veins"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for copper ingots",
+            "smelt/blast into copper ingot",
+            "copper building block supply"
+          ],
+          "signal": "inferred",
+          "rationale": "ore→ingot pipeline; copper for construction"
+        }
+      }
+    },
+    "minecraft:deepslate_diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore block mined from world"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "diamonds are rare; deep deepslate layer"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "always mined when found, rarely encountered"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe ore, active use is mining"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw geological block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "dark deepslate + cyan crystal diamond veins"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for diamonds",
+            "use fortune pickaxe for max diamond yield",
+            "deepest reliable diamond source"
+          ],
+          "signal": "inferred",
+          "rationale": "prime diamond acquisition method"
+        }
+      }
+    },
+    "minecraft:deepslate_emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore block mined from world"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarest vanilla ore; mountain biome only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined on sight, rarely found"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "mined; emeralds are the trading currency"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw geological block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "dark deepslate base, bright green ore veins"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for emeralds",
+            "supply villager trading currency",
+            "mountain biome rare find"
+          ],
+          "signal": "inferred",
+          "rationale": "emerald ore → emerald → trading"
+        }
+      }
+    },
+    "minecraft:deepslate_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore block mined from world"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold ore present but not abundant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined when encountered"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe ore, active use is mining"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw geological block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy",
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "dark deepslate base, gold yellow veins"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:piglin_loved inherited tag",
+          "rationale": "piglins aggro on gold ore being mined"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for gold ingots",
+            "source for piglin bartering supply",
+            "smelt/blast into gold ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "ore→ingot→barter pipeline"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

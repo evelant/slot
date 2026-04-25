@@ -1,0 +1,285 @@
+{
+  "items": {
+    "minecraft:scrape_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "found via archaeology brushing, not crafted"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "pottery sherds are fired ceramic"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "brushed from suspicious sand/gravel"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "tag decorated_pot_ingredients confirms use"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artefact"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "pottery texture and warm clay tone"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft/decorate decorated pots",
+            "Archaeology collection item"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use is decorated_pot ingredient"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use in decorated pots only"
+        }
+      }
+    },
+    "minecraft:sculk": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full solid block, no active mechanics"
+        },
+        "material_family": {
+          "value": "sculk",
+          "signal": "pattern",
+          "rationale": "id is exactly sculk"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for dark aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "deep dark biome organism"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "dark block with teal highlights"
+        },
+        "primary_uses": {
+          "values": [
+            "Build with deep dark aesthetic",
+            "Decorative dark block"
+          ],
+          "signal": "inferred",
+          "rationale": "no functional behaviour when placed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building material"
+        }
+      }
+    },
+    "minecraft:sculk_catalyst": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "spreads sculk when mobs die nearby"
+        },
+        "material_family": {
+          "value": "sculk",
+          "signal": "pattern",
+          "rationale": "id prefix sculk"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "sculk farming via XP drops; deco builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "deep dark organism"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "pulses with light when blooming"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when activated"
+        },
+        "primary_uses": {
+          "values": [
+            "Spread sculk via mob XP drops",
+            "Sculk farming setup",
+            "Deep dark decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core mechanic is sculk spread"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche sculk farm use"
+        }
+      }
+    },
+    "minecraft:sculk_sensor": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "detects vibrations, emits redstone signal"
+        },
+        "material_family": {
+          "value": "sculk",
+          "signal": "pattern",
+          "rationale": "id prefix sculk"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "wireless redstone detection"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "sculk-based sensor device"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "glows when activated"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "transmits redstone signal on vibration"
+        },
+        "primary_uses": {
+          "values": [
+            "Detect vibrations wirelessly",
+            "Wireless redstone trigger",
+            "Craft calibrated sculk sensor"
+          ],
+          "signal": "inferred",
+          "rationale": "core redstone utility + crafting role"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialist redstone component"
+        }
+      }
+    },
+    "minecraft:sculk_shrieker": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "shrieks on vibration; emits redstone signal"
+        },
+        "material_family": {
+          "value": "sculk",
+          "signal": "pattern",
+          "rationale": "id prefix sculk"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone output + deep dark aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "threatening deep dark organism"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "sculk dark teal palette"
+        },
+        "primary_uses": {
+          "values": [
+            "Emit redstone signal on vibration",
+            "Deep dark themed decoration",
+            "Warning level mechanic block"
+          ],
+          "signal": "inferred",
+          "rationale": "shrieks + redstone signal on trigger"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche redstone/deco use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

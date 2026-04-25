@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 247788,
+  "duration_api_ms": 248561,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:powder_snow_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket form used to place powder snow\"\n        },\n        \"material_family\": {\n          \"value\": \"powder_snow\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains powder_snow\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all buckets are iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational trap/cold-biome build use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"place snow blocks; freeze/trap mobs\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural snow material\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/light snowy appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powder snow forms on cold biome surfaces\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block freezes/damages mobs\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"place powder snow blocks\",\n            \"trap and freeze mobs\",\n            \"extinguish fire on entities\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core powder snow bucket uses\"\n        }\n      }\n    },\n    \"minecraft:powered_rail\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires redstone signal to boost minecarts\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe uses 6 gold ingots\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\", \"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe: stick + redstone dust\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold cost restricts availability\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in dedicated minecart systems\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-activated minecart booster\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical rail infrastructure\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-colored rail strips\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves players/mobs via minecart\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rails moved by pistons; waterloggable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"accelerate minecarts\",\n            \"build high-speed rail networks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core powered rail uses\"\n        }\n      }\n    },\n    \"minecraft:prismarine\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural block for ocean-themed builds\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean monument or guardian farming\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean/aquatic themed building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean structure construction and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic ocean-origin material\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animated teal/aqua shimmering texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"build ocean-themed structures\",\n            \"craft prismarine slabs/stairs/walls\",\n            \"craft tide armor trim template\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main prismarine uses incl. trim ingredient\"\n        }\n      }\n    },\n    \"minecraft:prismarine_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form for structural decoration\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from ocean monument material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aquatic build floor/ceiling detailing\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for ocean-themed construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab variant of prismarine bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"same teal/aqua as base prismarine\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"floor/ceiling detailing in ocean builds\",\n            \"half-height prismarine brick aesthetics\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical slab use cases\"\n        }\n      }\n    },\n    \"minecraft:prismarine_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form for structural decoration\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from ocean monument material\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aquatic build stairways\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for ocean-themed construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair variant of prismarine bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"same teal/aqua as base prismarine\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"stairways in ocean-themed builds\",\n            \"prismarine brick architectural detailing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical stairs use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:prismarine\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"ocean_monument\"],\n      \"rationale\": \"Prismarine generates naturally in ocean monuments; crafted_only is wrong\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b6a3eed8-2ba2-4ad6-8fc5-d50feb739587",
+  "total_cost_usd": 0.25519440000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4196,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15613,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4196
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15613,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4196,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4196,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3333,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003408,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15613,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4196,
+      "webSearchRequests": 0,
+      "costUSD": 0.2517864,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0e34238c-a9b1-430d-837c-07db01d6e5ff"
+}

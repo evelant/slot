@@ -1,0 +1,316 @@
+{
+  "items": {
+    "minecraft:cyan_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chosen for distinctive glaze pattern, not structure"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "glazed terracotta base material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "clay > terracotta > glaze, easy chain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "accent/pattern blocks in builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "directional glaze pattern is distinctive"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan maps to teal range"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flooring and walls",
+            "directional pattern accent blocks",
+            "colored terracotta builds"
+          ],
+          "signal": "inferred",
+          "rationale": "typical glazed terracotta gameplay use"
+        }
+      }
+    },
+    "minecraft:cyan_harness": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equips happy ghasts enabling player flight"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "pattern",
+          "rationale": "id prefix cyan + dye_cyan_harness recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from basic materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core item for ghast-based travel"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables aerial travel via happy ghast"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed fabric/leather harness"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan dye color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources listed"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghasts for riding",
+            "tempt and tame happy ghasts",
+            "enable aerial transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "harnesses + happy_ghast_tempt_items tags"
+        }
+      }
+    },
+    "minecraft:cyan_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "pattern",
+          "rationale": "shulker boxes are the portable container"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "inferred",
+          "rationale": "crafted from shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "End expedition + shulker kills required"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core portable storage item"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage for adventuring"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed shulker box variant"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan dye color"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard item stacks"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "placed shulker boxes resist pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "portable inventory expansion",
+            "colored storage organization",
+            "transport items across dimensions"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker box core gameplay purpose"
+        }
+      }
+    },
+    "minecraft:cyan_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass is structural; color is variant choice"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id suffix stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "glass + dye, both easily obtained"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds but not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows and decorative structures"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "colored variant of plain glass"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan translucent glass block"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows",
+            "light-filtering decoration",
+            "crafting stained glass panes"
+          ],
+          "signal": "inferred",
+          "rationale": "core stained glass uses"
+        }
+      }
+    },
+    "minecraft:cyan_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fills window openings architecturally"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "stained_glass_pane id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from cheap stained glass"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative window use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "window panels and architecture"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "colored pane variant"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan translucent thin pane"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes support waterlogging"
+        },
+        "primary_uses": {
+          "values": [
+            "thin window panels",
+            "colored glass architecture",
+            "decorative walls and dividers"
+          ],
+          "signal": "inferred",
+          "rationale": "typical pane gameplay uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

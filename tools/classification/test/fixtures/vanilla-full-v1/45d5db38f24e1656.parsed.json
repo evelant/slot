@@ -1,0 +1,269 @@
+{
+  "items": {
+    "minecraft:polished_tuff": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "polished stone block used for structure"
+        },
+        "material_family": {
+          "value": "tuff",
+          "signal": "pattern",
+          "rationale": "id polished_tuff derives from tuff"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche stone variant, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to construct and cut into variants"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth gray block, no ornamentation"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone matte surface"
+        },
+        "primary_uses": {
+          "values": [
+            "build with polished stone",
+            "stonecutting into tuff brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list shows building use"
+        }
+      }
+    },
+    "minecraft:polished_tuff_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form used for floors/roofs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche slab block, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs used for construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth gray slab, minimal detail"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone, matte surface"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height structural block",
+            "architectural floor/roof detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab building use"
+        }
+      }
+    },
+    "minecraft:polished_tuff_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form used for steps/rooflines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche stairs block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used for construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth gray stairs block"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone, matte surface"
+        },
+        "primary_uses": {
+          "values": [
+            "stair access in tuff builds",
+            "architectural rooflines and corners"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair building use"
+        }
+      }
+    },
+    "minecraft:polished_tuff_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form used as barrier/edge"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche wall block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "walls used for barriers in builds"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth gray wall, minimal detail"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone, matte surface"
+        },
+        "primary_uses": {
+          "values": [
+            "fence-like barrier for tuff builds",
+            "decorative wall edging"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall building use"
+        }
+      }
+    },
+    "minecraft:popped_chorus_fruit": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "smelted intermediate for End crafting"
+        },
+        "material_family": {
+          "value": "chorus_fruit",
+          "signal": "pattern",
+          "rationale": "smelted product of chorus fruit"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End access + smelting step"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for specific End crafts"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "chorus plants only grow in the End"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "makes purpur blocks and end rods"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "processed organic fruit material"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "pinkish-purple hue from chorus plant"
+        },
+        "primary_uses": {
+          "values": [
+            "craft purpur blocks",
+            "craft end rods"
+          ],
+          "signal": "inferred",
+          "rationale": "only two downstream recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

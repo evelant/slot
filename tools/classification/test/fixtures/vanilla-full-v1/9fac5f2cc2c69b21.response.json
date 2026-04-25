@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 119897,
+  "duration_api_ms": 120601,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:birch_sapling\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant dropped from world, not processed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops freely from birch leaves; biome common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted when growing trees, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tree farming; wood grown for building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic plant item\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green foliage, pale birch stem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"grow birch trees for wood\", \"potted plant decoration\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sapling uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based plant, combustible\"\n        }\n      }\n    },\n    \"minecraft:birch_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores/displays items; has NBT variation\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common birch planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed when decorating or organizing\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"display/store items, furnish builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wooden furniture block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale cream wood tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"display items on shelves\", \"storage decoration\", \"wooden furniture aesthetic\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf block use cases\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block, combustible\"\n        }\n      }\n    },\n    \"minecraft:birch_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable, writable text block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially crafted from birch planks/sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for labeling, not daily use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"label areas, decorate builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wooden sign\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale cream wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"label storage and areas\", \"text display\", \"directional signage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sign uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden; signs waterlog in vanilla\"\n        }\n      }\n    },\n    \"minecraft:birch_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form = structural building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially crafted from birch planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavily used in construction\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is structural building\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple slab, birch plank variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale cream wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"flooring and ceiling detail\", \"halfblock architectural builds\", \"ingredient for functional blocks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical slab use cases\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden; slabs waterlog in vanilla\"\n        }\n      }\n    },\n    \"minecraft:birch_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs form = structural building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common birch planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"commonly placed in all build types\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"staircase and architectural use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple stairs, birch plank variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale cream wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircases between levels\", \"rooflines and eaves\", \"architectural detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical stairs use cases\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden; stairs waterlog in vanilla\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "66e59e9a-186a-4972-aad9-477672492964",
+  "total_cost_usd": 0.14891390000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4598,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8400,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4598,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8400,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4598,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4598
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3735,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003815,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8400,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4598,
+      "webSearchRequests": 0,
+      "costUSD": 0.1450989,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "10c1561a-ae7d-42ea-b6de-f48293cf65d4"
+}

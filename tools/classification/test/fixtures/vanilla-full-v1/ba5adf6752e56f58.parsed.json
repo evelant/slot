@@ -1,0 +1,345 @@
+{
+  "items": {
+    "minecraft:charcoal": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed smelting product; crafting ingredient"
+        },
+        "material_family": {
+          "value": "charcoal",
+          "signal": "pattern",
+          "rationale": "id is charcoal; distinct processed fuel material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "produced by smelting any log; always accessible"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary early-game smelting fuel"
+        },
+        "activity": {
+          "values": [
+            "power_generation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "furnace fuel; crafts torches/campfires"
+        },
+        "flavor": {
+          "value": "plain",
+          "signal": "inferred",
+          "rationale": "simple unprocessed smelting byproduct"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "black/dark charcoal appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "requires smelting logs to produce"
+        },
+        "primary_uses": {
+          "values": [
+            "furnace fuel for smelting",
+            "crafting torches and campfires",
+            "crafting fire charges"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream recipe uses"
+        }
+      }
+    },
+    "minecraft:cherry_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "suffix _boat; water travel vehicle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap to craft from cherry planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally when crossing water"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel; enables ocean/river exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood variant of the boat family"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm",
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood distinctive pink/warm tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe only"
+        },
+        "environmental_property": {
+          "values": [
+            "floats",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "boat floats on water; wooden so burnable"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "transports players and mobs on water"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel and navigation",
+            "exploration of ocean and river biomes",
+            "ingredient for cherry chest boat"
+          ],
+          "signal": "inferred",
+          "rationale": "main vanilla boat use cases"
+        }
+      }
+    },
+    "minecraft:cherry_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits momentary redstone pulse on click"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially crafted from 1 plank"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in specific redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone trigger; placed on walls/blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood variant of wooden buttons"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood pink/warm tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden; piston movable; catches fire"
+        },
+        "primary_uses": {
+          "values": [
+            "momentary redstone pulse input",
+            "activating doors and trapdoors",
+            "redstone circuit trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "typical button functions"
+        }
+      }
+    },
+    "minecraft:cherry_chest_boat": {
+      "facets": {
+        "role": {
+          "values": [
+            "transport",
+            "container_portable"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "boat+chest hybrid: moves player and stores items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from boat + chest; accessible"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche: water travel with cargo"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "moves player and items across water"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood variant chest boat"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm",
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood pink/warm tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe only"
+        },
+        "environmental_property": {
+          "values": [
+            "floats",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "boat floats; wooden so burnable"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "item",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "transports player/mobs; stores items in chest"
+        },
+        "primary_uses": {
+          "values": [
+            "water transport with built-in storage",
+            "moving item stacks across water",
+            "exploration with extra inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat primary use cases"
+        }
+      }
+    },
+    "minecraft:cherry_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural architectural entrance element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap to craft from cherry planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed in virtually every structure built"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is structural; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood variant door"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm",
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood distinctive pink tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden door burns; movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances and exits",
+            "mob exclusion from structures",
+            "privacy and aesthetic doorways"
+          ],
+          "signal": "inferred",
+          "rationale": "primary door use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

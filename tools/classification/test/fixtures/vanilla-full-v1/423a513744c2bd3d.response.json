@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 175846,
+  "duration_api_ms": 177270,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:blaze_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only admin items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival loot or craft recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only via creative mode or commands\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for farm setup or testing\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"all spawn eggs spawn their named mob\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blazes are combat/farm targets\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blaze has fiery yellow-orange look\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn blazes for farms or builds\", \"creative mode mob testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg primary use\"\n        }\n      }\n    },\n    \"minecraft:blue_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are primarily decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"banner recipe requires 6 wool\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"stick\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"banner recipe uses a stick pole\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wool + stick\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for decoration not daily use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is decorating builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue-dyed but no pattern applied\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool-based, flammable material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorating builds and bases\", \"shield decoration\", \"banner duplication base\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core banner use cases\"\n        }\n      }\n    },\n    \"minecraft:blue_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive sleep + spawn-set mechanic\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"bed crafted with 3 wool\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"plank\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"bed crafted with 3 wood planks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap early-game craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used most nights to skip darkness\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sets respawn during exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"blue dye color variant\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"contains wool and wood planks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"skip night / set spawn point\", \"re-dye to other color variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed use cases\"\n        }\n      }\n    },\n    \"minecraft:blue_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundles hold multiple item types\"\n        },\n        \"dye_color\": {\n          \"value\": \"blue\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix blue + bundles tag\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle recipe uses string\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from farmable hides\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"everyday inventory management tool\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use is portable item storage\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fits any standard container slot\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed hide/leather material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"carry multiple item types in one slot\", \"inventory compression while exploring\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle's core purpose\"\n        }\n      }\n    },\n    \"minecraft:blue_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles are decor/lighting blocks\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base candle crafted from honeycomb\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string acts as wick in candle recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable via beehive + dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for ambient decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for decorative lighting\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed beeswax item\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural gen; only crafted + dyed\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lit candle emits light level 3\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ambient decorative lighting\", \"placed on cake for decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core candle use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "83f2daef-0aad-4982-83de-a444588f9dff",
+  "total_cost_usd": 0.23736290000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4182,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14429,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4182,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14429,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4182,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4182
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3319,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003389,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14429,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4182,
+      "webSearchRequests": 0,
+      "costUSD": 0.2339739,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "45b4a4be-c054-4eb4-93f5-69785b105ac6"
+}

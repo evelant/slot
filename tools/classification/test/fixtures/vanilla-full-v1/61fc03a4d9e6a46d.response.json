@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 274262,
+  "duration_api_ms": 275019,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:blue_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin wool; primary use is floor decor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from farmable wool\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used floor decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor and llama decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dye-colored wool carpets\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool has a matte textile finish\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dampens_vibrations tag; wool burns\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-solid; prevents spawn on block below\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"floor decoration\", \"dampen sculk vibrations\", \"llama decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpet use cases\"\n        }\n      }\n    },\n    \"minecraft:blue_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block used for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains 'concrete'\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete powder+water; no natural gen\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular builder's block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"construction and pixel art\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid colored; no ornamentation\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth solid surface; saturated blue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard block; movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"pixel art\", \"colored walls and floors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete block uses\"\n        }\n      }\n    },\n    \"minecraft:blue_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gravity block; precursor to concrete\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete_powder\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains 'concrete_powder'\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common sand/gravel/dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate step; rarely placed as-is\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to craft concrete for building\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored powder variant\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powder texture; saturated blue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand; piston movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"convert to blue concrete via water\", \"gravity-affected building block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete powder use cases\"\n        }\n      }\n    },\n    \"minecraft:blue_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed dye; crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _dye; minecraft:dye component\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from cornflower or lapis lazuli\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cornflower and lapis are common sources\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in many dyeing recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to color blocks and items\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dye colors\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"saturated blue color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dyeing wool, concrete, glass, terracotta\", \"crafting cyan/purple dye\", \"coloring fireworks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue dye downstream uses\"\n        }\n      }\n    },\n    \"minecraft:blue_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop from blue chicken variant\"\n        },\n        \"material_family\": {\n          \"value\": \"egg\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _egg; in minecraft:eggs tag\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"named\",\n          \"rationale\": \"gameplay/chicken_lay loot source\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires specific blue chicken variant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in cake/pumpkin pie recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtained from chicken variant farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural colored variant of regular egg\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue-tinted light pastel egg color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"baking cake and pumpkin pie\", \"throwable projectile\", \"variant chicken farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"egg use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c4d58075-0c63-400d-a8ac-c0c00fd235c9",
+  "total_cost_usd": 0.3280269,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4526,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 20364,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4526,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 20364,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4526,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4526
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3663,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003738,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 20364,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4526,
+      "webSearchRequests": 0,
+      "costUSD": 0.3242889,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a60d4714-c6f2-4c04-8b70-6e5c972fb0c5"
+}

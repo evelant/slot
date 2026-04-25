@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 190066,
+  "duration_api_ms": 191893,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:cactus_flower\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant harvested from world\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"rarity component explicit\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used mainly as pink dye source\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bee food + dye/flower placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant-origin flower item\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink/coral cactus bloom\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows on cacti in desert biome\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:bee_food\",\n          \"rationale\": \"bees attracted to bee_food flowers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft pink dye\", \"bee food and pollination\", \"placed as decorative flower\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye ingredient + bee + decor\"\n        }\n      }\n    },\n    \"minecraft:cake\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"food eaten in slices after placing\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"rarity component explicit\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"resource-heavy; not an everyday food\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard vanilla food aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white frosting, warm baked tones\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:panda_eats_from_ground\",\n          \"rationale\": \"pandas attracted to dropped cake\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"feed player (7 hunger slices)\", \"feed and attract pandas\", \"birthday celebration decor\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food + panda tag + celebratory use\"\n        }\n      }\n    },\n    \"minecraft:calcite\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full-cube stone used for structure/decor\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only in amethyst geode outer shells\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche pale stone building choice\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light stone for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural geological stone\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale white/cream stone texture\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"amethyst geode shell, underground\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"pale building/decorative material\", \"amethyst geode shell accent block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural stone found in geodes\"\n        }\n      }\n    },\n    \"minecraft:calibrated_sculk_sensor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"filtered vibration-to-redstone output\"\n        },\n        \"material_family\": {\n          \"value\": \"sculk\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sculk-family sensor block\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"amethyst\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted with amethyst shards\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs deep dark sculk + amethyst\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized redstone/automation use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vibration detection for circuits\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sculk aesthetic, deep dark origin\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"dark\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark sculk with teal emissive glow\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"filtered vibration detection\", \"precise redstone signal output\", \"sound-triggered automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"calibrated frequency sensing\"\n        }\n      }\n    },\n    \"minecraft:camel_husk_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative/admin-only items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table or recipe; spawn egg pattern\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival obtain method\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only to spawn specific mob\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg pattern: spawns named mob on use\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn camel husk mob (creative/admin)\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose of a spawn egg\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"spawn_interaction\",\n      \"value\": \"swallowable_by_mob\",\n      \"rationale\": \"Tag minecraft:sulfur_cube_swallowable on calcite (and similar blocks) indicates a mob can physically ingest/swallow the block. No existing spawn_interaction value covers block-ingestion by a mob; attracts_mobs and mob_transport are both wrong in meaning.\"\n    }\n  ],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "b9a6c9b0-25ac-417e-81b5-610ae222adf9",
+  "total_cost_usd": 0.20546315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3421,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12543,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3421,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12543,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3421,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3421
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2558,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002633,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12543,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3421,
+      "webSearchRequests": 0,
+      "costUSD": 0.20283015000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b46a4e5b-5ea0-4562-a452-49fe243ab43c"
+}

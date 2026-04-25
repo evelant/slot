@@ -1,0 +1,284 @@
+{
+  "items": {
+    "minecraft:oak_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural enclosure block, placed in world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant oak wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds, not every session"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural fence element"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, organic origin"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak is medium warm brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood fence ignites and burns"
+        },
+        "primary_uses": {
+          "values": [
+            "building animal pens and enclosures",
+            "decorative border and structural edge",
+            "connecting to fence gates for entry"
+          ],
+          "signal": "inferred",
+          "rationale": "common fence use cases"
+        }
+      }
+    },
+    "minecraft:oak_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes on interact or redstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant oak wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building fenced enclosures"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; redstone-toggleable"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material with gate mechanism"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood medium warm brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood construction ignites and burns"
+        },
+        "primary_uses": {
+          "values": [
+            "gated entry to fenced enclosures",
+            "redstone-controlled access point",
+            "player/mob passthrough in fence lines"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gate use cases"
+        }
+      }
+    },
+    "minecraft:oak_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "labeling/aesthetic, not structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from stripped logs and chains"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for labeling, not every session"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for text labels and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "primary material is wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood medium brown tone"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling locations and storage areas",
+            "decorative hanging text displays",
+            "shop or area signage in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "typical sign use cases"
+        }
+      }
+    },
+    "minecraft:oak_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "harvested from trees unchanged, raw form"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "every oak tree has hundreds of leaves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds and composting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "build foliage decor; compostable"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "literal tree foliage"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "oak leaves render green"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves ignite and burn quickly"
+        },
+        "primary_uses": {
+          "values": [
+            "foliage decoration in builds",
+            "composter input for bonemeal",
+            "crafting leaf litter"
+          ],
+          "signal": "inferred",
+          "rationale": "typical leaf use cases"
+        }
+      }
+    },
+    "minecraft:oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw tree resource picked from world"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "forests everywhere; most common log type"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "primary wood source, used every session"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed directly as log pillars/structure"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw unprocessed tree log"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak log medium brown, dark end grain"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood logs burn as fuel or in fire"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting oak planks and wood products",
+            "building log cabin structures",
+            "fuel and charcoal smelting source"
+          ],
+          "signal": "inferred",
+          "rationale": "core log use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 203427,
+  "duration_api_ms": 204160,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:clay_ball\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops raw from clay blocks when broken\"\n        },\n        \"material_family\": {\n          \"value\": \"clay\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix clay\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay deposits common near rivers/beaches\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for bricks, not an everyday need\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: bricks and clay blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale gray-blue clay color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelt into bricks\",\n            \"craft clay blocks\",\n            \"terracotta production chain\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipe ingredient data\"\n        }\n      }\n    },\n    \"minecraft:clock\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"displays in-game day/night cycle\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 4 gold ingots\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe includes redstone dust\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable mid-game from gold+redstone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consulted for time, not constant use\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"knowing time aids safe overworld travel\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animated spinning timepiece\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-colored with warm tones\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_loved\",\n          \"rationale\": \"piglins attracted to clocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"display in-game time of day\",\n            \"plan around day/night cycle\",\n            \"piglin-safe display item\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"known clock mechanics\"\n        }\n      }\n    },\n    \"minecraft:closed_eyeblossom\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower found naturally in pale garden biome\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower/plant category\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale garden is a rare biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche dye and stew ingredient\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decor; suspicious stew crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"eerie pale garden eye-motif flower\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grayish pale petals\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale garden is overworld surface biome\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft gray dye\",\n            \"suspicious stew with blindness effect\",\n            \"pale garden decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipe ingredient data\"\n        }\n      }\n    },\n    \"minecraft:coal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined directly from coal ore blocks\"\n        },\n        \"material_family\": {\n          \"value\": \"coal\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = coal\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"very abundant in caves and on surfaces\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary fuel used constantly in play\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelting fuel; torches and campfires\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mined natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"near-black coal color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelting and cooking fuel\",\n            \"craft torches\",\n            \"craft campfire and fire charges\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from recipe ingredient data\"\n        }\n      }\n    },\n    \"minecraft:coal_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"9 coal compressed into one block\"\n        },\n        \"material_family\": {\n          \"value\": \"coal\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix coal_block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common coal\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when coal is abundant\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bulk fuel; usable as dark building block\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"uniform compressed coal block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"very dark near-black surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compact coal storage\",\n            \"extended furnace fuel\",\n            \"dark building material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"known coal block mechanics\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a88b7f49-a45e-40bb-b6a6-ec44d863c56a",
+  "total_cost_usd": 0.21867565,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4191,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13180,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4191,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13180,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4191,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4191
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3328,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0034029999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13180,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4191,
+      "webSearchRequests": 0,
+      "costUSD": 0.21527265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2041fa3c-ee34-4725-88eb-7d8557ca684c"
+}

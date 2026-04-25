@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 206708,
+  "duration_api_ms": 207515,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:parrot_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs place a mob on right-click\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table or recipe; creative/cmd only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when populating builds or farms\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival loot or recipe found\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns tameable animals for farms/builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob spawn item, wildlife theme\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn a parrot on demand\", \"populate builds with wildlife\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core spawn egg purpose\"\n        }\n      }\n    },\n    \"minecraft:pearlescent_froglight\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"exotic glowing column block for ambiance\"\n        },\n        \"material_family\": {\n          \"value\": \"froglight\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _froglight\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires warm frog to eat a magma cube\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative light source\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light-emitting decor placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic origin, exotic pearlescent look\"\n        },\n        \"palette\": {\n          \"values\": [\"iridescent\", \"glowing\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pearlescent = soft shimmery luminous glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"froглights emit light level 15\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative light source\", \"ambient lighting in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary in-game uses of froглights\"\n        }\n      }\n    },\n    \"minecraft:peony\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"tall flower gathered from overworld as-is\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower/plant category\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in flower forests and plains\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for dye; not an everyday item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye crafting and bee-food farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural flower; vibrant pink hue\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"peony is a pink warm-toned flower\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft pink dye\", \"decorative tall flower\", \"bee food source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe output and minecraft:bee_food tag\"\n        }\n      }\n    },\n    \"minecraft:petrified_oak_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form, structural use in builds\"\n        },\n        \"material_family\": {\n          \"value\": \"wood_oak\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"visually oak; petrified stone behavior\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; unobtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, very niche use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab used in construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"petrified = ancient fossilized oak variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak wood visual appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-type block; won't burn unlike wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fire-resistant wood-look slab\", \"creative-only building material\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key distinguisher from regular oak slab\"\n        }\n      }\n    },\n    \"minecraft:phantom_membrane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop used directly in recipes\"\n        },\n        \"material_family\": {\n          \"value\": \"phantom\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix phantom_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"phantoms spawn only after 3 sleepless nights\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"elytra repair and slow falling brewing\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slow falling potion; elytra repair for flight\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin membrane; pale blue-gray tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"repair elytra at crafting table\", \"brew slow falling potion\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only vanilla uses for phantom membrane\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "49630643-55bf-44ac-bbcc-eada221d6c46",
+  "total_cost_usd": 0.24792565,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3431,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15371,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3431
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15371,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3431,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3431,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2568,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002638,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15371,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3431,
+      "webSearchRequests": 0,
+      "costUSD": 0.24528765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b10261e8-351f-4589-9e7e-6f8378b23aa9"
+}

@@ -1,0 +1,303 @@
+{
+  "items": {
+    "minecraft:exposed_chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chiseled pattern = primarily ornate accent"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix exposed_copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper craftable from common raw material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative copper block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative copper accent in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled = ornate oxidation variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes further unless waxed"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper accent block",
+            "wax to lock oxidation stage"
+          ],
+          "signal": "inferred",
+          "rationale": "typical chiseled copper usage"
+        }
+      }
+    },
+    "minecraft:exposed_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid copper block for structures"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "named",
+          "rationale": "tag minecraft:copper on item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper craftable from common raw material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche oxidized copper block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "copper block for builds and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidation variant with natural patina"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes further unless waxed"
+        },
+        "primary_uses": {
+          "values": [
+            "building with oxidized copper look",
+            "stonecutting into cut/chiseled variants"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of exposed copper block"
+        }
+      }
+    },
+    "minecraft:exposed_copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier like iron bars"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper craftable from common raw material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative barrier"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "copper bar barrier or window grille"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial bar form, oxidized variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes further unless waxed"
+        },
+        "primary_uses": {
+          "values": [
+            "copper decorative barrier or window grille",
+            "wax to lock oxidation stage"
+          ],
+          "signal": "inferred",
+          "rationale": "bars primary usage"
+        }
+      }
+    },
+    "minecraft:exposed_copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redstone-toggled light source"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper craftable from common raw material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized redstone lamp"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-toggled copper lamp in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical light device, oxidized variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "bulb emits light; copper oxidizes"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-toggled light source",
+            "copper aesthetic lamp"
+          ],
+          "signal": "inferred",
+          "rationale": "copper bulb primary use"
+        }
+      }
+    },
+    "minecraft:exposed_copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chains primarily decorative connectors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper craftable from common raw material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative chain block"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical chain form, oxidized variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes further unless waxed"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative chain block",
+            "hang lanterns or bells"
+          ],
+          "signal": "inferred",
+          "rationale": "chain primary usage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 194693,
+  "duration_api_ms": 195477,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:map\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigation/cartography tool\"\n        },\n        \"material_family\": {\n          \"value\": \"paper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from 8 paper + compass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"component explicitly states common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific exploration tasks\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reveals and tracks terrain while navigating\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic parchment map, no special aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"parchment tan tones, faded ink look\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Reveal and navigate terrain\", \"Clone for shared exploration maps\", \"Locate structures via explorer map upgrade\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core empty map functions\"\n        }\n      }\n    },\n    \"minecraft:medium_amethyst_bud\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystal growth stage, no crafting use\"\n        },\n        \"material_family\": {\n          \"value\": \"amethyst\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains amethyst\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"geodes locatable but not ubiquitous\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative block, no crafting recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipes; purely placed as decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic crystal growth, elegant appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple amethyst hue, emits light level 2\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"medium bud emits light level 2 in Java\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Crystal decoration in builds\", \"Display amethyst growth stages\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no utility beyond placement as decor\"\n        }\n      }\n    },\n    \"minecraft:melon\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"block item with block model, placeable\"\n        },\n        \"material_family\": {\n          \"value\": \"melon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is melon\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"component states common, farmable crop\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common farming output, broken repeatedly\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary crop block; also placeable in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic crop block\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green striped exterior\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Break for melon slices\", \"Compact 9 slices for storage/transport\", \"Decorative farm block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main melon block uses\"\n        }\n      }\n    },\n    \"minecraft:melon_seeds\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw seed obtained from world, planted to grow\"\n        },\n        \"material_family\": {\n          \"value\": \"melon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix melon_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted once per farm, not a daily-use item\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant melon crops; chicken_food/parrot_food tags\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic seed\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small cream/brown seed sprite\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Plant melon crops\", \"Feed chickens and parrots\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chicken_food and parrot_food tags confirm animal use\"\n        }\n      }\n    },\n    \"minecraft:melon_slice\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:food + minecraft:consumable components\",\n          \"rationale\": \"food and consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"melon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix melon_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common food used regularly in early/mid game\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food crop; crafts glistering melon for potions\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic food item\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-red melon flesh color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Eat to restore 2 hunger\", \"Craft glistering melon slice\", \"Potion of Healing ingredient chain\", \"Recompress into melon block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food + potion ingredient + compression\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:melon_seeds\",\n      \"facet\": \"origin\",\n      \"current\": [\"mineshaft\", \"overworld_cave\", \"woodland_mansion\"],\n      \"suggested\": [\"mineshaft\", \"overworld_cave\", \"woodland_mansion\", \"overworld_surface\"],\n      \"rationale\": \"Melon stems grow in surface jungle biomes; blocks/melon_stem and blocks/attached_melon_stem loot should classify as overworld_surface\",\n      \"confidence\": 0.8\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "3c2e2555-784c-4ab7-9c75-665834f0dcc5",
+  "total_cost_usd": 0.2177057,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3728,
+    "cache_read_input_tokens": 4939,
+    "output_tokens": 13277,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3728,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13277,
+        "cache_read_input_tokens": 4939,
+        "cache_creation_input_tokens": 3728,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3728
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3005,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00308,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13277,
+      "cacheReadInputTokens": 4939,
+      "cacheCreationInputTokens": 3728,
+      "webSearchRequests": 0,
+      "costUSD": 0.2146257,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a7add7bf-30bd-4895-b8dd-eae6cde73858"
+}

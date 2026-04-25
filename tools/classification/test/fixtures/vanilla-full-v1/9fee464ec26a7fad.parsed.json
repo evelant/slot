@@ -1,0 +1,303 @@
+{
+  "items": {
+    "minecraft:dark_oak_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural gate form used in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common dark oak wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds, not daily"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as gate in fences/structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak has dark brown texture"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood gate is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "gate for fences and walls",
+            "controlling mob/player entry",
+            "decorative wood gate"
+          ],
+          "signal": "inferred",
+          "rationale": "core fence gate use cases"
+        }
+      }
+    },
+    "minecraft:dark_oak_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "text display; primarily aesthetic use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common wood and chains"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively for labeling"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "text display and labeling use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based sign"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood sign is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "display written text",
+            "label storage or rooms",
+            "decorative signage"
+          ],
+          "signal": "inferred",
+          "rationale": "core hanging sign uses"
+        }
+      }
+    },
+    "minecraft:dark_oak_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "gathered from world trees as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in dark oak forests"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for deco and composting"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "foliage deco; composted for bonemeal"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic tree foliage"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green foliage color"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are highly flammable"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent block; mobs can't spawn on it"
+        },
+        "primary_uses": {
+          "values": [
+            "foliage decoration in builds",
+            "composting for bonemeal",
+            "crafting leaf litter"
+          ],
+          "signal": "inferred",
+          "rationale": "main reasons to collect leaves"
+        }
+      }
+    },
+    "minecraft:dark_oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw tree resource gathered from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "found abundantly in dark oak forests"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core wood resource used constantly"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds or crafted to planks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw wood from trees"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak has distinctive dark bark"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "logs are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "craft into dark oak planks",
+            "build log structures",
+            "smelt to charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses for logs"
+        }
+      }
+    },
+    "minecraft:dark_oak_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural plank placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from dark oak logs"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "fundamental building and crafting material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as floors/walls; mass crafting use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "processed wood plank"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak has dark brown color"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood planks are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors and walls",
+            "crafting furniture and tools",
+            "primary wood crafting base"
+          ],
+          "signal": "inferred",
+          "rationale": "planks are fundamental wood material"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:dark_oak_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_dark_oak",
+      "rationale": "id prefix is dark_oak_; wooden_tool_materials tag is generic to all wood species, not oak-specific",
+      "confidence": 0.95
+    }
+  ]
+}

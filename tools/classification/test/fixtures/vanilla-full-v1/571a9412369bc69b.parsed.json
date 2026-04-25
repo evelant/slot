@@ -1,0 +1,311 @@
+{
+  "items": {
+    "minecraft:magma_cube_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawns mob on use; functional tool"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival obtain path"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mob farm setup use"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mob farm initialization"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob egg aesthetic"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "magma cube is orange-red and glowing"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs are creative-only"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "id _spawn_egg -> spawns its linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn magma cubes",
+            "mob farm initialization"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core uses"
+        }
+      }
+    },
+    "minecraft:mangrove_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "suffix _boat; water vehicle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap craft from 5 planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational water travel item"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water traversal and world exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood variant of boat"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove has distinctive reddish wood"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted from planks"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player across water"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel",
+            "ocean/river crossing",
+            "craft into chest boat"
+          ],
+          "signal": "inferred",
+          "rationale": "boat primary use cases"
+        }
+      }
+    },
+    "minecraft:mangrove_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "tag minecraft:buttons; emits redstone pulse"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "one plank yields one button"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in circuits/doors as needed"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone trigger; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood variant button"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish-brown hue"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone pulse trigger",
+            "door/gate activation"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wooden button uses"
+        }
+      }
+    },
+    "minecraft:mangrove_chest_boat": {
+      "facets": {
+        "role": {
+          "values": [
+            "transport",
+            "container_portable"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "boat+chest: dual transport/storage role"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from boat + chest"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for water cargo transport"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel + item carrying"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood variant with chest"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish wood"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from boat+chest, no loot sources"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "moves player and stores/carries items"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with cargo",
+            "item transport on water"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat primary use cases"
+        }
+      }
+    },
+    "minecraft:mangrove_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive block: opens/closes on click"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from 6 planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in most builds for entrances"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural entrance; redstone-openable"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood variant door"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish-brown color"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood door: piston-movable and flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "redstone-controlled access",
+            "base architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "door standard use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,302 @@
+{
+  "items": {
+    "minecraft:end_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick variant for structural construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component explicitly declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "End-aesthetic builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative End block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "processed brick form of end stone"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale cream yellowish brick texture"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "full solid opaque block"
+        },
+        "primary_uses": {
+          "values": [
+            "building End-themed structures",
+            "stonecutting into slabs/stairs/walls",
+            "decorative End masonry"
+          ],
+          "signal": "inferred",
+          "rationale": "typical brick building block uses"
+        }
+      }
+    },
+    "minecraft:ender_chest": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "personal inter-dim storage block"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "signal": "inferred",
+          "rationale": "crafted from 8 obsidian blocks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires obsidian mining + eye of ender"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core personal stash in most playthroughs"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "personal inter-dimensional storage"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "magical glowing personal storage block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark obsidian body with green glow"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_high",
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "blast_res=600, piston cannot move"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "full solid block"
+        },
+        "primary_uses": {
+          "values": [
+            "personal cross-dimensional storage",
+            "protecting valuables from loss",
+            "shared ender inventory access point"
+          ],
+          "signal": "inferred",
+          "rationale": "defining use cases of ender chest"
+        }
+      }
+    },
+    "minecraft:ender_dragon_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only boss spawn egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival source, creative mode only"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "no survival obtainability, admin only"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/testing scenarios only"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "end boss spawn egg, ominous by nature"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark purple/black dragon color scheme"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning Ender Dragon for admin/testing",
+            "creative mode boss encounter setup"
+          ],
+          "signal": "inferred",
+          "rationale": "only use is spawning the boss"
+        }
+      }
+    },
+    "minecraft:ender_eye": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigation + portal activation tool"
+        },
+        "material_family": {
+          "value": "ender_pearl",
+          "signal": "inferred",
+          "rationale": "primary component is ender pearl"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires enderman + nether blaze farming"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mainly one-time End portal activation"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "finds stronghold, activates End Portal"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical navigation artifact"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "characteristic teal green glow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted pearl+blaze"
+        },
+        "primary_uses": {
+          "values": [
+            "locating strongholds by throwing",
+            "activating End Portal frames",
+            "crafting ender chest and end crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of Eye of Ender"
+        }
+      }
+    },
+    "minecraft:ender_pearl": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "throwable teleportation item"
+        },
+        "material_family": {
+          "value": "ender",
+          "signal": "inferred",
+          "rationale": "ender-realm mob drop material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "enderman mob drop, requires farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly by players for mobility"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "teleportation traversal across terrain"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "magical mob drop with natural origin"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "characteristic teal/aqua color"
+        },
+        "primary_uses": {
+          "values": [
+            "teleportation for fast traversal",
+            "crafting Eye of Ender",
+            "escaping danger or crossing gaps"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of ender pearl"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

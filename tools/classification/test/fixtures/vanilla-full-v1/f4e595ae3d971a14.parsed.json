@@ -1,0 +1,301 @@
+{
+  "items": {
+    "minecraft:glow_ink_sac": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed"
+        },
+        "material_family": {
+          "value": "ink",
+          "signal": "pattern",
+          "rationale": "id ends _ink_sac"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "glow squids in specific underwater caves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche: glow frames and glowing signs"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "glow item frames, glowing sign text"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob drop"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "bioluminescent blue-green glow"
+        },
+        "primary_uses": {
+          "values": [
+            "craft glow item frames",
+            "apply glow to sign text"
+          ],
+          "signal": "inferred",
+          "rationale": "vanilla uses"
+        }
+      }
+    },
+    "minecraft:glow_item_frame": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "entity for glowing wall item display"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "base item frame uses leather"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak",
+            "ink"
+          ],
+          "signal": "inferred",
+          "rationale": "sticks and glow ink sac in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative niche use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall-mounted glowing item display"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing upgrade of standard item frame"
+        },
+        "palette": {
+          "values": [
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "outline glows in the dark"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted only"
+        },
+        "primary_uses": {
+          "values": [
+            "display items with glowing outline",
+            "map room markers",
+            "decorative item showcase"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item frame uses with glow"
+        }
+      }
+    },
+    "minecraft:glow_lichen": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for light/decor, no crafting use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "cave-specific; needs shears/Silk Touch"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche lighting/decoration use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "cave ambient light and decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic cave growth"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "mint"
+          ],
+          "signal": "inferred",
+          "rationale": "pale glowing green appearance"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave",
+            "deep_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "generates on cave walls underground"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 7"
+        },
+        "primary_uses": {
+          "values": [
+            "cave ambient lighting",
+            "spread via bone meal for coverage",
+            "decorative cave surface texture"
+          ],
+          "signal": "inferred",
+          "rationale": "typical player uses"
+        }
+      }
+    },
+    "minecraft:glow_squid_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "_spawn_egg = creative-only admin item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "spawn eggs not obtainable in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival loot"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn glow squids in creative or via commands"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function"
+        }
+      }
+    },
+    "minecraft:glowstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed block for structure and light"
+        },
+        "material_family": {
+          "value": "glowstone",
+          "signal": "pattern",
+          "rationale": "id is glowstone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "nether-only, requires travel"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used for lighting in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "light source; redstone lamp ingredient"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generating nether block"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm yellow-orange glow, level 15"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "max light level 15 emission"
+        },
+        "primary_uses": {
+          "values": [
+            "bright light source in builds",
+            "craft redstone lamp",
+            "craft and charge respawn anchor",
+            "nether-themed building block"
+          ],
+          "signal": "inferred",
+          "rationale": "common vanilla uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:glow_lichen",
+      "facet": "required_tool",
+      "current": "axe",
+      "suggested": "shears",
+      "rationale": "Glow lichen drops via shears or Silk Touch; axe tag reflects mining speed, not drop method",
+      "confidence": 0.75
+    }
+  ]
+}

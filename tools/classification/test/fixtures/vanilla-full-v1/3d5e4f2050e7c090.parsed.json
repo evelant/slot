@@ -1,0 +1,283 @@
+{
+  "items": {
+    "minecraft:waxed_exposed_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "copper block variant for structures"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "copper common, honeycomb adds a step"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific oxidation stage, niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural/aesthetic copper block"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidation variant, natural material"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage, mostly copper-toned"
+        },
+        "primary_uses": {
+          "values": [
+            "building copper structures",
+            "craft cut copper variants",
+            "freeze oxidation stage permanently"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed locks oxidation state"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "barrier/window block like iron bars"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs honeycomb waxing step"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative barrier use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bars for windows and barriers"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant, natural material"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "thin bar blocks waterlog like iron bars"
+        },
+        "primary_uses": {
+          "values": [
+            "copper window bars",
+            "decorative fencing",
+            "barrier blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "copper analog to iron bars"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redstone-toggled light source"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche redstone/lighting use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "light source + redstone interaction"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical redstone light device"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "copper with light emission when active"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bulb emits light when toggled on"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-toggled light source",
+            "compact redstone indicator",
+            "decorative copper lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "toggles on redstone pulse, holds state"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hanging decorative chain element"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs honeycomb waxing step"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative hanging use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative vertical/hanging element"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "copper chain variant, natural metal"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed oxidation stage"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative hanging chain",
+            "connect lanterns and bells",
+            "vertical aesthetic element"
+          ],
+          "signal": "inferred",
+          "rationale": "chain for decoration and suspension"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "template_chest model = chest storage"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs honeycomb waxing step"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "chests used constantly for storage"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary storage + placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of standard chest"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed oxidation stage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores regular items like a chest"
+        },
+        "primary_uses": {
+          "values": [
+            "item storage container",
+            "inventory management",
+            "decorative copper storage"
+          ],
+          "signal": "inferred",
+          "rationale": "chest for storing items"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

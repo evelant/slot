@@ -1,0 +1,296 @@
+{
+  "items": {
+    "minecraft:waxed_oxidized_chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block, structural/decorative use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs oxidation wait + honeycomb wax"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in themed copper builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "accent block in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled = ornate design variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "fully oxidized = teal-green finish"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative accent in copper builds",
+            "permanent oxidized aesthetic",
+            "chiseled texture feature block"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic building use"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "base copper block, structural + source block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs oxidation wait + honeycomb wax"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper builds and variant crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block + cut into sub-variants"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed oxidized state of copper"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "fully oxidized = teal-green finish"
+        },
+        "primary_uses": {
+          "values": [
+            "building with oxidized copper aesthetic",
+            "stonecutting into cut/chiseled variants",
+            "permanent waxed oxidized look"
+          ],
+          "signal": "inferred",
+          "rationale": "building block and crafting source"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bars form decorative barriers, like iron bars"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs oxidation wait + honeycomb wax"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper-themed aesthetic use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "barrier and decorative element"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of bars concept"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "fully oxidized = teal-green finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed from base bars, no natural loot"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "bars block type is waterloggable"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper barrier / window",
+            "permanent oxidized bar aesthetic",
+            "cell or fence accent detail"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic barrier use"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redstone-toggled light source"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs oxidation wait + honeycomb wax"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in redstone lighting setups"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-controlled light in builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone device, oxidized state variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized teal + dim light emission"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light level 4 when lit"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-toggled dim light source",
+            "copper-themed atmospheric lighting",
+            "permanent oxidized light fixture"
+          ],
+          "signal": "inferred",
+          "rationale": "functional lighting + decor"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chains primarily aesthetic / connective"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs oxidation wait + honeycomb wax"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative hanging element"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "hanging lanterns/bells, decor"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of chain, industrial feel"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "fully oxidized = teal-green finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed from base chain, no natural loot"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "chain block type is waterloggable"
+        },
+        "primary_uses": {
+          "values": [
+            "hang lanterns and bells decoratively",
+            "copper-themed chain aesthetic",
+            "permanent oxidized teal chain"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative vertical connector"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

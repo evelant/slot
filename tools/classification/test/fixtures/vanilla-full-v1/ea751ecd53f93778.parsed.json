@@ -1,0 +1,324 @@
+{
+  "items": {
+    "minecraft:lodestone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "anchors compass to location, interactive"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "chiseled stone bricks form body"
+        },
+        "material_secondary": {
+          "values": [
+            "netherite"
+          ],
+          "signal": "inferred",
+          "rationale": "netherite ingot required in recipe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "netherite ingot raises craft cost"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche nav use, few placed per world"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "links compass for navigation waypoints"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "stone+metal precision block appearance"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark stone body with netherite trim"
+        },
+        "primary_uses": {
+          "values": [
+            "Link compass to fixed location",
+            "Navigation waypoint marker",
+            "Nether/dimension landmark anchor"
+          ],
+          "signal": "inferred",
+          "rationale": "core lodestone mechanic"
+        }
+      }
+    },
+    "minecraft:loom": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive UI block for banner patterns"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "planks form main structure"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap planks + string recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when making banner patterns"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applies decorative patterns to banners"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wooden weaving workshop block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "standard plank-tone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply patterns to banners",
+            "Shepherd villager workstation",
+            "Banner design and customization"
+          ],
+          "signal": "inferred",
+          "rationale": "loom's sole function"
+        }
+      }
+    },
+    "minecraft:mace": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "rationale": "minecraft:weapon component present"
+        },
+        "material_family": {
+          "value": "heavy_core",
+          "signal": "inferred",
+          "rationale": "heavy core is the mace head ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "breeze_rod"
+          ],
+          "signal": "pattern",
+          "rationale": "breeze_rod is handle and repair item"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche fall-burst weapon, not default pick"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "named",
+          "rationale": "minecraft:weapon component"
+        },
+        "combat_bonus": {
+          "values": [
+            "fall_bonus_damage"
+          ],
+          "signal": "inferred",
+          "rationale": "smash mechanic scales with fall height"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "epic rarity unique heavy weapon"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron head, orange breeze rod handle"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "heavy_core only from trial vault loot"
+        },
+        "primary_uses": {
+          "values": [
+            "Smash attack with fall damage bonus",
+            "Break decorated pots",
+            "High-burst melee combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mace core mechanics and tag"
+        }
+      }
+    },
+    "minecraft:magenta_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is aesthetic display"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "6 wool form the banner cloth"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "stick pole in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap wool + stick craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decor or shield patterns"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative display and shield art"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "explicit dye color variant of banner"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is a highly saturated hue"
+        },
+        "primary_uses": {
+          "values": [
+            "Wall or ceiling decoration",
+            "Shield pattern application",
+            "Clan or faction marker"
+          ],
+          "signal": "inferred",
+          "rationale": "typical banner use cases"
+        }
+      }
+    },
+    "minecraft:magenta_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sleeping + spawn-point-setting mechanic"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "3 wool form mattress in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "3 planks form bed frame"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap wool + plank recipe"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used most nights in survival play"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in base; 16 colors for room decor"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 dye-color bed variants"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is a saturated vivid hue"
+        },
+        "primary_uses": {
+          "values": [
+            "Sleep to skip night",
+            "Set player spawn point",
+            "Colored bedroom decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

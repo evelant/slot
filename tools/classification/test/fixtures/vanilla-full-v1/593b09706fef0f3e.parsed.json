@@ -1,0 +1,303 @@
+{
+  "items": {
+    "minecraft:sulfur_spike": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "world-generated spike mined for sulfur"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed to produce sulfur ingredient"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined with pickaxe to extract sulfur"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic crystal/spike formation"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur is yellow-brown mineral"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "guess",
+          "rationale": "sulfur=brimstone; likely volcanic/nether"
+        },
+        "primary_uses": {
+          "values": [
+            "mine to obtain sulfur material",
+            "decorative spike block"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds sulfur_from_sulfur_spikes recipe"
+        }
+      }
+    },
+    "minecraft:sulfur_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:stairs; structural form"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche stairs variant; not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs block used in construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant of base sulfur block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur is yellow-brown mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs with sulfur aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "stair form of sulfur block set"
+        }
+      }
+    },
+    "minecraft:sulfur_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:walls; structural form"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche wall variant; not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block used in construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wall variant of base sulfur block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur is yellow-brown mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls with sulfur aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form of sulfur block set"
+        }
+      }
+    },
+    "minecraft:sunflower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed flower picked from world"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "botanical flower; flowers tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mainly used as yellow dye source"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bee_food tag; dye ingredient; decor flower"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic flower plant"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow flower head"
+        },
+        "primary_uses": {
+          "values": [
+            "craft yellow dye",
+            "decorative double-tall flower",
+            "bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow_dye recipe + bee_food tag"
+        }
+      }
+    },
+    "minecraft:suspicious_gravel": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "brushed by player to extract artifacts"
+        },
+        "material_family": {
+          "value": "gravel",
+          "signal": "pattern",
+          "rationale": "id contains _gravel"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only in specific archaeological structures"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "single-use block; item form creative-only"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeology via structure exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "aged archaeological deposit block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dull gravel appearance with artifact hint"
+        },
+        "origin": {
+          "values": [
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean ruins + trail ruins in 1.20"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "gravel-type block falls unsupported"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no silk touch; not obtainable in survival"
+        },
+        "primary_uses": {
+          "values": [
+            "brush to extract archaeology loot",
+            "archaeology site interaction"
+          ],
+          "signal": "inferred",
+          "rationale": "brushing mechanic reveals artifacts"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

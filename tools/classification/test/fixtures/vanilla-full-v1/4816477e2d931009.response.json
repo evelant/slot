@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 206041,
+  "duration_api_ms": 207056,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:purple_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"processed dye; refined crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:dye = purple\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 20 recipe types across dyeing\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is dyeing decorative items\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dye color variants\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple maps to violet in palette enum\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot tables; crafting_shapeless only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dye wool, beds, carpets\",\n            \"color firework stars\",\n            \"dye leather armor and harnesses\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top uses from sample_ingredient_of\"\n        }\n      }\n    },\n    \"minecraft:purple_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta is primarily ornamental\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix glazed_terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative block\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetics or structure\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornate pattern + dye color variant\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"glossy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple color + glazed shiny surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ornate patterned wall decoration\",\n            \"colored accent block\",\n            \"building with glazed aesthetic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative smelted terracotta variant\"\n        }\n      }\n    },\n    \"minecraft:purple_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips happy ghast for riding\"\n        },\n        \"dye_color\": {\n          \"value\": \"purple\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix + 16 color harness variants\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one per ghast; niche use\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables riding happy ghasts\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"16 dye color variants via re-dyeing\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple color variant\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot tables; crafting recipes only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"equip happy ghast for riding\",\n            \"colored ghast cosmetic\",\n            \"redye to other harness colors\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ghast riding equipment\"\n        }\n      }\n    },\n    \"minecraft:purple_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable container block with 27 slots\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker_shell\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 2 shulker shells + chest\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest component (any wood) in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires End access and shulker kills\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core portable storage in late game\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable inventory management\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dye color variants\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple dye color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"container blocks can't be piston-moved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable 27-slot storage\",\n            \"color-coded inventory system\",\n            \"item transport via shulker box\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core late-game storage utility\"\n        }\n      }\n    },\n    \"minecraft:purple_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural transparent colored block\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for windows and decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for windows or colored light\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored glass variant\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple tint + semi-transparent glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colored windows and skylights\",\n            \"purple light tinting\",\n            \"decorative building accent\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stained glass for building\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e8f43e5c-0cdd-4dfe-82e3-c69533d3d4a8",
+  "total_cost_usd": 0.26344515,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4573,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16044,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4573
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16044,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4573,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4573,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3710,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0037800000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16044,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4573,
+      "webSearchRequests": 0,
+      "costUSD": 0.25966515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "570a272f-971b-49f2-b956-c3fb819c784a"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 189948,
+  "duration_api_ms": 190684,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:oxidized_cut_copper_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form = structural building use\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains 'copper'\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative build choice, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab used for building/decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized = weathered variant of copper\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fully oxidized copper = teal-green patina\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Building with oxidized copper aesthetic\",\n            \"Wax to lock patina state\",\n            \"Decorative half-height copper slab\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab + oxidized copper uses\"\n        }\n      }\n    },\n    \"minecraft:oxidized_cut_copper_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs form = structural building use\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains 'copper'\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative build choice, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for building/decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized = weathered variant of copper\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fully oxidized copper = teal-green patina\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Building stairs with oxidized copper look\",\n            \"Wax to lock patina state\",\n            \"Decorative copper staircase\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stairs + oxidized copper uses\"\n        }\n      }\n    },\n    \"minecraft:oxidized_lightning_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redirects lightning, emits redstone signal\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"lightning rod crafted from copper ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational: lightning protection/redstone\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed on builds; emits redstone on strike\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized variant; functional device\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fully oxidized copper = teal patina\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"conducts_lightning\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core mechanic: attracts/redirects lightning\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no direct recipe; oxidizes from crafted rod\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Redirect lightning strikes to safe spot\",\n            \"Trigger redstone pulse on lightning strike\",\n            \"Wax to preserve oxidized appearance\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core lightning rod gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:packed_ice\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid placeable ice block\"\n        },\n        \"material_family\": {\n          \"value\": \"ice\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = packed_ice\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs silk touch + cold biome or 9 ice\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational: ice roads, blue ice crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ice roads for speed; structural frozen build\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural ice; denser form than regular ice\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"light\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"icy blue-white semi-transparent look\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"slippery\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"packed ice is highly slippery surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Ice roads for fast boat/player travel\",\n            \"Crafting blue ice (9 packed ice)\",\n            \"Building with frozen aesthetic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main gameplay uses of packed ice\"\n        }\n      }\n    },\n    \"minecraft:packed_mud\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable block; earthen building material\"\n        },\n        \"material_family\": {\n          \"value\": \"mud\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = packed_mud; crafted from mud\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mud + wheat both trivially obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mainly a mud brick precursor\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structurally or as mud brick step\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple earthy block, no ornamentation\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muddy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown/tan earth tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Crafting mud bricks\",\n            \"Natural/earthy building material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is mud brick precursor\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:packed_ice\",\n      \"facet\": \"origin\",\n      \"current\": [\"ancient_city\"],\n      \"suggested\": [\"ancient_city\", \"overworld_surface\"],\n      \"rationale\": \"packed ice generates naturally in ice spike and frozen ocean biomes; block loot table confirms mined-in-world drops\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "0d98ba1f-521d-4529-805d-ff0456b425a2",
+  "total_cost_usd": 0.21176165000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4767,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12537,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4767
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12537,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4767,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4767,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3904,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003974,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12537,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4767,
+      "webSearchRequests": 0,
+      "costUSD": 0.20778765000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b68446cf-a93e-4add-ad28-1ae1b7d11f02"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 68641,
+  "duration_api_ms": 70048,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:music_disc_chirp\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id _music_disc_ + template_music_disc model\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag creeper_drop_music_discs\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox_playable; ambient music use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of many named disc variants\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"played situationally for ambiance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"jukebox\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory + jukebox slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"play in jukebox for ambient music\"],\n          \"signal\": \"named\",\n          \"rationale\": \"jukebox_playable component present\"\n        }\n      }\n    },\n    \"minecraft:music_disc_creator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id _music_disc_ + template_music_disc model\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox_playable; ambient music use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from reward_ominous_unique loot\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"played situationally for ambiance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"jukebox\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory + jukebox slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"play in jukebox for ambient music\"],\n          \"signal\": \"named\",\n          \"rationale\": \"jukebox_playable component present\"\n        }\n      }\n    },\n    \"minecraft:music_disc_creator_music_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id _music_disc_ + template_music_disc model\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox_playable; ambient music use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of many named disc variants\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"played situationally for ambiance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"jukebox\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory + jukebox slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"play in jukebox for ambient music\"],\n          \"signal\": \"named\",\n          \"rationale\": \"jukebox_playable component present\"\n        }\n      }\n    },\n    \"minecraft:music_disc_far\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id _music_disc_ + template_music_disc model\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag creeper_drop_music_discs\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox_playable; ambient music use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of many named disc variants\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"played situationally for ambiance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"jukebox\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory + jukebox slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"play in jukebox for ambient music\"],\n          \"signal\": \"named\",\n          \"rationale\": \"jukebox_playable component present\"\n        }\n      }\n    },\n    \"minecraft:music_disc_lava_chicken\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id _music_disc_ + template_music_disc model\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox_playable; ambient music use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of many named disc variants\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lava in name implies warm/fire theme\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"played situationally for ambiance\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"jukebox\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory + jukebox slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"play in jukebox for ambient music\"],\n          \"signal\": \"named\",\n          \"rationale\": \"jukebox_playable component present\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "bc36f23e-a779-45b4-bf30-309b5978efdb",
+  "total_cost_usd": 0.10549415,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3217,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 5943,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3217
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 5943,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3217,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3217,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2354,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002429,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 5943,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3217,
+      "webSearchRequests": 0,
+      "costUSD": 0.10306515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ef39dce0-5594-420d-bda7-9226561e3f42"
+}

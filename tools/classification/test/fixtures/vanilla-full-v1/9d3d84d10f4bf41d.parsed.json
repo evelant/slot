@@ -1,0 +1,304 @@
+{
+  "items": {
+    "minecraft:orange_tulip": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower picked raw from overworld; not processed"
+        },
+        "material_family": {
+          "value": "flower",
+          "signal": "inferred",
+          "rationale": "small_flowers tag; botanical world item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye/stew, not daily"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decor; bee_food supports bee farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "botanical plant item"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange tulip coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "craft orange dye",
+            "suspicious stew ingredient",
+            "bee food for bee farms",
+            "placed as decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient_of list + bee_food tag"
+        }
+      }
+    },
+    "minecraft:orange_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid wool block; primary use is building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common building/crafting material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed variant; animal-derived material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dyed wool coloration"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "inferred",
+          "rationale": "wool is flammable; dampens_vibrations tag"
+        },
+        "primary_uses": {
+          "values": [
+            "build and decorate structures",
+            "craft beds, carpets, banners",
+            "sculk vibration dampening",
+            "re-dye to other wool colors"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient_of list + dampens_vibrations tag"
+        }
+      }
+    },
+    "minecraft:oxeye_daisy": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower picked raw from overworld surface"
+        },
+        "material_family": {
+          "value": "flower",
+          "signal": "inferred",
+          "rationale": "small_flowers tag; botanical world item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye/banner/stew; not daily"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decor; bee_food supports bee farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "botanical plant item"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white petals with yellow center"
+        },
+        "primary_uses": {
+          "values": [
+            "craft light gray dye",
+            "flower banner pattern",
+            "suspicious stew ingredient",
+            "bee food for bee farms",
+            "placed as decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient_of list + bee_food tag"
+        }
+      }
+    },
+    "minecraft:oxidized_chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid decorative-structural copper block"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains copper; chiseled variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for visual appeal in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled variant; natural oxidation patina"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "fully oxidized copper is teal-green"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building with aged copper look",
+            "wax to preserve oxidized appearance",
+            "stonecutting from oxidized copper blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient_of waxed variant; stonecutting output"
+        }
+      }
+    },
+    "minecraft:oxidized_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full copper block at final oxidation stage"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id copper + tag minecraft:copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative/building use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for copper aesthetic in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural oxidation patina; weathering stage"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "teal-green fully oxidized copper color"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized copper generates in trial chambers"
+        },
+        "primary_uses": {
+          "values": [
+            "craft oxidized copper variants",
+            "build with aged copper aesthetic",
+            "wax to lock oxidized appearance",
+            "stonecutting into decorative variants"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient_of list; multiple variant recipes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,321 @@
+{
+  "items": {
+    "minecraft:copper_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "smelted from raw copper; processed ingot"
+        },
+        "tier": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "tag minecraft:copper_tool_materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "38 recipe uses; core crafting material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "copper blocks, armor/tools, armor trim"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard metal ingot"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "pattern",
+          "rationale": "copper color"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave",
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "copper ore in caves and mountain biomes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting copper tools and armor",
+            "armor trim material",
+            "building copper blocks",
+            "crafting brushes and chains"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "lighting; no interactive right-click behavior"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative lighting use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for lighting and aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted metal lantern"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "copper body + warm amber glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "light-emitting; waxable implies oxidation"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting in builds",
+            "copper-themed decoration",
+            "wax to lock oxidation state"
+          ],
+          "signal": "inferred",
+          "rationale": "lighting + deco + wax mechanic"
+        }
+      }
+    },
+    "minecraft:copper_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag leg_armor; equip_slot legs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier rarely optimal choice"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for damage protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard armor form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "pattern",
+          "rationale": "copper material"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper armor oxidizes in 1.21+"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shaped craft only"
+        },
+        "primary_uses": {
+          "values": [
+            "leg armor protection",
+            "trimmable armor canvas",
+            "smelts back to copper nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "wear + trim + recycle use cases"
+        }
+      }
+    },
+    "minecraft:copper_nautilus_armor": {
+      "facets": {
+        "role": {
+          "values": [
+            "armor",
+            "curiosity"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "armor in name; no equip_slot in stage2"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ocean chest loot; not craftable"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "uncertain use; limited source"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor piece found via ocean exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "nautilus/ocean theme; found in ruins"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "copper base + ocean/nautilus tones"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean loot armor piece",
+            "smelts to copper nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "found in chests; recyclable"
+        }
+      }
+    },
+    "minecraft:copper_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "metal nugget; sub-unit of copper ingot"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche uses: chain, torch, name tag"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "copper chain, lantern, torch crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard metal nugget"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "pattern",
+          "rationale": "copper material color"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no direct loot; from processing"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting copper chain and lantern",
+            "combining into copper ingots",
+            "crafting copper torch and name tag"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from sample_ingredient_of"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

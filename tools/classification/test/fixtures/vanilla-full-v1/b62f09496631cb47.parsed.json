@@ -1,0 +1,323 @@
+{
+  "items": {
+    "minecraft:weathered_copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "lantern = aesthetic lighting; no interaction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific oxidation-stage aesthetic"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetics and lighting"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "variant + weathered organic aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal + light emission"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "oxidizes_over_time",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "lantern glows; copper oxidizes; waterloggable"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative copper-themed lighting",
+            "Weathered aesthetic builds",
+            "Wax to preserve oxidation stage"
+          ],
+          "signal": "inferred",
+          "rationale": "core use cases"
+        }
+      }
+    },
+    "minecraft:weathered_copper_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes; redstone-activatable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific oxidation-stage aesthetic"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural hatch + redstone activation"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "variant + weathered organic aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; trapdoors waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "Functional hatch in copper builds",
+            "Redstone-activated door",
+            "Weathered copper aesthetic",
+            "Wax to freeze oxidation stage"
+          ],
+          "signal": "inferred",
+          "rationale": "core use cases"
+        }
+      }
+    },
+    "minecraft:weathered_cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural copper block for builds"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix weathered_cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific oxidation-stage aesthetic"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cut variant, weathered organic look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered stage still oxidizes further"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with weathered copper aesthetic",
+            "Stonecutting source for cut variants",
+            "Wax to freeze oxidation stage"
+          ],
+          "signal": "inferred",
+          "rationale": "core use cases"
+        }
+      }
+    },
+    "minecraft:weathered_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab = structural building element"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix weathered_cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific oxidation-stage aesthetic"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "architectural detail in copper builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cut slab variant, weathered look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; slabs waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height weathered copper detail",
+            "Source for chiseled copper crafting",
+            "Architectural slab in copper builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core use cases"
+        }
+      }
+    },
+    "minecraft:weathered_cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs = structural building element"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix weathered_cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "explicit rarity component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific oxidation-stage aesthetic"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "architectural stairs in copper builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "stair variant, weathered organic look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; stairs waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "Weathered copper staircase",
+            "Architectural copper detail",
+            "Wax to freeze oxidation stage"
+          ],
+          "signal": "inferred",
+          "rationale": "core use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

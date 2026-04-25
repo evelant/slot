@@ -1,0 +1,288 @@
+{
+  "items": {
+    "minecraft:music_disc_ward": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "named",
+          "rationale": "plan doc: music discs = curiosity"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "played rarely; mostly collected"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox ambient music = decor"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "one of many distinct music discs"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Ward disc is a dark muted disc"
+        },
+        "origin": {
+          "values": [
+            "mob_drop",
+            "ancient_city"
+          ],
+          "signal": "inferred",
+          "rationale": "creeper tag; ward in ancient_city"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:jukebox_playable component",
+          "rationale": "playable in jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "Play Ward music in jukebox",
+            "Collect all music discs"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox playback + disc collecting"
+        }
+      }
+    },
+    "minecraft:mutton": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has food + consumable components"
+        },
+        "material_family": {
+          "value": "meat",
+          "signal": "pattern",
+          "rationale": "raw animal protein from sheep"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "common sheep drop"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "food used regularly in gameplay"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "from sheep farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw animal product"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "raw pinkish-red meat tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook to cooked mutton for better stats",
+            "Eat raw (2 hunger) in emergency",
+            "Feed to wolves"
+          ],
+          "signal": "inferred",
+          "rationale": "food + wolf feed"
+        }
+      }
+    },
+    "minecraft:mycelium": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable surface block"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "grass_blocks tag = dirt family"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only in mushroom island biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mushroom farming use"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom spread + surface build"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nature-variant of grass block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "purplish-brown soil surface"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "mushroom island surface biome"
+        },
+        "primary_uses": {
+          "values": [
+            "Mushroom island surface block",
+            "Allows mushroom spread in light",
+            "Decorative purple-gray surface"
+          ],
+          "signal": "inferred",
+          "rationale": "surface + mushroom spreading"
+        }
+      }
+    },
+    "minecraft:name_tag": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "names mobs, prevents despawning"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only in select chests and fishing"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used to name specific mobs"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mob naming / livestock management"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple functional label item"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "cream paper tag appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Name mobs permanently",
+            "Prevent mob despawning",
+            "Identify pets and animals"
+          ],
+          "signal": "inferred",
+          "rationale": "core name tag mechanics"
+        }
+      }
+    },
+    "minecraft:nautilus_shell": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for conduit"
+        },
+        "material_family": {
+          "value": "shell",
+          "signal": "pattern",
+          "rationale": "is a nautilus shell"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected for conduit (8 needed)"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "conduit craft + ocean gathering"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean creature shell"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cream/white spiral shell"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft conduit (8 needed)",
+            "Uncommon ocean mob drop",
+            "Rare fishing treasure"
+          ],
+          "signal": "inferred",
+          "rationale": "conduit recipe + ocean sources"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

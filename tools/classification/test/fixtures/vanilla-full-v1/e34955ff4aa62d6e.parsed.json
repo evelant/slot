@@ -1,0 +1,301 @@
+{
+  "items": {
+    "minecraft:birch_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs display text; primarily decorative/labeling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when labeling needed, not daily"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "text labeling and aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood construction"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch is pale/white-toned wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood sign; flammable in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas and chests",
+            "decorative text display",
+            "wayfinding markers"
+          ],
+          "signal": "inferred",
+          "rationale": "core sign use cases"
+        }
+      }
+    },
+    "minecraft:birch_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "gathered raw from birch trees in world"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "birch forests produce massive leaf quantities"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for composting/decor, not daily staple"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "composted for bonemeal; used in tree builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic foliage block"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "birch leaves render green"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are flammable in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "composting for bonemeal",
+            "tree decoration in builds",
+            "crafting leaf litter"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses for leaves"
+        }
+      }
+    },
+    "minecraft:birch_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "chopped directly from birch trees; raw form"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "birch forests are a common biome"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "wood is a primary resource used constantly"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as log columns; crafted into planks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw organic wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch bark is distinctly pale/white"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting birch planks",
+            "building with log columns",
+            "fuel and charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "core log use cases from sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:birch_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks are primary structural build material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant birch logs"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "most-used wood product; 49 shaped recipes"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "floors, walls, and wood furniture crafting"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple smooth plank; organic material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch planks are pale yellow-white"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood planks burn in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "building floors, walls, and roofs",
+            "crafting wood furniture and blocks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "core plank uses; 49 shaped recipe outputs"
+        }
+      }
+    },
+    "minecraft:birch_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plates emit redstone signal on step"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap craft from abundant birch planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for specific triggers, not constant"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers circuits; used in door/trap builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional redstone detection device"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch wood is pale/light toned"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood component; flammable in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "triggering redstone on entity step",
+            "automatic door activation",
+            "mob farm timing circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "primary pressure plate applications"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:birch_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_birch",
+      "rationale": "Birch planks derive from birch logs; rule incorrectly mapped wooden_tool_materials tag to wood_oak for all plank types",
+      "confidence": 0.97
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 182287,
+  "duration_api_ms": 183212,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:golden_carrot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"carrot\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"base ingredient is a carrot\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted wrapped in gold nuggets\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-sat food used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"brewing\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse breed/tame; night vision; food\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant-based food item\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-colored food item\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"high-saturation food source\",\n            \"horse breeding and taming\",\n            \"night vision potion ingredient\",\n            \"rabbit taming\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food+horse_food+rabbit_food tags\"\n        }\n      }\n    },\n    \"minecraft:golden_chestplate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"suffix _chestplate + chest_armor tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"weak durability; niche piglin-safety use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protection + piglin-safe nether exploring\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard armor piece\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\", \"piglin_pacifying\"],\n          \"signal\": \"named\",\n          \"rationale\": \"piglin_loved + piglin_safe_armor tags\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"chest armor protection\",\n            \"piglin neutrality when worn\",\n            \"smithing trim decoration base\",\n            \"smelt to gold nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor+piglin_safe+trim+smelting uses\"\n        }\n      }\n    },\n    \"minecraft:golden_dandelion\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable small flower; primarily decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative and dye use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative flower block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden variant of base dandelion\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-colored flower\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small_flowers tag; grows on surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative flower placement\",\n            \"yellow dye crafting\",\n            \"suspicious stew ingredient\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye+stew recipes; block placement\"\n        }\n      }\n    },\n    \"minecraft:golden_helmet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"suffix _helmet + head_armor tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"weak durability; niche piglin-safety use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protection + piglin-safe nether exploring\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard armor piece\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\", \"piglin_pacifying\"],\n          \"signal\": \"named\",\n          \"rationale\": \"piglin_loved + piglin_safe_armor tags\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"head armor protection\",\n            \"piglin neutrality when worn\",\n            \"smithing trim decoration base\",\n            \"smelt to gold nuggets\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor+piglin_safe+trim+smelting uses\"\n        }\n      }\n    },\n    \"minecraft:golden_hoe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"suffix _hoe + minecraft:hoes tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fragile; fast but rarely the top pick\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:hoes; tills and harvests\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard tool\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"gold material\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"tilling soil at max speed\",\n            \"harvesting crops quickly\",\n            \"breaks decorated pots\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoe use; speed=12; breaks_decorated_pots\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "866ed35f-4ee9-49c2-9688-b5a9abf79ff3",
+  "total_cost_usd": 0.23809990000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5654,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14012,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5654,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14012,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5654,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5654
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4791,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004861,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14012,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5654,
+      "webSearchRequests": 0,
+      "costUSD": 0.23323890000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "416d96d7-1eac-4857-9eea-ac7ac7b1ac0d"
+}

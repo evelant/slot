@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 138564,
+  "duration_api_ms": 139260,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cherry_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence = structural barrier/enclosure\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed when building enclosures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural barrier\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood; variant of fence form\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"pastel\", \"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood pink-rosy warm tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building enclosures and barriers\", \"mob containment\", \"decorative borders in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence canonical uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes on player interaction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used wherever fences appear\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as passable fence entry\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood gate; swings open mechanically\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"pastel\", \"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood pink-rosy tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"passable gate in fence lines\", \"mob/player flow control\", \"build entrances\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence gate canonical uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"text display; aesthetic labeling primary use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as needed for labeling\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"label areas; used in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based; variant of sign form\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"pastel\", \"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood pink-rosy tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden sign burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"displaying text and labels\", \"marking storage/rooms\", \"decorative hanging signage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hanging sign canonical uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant foliage from cherry trees\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for decoration/tree builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tree decor builds; bee_food tag for bee farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic tree foliage\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink cherry blossom hue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves burn; movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative tree building\", \"crafting leaf litter\", \"bee habitat decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves canonical uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood harvested from cherry trees\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wood resource used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafts planks; placed as structural log\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood; variant of log form\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"pastel\", \"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry bark dark; interior pink-warm\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood log burns; movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting planks and wood products\", \"building with logs\", \"smelting into charcoal\", \"crafting campfires and smokers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"log canonical uses per sample_ingredient_of\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "305d5d8d-a408-4dcc-926d-4aab6b1285eb",
+  "total_cost_usd": 0.16336014999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4773,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9308,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4773,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9308,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4773,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4773
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3910,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003985000000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9308,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4773,
+      "webSearchRequests": 0,
+      "costUSD": 0.15937515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f5d0e090-582c-4d5b-95fd-7ea1f7fa4b75"
+}

@@ -1,0 +1,300 @@
+{
+  "items": {
+    "minecraft:respawn_anchor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sets nether respawn; active interact block"
+        },
+        "material_family": {
+          "value": "crying_obsidian",
+          "signal": "inferred",
+          "rationale": "crafted from crying obsidian blocks"
+        },
+        "material_secondary": {
+          "values": [
+            "glowstone"
+          ],
+          "signal": "inferred",
+          "rationale": "glowstone in recipe and charging"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs crying obsidian; nether-locked"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per nether base"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "nether respawn enables safe exploration"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "charged mechanic; glows when ready"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "indigo",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "emissive purple obsidian block"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "blast_resistant_high"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light charged; obsidian-based"
+        },
+        "primary_uses": {
+          "values": [
+            "Set respawn point in the Nether",
+            "Charged with glowstone blocks (max 4)",
+            "Explodes if activated outside Nether"
+          ],
+          "signal": "inferred",
+          "rationale": "core respawn anchor functions"
+        }
+      }
+    },
+    "minecraft:rib_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applies cosmetic trim at smithing table"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per trim application"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cosmetic armor customization"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "rib/bone pattern from nether fortress"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "bone-rib dark nether aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply rib trim pattern to armor",
+            "Duplicate with netherrack + diamonds",
+            "Cosmetic armor customization"
+          ],
+          "signal": "inferred",
+          "rationale": "trim template standard uses"
+        }
+      }
+    },
+    "minecraft:rooted_dirt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid terrain; structural dirt variant"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "id has _dirt; tagged minecraft:dirt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "generates naturally in lush caves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building; lush cave aesthetic"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "terrain build; hoe yields hanging roots"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic dirt-root texture"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown earthy dirt tones"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "lush caves under azalea trees"
+        },
+        "primary_uses": {
+          "values": [
+            "Building lush cave-themed terrain",
+            "Hoe to obtain hanging roots",
+            "Azalea tree root aesthetic block"
+          ],
+          "signal": "inferred",
+          "rationale": "rooted dirt gameplay uses"
+        }
+      }
+    },
+    "minecraft:rose_bush": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw tall flower; collected as-is"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flowering tall plant block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common in forest/plains biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "red dye source; occasional use"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "red dye farming; decorative placement"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "vivid red flower; natural plant"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "red petals + green stem"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft red dye",
+            "Decorative tall flower placement",
+            "Bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "core rose bush uses"
+        }
+      }
+    },
+    "minecraft:rotten_flesh": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has minecraft:food + consumable comp"
+        },
+        "material_family": {
+          "value": "meat",
+          "signal": "named",
+          "rationale": "tagged minecraft:meat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant zombie/undead drop"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rarely eaten; 80% hunger penalty"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "mob farm output; cleric trade material"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "undead meat with hunger debuff"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark rotten meat texture"
+        },
+        "primary_uses": {
+          "values": [
+            "Feed tamed wolves",
+            "Emergency food (80% hunger debuff)",
+            "Trade with cleric villagers"
+          ],
+          "signal": "inferred",
+          "rationale": "rotten flesh main uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

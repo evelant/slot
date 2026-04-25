@@ -1,0 +1,296 @@
+{
+  "items": {
+    "minecraft:spruce_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "sign = aesthetic text-display block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted; also in archaeology"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed situationally for labeling"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to label/decorate builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; spruce variant of sign"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce is a dark-toned wood"
+        },
+        "primary_uses": {
+          "values": [
+            "label chests and areas",
+            "decorative text in builds",
+            "rustic interior signage"
+          ],
+          "signal": "inferred",
+          "rationale": "core sign use cases"
+        }
+      }
+    },
+    "minecraft:spruce_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw foliage harvested from world trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "every spruce tree has masses of leaves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally for builds/compost"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as foliage; composted for bonemeal"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic foliage"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce leaves are dark muted green"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves catch fire and burn quickly"
+        },
+        "primary_uses": {
+          "values": [
+            "forest/tree decoration",
+            "compost ingredient",
+            "craft leaf litter"
+          ],
+          "signal": "inferred",
+          "rationale": "typical leaf uses"
+        }
+      }
+    },
+    "minecraft:spruce_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw log harvested directly from trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "spruce trees ubiquitous in taiga biomes"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core wood resource, used constantly"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as log column or processed to planks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw organic log block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce logs are dark brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:logs_that_burn",
+          "rationale": "explicit burn tag on item"
+        },
+        "primary_uses": {
+          "values": [
+            "craft spruce planks",
+            "build with log columns",
+            "charcoal smelting",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "standard log uses"
+        }
+      }
+    },
+    "minecraft:spruce_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "primary structural wood plank block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant spruce logs"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "most-used wooden building material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural block and crafting base"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "flat simple wood panel"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce planks are darker than oak"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden planks catch fire and burn"
+        },
+        "primary_uses": {
+          "values": [
+            "build wood structures",
+            "base crafting ingredient",
+            "fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "core plank uses"
+        }
+      }
+    },
+    "minecraft:spruce_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "outputs redstone signal when stepped on"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from two planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally in redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers redstone; placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material with mechanical function"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce wood tone"
+        },
+        "primary_uses": {
+          "values": [
+            "trigger redstone on entity step",
+            "automatic doors/gates",
+            "mob detection"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pressure plate uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:spruce_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_spruce",
+      "rationale": "id is spruce_planks; wooden_tool_materials tag incorrectly resolved to wood_oak instead of item-specific prefix",
+      "confidence": 0.95
+    }
+  ]
+}

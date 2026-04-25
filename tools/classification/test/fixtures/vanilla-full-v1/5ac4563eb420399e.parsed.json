@@ -1,0 +1,285 @@
+{
+  "items": {
+    "minecraft:copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "statue = purely aesthetic placement"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative blocks placed occasionally"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "statue used purely for decoration"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "golem is a copper mechanical construct"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "new copper is bright orange-brown"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "pattern",
+          "evidence": "ingredient of waxed_copper_golem_statue_from_honeycomb",
+          "rationale": "waxed variant confirms oxidation mechanic"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper golem statue",
+            "oxidizes for patina effect",
+            "wax to preserve appearance"
+          ],
+          "signal": "inferred",
+          "rationale": "statue display and oxidation showcase"
+        }
+      }
+    },
+    "minecraft:copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural grate block for architecture"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper architectural element"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in construction and decoration"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial grate aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "new copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "evidence": "ingredient of waxed_copper_grate_from_honeycomb",
+          "rationale": "waxed variant confirms oxidation; grates waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "transparent copper building block",
+            "decorative industrial grating",
+            "wax to preserve copper color"
+          ],
+          "signal": "inferred",
+          "rationale": "building and aesthetic uses"
+        }
+      }
+    },
+    "minecraft:copper_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:head_armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier mid-progression armor"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "armor worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard armor, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper material color"
+        },
+        "primary_uses": {
+          "values": [
+            "head armor protection",
+            "smithing trim application",
+            "copper tier armor piece"
+          ],
+          "signal": "inferred",
+          "rationale": "protection and trim base uses"
+        }
+      }
+    },
+    "minecraft:copper_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:hoes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier mid-progression tool"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:hoes = farming tool"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool appearance"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper material color"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil into farmland",
+            "breaking decorated pots",
+            "copper-tier farming tool"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe uses from tags and tool component"
+        }
+      }
+    },
+    "minecraft:copper_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "horse armor = protective armor for mounts"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "loot-only, no crafting recipe"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "horse armor rarely used in practice"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protects mount in combat and travel"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard horse armor appearance"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper material color"
+        },
+        "primary_uses": {
+          "values": [
+            "protect horses in combat",
+            "horse equipment from loot chests",
+            "mount armor collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "horse protection and collection uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

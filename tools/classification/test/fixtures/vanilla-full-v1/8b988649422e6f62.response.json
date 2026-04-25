@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 104133,
+  "duration_api_ms": 104834,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:tripwire_hook\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block triggers redstone on tripwire\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from iron ingot + stick + plank\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe uses stick and wood plank\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche trap use, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tripwire circuit + trapped chest crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron hook mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron-colored hook\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"tripwire circuit trigger\", \"craft crossbow\", \"craft trapped chest\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone function + sample_ingredient_of\"\n        }\n      }\n    },\n    \"minecraft:tropical_fish\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has minecraft:food + :consumable components\"\n        },\n        \"material_family\": {\n          \"value\": \"fish\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix + fishes tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nutrition:1, very poor food choice\"\n        },\n        \"activity\": {\n          \"values\": [\"fishing\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"caught fishing; feeds wolves/nautiluses\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw fish from ocean\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright tropical coloration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"low-value food (1 nutrition)\", \"feed wolves\", \"feed nautiluses\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food comp + wolf_food + nautilus_food tags\"\n        }\n      }\n    },\n    \"minecraft:tropical_fish_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket holds live fish + water\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket is iron\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"water\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"contains water alongside live fish\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche: fish transport + axolotl feeding\"\n        },\n        \"activity\": {\n          \"values\": [\"fishing\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"captured in ocean; feeds axolotls\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"live fish in water\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucketed in warm ocean biomes\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports live tropical fish mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"transport live tropical fish\", \"feed axolotls\", \"release fish in new location\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob transport + axolotl_food tag\"\n        }\n      }\n    },\n    \"minecraft:tropical_fish_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg suffix = creative/admin item\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"all spawn eggs are creative-only\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival obtainment path\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin/creative tool, niche use\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs have bright distinct colors\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn tropical fish in creative\", \"map-making / adventure use\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg purpose\"\n        }\n      }\n    },\n    \"minecraft:tube_coral\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral is purely aesthetic, no function\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _coral\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires silk touch; dies without water\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean/aquarium decor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed purely for aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic coral growth\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tube coral is bright blue-teal\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in warm ocean coral reefs\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral blocks can waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean/aquarium decoration\", \"coral reef building\", \"underwater aesthetics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely decorative coral block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "0f470ec0-0aa2-4316-9fac-df975f3e4ad7",
+  "total_cost_usd": 0.13902014999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3253,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8167,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3253,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8167,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3253,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3253
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2390,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0024600000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8167,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3253,
+      "webSearchRequests": 0,
+      "costUSD": 0.13656015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "043b6dcd-97f8-4ec6-870c-8cc3d6cae8fc"
+}

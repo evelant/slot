@@ -1,0 +1,312 @@
+{
+  "items": {
+    "minecraft:nether_star": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "boss mob drop, obtained as-is not refined"
+        },
+        "material_family": {
+          "value": "nether_star",
+          "signal": "pattern",
+          "rationale": "unique id, no parent material"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dropped by Wither boss"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "consumed crafting beacon for base"
+        },
+        "environmental_property": {
+          "values": [
+            "item_blast_proof"
+          ],
+          "signal": "named",
+          "evidence": "damage_resistant #minecraft:is_explosion",
+          "rationale": "item survives explosions when dropped"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "one per beacon, Wither rarely fought"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing magical boss reward"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "emissive",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white glowing star shape"
+        },
+        "primary_uses": {
+          "values": [
+            "craft beacon",
+            "sole key component for beacon block"
+          ],
+          "signal": "inferred",
+          "rationale": "only downstream use is beacon"
+        }
+      }
+    },
+    "minecraft:nether_wart": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant, per disambiguation list"
+        },
+        "material_family": {
+          "value": "nether_wart",
+          "signal": "pattern",
+          "rationale": "id = nether_wart"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component + farmable once seeded"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "base ingredient for all potions"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "required for every awkward potion"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "nether plant/fungus"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark red organic plant"
+        },
+        "primary_uses": {
+          "values": [
+            "base ingredient for all potions",
+            "grow in nether wart farms",
+            "craft nether wart block"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is brewing"
+        }
+      }
+    },
+    "minecraft:nether_wart_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid structural nether-themed block"
+        },
+        "material_family": {
+          "value": "nether_wart",
+          "signal": "pattern",
+          "rationale": "crafted from 9 nether warts"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable from nether wart"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and aesthetic nether block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether-themed builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic plant block with vivid color"
+        },
+        "palette": {
+          "values": [
+            "maroon"
+          ],
+          "signal": "inferred",
+          "rationale": "deep red crimson block"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed building block",
+            "dark red decorative block",
+            "compress nether wart"
+          ],
+          "signal": "inferred",
+          "rationale": "building and decoration uses"
+        }
+      }
+    },
+    "minecraft:netherite_axe": {
+      "facets": {
+        "role": {
+          "values": [
+            "tool",
+            "weapon"
+          ],
+          "ambiguous": true,
+          "signal": "named",
+          "evidence": "has both minecraft:tool and minecraft:weapon components",
+          "rationale": "dual tool/weapon components in 1.21+"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires ancient debris upgrade path"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mines wood; weapon with shield-break"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "evidence": "damage_resistant #minecraft:is_fire",
+          "rationale": "item won't burn in fire or lava"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "end-game primary tool/weapon"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool silhouette"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark graphite netherite texture"
+        },
+        "primary_uses": {
+          "values": [
+            "mining wood and wooden blocks",
+            "combat weapon with shield-breaking",
+            "stripping logs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary gameplay functions"
+        }
+      }
+    },
+    "minecraft:netherite_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "compresses 9 ingots like block_of_iron"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite_block"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "9 ingots each needing ancient debris"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "ingot compression and prestige builds"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "blast_resistant_max"
+          ],
+          "signal": "inferred",
+          "evidence": "damage_resistant #minecraft:is_fire",
+          "rationale": "fire-immune item; blast resist ~1200"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare material, niche storage/builds"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "uniform dark block"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark graphite netherite texture"
+        },
+        "primary_uses": {
+          "values": [
+            "compress 9 netherite ingots for storage",
+            "prestige building material",
+            "decoration with netherite aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "main storage and building uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

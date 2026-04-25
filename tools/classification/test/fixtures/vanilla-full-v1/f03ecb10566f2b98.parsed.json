@@ -1,0 +1,277 @@
+{
+  "items": {
+    "minecraft:tube_coral_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full solid cube, building+deco use"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm oceans + silk touch required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aquarium/deco builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colorful block for themed builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic reef; one of 5 coral types"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue tube coral texture"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral reef biomes in warm oceans"
+        },
+        "primary_uses": {
+          "values": [
+            "colorful aquarium building block",
+            "warm ocean themed decoration",
+            "coral reef biome aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative ocean-themed builds"
+        }
+      }
+    },
+    "minecraft:tube_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "non-full plant block, purely aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm oceans + silk touch required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aquarium decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "non-structural, purely aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fan; one of 5 coral types"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright blue tube coral coloring"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral reef biomes in warm oceans"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral fans have waterlogged block state"
+        },
+        "primary_uses": {
+          "values": [
+            "underwater plant decoration",
+            "aquarium detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "small decorative reef flora"
+        }
+      }
+    },
+    "minecraft:tuff": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid stone, 13+ stonecutting recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "generates in large blobs underground"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "base for tuff brick family"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stonecuttable into tuff brick variants"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw volcanic stone appearance"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "grayish-brown speckled stone"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "generates in blobs in cave layer"
+        },
+        "primary_uses": {
+          "values": [
+            "stonecutting base for tuff bricks",
+            "cave-hewn building block"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for tuff brick family"
+        }
+      }
+    },
+    "minecraft:tuff_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form for tuff brick construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common tuff"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche slab in tuff brick builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "half-height architectural element"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "processed brick variant of tuff"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "tuff brick grayish-brown tones"
+        }
+      }
+    },
+    "minecraft:tuff_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form for tuff brick construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common tuff"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche stair in tuff brick builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "staircase architectural element"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "processed brick variant of tuff"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "tuff brick grayish-brown tones"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

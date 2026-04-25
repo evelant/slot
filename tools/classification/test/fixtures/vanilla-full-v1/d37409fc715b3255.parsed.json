@@ -1,0 +1,312 @@
+{
+  "items": {
+    "minecraft:black_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glazed terracotta is patterned decorative tile"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "smelted from terracotta blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from widely available materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in decorative builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed has intricate directional patterns"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "black ceramic matte finish"
+        },
+        "primary_uses": {
+          "values": [
+            "patterned decorative tile",
+            "colorful accent blocks",
+            "directional pattern building"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta primary uses"
+        }
+      }
+    },
+    "minecraft:black_harness": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equips happy ghast enabling player riding"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "dyeable harness, likely leather base"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "id prefix + minecraft:harnesses tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from accessible materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when riding happy ghasts"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables happy ghast transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed harness variant"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black harness"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources in data"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:happy_ghast_tempt_items",
+          "rationale": "tempts/attracts happy ghasts"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghast for riding",
+            "dye into other harness colors",
+            "tempt happy ghasts"
+          ],
+          "signal": "inferred",
+          "rationale": "harness core functionality"
+        }
+      }
+    },
+    "minecraft:black_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "portable inventory storage block"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "base box crafted from 2 shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "shulker shells require end exploration"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly for inventory management"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "storage and logistics core use"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed shulker box variant"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black shulker box"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard item stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "portable inventory expansion",
+            "color-coded storage organization",
+            "keeps items through death",
+            "nested storage inside chests"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker box primary uses"
+        }
+      }
+    },
+    "minecraft:black_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural glass block for builds"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "crafted from glass + dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from sand and dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific decorative builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed glass variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "black tinted translucent glass"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative windows",
+            "light filtering",
+            "crafting stained glass panes"
+          ],
+          "signal": "inferred",
+          "rationale": "stained glass primary uses"
+        }
+      }
+    },
+    "minecraft:black_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "thin glass pane for windows and facades"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "made from stained glass blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from stained glass"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in window and facade builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for windows and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "colored glass pane variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "black tinted translucent pane"
+        },
+        "primary_uses": {
+          "values": [
+            "window construction",
+            "decorative partitions",
+            "building facades"
+          ],
+          "signal": "inferred",
+          "rationale": "glass pane primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

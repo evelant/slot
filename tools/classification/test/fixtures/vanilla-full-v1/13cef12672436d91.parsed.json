@@ -1,0 +1,307 @@
+{
+  "items": {
+    "minecraft:cherry_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence = structural barrier/enclosure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when building enclosures"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural barrier"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood; variant of fence form"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "pastel",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood pink-rosy warm tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "building enclosures and barriers",
+            "mob containment",
+            "decorative borders in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "fence canonical uses"
+        }
+      }
+    },
+    "minecraft:cherry_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes on player interaction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used wherever fences appear"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as passable fence entry"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood gate; swings open mechanically"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "pastel",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood pink-rosy tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "passable gate in fence lines",
+            "mob/player flow control",
+            "build entrances"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gate canonical uses"
+        }
+      }
+    },
+    "minecraft:cherry_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "text display; aesthetic labeling primary use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed as needed for labeling"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "label areas; used in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based; variant of sign form"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "pastel",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry wood pink-rosy tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden sign burns"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying text and labels",
+            "marking storage/rooms",
+            "decorative hanging signage"
+          ],
+          "signal": "inferred",
+          "rationale": "hanging sign canonical uses"
+        }
+      }
+    },
+    "minecraft:cherry_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant foliage from cherry trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for decoration/tree builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tree decor builds; bee_food tag for bee farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic tree foliage"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "pink cherry blossom hue"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves burn; movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative tree building",
+            "crafting leaf litter",
+            "bee habitat decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves canonical uses"
+        }
+      }
+    },
+    "minecraft:cherry_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw wood harvested from cherry trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core wood resource used constantly"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "crafts planks; placed as structural log"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "raw wood; variant of log form"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "pastel",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry bark dark; interior pink-warm"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood log burns; movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting planks and wood products",
+            "building with logs",
+            "smelting into charcoal",
+            "crafting campfires and smokers"
+          ],
+          "signal": "inferred",
+          "rationale": "log canonical uses per sample_ingredient_of"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

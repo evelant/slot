@@ -1,0 +1,309 @@
+{
+  "items": {
+    "minecraft:milk_bucket": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has minecraft:consumable component, drinkable"
+        },
+        "material_family": {
+          "value": "milk",
+          "signal": "named",
+          "rationale": "display_name + content is milk"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket container is iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational: clear effects or bake cake"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "farmed from cows; clears effects in combat"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw animal product"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "milk is white/cream colored"
+        },
+        "primary_uses": {
+          "values": [
+            "drink to clear all status effects",
+            "ingredient for cake crafting"
+          ],
+          "signal": "named",
+          "rationale": "clear_all_effects on_consume; cake recipe"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket with fluid content"
+        }
+      }
+    },
+    "minecraft:minecart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "vehicle placed on rails to transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "crafted from iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when rail networks are built"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "logistics",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "rail transport; item routing; redstone systems"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "iron vehicle on rails"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray iron appearance"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "no loot sources; produced by crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "player/mob transport on rails",
+            "base for chest/hopper/furnace minecarts",
+            "rail-based logistics and automation"
+          ],
+          "signal": "inferred",
+          "rationale": "vehicle + ingredient for minecart variants"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "base minecart carries player or mob"
+        }
+      }
+    },
+    "minecraft:miner_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible, decorative pot piece"
+        },
+        "material_family": {
+          "value": "pottery",
+          "signal": "inferred",
+          "rationale": "ceramic sherd from archaeology brushing"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "used in decorated pots, primarily display"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_ingredients tag"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological item with historical motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta clay tones from desert site"
+        },
+        "primary_uses": {
+          "values": [
+            "craft decorated pots with miner motif",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_ingredients; collectible"
+        }
+      }
+    },
+    "minecraft:mojang_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used in loom to apply pattern to banners"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "banner patterns use paper as crafting base"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche use; rare special pattern"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "loom_patterns tag; applies logo to banners"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "rare easter-egg Mojang logo pattern"
+        },
+        "origin": {
+          "value": "crafted_only",
+          "signal": "inferred",
+          "rationale": "no loot sources; produced by crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "apply Mojang logo to banner via loom",
+            "rare collector banner decoration"
+          ],
+          "signal": "named",
+          "rationale": "provides_banner_patterns + loom_patterns tag"
+        }
+      }
+    },
+    "minecraft:mooshroom_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "right-click to place/spawn mooshroom mob"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; survival players rarely use"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "mooshrooms yield mushrooms and milk"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "animal mob egg; mushroom-cow variant"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "red mooshroom coloring"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "spawn eggs not obtainable in survival"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg pattern; summons linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn a mooshroom mob",
+            "creative mode mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "origin",
+      "value": "creative_inventory",
+      "rationale": "Spawn eggs and admin-only items have no survival loot origin; crafted_only is misleading — a dedicated creative_inventory value would distinguish them cleanly"
+    }
+  ],
+  "corrections": []
+}

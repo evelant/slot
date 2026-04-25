@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 78467,
+  "duration_api_ms": 79336,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:spruce_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone pulse on press\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant spruce planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds but not constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds, triggers redstone\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, one of many wood types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce is dark brown wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone pulse input\", \"door/gate activation\", \"decorative spruce builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard button use cases\"\n        }\n      }\n    },\n    \"minecraft:spruce_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is water vehicle\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat + chest, both easy to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational water travel\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel + item transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, one of many boat types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce dark brown texture\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest boat holds item inventory\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player and stores items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with portable storage\", \"ferrying items across water\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest boat primary functions\"\n        }\n      }\n    },\n    \"minecraft:spruce_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive open/close block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from spruce planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in most player structures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed when building structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, wood type variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce dark brown wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building entrances and exits\", \"mob-proof barriers\", \"decorative spruce builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door use cases\"\n        }\n      }\n    },\n    \"minecraft:spruce_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from planks and sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in enclosures and builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"perimeter builds and animal pens\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, wood type variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce dark brown wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"perimeter barriers and enclosures\", \"animal pens\", \"decorative borders\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence use cases\"\n        }\n      }\n    },\n    \"minecraft:spruce_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive gate, opens/closes on use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from planks and sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used wherever fences are placed\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gated entry for builds and pens\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, wood type variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce dark brown wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"gated entry to enclosures\", \"openable access through fence lines\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence gate use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "98515d8d-3c32-4b64-ab59-a9f1c08a36b4",
+  "total_cost_usd": 0.12161114999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4389,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 6646,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4389,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6646,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4389,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4389
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3526,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003606,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6646,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4389,
+      "webSearchRequests": 0,
+      "costUSD": 0.11800514999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "77528c15-d17b-4016-9539-aa1616125225"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 212992,
+  "duration_api_ms": 214318,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:painting\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed on walls for aesthetic display\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted primarily from sticks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool center piece in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic sticks+wool ingredients\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per build spot\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for wall aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"art item with many variants\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colorful artwork display\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, has crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"wall decoration\", \"aesthetic expression in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely decorative placed item\"\n        }\n      }\n    },\n    \"minecraft:pale_hanging_moss\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"hanging plant placed for atmosphere\"\n        },\n        \"material_family\": {\n          \"value\": \"pale_moss\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale garden moss variety material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires finding pale garden biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative, used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"atmospheric decorative block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant/vegetation item\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale = desaturated light tone\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in pale garden surface biome\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"atmospheric decoration\", \"pale garden aesthetic builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely decorative hanging plant\"\n        }\n      }\n    },\n    \"minecraft:pale_moss_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable block for building/decor\"\n        },\n        \"material_family\": {\n          \"value\": \"pale_moss\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix pale_moss\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires pale garden biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche biome block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structurally or decoratively\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic moss material\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale, desaturated appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in pale garden biome\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building/decoration\", \"crafting pale moss carpet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"building block + crafting ingredient\"\n        }\n      }\n    },\n    \"minecraft:pale_moss_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin carpet for floor decoration\"\n        },\n        \"material_family\": {\n          \"value\": \"pale_moss\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix pale_moss\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from biome-specific pale moss\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative floor covering\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for floor aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant-based carpet material\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale tone matches pale moss\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"floor decoration\", \"ground cover for builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin aesthetic surface coverage\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"boats tag, vehicle form\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires pale oak from pale garden\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for water crossings\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel and exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, one of many boat variants\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak has light grey-white wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boats carry players and passive mobs\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boats float on water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel\", \"transporting mobs across water\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is water navigation\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c1564dac-4e87-4c23-91ce-202a78dfb898",
+  "total_cost_usd": 0.26090290000000005,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3582,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16188,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3582
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16188,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3582,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3582,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2719,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002794,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16188,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3582,
+      "webSearchRequests": 0,
+      "costUSD": 0.25810890000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1859d0d3-4951-45d4-9451-605ff32464d8"
+}

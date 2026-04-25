@@ -1,0 +1,317 @@
+{
+  "items": {
+    "minecraft:birch_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone pulse when pressed"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "crafted from common birch planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only needed for redstone circuits"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone input; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned wood form"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch is pale/creamy wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; standard movable block"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal source",
+            "trigger doors and trapdoors"
+          ],
+          "signal": "inferred",
+          "rationale": "core button use cases"
+        }
+      }
+    },
+    "minecraft:birch_chest_boat": {
+      "facets": {
+        "role": {
+          "values": [
+            "transport",
+            "container_portable"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "vehicle + built-in chest storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap craft from planks + chest"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational for water cargo runs"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "moves player and items over water"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood vehicle shape"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch pale wood coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shapeless recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player + chest inventory"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "chest stores standard items"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with cargo",
+            "item logistics on rivers/oceans"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat primary use cases"
+        }
+      }
+    },
+    "minecraft:birch_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes; interactive; redstone"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "very cheap craft from planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in most player structures"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; redstone activated"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple birch wood texture"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch pale wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "entry/exit for structures",
+            "mob barrier",
+            "redstone-activated opening"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door use cases"
+        }
+      }
+    },
+    "minecraft:birch_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier; no open/close mechanic"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "cheap craft from planks and sticks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in farms and builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "animal pens; structural borders"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain wood fence form"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch pale wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "animal pens",
+            "decorative barriers",
+            "structure borders"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence use cases"
+        }
+      }
+    },
+    "minecraft:birch_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes; redstone controllable"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "cheap craft from planks and sticks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "paired with fences in most farm builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "pen entry; redstone automation"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain birch wood gate"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch pale wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "gate for animal pens",
+            "fence opening",
+            "redstone-controlled entry"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gate use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

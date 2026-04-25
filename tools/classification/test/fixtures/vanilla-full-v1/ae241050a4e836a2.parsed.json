@@ -1,0 +1,296 @@
+{
+  "items": {
+    "minecraft:sugar": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed from sugar cane or honey bottle"
+        },
+        "material_family": {
+          "value": "sugar",
+          "signal": "pattern",
+          "rationale": "id is sugar, refined crafting ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in cake, pie, brewing"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "fermented eye→brewing; cake/pie→farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ingredient derived from plant"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white granular powder"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cake and pumpkin pie",
+            "brewing via fermented spider eye",
+            "feeding horses"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of + horse_food tag"
+        }
+      }
+    },
+    "minecraft:sugar_cane": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant harvested directly from world"
+        },
+        "material_family": {
+          "value": "sugar_cane",
+          "signal": "pattern",
+          "rationale": "id matches material name exactly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "farmed constantly for sugar and paper"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "grown in farms; paper→books→trading"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw plant from the world"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green stalks"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting sugar for food and brewing",
+            "crafting paper for books and maps",
+            "farming along water edges"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of: paper, sugar"
+        }
+      }
+    },
+    "minecraft:sulfur": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block, pickaxe-mined, stonecuttable to variants"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id is sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "base material for polished/brick variants"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "feeds many stonecutting decorative recipes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw natural mineral block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur is yellow-ochre mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "stonecutting into slabs, stairs, walls",
+            "crafting polished and brick variants",
+            "building sulfur-themed structures"
+          ],
+          "signal": "inferred",
+          "rationale": "wide stonecutting recipe list in sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:sulfur_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag + brick derivative block"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized aesthetic building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for structure and detail work"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "brick slab variant of sulfur block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur brick, yellow-ochre tone"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and roofs in sulfur brick style",
+            "architectural detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form function"
+        }
+      }
+    },
+    "minecraft:sulfur_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag + brick derivative block"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized aesthetic building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for structure and roofing detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "brick stairs variant of sulfur block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur brick, yellow-ochre tone"
+        },
+        "primary_uses": {
+          "values": [
+            "staircases in sulfur brick style",
+            "architectural roofing and trim detail"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:sulfur",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_cave"
+      ],
+      "rationale": "loot source blocks/sulfur + sulfur_from_sulfur_spikes confirm natural world spawn; crafted_only is wrong",
+      "confidence": 0.75
+    }
+  ]
+}

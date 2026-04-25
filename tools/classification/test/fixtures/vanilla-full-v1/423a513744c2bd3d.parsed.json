@@ -1,0 +1,316 @@
+{
+  "items": {
+    "minecraft:blaze_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only admin items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot or craft recipe"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only via creative mode or commands"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for farm setup or testing"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "all spawn eggs spawn their named mob"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "blazes are combat/farm targets"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "blaze has fiery yellow-orange look"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn blazes for farms or builds",
+            "creative mode mob testing"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg primary use"
+        }
+      }
+    },
+    "minecraft:blue_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are primarily decorative"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "pattern",
+          "rationale": "banner recipe requires 6 wool"
+        },
+        "material_secondary": {
+          "values": [
+            "stick"
+          ],
+          "signal": "pattern",
+          "rationale": "banner recipe uses a stick pole"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from wool + stick"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decoration not daily use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is decorating builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-dyed but no pattern applied"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool-based, flammable material"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating builds and bases",
+            "shield decoration",
+            "banner duplication base"
+          ],
+          "signal": "inferred",
+          "rationale": "core banner use cases"
+        }
+      }
+    },
+    "minecraft:blue_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive sleep + spawn-set mechanic"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "pattern",
+          "rationale": "bed crafted with 3 wool"
+        },
+        "material_secondary": {
+          "values": [
+            "plank"
+          ],
+          "signal": "pattern",
+          "rationale": "bed crafted with 3 wood planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap early-game craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used most nights to skip darkness"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "sets respawn during exploration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "blue dye color variant"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "contains wool and wood planks"
+        },
+        "primary_uses": {
+          "values": [
+            "skip night / set spawn point",
+            "re-dye to other color variants"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed use cases"
+        }
+      }
+    },
+    "minecraft:blue_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "bundles hold multiple item types"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id prefix blue + bundles tag"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "base bundle recipe uses string"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from farmable hides"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "everyday inventory management tool"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "core use is portable item storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits any standard container slot"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed hide/leather material"
+        },
+        "primary_uses": {
+          "values": [
+            "carry multiple item types in one slot",
+            "inventory compression while exploring"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle's core purpose"
+        }
+      }
+    },
+    "minecraft:blue_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are decor/lighting blocks"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "base candle crafted from honeycomb"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string acts as wick in candle recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable via beehive + dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for ambient decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for decorative lighting"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed beeswax item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural gen; only crafted + dyed"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candle emits light level 3"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient decorative lighting",
+            "placed on cake for decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core candle use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

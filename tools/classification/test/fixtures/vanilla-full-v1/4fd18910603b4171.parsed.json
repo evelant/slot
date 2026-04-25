@@ -1,0 +1,354 @@
+{
+  "items": {
+    "minecraft:dead_bubble_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "small coral plant, purely aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id matches dead_*_coral pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean decor use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic purposes"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural; one of 5 coral types"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral is gray/pale white"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral reefs in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral plants waterlog in water"
+        },
+        "primary_uses": {
+          "values": [
+            "Underwater/aquarium decoration",
+            "Ocean-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic ocean building"
+        }
+      }
+    },
+    "minecraft:dead_bubble_coral_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full solid cube, structurally usable"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id matches dead_*_coral_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed build use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block used in ocean builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural; one of 5 coral block types"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral block is gray/pale"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "drops from live coral in warm oceans"
+        },
+        "primary_uses": {
+          "values": [
+            "Ocean-themed building",
+            "Gray decorative solid block"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block for aesthetic builds"
+        }
+      }
+    },
+    "minecraft:dead_bubble_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "fan-shaped coral, purely aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id matches dead_*_coral_fan"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean decor use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic purposes"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural; fan variant of coral"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral is gray/pale white"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral fans from warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral fans waterlog when placed in water"
+        },
+        "primary_uses": {
+          "values": [
+            "Underwater/aquarium decoration",
+            "Coral reef detail"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic fan shape for ocean builds"
+        }
+      }
+    },
+    "minecraft:dead_bush": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "dry plant placed for aesthetic effect"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "dead woody shrub"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche desert decor use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for arid biome aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural desert plant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown/tan dry desert tones"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "dry plant burns and spreads fire"
+        },
+        "primary_uses": {
+          "values": [
+            "Desert/badlands decoration",
+            "Potted plant detail"
+          ],
+          "signal": "inferred",
+          "rationale": "arid biome aesthetic block"
+        }
+      }
+    },
+    "minecraft:dead_fire_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "small coral plant, purely aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id matches dead_*_coral pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean decor use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic purposes"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural; fire coral type variant"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral is gray/pale white"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral reefs in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral plants waterlog in water"
+        },
+        "primary_uses": {
+          "values": [
+            "Underwater/aquarium decoration",
+            "Ocean-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic ocean building"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:dead_bush",
+      "facet": "origin",
+      "current": [
+        "archaeology_site",
+        "village"
+      ],
+      "suggested": [
+        "archaeology_site",
+        "village",
+        "overworld_surface"
+      ],
+      "rationale": "Dead bush spawns naturally in deserts/badlands/savannas",
+      "confidence": 0.95
+    }
+  ]
+}

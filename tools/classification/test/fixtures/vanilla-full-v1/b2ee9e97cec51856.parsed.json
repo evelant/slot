@@ -1,0 +1,306 @@
+{
+  "items": {
+    "minecraft:bamboo_sign": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Interactive text-writing block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cheap craft from abundant bamboo"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Placed selectively for labels/nav"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used in builds and for signage"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo is organic material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo light yellow-cream tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "minecraft:wooden_signs tag → flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "text labels and wayfinding markers",
+            "player communication signs",
+            "decorative area marking"
+          ],
+          "signal": "inferred",
+          "rationale": "Core sign use cases"
+        }
+      }
+    },
+    "minecraft:bamboo_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Slab form → structural building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cheap craft from abundant bamboo"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Slabs heavily used in all builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Construction and architectural detail"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo organic material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo light yellow-cream tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "minecraft:wooden_slabs tag → flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and roofing",
+            "detailed architectural layering",
+            "crafting bamboo mosaic and barrels"
+          ],
+          "signal": "inferred",
+          "rationale": "Core slab uses + sampled recipe outputs"
+        }
+      }
+    },
+    "minecraft:bamboo_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "Stairs form → structural building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cheap craft from abundant bamboo"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Stairs used heavily in construction"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Staircase and roofline builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo organic material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo light yellow-cream tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "minecraft:wooden_stairs tag → flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "architectural staircases",
+            "roofline detailing",
+            "stepped landscape transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "Core stairs use cases"
+        }
+      }
+    },
+    "minecraft:bamboo_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Interactive openable/closable block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Cheap craft from bamboo planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used selectively for access points"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Access hatches and redstone-toggled"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo organic material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "Bamboo light yellow-cream tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "minecraft:wooden_trapdoors tag → flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical access hatches",
+            "mob filters in farms",
+            "redstone-toggled doors",
+            "aesthetic architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "Core trapdoor use cases"
+        }
+      }
+    },
+    "minecraft:barrel": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "27-slot item storage container block"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "Made from generic planks+slabs, no fixed wood type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Craftable and found in fishing villages"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Storage containers used constantly"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is storing items in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Rustic wooden container, simple design"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "Medium-brown barrel wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "Wood construction → flammable block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Holds standard item stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "27-slot item storage",
+            "opens even when blocked above",
+            "fishing village storage furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "Key barrel features vs chest"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 165571,
+  "duration_api_ms": 166478,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:gray_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"panes used structurally as windows/barriers\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in window-specific builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"windows and decorative dividers\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dyed glass pane variants\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray-tinted transparent glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building windows and barriers\", \"decorating with tinted light\", \"light filtering in structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of stained glass panes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass panes support waterlogging\"\n        }\n      }\n    },\n    \"minecraft:gray_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block for building and decorating\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structures and earth-tone palette builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed clay with natural earthy quality\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray terracotta reads muted and earthy\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"earthy palette decorating\", \"crafting glazed terracotta\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of terracotta blocks\"\n        }\n      }\n    },\n    \"minecraft:gray_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid placeable block used in construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in beds, carpets, banners\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds and decorative schemes\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural sheep-derived material in dyed color\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray wool is visually muted\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building and decorating\", \"crafting beds and carpets\", \"sound/vibration dampening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wool block uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"sculk_silent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool burns; dampens_vibrations blocks sculk\"\n        }\n      }\n    },\n    \"minecraft:green_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are primarily decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wool strips\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"stick\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"banner pole is a stick\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for decoration and marking\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed decoratively or to mark locations\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored; supports loom pattern customization\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green banner maps to leaf_green palette\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decoration and location marking\", \"shield decoration\", \"loom pattern display\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of banners\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool/wood construction is flammable\"\n        }\n      }\n    },\n    \"minecraft:green_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active sleep and respawn-point mechanics\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wool + planks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks form the bed frame\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"players sleep every night cycle\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in base; sets spawn for exploring\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural material in green dye color\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green bed maps to leaf_green palette\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"sleeping to skip night\", \"setting respawn point\", \"base furnishing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of beds\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood/wool construction is flammable\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "a60295fc-959a-4103-9963-672e6a56a5dc",
+  "total_cost_usd": 0.22966815000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5141,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13612,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5141,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13612,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5141,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5141
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4278,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004353,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13612,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5141,
+      "webSearchRequests": 0,
+      "costUSD": 0.22531515000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "40363d09-40a6-406d-bdb1-df87f2428823"
+}

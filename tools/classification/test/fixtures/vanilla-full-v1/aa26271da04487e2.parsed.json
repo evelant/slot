@@ -1,0 +1,306 @@
+{
+  "items": {
+    "minecraft:exposed_copper_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "trapdoor opens/closes like a door"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper-themed build use"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as architectural hatch"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidation stage variant; organic patina"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = partial green oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed → weathered → oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative/functional copper hatch",
+            "copper-themed building"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor primary functions"
+        }
+      }
+    },
+    "minecraft:exposed_cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cube block for structures"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix exposed_cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural block, stonecutting source"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of four oxidation stages"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = partial green oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed → weathered → oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "copper building block",
+            "stonecutting into slabs and stairs",
+            "waxing to lock oxidation"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream uses"
+        }
+      }
+    },
+    "minecraft:exposed_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-block for structural detail"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix exposed_cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for detail and roofing"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidation stage variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = partial green oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed → weathered → oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "copper aesthetic slab for builds",
+            "chiseled copper crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "slab main uses"
+        }
+      }
+    },
+    "minecraft:exposed_cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair block for structural use"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix exposed_cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for architecture"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidation stage variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = partial green oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed → weathered → oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "copper stairs for architectural builds"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs primary function"
+        }
+      }
+    },
+    "minecraft:exposed_lightning_rod": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redirects lightning, emits redstone"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix exposed_lightning_rod"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized storm protection role"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for lightning + redstone signal"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "functional device; oxidation variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = partial green oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "conducts_lightning"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidizes further; attracts lightning"
+        },
+        "primary_uses": {
+          "values": [
+            "redirect lightning strikes",
+            "redstone signal on lightning",
+            "protect structures from fire"
+          ],
+          "signal": "inferred",
+          "rationale": "lightning rod core functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

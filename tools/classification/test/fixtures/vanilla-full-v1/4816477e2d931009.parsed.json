@@ -1,0 +1,310 @@
+{
+  "items": {
+    "minecraft:purple_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "processed dye; refined crafting ingredient"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "named",
+          "rationale": "component minecraft:dye = purple"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in 20 recipe types across dyeing"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is dyeing decorative items"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye color variants"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple maps to violet in palette enum"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot tables; crafting_shapeless only"
+        },
+        "primary_uses": {
+          "values": [
+            "dye wool, beds, carpets",
+            "color firework stars",
+            "dye leather armor and harnesses"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:purple_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glazed terracotta is primarily ornamental"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix glazed_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetics or structure"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "ornate pattern + dye color variant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "glossy"
+          ],
+          "signal": "inferred",
+          "rationale": "purple color + glazed shiny surface"
+        },
+        "primary_uses": {
+          "values": [
+            "ornate patterned wall decoration",
+            "colored accent block",
+            "building with glazed aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative smelted terracotta variant"
+        }
+      }
+    },
+    "minecraft:purple_harness": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "equips happy ghast for riding"
+        },
+        "dye_color": {
+          "value": "purple",
+          "signal": "pattern",
+          "rationale": "id prefix + 16 color harness variants"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one per ghast; niche use"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables riding happy ghasts"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "16 dye color variants via re-dyeing"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple color variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot tables; crafting recipes only"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghast for riding",
+            "colored ghast cosmetic",
+            "redye to other harness colors"
+          ],
+          "signal": "inferred",
+          "rationale": "ghast riding equipment"
+        }
+      }
+    },
+    "minecraft:purple_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "portable container block with 27 slots"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "crafted from 2 shulker shells + chest"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "chest component (any wood) in recipe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End access and shulker kills"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core portable storage in late game"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable inventory management"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye color variants"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple dye color"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "container blocks can't be piston-moved"
+        },
+        "primary_uses": {
+          "values": [
+            "portable 27-slot storage",
+            "color-coded inventory system",
+            "item transport via shulker box"
+          ],
+          "signal": "inferred",
+          "rationale": "core late-game storage utility"
+        }
+      }
+    },
+    "minecraft:purple_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural transparent colored block"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for windows and decoration"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for windows or colored light"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored glass variant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "purple tint + semi-transparent glass"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows and skylights",
+            "purple light tinting",
+            "decorative building accent"
+          ],
+          "signal": "inferred",
+          "rationale": "stained glass for building"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

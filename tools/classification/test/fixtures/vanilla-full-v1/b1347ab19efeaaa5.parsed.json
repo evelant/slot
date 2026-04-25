@@ -1,0 +1,291 @@
+{
+  "items": {
+    "minecraft:waxed_copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest variant holds items like regular chest"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper variant, not the primary chest"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "chest used to store items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper = mechanical look; waxed variant form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed = stays bright orange copper"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard inventory items"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "chests cannot be pushed by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "store items in copper-themed chest",
+            "decorative copper storage block"
+          ],
+          "signal": "inferred",
+          "rationale": "chest variant"
+        }
+      }
+    },
+    "minecraft:waxed_copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door is an architectural building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper variant, not the default door choice"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in copper-themed structures"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper mechanical look; waxed variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed keeps bright copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "doors are piston-movable in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "copper-themed architectural door",
+            "building copper structures"
+          ],
+          "signal": "inferred",
+          "rationale": "door variant of copper"
+        }
+      }
+    },
+    "minecraft:waxed_copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "statue is purely ornamental"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative item"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ornamental statue for builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "copper golem = mechanical; ornate statue form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed keeps bright copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper golem statue",
+            "ornamental build accent"
+          ],
+          "signal": "inferred",
+          "rationale": "statue decor"
+        }
+      }
+    },
+    "minecraft:waxed_copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "grate is structural building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper grate used in thematic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative copper block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper grate industrial look; waxed variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed keeps bright copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "copper grates waterlog; regular block piston rules"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative grate in copper builds",
+            "waterloggable copper grate",
+            "semi-transparent copper panel"
+          ],
+          "signal": "inferred",
+          "rationale": "grate block uses"
+        }
+      }
+    },
+    "minecraft:waxed_copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "lantern is decorative light source"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper lantern used for themed lighting"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative lighting in copper builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper lantern mechanical feel; waxed variant"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed copper + emits warm light"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lanterns are light-emitting blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "copper-themed light source",
+            "decorative lantern for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "light-emitting decor block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

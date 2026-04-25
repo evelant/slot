@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 111308,
+  "duration_api_ms": 112061,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:warped_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"buttons emit momentary redstone pulse\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from nether-obtainable planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational redstone/build accent use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pulse emitter; build accent\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether fungal wood set member\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood teal/cyan hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"emit redstone pulse when pressed\", \"build accent and decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core button functions\"\n        }\n      }\n    },\n    \"minecraft:warped_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive open/close passage block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from nether-obtainable planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"doors used in most structures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural access + redstone activation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether fungal wood set member\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood teal/cyan hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"openable passage in structures\", \"redstone-activated access control\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core door functions\"\n        }\n      }\n    },\n    \"minecraft:warped_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural perimeter barrier block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from nether-obtainable planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in farms, pens, landscaping\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural perimeter use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether fungal wood set member\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood teal/cyan hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"perimeter barriers and animal pens\", \"decorative border element\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core fence functions\"\n        }\n      }\n    },\n    \"minecraft:warped_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive openable gate block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from nether-obtainable planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"paired with fences situationally\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence access point + redstone activation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether fungal wood set member\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood teal/cyan hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"player-passable opening in fence lines\", \"redstone-triggered gate\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core fence gate functions\"\n        }\n      }\n    },\n    \"minecraft:warped_fungus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether plant gathered from world as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant in warped forest biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche strider/tree-farming use\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"strider steering + warped tree growing\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether fungal plant\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped fungus teal/cyan coloring\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:strider_tempt_items\",\n          \"rationale\": \"tempts and lures striders\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft warped fungus on a stick\", \"tempt and feed striders\", \"plant to grow warped trees\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all downstream uses of the item\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:warped_button\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"non_flammable_wood tag; warped wood cannot be furnace fuel\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:warped_door\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"non_flammable_wood tag; warped wood cannot be furnace fuel\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:warped_fence\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"non_flammable_wood tag; warped wood cannot be furnace fuel\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:warped_fence_gate\",\n      \"facet\": \"is_fuel\",\n      \"current\": true,\n      \"suggested\": false,\n      \"rationale\": \"non_flammable_wood tag; warped wood cannot be furnace fuel\",\n      \"confidence\": 0.85\n    },\n    {\n      \"item\": \"minecraft:warped_fungus\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_warped\",\n      \"suggested\": \"fungus_warped\",\n      \"rationale\": \"fungus plant, not wood; prefix rule misfired\",\n      \"confidence\": 0.80\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "bc2d0612-190a-40ef-853c-37434940a18a",
+  "total_cost_usd": 0.16154090000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4890,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9149,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4890,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9149,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4890,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4890
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4027,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004112,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9149,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4890,
+      "webSearchRequests": 0,
+      "costUSD": 0.1574289,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "410f4fe3-2f37-419b-8300-c09b449b9a2d"
+}

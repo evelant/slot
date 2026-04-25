@@ -1,0 +1,275 @@
+{
+  "items": {
+    "minecraft:waxed_weathered_chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chiseled = patterned, primarily decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Niche decorative variant, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as decorative copper accent"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "Chiseled = fancy patterned copper variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered stage = teal-green oxidized"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative chiseled copper accent block",
+            "Copper-themed build detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "Chiseled block for aesthetic builds"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Full copper block, primary structural use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Niche copper build palette block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for copper aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Uncut full copper, natural oxidized look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered = teal-green oxidized copper"
+        },
+        "primary_uses": {
+          "values": [
+            "Building copper structures",
+            "Crafting cut/chiseled/grate copper",
+            "Decorative copper build palette"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block and stonecutting source"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper_bars": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Bars = decorative barrier like iron bars"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Decorative barrier, niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Used as window/cage/barrier element"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Bars form = mechanical-industrial look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered = teal-green oxidized tone"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative copper window or barrier",
+            "Cage or fence accent element"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper bars as architectural accent"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Redstone-toggled light source block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Redstone light source, niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Redstone-activated copper light source"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper bulb = industrial+natural copper"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "Teal copper, emits light when powered"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "Emits light level 8 when powered"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone-toggled light source",
+            "Decorative copper lighting",
+            "Signal-responsive illumination"
+          ],
+          "signal": "inferred",
+          "rationale": "Core function is light output via redstone"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chains are primarily decorative connectors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Decorative accent, niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Hung to connect lanterns, bells, decor"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Chain form = mechanical-industrial look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered = teal-green oxidized copper"
+        },
+        "primary_uses": {
+          "values": [
+            "Hanging decorative connector",
+            "Copper chain build accent"
+          ],
+          "signal": "inferred",
+          "rationale": "Chains connect lanterns and decorations"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_facet",
+      "name": "oxidation_stage",
+      "suggested_kind": "enum",
+      "rationale": "Copper has 4 stages (base/exposed/weathered/oxidized) plus waxed flag; useful for grouping copper variants in inventory UI"
+    }
+  ],
+  "corrections": []
+}

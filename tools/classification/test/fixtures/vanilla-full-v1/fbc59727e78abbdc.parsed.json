@@ -1,0 +1,294 @@
+{
+  "items": {
+    "minecraft:glowstone_dust": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust form; schema lists dusts as materials"
+        },
+        "material_family": {
+          "value": "glowstone",
+          "signal": "pattern",
+          "rationale": "id prefix glowstone_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core brewing ingredient; widely used"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "potions & glowstone block crafting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural nether material"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm yellow glowing texture"
+        },
+        "primary_uses": {
+          "values": [
+            "boost potion effects (brewing)",
+            "craft glowstone blocks",
+            "craft spectral arrows"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of list"
+        }
+      }
+    },
+    "minecraft:goat_horn": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "actively used to play horn sound calls"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational signaling tool"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "sound signal for alerting/exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "carved animal horn"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "pale bone/horn coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "play one of 8 horn sound calls",
+            "signal other players"
+          ],
+          "signal": "inferred",
+          "rationale": "model parent tooting_goat_horn confirms use"
+        }
+      }
+    },
+    "minecraft:goat_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative/admin only"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources; creative inventory item"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative/admin only; no survival obtain"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a natural mob"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → spawns its mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn goats in creative/admin contexts"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function of spawn eggs"
+        }
+      }
+    },
+    "minecraft:gold_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "compresses 9 gold ingots; fully reversible"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "block of gold = gold tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when bulk-storing gold"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration/beacon base & gold compression"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "shiny solid gold block"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright metallic gold color"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "compact gold ingot storage",
+            "beacon base layer",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "main player use cases"
+        }
+      }
+    },
+    "minecraft:gold_ingot": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "ingot = processed from smelted ore"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "named",
+          "rationale": "tag minecraft:gold_tool_materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many gold recipes"
+        },
+        "activity": {
+          "values": [
+            "trading",
+            "combat",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "piglin barter, weapons, gold blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard metal ingot"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm yellow-gold color"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "craft gold tools/armor/weapons",
+            "piglin bartering currency",
+            "armor trims (trim_materials tag)",
+            "craft clocks and gold blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of and component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:goat_horn",
+      "facet": "origin",
+      "current": [
+        "pillager_outpost"
+      ],
+      "suggested": [
+        "pillager_outpost",
+        "mob_drop",
+        "overworld_surface"
+      ],
+      "rationale": "Goats drop horns when ramming solid blocks in mountain biomes; primary acquisition method missing",
+      "confidence": 0.85
+    }
+  ]
+}

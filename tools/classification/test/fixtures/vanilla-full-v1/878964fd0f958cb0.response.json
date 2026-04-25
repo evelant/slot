@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 124791,
+  "duration_api_ms": 125803,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:gunpowder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob drop; not processed or refined\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"key ingredient in TNT/fireworks/fire charges\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"TNT=mining+combat; fireworks=decorating\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw powder from mobs/nature\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray speckled powder appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft TNT for explosions/mining\",\n            \"craft firework rockets and stars\",\n            \"craft fire charges\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"covers all major recipe downstream uses\"\n        }\n      }\n    },\n    \"minecraft:guster_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"reusable loom item to apply banner pattern\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used selectively per banner project\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loom banner pattern application only\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trial chamber origin; guster storm motif\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply guster motif to banner in loom\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"provides_banner_patterns confirms sole use\"\n        }\n      }\n    },\n    \"minecraft:guster_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology collectible; decorated_pot face\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"single-use per decorated pot face slot\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used as face on decorated pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pottery sherd is archaeological artifact\"\n        },\n        \"origin\": {\n          \"values\": [\"archaeology_site\", \"trial_chamber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brushed from suspicious gravel in trials\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorate pots with guster face motif\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_sherds tag confirms use\"\n        }\n      }\n    },\n    \"minecraft:hanging_roots\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic cave plant; no crafting or functional use\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"is a plant/organic block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche underground decoration item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for lush cave aesthetic only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic underground cave plant\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brownish root coloration\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in lush caves underground\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"cave/lush cave build decoration\",\n            \"underground aesthetic accent\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely decorative block with no recipe use\"\n        }\n      }\n    },\n    \"minecraft:happy_ghast_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg; no survival loot or recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/admin use only\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot tables or crafting recipes\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg mechanic always spawns linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn happy ghast in creative/admin builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"universal spawn egg function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c064b802-2c6b-4f84-8d30-3278ecaf5f09",
+  "total_cost_usd": 0.15568815,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3341,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9250,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3341,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9250,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3341,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3341
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2478,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002553,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9250,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3341,
+      "webSearchRequests": 0,
+      "costUSD": 0.15313515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "783e2753-45ee-4885-9542-6672ae571c6b"
+}

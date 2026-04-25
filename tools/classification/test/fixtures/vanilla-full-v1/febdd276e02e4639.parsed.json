@@ -1,0 +1,313 @@
+{
+  "items": {
+    "minecraft:waxed_oxidized_copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest tag + form=storage_block → item storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "chests used constantly in base building"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items; placed while building bases"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of the standard chest"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized copper reads as teal-green"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "27-slot standard chest storage"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "block entity top surface blocks mob spawn"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "block entity; pistons cannot move it"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in base",
+            "copper aesthetic storage block"
+          ],
+          "signal": "inferred",
+          "rationale": "core chest use cases"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes; redstone-activatable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "doors placed in most builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural; can be redstone-triggered"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; door is mechanical"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized copper reads as teal-green"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "doors pushed/pulled by pistons in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper door",
+            "redstone-controlled access point"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door use cases"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "statue block—purely aesthetic placement"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative; not every build uses statues"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "statue serves decoration only"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "ornate statue of a mechanical golem"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized copper reads as teal-green"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper golem statue",
+            "base and garden ornamentation"
+          ],
+          "signal": "inferred",
+          "rationale": "statue is purely decorative"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "architectural structural grate element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche building material, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural + decorative building use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; grate is industrial"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized copper reads as teal-green"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "grates waterlog; non-entity so piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative architectural grate",
+            "semi-transparent building element"
+          ],
+          "signal": "inferred",
+          "rationale": "grate primary use cases"
+        }
+      }
+    },
+    "minecraft:waxed_oxidized_copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "lanterns emit light—functional purpose"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "lighting placed constantly in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for light and aesthetic appeal"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; lantern is mechanical fixture"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "teal copper body with emissive warm glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "lanterns emit light; placeable underwater"
+        },
+        "primary_uses": {
+          "values": [
+            "light source block",
+            "copper aesthetic lantern"
+          ],
+          "signal": "inferred",
+          "rationale": "core lantern use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:waxed_oxidized_copper_door",
+      "facet": "required_tool_tier",
+      "current": null,
+      "suggested": "stone",
+      "rationale": "Copper doors share needs_stone_tool tag with other copper blocks in this batch; stage2 rule likely missed the tag",
+      "confidence": 0.75
+    }
+  ]
+}

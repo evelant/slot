@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 155558,
+  "duration_api_ms": 156406,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:spruce_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sign = aesthetic text-display block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted; also in archaeology\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed situationally for labeling\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to label/decorate builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; spruce variant of sign\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce is a dark-toned wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"label chests and areas\", \"decorative text in builds\", \"rustic interior signage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sign use cases\"\n        }\n      }\n    },\n    \"minecraft:spruce_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw foliage harvested from world trees\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"every spruce tree has masses of leaves\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used situationally for builds/compost\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as foliage; composted for bonemeal\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic foliage\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce leaves are dark muted green\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves catch fire and burn quickly\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"forest/tree decoration\", \"compost ingredient\", \"craft leaf litter\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical leaf uses\"\n        }\n      }\n    },\n    \"minecraft:spruce_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw log harvested directly from trees\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce trees ubiquitous in taiga biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wood resource, used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as log column or processed to planks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw organic log block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce logs are dark brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:logs_that_burn\",\n          \"rationale\": \"explicit burn tag on item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft spruce planks\", \"build with log columns\", \"charcoal smelting\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard log uses\"\n        }\n      }\n    },\n    \"minecraft:spruce_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary structural wood plank block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant spruce logs\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"most-used wooden building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural block and crafting base\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat simple wood panel\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce planks are darker than oak\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden planks catch fire and burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build wood structures\", \"base crafting ingredient\", \"fuel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core plank uses\"\n        }\n      }\n    },\n    \"minecraft:spruce_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"outputs redstone signal when stepped on\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from two planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used situationally in redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers redstone; placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material with mechanical function\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce wood tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"trigger redstone on entity step\", \"automatic doors/gates\", \"mob detection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard pressure plate uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:spruce_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_spruce\",\n      \"rationale\": \"id is spruce_planks; wooden_tool_materials tag incorrectly resolved to wood_oak instead of item-specific prefix\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "48b8587c-c1db-414b-8f7e-38dc5da7d708",
+  "total_cost_usd": 0.22106325000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 10523,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 11819,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10523,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11819,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 10523,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 10523
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4228,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004308,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11819,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 10523,
+      "webSearchRequests": 0,
+      "costUSD": 0.21675525,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8b691705-dac1-4ff7-8637-8c011d6a4ae6"
+}

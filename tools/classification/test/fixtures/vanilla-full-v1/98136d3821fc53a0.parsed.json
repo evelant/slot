@@ -1,0 +1,283 @@
+{
+  "items": {
+    "minecraft:jungle_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor placed as structural element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component: minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; redstone-activatable"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood has dark brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; movable; trapdoors waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "access point in builds",
+            "redstone-activated door",
+            "decorative opening"
+          ],
+          "signal": "inferred",
+          "rationale": "main trapdoor uses"
+        }
+      }
+    },
+    "minecraft:jungle_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "all-bark log block for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component: minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "less used than planks typically"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative log block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle is a dark-toned wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative all-bark pillar block",
+            "crafting into jungle planks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wood block uses"
+        }
+      }
+    },
+    "minecraft:kelp": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw aquatic plant gathered as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in ocean biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when near ocean or farming"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "grown in kelp farms for dried kelp"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic ocean plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green aquatic plant"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into dried kelp for food/fuel",
+            "kelp farm for compressed fuel blocks",
+            "composting"
+          ],
+          "signal": "inferred",
+          "rationale": "main kelp downstream uses"
+        }
+      }
+    },
+    "minecraft:knowledge_book": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only recipe-unlock item"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/admin use only"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing book with special powers"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "golden/amber book appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "unlock recipe knowledge for player"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose of knowledge book"
+        }
+      }
+    },
+    "minecraft:ladder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed on walls for climbing"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted from sticks (generic wood)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component: minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in mines and builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; enables climbing"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wooden stick construction"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "generic mid-tone wood"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "ladders waterlog; piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical climbing on walls",
+            "building access shafts",
+            "mine shaft traversal"
+          ],
+          "signal": "inferred",
+          "rationale": "main ladder use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:jungle_wood",
+      "facet": "origin",
+      "current": [
+        "overworld_surface"
+      ],
+      "suggested": [
+        "crafted_only"
+      ],
+      "rationale": "jungle trees spawn jungle_log; all-bark wood variant is crafted only",
+      "confidence": 0.75
+    }
+  ]
+}

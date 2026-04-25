@@ -1,0 +1,295 @@
+{
+  "items": {
+    "minecraft:blackstone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form = structural element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls used selectively in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural + aesthetic wall use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stone variant, natural nether material"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone = very dark gray stone"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_low"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-tier blast resistance ~6"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed walls and barriers",
+            "decorative borders and edging"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wall block applications"
+        }
+      }
+    },
+    "minecraft:blade_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible, 20 variants to collect"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely placed; collected for completion"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for purely decorative pottery"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological dig find"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay/pottery warm earth tones"
+        },
+        "primary_uses": {
+          "values": [
+            "craft decorated pots",
+            "archaeology collection"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting + collectible motivation"
+        }
+      }
+    },
+    "minecraft:blast_furnace": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active smelting block with interaction"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "recipe requires iron ingots + furnace"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core ore-processing block, used daily"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processing + auto-smelting setups"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial smelting machine aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron block with furnace face"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 13 when active"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt ores at 2x speed",
+            "smelt metal armor and tools",
+            "automated ore processing"
+          ],
+          "signal": "inferred",
+          "rationale": "core blast furnace functions"
+        }
+      }
+    },
+    "minecraft:blaze_powder": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed from blaze rods; intermediate ingredient"
+        },
+        "material_family": {
+          "value": "blaze",
+          "signal": "pattern",
+          "rationale": "id prefix blaze_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether blaze source"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "brewing fuel + ender eyes used often"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "combat",
+            "magic"
+          ],
+          "signal": "inferred",
+          "rationale": "brewing fuel; fire charges; ender eyes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob-derived material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-yellow glowing powder"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot table; crafted from blaze rods"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for brewing stands",
+            "craft eyes of ender",
+            "craft fire charges",
+            "craft magma cream"
+          ],
+          "signal": "inferred",
+          "rationale": "primary downstream crafting uses"
+        }
+      }
+    },
+    "minecraft:blaze_rod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, not processed"
+        },
+        "material_family": {
+          "value": "blaze",
+          "signal": "pattern",
+          "rationale": "id prefix blaze_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "nether mob drop; needs blaze farm"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core nether resource for brewing/crafting"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "combat",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "brewing stand; fire items; end rods"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mob drop"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "orange glowing rod from blazes"
+        },
+        "primary_uses": {
+          "values": [
+            "craft blaze powder",
+            "craft brewing stands",
+            "fuel source (12 items)",
+            "craft end rods"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream crafting uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

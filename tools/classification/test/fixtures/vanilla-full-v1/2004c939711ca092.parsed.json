@@ -1,0 +1,317 @@
+{
+  "items": {
+    "minecraft:magenta_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass pane used to build windows"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific window builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows and glass decor in builds"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "rationale": "explicitly magenta stained"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "glass=translucent; magenta=vivid"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows and glass walls",
+            "colored light transmission",
+            "decorative partitions"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of glass panes"
+        }
+      }
+    },
+    "minecraft:magenta_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colored block for building"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta for building decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "named",
+          "rationale": "explicitly magenta dyed terracotta"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta=vivid; terracotta=matte clay"
+        },
+        "primary_uses": {
+          "values": [
+            "colored accent block in builds",
+            "smelt into glazed terracotta",
+            "mesa/desert themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta primary uses"
+        }
+      }
+    },
+    "minecraft:magenta_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wool placed as building/decor block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "wool widely used in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "builds, decor, sheep farming output"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed + natural fiber from sheep"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is a vivid color"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "sheep spawn on overworld surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decoration",
+            "crafting beds, carpets, banners",
+            "sheep farm output"
+          ],
+          "signal": "inferred",
+          "rationale": "wool primary gameplay uses"
+        }
+      }
+    },
+    "minecraft:magma_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "nether terrain block placed in builds"
+        },
+        "material_family": {
+          "value": "magma",
+          "signal": "pattern",
+          "rationale": "id = magma_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether build and farm uses"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "nether builds; bubble column farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring nether block"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "orange magma texture, emits light"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "entities take fire dmg walking on it"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light level 3"
+        },
+        "primary_uses": {
+          "values": [
+            "nether aesthetic building",
+            "entity damage trap",
+            "underwater bubble column"
+          ],
+          "signal": "inferred",
+          "rationale": "magma block main uses"
+        }
+      }
+    },
+    "minecraft:magma_cream": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "drops directly from magma cubes"
+        },
+        "material_family": {
+          "value": "magma_cream",
+          "signal": "pattern",
+          "rationale": "id = magma_cream"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "nether mob drop, not trivially farmed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific brewing and crafting use"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "fire resist potions; magma blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mob drop material"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-red magma coloring"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "magma cubes spawn in general nether"
+        },
+        "primary_uses": {
+          "values": [
+            "brew fire resistance potions",
+            "craft magma blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "magma cream gameplay uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

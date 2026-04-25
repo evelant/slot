@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 283872,
+  "duration_api_ms": 284885,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:music_disc_ward\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"named\",\n          \"rationale\": \"plan doc: music discs = curiosity\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"played rarely; mostly collected\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox ambient music = decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"one of many distinct music discs\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Ward disc is a dark muted disc\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\", \"ancient_city\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creeper tag; ward in ancient_city\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"jukebox\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:jukebox_playable component\",\n          \"rationale\": \"playable in jukebox slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Play Ward music in jukebox\", \"Collect all music discs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jukebox playback + disc collecting\"\n        }\n      }\n    },\n    \"minecraft:mutton\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has food + consumable components\"\n        },\n        \"material_family\": {\n          \"value\": \"meat\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw animal protein from sheep\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"common sheep drop\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"food used regularly in gameplay\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sheep farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw pinkish-red meat tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Cook to cooked mutton for better stats\",\n            \"Eat raw (2 hunger) in emergency\",\n            \"Feed to wolves\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food + wolf feed\"\n        }\n      }\n    },\n    \"minecraft:mycelium\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable surface block\"\n        },\n        \"material_family\": {\n          \"value\": \"dirt\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"grass_blocks tag = dirt family\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only in mushroom island biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mushroom farming use\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mushroom spread + surface build\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nature-variant of grass block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purplish-brown soil surface\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mushroom island surface biome\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Mushroom island surface block\",\n            \"Allows mushroom spread in light\",\n            \"Decorative purple-gray surface\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"surface + mushroom spreading\"\n        }\n      }\n    },\n    \"minecraft:name_tag\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"names mobs, prevents despawning\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only in select chests and fishing\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to name specific mobs\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob naming / livestock management\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple functional label item\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cream paper tag appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Name mobs permanently\",\n            \"Prevent mob despawning\",\n            \"Identify pets and animals\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core name tag mechanics\"\n        }\n      }\n    },\n    \"minecraft:nautilus_shell\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting ingredient for conduit\"\n        },\n        \"material_family\": {\n          \"value\": \"shell\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"is a nautilus shell\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collected for conduit (8 needed)\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"conduit craft + ocean gathering\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean creature shell\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cream/white spiral shell\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Craft conduit (8 needed)\",\n            \"Uncommon ocean mob drop\",\n            \"Rare fishing treasure\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"conduit recipe + ocean sources\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "caff3429-a35a-493b-b84a-7d4f6edc134a",
+  "total_cost_usd": 0.32885614999999996,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3609,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 20710,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3609
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 20710,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3609,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3609,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2746,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0028160000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 20710,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3609,
+      "webSearchRequests": 0,
+      "costUSD": 0.32604015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2584ca4b-710e-47d2-80cc-85345345d520"
+}

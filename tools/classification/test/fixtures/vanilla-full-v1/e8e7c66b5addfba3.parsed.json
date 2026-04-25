@@ -1,0 +1,260 @@
+{
+  "items": {
+    "minecraft:horn_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for ocean/aquarium aesthetics"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm ocean biome + silk touch required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in ocean-themed builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic ocean form, one of 5 coral colors"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "horn coral is cream/warm yellow"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "only in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral fans are waterlogged blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean/aquarium decoration",
+            "biome-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "primary aesthetic use case"
+        }
+      }
+    },
+    "minecraft:horse_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "_spawn_egg pattern → mob spawner"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "single-use creative/admin tool"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "horses used for breeding and travel"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg always spawns linked mob"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot table or recipe in data"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn horse mob",
+            "adventure map design"
+          ],
+          "signal": "inferred",
+          "rationale": "typical spawn egg purpose"
+        }
+      }
+    },
+    "minecraft:host_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applies cosmetic trim to armor"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor set for cosmetics"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cosmetic trim, not stat upgrade"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "from archaeology, aesthetic armor upgrade"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "trail ruins archaeology, desert tones"
+        },
+        "primary_uses": {
+          "values": [
+            "apply host trim at smithing table",
+            "duplicate template with diamonds",
+            "collect trim patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "all smithing template use cases"
+        }
+      }
+    },
+    "minecraft:howl_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "brushed raw from archaeology site as-is"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "collected once, used in one pot"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact, howl motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta-toned archaeological shard"
+        },
+        "primary_uses": {
+          "values": [
+            "craft decorated pot with howl pattern",
+            "complete sherd collection"
+          ],
+          "signal": "inferred",
+          "rationale": "pottery sherd purpose"
+        }
+      }
+    },
+    "minecraft:husk_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "_spawn_egg pattern → mob spawner"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "single-use creative/admin tool"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "husks are hostile desert zombies"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg always spawns linked mob"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot table or recipe in data"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn husk mob",
+            "adventure map enemy placement"
+          ],
+          "signal": "inferred",
+          "rationale": "hostile mob spawn egg uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

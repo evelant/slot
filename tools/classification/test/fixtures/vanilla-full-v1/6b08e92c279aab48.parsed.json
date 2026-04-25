@@ -1,0 +1,280 @@
+{
+  "items": {
+    "minecraft:elder_guardian_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg for boss mob"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot source or recipe"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "boss mob egg; creative-only access"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely needed even in creative"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns elder guardian for combat/drops"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "boss-tier mob; threatening presence"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "dark body with gold/yellow spines"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix; core mechanic"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn elder guardian in creative",
+            "mob farm setup and testing"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawn egg function"
+        }
+      }
+    },
+    "minecraft:elytra": {
+      "facets": {
+        "role": {
+          "values": [
+            "armor",
+            "transport"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "chest-slot armor AND primary glider"
+        },
+        "origin": {
+          "values": [
+            "end_ship"
+          ],
+          "signal": "inferred",
+          "rationale": "found hanging in end city ship"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "glider for long-distance travel"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "end-civilization relic artifact"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray-purple muted wing coloring"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly once obtained"
+        },
+        "primary_uses": {
+          "values": [
+            "glide long distances",
+            "rapid overworld exploration",
+            "combine with fireworks for flight"
+          ],
+          "signal": "inferred",
+          "rationale": "core elytra gameplay uses"
+        }
+      }
+    },
+    "minecraft:emerald": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed gem; currency and ingredient"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mountain-only ore; also tradeable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when trading or applying trims"
+        },
+        "activity": {
+          "values": [
+            "trading",
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "villager currency, trims, emerald block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "gemstone; prestige material"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "bright green gem"
+        },
+        "primary_uses": {
+          "values": [
+            "villager trading currency",
+            "beacon payment",
+            "armor trim material",
+            "craft emerald block"
+          ],
+          "signal": "inferred",
+          "rationale": "emerald primary gameplay roles"
+        }
+      }
+    },
+    "minecraft:emerald_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "compresses 9 emeralds; reversible"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires 9 emeralds each"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "beacon bases and bulk storage"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "beacon pyramid, decor, bulk emerald"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "prestige decorative gem block"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "solid bright green block"
+        },
+        "primary_uses": {
+          "values": [
+            "beacon pyramid construction",
+            "bulk emerald storage",
+            "decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "emerald block primary uses"
+        }
+      }
+    },
+    "minecraft:emerald_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "ore block; raw world pickup"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "mountain-biome-only ore"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined when encountered; smelted"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "ore mined for emerald yield"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring ore block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "stone base with green ore flecks"
+        },
+        "primary_uses": {
+          "values": [
+            "mine or smelt for emeralds",
+            "decorative ore block"
+          ],
+          "signal": "inferred",
+          "rationale": "core ore block purpose"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

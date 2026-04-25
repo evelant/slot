@@ -1,0 +1,313 @@
+{
+  "items": {
+    "minecraft:pale_oak_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits brief redstone pulse on press"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted freely from pale oak planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively in redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "activates circuits; mounted on structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "pattern",
+          "rationale": "pale oak = grayish-white wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block; movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone pulse trigger",
+            "activating doors and gates"
+          ],
+          "signal": "inferred",
+          "rationale": "core redstone input device"
+        }
+      }
+    },
+    "minecraft:pale_oak_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "id suffix _boat = vehicle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from pale oak + chest"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when water travel needed"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel + onboard item storage"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood boat"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "pattern",
+          "rationale": "pale oak wood tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; only crafting recipe"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "onboard chest holds standard items"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "chest occupies 2nd seat; player drives"
+        },
+        "environmental_property": {
+          "values": [
+            "floats",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "boat floats; wood is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with onboard storage",
+            "mobile item transport across rivers/oceans"
+          ],
+          "signal": "inferred",
+          "rationale": "boat + chest combined function"
+        }
+      }
+    },
+    "minecraft:pale_oak_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive openable/closable block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from pale oak planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed at every building entrance"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is building entrances"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood door"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "pattern",
+          "rationale": "pale oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden door; flammable and piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances and exits",
+            "mob barrier with player-accessible passage"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door use cases"
+        }
+      }
+    },
+    "minecraft:pale_oak_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier/enclosure block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from pale oak planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used for enclosures and decor"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "animal pens and yard enclosures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood fence"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "pattern",
+          "rationale": "pale oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden fence; flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "animal pens and enclosures",
+            "garden/yard borders",
+            "decorative structural accent"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence use cases"
+        }
+      }
+    },
+    "minecraft:pale_oak_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "openable/closable interactive gate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from pale oak planks + sticks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "paired with fences in most builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "access point in fenced enclosures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood gate"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "pattern",
+          "rationale": "pale oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden gate; flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "openable gate for fenced areas",
+            "mob containment access point"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gate use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 146235,
+  "duration_api_ms": 147013,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:waxed_copper_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes; interactive mechanic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in copper builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds; redstone-activatable\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"door mechanism; copper cut variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base copper, bright orange-brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trapdoors waterlog when in water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper door/hatch mechanism\", \"decorative trapdoor in builds\", \"redstone-activated entry\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard trapdoor uses\"\n        }\n      }\n    },\n    \"minecraft:waxed_cut_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full block for construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche copper building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"construction and copper aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut texture variant of copper\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base copper, bright orange-brown\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper building exterior\", \"crafting copper slabs and stairs\", \"decorative copper surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses for cut copper\"\n        }\n      }\n    },\n    \"minecraft:waxed_cut_copper_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab = structural half-block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in copper builds for detailing\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-block construction and detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut copper slab variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base copper, bright orange-brown\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-block copper detailing\", \"copper roof or floor build\", \"ingredient for chiseled copper\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab + chiseled ingredient\"\n        }\n      }\n    },\n    \"minecraft:waxed_cut_copper_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs = structural stair block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in copper builds for transitions\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"staircase construction and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cut copper stairs variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base copper, bright orange-brown\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper staircase construction\", \"copper roof transition detail\", \"decorative copper steps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stair uses\"\n        }\n      }\n    },\n    \"minecraft:waxed_exposed_chiseled_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full solid block; structural use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative accent block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled pattern; primarily decorative\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled=ornate; exposed oxide state\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exposed: slight patina, less vibrant\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative chiseled copper accent\", \"building with exposed copper tone\", \"ornamental block pattern\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled copper primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "5d91e895-8190-4120-a8b6-decbd6d3ef76",
+  "total_cost_usd": 0.21401815,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5441,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12473,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5441,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12473,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5441,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5441
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4578,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004663,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12473,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5441,
+      "webSearchRequests": 0,
+      "costUSD": 0.20935515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a1f83d29-769a-41fe-96f3-73146cdcca2e"
+}

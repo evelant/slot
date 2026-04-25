@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 114572,
+  "duration_api_ms": 115830,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:dark_oak_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressure plate is a redstone input device\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common dark oak planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational in redstone/entry builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers circuits; placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone function + wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak is dark brown wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; plates pop off pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"trigger redstone on entity step\",\n            \"automatic door activation\",\n            \"mob/player detection circuit\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core pressure plate gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_sapling\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant drop, grown into trees\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from dark oak leaves regularly\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when establishing tree farm\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tree-farm for wood supply\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"living plant item\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sapling sprite is green foliage\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant material, catches fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"grow dark oak trees for wood\",\n            \"sustain tree farm\",\n            \"decorative potted plant\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sapling gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf_inventory model + has_nbt_variation\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common dark oak planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when decorating storage areas\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"display + hold items\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain wooden furniture piece\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak dark-brown wood tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; wood block is piston movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"display and store items decoratively\",\n            \"organize items with wood aesthetic\",\n            \"interior decoration with storage\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core shelf gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs are text/labeling decorations\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common dark oak planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed situationally for labels/decor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"labeling and wayfinding in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain wooden signage\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak dark-brown wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; signs pop off pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"label rooms, chests, or paths\",\n            \"wayfinding text display\",\n            \"decorative text element in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sign gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form = structural building element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant dark oak planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used heavily in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab variant of dark oak planks\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak dark-brown wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; slabs are piston movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height floor or ceiling layer\",\n            \"roof and stair-step detailing\",\n            \"crafting barrel, composter, lectern\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core slab gameplay uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "8f4bdae4-1650-40d9-8d29-56f535cc4d66",
+  "total_cost_usd": 0.15843215000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4645,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9020,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4645,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9020,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4645,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4645
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3782,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003857,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9020,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4645,
+      "webSearchRequests": 0,
+      "costUSD": 0.15457515000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0bafd4cd-dc14-4209-8921-7b7dd4fbc4fe"
+}

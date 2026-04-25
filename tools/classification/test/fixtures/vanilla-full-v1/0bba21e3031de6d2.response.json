@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 173769,
+  "duration_api_ms": 175338,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:shield\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"defensive off-hand protective equipment\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"6 planks in recipe; repairs with wooden mats\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"1 iron ingot in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard defensive tool for most players\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to block attacks\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base form, no decoration applied\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks + iron ingot visual\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Block melee and projectile attacks\",\n            \"Apply banner decoration for customization\",\n            \"Off-hand defensive slot equipment\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core shield gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:short_dry_grass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipes; placed for dry biome aesthetics\"\n        },\n        \"material_family\": {\n          \"value\": \"grass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id: short_dry_grass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use in arid builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetic effect only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring dry plant\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dry yellowish-brown tones\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"arid/dry overworld biome surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dry plant material, catches fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Decorative dry-biome ground cover\",\n            \"Arid landscape accent in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for visual effect\"\n        }\n      }\n    },\n    \"minecraft:short_grass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetics; minor seed source\"\n        },\n        \"material_family\": {\n          \"value\": \"grass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id: short_grass\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covers nearly all overworld surfaces\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collected for seeds or placed as deco\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"seed source when broken; ground cover deco\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural surface plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green grass color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant matter, fire spreads to it\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Obtain wheat/grass seeds when broken\",\n            \"Natural ground decoration in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player use cases\"\n        }\n      }\n    },\n    \"minecraft:shroomlight\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether light source; no interactive mechanic\"\n        },\n        \"material_family\": {\n          \"value\": \"fungal\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows on huge nether fungi\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires farming huge fungi in nether\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in nether builds as light\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light source and deco in nether builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic fungal nether growth\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-red luminous nether block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light level 15 emitter\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"High-output light source (level 15)\",\n            \"Nether-themed decorative building block\",\n            \"Bone-meal-farmable nether light source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main player use cases\"\n        }\n      }\n    },\n    \"minecraft:shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable storage retaining contents on break\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker_shell\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from 2 shulker shells + chest\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"chest (wood) in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker shells require End exploration\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core logistics item for most players\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable chest for item transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base undyed form\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"default purple shulker shell color\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"normal inventory item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Portable inventory expansion\",\n            \"Transport items safely across distances\",\n            \"Color-coded storage organization\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core shulker box functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "49d182e8-036a-40f6-9964-2e51ee80841a",
+  "total_cost_usd": 0.21448440000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4076,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12937,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4076,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12937,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4076,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4076
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3213,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003288,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12937,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4076,
+      "webSearchRequests": 0,
+      "costUSD": 0.2111964,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b221d14d-4608-4b82-93c7-f66e52d351ef"
+}

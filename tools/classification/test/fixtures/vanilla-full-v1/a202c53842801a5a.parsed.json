@@ -1,0 +1,338 @@
+{
+  "items": {
+    "minecraft:chest_minecart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "rail vehicle that carries items"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "minecart body is iron"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "chest component is wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific rail setups"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "automation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "item transport via rails"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "rail vehicle"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron minecart body"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted from chest+minecart"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds items like a chest"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "transports items along rails"
+        },
+        "primary_uses": {
+          "values": [
+            "Rail-based item transport",
+            "Automated item logistics",
+            "Storage on rail networks"
+          ],
+          "signal": "inferred",
+          "rationale": "chest-on-rails function"
+        }
+      }
+    },
+    "minecraft:chicken": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food component present"
+        },
+        "material_family": {
+          "value": "meat",
+          "signal": "inferred",
+          "rationale": "tag minecraft:meat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common farmable food source"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "chicken farm output"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw animal product"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "raw poultry pinkish tone"
+        },
+        "primary_uses": {
+          "values": [
+            "Cook into cooked chicken",
+            "Wolf food",
+            "Emergency raw food (hunger risk)"
+          ],
+          "signal": "inferred",
+          "rationale": "food + wolf_food tag + hunger effect"
+        }
+      }
+    },
+    "minecraft:chicken_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn eggs are utility items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only; no survival source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when setting up farms"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns chickens for mob farms"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard egg appearance"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg always spawns linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Instantly spawn a chicken",
+            "Mob farm setup",
+            "Creative/admin use"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawn egg function"
+        }
+      }
+    },
+    "minecraft:chipped_anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive repair/rename/enchant block"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from iron blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for gear maintenance"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "combines enchantments and renames"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "degraded variant of anvil"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-colored block"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "anvils fall like gravel"
+        },
+        "primary_uses": {
+          "values": [
+            "Rename items",
+            "Combine enchanted books/items",
+            "Repair tools with materials"
+          ],
+          "signal": "inferred",
+          "rationale": "core anvil functions"
+        }
+      }
+    },
+    "minecraft:chiseled_bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "stores books; emits comparator signal"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from planks and slabs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche redstone/book-storage use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "storage_management",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "comparator signal + book storage + decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; chiseled bookshelf variant"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wood planks color"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block burns"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "solid full-cube wood block"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds books as items"
+        },
+        "primary_uses": {
+          "values": [
+            "Store up to 6 books/maps",
+            "Redstone comparator signal",
+            "Decorative bookshelf variant"
+          ],
+          "signal": "inferred",
+          "rationale": "core chiseled bookshelf functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

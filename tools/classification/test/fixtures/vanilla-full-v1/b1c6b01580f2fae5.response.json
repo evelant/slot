@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 161668,
+  "duration_api_ms": 168184,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:slime_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed solid block; physics props secondary\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slime balls moderately uncommon to farm\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific piston contraptions\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"piston sticky builds and contraptions\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic slime blob appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"semi-transparent green block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"bounces\", \"piston_sticky\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"entities bounce; adjacent blocks cling to piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"sticky piston contraptions\", \"entity bounce pad\", \"compact slime storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary slime block gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:slime_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only spawn egg, no survival source\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe or loot table entry\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/command-only in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rarely used outside testing/creative\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn slimes for slimeball farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"distinctly colored egg model\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright green slime coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn slimes in creative mode\", \"mob farm setup and testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg uses\"\n        }\n      }\n    },\n    \"minecraft:small_amethyst_bud\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small crystal growth; purely decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found only in amethyst geodes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific purple décor builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetic cave/crystal décor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic crystal, mystical purple look\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple amethyst crystal appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"purple cave decoration\", \"amethyst-themed builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative crystal growth block\"\n        }\n      }\n    },\n    \"minecraft:small_dripleaf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small lush cave plant, purely decorative\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows naturally in lush caves\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found only in lush cave biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative plant\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for nature-themed décor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small organic leaf plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green leafy plant appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"lush cave decoration\", \"nature-themed builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative lush cave plant use\"\n        }\n      }\n    },\n    \"minecraft:smithing_table\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive block for gear upgrades/trims\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"primary wood plank construction\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron ingots in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from basic wood + iron\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for netherite and trims\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"metal-topped functional workshop block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood body with dark iron top surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based block; can burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"upgrade armor/tools to netherite\", \"apply armor trims\", \"access smithing interface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core smithing table functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "0c8d02d2-0966-4640-8bed-905df4ea5941",
+  "total_cost_usd": 0.18115065000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3491,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10900,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3491,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10900,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3491,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3491
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2628,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002703,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10900,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3491,
+      "webSearchRequests": 0,
+      "costUSD": 0.17844765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8d1206cb-a88a-40f9-8082-489227b63a9b"
+}

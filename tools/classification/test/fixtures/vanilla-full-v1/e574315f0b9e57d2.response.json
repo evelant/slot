@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 177162,
+  "duration_api_ms": 177869,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:green_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"panes used to build windows/barriers\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant sand/glass\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds, not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored glass variant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green tinted translucent glass\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass panes movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building windows and barriers\", \"colored glass decoration\", \"light filtering with tint\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard glass pane uses\"\n        }\n      }\n    },\n    \"minecraft:green_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid dyed block for building\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from terracotta and dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorative builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye-colored terracotta\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta has muted earthy palette\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"colored building block\", \"smelting into glazed terracotta\", \"mesa-style builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard terracotta uses\"\n        }\n      }\n    },\n    \"minecraft:green_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural/decorative block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable from sheep or dyed\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in builds and crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"builds, carpets/beds, sculk dampening\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed natural animal material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"muted green wool texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"sculk_silent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool burns; tag dampens_vibrations\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building and decorating\", \"crafting carpets and beds\", \"sculk vibration dampening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wool uses\"\n        }\n      }\n    },\n    \"minecraft:grindstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active block for repairs and disenchanting\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted with stone slab; stone look\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe includes planks and sticks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly to repair/disenchant gear\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"removes enchants; weaponsmith job site\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional grinding device\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone grey appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"repair tools by combining\", \"remove enchantments for XP\", \"weaponsmith villager job site\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grindstone mechanics\"\n        }\n      }\n    },\n    \"minecraft:guardian_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only admin items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources or recipes in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative only, not obtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin/creative use only\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns guardian for combat scenarios\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"guardian teal/aqua coloration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning guardian mobs\", \"mob farm setup\", \"admin/creative testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "4486a339-6aa9-402b-a609-a691a3561f6c",
+  "total_cost_usd": 0.2234119,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4266,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13472,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4266,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13472,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4266,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4266
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3403,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003478,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13472,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4266,
+      "webSearchRequests": 0,
+      "costUSD": 0.2199339,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "64543276-9c3c-4fee-9f21-586c241c0961"
+}

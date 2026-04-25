@@ -1,0 +1,236 @@
+{
+  "items": {
+    "minecraft:prismarine_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form = structural barrier block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche structural variant, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural barrier"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean-derived material, natural aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "prismarine is distinctively teal/cyan"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and barriers",
+            "ocean monument-style builds"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block for structure/decoration"
+        }
+      }
+    },
+    "minecraft:prize_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeology collectible for decorated pots"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "archaeology find, narrow use case"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeology item with historical motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay/terracotta earth tones"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "collecting all sherd variants"
+          ],
+          "signal": "inferred",
+          "rationale": "pot ingredient and collectible"
+        }
+      }
+    },
+    "minecraft:pufferfish": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw fish from world, not processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mainly brewing; harmful as direct food"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "water breathing potion ingredient"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean creature, natural origin"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bright orange-yellow fish coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing water breathing potions",
+            "wolf food",
+            "dolphin feeding"
+          ],
+          "signal": "inferred",
+          "rationale": "potion ingredient and mob food"
+        }
+      }
+    },
+    "minecraft:pufferfish_bucket": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "bucket holding a live pufferfish mob"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "all vanilla buckets are iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "catchable in any ocean biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche mob transport use"
+        },
+        "activity": {
+          "values": [
+            "fishing",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "fishing acquisition; aquarium decoration"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "pufferfish inhabit ocean biomes"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries a live mob entity"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting live pufferfish",
+            "releasing fish in aquarium builds"
+          ],
+          "signal": "inferred",
+          "rationale": "live fish transport container"
+        }
+      }
+    },
+    "minecraft:pufferfish_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot source; creative only"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in creative/testing contexts"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg spawns its named mob type"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning pufferfish in creative",
+            "map and adventure testing"
+          ],
+          "signal": "inferred",
+          "rationale": "creative mode mob spawner"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

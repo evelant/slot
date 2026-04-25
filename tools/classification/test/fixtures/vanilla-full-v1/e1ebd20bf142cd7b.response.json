@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 171582,
+  "duration_api_ms": 172544,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:oxidized_copper_bars\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier like iron bars\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common; copper abundant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche grille/barrier use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used as barriers and decorative grilles\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized variant; natural weathering state\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fully oxidized copper reads teal-green\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"forms via natural copper oxidation outdoors\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative barrier or grille\", \"Building copper aesthetic structures\", \"Wax to preserve oxidized color\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical bars use cases\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper_bulb\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-toggled light emitter\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche redstone lighting use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powered dim light in redstone builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone mechanism; oxidized variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal copper; glows dimly when powered\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light when powered by redstone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Redstone-gated dim light source\", \"Copper aesthetic lighting\", \"Indicator light in circuits\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical copper bulb uses\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper_chain\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chains primarily for decorative hanging\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative/hanging use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hanging lanterns, bells, decorative connectors\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized variant; natural weathering\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fully oxidized copper = teal-green\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"forms via natural copper oxidation outdoors\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Hanging lanterns and bells\", \"Decorative chain links\", \"Copper aesthetic builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical chain block uses\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest = item storage container\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage used constantly once placed\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"item storage and retrieval\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized variant; natural weathering\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fully oxidized copper = teal-green\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"forms via natural copper oxidation outdoors\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item chest storage\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Storing items\", \"Copper-themed storage builds\", \"Wax to freeze oxidation state\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical copper chest uses\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"door opens/closes; interactive block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche copper aesthetic building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural door; redstone compatible\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized variant; natural weathering\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fully oxidized copper = teal-green\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"forms via natural copper oxidation outdoors\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Copper aesthetic door\", \"Redstone-compatible entry\", \"Wax to preserve appearance\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical copper door uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "64cc9aa7-246c-44f6-aa83-615027c24a4e",
+  "total_cost_usd": 0.18412664999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4607,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10745,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4607
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10745,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4607,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4607,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3744,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003819,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10745,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4607,
+      "webSearchRequests": 0,
+      "costUSD": 0.18030764999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "39c1e48c-7021-472e-8f7a-0c66e415af0e"
+}

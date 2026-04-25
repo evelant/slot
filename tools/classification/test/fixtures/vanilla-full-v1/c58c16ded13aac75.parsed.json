@@ -1,0 +1,325 @@
+{
+  "items": {
+    "minecraft:acacia_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "water vehicle for player movement"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational water travel only"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "traverses water for exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from wood"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-warm wood tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player across water"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "boat entity floats on water"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel on rivers and oceans",
+            "ingredient for acacia chest boat"
+          ],
+          "signal": "inferred",
+          "rationale": "main use cases"
+        }
+      }
+    },
+    "minecraft:acacia_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone pulse when pressed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in targeted redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers redstone in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, mechanical function"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-warm wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block properties"
+        },
+        "primary_uses": {
+          "values": [
+            "emit brief redstone pulse",
+            "trigger doors gates dispensers"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button uses"
+        }
+      }
+    },
+    "minecraft:acacia_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "boat-primary; chest is bonus storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational water travel"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "transports player+items across water"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood and chest construction"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-warm wood tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "moves player and stores items"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "boat entity floats on water"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with built-in chest storage",
+            "transport items across water bodies"
+          ],
+          "signal": "inferred",
+          "rationale": "combined boat+chest uses"
+        }
+      }
+    },
+    "minecraft:acacia_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural entry point in buildings"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "every structure has doors"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood construction"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-warm wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block properties"
+        },
+        "primary_uses": {
+          "values": [
+            "entry/exit point for structures",
+            "mob barrier with open/close"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door uses"
+        }
+      }
+    },
+    "minecraft:acacia_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier/enclosure block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in builds and farms"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "enclosures and mob pens"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood construction"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-warm wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block properties"
+        },
+        "primary_uses": {
+          "values": [
+            "mob containment and pens",
+            "yard and garden perimeter",
+            "decorative barrier"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

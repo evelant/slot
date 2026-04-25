@@ -1,0 +1,354 @@
+{
+  "items": {
+    "minecraft:brush": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "used to excavate archaeology sites"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "copper ingot is key ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "feather",
+            "stick"
+          ],
+          "signal": "inferred",
+          "rationale": "feather+stick in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only used at archaeology sites"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "used for archaeology excavation"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple crafted tool, no ornamentation"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "copper ingot body"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources, has shaped recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "Brush suspicious sand/gravel",
+            "Archaeology excavation"
+          ],
+          "signal": "inferred",
+          "rationale": "core brush mechanic"
+        }
+      }
+    },
+    "minecraft:bubble_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for ocean/aquarium aesthetics"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm ocean biomes only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative placed block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "vivid pink ocean plant"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright pink/purple tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "rationale": "coral lives in warm oceans"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "must be placed in water to survive"
+        },
+        "primary_uses": {
+          "values": [
+            "Ocean/aquarium decoration",
+            "Warm-ocean themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "no functional use"
+        }
+      }
+    },
+    "minecraft:bubble_coral_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "solid coral block for ocean decor"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm ocean biomes only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "solid full-cube block placement"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "vivid pink solid coral block"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright pink/purple"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "rationale": "coral in warm oceans"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "dies when placed outside water"
+        },
+        "primary_uses": {
+          "values": [
+            "Coral-themed building",
+            "Ocean floor decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative solid block"
+        }
+      }
+    },
+    "minecraft:bubble_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "fan coral placed for ocean decor"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm ocean biomes only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "fan variant of coral plant"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright pink/purple"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "pattern",
+          "rationale": "coral in warm oceans"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "must be placed in water"
+        },
+        "primary_uses": {
+          "values": [
+            "Aquarium/ocean decoration",
+            "Detail accent in water builds"
+          ],
+          "signal": "inferred",
+          "rationale": "fan shape adds variety"
+        }
+      }
+    },
+    "minecraft:bucket": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable vessel for fluids/mobs"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "crafted from 3 iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "fundamental utility item"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "milk, water/lava place, fish capture"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple iron vessel"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray iron appearance"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "holds one fluid stack"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "manually transports fluids"
+        },
+        "primary_uses": {
+          "values": [
+            "Carry water/lava/milk",
+            "Capture fish and axolotls",
+            "Place fluid sources"
+          ],
+          "signal": "inferred",
+          "rationale": "core bucket interactions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

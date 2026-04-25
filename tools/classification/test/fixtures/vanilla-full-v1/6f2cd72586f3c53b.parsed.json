@@ -1,0 +1,263 @@
+{
+  "items": {
+    "minecraft:deepslate_iron_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore from world, not processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron ore abundant in caves"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "iron mined regularly throughout game"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "iron→tools/weapons for mining & combat"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated ore block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark deepslate with tan ore veins"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt/blast into iron ingots",
+            "silk touch ore collection"
+          ],
+          "signal": "inferred",
+          "rationale": "ore smelted for iron"
+        }
+      }
+    },
+    "minecraft:deepslate_lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore from world, not processed"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "lapis less common than iron or coal"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined when enchanting supplies needed"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "lapis used for enchanting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated ore block"
+        },
+        "palette": {
+          "values": [
+            "indigo",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "blue lapis veins on dark deepslate"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt/blast into lapis lazuli",
+            "silk touch collection"
+          ],
+          "signal": "inferred",
+          "rationale": "ore → lapis for enchanting"
+        }
+      }
+    },
+    "minecraft:deepslate_redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore from world, not processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "redstone very abundant at deep levels"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "redstone used constantly in builds"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "yields redstone dust for circuits"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated ore block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dark deepslate with red glowing veins"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "glows when activated by entity contact"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for redstone dust",
+            "silk touch ore collection"
+          ],
+          "signal": "inferred",
+          "rationale": "ore → redstone for circuits"
+        }
+      }
+    },
+    "minecraft:deepslate_tile_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form is primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant deepslate"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs used heavily in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for floors, roofs, trim"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "tile variant of deepslate family"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark charcoal gray matte block"
+        },
+        "primary_uses": {
+          "values": [
+            "half-block flooring",
+            "roofing accent",
+            "architectural trim"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab construction uses"
+        }
+      }
+    },
+    "minecraft:deepslate_tile_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form is primarily structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant deepslate"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs used heavily in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "for staircases, architectural detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "tile variant of deepslate family"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark charcoal gray matte block"
+        },
+        "primary_uses": {
+          "values": [
+            "building staircases",
+            "architectural trim/roofing",
+            "decorative steps"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs construction uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

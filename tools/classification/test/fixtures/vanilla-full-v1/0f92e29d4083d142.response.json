@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 161796,
+  "duration_api_ms": 163689,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:open_eyeblossom\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant collected from world as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche dye/stew use cases\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bee food; dye ingredient; placed as decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant; glowing eye in eerie pale garden\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white petals with purple glowing eye\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in pale garden biome\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting orange dye\",\n            \"suspicious stew ingredient\",\n            \"decorative flower placement\",\n            \"bee food source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sample_ingredient_of + bee_food tag\"\n        }\n      }\n    },\n    \"minecraft:orange_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are aesthetic displays\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wool blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for specific decorating builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetics and marking\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"orange dye-color banner variant\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange/amber visual tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorating builds and rooms\",\n            \"shield decoration\",\n            \"faction or clan marker\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard banner use cases\"\n        }\n      }\n    },\n    \"minecraft:orange_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive sleep/spawn-set mechanic\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"beds crafted from wool and planks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every night cycle to skip dark\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"orange dye-color bed variant\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"sleeping to skip night\",\n            \"setting respawn point\",\n            \"dyeable to other colors\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed mechanics\"\n        }\n      }\n    },\n    \"minecraft:orange_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds multiple item types in inventory\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active inventory management tool\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory compression and transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dye-transmuted orange bundle\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange leather tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no world loot; only via transmute recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"storing multiple item stacks in one slot\",\n            \"inventory slot compression\",\n            \"item transport between locations\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle core function\"\n        }\n      }\n    },\n    \"minecraft:orange_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic lighting decoration\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from honeycomb and string\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once for ambiance, rarely replaced\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative light in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed beeswax candle\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange wax; emits warm glow when lit\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loot sources are only self-drops; crafted first\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"candle emits light when lit\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative ambient lighting\",\n            \"cake candle decoration\",\n            \"colored light source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"candle use cases in gameplay\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_facet\",\n      \"name\": \"native_biome\",\n      \"suggested_kind\": \"multi_free_text\",\n      \"rationale\": \"biome-endemic items like eyeblossom need biome context beyond overworld_surface\"\n    }\n  ],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "a938c5f5-f369-402f-95bd-290dbcdc7370",
+  "total_cost_usd": 0.2035699,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4414,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12102,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4414
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12102,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4414,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4414,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3551,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0036309999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12102,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4414,
+      "webSearchRequests": 0,
+      "costUSD": 0.1999389,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "5e32ff4d-128b-42d4-a946-a74cca3cba20"
+}

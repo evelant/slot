@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:lime_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "pane used structurally as windows"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "stained glass variant of base glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from cheap sand+dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative use, not daily staple"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows and colored builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "lime dye color variant of glass pane"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "lime green translucent glass"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes waterlog in Java Edition"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows in builds",
+            "decorative barriers",
+            "light filtering"
+          ],
+          "signal": "inferred",
+          "rationale": "stained glass pane use cases"
+        }
+      }
+    },
+    "minecraft:lime_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid decorative building block"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from clay+dye, accessible"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative building material"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "lime dye color variant of terracotta"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "muted earthy lime green terracotta"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building block",
+            "smelt into lime glazed terracotta",
+            "colored structure material"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta use cases"
+        }
+      }
+    },
+    "minecraft:lime_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block for building and decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable from lime sheep or dyeing"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in builds, beds, carpets"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "building and colorful decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural material, lime dyed variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright lime green wool"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decoration",
+            "crafting carpets and beds",
+            "re-dyeing to other colors",
+            "sound/vibration dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "wool primary uses"
+        }
+      }
+    },
+    "minecraft:lingering_potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "thrown item consumed on use"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "requires dragon breath post-End boss"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational combat/utility use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "thrown in combat, part of brewing loop"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical potion item"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing colored liquid bottle"
+        },
+        "primary_uses": {
+          "values": [
+            "create area-effect cloud on throw",
+            "craft tipped arrows via imbuing",
+            "combat utility effects"
+          ],
+          "signal": "inferred",
+          "rationale": "lingering potion uses"
+        }
+      }
+    },
+    "minecraft:llama_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to spawn llama mobs"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot tables, no recipes"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative mode only, no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche creative/map-making use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "animal mob spawn egg"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg spawns its linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn llamas in creative mode",
+            "map making and testing"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "origin",
+      "value": "brewing",
+      "rationale": "Splash/lingering potions are primarily obtained via brewing stand; no current origin value captures this production pathway"
+    }
+  ],
+  "corrections": []
+}

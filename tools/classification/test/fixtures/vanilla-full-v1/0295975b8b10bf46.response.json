@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 307434,
+  "duration_api_ms": 308547,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:nether_star\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"boss mob drop, obtained as-is not refined\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_star\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"unique id, no parent material\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dropped by Wither boss\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed crafting beacon for base\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"item_blast_proof\"],\n          \"signal\": \"named\",\n          \"evidence\": \"damage_resistant #minecraft:is_explosion\",\n          \"rationale\": \"item survives explosions when dropped\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one per beacon, Wither rarely fought\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing magical boss reward\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"emissive\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white glowing star shape\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft beacon\",\n            \"sole key component for beacon block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only downstream use is beacon\"\n        }\n      }\n    },\n    \"minecraft:nether_wart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant, per disambiguation list\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_wart\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = nether_wart\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"component + farmable once seeded\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base ingredient for all potions\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"required for every awkward potion\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether plant/fungus\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark red organic plant\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"base ingredient for all potions\",\n            \"grow in nether wart farms\",\n            \"craft nether wart block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is brewing\"\n        }\n      }\n    },\n    \"minecraft:nether_wart_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid structural nether-themed block\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_wart\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from 9 nether warts\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable from nether wart\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic nether block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether-themed builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic plant block with vivid color\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep red crimson block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"nether-themed building block\",\n            \"dark red decorative block\",\n            \"compress nether wart\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"building and decoration uses\"\n        }\n      }\n    },\n    \"minecraft:netherite_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"tool\", \"weapon\"],\n          \"ambiguous\": true,\n          \"signal\": \"named\",\n          \"evidence\": \"has both minecraft:tool and minecraft:weapon components\",\n          \"rationale\": \"dual tool/weapon components in 1.21+\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires ancient debris upgrade path\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mines wood; weapon with shield-break\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"named\",\n          \"evidence\": \"damage_resistant #minecraft:is_fire\",\n          \"rationale\": \"item won't burn in fire or lava\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"end-game primary tool/weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard tool silhouette\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark graphite netherite texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"mining wood and wooden blocks\",\n            \"combat weapon with shield-breaking\",\n            \"stripping logs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:netherite_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"compresses 9 ingots like block_of_iron\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix netherite_block\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"9 ingots each needing ancient debris\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingot compression and prestige builds\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\", \"blast_resistant_max\"],\n          \"signal\": \"inferred\",\n          \"evidence\": \"damage_resistant #minecraft:is_fire\",\n          \"rationale\": \"fire-immune item; blast resist ~1200\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare material, niche storage/builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"uniform dark block\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark graphite netherite texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compress 9 netherite ingots for storage\",\n            \"prestige building material\",\n            \"decoration with netherite aesthetic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main storage and building uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "8091f669-365f-42e0-9bb5-36e018903221",
+  "total_cost_usd": 0.35301364999999996,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4579,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 22013,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4579
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 22013,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4579,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4579,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3716,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003791,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 22013,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4579,
+      "webSearchRequests": 0,
+      "costUSD": 0.34922264999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "44a1b6bd-81dd-4470-8936-992750855a11"
+}

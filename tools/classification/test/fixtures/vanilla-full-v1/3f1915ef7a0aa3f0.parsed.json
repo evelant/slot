@@ -1,0 +1,302 @@
+{
+  "items": {
+    "minecraft:redstone": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "dust extracted from ore; dusts = material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in dozens of recipes routinely"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "circuits, automated machines"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "no special aesthetic beyond function"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "red-toned dust"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone circuits and mechanisms",
+            "crafting clocks compasses rails",
+            "armor trim material (smithing)"
+          ],
+          "signal": "inferred",
+          "rationale": "core ingredient; trim tag in components"
+        }
+      }
+    },
+    "minecraft:redstone_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "compressed storage form; emits signal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "moveable power source in machines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-mechanical aesthetic"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright saturated red"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "key for slimestone flying machines"
+        },
+        "primary_uses": {
+          "values": [
+            "compact moveable redstone power source",
+            "piston flying machine component",
+            "compact storage of 9 redstone dust"
+          ],
+          "signal": "inferred",
+          "rationale": "canonical redstone block usage"
+        }
+      }
+    },
+    "minecraft:redstone_lamp": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "emits light when redstone-powered"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular controlled lighting block"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "controlled light for builds and decor"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-powered lamp; mechanical"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "amber glow when lit"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light level 15 when powered"
+        },
+        "material_secondary": {
+          "values": [
+            "glowstone"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted from 1 glowstone + 4 redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-controlled lighting",
+            "indicator light in circuits",
+            "decorative illumination"
+          ],
+          "signal": "inferred",
+          "rationale": "standard lamp use cases"
+        }
+      }
+    },
+    "minecraft:redstone_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "ore found in world; suffix _ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined when found; not routine use"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for redstone dust"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural cave ore block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "stone+red; glows when triggered"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "glows lvl 9 when triggered by entity"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for redstone dust",
+            "silk touch collection or display"
+          ],
+          "signal": "inferred",
+          "rationale": "ore; primary purpose is dust extraction"
+        }
+      }
+    },
+    "minecraft:redstone_torch": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "core inverter/power in circuits"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple in any redstone build"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "inverter and ingredient in key items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone variant of torch; mechanical"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "red glow; emits faint light"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light level 7 when active"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "pattern",
+          "rationale": "stick (wood) + redstone in recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal inverter (NOT gate)",
+            "constant low-strength power source",
+            "crafting repeaters and comparators"
+          ],
+          "signal": "inferred",
+          "rationale": "canonical redstone torch uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

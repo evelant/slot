@@ -1,0 +1,273 @@
+{
+  "items": {
+    "minecraft:stone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form used for structural edging"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "crafted from stone bricks (refined stone)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche wall use, not universal"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for borders and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stone brick aesthetic"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone brick texture"
+        },
+        "primary_uses": {
+          "values": [
+            "structural border walls",
+            "decorative garden/castle walls",
+            "perimeter fencing"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block primary use cases"
+        }
+      }
+    },
+    "minecraft:stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cube block placed for structures"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "4x stone -> stone bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple structural block for stone builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structures; stonecutter source"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "base of stone brick family"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "medium-gray brick texture"
+        },
+        "primary_uses": {
+          "values": [
+            "building stone structures",
+            "stonecutting into slabs/stairs/walls",
+            "crafting brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "primary uses of stone bricks"
+        }
+      }
+    },
+    "minecraft:stone_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits momentary redstone pulse"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "crafted from stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational redstone input device"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers circuits and doors"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional mechanical trigger"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone color"
+        },
+        "primary_uses": {
+          "values": [
+            "short-pulse redstone signal source",
+            "door and gate triggers",
+            "monostable circuit input"
+          ],
+          "signal": "inferred",
+          "rationale": "button standard use cases"
+        }
+      }
+    },
+    "minecraft:stone_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "hoe suffix = farming tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for farm setup, not every session"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tills soil, harvests crop blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic stone tier tool"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone material"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling farmland",
+            "harvesting crops at speed",
+            "early-game farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe standard use cases"
+        }
+      }
+    },
+    "minecraft:stone_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "pickaxe suffix = mining tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "early-mid game primary mining tool"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mines stone/ore; usable in combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic stone tier tool"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone material"
+        },
+        "primary_uses": {
+          "values": [
+            "early-game mining of stone and ore",
+            "mining iron and coal",
+            "backup melee weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe standard use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

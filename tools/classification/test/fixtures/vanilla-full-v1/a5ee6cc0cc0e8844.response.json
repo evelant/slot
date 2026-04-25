@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 92668,
+  "duration_api_ms": 93330,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:mourner_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology collectible for decorated pots\"\n        },\n        \"material_family\": {\n          \"value\": \"ceramic\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pottery sherd = fired clay\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found via archaeology excavation\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clay pottery visual tone\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag decorated_pot_ingredients\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific sherd from archaeology only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting decorated pots\",\n            \"archaeology collectible\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole use is decorated_pot ingredient\"\n        }\n      }\n    },\n    \"minecraft:mud\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw world block, primary use as input\"\n        },\n        \"material_family\": {\n          \"value\": \"mud\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = mud\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic world block\"\n        },\n        \"palette\": {\n          \"values\": [\"muddy\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark wet earth texture\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove swamp biome native block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"slows_walking\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"entities sink and slow in mud\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for packed mud & muddy roots\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mangrove crafting ingredient\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting packed mud\",\n            \"crafting muddy mangrove roots\",\n            \"placed as building block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of confirms recipes\"\n        }\n      }\n    },\n    \"minecraft:mud_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab tag = building_block\"\n        },\n        \"material_family\": {\n          \"value\": \"mud_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix mud_brick\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"earthy material, slab variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried mud brick warm brown tone\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural slab\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mangrove build style\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building with mud brick aesthetic\",\n            \"decorative half-height slab\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form of mud brick set\"\n        }\n      }\n    },\n    \"minecraft:mud_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs tag = building_block\"\n        },\n        \"material_family\": {\n          \"value\": \"mud_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix mud_brick\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"earthy material, stairs variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried mud brick warm brown tone\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural stairs\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mangrove build style\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building with mud brick aesthetic\",\n            \"decorative staircase\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form of mud brick set\"\n        }\n      }\n    },\n    \"minecraft:mud_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"walls tag = building_block\"\n        },\n        \"material_family\": {\n          \"value\": \"mud_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix mud_brick\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"earthy material, wall variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried mud brick warm brown tone\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural wall\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche mangrove build style\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building with mud brick aesthetic\",\n            \"decorative border wall\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form of mud brick set\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "bb6e1d67-9265-492e-8dd1-fbffed750f05",
+  "total_cost_usd": 0.12635615,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4049,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7070,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4049,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7070,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4049,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4049
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3186,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003266,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7070,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4049,
+      "webSearchRequests": 0,
+      "costUSD": 0.12309015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "fe2ac581-ee89-49c9-b44e-62c88683b3ac"
+}

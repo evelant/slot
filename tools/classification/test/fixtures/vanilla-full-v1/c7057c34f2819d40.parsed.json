@@ -1,0 +1,295 @@
+{
+  "items": {
+    "minecraft:cartography_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive map editing station"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted from planks and paper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common; easily crafted"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for map work, not daily"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "zooms, copies, and locks maps"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; working station"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak plank construction"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based block, flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "copy and zoom maps",
+            "lock maps",
+            "expand map scale"
+          ],
+          "signal": "inferred",
+          "rationale": "core cartography table functions"
+        }
+      }
+    },
+    "minecraft:carved_pumpkin": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primarily seasonal decorative block"
+        },
+        "material_family": {
+          "value": "pumpkin",
+          "signal": "pattern",
+          "rationale": "id: carved_pumpkin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "seasonal and niche use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed decor, golem builds, farmable"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic; carved variant of pumpkin"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "orange pumpkin, earthy tones"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "surface pumpkin; shear snow golem"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "constructs iron/snow golems when placed"
+        },
+        "primary_uses": {
+          "values": [
+            "seasonal decoration",
+            "prevent endermen aggro when worn",
+            "craft jack o lantern",
+            "construct iron/snow golems"
+          ],
+          "signal": "inferred",
+          "rationale": "core gameplay uses"
+        }
+      }
+    },
+    "minecraft:cat_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn egg; places mob on use"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, not survival-obtainable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific mob setup use"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "cats deter creepers/phantoms"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a cat on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn cats in creative/admin mode"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function of spawn egg"
+        }
+      }
+    },
+    "minecraft:cauldron": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "fluid vessel; dyeing and cleaning"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from 7 iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific dyeing/cleaning tasks"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "fluid decor; leather dyeing/washing"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian iron vessel"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron construction"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "generates naturally in witch huts"
+        },
+        "primary_uses": {
+          "values": [
+            "store water/lava/powder snow",
+            "dye leather armor",
+            "wash dyed items"
+          ],
+          "signal": "inferred",
+          "rationale": "core cauldron functions"
+        }
+      }
+    },
+    "minecraft:cave_spider_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn egg; places mob on use"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, not survival-obtainable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific hostile mob setups"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "hostile mob; combat/farm scenarios"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a cave spider on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs are creative-only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn cave spiders in creative/admin mode"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function of spawn egg"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

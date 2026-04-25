@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 201328,
+  "duration_api_ms": 202418,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:diamond_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed 9-diamond material block\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"same tier as constituent diamonds\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"costs 9 diamonds; significant mid-game expense\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"beacon base or compact storage, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"beacon pyramid + compact diamond storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prestige compressed material block\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"crystal\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright blue-teal crystalline appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Compact diamond storage\", \"Beacon pyramid base\", \"Craft back to 9 diamonds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard compressed block uses\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blast resistance 30, like iron block\"\n        }\n      }\n    },\n    \"minecraft:diamond_boots\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:foot_armor\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond mining; mid-game effort\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"worn constantly as end-game armor\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protective armor for combat and exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-tier shiny gear\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"crystal\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright blue diamond appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Foot protection in combat\", \"Depth Strider or Feather Falling\", \"Upgrade to netherite boots\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor uses + enchanting + upgrade path\"\n        }\n      }\n    },\n    \"minecraft:diamond_chestplate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:chest_armor\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires 8 diamonds; mid-game investment\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"worn constantly as end-game armor\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protective armor for combat and exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-tier prestigious armor\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"crystal\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright blue diamond appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Main body protection\", \"Best pre-netherite chest armor\", \"Upgrade to netherite chestplate\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest armor + upgrade path\"\n        }\n      }\n    },\n    \"minecraft:diamond_helmet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:head_armor\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond mining; mid-game\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"worn constantly as end-game armor\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protective armor for combat and exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"high-tier prestigious armor\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"crystal\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright blue diamond appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Head protection in combat\", \"Respiration and Aqua Affinity base\", \"Upgrade to netherite helmet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"head armor + water enchants + upgrade\"\n        }\n      }\n    },\n    \"minecraft:diamond_hoe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:hoes\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond cost; overkill for basic farming\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoe used situationally\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tills soil; mines hoe-mineable blocks fast\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard tool form, no ornate features\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"crystal\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright blue diamond appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Till soil for farming\", \"Fast mine leaves and hay blocks\", \"Upgrade to netherite hoe\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoe farming + speed mining + upgrade\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7fc666e5-a306-43f3-9946-d6bfd8cc87b8",
+  "total_cost_usd": 0.2660299,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 6254,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15684,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 6254,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15684,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 6254,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 6254
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5391,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.005461,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15684,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 6254,
+      "webSearchRequests": 0,
+      "costUSD": 0.2605689,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "692bc939-0763-4dbe-b076-4224d01d7444"
+}

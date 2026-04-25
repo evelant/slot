@@ -1,0 +1,271 @@
+{
+  "items": {
+    "minecraft:gold_nugget": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "processed gold fragment, refined from items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific recipes, not daily"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "golden carrot/glistering melon→potions; firework star"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material, warm yellow"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "inferred",
+          "rationale": "gold item; piglins attracted to all gold"
+        },
+        "primary_uses": {
+          "values": [
+            "craft gold ingot (9 nuggets)",
+            "craft golden carrot for night vision potions",
+            "craft glistering melon for healing potions",
+            "firework star shimmer effect"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of list"
+        }
+      }
+    },
+    "minecraft:gold_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw ore block mined from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "routinely mined in gold supply loop"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "player mines it to obtain raw gold"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated ore block"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "gold veins in stone matrix"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved (inherited)"
+        },
+        "primary_uses": {
+          "values": [
+            "mine to obtain raw gold",
+            "smelt (Silk Touch) directly into gold ingot"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting recipe + standard ore loop"
+        }
+      }
+    },
+    "minecraft:golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "minecraft:food + minecraft:consumable components"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "costs 8 gold ingots; chest-loot or expensive craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "saved for emergencies or horse breeding"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "healing in fights; horse taming in field"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "prestigious golden food with special effects"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved (direct)"
+        },
+        "primary_uses": {
+          "values": [
+            "regen II (5s) + absorption I (2min) in combat",
+            "horse breeding and taming",
+            "PvP absorption buffer"
+          ],
+          "signal": "inferred",
+          "rationale": "consumable effects + horse_food/tempt tags"
+        }
+      }
+    },
+    "minecraft:golden_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "minecraft:axes tag, primarily a chopping tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "low durability limits sustained use"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "chops wood + explicit weapon component"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved (direct)"
+        },
+        "primary_uses": {
+          "values": [
+            "fast wood and log chopping (speed 12)",
+            "high-enchantability weapon via sharp_weapon tag",
+            "nether tool safe around piglins"
+          ],
+          "signal": "inferred",
+          "rationale": "tool speed + enchantable/sharp_weapon + piglin_loved"
+        }
+      }
+    },
+    "minecraft:golden_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "foot_armor tag, equip_slot=feet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "primarily worn in nether for piglin safety"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor for combat; nether pacification for exploration"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved",
+            "piglin_pacifying"
+          ],
+          "signal": "named",
+          "rationale": "tags piglin_loved + piglin_safe_armor (both direct)"
+        },
+        "primary_uses": {
+          "values": [
+            "prevent piglin aggression when worn in nether",
+            "basic foot armor protection",
+            "armor trimming canvas"
+          ],
+          "signal": "inferred",
+          "rationale": "piglin_safe_armor + trimmable_armor + foot_armor"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

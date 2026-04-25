@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 185316,
+  "duration_api_ms": 186297,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:yellow_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive sleep/respawn mechanic\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wool and planks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"planks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks required in bed recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every night in survival\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in bases; sets respawn point\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dye-color variant of bed\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow is a warm hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Sleep to skip night\", \"Set player spawn point\", \"Bedroom decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed gameplay uses\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mobs cannot spawn on beds\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool and wood components are flammable\"\n        }\n      }\n    },\n    \"minecraft:yellow_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable multi-item container\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string used in base bundle recipe\"\n        },\n        \"dye_color\": {\n          \"value\": \"yellow\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix yellow_ + bundles tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory management tool\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compresses inventory slots\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dye-transmute color variant\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow is a warm hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no world loot; only via crafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Hold multiple item stacks in one slot\", \"Compress inventory\", \"Organize disparate items\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle core purpose\"\n        }\n      }\n    },\n    \"minecraft:yellow_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative ambient light source\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from honeycomb + string\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string in candle recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for ambiance and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed; wax is a natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow hue; emits warm glow when lit\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from honeycomb+string+dye\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lit candle emits light level 3\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Ambient colored lighting\", \"Decoration on cakes\", \"Mood lighting in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"candle primary gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:yellow_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin decorative floor covering\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor decoration in bases/builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool carpet\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow is a warm hue\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mobs cannot spawn on carpets\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"sculk_silent\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wool burns; dampens_vibrations tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Floor decoration\", \"Llama decoration/armor\", \"Dampen sculk vibrations\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpet gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:yellow_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid colored building material\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid dyed block, uniform texture\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright saturated yellow\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete powder+water; no world gen\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Colorful solid building block\", \"Pixel art construction\", \"Modern architecture\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete primary building uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "818bc9a2-3587-4c1f-921b-d46c47c3b552",
+  "total_cost_usd": 0.23278515,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4513,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14019,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4513,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14019,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4513,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4513
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3650,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00372,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14019,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4513,
+      "webSearchRequests": 0,
+      "costUSD": 0.22906515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "debcbe3b-4296-435c-ae55-a5c32939069d"
+}

@@ -1,0 +1,312 @@
+{
+  "items": {
+    "minecraft:golden_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "horse armor = equippable mob armor"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "golden_ prefix"
+        },
+        "tier": {
+          "value": "golden",
+          "signal": "pattern",
+          "rationale": "golden material tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "not craftable, multi-loot-chest find"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "horses not always armored"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "mounted combat + overland travel"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard horse armor, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "golden colored"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "equip horse for protection",
+            "smelt into gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "horse armor primary functions"
+        }
+      }
+    },
+    "minecraft:golden_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "rationale": "tag minecraft:leg_armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable with gold ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "very low durability limits regular use"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "leg armor worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard gold leggings"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "golden colored"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved",
+            "piglin_pacifying"
+          ],
+          "signal": "named",
+          "rationale": "tags: piglin_loved + piglin_safe_armor"
+        },
+        "primary_uses": {
+          "values": [
+            "leg armor in combat",
+            "pacify piglins when worn",
+            "armor trim base",
+            "smelt into gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of golden leggings"
+        }
+      }
+    },
+    "minecraft:golden_nautilus_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "name ends _armor; mob-equip pattern"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "golden_ prefix"
+        },
+        "tier": {
+          "value": "golden",
+          "signal": "pattern",
+          "rationale": "golden material tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "not craftable, ocean loot only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized aquatic mob armor"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic mob armor; ocean exploration reward"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "nautilus/ocean motif"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "gold base with ocean/nautilus theme"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "equip aquatic mob for protection",
+            "smelt into gold nuggets",
+            "ocean loot reward"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean armor primary functions"
+        }
+      }
+    },
+    "minecraft:golden_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "tag minecraft:pickaxes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable with gold ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fast but only 32 uses durability"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "mining tool; highest enchantability (32)"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pickaxe form"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "golden colored"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "fast mining (speed 12)",
+            "enchant for fortune/silk touch",
+            "smelt into gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of gold pickaxe"
+        }
+      }
+    },
+    "minecraft:golden_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "tag minecraft:shovels"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable with gold ingots"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fast but very low durability"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "dig soil; right-click creates path blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard shovel form"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "golden colored"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "fast dirt/sand/gravel digging",
+            "create path blocks",
+            "smelt into gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of gold shovel"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

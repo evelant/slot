@@ -1,0 +1,351 @@
+{
+  "items": {
+    "minecraft:light_blue_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "bundle holds items in a single inv slot"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle recipe uses rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used as tie in bundle recipe"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "signal": "pattern",
+          "rationale": "id prefix light_blue + bundles tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche inventory tool, situational use"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "bundles organize and compact items"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed variant of base bundle"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a soft pastel tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by dyeing another bundle"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "stores standard item stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "compact multiple item types into one slot",
+            "organize inventory by grouping items",
+            "carry varied small stacks efficiently"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle gameplay purpose"
+        }
+      }
+    },
+    "minecraft:light_blue_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for ambiance and light, not structure"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "candles crafted from honeycomb + string"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative use, not everyday placed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for atmosphere and lighting"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "wax candle material; dyed variant"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a soft pastel tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot; loot table is own block drop"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candle emits light level 3"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative light source when lit",
+            "cake birthday candle decoration",
+            "atmospheric ambiance lighting"
+          ],
+          "signal": "inferred",
+          "rationale": "standard candle use cases"
+        }
+      }
+    },
+    "minecraft:light_blue_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin floor covering, primarily aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "heavily used in builds and room decor"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "floor accent used across build styles"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "wool material; dyed variant"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a soft pastel tone"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "carpets prevent mob spawning on surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "inferred",
+          "rationale": "wool burns; tag dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "colorful floor covering in builds",
+            "llama decoration via equip slot",
+            "dampen sculk sensor vibration signals",
+            "thin colored accent layer in rooms"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet primary use cases"
+        }
+      }
+    },
+    "minecraft:light_blue_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block for structural construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id _concrete suffix; distinct material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular in modern/colorful builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "solid color block for construction"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 dye-color concrete variants"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a soft pastel tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made by wetting concrete powder; no natural gen"
+        },
+        "primary_uses": {
+          "values": [
+            "vibrant solid-color building block",
+            "modern architecture walls and floors",
+            "non-gravity-affected flat color surface"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete primary build role"
+        }
+      }
+    },
+    "minecraft:light_blue_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable gravity-affected build block"
+        },
+        "material_family": {
+          "value": "concrete_powder",
+          "signal": "pattern",
+          "rationale": "id _concrete_powder suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate step toward concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to produce solid concrete"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 dye-color powder variants"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light blue is a soft pastel tone"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand when unsupported"
+        },
+        "primary_uses": {
+          "values": [
+            "convert to concrete via water contact",
+            "gravity-affected fill or trap block",
+            "precursor to light blue concrete"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder primary use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

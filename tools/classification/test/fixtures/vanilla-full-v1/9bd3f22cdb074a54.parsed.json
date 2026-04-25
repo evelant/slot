@@ -1,0 +1,330 @@
+{
+  "items": {
+    "minecraft:cyan_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are aesthetic lighting decor"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "crafted from string + honeycomb"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from accessible materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific color-themed decor"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is ambient decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "wax/organic aesthetic, explicitly cyan"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan reads as teal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot source; always crafted"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candle emits light level 3"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting decoration",
+            "birthday cake topping",
+            "colored light source"
+          ],
+          "signal": "inferred",
+          "rationale": "core candle gameplay uses"
+        }
+      }
+    },
+    "minecraft:cyan_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin floor covering, primarily aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from cyan wool"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular floor decoration element"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "floor decor, layering, sculk suppression"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "wool texture, explicitly cyan dyed"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan maps to teal palette"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "non-full block prevents mob spawning"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "dampens_vibrations tag; wool flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "floor decoration",
+            "llama decoration",
+            "mob spawn prevention",
+            "vibration dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "core carpet gameplay uses"
+        }
+      }
+    },
+    "minecraft:cyan_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block used for construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "made from sand, gravel, and dye"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular building material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "solid construction block"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "uniform smooth texture, cyan dyed"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan concrete is teal-range"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "created by wetting concrete powder"
+        },
+        "primary_uses": {
+          "values": [
+            "colored construction",
+            "pixel art builds",
+            "modern interior design"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete gameplay uses"
+        }
+      }
+    },
+    "minecraft:cyan_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable gravity block"
+        },
+        "material_family": {
+          "value": "concrete_powder",
+          "signal": "pattern",
+          "rationale": "id suffix _concrete_powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from sand, gravel, cyan dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate step to concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to create concrete"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "grainy texture, cyan dyed"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan color with sand-like texture"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand and gravel"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cyan concrete",
+            "gravity building trick"
+          ],
+          "signal": "inferred",
+          "rationale": "core concrete powder uses"
+        }
+      }
+    },
+    "minecraft:cyan_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting ingredient for dyeing"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "id suffix _dye + dyes tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from blue+green or pitcher plant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when dyeing cyan items"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to color blocks and items"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-derived pigment, cyan color"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan dye is teal-range"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no direct loot; produced via recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing wool and glass",
+            "coloring beds and banners",
+            "firework star coloring",
+            "concrete powder crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "core dye gameplay uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

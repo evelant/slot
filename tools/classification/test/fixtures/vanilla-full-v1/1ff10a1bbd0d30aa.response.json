@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 107254,
+  "duration_api_ms": 107893,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cooked_mutton\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"mutton\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix = meat type\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"explicitly stated in component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid stats, easy sheep farming\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced via sheep husbandry\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooked animal food, no craft flair\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown/tan cooked meat texture\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\", \"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sheep drop raw mutton, overworld mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore 6 hunger, 9.6 saturation\",\n            \"feed tamed wolves\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"food stats + wolf_food tag\"\n        }\n      }\n    },\n    \"minecraft:cooked_porkchop\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"pork\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"porkchop id = pork material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"explicitly stated in component\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"highest saturation cooked food\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced via pig husbandry\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooked animal food\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-brown cooked pork tone\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\", \"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pigs drop porkchop; overworld mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore 8 hunger, 12.8 saturation\",\n            \"top-tier vanilla food source\",\n            \"piglins pick up and eat this\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"food stats + piglin_food tag\"\n        }\n      }\n    },\n    \"minecraft:cooked_rabbit\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix = meat type\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"explicitly stated in component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rabbits harder to farm than pigs/sheep\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from rabbit hunting/farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooked animal food\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown cooked meat tones\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\", \"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rabbits drop in overworld biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore 5 hunger, 6 saturation\",\n            \"key ingredient for rabbit stew\",\n            \"feed tamed wolves\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food stats + rabbit_stew recipe use\"\n        }\n      }\n    },\n    \"minecraft:cooked_salmon\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"salmon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix = fish type\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"explicitly stated in component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fishing less passive than land farming\"\n        },\n        \"activity\": {\n          \"values\": [\"fishing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary source is fishing/salmon mobs\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooked fish, natural food\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"salmon orange-pink coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"fishing\", \"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fished or dropped by salmon mobs\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore 6 hunger, 9.6 saturation\",\n            \"feed tamed wolves and cats\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"food stats + wolf_food/nautilus tags\"\n        }\n      }\n    },\n    \"minecraft:cookie\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food+consumable components present\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wheat is primary crafting ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"cocoa\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cocoa_beans are second ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"explicitly stated in component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"very low nutrition, rarely preferred\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from farmed wheat and cocoa\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple baked food item\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tan/brown baked biscuit tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"low-saturation snack food\",\n            \"fatal to parrots (avoid feeding)\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"parrot_poisonous_food tag + low stats\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "26ab45fb-e553-4f76-90d5-f770834af85c",
+  "total_cost_usd": 0.14001965,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3855,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8043,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3855,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8043,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3855,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3855
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2992,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003062,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8043,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3855,
+      "webSearchRequests": 0,
+      "costUSD": 0.13695765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "349d0520-b51f-4534-8bf9-2d18f8c5bc6a"
+}

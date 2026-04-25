@@ -1,0 +1,327 @@
+{
+  "items": {
+    "minecraft:crafting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive crafting station block"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "textured and crafted with oak planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially crafted from any wood planks"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used throughout entire playthrough"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple utilitarian wooden workbench"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak plank tones dominant"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block; burns; piston moves it"
+        },
+        "primary_uses": {
+          "values": [
+            "craft items and blocks",
+            "early-game essential station",
+            "ingredient for crafter block"
+          ],
+          "signal": "inferred",
+          "rationale": "universal crafting interface"
+        }
+      }
+    },
+    "minecraft:creaking_heart": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "spawns linked Creaking mob at night"
+        },
+        "material_family": {
+          "value": "pale_oak",
+          "signal": "inferred",
+          "rationale": "pale garden tree heart; pale oak material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found in pale garden biome only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use for Creaking mob spawning"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Creaking mob farm; pale garden builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "pale wood with supernatural spawning property"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "pale wood; glows orange when active"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns Creaking when active at night"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-type block"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn Creaking mobs at night",
+            "pale garden tree component",
+            "decorative pale-wood build block"
+          ],
+          "signal": "inferred",
+          "rationale": "unique biome-specific mob-spawning block"
+        }
+      }
+    },
+    "minecraft:creaking_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn eggs are utility items"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; no survival source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for mob farm setup or testing"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot table or recipe in survival"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mob farm setup; hostile mob testing"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn eggs are mob-specific colored variants"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "right-click spawns Creaking mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn Creaking mob on demand",
+            "mob farm or test setup"
+          ],
+          "signal": "inferred",
+          "rationale": "direct controlled mob spawning"
+        }
+      }
+    },
+    "minecraft:creeper_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "template consumed in loom to apply pattern"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "banner patterns are paper-substrate items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot source; crafted from paper+creeper head"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per creeper-pattern banner"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applies creeper face pattern to banners in loom"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "creeper face is ominous; one of many patterns"
+        },
+        "primary_uses": {
+          "values": [
+            "apply creeper face pattern to banner",
+            "loom pattern ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "single-purpose banner decoration item"
+        }
+      }
+    },
+    "minecraft:creeper_head": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "inferred",
+          "rationale": "rare mob head; displayed or worn as achievement"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "primarily placed as decorative trophy"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "trophy display; crafts banner pattern and fireworks"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "iconic ominous creeper face; mob-derived"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "green creeper skin with dark pixel spots"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:charged_creeper/creeper loot source",
+          "rationale": "charged creeper kill drops creeper head"
+        },
+        "primary_uses": {
+          "values": [
+            "display as mob trophy",
+            "craft creeper banner pattern",
+            "craft creeper firework star",
+            "wear on head"
+          ],
+          "signal": "inferred",
+          "rationale": "trophy with secondary crafting utility"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:crafting_table",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "village",
+        "crafted_only"
+      ],
+      "rationale": "Crafting tables generate in village structures",
+      "confidence": 0.8
+    },
+    {
+      "item": "minecraft:creaking_heart",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "Naturally generates in Pale Oak trees in Pale Garden biome",
+      "confidence": 0.9
+    },
+    {
+      "item": "minecraft:creeper_head",
+      "facet": "rarity",
+      "current": "uncommon",
+      "suggested": "rare",
+      "rationale": "Requires charged creeper to kill a creeper; very rare event",
+      "confidence": 0.8
+    }
+  ]
+}

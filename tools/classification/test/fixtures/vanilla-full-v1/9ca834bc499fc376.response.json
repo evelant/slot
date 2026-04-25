@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 122327,
+  "duration_api_ms": 124147,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:prismarine_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick block, structural ocean monument use\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires guardian drops to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-themed builds only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and decorative block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick variant with ocean aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prismarine teal, matte finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean monument style construction\", \"decorative ocean-themed builds\", \"crafting brick slabs and stairs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary block for ocean monument builds\"\n        }\n      }\n    },\n    \"minecraft:prismarine_crystals\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"direct mob drop, raw unprocessed form\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"guardian/elder guardian drop, needs monument\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used mainly for sea lanterns\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: sea lanterns for light/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean bioluminescent creature drop\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal crystal with luminescent quality\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting sea lanterns\", \"ocean guardian farm loot\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key ingredient for sea lanterns\"\n        }\n      }\n    },\n    \"minecraft:prismarine_shard\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw guardian mob drop, not further processed\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only from guardian/elder guardian drops\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed building prismarine blocks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: all prismarine construction blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean creature drop\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prismarine teal color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting prismarine blocks\", \"crafting dark prismarine\", \"crafting sea lanterns\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base ingredient for all prismarine variants\"\n        }\n      }\n    },\n    \"minecraft:prismarine_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab tag, structural half-block form\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from guardian-drop prismarine\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and decorative slab\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab variant with ocean aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prismarine teal color, matte finish\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs can be waterlogged in Minecraft\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height ocean-themed element\", \"prismarine floor and ceiling detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for elevation and detail variation\"\n        }\n      }\n    },\n    \"minecraft:prismarine_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs tag, structural stair form\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from guardian-drop prismarine\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and decorative stairs\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs variant with ocean aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"prismarine teal color, matte finish\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs can be waterlogged in Minecraft\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"prismarine staircase construction\", \"ocean monument style architecture\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for ocean monument style builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:prismarine_bricks\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"overworld_ocean\"],\n      \"rationale\": \"prismarine bricks generate naturally as part of ocean monument structures and can be mined directly\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "f67905dc-0ed2-47f1-ac35-f229f0c00971",
+  "total_cost_usd": 0.14693165,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4527,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8290,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4527
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8290,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4527,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4527,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3664,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003749,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8290,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4527,
+      "webSearchRequests": 0,
+      "costUSD": 0.14318265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "cca94546-c40a-4e3f-8a88-f5cd8f7d6dc5"
+}

@@ -1,0 +1,297 @@
+{
+  "items": {
+    "minecraft:green_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "panes used to build windows/barriers"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant sand/glass"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not every session"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored glass variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "green tinted translucent glass"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows and barriers",
+            "colored glass decoration",
+            "light filtering with tint"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glass pane uses"
+        }
+      }
+    },
+    "minecraft:green_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid dyed block for building"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from terracotta and dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in decorative builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored terracotta"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta has muted earthy palette"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building block",
+            "smelting into glazed terracotta",
+            "mesa-style builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard terracotta uses"
+        }
+      }
+    },
+    "minecraft:green_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural/decorative block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable from sheep or dyed"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in builds and crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "builds, carpets/beds, sculk dampening"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed natural animal material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "muted green wool texture"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "inferred",
+          "rationale": "wool burns; tag dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decorating",
+            "crafting carpets and beds",
+            "sculk vibration dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wool uses"
+        }
+      }
+    },
+    "minecraft:grindstone": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active block for repairs and disenchanting"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "crafted with stone slab; stone look"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe includes planks and sticks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly to repair/disenchant gear"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "removes enchants; weaponsmith job site"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional grinding device"
+        },
+        "palette": {
+          "values": [
+            "silver",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "stone grey appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "repair tools by combining",
+            "remove enchantments for XP",
+            "weaponsmith villager job site"
+          ],
+          "signal": "inferred",
+          "rationale": "grindstone mechanics"
+        }
+      }
+    },
+    "minecraft:guardian_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only admin items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources or recipes in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative only, not obtainable in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use only"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns guardian for combat scenarios"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "guardian teal/aqua coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning guardian mobs",
+            "mob farm setup",
+            "admin/creative testing"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

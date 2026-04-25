@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 305864,
+  "duration_api_ms": 306875,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:gray_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed dye; crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _dye\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when dyeing specific items\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to color wool, beds, fireworks\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye = explicitly colored item\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray = muted dark tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot; crafted from dyes/eyeblossom\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dyeing wool, beds, carpets gray\",\n            \"coloring firework stars\",\n            \"crafting gray concrete and glass\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sample_ingredient_of\"\n        }\n      }\n    },\n    \"minecraft:gray_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed pattern is primarily aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains glazed_terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds for aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"distinctive geometric glaze pattern\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray glaze, muted dark tones\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta not piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative patterned wall/floor block\",\n            \"color-matched build facades\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary aesthetic building use\"\n        }\n      }\n    },\n    \"minecraft:gray_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips on ghast to enable riding\"\n        },\n        \"dye_color\": {\n          \"value\": \"gray\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix gray_ + dye recipe exists\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized happy ghast riding\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables flying on happy ghasts\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed organic equippable item\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag happy_ghast_tempt_items\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports player via happy ghast\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"equip on happy ghast to ride it\",\n            \"flying exploration transport\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core harness mechanic\"\n        }\n      }\n    },\n    \"minecraft:gray_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"model item/template_shulker_box\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires End shulker shells + dye\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core portable storage post-End\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary inventory/logistics use\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"color variant of shulker box\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray coloring\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable 27-slot inventory container\",\n            \"color-coded storage organization\",\n            \"labeled logistics box system\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker box primary uses\"\n        }\n      }\n    },\n    \"minecraft:gray_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"color is primary reason vs plain glass\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for decorative windows\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored windows in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stained = explicitly colored variant\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"translucent\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray semi-transparent glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colored decorative windows\",\n            \"light filtering in builds\",\n            \"crafting gray stained glass panes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sample_ingredient_of + common use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"environmental_property\",\n      \"value\": \"mob_swallowable\",\n      \"rationale\": \"gray_glazed_terracotta carries tag minecraft:sulfur_cube_swallowable, implying a mob can consume or interact with it as a block; no existing environmental_property value covers block-consumption by mobs\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a8667f8e-5cea-4b0e-993d-baaefaa5a254",
+  "total_cost_usd": 0.37959265,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4583,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 23784,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4583,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 23784,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4583,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4583
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3720,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0037900000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 23784,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4583,
+      "webSearchRequests": 0,
+      "costUSD": 0.37580264999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "cde435e3-340d-4976-898a-019e5d0f04cd"
+}

@@ -1,0 +1,312 @@
+{
+  "items": {
+    "minecraft:light_gray_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed from flowers/mixed dyes"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "id ends in _dye"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component asserts common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "19 recipes consume it"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to dye wool/glass/armor/beds"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 dye colors"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray is soft and desaturated"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "azure bluet/oxeye daisy; also mixed"
+        },
+        "primary_uses": {
+          "values": [
+            "dye wool, glass, concrete, beds",
+            "color leather armor",
+            "firework star coloring",
+            "craft colored blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe_consumption shows broad dye use"
+        }
+      }
+    },
+    "minecraft:light_gray_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "glazed pattern is primarily aesthetic"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix glazed_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component asserts common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative/patterned building block"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "dye color + intricate glazed pattern"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray is soft desaturated tone"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative walls and floors",
+            "patterned building exterior",
+            "interior decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "typical glazed terracotta uses"
+        }
+      }
+    },
+    "minecraft:light_gray_harness": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "equip on happy ghast to enable riding"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "signal": "pattern",
+          "rationale": "id prefix + minecraft:harnesses tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable, no special drops needed"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when flying via happy ghast"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "harness enables ghast flight/riding"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeable in 16 colors"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; produced by crafting"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:happy_ghast_tempt_items",
+          "rationale": "tempts happy ghasts when held"
+        },
+        "primary_uses": {
+          "values": [
+            "equip on happy ghast for riding",
+            "tempt happy ghasts when held",
+            "dyeable for color-coding ghasts"
+          ],
+          "signal": "inferred",
+          "rationale": "harness + tempt tag together"
+        }
+      }
+    },
+    "minecraft:light_gray_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "retains contents when broken/carried"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "base shulker box requires shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End progression + shulker kills"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core portable storage item for late game"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable inventory management"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 dye colors"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray desaturated tone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "primary_uses": {
+          "values": [
+            "portable storage with persistent contents",
+            "color-coded inventory organization",
+            "bulk item transport between locations"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker box core functions"
+        }
+      }
+    },
+    "minecraft:light_gray_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural transparent building material"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id suffix stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component asserts common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for windows and decoration"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colored transparent building material"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 stained glass colors"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent light gray glass"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows and skylights",
+            "light-filtering decoration",
+            "transparent building material"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stained glass uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

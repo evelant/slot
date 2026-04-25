@@ -70,12 +70,43 @@ const EXPLICIT_FUEL_SUFFIXES = [
   "_banner", "_sapling", "_wool", "_carpet", "_bed",
 ];
 
+/**
+ * Nether woods (crimson, warped, and their stripped variants) carry the
+ * `minecraft:non_flammable_wood` tag in vanilla; furnaces won't accept them
+ * as fuel even though they share other plank/log shape tags. Vanilla v1
+ * canary surfaced 8 false-positives (crimson/warped buttons, doors, fences,
+ * fence_gates) because the wood-prefix + shape-suffix check fired without
+ * checking flammability.
+ */
+const NON_FLAMMABLE_PREFIXES = [
+  "crimson_",
+  "warped_",
+  "stripped_crimson_",
+  "stripped_warped_",
+];
+
 export const isFuelRule: Rule = {
   id: "is_fuel",
   facets: ["is_fuel"],
   run({ record }) {
     const tags = new Set(record.minecraft_tags);
     const path = record.path;
+
+    if (
+      tags.has("minecraft:non_flammable_wood") ||
+      NON_FLAMMABLE_PREFIXES.some((p) => path.startsWith(p))
+    ) {
+      return [
+        {
+          facet: "is_fuel",
+          kind: "single",
+          value: false,
+          source: "rule:is_fuel_non_flammable_wood",
+          confidence: 1,
+          rationale: "nether wood — non-flammable",
+        },
+      ];
+    }
 
     const isFuel =
       tags.has(PLANKS_TAG) ||

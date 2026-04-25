@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 239210,
+  "duration_api_ms": 240348,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:obsidian\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural use: portals, blast walls\"\n        },\n        \"material_family\": {\n          \"value\": \"obsidian\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = obsidian\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond pickaxe to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for key structures, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as blast-resistant structure\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no frills volcanic glass block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep black matte surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_max\", \"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"1200 blast res; piston-immovable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building nether portals\",\n            \"crafting enchanting tables\",\n            \"crafting beacons and ender chests\",\n            \"blast-resistant construction\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"known portal and crafting uses\"\n        }\n      }\n    },\n    \"minecraft:ocelot_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in vanilla survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used in creative/admin contexts\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal mob spawn egg\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocelot egg is yellow-brown spotted\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawning ocelots in creative\",\n            \"map making and adventure maps\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative admin tool to place ocelots\"\n        }\n      }\n    },\n    \"minecraft:ochre_froglight\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative glowing pillar block\"\n        },\n        \"material_family\": {\n          \"value\": \"froglight\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _froglight\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"frogs must eat magma cubes in nether\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative light source\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used as glowing decor in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biologically produced by frogs\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\", \"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ochre tones; emits light level 15\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light level 15\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"warm-toned decorative light source\",\n            \"nether-themed building\",\n            \"pillar or column decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic glowing block from frogs\"\n        }\n      }\n    },\n    \"minecraft:ominous_bottle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:consumable with animation:drink\",\n          \"rationale\": \"drinkable per consumable component\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational, for ominous events\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to trigger ominous raids/trials\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"named\",\n          \"evidence\": \"display_name = Ominous Bottle\",\n          \"rationale\": \"explicitly ominous\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ominous purple-dark with eerie glow\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"applying Bad Omen effect\",\n            \"triggering ominous trial events\",\n            \"escalating trial chamber difficulty\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed to obtain Bad Omen\"\n        }\n      }\n    },\n    \"minecraft:ominous_trial_key\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"key to open ominous vault blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only drops from ominous trial spawners\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per vault per player\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in trial chambers to unlock vaults\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"named\",\n          \"evidence\": \"display_name = Ominous Trial Key\",\n          \"rationale\": \"explicitly ominous in name\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark key with ominous particle glow\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"signal\": \"pattern\",\n          \"evidence\": \"loot: minecraft:spawners/ominous/trial_chamber/key\",\n          \"rationale\": \"from ominous trial spawners\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"unlocking ominous vault blocks\",\n            \"accessing rare trial chamber loot\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key for ominous vaults\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:obsidian\",\n      \"facet\": \"origin\",\n      \"current\": [\"bastion\", \"nether_fortress\", \"ruined_portal\", \"trading\", \"village\"],\n      \"suggested\": [\"bastion\", \"nether_fortress\", \"ruined_portal\", \"trading\", \"village\", \"overworld_cave\"],\n      \"rationale\": \"Obsidian forms naturally where lava meets water in overworld caves; loot-table scan misses natural generation\",\n      \"confidence\": 0.9\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "5e0b496a-af20-456b-9522-46d3abb4a766",
+  "total_cost_usd": 0.29893115,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3669,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 18696,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3669
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 18696,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3669,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3669,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2806,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002876,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 18696,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3669,
+      "webSearchRequests": 0,
+      "costUSD": 0.29605515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7342b3f4-e80a-4fd6-99ac-647e35657140"
+}

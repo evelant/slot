@@ -1,0 +1,331 @@
+{
+  "items": {
+    "minecraft:orange_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin wool block, primary use is aesthetics"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially crafted from orange wool"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when decorating themed builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor/ceiling decor; llama outfit"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool variant"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange tone reads amber/warm"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "piston_movable"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:dampens_vibrations",
+          "rationale": "dampens vibrations tag = sculk silent"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "mobs cannot spawn on carpet blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "floor and ceiling decoration",
+            "dampens sculk sensor vibrations",
+            "decorating llamas",
+            "dyeing into other carpet colors"
+          ],
+          "signal": "inferred",
+          "rationale": "core carpet gameplay uses"
+        }
+      }
+    },
+    "minecraft:orange_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid full cube, primary use is construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id suffix _concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily made from concrete powder + water"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular vibrant building material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block used for construction"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth solid colored block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange reads as amber/warm"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made by wetting powder; not naturally generated"
+        },
+        "primary_uses": {
+          "values": [
+            "vibrant colored construction",
+            "interior design accent block",
+            "pixel art building"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of concrete blocks"
+        }
+      }
+    },
+    "minecraft:orange_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block; intermediate for concrete"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains concrete_powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from dye + sand + gravel"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate step toward concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed and hydrated to make concrete"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed powder block variant"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "orange powder texture reads sandy/warm"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand/gravel"
+        },
+        "primary_uses": {
+          "values": [
+            "converting to orange concrete via water",
+            "gravity-affected building material"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of concrete powder"
+        }
+      }
+    },
+    "minecraft:orange_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed dye ingredient for crafting"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "id suffix _dye; tag minecraft:dyes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common overworld flowers"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when dyeing or crafting orange items"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "dyes items; trade commodity"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "purely a color material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dye reads amber/warm"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from orange tulip/torchflower; wandering traders sell dyes"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing wool, carpet, glass, terracotta",
+            "coloring leather armor",
+            "crafting firework stars",
+            "dyeing beds and banners"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream uses from recipe data"
+        }
+      }
+    },
+    "minecraft:orange_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "patterned block, primarily aesthetic"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains glazed_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "smelted from common terracotta"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block for themed builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "patterned block for decorative builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive angular glazed pattern"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange glazed terracotta reads amber/warm"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta not pushed/pulled by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative patterned wall/floor block",
+            "mosaic and pixel art builds",
+            "themed building decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of glazed terracotta"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

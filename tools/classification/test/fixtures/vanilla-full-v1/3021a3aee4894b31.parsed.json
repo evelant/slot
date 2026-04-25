@@ -1,0 +1,274 @@
+{
+  "items": {
+    "minecraft:ancient_debris": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw nether ore block, smelted into scrap"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "smelts→netherite_scrap→netherite ingot"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "raw precursor to netherite tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "deep nether, needs diamond tool, scarce"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected in bursts for upgrades"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "named",
+          "rationale": "display_name contains 'Ancient'"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark brown nether ore texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "blast_resistant_high"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant #minecraft:is_fire",
+          "rationale": "item immune to fire; block blast res 1200"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into netherite scrap",
+            "netherite tier progression"
+          ],
+          "signal": "inferred",
+          "rationale": "sole gameplay purpose"
+        }
+      }
+    },
+    "minecraft:andesite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone variant used for structures"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "generates widely in overworld blobs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building with stone"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary end-use is construction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "natural stone, unadorned appearance"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-gray stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decoration",
+            "craft/cut andesite variants"
+          ],
+          "signal": "inferred",
+          "rationale": "structural base and crafting feed"
+        }
+      }
+    },
+    "minecraft:andesite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form used for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant andesite"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs very common in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "slab variant of base andesite"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-gray stone"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height building detail",
+            "roofing and flooring"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab usage"
+        }
+      }
+    },
+    "minecraft:andesite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant andesite"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs very common in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "stair variant of base andesite"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-gray stone"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "architectural trim"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair usage"
+        }
+      }
+    },
+    "minecraft:andesite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant andesite"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls used less than slabs/stairs"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "wall variant of base andesite"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "mid-gray stone"
+        },
+        "primary_uses": {
+          "values": [
+            "fence/barrier construction",
+            "decorative wall trim"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall usage"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:andesite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "overworld_cave"
+      ],
+      "rationale": "Andesite generates naturally in overworld blobs; crafted_only is incorrect",
+      "confidence": 0.95
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 112808,
+  "duration_api_ms": 113459,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:ancient_debris\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw nether ore block, smelted into scrap\"\n        },\n        \"material_family\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"smelts→netherite_scrap→netherite ingot\"\n        },\n        \"tier\": {\n          \"value\": \"netherite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw precursor to netherite tier\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep nether, needs diamond tool, scarce\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collected in bursts for upgrades\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"named\",\n          \"rationale\": \"display_name contains 'Ancient'\"\n        },\n        \"palette\": {\n          \"values\": [\"netherite_dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark brown nether ore texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\", \"blast_resistant_high\"],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:damage_resistant #minecraft:is_fire\",\n          \"rationale\": \"item immune to fire; block blast res 1200\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt into netherite scrap\", \"netherite tier progression\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole gameplay purpose\"\n        }\n      }\n    },\n    \"minecraft:andesite\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone variant used for structures\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates widely in overworld blobs\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when building with stone\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary end-use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural stone, unadorned appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-gray stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building and decoration\", \"craft/cut andesite variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural base and crafting feed\"\n        }\n      }\n    },\n    \"minecraft:andesite_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form used for construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant andesite\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs very common in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is building\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab variant of base andesite\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-gray stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height building detail\", \"roofing and flooring\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab usage\"\n        }\n      }\n    },\n    \"minecraft:andesite_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair form for construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant andesite\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs very common in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is building\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stair variant of base andesite\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-gray stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircase construction\", \"architectural trim\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stair usage\"\n        }\n      }\n    },\n    \"minecraft:andesite_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form for construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant andesite\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"walls used less than slabs/stairs\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is building\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wall variant of base andesite\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mid-gray stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fence/barrier construction\", \"decorative wall trim\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wall usage\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:andesite\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\", \"overworld_cave\"],\n      \"rationale\": \"Andesite generates naturally in overworld blobs; crafted_only is incorrect\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c6f6bfd4-d490-4ba6-afdc-65e1bd61367c",
+  "total_cost_usd": 0.14656339999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4920,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8142,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4920,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8142,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4920,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4920
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4057,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004127,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8142,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4920,
+      "webSearchRequests": 0,
+      "costUSD": 0.1424364,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "5c91bf8b-aa23-40c1-93fd-887889eaafaa"
+}

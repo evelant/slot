@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 72903,
+  "duration_api_ms": 73829,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:polished_blackstone_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form is structural element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative wall, used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"walls serve structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"polished brick variant of blackstone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone near-black matte texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative and structural walls\", \"nether-aesthetic border detail\", \"castle or fortress styling\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form primary uses\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"cube_all model, bricks = structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base block for full variant family\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"processed polished brick variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone near-black matte texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-aesthetic building\", \"crafting slab/stair/wall variants\", \"decorative brick structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bricks build and feed variant recipes\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:buttons = redstone input\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed when redstone pulse needed\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"buttons emit momentary redstone signal\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stone button variant in blackstone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone dark matte appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"momentary redstone pulse\", \"door or gate activation\", \"redstone circuit input\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard button uses\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"pressure_plate model = redstone input\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed when mob/player trigger needed\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"pressure plates emit redstone signal\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stone pressure plate in blackstone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone dark matte appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"player/mob-triggered redstone\", \"door or trapdoor activation\", \"trap or counter mechanism\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard pressure plate uses\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:slabs = structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs heavily used in building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used for floors, roofs, detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab variant of polished blackstone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone dark matte appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height floor or roof layer\", \"decorative stair step detail\", \"nether-style build finishing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab building uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "8606eb01-6501-4e0a-b6f6-9dd39785c811",
+  "total_cost_usd": 0.11792214999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5325,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 6104,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 5325
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 6104,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5325,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 5325,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4462,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004537,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 6104,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5325,
+      "webSearchRequests": 0,
+      "costUSD": 0.11338514999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "dcf6ffcc-897a-43d6-a0e3-177a0cf07b38"
+}

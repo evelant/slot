@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 264141,
+  "duration_api_ms": 265217,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:yellow_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Glass block used to build windows/walls\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from sand+dye, easily obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in specific aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed for windows and colored walls\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stained = dye-colored glass\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Yellow glass: vivid and translucent\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building colored windows\", \"decorating structures\", \"crafting yellow glass panes\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Common stained glass uses\"\n        }\n      }\n    },\n    \"minecraft:yellow_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Pane form for windows and structures\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from stained glass; ruins find\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in specific aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed for windows/colored walls\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stained/colored glass\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Yellow glass is vivid and translucent\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Glass panes are waterloggable blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building window frames\", \"decorating with colored glass\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary glass pane uses\"\n        }\n      }\n    },\n    \"minecraft:yellow_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Solid colored block for building\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends in _terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted+dye; also badlands natural gen\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed as colored structural block\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dyed terracotta\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Yellow terracotta has warm earthy tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building badlands-themed structures\", \"earthy colored decoration\", \"crafting glazed terracotta\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary terracotta uses\"\n        }\n      }\n    },\n    \"minecraft:yellow_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wool block for building/decorating\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Sheep are farmable, easily obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for beds, carpets, builds regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Block + crafts into beds/carpets\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Dyed animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Yellow wool is vivid yellow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"sculk_silent\"],\n          \"signal\": \"named\",\n          \"rationale\": \"Dampens_vibrations tag; wool burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting beds and carpets\", \"building colored structures\", \"sound dampening builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core wool gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:zoglin_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Creative-only mob spawner item\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"Spawn eggs unobtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Not obtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Rarely used even in creative\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Spawn egg spawns its linked mob type\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"One of many spawn egg variants\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning zoglins in creative mode\", \"mob testing and map-making\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Spawn egg use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:yellow_terracotta\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"overworld_surface\"],\n      \"rationale\": \"Yellow terracotta naturally generates in badlands\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "31c2b59a-7ac7-49b7-b72c-a5005cca08ac",
+  "total_cost_usd": 0.30218715,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4405,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 18680,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4405,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 18680,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4405,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4405
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3542,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003612,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 18680,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4405,
+      "webSearchRequests": 0,
+      "costUSD": 0.29857515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c1ba418a-e472-4e7d-b7c7-502fcf2af4fd"
+}

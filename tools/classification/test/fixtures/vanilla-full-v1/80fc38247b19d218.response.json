@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 72562,
+  "duration_api_ms": 73623,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:dead_fire_coral_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid cube; used in ocean-themed structures\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _coral_block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean aesthetic block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block used in builds and ocean decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead variant of natural coral\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is desaturated gray-white\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean-themed building\", \"pale gray decorative block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases for dead coral block\"\n        }\n      }\n    },\n    \"minecraft:dead_fire_coral_fan\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat fan shape; purely aesthetic placement\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains coral_fan\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean decor item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat coral fan; purely decorative\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead variant of natural coral fan\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is pale desaturated gray\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral fans can be placed in water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean floor decoration\", \"underwater scene dressing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases for dead coral fan\"\n        }\n      }\n    },\n    \"minecraft:dead_horn_coral\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small plant form; purely aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains horn_coral\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean decor item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small coral plant; purely decorative\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead variant of natural horn coral\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is pale desaturated gray\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral plants can be placed in water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean floor decoration\", \"underwater scene dressing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases for dead coral plant\"\n        }\n      }\n    },\n    \"minecraft:dead_horn_coral_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid cube; used in ocean-themed structures\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _coral_block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean aesthetic block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block used in builds and ocean decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead variant of natural horn coral\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is desaturated gray-white\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean-themed building\", \"pale gray decorative block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases for dead coral block\"\n        }\n      }\n    },\n    \"minecraft:dead_horn_coral_fan\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat fan shape; purely aesthetic placement\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains coral_fan\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean decor item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat coral fan; purely decorative\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead variant of natural horn coral fan\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dead coral is pale desaturated gray\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral reefs in warm ocean biomes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral fans can be placed in water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean floor decoration\", \"underwater scene dressing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases for dead coral fan\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "1b74ee30-2bc7-40d7-8069-5cded2190310",
+  "total_cost_usd": 0.10388264999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3443,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 5764,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3443,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 5764,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3443,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3443
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2580,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002655,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 5764,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3443,
+      "webSearchRequests": 0,
+      "costUSD": 0.10122764999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "22d60598-97a2-4228-92b6-76fd00b1b81e"
+}

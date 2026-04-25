@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 201366,
+  "duration_api_ms": 202300,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:fox_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only mob spawner item\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unobtainable in survival without commands\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used occasionally for mob setup\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob farm or animal pen setup\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"represents an animal\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"right-click use spawns a fox\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn fox mob in creative\", \"creative mob farm setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function is fox spawning\"\n        }\n      }\n    },\n    \"minecraft:friend_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brushed raw from archaeology site as-is\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag decorated_pot_ingredients confirms use\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact with engraved motif\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fired ceramic clay appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"pattern decorated pots\", \"archaeology collectible\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorated pot crafting\"\n        }\n      }\n    },\n    \"minecraft:frog_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only mob spawner item\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unobtainable in survival without commands\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used occasionally for mob setup\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"froglight farm setup via frog spawning\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"represents an animal\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"right-click use spawns a frog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn frog mob in creative\", \"froglight farm setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core function is frog spawning\"\n        }\n      }\n    },\n    \"minecraft:frogspawn\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"biologically laid by frogs; raw world block\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hatches tadpoles; swamp build deco\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"biological wildlife element\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"semi-transparent egg mass, brown tones\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"frogs lay in swamp/mangrove surface water\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block hatches into tadpoles\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"hatch tadpoles for frog farms\", \"swamp/mangrove decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produces tadpoles when hatched\"\n        }\n      }\n    },\n    \"minecraft:furnace\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active smelting and cooking device\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from 8 cobblestone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially craftable, found in villages\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core progression block used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelts ores, cooks food, auto-smelters\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"utilitarian stone processing device\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark cobblestone/brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt ores and raw materials\", \"cook food items\", \"craft blast furnace and smoker\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core smelting block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:fox_spawn_egg\",\n      \"facet\": \"is_creative_only\",\n      \"current\": null,\n      \"suggested\": true,\n      \"rationale\": \"vanilla spawn eggs are creative-only in survival\",\n      \"confidence\": 0.95\n    },\n    {\n      \"item\": \"minecraft:frog_spawn_egg\",\n      \"facet\": \"is_creative_only\",\n      \"current\": null,\n      \"suggested\": true,\n      \"rationale\": \"vanilla spawn eggs are creative-only in survival\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c86bad31-54f9-4014-99ee-089d41b944e5",
+  "total_cost_usd": 0.21450814999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3361,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13165,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3361,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13165,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3361,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3361
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2498,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0025729999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13165,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3361,
+      "webSearchRequests": 0,
+      "costUSD": 0.21193515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ef071f7a-5ac8-4591-8af8-cb8b8a27fbf0"
+}

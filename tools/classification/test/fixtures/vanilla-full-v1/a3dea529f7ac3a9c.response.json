@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 194900,
+  "duration_api_ms": 196146,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:sticky_piston\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-driven block-moving device\"\n        },\n        \"material_family\": {\n          \"value\": \"cobblestone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"4 cobblestone dominate the recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\", \"iron\", \"slime\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks + iron ingot + slime in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core piston activity is redstone/automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical redstone device\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden face, stone-and-iron body\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"push and pull blocks with redstone\",\n            \"redstone automation mechanisms\",\n            \"moving-block traps and doors\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sticky piston gameplay\"\n        }\n      }\n    },\n    \"minecraft:stone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is structural building\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"most common underground block\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used constantly for building/crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"built with + stonecutting to variants\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic natural-looking stone block\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat gray stone texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_low\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blast resistance 6 in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"structural building material\",\n            \"stonecutter input for variants\",\n            \"craft comparators and repeaters\",\n            \"smelt to smooth stone\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core stone use cases\"\n        }\n      }\n    },\n    \"minecraft:stone_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_axe suffix + tool component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard early-game tool\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chops wood + explicit weapon component\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic stone tool aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray stone head, brown handle\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"chop and strip wood faster\",\n            \"melee combat weapon\",\n            \"break wooden structures\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axe gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:stone_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab is a structural building element\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stone_brick_slab -> stone family\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavily used in building projects\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stone brick appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray stone brick texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_low\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-based moderate blast resistance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height structural element\",\n            \"decorative architecture detail\",\n            \"craft chiseled stone bricks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab use cases\"\n        }\n      }\n    },\n    \"minecraft:stone_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs are structural building elements\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stone_brick_stairs -> stone family\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavily used in building projects\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stone brick appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray stone brick texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_low\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-based moderate blast resistance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building staircases\",\n            \"decorative facades and rooflines\",\n            \"terrain navigation\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:stone\",\n      \"facet\": \"origin\",\n      \"current\": [\"village\"],\n      \"suggested\": [\"overworld_cave\", \"overworld_surface\", \"village\"],\n      \"rationale\": \"stone generates throughout the overworld; village is supplementary loot only\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "9bf2c144-5063-469b-bb13-1605c81b045a",
+  "total_cost_usd": 0.2232939,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 11093,
+    "output_tokens": 14387,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14387,
+        "cache_read_input_tokens": 11093,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4072,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004152,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14387,
+      "cacheReadInputTokens": 11093,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.2191419,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d99af040-635f-4e3b-a713-df878f90fde3"
+}

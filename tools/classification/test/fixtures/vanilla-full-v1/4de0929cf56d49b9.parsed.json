@@ -1,0 +1,309 @@
+{
+  "items": {
+    "minecraft:lilac": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed tall flower collected raw"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flowering plant, no refining"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "birch/dark oak forest biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "needed for magenta dye or decor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decor; bee_food for bee farms"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "tall wildflower with distinct purple hue"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "lilac is purple-violet"
+        },
+        "primary_uses": {
+          "values": [
+            "craft magenta dye",
+            "garden/build decoration",
+            "bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "dye recipe + decor + bee_food tag"
+        }
+      }
+    },
+    "minecraft:lily_of_the_valley": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed small flower from world"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "small flower, no processing"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "flower forest biome only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "white dye or suspicious stew, situational"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "decor + bee_food tag for bee farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "small white wildflower"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white small flower"
+        },
+        "primary_uses": {
+          "values": [
+            "craft white dye",
+            "craft suspicious stew",
+            "garden decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "dye + stew recipes + decor"
+        }
+      }
+    },
+    "minecraft:lily_pad": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "no crafting use; placed on water for aesthetics"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "aquatic plant block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common water plant + fishing junk"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational water decor or traversal"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "water surface deco; crossing water"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic plant, no processing"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green floating pad"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate water surfaces",
+            "cross water without swimming"
+          ],
+          "signal": "inferred",
+          "rationale": "water decor + traversal aid"
+        }
+      }
+    },
+    "minecraft:lime_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are primarily decorative"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "pattern",
+          "rationale": "banner recipe uses wool"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "pattern",
+          "rationale": "stick in banner recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from early-game materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for marking or decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall decor, location marking"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "lime dye; empty pattern list"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "lime = light green"
+        },
+        "primary_uses": {
+          "values": [
+            "wall/ceiling decoration",
+            "mark locations/waypoints",
+            "decorate shields"
+          ],
+          "signal": "inferred",
+          "rationale": "decor + shield_decoration recipe"
+        }
+      }
+    },
+    "minecraft:lime_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sleep, skip night, set respawn point"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "pattern",
+          "rationale": "bed recipe uses wool"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "pattern",
+          "rationale": "planks in bed recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "early-game craftable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every night cycle"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "skip night; set respawn for exploration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "lime dye color variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "lime = light green"
+        },
+        "primary_uses": {
+          "values": [
+            "sleep to skip night",
+            "set respawn point",
+            "bedroom decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core sleep mechanic + decor"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:lily_pad",
+      "facet": "origin",
+      "current": [
+        "fishing"
+      ],
+      "suggested": [
+        "fishing",
+        "overworld_surface"
+      ],
+      "rationale": "lily pads spawn naturally on overworld water; loot table minecraft:blocks/lily_pad confirms world origin",
+      "confidence": 0.95
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 160750,
+  "duration_api_ms": 161515,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:nautilus_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only admin items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot source, no recipe; creative only\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in survival without commands\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche admin or creative use only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"represents a natural aquatic mob\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nautilus shell: teal and brown tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn nautilus mob in world\", \"creative/admin mob testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg function\"\n        }\n      }\n    },\n    \"minecraft:nether_brick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted intermediate crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id matches material name exactly\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable via bartering or smelting netherrack\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed when building nether brick structures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream uses are building blocks/fences\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic crafting material, no embellishment\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark reddish-brown nether texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft nether bricks block\",\n            \"craft nether brick fence\",\n            \"craft red nether bricks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"confirmed by sample_ingredient_of\"\n        }\n      }\n    },\n    \"minecraft:nether_brick_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence is a structural barrier block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from common nether materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in nether-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural fence for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether-themed variant of fence family\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark reddish nether brick coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"nether-themed fencing and barriers\",\n            \"nether fortress aesthetic builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence block use in nether context\"\n        }\n      }\n    },\n    \"minecraft:nether_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab is a structural half-block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable and stonecuttable from nether bricks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in nether-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural slab for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether-themed slab variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark reddish nether brick coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"nether-themed half-block construction\",\n            \"decorative nether build detailing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab use cases\"\n        }\n      }\n    },\n    \"minecraft:nether_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs are structural building blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable and stonecuttable from nether bricks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in nether-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural stair block for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether-themed stair variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark reddish nether brick coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"nether-themed stairways\",\n            \"nether fortress architectural details\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stair block use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b82175af-c22c-4f00-8a63-6bdeb273358b",
+  "total_cost_usd": 0.1857219,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4326,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10940,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4326
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10940,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4326,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4326,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3463,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003543,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10940,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4326,
+      "webSearchRequests": 0,
+      "costUSD": 0.1821789,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4cf3f3bf-e8d1-48fb-85cc-c7738bc51397"
+}

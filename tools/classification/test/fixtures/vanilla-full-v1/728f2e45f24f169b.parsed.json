@@ -1,0 +1,268 @@
+{
+  "items": {
+    "minecraft:angler_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeological collectible for decorated pots"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "tag decorated_pot_ingredients"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "found via archaeology"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay pottery coloring"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorated pot use"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "archaeology collectible"
+          ],
+          "signal": "pattern",
+          "rationale": "tag decorated_pot_ingredients; archaeology loot"
+        }
+      }
+    },
+    "minecraft:anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive repair/enchant/rename block"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "crafted from iron blocks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "costs ~31 iron ingots to craft"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "combines and repairs enchanted items"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial iron tool block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls when block below removed"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core mid/late-game utility block"
+        },
+        "primary_uses": {
+          "values": [
+            "repairing tools and armor",
+            "combining enchantments",
+            "renaming items"
+          ],
+          "signal": "inferred",
+          "rationale": "core anvil mechanics"
+        }
+      }
+    },
+    "minecraft:apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "component minecraft:consumable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "drops from leaves, found in village chests"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "tag horse_food; animal husbandry use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fruit item"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "red and green apple coloring"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "basic food consumed regularly"
+        },
+        "primary_uses": {
+          "values": [
+            "eating for hunger restoration",
+            "feeding horses",
+            "crafting golden apple"
+          ],
+          "signal": "inferred",
+          "rationale": "food component; horse_food tag; golden_apple recipe"
+        }
+      }
+    },
+    "minecraft:archer_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeological collectible for decorated pots"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "tag decorated_pot_ingredients"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "found via archaeology"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay pottery coloring"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorated pot use"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "archaeology collectible"
+          ],
+          "signal": "pattern",
+          "rationale": "tag decorated_pot_ingredients; archaeology loot"
+        }
+      }
+    },
+    "minecraft:armadillo_scute": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw drop from brushed/shedding armadillos"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "armadillos shed scutes regularly"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "crafts wolf armor for combat pets"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural animal material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "armadillo brown/tan coloring"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for wolf armor crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting wolf armor",
+            "repairing wolf armor"
+          ],
+          "signal": "pattern",
+          "rationale": "tag repairs_wolf_armor; wolf_armor recipe"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:armadillo_scute",
+      "facet": "origin",
+      "current": [
+        "archaeology_site"
+      ],
+      "suggested": [
+        "mob_drop"
+      ],
+      "rationale": "Loot from mob brush/shed, not archaeology",
+      "confidence": 0.95
+    }
+  ]
+}

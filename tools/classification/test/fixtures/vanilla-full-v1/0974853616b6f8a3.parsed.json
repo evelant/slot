@@ -1,0 +1,291 @@
+{
+  "items": {
+    "minecraft:cactus_flower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant harvested from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "rarity component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used mainly as pink dye source"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bee food + dye/flower placement"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-origin flower item"
+        },
+        "palette": {
+          "values": [
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "pink/coral cactus bloom"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grows on cacti in desert biome"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:bee_food",
+          "rationale": "bees attracted to bee_food flowers"
+        },
+        "primary_uses": {
+          "values": [
+            "craft pink dye",
+            "bee food and pollination",
+            "placed as decorative flower"
+          ],
+          "signal": "inferred",
+          "rationale": "dye ingredient + bee + decor"
+        }
+      }
+    },
+    "minecraft:cake": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "food eaten in slices after placing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "rarity component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "resource-heavy; not an everyday food"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard vanilla food aesthetic"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "white frosting, warm baked tones"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:panda_eats_from_ground",
+          "rationale": "pandas attracted to dropped cake"
+        },
+        "primary_uses": {
+          "values": [
+            "feed player (7 hunger slices)",
+            "feed and attract pandas",
+            "birthday celebration decor"
+          ],
+          "signal": "inferred",
+          "rationale": "food + panda tag + celebratory use"
+        }
+      }
+    },
+    "minecraft:calcite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full-cube stone used for structure/decor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only in amethyst geode outer shells"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche pale stone building choice"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "light stone for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural geological stone"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale white/cream stone texture"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "amethyst geode shell, underground"
+        },
+        "primary_uses": {
+          "values": [
+            "pale building/decorative material",
+            "amethyst geode shell accent block"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stone found in geodes"
+        }
+      }
+    },
+    "minecraft:calibrated_sculk_sensor": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "filtered vibration-to-redstone output"
+        },
+        "material_family": {
+          "value": "sculk",
+          "signal": "inferred",
+          "rationale": "sculk-family sensor block"
+        },
+        "material_secondary": {
+          "values": [
+            "amethyst"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted with amethyst shards"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs deep dark sculk + amethyst"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized redstone/automation use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "vibration detection for circuits"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "sculk aesthetic, deep dark origin"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark sculk with teal emissive glow"
+        },
+        "primary_uses": {
+          "values": [
+            "filtered vibration detection",
+            "precise redstone signal output",
+            "sound-triggered automation"
+          ],
+          "signal": "inferred",
+          "rationale": "calibrated frequency sensing"
+        }
+      }
+    },
+    "minecraft:camel_husk_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative/admin-only items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot table or recipe; spawn egg pattern"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "no survival obtain method"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only to spawn specific mob"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg pattern: spawns named mob on use"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn camel husk mob (creative/admin)"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose of a spawn egg"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "spawn_interaction",
+      "value": "swallowable_by_mob",
+      "rationale": "Tag minecraft:sulfur_cube_swallowable on calcite (and similar blocks) indicates a mob can physically ingest/swallow the block. No existing spawn_interaction value covers block-ingestion by a mob; attracts_mobs and mob_transport are both wrong in meaning."
+    }
+  ],
+  "corrections": []
+}

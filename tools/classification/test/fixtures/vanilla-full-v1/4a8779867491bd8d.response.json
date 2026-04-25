@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 119514,
+  "duration_api_ms": 120249,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:ice\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable block; ice roads, structures\"\n        },\n        \"material_family\": {\n          \"value\": \"ice\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is ice\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity: common\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational; ice roads, packed ice\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ice roads for boat/player speed\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural frozen biome material\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale blue-white, semi-transparent\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"frozen lakes/rivers in cold biomes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"slippery\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ice has very low friction (0.98)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building ice roads for speed travel\",\n            \"crafting packed ice\",\n            \"water source when melted\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top player use cases\"\n        }\n      }\n    },\n    \"minecraft:infested_chiseled_stone_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"visually identical to chiseled stone bricks\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled stone bricks base material\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stronghold only; silk touch required\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never intentionally collected\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trap blocks in adventure/PvP builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hidden-trap variant of stone bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray stone tone\"\n        },\n        \"origin\": {\n          \"values\": [\"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exclusive to stronghold generation\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"releases silverfish when broken\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"silverfish trap in adventure maps\",\n            \"stronghold-themed decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche trap and deco uses\"\n        }\n      }\n    },\n    \"minecraft:infested_cobblestone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"visually identical to cobblestone\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"cobblestone = processed stone\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stronghold only; silk touch required\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never intentionally collected\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trap blocks in adventure/PvP builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hidden-trap variant of cobblestone\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray stone tone\"\n        },\n        \"origin\": {\n          \"values\": [\"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exclusive to stronghold generation\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"releases silverfish when broken\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"silverfish trap in adventure maps\",\n            \"stronghold-themed decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche trap and deco uses\"\n        }\n      }\n    },\n    \"minecraft:infested_cracked_stone_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"visually identical to cracked stone bricks\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"cracked stone bricks base material\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stronghold only; silk touch required\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never intentionally collected\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trap blocks in adventure/PvP builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hidden-trap variant of cracked stone bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray stone tone\"\n        },\n        \"origin\": {\n          \"values\": [\"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exclusive to stronghold generation\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"releases silverfish when broken\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"silverfish trap in adventure maps\",\n            \"stronghold-themed decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche trap and deco uses\"\n        }\n      }\n    },\n    \"minecraft:infested_deepslate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"visually identical to deepslate\"\n        },\n        \"material_family\": {\n          \"value\": \"deepslate\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"deepslate-based infested block\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stronghold only; silk touch required\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never intentionally collected\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trap blocks in adventure/PvP builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hidden-trap variant of deepslate\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray deepslate tone\"\n        },\n        \"origin\": {\n          \"values\": [\"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deepslate-level stronghold layers\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"releases silverfish when broken\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"silverfish trap in adventure maps\",\n            \"deepslate-themed decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche trap and deco uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a80792c2-d1f8-412c-802f-4b1bdfecdf29",
+  "total_cost_usd": 0.15749240000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3384,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9357,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3384,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9357,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3384,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3384
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2521,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002591,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9357,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3384,
+      "webSearchRequests": 0,
+      "costUSD": 0.15490140000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "5acb6126-8cd2-47f0-8be0-ccecc89b0025"
+}

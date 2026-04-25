@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 194143,
+  "duration_api_ms": 194890,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:iron_bars\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier like fence/wall\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron_ prefix in item id\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche structural use in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"barrier/window element in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bare iron grid; industrial look\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey iron coloration\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"barrier or window in builds\",\n            \"prison/dungeon aesthetic fencing\",\n            \"structural partitioning\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core in-world uses\"\n        }\n      }\n    },\n    \"minecraft:iron_block\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"storage_block\", \"building_block\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"compact ingot storage and build material\"\n        },\n        \"tier\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"block compresses 9 iron ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"anvil/golem builds; not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compact storage and build material\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid flat iron block\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey iron surface\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"4 blocks + carved pumpkin = iron golem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compact iron ingot storage\",\n            \"iron golem construction\",\n            \"crafting anvils and beacons\",\n            \"heavy building material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:iron_boots\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:foot_armor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"staple mid-game armor, worn constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\", \"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"worn in combat/travel; often enchanted\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unadorned iron plate armor\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey iron finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"foot protection in combat and travel\",\n            \"mid-game armor set piece\",\n            \"smithing trim decoration base\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of iron boots\"\n        }\n      }\n    },\n    \"minecraft:iron_chain\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic; hangs lanterns/signs/bells\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"iron_ prefix in item id\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative niche use in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to hang lanterns, bells, signs\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial chain link aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark grey iron chain links\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"hanging lanterns or bells\",\n            \"hanging sign connector\",\n            \"decorative chain in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of chain block\"\n        }\n      }\n    },\n    \"minecraft:iron_chestplate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:chest_armor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"staple mid-game armor, worn constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\", \"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"worn in combat/travel; often enchanted\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unadorned iron plate armor\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey iron finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"torso protection in combat and travel\",\n            \"mid-game armor set piece\",\n            \"smithing trim decoration base\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of iron chestplate\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "542d6188-8644-49a1-b9af-39b68384b851",
+  "total_cost_usd": 0.23228914999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5637,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13630,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5637,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13630,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5637,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5637
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4774,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004843999999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13630,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5637,
+      "webSearchRequests": 0,
+      "costUSD": 0.22744514999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "b82cfbcc-4c56-49ed-aaa7-2ff17a035ba0"
+}

@@ -1,0 +1,311 @@
+{
+  "items": {
+    "minecraft:open_eyeblossom": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant collected from world as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche dye/stew use cases"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bee food; dye ingredient; placed as decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "plant; glowing eye in eerie pale garden"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "white petals with purple glowing eye"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in pale garden biome"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting orange dye",
+            "suspicious stew ingredient",
+            "decorative flower placement",
+            "bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of + bee_food tag"
+        }
+      }
+    },
+    "minecraft:orange_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are aesthetic displays"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from wool blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for specific decorating builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetics and marking"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "orange dye-color banner variant"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange/amber visual tone"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating builds and rooms",
+            "shield decoration",
+            "faction or clan marker"
+          ],
+          "signal": "inferred",
+          "rationale": "standard banner use cases"
+        }
+      }
+    },
+    "minecraft:orange_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive sleep/spawn-set mechanic"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "beds crafted from wool and planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every night cycle to skip dark"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "orange dye-color bed variant"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange tone"
+        },
+        "primary_uses": {
+          "values": [
+            "sleeping to skip night",
+            "setting respawn point",
+            "dyeable to other colors"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed mechanics"
+        }
+      }
+    },
+    "minecraft:orange_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "holds multiple item types in inventory"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "active inventory management tool"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory compression and transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dye-transmuted orange bundle"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange leather tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no world loot; only via transmute recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "storing multiple item stacks in one slot",
+            "inventory slot compression",
+            "item transport between locations"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle core function"
+        }
+      }
+    },
+    "minecraft:orange_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "aesthetic lighting decoration"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "crafted from honeycomb and string"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once for ambiance, rarely replaced"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative light in builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed beeswax candle"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "orange wax; emits warm glow when lit"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "loot sources are only self-drops; crafted first"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "candle emits light when lit"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative ambient lighting",
+            "cake candle decoration",
+            "colored light source"
+          ],
+          "signal": "inferred",
+          "rationale": "candle use cases in gameplay"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_facet",
+      "name": "native_biome",
+      "suggested_kind": "multi_free_text",
+      "rationale": "biome-endemic items like eyeblossom need biome context beyond overworld_surface"
+    }
+  ],
+  "corrections": []
+}

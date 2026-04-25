@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 155716,
+  "duration_api_ms": 156622,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:item_frame\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed on walls to display items\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from sticks (wood)\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"leather\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leather is a recipe ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used for chest labeling\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"display + comparator output\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood and leather construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light wood frame + leather tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot source, recipe only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"display items on walls\",\n            \"label storage containers\",\n            \"redstone comparator output\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core vanilla usage patterns\"\n        }\n      }\n    },\n    \"minecraft:jack_o_lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative light-emitting pumpkin block\"\n        },\n        \"material_family\": {\n          \"value\": \"pumpkin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"made from carved pumpkin\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used situationally for decor/light\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetics and light\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural pumpkin material\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"amber\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange pumpkin with glowing carved face\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 15\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed to complete snow/iron golem\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative light source\",\n            \"snow/iron golem creation\",\n            \"Halloween-themed decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main vanilla uses\"\n        }\n      }\n    },\n    \"minecraft:jigsaw\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only world gen configuration tool\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used by map makers/developers\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"configures structure generation placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"technical/admin block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark grey block texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"world gen structure placement config\",\n            \"creative/admin map making\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is world gen editing\"\n        }\n      }\n    },\n    \"minecraft:jukebox\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive block that plays music discs\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted primarily from planks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"diamond\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one diamond required in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires diamond to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed situationally for music\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"music ambiance + comparator signal\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood box with mechanical disc player\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark wood exterior texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"play music discs\",\n            \"redstone comparator signal source\",\n            \"ambient music decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core jukebox uses\"\n        }\n      }\n    },\n    \"minecraft:jungle_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel vehicle\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when water travel is needed\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water movement and biome exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood boat, jungle wood variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle wood reddish-brown hue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floats on water surface\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries players and mobs on water\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot source, crafted from planks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"water travel across rivers and oceans\",\n            \"transport mobs on water\",\n            \"explore water biomes quickly\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main boat uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "828d56a7-af4f-45b4-9f88-894a855180fc",
+  "total_cost_usd": 0.20115065000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3771,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12145,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3771,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12145,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3771,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3771
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2908,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002978,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12145,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3771,
+      "webSearchRequests": 0,
+      "costUSD": 0.19817265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a6f7783e-7892-4aa8-bfe0-487cad572bbe"
+}

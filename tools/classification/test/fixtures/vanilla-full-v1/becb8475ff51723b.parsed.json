@@ -1,0 +1,294 @@
+{
+  "items": {
+    "minecraft:pumpkin": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "naturally grown crop, raw plant block"
+        },
+        "material_family": {
+          "value": "pumpkin",
+          "signal": "pattern",
+          "rationale": "id is pumpkin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "multiple uses but not daily necessity"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "crop/seed source, placeable, carvable"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic plant block"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange pumpkin reads as warm tone"
+        },
+        "primary_uses": {
+          "values": [
+            "craft pumpkin pie or seeds",
+            "carve into jack o'lantern",
+            "wear as helmet to avoid enderman aggro",
+            "place as decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pumpkin gameplay uses"
+        }
+      }
+    },
+    "minecraft:pumpkin_pie": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "minecraft:food + consumable component"
+        },
+        "material_family": {
+          "value": "pumpkin",
+          "signal": "inferred",
+          "rationale": "primary ingredient is pumpkin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "good food: 8 hunger, 4.8 saturation"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "product of farming crop ingredients"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "baked food from crops"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-brown pie appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "eat for 8 hunger + 4.8 saturation",
+            "efficient stackable crop food"
+          ],
+          "signal": "inferred",
+          "rationale": "food item; nutrition from component"
+        }
+      }
+    },
+    "minecraft:pumpkin_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "farming seed, raw plant input for crops"
+        },
+        "material_family": {
+          "value": "pumpkin",
+          "signal": "pattern",
+          "rationale": "derived from pumpkin"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "replanted repeatedly for pumpkin farms"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted as crop; feeds chickens/parrots"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic seed"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "small tan/beige seed sprite"
+        },
+        "primary_uses": {
+          "values": [
+            "plant pumpkin crops",
+            "feed chickens and parrots"
+          ],
+          "signal": "inferred",
+          "rationale": "seed form + chicken/parrot food tags"
+        }
+      }
+    },
+    "minecraft:purple_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banner primary use is aesthetic display"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from 6 wool blocks"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted with a stick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for builds and shield decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall decor; used in shield patterns"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant of banner"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple dye corresponds to violet hue"
+        },
+        "primary_uses": {
+          "values": [
+            "wall/ceiling decoration",
+            "shield pattern decoration",
+            "duplicate banner patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "banner gameplay functions"
+        }
+      }
+    },
+    "minecraft:purple_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sleeping/respawn = active function"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "primary ingredient is 3 wool"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted with 3 planks (any wood)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used every night to skip darkness"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "base home + respawn for exploration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant of bed"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purple dye = violet hue"
+        },
+        "primary_uses": {
+          "values": [
+            "sleep to skip night and reset thunder",
+            "set player respawn point",
+            "explosive when used in Nether or End"
+          ],
+          "signal": "inferred",
+          "rationale": "bed core gameplay mechanics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

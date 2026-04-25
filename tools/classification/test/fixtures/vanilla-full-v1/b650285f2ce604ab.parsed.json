@@ -1,0 +1,288 @@
+{
+  "items": {
+    "minecraft:jungle_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "drops from leaves, not crafted"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "jungle leaves drop freely"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when planting/starting farms"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted to grow jungle trees"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant/nature aesthetic"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green sapling sprite"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wood-based item, burns"
+        },
+        "primary_uses": {
+          "values": [
+            "grow jungle trees for wood",
+            "potted plant decoration",
+            "tree farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "core sapling use cases"
+        }
+      }
+    },
+    "minecraft:jungle_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "has_nbt_variation; interactive shelf"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common jungle planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational interior use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf used in interior builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "medium-brown jungle wood"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "has_nbt_variation implies item storage"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden block burns"
+        },
+        "primary_uses": {
+          "values": [
+            "display and store books",
+            "interior decoration",
+            "jungle-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf core use cases"
+        }
+      }
+    },
+    "minecraft:jungle_sign": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive text block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common planks+sticks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for labeling, not every session"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "labeling and decor in builds"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian wood sign"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "text labels for areas",
+            "directional waypoints",
+            "decorative displays"
+          ],
+          "signal": "inferred",
+          "rationale": "sign core use cases"
+        }
+      }
+    },
+    "minecraft:jungle_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant jungle planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple structural block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple structural slab"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden slab burns"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring",
+            "architectural detail",
+            "ingredient for barrels/composters"
+          ],
+          "signal": "inferred",
+          "rationale": "slab core use cases"
+        }
+      }
+    },
+    "minecraft:jungle_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs form is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common jungle planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs are staple building element"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard structural stair"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden stairs burn"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "roofing and trim detail",
+            "jungle-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs core use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

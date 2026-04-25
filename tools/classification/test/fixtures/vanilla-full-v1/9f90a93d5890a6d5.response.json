@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 189426,
+  "duration_api_ms": 190355,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:green_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"refined from cactus; intermediate crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _dye; tag minecraft:dyes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"21 recipe usages across many categories\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyes wool/blocks/candles; fireworks\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"one of 16 canonical dye colors\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green dye tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dye wool, beds, candles, carpets\",\n            \"craft firework stars\",\n            \"produce concrete powder and stained glass\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sample_ingredient_of list\"\n        }\n      }\n    },\n    \"minecraft:green_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed pattern; primarily aesthetic use\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"glazed terracotta tag; smelted from terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"patterned accent block in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"intricate glazed pattern; green dye color\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green glaze over earthy terracotta base\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative patterned walls and floors\",\n            \"colored building accent block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical glazed terracotta usage\"\n        }\n      }\n    },\n    \"minecraft:green_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equip on Happy Ghast to enable riding\"\n        },\n        \"material_family\": {\n          \"value\": \"leather\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"harnesses crafted from leather\"\n        },\n        \"dye_color\": {\n          \"value\": \"green\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix green_; re-dyeable via crafting\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when Happy Ghast is available\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables aerial Happy Ghast riding\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leather item dyed green\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green dyed leather\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources listed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"equip on Happy Ghast to ride it\",\n            \"tempt Happy Ghasts\",\n            \"re-dye to change harness color\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from tags and recipe transmute data\"\n        }\n      }\n    },\n    \"minecraft:green_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable storage block retaining inventory\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker_shell\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from shulker shells\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires End exploration for shulker shells\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavily used for storage/logistics once obtained\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable color-coded inventory transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"one of 16 dye colors\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green dye color\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fits standard inventory and chest slots\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable inventory expansion\",\n            \"retain items through death\",\n            \"color-coded storage logistics\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard shulker box gameplay role\"\n        }\n      }\n    },\n    \"minecraft:green_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural transparent block for windows\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stained glass variant; cube_all glass model\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for windows and decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"windows, colored light filters, decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dyed glass block\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green tint; glass is translucent\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colored windows and walls\",\n            \"filtered light decoration\",\n            \"craft green stained glass panes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical stained glass usage\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "7b138814-7a59-49f4-b4ac-bffbf2621c36",
+  "total_cost_usd": 0.2027699,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4634,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11979,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4634,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11979,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4634,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4634
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3771,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038510000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11979,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4634,
+      "webSearchRequests": 0,
+      "costUSD": 0.1989189,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c79681f4-72b7-4171-b7da-e68a67c3cd7e"
+}

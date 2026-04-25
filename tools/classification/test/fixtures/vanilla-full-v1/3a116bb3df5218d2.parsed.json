@@ -1,0 +1,320 @@
+{
+  "items": {
+    "minecraft:bookshelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "boosts enchanting table; lectern ingredient"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted from wood planks"
+        },
+        "material_secondary": {
+          "values": [
+            "paper",
+            "leather"
+          ],
+          "signal": "inferred",
+          "rationale": "books (paper+leather) in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per enchanting setup"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "boosts enchanting; library decor use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-and-book organic aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "brown oak plank texture"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block; fire spreads to it"
+        },
+        "primary_uses": {
+          "values": [
+            "Boost enchanting table level",
+            "Craft lecterns",
+            "Library decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "main reasons player places bookshelf"
+        }
+      }
+    },
+    "minecraft:bordure_indented_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable loom pattern stamp"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specific craft; niche pattern item"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "narrow banner-decorating use case"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in loom to decorate banners"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative bordered banner pattern"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot tables; crafted with vine"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply bordure indented pattern in loom"
+          ],
+          "signal": "named",
+          "evidence": "provides_banner_patterns:#minecraft:pattern_item/bordure_indented",
+          "rationale": "sole use per banner-pattern component"
+        }
+      }
+    },
+    "minecraft:bow": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "rationale": "id=bow; skeleton_preferred_weapons tag"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted from sticks (wood)"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "pattern",
+          "rationale": "string is key bow recipe component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary ranged weapon all progression"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "ranged weapon for mob/player combat"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood and string construction"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown sticks, grey string"
+        },
+        "primary_uses": {
+          "values": [
+            "Ranged combat with arrows",
+            "Shoot projectiles at mobs/players",
+            "Craft dispensers"
+          ],
+          "signal": "inferred",
+          "rationale": "core ranged use; dispenser ingredient"
+        }
+      }
+    },
+    "minecraft:bowl": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafting component for all soups/stews"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted from wood planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component: common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in 21 soup/stew recipes"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "enables food/stew production"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple unadorned wooden bowl"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light wooden color"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft mushroom stew",
+            "Craft beetroot soup",
+            "Craft suspicious stew",
+            "Craft rabbit stew"
+          ],
+          "signal": "inferred",
+          "rationale": "top soup/stew recipes it enables"
+        }
+      }
+    },
+    "minecraft:brain_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "coral placed for aquatic decoration"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm ocean + silk touch required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aquarium/ocean builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for coral decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic marine creature; vivid pink"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright pink coral coloring"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "non-full coral block holds water"
+        },
+        "primary_uses": {
+          "values": [
+            "Aquarium and ocean-themed decoration",
+            "Decorative coral block placement"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily decorative use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:bookshelf",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "village",
+        "woodland_mansion"
+      ],
+      "rationale": "Bookshelves generate naturally in village library rooms and woodland mansion library rooms",
+      "confidence": 0.95
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 182538,
+  "duration_api_ms": 184576,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cut_sandstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural stone variant for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"sandstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains sandstone base material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from abundant desert sandstone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in desert-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"cut variant of base sandstone block\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tan/yellowish sandstone appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"desert-themed structures\", \"crafting slabs and stairs\", \"decorative stone walls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical cut sandstone usage\"\n        }\n      }\n    },\n    \"minecraft:cut_sandstone_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form used for structural detail\"\n        },\n        \"material_family\": {\n          \"value\": \"sandstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains sandstone base material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from sandstone, easily obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in desert-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is structural detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form of cut sandstone\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tan sandstone palette\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height floors and ceilings\", \"building detail work\", \"desert-themed construction\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical slab usage\"\n        }\n      }\n    },\n    \"minecraft:cyan_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banner is primarily an aesthetic display\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 6 wool + stick\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick from wood used in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool and sticks easily obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when decorating or marking areas\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is decoration and marking\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool banner from natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan color reads as teal\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool and wood components are flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative wall display\", \"shield decoration\", \"area faction marking\", \"pattern customization\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core banner uses\"\n        }\n      }\n    },\n    \"minecraft:cyan_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive: sleep and set spawn point\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 3 wool + 3 planks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden planks form the bed base\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool and wood are common materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used most nights to sleep and set spawn\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sets spawn for exploring; color for decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool bed from natural materials\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan color reads as teal\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool and wood components are flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"skip night cycle\", \"set respawn point\", \"decorative bedroom furniture\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed mechanics\"\n        }\n      }\n    },\n    \"minecraft:cyan_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds multiple item stacks in inventory\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string used in bundle crafting\"\n        },\n        \"dye_color\": {\n          \"value\": \"cyan\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix cyan_ on bundle\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires rabbit hide from mob drops\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for inventory management\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable inventory container\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed hide bundle from natural materials\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan color reads as teal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; made via transmute recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"compact inventory storage\", \"carry mixed item stacks\", \"portable item container\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bundle mechanics\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:cut_sandstone\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"village\"],\n      \"rationale\": \"desert village structures use cut sandstone blocks\",\n      \"confidence\": 0.75\n    },\n    {\n      \"item\": \"minecraft:cut_sandstone_slab\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"village\"],\n      \"rationale\": \"desert village roofs use cut sandstone slabs\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "224e5f15-60ad-4eb2-9559-20a6c9212b10",
+  "total_cost_usd": 0.23819415000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4737,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14308,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4737,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14308,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4737,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4737
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3874,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003954,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14308,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4737,
+      "webSearchRequests": 0,
+      "costUSD": 0.23424015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0eebe020-78d4-447d-a4ee-6a902c93ebdd"
+}

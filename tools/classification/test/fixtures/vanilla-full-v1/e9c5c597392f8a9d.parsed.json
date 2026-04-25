@@ -1,0 +1,237 @@
+{
+  "items": {
+    "minecraft:sulfur_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form-variant of a brick block"
+        },
+        "material_family": {
+          "value": "sulfur_brick",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur_brick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls used less than full blocks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block for structure and trim"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wall is a form-variant of brick block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur = yellow-amber mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "boundary walls in builds",
+            "decorative wall detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall use cases"
+        }
+      }
+    },
+    "minecraft:sulfur_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block, primary use is building"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ingredient for slab/stairs/wall variants"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is structural building"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "brick variant processed from raw sulfur"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur = yellow-amber mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting sulfur brick variants",
+            "stonecutting into slabs and walls"
+          ],
+          "signal": "inferred",
+          "rationale": "block + upstream ingredient for variants"
+        }
+      }
+    },
+    "minecraft:sulfur_cube_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "mob bucket, analogous to axolotl bucket"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "must find and catch the mob"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche use; rarely needed in practice"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "contains and transports a living mob"
+        },
+        "primary_uses": {
+          "values": [
+            "transport sulfur cube to new location",
+            "release sulfur cube from bucket"
+          ],
+          "signal": "inferred",
+          "rationale": "mob bucket standard use cases"
+        }
+      }
+    },
+    "minecraft:sulfur_cube_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative/admin-only items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe, no loot source"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival play"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use only"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn sulfur cube mob"
+          ],
+          "signal": "inferred",
+          "rationale": "single use case of any spawn egg"
+        }
+      }
+    },
+    "minecraft:sulfur_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of sulfur block"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "id prefix sulfur"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs widely used; ingredient for chiseled"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for floors, steps, trim"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab is a form-variant of sulfur block"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "sulfur = yellow-amber mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring and steps",
+            "decorative trim detailing",
+            "crafting chiseled_sulfur"
+          ],
+          "signal": "inferred",
+          "rationale": "slab functions + chiseled ingredient"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

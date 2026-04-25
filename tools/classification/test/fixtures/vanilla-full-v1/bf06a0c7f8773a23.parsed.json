@@ -1,0 +1,243 @@
+{
+  "items": {
+    "minecraft:music_disc_chirp": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "id _music_disc_ + template_music_disc model"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "rationale": "tag creeper_drop_music_discs"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox_playable; ambient music use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of many named disc variants"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "played situationally for ambiance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory + jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "play in jukebox for ambient music"
+          ],
+          "signal": "named",
+          "rationale": "jukebox_playable component present"
+        }
+      }
+    },
+    "minecraft:music_disc_creator": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "id _music_disc_ + template_music_disc model"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox_playable; ambient music use"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "from reward_ominous_unique loot"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "played situationally for ambiance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory + jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "play in jukebox for ambient music"
+          ],
+          "signal": "named",
+          "rationale": "jukebox_playable component present"
+        }
+      }
+    },
+    "minecraft:music_disc_creator_music_box": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "id _music_disc_ + template_music_disc model"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox_playable; ambient music use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of many named disc variants"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "played situationally for ambiance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory + jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "play in jukebox for ambient music"
+          ],
+          "signal": "named",
+          "rationale": "jukebox_playable component present"
+        }
+      }
+    },
+    "minecraft:music_disc_far": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "id _music_disc_ + template_music_disc model"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "rationale": "tag creeper_drop_music_discs"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox_playable; ambient music use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of many named disc variants"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "played situationally for ambiance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory + jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "play in jukebox for ambient music"
+          ],
+          "signal": "named",
+          "rationale": "jukebox_playable component present"
+        }
+      }
+    },
+    "minecraft:music_disc_lava_chicken": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "pattern",
+          "rationale": "id _music_disc_ + template_music_disc model"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "jukebox_playable; ambient music use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of many named disc variants"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "lava in name implies warm/fire theme"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "played situationally for ambiance"
+        },
+        "storage_categories": {
+          "values": [
+            "standard",
+            "jukebox"
+          ],
+          "signal": "inferred",
+          "rationale": "inventory + jukebox slot"
+        },
+        "primary_uses": {
+          "values": [
+            "play in jukebox for ambient music"
+          ],
+          "signal": "named",
+          "rationale": "jukebox_playable component present"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

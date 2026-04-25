@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 166247,
+  "duration_api_ms": 167976,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:lime_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"dye = processed crafting material\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:dye = lime\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when dyeing, not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyes wool, beds, carpets, armor\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dye item is inherently colored\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime = bright vivid green\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot; smelted/crafted only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dyeing wool, beds, carpets\", \"firework star coloring\", \"leather armor dyeing\", \"dyeing harnesses\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from sample_ingredient_of entries\"\n        }\n      }\n    },\n    \"minecraft:lime_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta = aesthetic patterns\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix + smelted from terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative use, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"patterned block for decor & building\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed = patterned decorative variant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime green glaze\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta can't be piston-moved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative wall and floor patterns\", \"building accent block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary appeal is aesthetic patterning\"\n        }\n      }\n    },\n    \"minecraft:lime_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"transport\", \"utility\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables ghast riding; equip not vehicle\"\n        },\n        \"material_family\": {\n          \"value\": \"leather\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyeable harness likely leather-based\"\n        },\n        \"dye_color\": {\n          \"value\": \"lime\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix lime_ + harness tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only useful with a happy ghast\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables aerial travel via happy ghast\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed leather harness equipment\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime colored harness\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"allows player to ride happy ghast\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"equip on happy ghast to ride it\", \"enables aerial player transport\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"happy_ghast_tempt_items tag context\"\n        }\n      }\n    },\n    \"minecraft:lime_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"shulker box = portable storage container\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from shulker shells\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker box recipe uses planks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs end exploration for shulker shells\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core late-game inventory management item\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary role is portable storage\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dyed shulker box variant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime colored shulker box\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"portable item storage\", \"retains contents when broken\", \"color-coded inventory organization\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core shulker box use cases\"\n        }\n      }\n    },\n    \"minecraft:lime_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural window element\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds but not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored windows and building accents\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stained glass = colored glass variant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime tinted transparent glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"colored windows and skylights\", \"building decoration\", \"light filtering\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stained glass uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c0dcdf2a-a046-411a-b55e-9b406b48a0d4",
+  "total_cost_usd": 0.20138240000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4604,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11896,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4604,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11896,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4604,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4604
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3741,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038209999999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11896,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4604,
+      "webSearchRequests": 0,
+      "costUSD": 0.19756140000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8e8d7460-309f-4231-bb95-09997d347918"
+}

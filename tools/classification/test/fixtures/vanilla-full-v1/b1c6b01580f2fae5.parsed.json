@@ -1,0 +1,287 @@
+{
+  "items": {
+    "minecraft:slime_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed solid block; physics props secondary"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "slime balls moderately uncommon to farm"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific piston contraptions"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "piston sticky builds and contraptions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic slime blob appearance"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "semi-transparent green block"
+        },
+        "environmental_property": {
+          "values": [
+            "bounces",
+            "piston_sticky"
+          ],
+          "signal": "inferred",
+          "rationale": "entities bounce; adjacent blocks cling to piston"
+        },
+        "primary_uses": {
+          "values": [
+            "sticky piston contraptions",
+            "entity bounce pad",
+            "compact slime storage"
+          ],
+          "signal": "inferred",
+          "rationale": "primary slime block gameplay uses"
+        }
+      }
+    },
+    "minecraft:slime_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, no survival source"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe or loot table entry"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/command-only in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely used outside testing/creative"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "used to spawn slimes for slimeball farms"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctly colored egg model"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright green slime coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn slimes in creative mode",
+            "mob farm setup and testing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg uses"
+        }
+      }
+    },
+    "minecraft:small_amethyst_bud": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "small crystal growth; purely decorative"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found only in amethyst geodes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific purple décor builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic cave/crystal décor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "organic crystal, mystical purple look"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "purple amethyst crystal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "purple cave decoration",
+            "amethyst-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative crystal growth block"
+        }
+      }
+    },
+    "minecraft:small_dripleaf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "small lush cave plant, purely decorative"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "grows naturally in lush caves"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "found only in lush cave biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative plant"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for nature-themed décor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "small organic leaf plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green leafy plant appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "lush cave decoration",
+            "nature-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative lush cave plant use"
+        }
+      }
+    },
+    "minecraft:smithing_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive block for gear upgrades/trims"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "primary wood plank construction"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "pattern",
+          "rationale": "iron ingots in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from basic wood + iron"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for netherite and trims"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "metal-topped functional workshop block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "wood body with dark iron top surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based block; can burn"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade armor/tools to netherite",
+            "apply armor trims",
+            "access smithing interface"
+          ],
+          "signal": "inferred",
+          "rationale": "core smithing table functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

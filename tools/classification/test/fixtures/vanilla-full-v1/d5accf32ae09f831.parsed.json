@@ -1,0 +1,310 @@
+{
+  "items": {
+    "minecraft:pale_oak_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs display text; primarily decorative labeling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component explicitly states common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed situationally for labeling"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in builds for labeling/aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain wood, natural material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak is distinctively light/pale wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden sign is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "label chests and areas",
+            "decorative signage in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sign use cases"
+        }
+      }
+    },
+    "minecraft:pale_oak_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw foliage harvested as-is from trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "covers every pale oak canopy"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for decoration or composting"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "foliage decor; compostable; leaf litter"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic foliage block"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak leaves are desaturated/pale"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are highly flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "foliage decoration in builds",
+            "composting for bonemeal",
+            "crafting leaf litter"
+          ],
+          "signal": "inferred",
+          "rationale": "standard leaf use cases"
+        }
+      }
+    },
+    "minecraft:pale_oak_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw wood harvested directly from trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common; found in pale oak forests"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core crafting input; heavily used"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural or decorative log"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw wood, organic material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak has distinctively pale bark"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wood logs burn and catch fire"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pale oak planks",
+            "building with log blocks",
+            "fuel and charcoal production"
+          ],
+          "signal": "inferred",
+          "rationale": "standard log use cases"
+        }
+      }
+    },
+    "minecraft:pale_oak_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks are primary structural building material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "most-used building block in game"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary structural building block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain processed wood panels"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak planks are very light-toned"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden planks are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting furniture and tools",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "standard plank use cases"
+        }
+      }
+    },
+    "minecraft:pale_oak_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone signal on entity step"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific door/redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone signal source; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden mechanical trigger"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; thin plates are piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-open doors and gates",
+            "entity detection for redstone circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pressure plate uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:pale_oak_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_pale_oak",
+      "rationale": "Planks are pale oak; rule misread wooden_tool_materials tag which groups all plank types, not oak-specific",
+      "confidence": 0.95
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 220945,
+  "duration_api_ms": 222008,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:allay_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns allay mob on use\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs are creative-only\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche creative-mode use\"\n        },\n        \"activity\": {\n          \"values\": [\"automation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"allay collects and sorts items\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob-themed spawn item\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"allay is pale blue\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns an allay\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn allay mob\", \"item collection automation setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg core purpose\"\n        }\n      }\n    },\n    \"minecraft:allium\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower picked from world as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in flower forest/meadow biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used situationally for dye or stew\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decor + bee food/stew\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small_flowers tag, natural flora\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright purple allium flower\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft magenta dye\", \"suspicious stew ingredient\", \"bee food\", \"flower decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of confirms dye+stew\"\n        }\n      }\n    },\n    \"minecraft:amethyst_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid cube used in construction/decor\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires geode shards to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative builds and compact storage\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystal construction+decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystalline gem block\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple amethyst crystal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"compact amethyst shard storage\", \"purple crystal decoration\", \"note block instrument\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard gem block uses\"\n        }\n      }\n    },\n    \"minecraft:amethyst_cluster\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"silk-touch crystal, placed for decor\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"geode caves, needs silk touch\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decoration or farm use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative light source\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystal growth, natural origin\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light, purple crystal\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cluster emits light level 5\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative crystal light source\", \"shard farm seed placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed decor or mined for shards\"\n        }\n      }\n    },\n    \"minecraft:amethyst_shard\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_shard suffix; gem/shard = material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"geode caves + select chests\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trim material + sculk sensor + blocks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blocks/trims/calibrated sculk sensor\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gem shard, natural crystal\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple amethyst shard\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"armor trim smithing\", \"calibrated sculk sensor\", \"amethyst block crafting\", \"duplicate allays\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag trim_materials + recipe uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "0d2897f8-5e2d-4f51-89dc-3fea27aea6af",
+  "total_cost_usd": 0.2529619,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4026,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15518,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4026,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15518,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4026,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4026
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3163,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003238,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15518,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4026,
+      "webSearchRequests": 0,
+      "costUSD": 0.2497239,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a23fb684-aaeb-4de4-94c8-15ba99b369f6"
+}

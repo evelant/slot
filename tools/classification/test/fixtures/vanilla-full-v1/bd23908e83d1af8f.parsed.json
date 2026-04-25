@@ -1,0 +1,346 @@
+{
+  "items": {
+    "minecraft:netherite_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "foot_armor tag + armor_piece form"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite requires ancient debris farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn continuously once in end-game"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor for combat and dangerous biomes"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned standard netherite look"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite = dark gray-black finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "smithing_transform only, no loot sources"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types #minecraft:is_fire",
+          "rationale": "item survives fire and lava when dropped"
+        },
+        "primary_uses": {
+          "values": [
+            "highest tier foot armor protection",
+            "end-game combat survivability",
+            "armor trim decoration base"
+          ],
+          "signal": "inferred",
+          "rationale": "armor + trim ingredient"
+        }
+      }
+    },
+    "minecraft:netherite_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "chest_armor tag + armor_piece form"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite requires ancient debris farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn continuously once in end-game"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor for combat and dangerous biomes"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned standard netherite look"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite = dark gray-black finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "smithing_transform only, no loot sources"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types #minecraft:is_fire",
+          "rationale": "item survives fire and lava when dropped"
+        },
+        "primary_uses": {
+          "values": [
+            "highest tier chest armor protection",
+            "end-game combat survivability",
+            "armor trim decoration base"
+          ],
+          "signal": "inferred",
+          "rationale": "armor + trim ingredient"
+        }
+      }
+    },
+    "minecraft:netherite_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "head_armor tag + armor_piece form"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite requires ancient debris farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "worn continuously once in end-game"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor for combat and dangerous biomes"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned standard netherite look"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite = dark gray-black finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "smithing_transform only, no loot sources"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types #minecraft:is_fire",
+          "rationale": "item survives fire and lava when dropped"
+        },
+        "primary_uses": {
+          "values": [
+            "highest tier head armor protection",
+            "end-game combat survivability",
+            "armor trim decoration base"
+          ],
+          "signal": "inferred",
+          "rationale": "armor + trim ingredient"
+        }
+      }
+    },
+    "minecraft:netherite_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:hoes + tool component"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite tier requires ancient debris"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "hoes are situational farming tools"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "tills soil; breaks mineable/hoe blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard unadorned netherite look"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite = dark gray-black finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "smithing_transform only, no loot sources"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types #minecraft:is_fire",
+          "rationale": "item survives fire and lava when dropped"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil for crop farming",
+            "breaking leaves/hay/sponge quickly",
+            "netherite durability and max speed"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe tool primary functions"
+        }
+      }
+    },
+    "minecraft:netherite_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "protective gear equipped to horses"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite_"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "netherite_ prefix, highest horse armor tier"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite tier, smithing from diamond"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational — only used with horses"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "horse use for travel and mounted combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard unadorned netherite look"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite = dark gray-black finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "smithing_transform only, no loot sources"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof",
+            "lava_safe"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:damage_resistant types #minecraft:is_fire",
+          "rationale": "item survives fire and lava when dropped"
+        },
+        "primary_uses": {
+          "values": [
+            "protecting horses from damage",
+            "highest tier horse armor",
+            "equipping horses for dangerous areas"
+          ],
+          "signal": "inferred",
+          "rationale": "horse armor core purpose"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

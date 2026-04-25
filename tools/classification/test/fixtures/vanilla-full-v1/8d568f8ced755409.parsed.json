@@ -1,0 +1,289 @@
+{
+  "items": {
+    "minecraft:deepslate_tile_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall block; structural use in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common deepslate"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls used less than slabs/stairs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural barriers + aesthetic edging"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "tile variant form of base deepslate"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is dark gray, non-glossy"
+        },
+        "primary_uses": {
+          "values": [
+            "structural walls and borders",
+            "decorative fencing in stone builds",
+            "medieval/dungeon aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form + deepslate aesthetic"
+        }
+      }
+    },
+    "minecraft:deepslate_tiles": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid tile block; surface/structure use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common deepslate"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aesthetic builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "tile surfaces in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished tile variant of deepslate"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gray smooth tile appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative floors and walls",
+            "crafting tile slab/stair/wall variants",
+            "dungeon or modern build aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "tile block + producer of variants"
+        }
+      }
+    },
+    "minecraft:detector_rail": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone signal on minecart detection"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "recipe uses 6 iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from iron; found in mineshafts"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in minecart circuit builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "transportation",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "detects carts; part of rail+signal systems"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical pressure-detecting rail"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron rail appearance"
+        },
+        "transport_medium": {
+          "values": [
+            "signal"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function: emit redstone signal"
+        },
+        "primary_uses": {
+          "values": [
+            "detect passing minecarts",
+            "trigger redstone circuits from carts",
+            "minecart sorting and routing systems"
+          ],
+          "signal": "inferred",
+          "rationale": "detector rail core function"
+        }
+      }
+    },
+    "minecraft:diamond": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined gem; intermediate crafting material"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "tag minecraft:diamond_tool_materials"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires dedicated Y=-58 strip mining"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "central to tools, armor, enchanting table"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: pickaxes, armor, enchant table"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "precious gem material"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "Minecraft diamond depicted as cyan crystal"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting diamond tools and armor",
+            "crafting enchanting table",
+            "beacon payment",
+            "armor trim material",
+            "upgrade to netherite via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient_of + tag data"
+        }
+      }
+    },
+    "minecraft:diamond_axe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "inferred",
+          "rationale": "axes classified as tools; weapon secondary"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires uncommon diamonds to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary wood-chopping and combat tool"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "chops wood; melee weapon vs players/mobs"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard diamond tier tool, no special fx"
+        },
+        "palette": {
+          "values": [
+            "aqua",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond tools depicted in bright cyan"
+        },
+        "primary_uses": {
+          "values": [
+            "chopping wood and logs efficiently",
+            "melee combat (disables shields 5s)",
+            "upgrade to netherite axe via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon+tool components + smithing upgrade"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "combat_bonus",
+      "value": "disables_blocking",
+      "rationale": "Axes disable shield blocking for 5s on hit; no current value captures this"
+    }
+  ],
+  "corrections": []
+}

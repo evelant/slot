@@ -1,0 +1,227 @@
+{
+  "items": {
+    "minecraft:phantom_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, no survival source"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources or recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative/map-building use only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a living mob"
+        },
+        "palette": {
+          "values": [
+            "indigo",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "phantom is dark blue-indigo"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn phantoms in creative mode",
+            "adventure map mob setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core function"
+        }
+      }
+    },
+    "minecraft:pig_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, no survival source"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources or recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative/map-building use only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a living mob"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "pig is pink/warm-toned"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn pigs in creative mode",
+            "adventure map mob setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core function"
+        }
+      }
+    },
+    "minecraft:piglin_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "reusable loom pattern template"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche banner decorating use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in loom to decorate banners"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "piglin/nether hostile-themed motif"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "piglin motif is gold-themed"
+        },
+        "primary_uses": {
+          "values": [
+            "apply piglin motif to banner in loom"
+          ],
+          "signal": "named",
+          "rationale": "provides_banner_patterns component"
+        }
+      }
+    },
+    "minecraft:piglin_brute_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, no survival source"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources or recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative/map-building use only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a living mob"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-armored brute with dark body"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn piglin brutes in creative mode",
+            "adventure map mob setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core function"
+        }
+      }
+    },
+    "minecraft:piglin_head": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "inferred",
+          "rationale": "mob skull head, rare decorative trophy"
+        },
+        "origin": {
+          "values": [
+            "mob_drop",
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "charged creeper kills piglin in nether"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decor/note block/firework use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decor, note block instrument"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "mob head with hostile nether-piglin theme"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "piglins are distinctly gold-toned"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall or room display",
+            "note block snout instrument",
+            "firework star ingredient",
+            "wearable novelty helmet"
+          ],
+          "signal": "inferred",
+          "rationale": "skull: decor, noteblock, firework, wear"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 143984,
+  "duration_api_ms": 144862,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:wayfinder_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies cosmetic trim upgrade via smithing\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used intentionally when trimming armor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor trims are purely cosmetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative template for armor trimming\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Apply wayfinder trim to armor\", \"Duplicate template via crafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing template core uses\"\n        }\n      }\n    },\n    \"minecraft:weathered_chiseled_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled pattern = primarily aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains copper\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper has teal-green patina\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled = fancy decorative copper variant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty aesthetic block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative structure element\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered can still oxidize further\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative chiseled copper block\", \"Oxidized copper aesthetic builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled copper core uses\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full copper block for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id starts with weathered_copper\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered stage = teal patina\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally oxidized copper variant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty aesthetic copper stage\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered→oxidized via natural process\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Build with oxidized copper\", \"Craft weathered copper variants\", \"Decorative oxidized block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper core uses\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper_bars\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bars used as barrier/structural elements\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper = teal patina\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant of bar form\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty aesthetic copper bars\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"barriers and decorative windows\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bars waterlog; weathered→oxidized naturally\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative copper barrier/window\", \"Oxidized copper aesthetic\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper bars core uses\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper_bulb\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-toggled light source block\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper = teal patina\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-functional copper light variant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty lighting block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light source with redstone toggle\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bulb emits light; copper oxidizes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Redstone-controlled light source\", \"Decorative copper lighting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper bulb core uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c1c0e0e4-ae4a-4bfe-8445-e7e7c301ff74",
+  "total_cost_usd": 0.18418465000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4915,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10651,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4915,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10651,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4915,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4915
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4052,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004132,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10651,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4915,
+      "webSearchRequests": 0,
+      "costUSD": 0.18005265000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8befea8f-975a-4ecf-91db-59bb93260f2b"
+}

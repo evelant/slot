@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 233827,
+  "duration_api_ms": 234534,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:dark_oak_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs are primary structural building forms\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common; cheap wood craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs used heavily in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shapes roofs, paths, and interiors\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; dark oak variant of stairs\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark oak is dark warm brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; stairs waterlog in Java\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building roofs and step structures\",\n            \"interior stair decoration\",\n            \"reducing step height in paths\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical stair use cases\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes; right-click and redstone interactive\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common; cheap wood craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific builds, not ubiquitous\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"door function and redstone gate use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; dark oak variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark oak dark warm brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; trapdoors waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redstone-powered floor/ceiling doors\",\n            \"decorative hatches and covers\",\n            \"mob-proof crawl entrances\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical trapdoor use cases\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw log-form block from trees; logs listed as natural_resource\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common; dark forest abundant\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed into planks and charcoal regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative all-bark log block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw all-bark wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark dark oak; earthy dark brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood logs are burnable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting dark oak planks\",\n            \"smelting into charcoal\",\n            \"decorative all-bark log building\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses per recipe ingredient data\"\n        }\n      }\n    },\n    \"minecraft:dark_prismarine\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative stone block for ocean-themed builds\"\n        },\n        \"material_family\": {\n          \"value\": \"prismarine\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix dark_prismarine\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires ocean monument or shard farming\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-themed building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean-style structures and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark variant of prismarine; natural stone feel\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark teal-green prismarine color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_low\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone-type block; modest blast resistance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ocean-themed structure building\",\n            \"crafting dark prismarine slabs/stairs\",\n            \"dark decorative accent blocks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical prismarine use cases\"\n        }\n      }\n    },\n    \"minecraft:dark_prismarine_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form for flat structural/decorative use\"\n        },\n        \"material_family\": {\n          \"value\": \"prismarine\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix dark_prismarine\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from uncommon dark prismarine\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche ocean-themed building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-height structural and decorative use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark prismarine variant slab\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inherits dark teal from dark prismarine\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_low\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone resistance; slabs waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height ocean-themed flooring\",\n            \"flat dark prismarine surfaces\",\n            \"stair alternative in ocean builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical slab use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:dark_prismarine\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"ocean_monument\"],\n      \"rationale\": \"Dark prismarine generates naturally in ocean monuments and drops when mined with a pickaxe; crafted_only misses the primary natural source\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "49467ff6-14ef-486e-b4c9-2efce30b0aea",
+  "total_cost_usd": 0.2676949,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4874,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16232,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4874,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16232,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4874,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4874
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4011,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0040809999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16232,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4874,
+      "webSearchRequests": 0,
+      "costUSD": 0.2636139,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "866c7da5-78b4-4d6f-ad30-46a713cb1ebf"
+}

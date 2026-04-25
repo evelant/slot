@@ -1,0 +1,325 @@
+{
+  "items": {
+    "minecraft:soul_torch": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "passive light source; schema lists candles as decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "placed often for lighting in nether/dark areas"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for light and nether aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "soul-themed torch variant, ethereal blue flame"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "blue soul flame emission"
+        },
+        "spawn_interaction": {
+          "values": [
+            "repels_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_repellents",
+          "rationale": "piglins flee soul fire items"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "torch emits light level 10"
+        },
+        "primary_uses": {
+          "values": [
+            "light source in dark/nether areas",
+            "repel piglins when placed",
+            "craft soul lantern"
+          ],
+          "signal": "inferred",
+          "rationale": "light + piglin repellent + lantern ingredient"
+        }
+      }
+    },
+    "minecraft:spawner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "actively spawns mobs when placed"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only; unobtainable in survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mob farm setup, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "mob farm core block, automated drops"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "iron cage structure, eerie dungeon origin"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron cage with spinning mob flame"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave",
+            "mineshaft",
+            "nether_fortress",
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "generates in dungeons/fortresses/strongholds"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "core function is mob spawning"
+        },
+        "primary_uses": {
+          "values": [
+            "mob farm construction",
+            "automated mob spawning in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawner utility"
+        }
+      }
+    },
+    "minecraft:spectral_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "named",
+          "evidence": "tag minecraft:arrows",
+          "rationale": "arrows tag = ammunition role"
+        },
+        "material_family": {
+          "value": "glowstone",
+          "signal": "inferred",
+          "rationale": "crafted from glowstone dust"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires glowstone + bastion/bartering"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized arrow, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "fired from bow for combat"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing special arrow variant"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "spectral luminescent white-glow effect"
+        },
+        "primary_uses": {
+          "values": [
+            "apply glowing effect to targets",
+            "track mobs through walls",
+            "combat with bow or crossbow"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing effect is core purpose"
+        }
+      }
+    },
+    "minecraft:spider_eye": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop; schema lists string/bone as natural_resource"
+        },
+        "material_family": {
+          "value": "spider",
+          "signal": "pattern",
+          "rationale": "id prefix spider_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable spider mob drop"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "brewing ingredient, rarely eaten"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "→ fermented spider eye → potions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw biological mob drop"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish-red spider eye coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "craft fermented spider eye",
+            "brewing ingredient chain",
+            "emergency food (applies poison)"
+          ],
+          "signal": "inferred",
+          "rationale": "fermented eye is primary downstream use"
+        }
+      }
+    },
+    "minecraft:spider_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to spawn spider mobs on right-click"
+        },
+        "material_family": {
+          "value": "spider",
+          "signal": "pattern",
+          "rationale": "id prefix spider_"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "pattern",
+          "rationale": "_spawn_egg = creative-only in vanilla"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative mode mob spawning/farm setup"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn spiders for mob farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "biological mob egg"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "spider dark gray/brown egg coloring"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "_spawn_egg = creative-only in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn spiders in creative mode",
+            "mob farm setup and testing"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawn egg utility"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "piglin_repellent",
+      "rationale": "Tag piglin_repellents causes piglins to flee; distinct from piglin_pacifying (prevents aggression); soul torch, soul lantern, soul campfire all need this"
+    },
+    {
+      "kind": "add_value",
+      "facet": "combat_bonus",
+      "value": "inflicts_glowing",
+      "rationale": "Spectral arrow applies Glowing status effect to hit entities; not representable in current combat_bonus enum"
+    }
+  ],
+  "corrections": []
+}

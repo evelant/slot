@@ -1,0 +1,288 @@
+{
+  "items": {
+    "minecraft:copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chains hang lanterns/bells; decorative"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative hanging in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; chain=metal/mechanical"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; waxable variant exists"
+        },
+        "primary_uses": {
+          "values": [
+            "hang lanterns and bells",
+            "decorative chain in builds",
+            "copper-themed ceiling detail"
+          ],
+          "signal": "inferred",
+          "rationale": "chain block use cases"
+        }
+      }
+    },
+    "minecraft:copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest stores items"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "storage blocks used constantly"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "purpose is storing items"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of standard chest"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; waxable variant exists"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items like regular chest"
+        },
+        "primary_uses": {
+          "values": [
+            "store items",
+            "copper-themed storage block",
+            "inventory management"
+          ],
+          "signal": "inferred",
+          "rationale": "chest use cases"
+        }
+      }
+    },
+    "minecraft:copper_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "id suffix _chestplate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "copper tier often skipped for iron"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "armor worn in combat"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard armor silhouette"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "body protection in combat",
+            "early-game armor option",
+            "armor trim base piece"
+          ],
+          "signal": "inferred",
+          "rationale": "chestplate use cases"
+        }
+      }
+    },
+    "minecraft:copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "doors are structural building elements"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id prefix copper_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche vs wood doors"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; opened by redstone"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; metal/mechanical look"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "fresh copper color"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; waxable variant exists"
+        },
+        "primary_uses": {
+          "values": [
+            "copper-themed building entry",
+            "decorative metal door",
+            "redstone-controlled access point"
+          ],
+          "signal": "inferred",
+          "rationale": "door use cases"
+        }
+      }
+    },
+    "minecraft:copper_golem_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn_egg suffix = spawns mob"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "no survival loot source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "single-use creative item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipes or loot tables found"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg mechanic"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn copper golem mob",
+            "creative mode mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

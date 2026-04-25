@@ -1,0 +1,291 @@
+{
+  "items": {
+    "minecraft:poppy": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant gathered raw from world"
+        },
+        "material_family": {
+          "value": "flower",
+          "signal": "inferred",
+          "rationale": "small_flowers tag; plant category"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on overworld surface biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "dye/stew use, not daily essential"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "red dye for decor; bee food for farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic plant item"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red petals, warm hue"
+        },
+        "primary_uses": {
+          "values": [
+            "craft red dye",
+            "brew suspicious stew (blindness)",
+            "flower pot decoration",
+            "bee food"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of + block + tags"
+        }
+      }
+    },
+    "minecraft:porkchop": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "minecraft:food + minecraft:consumable"
+        },
+        "material_family": {
+          "value": "pork",
+          "signal": "pattern",
+          "rationale": "porkchop id; pig/hoglin mob drop"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "pigs very common, trivially farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "meat staple consumed regularly"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "pig/wolf breeding; travel food supply"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw meat, organic mob drop"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "pinkish-red raw meat tones"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into cooked porkchop",
+            "eat raw for hunger restore",
+            "feed and breed wolves",
+            "piglin food item"
+          ],
+          "signal": "inferred",
+          "rationale": "tags and cooking recipes"
+        }
+      }
+    },
+    "minecraft:potato": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "minecraft:food + minecraft:consumable"
+        },
+        "material_family": {
+          "value": "potato",
+          "signal": "pattern",
+          "rationale": "id = potato"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable crop; zombie/village drop"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common planted crop, regularly grown"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "villager_plantable_seeds; food for travel"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw vegetable crop"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown/beige raw potato colours"
+        },
+        "primary_uses": {
+          "values": [
+            "plant as crop for farming",
+            "cook into baked potato",
+            "eat raw (low nutrition)",
+            "pig food"
+          ],
+          "signal": "inferred",
+          "rationale": "seed tag + cooking recipes + pig_food"
+        }
+      }
+    },
+    "minecraft:potent_sulfur": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "guess",
+          "rationale": "cube_all block; no known function"
+        },
+        "material_family": {
+          "value": "sulfur",
+          "signal": "pattern",
+          "rationale": "name contains sulfur"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "guess",
+          "rationale": "crafted, origin crafted_only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "guess",
+          "rationale": "no downstream recipe consumption known"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "guess",
+          "rationale": "full cube block default activity"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "guess",
+          "rationale": "basic cube, no special known traits"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "guess",
+          "rationale": "sulfur is yellow-amber in colour"
+        },
+        "primary_uses": {
+          "values": [
+            "build/decorate with sulfur-themed block"
+          ],
+          "signal": "guess",
+          "rationale": "no recipe consumption found"
+        }
+      }
+    },
+    "minecraft:potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "minecraft:consumable; animation=drink"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires brewing stand or chest loot"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in combat/exploration"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "brewing",
+            "exploration",
+            "magic"
+          ],
+          "signal": "inferred",
+          "rationale": "potions span combat, travel, brewing"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical brewed consumable"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "glowing",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "liquid glass bottle, glows, colour varies"
+        },
+        "primary_uses": {
+          "values": [
+            "drink for status effects",
+            "combat and exploration buffs",
+            "convert to splash via brewing stand"
+          ],
+          "signal": "inferred",
+          "rationale": "standard potion use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "origin",
+      "value": "brewing_stand",
+      "rationale": "Potions are primarily obtained via brewing stand; no existing origin value captures this production method"
+    }
+  ],
+  "corrections": []
+}

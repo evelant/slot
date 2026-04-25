@@ -1,0 +1,297 @@
+{
+  "items": {
+    "minecraft:oak_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks are primary structural material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component confirms common rarity"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core wood unit used in nearly every build"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary end-use is structural construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned basic wood plank"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "oak is a light tan wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood planks spread and sustain fire"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures and floors",
+            "crafting tables, chests, and tools",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream uses of planks"
+        }
+      }
+    },
+    "minecraft:oak_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plate is a redstone signal source"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component confirms common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone builds, not daily"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone trigger embedded in structures"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional redstone component, minimal aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden component is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "detect player/mob presence",
+            "trigger redstone circuits",
+            "automate doors and traps"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pressure plate use cases"
+        }
+      }
+    },
+    "minecraft:oak_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant dropped from leaves, not refined"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component confirms common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when replanting or starting tree farms"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "tree farming supplies wood for building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "living plant material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling sprite is small green plant"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "plant material is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "grow oak trees for wood supply",
+            "tree farm replanting",
+            "flower pot decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses players pick up saplings for"
+        }
+      }
+    },
+    "minecraft:oak_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive block that holds and displays items"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component confirms common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in organized bases, not every session"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "displays items; aesthetic and organizational"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wooden shelf, no decoration"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "display items on open shelf",
+            "organize storage areas decoratively",
+            "decorative wall block"
+          ],
+          "signal": "inferred",
+          "rationale": "inferred from shelf template model and nbt variation"
+        }
+      }
+    },
+    "minecraft:oak_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is text display and labeling"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component confirms common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for labeling, not in every build"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "labeling and aesthetic text decoration"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple unadorned wooden sign"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden sign is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "label chests and storage areas",
+            "display text messages",
+            "wayfinding markers in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sign use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

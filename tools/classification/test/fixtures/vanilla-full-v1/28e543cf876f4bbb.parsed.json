@@ -1,0 +1,268 @@
+{
+  "items": {
+    "minecraft:nether_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form; structural barrier use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether builds less common than overworld"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "wall placed in construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "wall is derived variant of nether bricks"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dark reddish-brown nether brick texture"
+        },
+        "primary_uses": {
+          "values": [
+            "structural wall in nether-style builds",
+            "barrier/fence-like divider"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wall block usage"
+        }
+      }
+    },
+    "minecraft:nether_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "primary placed use is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether-theme builds occasional"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block for construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "pattern",
+          "rationale": "base block; not chiseled/cracked variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dark reddish-brown with mortar lines"
+        },
+        "primary_uses": {
+          "values": [
+            "building nether fortress-style structures",
+            "crafting nether brick variants"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses as block and ingredient"
+        }
+      }
+    },
+    "minecraft:nether_gold_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "ore block, raw world resource"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined opportunistically in nether"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for gold nuggets/ingots"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring nether ore"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold flecks on netherrack background"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into gold ingots",
+            "XP source in nether",
+            "triggers piglin attention"
+          ],
+          "signal": "inferred",
+          "rationale": "gold ore utility"
+        }
+      }
+    },
+    "minecraft:nether_quartz_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "ore block, raw world resource"
+        },
+        "material_family": {
+          "value": "quartz",
+          "signal": "pattern",
+          "rationale": "drops quartz; id nether_quartz_ore"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined when exploring nether"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for quartz gem"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring ore"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white quartz veins on netherrack"
+        },
+        "primary_uses": {
+          "values": [
+            "mine for nether quartz gem",
+            "XP source while exploring nether"
+          ],
+          "signal": "inferred",
+          "rationale": "quartz ore utility"
+        }
+      }
+    },
+    "minecraft:nether_sprouts": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant collected from nether biome"
+        },
+        "material_family": {
+          "value": "nether_sprouts",
+          "signal": "pattern",
+          "rationale": "unique plant, no shared material family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "minimal practical utility"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative vegetation"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "nether plant/vegetation"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan-teal warped forest coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative nether floor vegetation",
+            "compostable filler"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses for sprouts"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

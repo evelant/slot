@@ -1,0 +1,347 @@
+{
+  "items": {
+    "minecraft:orange_harness": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equips happy ghast for riding, saddle analogue"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "harnesses conventionally leather-based"
+        },
+        "dye_color": {
+          "value": "orange",
+          "signal": "pattern",
+          "rationale": "id prefix orange_ on harness item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component sets rarity common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used per ghast, not routine"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables happy ghast flight travel"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dye variant of base harness"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange reads as amber/warm"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot sources listed"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:happy_ghast_tempt_items",
+          "rationale": "tempts happy ghasts"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghast for riding",
+            "tempt happy ghasts",
+            "re-dye to other harness colors"
+          ],
+          "signal": "inferred",
+          "rationale": "core harness gameplay loop"
+        }
+      }
+    },
+    "minecraft:orange_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable storage, drops with contents intact"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "pattern",
+          "rationale": "crafted from shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End shulker shell farming"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core portable storage tool for most players"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage and bulk item transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dye variant"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange shell reads amber/warm"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds 27 standard item stacks"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker boxes resist pistons as containers"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "color-coded inventory org",
+            "bulk item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box gameplay uses"
+        }
+      }
+    },
+    "minecraft:orange_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full cube block used in construction"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "stained glass is dyed glass variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component sets rarity common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific build themes"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows, facades, colored light"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dyed glass"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange translucent glass block"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows",
+            "light tinting",
+            "decorative facades",
+            "crafting glass panes"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stained glass uses"
+        }
+      }
+    },
+    "minecraft:orange_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "thin pane block for windows and partitions"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "pane form of stained glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component sets rarity common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific window builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "window panes and partitions"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dyed glass pane"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange translucent thin pane"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes support waterlogging"
+        },
+        "primary_uses": {
+          "values": [
+            "colored window panes",
+            "decorative partitions",
+            "light filtering"
+          ],
+          "signal": "inferred",
+          "rationale": "typical glass pane uses"
+        }
+      }
+    },
+    "minecraft:orange_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block used in construction"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "terracotta material family"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component sets rarity common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colored masonry for builds"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "orange dyed terracotta"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange earthy terracotta tone"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building material",
+            "badlands-style builds",
+            "crafting glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:orange_terracotta",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "overworld_surface"
+      ],
+      "rationale": "orange terracotta generates naturally in badlands biomes",
+      "confidence": 0.85
+    }
+  ]
+}

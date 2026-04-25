@@ -1,0 +1,287 @@
+{
+  "items": {
+    "minecraft:prismarine_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "brick block, structural ocean monument use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires guardian drops to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed builds only"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative block"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "brick variant with ocean aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "prismarine teal, matte finish"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean monument style construction",
+            "decorative ocean-themed builds",
+            "crafting brick slabs and stairs"
+          ],
+          "signal": "inferred",
+          "rationale": "primary block for ocean monument builds"
+        }
+      }
+    },
+    "minecraft:prismarine_crystals": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "direct mob drop, raw unprocessed form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "guardian/elder guardian drop, needs monument"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used mainly for sea lanterns"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: sea lanterns for light/decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean bioluminescent creature drop"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "teal crystal with luminescent quality"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting sea lanterns",
+            "ocean guardian farm loot"
+          ],
+          "signal": "inferred",
+          "rationale": "key ingredient for sea lanterns"
+        }
+      }
+    },
+    "minecraft:prismarine_shard": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw guardian mob drop, not further processed"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only from guardian/elder guardian drops"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed building prismarine blocks"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: all prismarine construction blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean creature drop"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "prismarine teal color"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting prismarine blocks",
+            "crafting dark prismarine",
+            "crafting sea lanterns"
+          ],
+          "signal": "inferred",
+          "rationale": "base ingredient for all prismarine variants"
+        }
+      }
+    },
+    "minecraft:prismarine_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag, structural half-block form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from guardian-drop prismarine"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative slab"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "slab variant with ocean aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "prismarine teal color, matte finish"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs can be waterlogged in Minecraft"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height ocean-themed element",
+            "prismarine floor and ceiling detail"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for elevation and detail variation"
+        }
+      }
+    },
+    "minecraft:prismarine_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag, structural stair form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from guardian-drop prismarine"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs variant with ocean aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "prismarine teal color, matte finish"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs can be waterlogged in Minecraft"
+        },
+        "primary_uses": {
+          "values": [
+            "prismarine staircase construction",
+            "ocean monument style architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for ocean monument style builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:prismarine_bricks",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "overworld_ocean"
+      ],
+      "rationale": "prismarine bricks generate naturally as part of ocean monument structures and can be mined directly",
+      "confidence": 0.85
+    }
+  ]
+}

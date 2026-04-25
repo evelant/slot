@@ -1,0 +1,270 @@
+{
+  "items": {
+    "minecraft:tall_dry_grass": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "tall plant placed as dry-biome decoration"
+        },
+        "material_family": {
+          "value": "grass",
+          "signal": "pattern",
+          "rationale": "id ends _grass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "available in dry/badlands biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use only"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural world plant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "dry yellow-tan grass appearance"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in dry/badlands biomes"
+        }
+      }
+    },
+    "minecraft:tall_grass": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "tall grass placed for decoration"
+        },
+        "material_family": {
+          "value": "grass",
+          "signal": "pattern",
+          "rationale": "id ends _grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "grows in virtually every biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use only"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative plant"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural world plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "standard green grass color"
+        }
+      }
+    },
+    "minecraft:target": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits variable redstone on projectile hit"
+        },
+        "material_family": {
+          "value": "hay",
+          "signal": "inferred",
+          "rationale": "crafted from hay bale center"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone dust in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "hay + redstone both accessible"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche redstone build component"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone signal source; archery training"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "hay body with redstone function"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow hay with red/white rings"
+        },
+        "primary_uses": {
+          "values": [
+            "variable redstone signal from projectile hits",
+            "archery training and aim testing"
+          ],
+          "signal": "inferred",
+          "rationale": "core target block functions"
+        }
+      }
+    },
+    "minecraft:terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fired clay structural building block"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "smelted from clay blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "badlands gen + craftable from clay"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular building and dye base"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "uncolored fired clay block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish-orange fired clay color"
+        },
+        "primary_uses": {
+          "values": [
+            "building and decoration",
+            "crafting 16 stained terracotta colors",
+            "crafting armor trim smithing templates"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream uses of plain terracotta"
+        }
+      }
+    },
+    "minecraft:test_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "no recipe/loot; epic rarity; dev block"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival acquisition path exists"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "no legitimate survival use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:tall_grass",
+      "facet": "origin",
+      "current": [
+        "village"
+      ],
+      "suggested": [
+        "village",
+        "overworld_surface"
+      ],
+      "rationale": "tall grass generates on overworld surface in most biomes; village is secondary",
+      "confidence": 0.95
+    },
+    {
+      "item": "minecraft:terracotta",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "overworld_surface"
+      ],
+      "rationale": "terracotta generates naturally and abundantly in badlands biomes",
+      "confidence": 0.92
+    }
+  ]
+}

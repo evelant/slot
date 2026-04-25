@@ -1,0 +1,322 @@
+{
+  "items": {
+    "minecraft:budding_amethyst": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "grows amethyst clusters over time"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "id prefix amethyst"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only; unobtainable in survival"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only; creative farms or decor"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "grows harvestable amethyst clusters"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "geode crystal with purple glow"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "purple amethyst crystal texture"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns in amethyst geodes underground"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "cannot be moved by pistons in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "growing amethyst clusters in creative",
+            "creative amethyst farm source"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function is cluster growth"
+        }
+      }
+    },
+    "minecraft:bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "holds multiple item stacks in one slot"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "main body made from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in crafting recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "craftable + found in village chests"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core inventory management tool"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "compact and transport mixed item stacks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from natural hide and string"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "tan/brown rabbit hide coloring"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "occupies a standard inventory slot"
+        },
+        "primary_uses": {
+          "values": [
+            "compact multiple items in one slot",
+            "portable inventory expansion",
+            "organize varied item stacks"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle core inventory mechanic"
+        }
+      }
+    },
+    "minecraft:burn_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "archaeological collectible for decorated pots"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "pottery sherds are fired clay fragments"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per decorated pot crafted"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient in decorated_pot crafting"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact from trail ruins"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta clay tones with burn motif"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "archaeology collection display"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_sherds tag confirms use"
+        }
+      }
+    },
+    "minecraft:bush": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "small placeable shrub, primarily aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "surface plant, common in applicable biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for landscape decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as aesthetic shrub block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "small leafy shrub plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "small green leafy shrub"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "loot source blocks/bush confirms surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leafy plant block, flammable material"
+        },
+        "primary_uses": {
+          "values": [
+            "landscape and garden decoration",
+            "natural terrain accent"
+          ],
+          "signal": "inferred",
+          "rationale": "no crafting use; purely decorative plant"
+        }
+      }
+    },
+    "minecraft:cactus": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant harvested from desert biome"
+        },
+        "material_family": {
+          "value": "cactus",
+          "signal": "pattern",
+          "rationale": "item id is cactus"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "farmable desert plant"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "commonly farmed for green dye"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "farmed for dye; placed as decor/barrier"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "desert plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green cactus plant"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "cactus damages entities that touch it"
+        },
+        "primary_uses": {
+          "values": [
+            "smelting into green dye",
+            "farming renewable green dye",
+            "camel food",
+            "defensive barrier placement"
+          ],
+          "signal": "inferred",
+          "rationale": "dye ingredient + camel_food tag + barrier"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

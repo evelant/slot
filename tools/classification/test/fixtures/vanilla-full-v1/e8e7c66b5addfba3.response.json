@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 131330,
+  "duration_api_ms": 132347,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:horn_coral_fan\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for ocean/aquarium aesthetics\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains coral\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm ocean biome + silk touch required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in ocean-themed builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic ocean form, one of 5 coral colors\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"horn coral is cream/warm yellow\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only in warm ocean biomes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral fans are waterlogged blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ocean/aquarium decoration\", \"biome-themed builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary aesthetic use case\"\n        }\n      }\n    },\n    \"minecraft:horse_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg pattern → mob spawner\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"single-use creative/admin tool\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"horses used for breeding and travel\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg always spawns linked mob\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table or recipe in data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn horse mob\", \"adventure map design\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical spawn egg purpose\"\n        }\n      }\n    },\n    \"minecraft:host_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies cosmetic trim to armor\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per armor set for cosmetics\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cosmetic trim, not stat upgrade\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from archaeology, aesthetic armor upgrade\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trail ruins archaeology, desert tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply host trim at smithing table\", \"duplicate template with diamonds\", \"collect trim patterns\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"all smithing template use cases\"\n        }\n      }\n    },\n    \"minecraft:howl_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brushed raw from archaeology site as-is\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collected once, used in one pot\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for decorated pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact, howl motif\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta-toned archaeological shard\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft decorated pot with howl pattern\", \"complete sherd collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pottery sherd purpose\"\n        }\n      }\n    },\n    \"minecraft:husk_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg pattern → mob spawner\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"single-use creative/admin tool\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"husks are hostile desert zombies\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg always spawns linked mob\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table or recipe in data\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn husk mob\", \"adventure map enemy placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hostile mob spawn egg uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "bc0d9363-850d-4239-9c69-d63828b39ec9",
+  "total_cost_usd": 0.16542595000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3107,
+    "cache_read_input_tokens": 4939,
+    "output_tokens": 9988,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3107,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9988,
+        "cache_read_input_tokens": 4939,
+        "cache_creation_input_tokens": 3107,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3107
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2384,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002464,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9988,
+      "cacheReadInputTokens": 4939,
+      "cacheCreationInputTokens": 3107,
+      "webSearchRequests": 0,
+      "costUSD": 0.16296195000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "410f7285-14fa-499a-bb79-efb7fbedbb08"
+}

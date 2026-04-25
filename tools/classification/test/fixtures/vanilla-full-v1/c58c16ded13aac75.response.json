@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 121772,
+  "duration_api_ms": 123180,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:acacia_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"water vehicle for player movement\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational water travel only\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"traverses water for exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from wood\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-warm wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player across water\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat entity floats on water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel on rivers and oceans\", \"ingredient for acacia chest boat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main use cases\"\n        }\n      }\n    },\n    \"minecraft:acacia_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone pulse when pressed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in targeted redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers redstone in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, mechanical function\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-warm wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block properties\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"emit brief redstone pulse\", \"trigger doors gates dispensers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard button uses\"\n        }\n      }\n    },\n    \"minecraft:acacia_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat-primary; chest is bonus storage\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational water travel\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports player+items across water\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood and chest construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-warm wood tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources, recipe only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves player and stores items\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat entity floats on water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with built-in chest storage\", \"transport items across water bodies\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"combined boat+chest uses\"\n        }\n      }\n    },\n    \"minecraft:acacia_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural entry point in buildings\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"every structure has doors\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-warm wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block properties\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"entry/exit point for structures\", \"mob barrier with open/close\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door uses\"\n        }\n      }\n    },\n    \"minecraft:acacia_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier/enclosure block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in builds and farms\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enclosures and mob pens\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-warm wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block properties\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"mob containment and pens\", \"yard and garden perimeter\", \"decorative barrier\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "443ce332-284f-4d58-9847-b8bb66bfd0c6",
+  "total_cost_usd": 0.19527849999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 10398,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 10188,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10398,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10188,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 10398,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 10398
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3377,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003457,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10188,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 10398,
+      "webSearchRequests": 0,
+      "costUSD": 0.19182149999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "6e9d5a33-1fcd-4579-b33d-82a7c6d557db"
+}

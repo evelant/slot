@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 152815,
+  "duration_api_ms": 153878,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:bamboo_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural fence block for enclosures/borders\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for specific builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for structural enclosures and borders\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo = organic natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo is pale/light-colored wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood product; ignites in fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Livestock pens and mob enclosures\", \"Garden and path borders\", \"Decorative barriers in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:bamboo_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural gate element of fence systems\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed alongside fences, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural gate; redstone-operable open/close\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo organic material; gate is functionally plain\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo pale wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood product; ignites in fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Entry points in bamboo fence lines\", \"Redstone-controlled automatic gates\", \"Mob access control in pens\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fence gate gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:bamboo_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs are primarily decorative/labeling blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as needed for labeling\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"text labeling and aesthetic decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo natural; hanging chain style more elaborate than signs\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo light wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo wood product burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Text labels in builds\", \"Decorative overhead signage\", \"Wayfinding markers in structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hanging sign primary uses\"\n        }\n      }\n    },\n    \"minecraft:bamboo_mosaic\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full cube block used in construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty decorative-patterned block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"distinctive patterned block for aesthetic builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo natural; mosaic weave pattern is ornate\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo pale with warm yellowish tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo wood product burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative bamboo flooring\", \"Feature walls and accent panels\", \"Unique patterned structural block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mosaic block primary uses\"\n        }\n      }\n    },\n    \"minecraft:bamboo_mosaic_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form of decorative mosaic block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialty decorative slab\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative half-block for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo natural; mosaic pattern is ornate\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo pale warm yellowish tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo wood slab burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Half-height mosaic flooring\", \"Decorative step and accent slab\", \"Aesthetic bamboo surface detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mosaic slab primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:bamboo_mosaic\",\n      \"facet\": \"is_fuel\",\n      \"current\": false,\n      \"suggested\": true,\n      \"rationale\": \"bamboo_mosaic is bamboo wood; bamboo_mosaic_slab (same material) correctly has is_fuel:true; all bamboo wood products are burnable fuel\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7664581b-8320-4b72-b8a3-7ac71f5d73df",
+  "total_cost_usd": 0.19329939999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4676,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11335,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4676,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11335,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4676,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4676
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3813,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003883,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11335,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4676,
+      "webSearchRequests": 0,
+      "costUSD": 0.18941639999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ee1e0548-5e81-4cdf-bc24-6e7d589fa468"
+}

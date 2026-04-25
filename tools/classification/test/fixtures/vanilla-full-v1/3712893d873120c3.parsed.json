@@ -1,0 +1,291 @@
+{
+  "items": {
+    "minecraft:ravager_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative/admin-only items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources, no recipes, creative only"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival gameplay"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely used even in creative"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg pattern → spawns linked mob"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "ravager is a raid/combat mob"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "generic spawn egg form"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "ravager is brownish-gray"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a ravager mob"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function of item"
+        }
+      }
+    },
+    "minecraft:raw_copper": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw ore chunk, unprocessed world pickup"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "copper ore is abundant in overworld"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "smelted routinely for copper ingots"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream copper used for blocks and deco"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw unprocessed ore chunk"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "raw copper has pinkish-orange color"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or blast into copper ingots",
+            "Compact 9:1 into raw copper block"
+          ],
+          "signal": "inferred",
+          "rationale": "primary downstream uses"
+        }
+      }
+    },
+    "minecraft:raw_copper_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "9:1 compact raw copper storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common copper ore"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when bulk-storing raw copper"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "compact storage; also used as building block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "rough unprocessed ore block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "pinkish-orange raw copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "9:1 compact raw copper storage",
+            "Building or decorative block"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:raw_gold": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw ore chunk, unprocessed world pickup"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "raw gold → gold tool/armor tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "gold ore less common than iron/copper"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "smelted routinely for gold ingots"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "gold ingots used for armor/weapons and bartering"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw unprocessed ore chunk"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow-orange raw gold color"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved",
+          "rationale": "explicit piglin_loved tag"
+        },
+        "primary_uses": {
+          "values": [
+            "Smelt or blast into gold ingots",
+            "Compact 9:1 into raw gold block",
+            "Piglins attracted; neutralizes aggro"
+          ],
+          "signal": "inferred",
+          "rationale": "primary downstream uses"
+        }
+      }
+    },
+    "minecraft:raw_gold_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "9:1 compact raw gold storage"
+        },
+        "tier": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "raw gold block → gold tier"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from uncommon gold ore"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when bulk-storing raw gold"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "compact storage; also decorative block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "rough unprocessed ore block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow-orange raw gold color"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved",
+          "rationale": "explicit piglin_loved tag"
+        },
+        "primary_uses": {
+          "values": [
+            "9:1 compact raw gold storage",
+            "Decorative or building block"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

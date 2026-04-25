@@ -1,0 +1,277 @@
+{
+  "items": {
+    "minecraft:brain_coral_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "coral primarily for aesthetic use"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm ocean + silk touch to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underwater decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aquatic decor and builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic brain texture with pink tones"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright pinkish-red brain pattern"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found in warm ocean biomes"
+        }
+      }
+    },
+    "minecraft:brain_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "small coral plant, purely aesthetic"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "warm ocean biome only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "small plant used for decoration only"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fan form with pink coloring"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "pinkish-red coral fan"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "warm ocean biome"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral fans are waterloggable plants"
+        }
+      }
+    },
+    "minecraft:bread": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "minecraft:food + consumable components"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "inferred",
+          "rationale": "crafted from 3 wheat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially craftable from farmed wheat"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "staple early-game food source"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "wheat farming loop output"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple unadorned baked food"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish baked bread color"
+        },
+        "primary_uses": {
+          "values": [
+            "restore hunger and saturation",
+            "early game food staple",
+            "trigger villager breeding"
+          ],
+          "signal": "inferred",
+          "rationale": "food component + villager_picks_up tag"
+        }
+      }
+    },
+    "minecraft:breeze_rod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, unprocessed"
+        },
+        "material_family": {
+          "value": "breeze",
+          "signal": "pattern",
+          "rationale": "mob-named material drop"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "trial chamber mob drop"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used to craft mace and wind charges"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "crafts mace and wind charges"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "wind-magic mob drop"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "breeze has cyan/teal wind aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "craft mace (heavy weapon)",
+            "craft wind charges",
+            "craft flow armor trim"
+          ],
+          "signal": "pattern",
+          "rationale": "ingredient_of: mace, wind_charge, trim"
+        }
+      }
+    },
+    "minecraft:breeze_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn egg, creative-only"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources; spawn egg type"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "no survival source, creative only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used to spawn breezes in creative"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg spawns named mob on use"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "game mechanic spawn item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "origin",
+      "value": "creative_only",
+      "rationale": "Spawn eggs and admin items have no world origin; crafted_only is misleading as they are not crafted either"
+    }
+  ],
+  "corrections": []
+}

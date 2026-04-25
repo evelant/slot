@@ -1,0 +1,363 @@
+{
+  "items": {
+    "minecraft:stripped_acacia_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed structural log block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core wood used regularly in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural placement or aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural wood; stripped variant of log"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia warm orange-tan hue"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia trees in savanna biome"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire",
+            "piston_movable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag logs_that_burn; wood block"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "full opaque solid block"
+        },
+        "primary_uses": {
+          "values": [
+            "build structures and homes",
+            "craft into acacia planks",
+            "use as fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "log core building and crafting use"
+        }
+      }
+    },
+    "minecraft:stripped_acacia_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed structural wood block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aesthetic; less used than logs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural or aesthetic placement"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia warm orange-tan hue"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire",
+            "piston_movable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag logs_that_burn; wood block"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "full opaque solid block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building element",
+            "craft into acacia planks",
+            "use as fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted wood variant downstream uses"
+        }
+      }
+    },
+    "minecraft:stripped_bamboo_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed structural bamboo block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche material; bamboo-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural or aesthetic placement"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant; natural material"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo pale yellow-green tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo grows in jungle biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-type block movable by piston"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "full opaque solid block"
+        },
+        "primary_uses": {
+          "values": [
+            "build bamboo-themed structures",
+            "craft into bamboo planks"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo wood building and crafting"
+        }
+      }
+    },
+    "minecraft:stripped_birch_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed structural log block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core wood used regularly in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural or aesthetic placement"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of natural log"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch pale white-cream hue"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "birch trees on overworld surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire",
+            "piston_movable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag logs_that_burn; wood block"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "full opaque solid block"
+        },
+        "primary_uses": {
+          "values": [
+            "build structures and homes",
+            "craft into birch planks",
+            "use as fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "log core building and crafting use"
+        }
+      }
+    },
+    "minecraft:stripped_birch_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed structural wood block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aesthetic; less used than logs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural or aesthetic placement"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch pale white-cream hue"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire",
+            "piston_movable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag logs_that_burn; wood block"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "full opaque solid block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building element",
+            "craft into birch planks",
+            "use as fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted wood variant downstream uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

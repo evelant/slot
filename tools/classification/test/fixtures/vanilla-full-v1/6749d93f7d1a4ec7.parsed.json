@@ -1,0 +1,279 @@
+{
+  "items": {
+    "minecraft:spire_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "applied at smithing table as armor trim"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when trimming specific armor"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "end city origin; cosmetic armor upgrade"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing templates render gold-colored"
+        },
+        "primary_uses": {
+          "values": [
+            "apply spire trim to armor at smithing table",
+            "duplicate template via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "two defined recipe uses"
+        }
+      }
+    },
+    "minecraft:splash_potion": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "inferred",
+          "rationale": "thrown and consumed to deliver effects"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational; combat or specific mob scenarios"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "magic"
+          ],
+          "signal": "inferred",
+          "rationale": "thrown at mobs/players for area effects"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "alchemical potion item"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "glossy"
+          ],
+          "signal": "inferred",
+          "rationale": "glass bottle with colored liquid"
+        },
+        "primary_uses": {
+          "values": [
+            "throw for area-of-effect potion effects",
+            "combat debuffing and crowd control",
+            "harm undead with splash healing potion"
+          ],
+          "signal": "inferred",
+          "rationale": "core splash potion gameplay uses"
+        }
+      }
+    },
+    "minecraft:sponge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "actively absorbs surrounding water blocks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only in ocean monument sponge rooms"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when draining water areas"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "drain water for construction projects"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic sea creature material"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow-tan sponge color"
+        },
+        "primary_uses": {
+          "values": [
+            "absorb water blocks when placed",
+            "drain flooded areas and monuments",
+            "reuse after drying wet sponge in furnace"
+          ],
+          "signal": "inferred",
+          "rationale": "water absorption is sole function"
+        }
+      }
+    },
+    "minecraft:spore_blossom": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "ceiling flower; emits falling spore particles"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "only in lush caves; requires specific biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decoration, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic and particle appeal"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "pattern",
+          "rationale": "tagged minecraft:flowers and bee_food"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "pink blossom with green leaves"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "generates in lush caves"
+        },
+        "primary_uses": {
+          "values": [
+            "ceiling decoration in cave-themed builds",
+            "emits ambient falling spore particles",
+            "bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative and minor bee interaction"
+        }
+      }
+    },
+    "minecraft:spruce_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "tagged minecraft:boats; suffix _boat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant spruce planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for water travel when needed"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel for world exploration"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic undecorated functional wood craft"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce is medium-dark brown wood"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; recipe production only"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player across water surfaces"
+        },
+        "primary_uses": {
+          "values": [
+            "travel across water surfaces",
+            "ingredient for spruce chest boat"
+          ],
+          "signal": "inferred",
+          "rationale": "water transport and crafting step"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:sponge",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "ocean_monument"
+      ],
+      "rationale": "sponge generates in monument rooms; not craft-only",
+      "confidence": 0.95
+    }
+  ]
+}

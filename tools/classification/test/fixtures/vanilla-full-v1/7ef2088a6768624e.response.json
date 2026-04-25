@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 197291,
+  "duration_api_ms": 198098,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:glass_bottle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds water/potion/honey contents\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"prerequisite for all potions\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core path: bottle→water bottle→potion\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clear unadorned glass\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clear glass silhouette\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"brewing potions\",\n            \"collecting water\",\n            \"collecting honey from beehives\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"three main vanilla uses\"\n        }\n      }\n    },\n    \"minecraft:glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin structural glass window element\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common window/barrier material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"windows, facades, barriers\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clear, uncolored pane\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"crystal\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"clear glass reads as pale/translucent\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"panes accept water in same space\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"windows and transparent barriers\",\n            \"base for stained glass panes\",\n            \"decorative facades\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical player usage patterns\"\n        }\n      }\n    },\n    \"minecraft:glistering_melon_slice\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted intermediate: melon+gold nuggets\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wrapped in 8 gold nuggets\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"melon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"melon slice is the base\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires gold nuggets to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche brewing ingredient\"\n        },\n        \"activity\": {\n          \"values\": [\"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brews Potion of Healing\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fruit-derived item\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold sheen on green melon\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_loved\",\n          \"rationale\": \"directly tagged piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"brewing Potion of Healing\",\n            \"piglin attraction item\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"two main vanilla roles\"\n        }\n      }\n    },\n    \"minecraft:globe_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"loom template; consumed applying pattern\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe or standard loot source\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per banner decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies globe pattern in loom\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare special banner pattern\"\n        },\n        \"origin\": {\n          \"values\": [\"trading\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"no loot/recipe; likely cartographer\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply globe pattern to banners in loom\"\n          ],\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:provides_banner_patterns:#minecraft:pattern_item/globe\",\n          \"rationale\": \"sole function per component\"\n        }\n      }\n    },\n    \"minecraft:glow_berries\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:food + minecraft:consumable\",\n          \"rationale\": \"has food and consumable components\"\n        },\n        \"material_family\": {\n          \"value\": \"berry\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _berries\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lush cave exclusive plant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"low nutrition; niche as light source\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cave vine farming; gathered exploring\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural cave fruit\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange luminous berries\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cave vines in lush caves\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vine block emits light-14 when fruiting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"food (2 hunger / 0.4 saturation)\",\n            \"planting cave vines for ambient light\",\n            \"breeding and attracting foxes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla gameplay roles\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "032b53ab-a632-4296-b15c-4a71be7c389b",
+  "total_cost_usd": 0.22145265000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3723,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13513,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3723,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13513,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3723,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3723
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2860,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00294,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13513,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3723,
+      "webSearchRequests": 0,
+      "costUSD": 0.21851265000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8c381d68-aa29-4a2e-a110-a4bfb18aad36"
+}

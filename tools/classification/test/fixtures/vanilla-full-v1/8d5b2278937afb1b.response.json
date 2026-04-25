@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 199291,
+  "duration_api_ms": 200346,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:spruce_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural block; open/close is secondary\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheaply crafted from spruce planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in wood-heavy builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"built into structures; redstone-activatable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce is dark gray-brown wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; thin block waterloggable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building hidden passages and doors\",\n            \"redstone-controlled entrances\",\n            \"aesthetic wooden decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard trapdoor use cases\"\n        }\n      }\n    },\n    \"minecraft:spruce_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark log block used for structure\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural in spruce trees; craftable from logs\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in spruce-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural and decorative wood block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural all-bark wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spruce bark is dark gray-brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; log blocks are piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building dark-toned wood structures\",\n            \"crafting planks and charcoal\",\n            \"decorative all-bark log accent\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical all-bark wood block uses\"\n        }\n      }\n    },\n    \"minecraft:spyglass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"handheld optical scouting tool\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 2 copper ingots\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"amethyst_shard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"amethyst shard forms the lens\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper and amethyst readily available\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"useful but not an essential daily tool\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"zooms in to scout terrain and mobs\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted metal optical instrument\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper tube with amethyst lens\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; only recipe output\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"zoom in on distant terrain\",\n            \"spot mobs and structures from afar\",\n            \"scouting during exploration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary spyglass gameplay use\"\n        }\n      }\n    },\n    \"minecraft:squid_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative/command only\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in survival mode\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when needed for setup or testing\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg summons its linked mob on use\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"squid egg is dark navy/indigo colored\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn squids in creative mode\",\n            \"mob farm setup and testing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical spawn egg use cases\"\n        }\n      }\n    },\n    \"minecraft:stick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed wood used as crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"generic wood; crafted from any plank type\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from leaves; crafted from any plank\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 109 shaped crafting recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"building\", \"farming\", \"fishing\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: tools, weapons, rails, rods\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple unadorned wooden stick\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale tan wood color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting tools and weapons\",\n            \"crafting fences, signs, and torches\",\n            \"crafting rails and fishing rods\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"most common downstream crafting uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "9dd1b47e-7522-41fb-abe5-80906269499c",
+  "total_cost_usd": 0.2088818,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 10326,
+    "output_tokens": 13493,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13493,
+        "cache_read_input_tokens": 10326,
+        "cache_creation_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3305,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00338,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13493,
+      "cacheReadInputTokens": 10326,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.2055018,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "36c79b25-9abc-467a-ae36-fb33ba66e9b3"
+}

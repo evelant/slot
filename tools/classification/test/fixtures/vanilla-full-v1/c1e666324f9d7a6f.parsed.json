@@ -1,0 +1,320 @@
+{
+  "items": {
+    "minecraft:bamboo_mosaic_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are primary structural elements"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific build projects"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs serve structural & aesthetic roles"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo=natural; mosaic=patterned variant"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo is pale warm-toned wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block; catches fire"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative staircase construction",
+            "architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for structure and aesthetics"
+        }
+      }
+    },
+    "minecraft:bamboo_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "planks are core building/crafting blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "planks consumed by 49+ shaped recipes"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "planks used to build and craft wood items"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "flat uniform block; natural material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo is pale light-toned wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood plank; highly flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "building bamboo wood structures",
+            "crafting bamboo wood items"
+          ],
+          "signal": "inferred",
+          "rationale": "base crafting/building material"
+        }
+      }
+    },
+    "minecraft:bamboo_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "pressure plates are redstone input devices"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone builds"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "detects entities; triggers circuits"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo material; mechanical function"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo pale light wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden pressure plate; combustible"
+        },
+        "primary_uses": {
+          "values": [
+            "detecting entity presence",
+            "triggering redstone circuits",
+            "automatic doors/gates"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate core use cases"
+        }
+      }
+    },
+    "minecraft:bamboo_raft": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "tag minecraft:boats; water vehicle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when water travel is needed"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "rafts used for water travel/exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo construction; rustic natural look"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo pale wood appearance"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; craft recipe only"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "raft carries player over water"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "raft is a boat; floats on water"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel and river crossing",
+            "transporting players across oceans"
+          ],
+          "signal": "inferred",
+          "rationale": "boat-class water transport"
+        }
+      }
+    },
+    "minecraft:bamboo_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "inventory shelf; interactive storage/display"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific storage/display builds"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf stores and displays items"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo pale warm-toned wood"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf holds standard items per nbt variation"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block; combustible"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying stored items visually",
+            "decorative item storage"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf with inventory for display use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:bamboo_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_bamboo",
+      "rationale": "id is bamboo_planks; oak tag match is wrong; bamboo id wins",
+      "confidence": 0.95
+    }
+  ]
+}

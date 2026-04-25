@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 223739,
+  "duration_api_ms": 224876,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:brain_coral_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral primarily for aesthetic use\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains coral\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm ocean + silk touch to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche underwater decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aquatic decor and builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic brain texture with pink tones\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright pinkish-red brain pattern\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in warm ocean biomes\"\n        }\n      }\n    },\n    \"minecraft:brain_coral_fan\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small coral plant, purely aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"coral\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains coral\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm ocean biome only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small plant used for decoration only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic fan form with pink coloring\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pinkish-red coral fan\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm ocean biome\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral fans are waterloggable plants\"\n        }\n      }\n    },\n    \"minecraft:bread\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:food + consumable components\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 3 wheat\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially craftable from farmed wheat\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"staple early-game food source\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wheat farming loop output\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple unadorned baked food\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brownish baked bread color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"restore hunger and saturation\", \"early game food staple\", \"trigger villager breeding\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food component + villager_picks_up tag\"\n        }\n      }\n    },\n    \"minecraft:breeze_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop, unprocessed\"\n        },\n        \"material_family\": {\n          \"value\": \"breeze\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"mob-named material drop\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trial chamber mob drop\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to craft mace and wind charges\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafts mace and wind charges\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wind-magic mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"breeze has cyan/teal wind aesthetic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft mace (heavy weapon)\", \"craft wind charges\", \"craft flow armor trim\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"ingredient_of: mace, wind_charge, trim\"\n        }\n      }\n    },\n    \"minecraft:breeze_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg, creative-only\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; spawn egg type\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival source, creative only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn breezes in creative\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg spawns named mob on use\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"game mechanic spawn item\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"origin\",\n      \"value\": \"creative_only\",\n      \"rationale\": \"Spawn eggs and admin items have no world origin; crafted_only is misleading as they are not crafted either\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "81865c65-5b74-497e-87e6-14d5026a2aa4",
+  "total_cost_usd": 0.26639315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3421,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16605,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3421,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16605,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3421,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3421
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2558,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002633,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16605,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3421,
+      "webSearchRequests": 0,
+      "costUSD": 0.26376015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "18982fdb-2d45-4f1f-8877-99f748c72f96"
+}

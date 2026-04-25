@@ -1,0 +1,298 @@
+{
+  "items": {
+    "minecraft:golden_spear": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "minecraft:weapon component + spears tag"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "id prefix golden_"
+        },
+        "tier": {
+          "value": "golden",
+          "signal": "pattern",
+          "rationale": "id prefix golden_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "gold durability is very low (32 uses)"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "melee and throwable weapon"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard weapon, no ornate lore"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafting_shaped only"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "throwable spear attack",
+            "high enchantability weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "spear + enchantable/lunge tag"
+        }
+      }
+    },
+    "minecraft:golden_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "sword suffix + minecraft:weapon component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "very low durability; niche use cases"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "melee weapon primary use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sword design"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold material"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "highest enchantability tier",
+            "piglin neutrality when held"
+          ],
+          "signal": "inferred",
+          "rationale": "sword stats + piglin_loved tag"
+        }
+      }
+    },
+    "minecraft:granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid stone block for building"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "generates freely in overworld terrain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used by builders, not universal necessity"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stone block placed for structure and deco"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring igneous stone"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "pinkish-brown speckled stone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone aesthetics",
+            "crafting polished granite",
+            "stone variant decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "block use + stonecutting ingredient list"
+        }
+      }
+    },
+    "minecraft:granite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form factor for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant granite"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building with granite"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "half-block slab for construction"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural stone slab"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "inherits granite pinkish-brown texture"
+        },
+        "primary_uses": {
+          "values": [
+            "half-block surface construction",
+            "architectural step detail"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form factor use cases"
+        }
+      }
+    },
+    "minecraft:granite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs form factor for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant granite"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building with granite"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stair block for construction"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural stone stairs"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "inherits granite pinkish-brown texture"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "architectural roofing and detail"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form factor use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:granite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "overworld_cave"
+      ],
+      "rationale": "Granite is a naturally generating overworld stone type; rule mistook absence of chest/mob loot for crafted_only",
+      "confidence": 0.95
+    }
+  ]
+}

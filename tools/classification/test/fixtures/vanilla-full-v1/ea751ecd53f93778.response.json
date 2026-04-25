@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 157065,
+  "duration_api_ms": 157845,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:lodestone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"anchors compass to location, interactive\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled stone bricks form body\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"netherite\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite ingot required in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"netherite ingot raises craft cost\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nav use, few placed per world\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"links compass for navigation waypoints\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone+metal precision block appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark stone body with netherite trim\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Link compass to fixed location\",\n            \"Navigation waypoint marker\",\n            \"Nether/dimension landmark anchor\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core lodestone mechanic\"\n        }\n      }\n    },\n    \"minecraft:loom\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive UI block for banner patterns\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks form main structure\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string used in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap planks + string recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when making banner patterns\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"applies decorative patterns to banners\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wooden weaving workshop block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard plank-tone appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Apply patterns to banners\",\n            \"Shepherd villager workstation\",\n            \"Banner design and customization\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loom's sole function\"\n        }\n      }\n    },\n    \"minecraft:mace\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:weapon component present\"\n        },\n        \"material_family\": {\n          \"value\": \"heavy_core\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy core is the mace head ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"breeze_rod\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"breeze_rod is handle and repair item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche fall-burst weapon, not default pick\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:weapon component\"\n        },\n        \"combat_bonus\": {\n          \"values\": [\"fall_bonus_damage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smash mechanic scales with fall height\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"epic rarity unique heavy weapon\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron head, orange breeze rod handle\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy_core only from trial vault loot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Smash attack with fall damage bonus\",\n            \"Break decorated pots\",\n            \"High-burst melee combat\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mace core mechanics and tag\"\n        }\n      }\n    },\n    \"minecraft:magenta_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is aesthetic display\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"6 wool form the banner cloth\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick pole in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap wool + stick craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for decor or shield patterns\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative display and shield art\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"explicit dye color variant of banner\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta is a highly saturated hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Wall or ceiling decoration\",\n            \"Shield pattern application\",\n            \"Clan or faction marker\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical banner use cases\"\n        }\n      }\n    },\n    \"minecraft:magenta_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sleeping + spawn-point-setting mechanic\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 wool form mattress in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood_oak\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 planks form bed frame\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap wool + plank recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used most nights in survival play\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in base; 16 colors for room decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"one of 16 dye-color bed variants\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta is a saturated vivid hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Sleep to skip night\",\n            \"Set player spawn point\",\n            \"Colored bedroom decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "11904a74-f5f2-43d5-99c8-8ce56bd1c447",
+  "total_cost_usd": 0.2041859,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4590,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12088,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4590,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12088,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4590,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4590
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3727,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003797,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12088,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4590,
+      "webSearchRequests": 0,
+      "costUSD": 0.2003889,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2018ab8d-c52b-4535-a29d-4b429cff3824"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 138659,
+  "duration_api_ms": 141404,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:orange_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin wool block, primary use is aesthetics\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially crafted from orange wool\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when decorating themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor/ceiling decor; llama outfit\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool variant\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange tone reads amber/warm\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\", \"piston_movable\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:dampens_vibrations\",\n          \"rationale\": \"dampens vibrations tag = sculk silent\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mobs cannot spawn on carpet blocks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"floor and ceiling decoration\",\n            \"dampens sculk sensor vibrations\",\n            \"decorating llamas\",\n            \"dyeing into other carpet colors\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core carpet gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:orange_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid full cube, primary use is construction\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily made from concrete powder + water\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular vibrant building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block used for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth solid colored block\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange reads as amber/warm\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"made by wetting powder; not naturally generated\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"vibrant colored construction\",\n            \"interior design accent block\",\n            \"pixel art building\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses of concrete blocks\"\n        }\n      }\n    },\n    \"minecraft:orange_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable block; intermediate for concrete\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains concrete_powder\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted from dye + sand + gravel\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate step toward concrete\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed and hydrated to make concrete\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed powder block variant\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange powder texture reads sandy/warm\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand/gravel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"converting to orange concrete via water\",\n            \"gravity-affected building material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses of concrete powder\"\n        }\n      }\n    },\n    \"minecraft:orange_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed dye ingredient for crafting\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _dye; tag minecraft:dyes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common overworld flowers\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when dyeing or crafting orange items\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyes items; trade commodity\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely a color material\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange dye reads amber/warm\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from orange tulip/torchflower; wandering traders sell dyes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dyeing wool, carpet, glass, terracotta\",\n            \"coloring leather armor\",\n            \"crafting firework stars\",\n            \"dyeing beds and banners\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream uses from recipe data\"\n        }\n      }\n    },\n    \"minecraft:orange_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"patterned block, primarily aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains glazed_terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted from common terracotta\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative block for themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"patterned block for decorative builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"distinctive angular glazed pattern\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange glazed terracotta reads amber/warm\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta not pushed/pulled by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative patterned wall/floor block\",\n            \"mosaic and pixel art builds\",\n            \"themed building decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses of glazed terracotta\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "af9435ec-e7fc-4db6-93ee-52847720a487",
+  "total_cost_usd": 0.16395265000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4783,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9344,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4783
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9344,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4783,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4783,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3920,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9344,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4783,
+      "webSearchRequests": 0,
+      "costUSD": 0.15995265000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0ca1d7cb-2352-4be0-b86f-1e5b89776c17"
+}

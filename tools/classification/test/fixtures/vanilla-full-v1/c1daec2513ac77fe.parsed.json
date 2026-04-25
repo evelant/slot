@@ -1,0 +1,300 @@
+{
+  "items": {
+    "minecraft:wooden_spear": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "rationale": "minecraft:weapon component present"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "repairable with wooden_tool_materials"
+        },
+        "tier": {
+          "value": "wooden",
+          "signal": "pattern",
+          "rationale": "wooden_tool_materials repair tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "lowest tier, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "melee weapon with lunge mechanic"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic lowest-tier weapon"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light oak wood texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafting recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "early-game melee combat",
+            "lunge attack with enchantment",
+            "starter combat weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon tag + enchantable/lunge tag"
+        }
+      }
+    },
+    "minecraft:wooden_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "rationale": "minecraft:weapon component present"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "lowest tier, rapidly replaced"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary melee combat weapon"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic lowest-tier weapon"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light oak wood texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafting only"
+        },
+        "primary_uses": {
+          "values": [
+            "early-game melee combat",
+            "sweeping edge attacks",
+            "cobweb clearing",
+            "smashing decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "swords tag + breaks_decorated_pots + cobweb rule"
+        }
+      }
+    },
+    "minecraft:writable_book": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "functional writing tool, not end content"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "book = paper+leather; quill = feather"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when writing books"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "lectern_books + bookshelf_books tags"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple writing implement"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, shapeless crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "write custom book content",
+            "display on lectern",
+            "clone into written copies"
+          ],
+          "signal": "inferred",
+          "rationale": "writable_book_content + cloning + lectern tags"
+        }
+      }
+    },
+    "minecraft:written_book": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "content artifact for reading/display"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "derived from signed writable_book"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "read once or placed on lectern"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "lectern_books + bookshelf_books display"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple completed written book"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no world loot; produced via book cloning"
+        },
+        "primary_uses": {
+          "values": [
+            "read lore or player-written content",
+            "display on lectern",
+            "clone for distribution"
+          ],
+          "signal": "inferred",
+          "rationale": "lectern_books + bookshelf_books + cloning recipe"
+        }
+      }
+    },
+    "minecraft:yellow_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primarily aesthetic pattern display"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "banners crafted from 6 wool + stick"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "stick (wood) component in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decoration or marking"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "banners are aesthetic decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow dye + customizable patterns"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow is vivid and warm-toned"
+        },
+        "primary_uses": {
+          "values": [
+            "base and territory decoration",
+            "shield decoration",
+            "loom pattern display",
+            "faction or team markers"
+          ],
+          "signal": "inferred",
+          "rationale": "banner_patterns + shield_decoration recipe"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

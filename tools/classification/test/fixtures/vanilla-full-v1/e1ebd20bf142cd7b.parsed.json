@@ -1,0 +1,315 @@
+{
+  "items": {
+    "minecraft:oxidized_copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier like iron bars"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common; copper abundant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche grille/barrier use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as barriers and decorative grilles"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized variant; natural weathering state"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "fully oxidized copper reads teal-green"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "forms via natural copper oxidation outdoors"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative barrier or grille",
+            "Building copper aesthetic structures",
+            "Wax to preserve oxidized color"
+          ],
+          "signal": "inferred",
+          "rationale": "typical bars use cases"
+        }
+      }
+    },
+    "minecraft:oxidized_copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redstone-toggled light emitter"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche redstone lighting use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "powered dim light in redstone builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone mechanism; oxidized variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "teal copper; glows dimly when powered"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when powered by redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Redstone-gated dim light source",
+            "Copper aesthetic lighting",
+            "Indicator light in circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "typical copper bulb uses"
+        }
+      }
+    },
+    "minecraft:oxidized_copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chains primarily for decorative hanging"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative/hanging use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "hanging lanterns, bells, decorative connectors"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized variant; natural weathering"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "fully oxidized copper = teal-green"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "forms via natural copper oxidation outdoors"
+        },
+        "primary_uses": {
+          "values": [
+            "Hanging lanterns and bells",
+            "Decorative chain links",
+            "Copper aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "typical chain block uses"
+        }
+      }
+    },
+    "minecraft:oxidized_copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest = item storage container"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "storage used constantly once placed"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "item storage and retrieval"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized variant; natural weathering"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "fully oxidized copper = teal-green"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "forms via natural copper oxidation outdoors"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item chest storage"
+        },
+        "primary_uses": {
+          "values": [
+            "Storing items",
+            "Copper-themed storage builds",
+            "Wax to freeze oxidation state"
+          ],
+          "signal": "inferred",
+          "rationale": "typical copper chest uses"
+        }
+      }
+    },
+    "minecraft:oxidized_copper_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "door opens/closes; interactive block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche copper aesthetic building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural door; redstone compatible"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized variant; natural weathering"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "fully oxidized copper = teal-green"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "forms via natural copper oxidation outdoors"
+        },
+        "primary_uses": {
+          "values": [
+            "Copper aesthetic door",
+            "Redstone-compatible entry",
+            "Wax to preserve appearance"
+          ],
+          "signal": "inferred",
+          "rationale": "typical copper door uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

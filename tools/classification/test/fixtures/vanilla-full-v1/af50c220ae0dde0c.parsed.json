@@ -1,0 +1,360 @@
+{
+  "items": {
+    "minecraft:cut_sandstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural stone variant for construction"
+        },
+        "material_family": {
+          "value": "sandstone",
+          "signal": "pattern",
+          "rationale": "id contains sandstone base material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from abundant desert sandstone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in desert-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "cut variant of base sandstone block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "tan/yellowish sandstone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "desert-themed structures",
+            "crafting slabs and stairs",
+            "decorative stone walls"
+          ],
+          "signal": "inferred",
+          "rationale": "typical cut sandstone usage"
+        }
+      }
+    },
+    "minecraft:cut_sandstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form used for structural detail"
+        },
+        "material_family": {
+          "value": "sandstone",
+          "signal": "pattern",
+          "rationale": "id contains sandstone base material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from sandstone, easily obtained"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in desert-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is structural detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "slab form of cut sandstone"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "tan sandstone palette"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "building detail work",
+            "desert-themed construction"
+          ],
+          "signal": "inferred",
+          "rationale": "typical slab usage"
+        }
+      }
+    },
+    "minecraft:cyan_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banner is primarily an aesthetic display"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from 6 wool + stick"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "stick from wood used in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "wool and sticks easily obtained"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when decorating or marking areas"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is decoration and marking"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool banner from natural material"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan color reads as teal"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool and wood components are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall display",
+            "shield decoration",
+            "area faction marking",
+            "pattern customization"
+          ],
+          "signal": "inferred",
+          "rationale": "core banner uses"
+        }
+      }
+    },
+    "minecraft:cyan_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive: sleep and set spawn point"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from 3 wool + 3 planks"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden planks form the bed base"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "wool and wood are common materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used most nights to sleep and set spawn"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "sets spawn for exploring; color for decor"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool bed from natural materials"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan color reads as teal"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool and wood components are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "skip night cycle",
+            "set respawn point",
+            "decorative bedroom furniture"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed mechanics"
+        }
+      }
+    },
+    "minecraft:cyan_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "holds multiple item stacks in inventory"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in bundle crafting"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "signal": "pattern",
+          "rationale": "id prefix cyan_ on bundle"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires rabbit hide from mob drops"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for inventory management"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable inventory container"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed hide bundle from natural materials"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan color reads as teal"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; made via transmute recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "compact inventory storage",
+            "carry mixed item stacks",
+            "portable item container"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle mechanics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:cut_sandstone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "village"
+      ],
+      "rationale": "desert village structures use cut sandstone blocks",
+      "confidence": 0.75
+    },
+    {
+      "item": "minecraft:cut_sandstone_slab",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "village"
+      ],
+      "rationale": "desert village roofs use cut sandstone slabs",
+      "confidence": 0.75
+    }
+  ]
+}

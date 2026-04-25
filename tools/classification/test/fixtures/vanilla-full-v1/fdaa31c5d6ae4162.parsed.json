@@ -1,0 +1,279 @@
+{
+  "items": {
+    "minecraft:dead_tube_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "purely aesthetic ocean plant item"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains _coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-build use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean-themed decoration only"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dead variant of live coral"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral is pale gray"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral reefs in warm ocean biomes"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed decoration",
+            "aquarium builds"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic dead coral plant"
+        }
+      }
+    },
+    "minecraft:dead_tube_coral_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "coral block used for aesthetic builds"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains _coral_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-themed building"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration and ocean-theme building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dead variant of live coral block"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral is pale gray"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral reefs in warm ocean biomes"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed building blocks",
+            "reef decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "full-block dead coral form"
+        }
+      }
+    },
+    "minecraft:dead_tube_coral_fan": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "fan-shaped coral for ocean decor"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id contains _coral_fan"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-build use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean-themed decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dead fan variant of live coral"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "dead coral is pale gray"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "coral reefs in warm ocean biomes"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean-themed decoration",
+            "wall coral detail"
+          ],
+          "signal": "inferred",
+          "rationale": "flat fan shape for ocean builds"
+        }
+      }
+    },
+    "minecraft:debug_stick": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only block state cycling tool"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used by admins/map-makers"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "cycles block states during map-making"
+        },
+        "primary_uses": {
+          "values": [
+            "cycle block states",
+            "adjust block properties"
+          ],
+          "signal": "inferred",
+          "rationale": "admin tool for block state editing"
+        }
+      }
+    },
+    "minecraft:decorated_pot": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "stores 1 item stack; interactive"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "crafted from bricks or pottery sherds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative storage in themed builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative pot with item storage"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological pottery with sherd art"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta/brick warm brown tones"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative item storage",
+            "pottery sherd showcase",
+            "themed build prop"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated storage in themed builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

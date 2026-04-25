@@ -1,0 +1,299 @@
+{
+  "items": {
+    "minecraft:raw_iron": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "mined raw ore chunk, unprocessed"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "raw form of iron-tier material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "smelted constantly into iron ingot"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "combat",
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream iron ingot activities"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw ore chunk appearance"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "rusty brownish-orange ore chunk"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into iron ingot",
+            "compact into raw iron block"
+          ],
+          "signal": "inferred",
+          "rationale": "standard raw ore uses"
+        }
+      }
+    },
+    "minecraft:raw_iron_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "9:1 compact storage of raw iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used mainly for inventory compaction"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is ore compaction"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "compressed raw ore aesthetic"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "rough raw ore texture, muted tone"
+        },
+        "primary_uses": {
+          "values": [
+            "compact 9 raw iron into 1 block",
+            "uncraft back to 9 raw iron"
+          ],
+          "signal": "inferred",
+          "rationale": "bulk storage and retrieval"
+        }
+      }
+    },
+    "minecraft:recovery_compass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigational tool pointing to death spot"
+        },
+        "material_family": {
+          "value": "echo_shard",
+          "signal": "inferred",
+          "rationale": "8 echo shards dominate the recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "contains a compass (iron+redstone)"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only consulted after dying"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "navigate back to death point"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "animated compass mechanism"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "coppery glow with spin animation"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; only crafted"
+        },
+        "primary_uses": {
+          "values": [
+            "navigate to last death location",
+            "recover dropped items after death"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is post-death navigation"
+        }
+      }
+    },
+    "minecraft:red_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is aesthetic display"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "6 wool is dominant recipe ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "stick pole component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, not every-session use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "marking territory and decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored with pattern options"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "red is warm and vivid"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration and territory marking",
+            "shield decoration",
+            "pattern layering display"
+          ],
+          "signal": "inferred",
+          "rationale": "standard banner use cases"
+        }
+      }
+    },
+    "minecraft:red_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "skips night, sets spawn point"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "3 red wool in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "3 planks in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used every in-game night cycle"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "sets respawn; placed in shelters"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored variant"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "red is warm and vivid"
+        },
+        "primary_uses": {
+          "values": [
+            "skip night cycle",
+            "set respawn point"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed mechanics"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

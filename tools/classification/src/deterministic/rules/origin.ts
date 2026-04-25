@@ -105,6 +105,9 @@ const MATCHERS: Matcher[] = [
  * up in any loot table — the rule can't see them otherwise. Keep this list
  * tight: only add items where the loot tables we DO see give an incomplete or
  * misleading picture of where the player gets the item.
+ *
+ * Additive: these origins are unioned with anything the loot-table matchers
+ * derive (so e.g. `bookshelf` keeps `crafted_only` AND gains `village`).
  */
 const HARDCODED_INTERACTION_ORIGINS: Record<string, readonly string[]> = {
   // Right-clicking a cow with an empty bucket. Loot tables only show
@@ -114,12 +117,119 @@ const HARDCODED_INTERACTION_ORIGINS: Record<string, readonly string[]> = {
   // Wandering trader llamas drop their lead on death; in 1.21+ this is
   // hardcoded behaviour rather than a loot-table entry, so we add it here.
   "minecraft:lead": ["mob_drop"],
+
+  // ===== vanilla v1 canary additions (additive overrides) =====
+  // Structural blocks generated in villages/structures.
+  "minecraft:bookshelf": ["village", "woodland_mansion"],
+  "minecraft:crafting_table": ["village"],
+  "minecraft:hay_block": ["village"],
+  "minecraft:lantern": ["village"],
+  "minecraft:white_bed": ["village"],
+  "minecraft:cut_sandstone": ["village"],
+  "minecraft:cut_sandstone_slab": ["village"],
+  "minecraft:bell": ["village"],
+  // Bastion generates polished blackstone variants.
+  "minecraft:polished_blackstone": ["bastion"],
+  "minecraft:polished_blackstone_stairs": ["bastion"],
+  "minecraft:polished_blackstone_wall": ["bastion"],
+  "minecraft:chiseled_polished_blackstone": ["bastion"],
+  // Trial chambers generate chiseled copper.
+  "minecraft:chiseled_copper": ["trial_chamber"],
+  // Ancient city generates deepslate bricks.
+  "minecraft:deepslate_bricks": ["ancient_city"],
+  "minecraft:deepslate_brick_slab": ["ancient_city"],
+  "minecraft:deepslate_brick_stairs": ["ancient_city"],
+  "minecraft:deepslate_brick_wall": ["ancient_city"],
+  // Ocean monument structures.
+  "minecraft:prismarine_bricks": ["overworld_ocean"],
+  "minecraft:sea_lantern": ["ocean_monument"],
+  "minecraft:wet_sponge": ["ocean_monument"],
+  // World-gen blocks where stage-2 already correctly tagged crafted_only.
+  "minecraft:mossy_cobblestone": ["overworld_cave"],
+  "minecraft:smooth_basalt": ["overworld_cave"],
+  "minecraft:obsidian": ["overworld_cave"],
+  "minecraft:bone_block": ["overworld_cave"],
+  "minecraft:moss_block": ["overworld_cave"],
+  "minecraft:terracotta": ["overworld_surface"],
+  "minecraft:white_terracotta": ["overworld_surface"],
+  "minecraft:red_terracotta": ["overworld_surface"],
+  "minecraft:orange_terracotta": ["overworld_surface"],
+  "minecraft:yellow_terracotta": ["overworld_surface"],
+  "minecraft:red_sandstone": ["overworld_surface"],
+  "minecraft:sandstone": ["overworld_surface"],
+  "minecraft:coarse_dirt": ["overworld_surface"],
+  "minecraft:creaking_heart": ["overworld_surface"],
+  "minecraft:dried_ghast": ["nether"],
+  // Pale Garden / dark forest.
+  // Mob drops missed by the loot-table scan.
+  "minecraft:trident": ["mob_drop"],
+  "minecraft:egg": ["mob_drop"],
+  "minecraft:goat_horn": ["mob_drop", "overworld_surface"],
+  // World-gen surface drops.
+  "minecraft:packed_ice": ["overworld_surface"],
+  "minecraft:blue_ice": ["overworld_ocean"],
+  "minecraft:dead_bush": ["overworld_surface"],
+  "minecraft:lily_pad": ["overworld_surface"],
+  "minecraft:melon_seeds": ["overworld_surface"],
+  "minecraft:tall_grass": ["overworld_surface"],
+  "minecraft:sand": ["overworld_surface"],
+  "minecraft:gravel": ["overworld_surface", "overworld_cave", "overworld_ocean"],
+  "minecraft:stone": ["overworld_cave", "overworld_surface"],
+  "minecraft:clay": ["overworld_surface", "overworld_ocean"],
+  "minecraft:yellow_dye": ["overworld_surface"],
+  "minecraft:cooked_beef": ["trial_chamber"],
+};
+
+/**
+ * Items where the inferred origin (from loot tables / id prefixes) is wholly
+ * wrong and must be REPLACED, not extended. Vanilla v1 canary surfaced these:
+ * soul_campfire/soul_lantern fire the nether-prefix matcher even though they
+ * are crafted; armadillo_scute fires the brush/ matcher (archaeology) but is
+ * actually a mob shed; prismarine/sponge/sulfur etc. self-drop with a recipe
+ * so were tagged crafted_only despite being world-gen-primary.
+ */
+const HARDCODED_ITEM_ORIGIN_REPLACE: Record<string, readonly string[]> = {
+  "minecraft:soul_campfire": ["crafted_only"],
+  "minecraft:soul_lantern": ["crafted_only"],
+  "minecraft:jungle_wood": ["crafted_only"],
+  "minecraft:armadillo_scute": ["mob_drop"],
+  "minecraft:prismarine": ["ocean_monument"],
+  "minecraft:dark_prismarine": ["ocean_monument"],
+  "minecraft:sponge": ["ocean_monument"],
+  "minecraft:sulfur": ["overworld_cave"],
+  "minecraft:leaf_litter": ["overworld_surface"],
+  "minecraft:brown_terracotta": ["overworld_surface"],
+  "minecraft:dripstone_block": ["overworld_cave"],
+  "minecraft:diorite": ["overworld_cave", "overworld_surface"],
+  "minecraft:granite": ["overworld_cave", "overworld_surface"],
+  "minecraft:andesite": ["overworld_cave", "overworld_surface"],
+  "minecraft:stripped_warped_hyphae": ["nether"],
+  "minecraft:stripped_spruce_wood": ["overworld_surface"],
+  // end_portal_frame: previously matched the end_ block-prefix in MATCHERS
+  // (assigning `end`); it actually generates in strongholds in the overworld.
+  "minecraft:end_portal_frame": ["stronghold"],
 };
 
 export const originRule: Rule = {
   id: "origin",
   facets: ["origin"],
   run({ record }) {
+    // Hard override list runs first: items where the inferred origin from
+    // loot-table heuristics is wrong and must be replaced wholesale.
+    const replace = HARDCODED_ITEM_ORIGIN_REPLACE[record.id];
+    if (replace) {
+      return [
+        {
+          facet: "origin",
+          kind: "multi",
+          values: [...replace].sort(),
+          mode: "add",
+          source: "rule:origin_hardcoded_override",
+          confidence: 1,
+        },
+      ];
+    }
+
     const origins = new Set<string>();
     const sources = record.loot_table_sources;
     const colonId = `${record.namespace}:`;

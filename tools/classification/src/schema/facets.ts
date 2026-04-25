@@ -106,6 +106,9 @@ export const COMBAT_BONUS_VALUES = [
   "bonus_in_water", "bonus_in_daylight",
   // sonnet-v4 canary
   "fall_bonus_damage",
+  // vanilla v1 canary
+  "disables_blocking",  // axes — disable shield 5s on hit
+  "inflicts_glowing",   // spectral arrow
 ] as const;
 
 export const ENVIRONMENTAL_PROPERTY_VALUES = [
@@ -125,6 +128,11 @@ export const ENVIRONMENTAL_PROPERTY_VALUES = [
   "item_blast_proof",       // item entity survives explosions (nether_star, netherite)
   "freeze_immune_when_worn", // leather armor — prevents powder snow freeze
   "powder_snow_walkable",   // leather boots — walk on powder snow
+  // vanilla v1 canary additions
+  "sustains_fire",          // netherrack — fire never extinguishes
+  "piglin_repellent",       // soul torch/lantern/campfire — piglins flee
+  "trample_sensitive",      // turtle eggs, farmland — break under entity weight
+  "climbable",              // ladder, vines, scaffolding — player ascends
 ] as const;
 
 export const TRANSPORT_MEDIUM_VALUES = [
@@ -152,9 +160,9 @@ export const MATERIAL_FAMILY_VALUES = [
   "iron", "gold", "copper", "netherite",
   "diamond", "emerald", "lapis", "amethyst", "quartz", "certus_quartz", "redstone",
   // organics
-  "wool", "leather", "bone", "slime", "honey", "scute",
+  "wool", "leather", "bone", "slime", "honey", "honeycomb", "scute",
   // borderlines
-  "dripstone",
+  "dripstone", "netherrack",
 ] as const;
 
 export const FORM_VALUES = [
@@ -199,6 +207,9 @@ export const ORIGIN_VALUES = [
   "crafted_only",
   // sonnet-v4 canary
   "fishing",
+  // vanilla v1 canary
+  "creative_only",  // spawn eggs, debug items, command blocks — no survival origin
+  "brewing",        // splash/lingering potions, tipped arrows produced via brewing
 ] as const;
 
 const RARITY_VALUES = ["abundant", "common", "uncommon", "rare", "unique"] as const;

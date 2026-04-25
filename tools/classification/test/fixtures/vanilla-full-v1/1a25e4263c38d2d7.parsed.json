@@ -1,0 +1,323 @@
+{
+  "items": {
+    "minecraft:magenta_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "processed dye; not raw world pickup"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "named",
+          "rationale": "minecraft:dye component = magenta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used to color many item types"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to color/dye aesthetic items"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "explicit dye colorant item"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "derived from allium/lilac surface flowers"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing wool and textiles",
+            "coloring beds and carpets",
+            "firework star coloring",
+            "leather armor dyeing"
+          ],
+          "signal": "inferred",
+          "rationale": "confirmed by sample_ingredient_of list"
+        }
+      }
+    },
+    "minecraft:magenta_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "ornate patterned; primarily aesthetic"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "smelted from magenta terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative architectural use"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed = ornate patterned surface"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta glaze is a vivid color"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta not moved by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative floor and wall patterns",
+            "bold color in builds",
+            "directional pattern designs"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glazed terracotta usage"
+        }
+      }
+    },
+    "minecraft:magenta_harness": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "mob equipment enabling ghast riding"
+        },
+        "dye_color": {
+          "value": "magenta",
+          "signal": "pattern",
+          "rationale": "id prefix magenta + colored harness pattern"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "harness crafted from wool in 1.21.5"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when riding happy ghasts"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables flying via happy ghast"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "colored wool-based mob accessory"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; recipe production only"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:happy_ghast_tempt_items"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghast for riding",
+            "tempt and attract happy ghast",
+            "color-coded ghast accessory"
+          ],
+          "signal": "inferred",
+          "rationale": "harness function + tempt tag confirms"
+        }
+      }
+    },
+    "minecraft:magenta_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "shulker_boxes tag; form=storage_block"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "inferred",
+          "rationale": "crafted from shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires end exploration for shells"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core portable storage used constantly"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage and item transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeable 16-color storage block"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is a vivid color"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items in 27 slots"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker boxes cannot be pushed by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "portable 27-slot storage",
+            "keeps contents when broken",
+            "color-coded storage organization"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box gameplay purpose"
+        }
+      }
+    },
+    "minecraft:magenta_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural glass used in windows/walls"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id suffix stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds but not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative structural building material"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "explicitly stained/colored glass"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "glass=translucent; magenta=vivid"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "glass blocks are piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "colored windows and skylights",
+            "decorative glass walls",
+            "light color filtering"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stained glass uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

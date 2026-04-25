@@ -1,0 +1,304 @@
+{
+  "items": {
+    "minecraft:furnace_minecart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "fuel-powered vehicle for rail transport"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "minecart recipe requires iron ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "stone"
+          ],
+          "signal": "inferred",
+          "rationale": "furnace component is cobblestone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted, niche-use item"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "largely obsoleted by powered rails"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "moves carts on tracks via fuel"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "fuel-burning locomotive vehicle"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray iron minecart body"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, shapeless recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "propel minecarts without powered rails",
+            "legacy fuel-based rail transport"
+          ],
+          "signal": "inferred",
+          "rationale": "core furnace minecart function"
+        }
+      }
+    },
+    "minecraft:ghast_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe or loot table"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "obtainable only via creative/commands"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche admin/map-making use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard egg model, no special look"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "ghast egg is white/cream"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn ghasts in creative mode",
+            "mob testing and adventure maps"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg standard function"
+        }
+      }
+    },
+    "minecraft:ghast_tear": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, not refined"
+        },
+        "material_family": {
+          "value": "ghast_tear",
+          "signal": "named",
+          "rationale": "unique named reagent"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "nether + ghast kill required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific high-value crafts"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "regen potions + end crystal for dragon"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical mob drop with brew use"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-white translucent teardrop"
+        },
+        "primary_uses": {
+          "values": [
+            "brew potions of regeneration",
+            "craft end crystals",
+            "craft dried ghast"
+          ],
+          "signal": "inferred",
+          "rationale": "all known downstream uses"
+        }
+      }
+    },
+    "minecraft:gilded_blackstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid full-cube block for structure"
+        },
+        "material_family": {
+          "value": "blackstone",
+          "signal": "pattern",
+          "rationale": "id suffix is blackstone"
+        },
+        "material_secondary": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold veins in texture, piglin_loved tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "bastion-only, not craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nether building / decor use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "nether themed structure block"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-veined natural stone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "dark body with gold vein accents"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved",
+          "rationale": "directly tagged piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "nether and bastion decoration",
+            "dark themed building material",
+            "fortune-drops gold nuggets when mined"
+          ],
+          "signal": "inferred",
+          "rationale": "core gameplay uses"
+        }
+      }
+    },
+    "minecraft:glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed transparent structural block"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id is glass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "sand is everywhere, trivial to smelt"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ubiquitous in building and crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows, greenhouses, decor panes"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "clear uncolored glass block"
+        },
+        "palette": {
+          "values": [
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent placed block"
+        },
+        "primary_uses": {
+          "values": [
+            "windows and transparent structures",
+            "stained glass base ingredient",
+            "beacon construction",
+            "daylight detector crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "top downstream glass uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

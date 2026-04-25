@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 235559,
+  "duration_api_ms": 236462,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:bee_nest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"houses bees, produces honey/honeycomb\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based natural nest structure\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns in specific flower biomes only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per bee farm setup\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"honey and honeycomb farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring nest\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown wood with honey amber tones\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates in trees near flowers\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bees return to their home nest\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based block, combustible\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"bee farming for honey and honeycomb\",\n            \"relocating bee colonies with silk touch\",\n            \"passive bee habitat in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bee nest uses\"\n        }\n      }\n    },\n    \"minecraft:bee_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs instantiate mob entities\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when setting up bee farms\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to set up bee farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bee-patterned two-tone spawn egg\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow-amber base with dark spots\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg; no loot or recipe source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawning bees in creative mode\",\n            \"creative bee farm setup\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs spawn the named mob\"\n        }\n      }\n    },\n    \"minecraft:beef\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"food+consumable component, eaten directly\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily farmed from cows\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common early/mid-game food source\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtained from cow farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red-pink raw meat coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"eating raw for low sustenance\",\n            \"cooking into cooked beef\",\n            \"wolf food\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main raw beef uses\"\n        }\n      }\n    },\n    \"minecraft:beehive\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"houses bees, produces honey/honeycomb\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from planks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"honeycomb\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe requires honeycomb\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable once honeycomb is obtained\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per bee farm setup\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bee honey/wax farming block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bee-themed crafted housing\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown wood with honey amber\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bees return to their home hive\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based crafted block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"bee housing in player-built farms\",\n            \"honey bottle farming\",\n            \"honeycomb farming\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core beehive uses\"\n        }\n      }\n    },\n    \"minecraft:beetroot\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"food+consumable component, edible crop\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable crop\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"growable food crop\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown as a crop\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural vegetable crop\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark red root vegetable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"eating for low sustenance\",\n            \"crafting beetroot soup\",\n            \"crafting red dye\",\n            \"pig food\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main beetroot uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "3ea39218-df26-4079-adab-66f439fcde5b",
+  "total_cost_usd": 0.27211589999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3690,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16901,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3690,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16901,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3690,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3690
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2827,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002907,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16901,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3690,
+      "webSearchRequests": 0,
+      "costUSD": 0.2692089,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "157e1eb5-b6fe-42af-85cf-7f87f39d0bf2"
+}

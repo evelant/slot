@@ -1,0 +1,279 @@
+{
+  "items": {
+    "minecraft:waxed_exposed_cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural copper block, no active function"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty copper building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "copper block used in builds/decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of many copper oxidation variants"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage shows partial oxidation"
+        },
+        "primary_uses": {
+          "values": [
+            "building with copper aesthetics",
+            "stonecutting into slabs/stairs/chiseled",
+            "permanent tinted copper look (waxed)"
+          ],
+          "signal": "inferred",
+          "rationale": "main player use cases"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form, structural/decorative use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty copper slab"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for builds and detail work"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidation variant slab"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage partial oxidation"
+        },
+        "primary_uses": {
+          "values": [
+            "half-block flooring or roofing",
+            "copper detail building work",
+            "crafting waxed chiseled copper"
+          ],
+          "signal": "inferred",
+          "rationale": "typical slab use cases"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form, structural/decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty copper stairs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for structure and rooflines"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidation variant stairs"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage partial oxidation"
+        },
+        "primary_uses": {
+          "values": [
+            "copper staircases and rooflines",
+            "decorative corner detailing",
+            "building copper structures"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stair use cases"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_lightning_rod": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redirects lightning, emits redstone pulse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational lightning protection"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "protects builds; redstone pulse on strike"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidation variant with functional rod form"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage partial oxidation tinge"
+        },
+        "environmental_property": {
+          "values": [
+            "conducts_lightning"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:lightning_rods",
+          "rationale": "tag lightning_rods → redirects strikes"
+        },
+        "primary_uses": {
+          "values": [
+            "redirect lightning to protect structures",
+            "redstone pulse source during storms",
+            "copper aesthetic with active function"
+          ],
+          "signal": "inferred",
+          "rationale": "main lightning rod use cases"
+        }
+      }
+    },
+    "minecraft:waxed_lightning_rod": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redirects lightning, emits redstone pulse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational lightning protection"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "protects builds; redstone pulse on strike"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed unoxidized variant with rod form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "unoxidized copper, bright orange"
+        },
+        "environmental_property": {
+          "values": [
+            "conducts_lightning"
+          ],
+          "signal": "pattern",
+          "evidence": "minecraft:lightning_rods",
+          "rationale": "tag lightning_rods → redirects strikes"
+        },
+        "primary_uses": {
+          "values": [
+            "redirect lightning to protect structures",
+            "redstone pulse source during storms",
+            "bright copper aesthetic with function"
+          ],
+          "signal": "inferred",
+          "rationale": "main lightning rod use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

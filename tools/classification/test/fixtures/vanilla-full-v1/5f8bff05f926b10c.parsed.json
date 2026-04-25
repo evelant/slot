@@ -1,0 +1,290 @@
+{
+  "items": {
+    "minecraft:stripped_spruce_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full-bark log block used structurally"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "wood used heavily in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is structural building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural wood, stripped bark variant"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce = medium reddish-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting spruce planks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block downstream uses"
+        }
+      }
+    },
+    "minecraft:stripped_warped_hyphae": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full-bark nether wood block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in nether-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural building block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether fungal wood, stripped form"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood has teal/cyan color"
+        },
+        "primary_uses": {
+          "values": [
+            "building nether-themed structures",
+            "crafting warped planks"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream warped wood uses"
+        }
+      }
+    },
+    "minecraft:stripped_warped_stem": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "nether stem log block for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in nether builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether fungal stem, stripped"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped stem has teal/cyan color"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "warped forest biome is in the nether"
+        },
+        "primary_uses": {
+          "values": [
+            "building nether structures",
+            "crafting warped planks and hyphae"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream warped wood uses"
+        }
+      }
+    },
+    "minecraft:structure_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only structure manipulation block"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "mapmakers/admins only"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "save/load structure templates"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical admin block"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gray texture"
+        },
+        "primary_uses": {
+          "values": [
+            "save/load structures",
+            "adventure map creation",
+            "structure template editing"
+          ],
+          "signal": "inferred",
+          "rationale": "core admin building tool"
+        }
+      }
+    },
+    "minecraft:structure_void": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only void marker for structures"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "specialized mapmaking use only"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in structure template authoring"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical structure placeholder"
+        },
+        "palette": {
+          "values": [
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "appears nearly invisible when placed"
+        },
+        "primary_uses": {
+          "values": [
+            "marks void in structure templates",
+            "prevents overwriting existing blocks"
+          ],
+          "signal": "inferred",
+          "rationale": "structure void semantic function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:stripped_spruce_wood",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface"
+      ],
+      "rationale": "Obtained by axe-stripping spruce wood in the overworld, not crafted from materials",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:stripped_warped_hyphae",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "nether"
+      ],
+      "rationale": "Obtained by stripping warped hyphae in nether warped forest biome",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:stripped_warped_hyphae",
+      "facet": "form",
+      "current": "stripped_log",
+      "suggested": "stripped_wood",
+      "rationale": "Hyphae is the all-bark wood form; stem is the log form — same distinction as oak_wood vs oak_log",
+      "confidence": 0.82
+    }
+  ]
+}

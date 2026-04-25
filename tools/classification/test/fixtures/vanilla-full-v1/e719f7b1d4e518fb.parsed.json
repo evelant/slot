@@ -1,0 +1,267 @@
+{
+  "items": {
+    "minecraft:acacia_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are structural, not primarily decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from easily obtained wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs are heavily used in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and aesthetic stair use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden material"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia is warm orange-brown wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block burns and spreads fire"
+        },
+        "primary_uses": {
+          "values": [
+            "building angled structures",
+            "decorative step detail",
+            "savanna-style builds"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stair block uses"
+        }
+      }
+    },
+    "minecraft:acacia_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "opens/closes, interactive hinged block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used less often than planks or stairs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor used in builds and redstone doors"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden material"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia warm orange-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block burns"
+        },
+        "primary_uses": {
+          "values": [
+            "mob farm hatches",
+            "decorative floor or ceiling",
+            "redstone door mechanism",
+            "hidden passage entry"
+          ],
+          "signal": "inferred",
+          "rationale": "common trapdoor uses"
+        }
+      }
+    },
+    "minecraft:acacia_wood": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw wood form, not a refined product"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "wood is plentiful in overworld"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used routinely for builds and fuel"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream into planks and structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "pattern",
+          "rationale": "raw log-form wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia bark is dark earthy orange"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "log-form block burns and spreads fire"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting planks and wood products",
+            "building log-style structures",
+            "smelting fuel via charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wood block uses"
+        }
+      }
+    },
+    "minecraft:activator_rail": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "responds to redstone; activates minecarts"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron is primary recipe material"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone",
+            "stick"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe uses redstone torch and sticks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common iron and redstone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use in minecart systems"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "activates minecarts via redstone signal"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "powered rail mechanism"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron rail appearance with redstone accent"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "ejects or activates entities in minecarts"
+        },
+        "primary_uses": {
+          "values": [
+            "activating TNT minecarts",
+            "ejecting minecart passengers",
+            "activating hopper minecarts",
+            "redstone-controlled rail trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "activator rail gameplay functions"
+        }
+      }
+    },
+    "minecraft:air": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "empty block placeholder, not a real item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "unobtainable as item in survival"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

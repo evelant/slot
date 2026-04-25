@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 190670,
+  "duration_api_ms": 191674,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:trader_llama_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg instantiates a specific mob\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs are creative/cmd only\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, specific mob variant\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche creative/admin use only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns a naturally-occurring mob\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg always spawns linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Spawn a Trader Llama\",\n            \"Creative mode mob placement\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is spawning the mob\"\n        }\n      }\n    },\n    \"minecraft:trapped_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"storage_block\", \"functional_block\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest storage + redstone signal on open\"\n        },\n        \"material_family\": {\n          \"value\": \"wood_oak\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest crafted/textured with oak wood\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially crafted from wood\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"useful but less common than plain chest\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores items + emits redstone on access\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain chest with trap mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard oak chest brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood construction burns\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard item storage chest\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Store items with redstone output on open\",\n            \"Trap and alert detection system\",\n            \"Redstone circuit trigger on access\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage + redstone trigger\"\n        }\n      }\n    },\n    \"minecraft:trial_key\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed to unlock vault blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trial chamber loot drop\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per vault block\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens trial chamber vault blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"key for ancient dungeon vault\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"trial key has teal/cyan texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Unlock vault blocks in trial chambers\",\n            \"Single-use trial reward access\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole use is opening vault blocks\"\n        }\n      }\n    },\n    \"minecraft:trial_spawner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"active mob-spawning block with cooldown\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only special structure block\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/map-making use only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative placement + spawns combat mobs\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical spawner with ominous state variant\"\n        },\n        \"origin\": {\n          \"values\": [\"trial_chamber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"native to trial chamber structures\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawner block spawns linked trial mobs\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Spawn trial chamber combat mobs\",\n            \"Creative trial chamber construction\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns mobs in trial context\"\n        }\n      }\n    },\n    \"minecraft:trident\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:weapon component\",\n          \"rationale\": \"weapon component explicitly present\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare to get, used regularly when found\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"melee/ranged combat + riptide travel\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally obtained mob drop weapon\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue-green trident texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"Melee combat weapon\",\n            \"Thrown ranged attack\",\n            \"Riptide water/rain locomotion\",\n            \"Channeling lightning strikes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"versatile combat and mobility weapon\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:trident\",\n      \"facet\": \"origin\",\n      \"current\": [\"trial_chamber\"],\n      \"suggested\": [\"trial_chamber\", \"mob_drop\"],\n      \"rationale\": \"Drowned drop tridents in survival; primary source\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "49e32d6f-1011-4181-8a4c-9c1ef77b480b",
+  "total_cost_usd": 0.22750315000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3601,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13955,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3601,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13955,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3601,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3601
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2738,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002818,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13955,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3601,
+      "webSearchRequests": 0,
+      "costUSD": 0.22468515000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c320dece-43f4-4b2e-8822-83137f06f2b6"
+}

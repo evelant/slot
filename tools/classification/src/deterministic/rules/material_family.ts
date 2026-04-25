@@ -23,7 +23,11 @@ const TAG_TO_MATERIAL: Record<string, string> = {
   "minecraft:diamond_tool_materials": "diamond",
   "minecraft:netherite_tool_materials": "netherite",
   "minecraft:stone_tool_materials": "stone",
-  "minecraft:wooden_tool_materials": "wood_oak", // overridden by log-tag below when possible
+  // INTENTIONALLY no `minecraft:wooden_tool_materials` entry: that tag is
+  // shared across every plank type (oak, birch, spruce, …) so emitting
+  // wood_oak from it labels acacia_planks etc. as oak. Vanilla v1 canary
+  // surfaced this on 11 plank items. Each plank's id has a wood-species
+  // prefix that the ID_PREFIX_TO_FAMILY pass below catches correctly.
   "minecraft:iron_ores": "iron",
   "minecraft:gold_ores": "gold",
   "minecraft:copper_ores": "copper",
@@ -208,14 +212,20 @@ const EXACT_ID_TO_FAMILY: Record<string, string> = {
   "minecraft:slime_block": "slime",
   "minecraft:honey_bottle": "honey",
   "minecraft:honey_block": "honey",
-  "minecraft:honeycomb": "honey",
-  "minecraft:honeycomb_block": "honey",
+  // honeycomb is crafted with wax, distinct from honey (the food item).
+  // Vanilla v1 canary catch — `honeycomb_block` was previously labeled honey.
+  "minecraft:honeycomb": "honeycomb",
+  "minecraft:honeycomb_block": "honeycomb",
   "minecraft:turtle_scute": "scute",
   "minecraft:armadillo_scute": "scute",
   "minecraft:stone": "stone",
   "minecraft:cobblestone": "cobblestone",
   "minecraft:deepslate": "deepslate",
   "minecraft:cobbled_deepslate": "deepslate",
+  // Nylium is netherrack-based terrain, not wood — the crimson_/warped_
+  // id-prefix rules misfire without an explicit override. Vanilla v1 canary.
+  "minecraft:crimson_nylium": "netherrack",
+  "minecraft:warped_nylium": "netherrack",
   "minecraft:granite": "granite",
   "minecraft:diorite": "diorite",
   "minecraft:andesite": "andesite",
@@ -329,18 +339,27 @@ export const materialFamilyRule: Rule = {
     }
 
     for (const [prefix, family] of ID_PREFIX_TO_FAMILY) {
-      if (record.path.startsWith(prefix)) {
-        return [
-          {
-            facet: "material_family",
-            kind: "single",
-            value: family,
-            source: "rule:material_family_from_id",
-            confidence: 1,
-            rationale: `id prefix ${prefix}`,
-          },
-        ];
+      if (!record.path.startsWith(prefix)) continue;
+      // Skip when the wood-prefix would over-match a non-wood block:
+      //   - `_fungus`  → small nether plant, not wood (crimson_fungus, warped_fungus)
+      //   - `_nylium`  → netherrack-based terrain, not wood (crimson_nylium, warped_nylium)
+      // Vanilla v1 canary flagged these on the crimson_/warped_ prefixes.
+      if (
+        (prefix === "crimson_" || prefix === "warped_") &&
+        (record.path.endsWith("_fungus") || record.path.endsWith("_nylium"))
+      ) {
+        continue;
       }
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: family,
+          source: "rule:material_family_from_id",
+          confidence: 1,
+          rationale: `id prefix ${prefix}`,
+        },
+      ];
     }
 
     return [];

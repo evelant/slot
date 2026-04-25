@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 207968,
+  "duration_api_ms": 208998,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"light source chosen for aesthetics\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from iron nuggets + torch\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron nuggets and torches are accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely placed in builds for lighting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for light and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted metal light device\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm golden flame glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lanterns emit light level 15\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"atmospheric lighting in builds\",\n            \"decorating interiors and paths\",\n            \"hanging ceiling decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary player use cases\"\n        }\n      }\n    },\n    \"minecraft:lapis_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"compressed lapis like iron_block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires mining lapis lazuli\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"for compact storage or decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decorative or storage block\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vivid blue decorative block\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep blue lapis color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compact lapis lazuli storage\",\n            \"decorative blue building block\",\n            \"beacon base material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary player use cases\"\n        }\n      }\n    },\n    \"minecraft:lapis_lazuli\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"refined gem for crafting and enchanting\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires cave mining, not farmable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed heavily at enchanting table\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enchanting fuel; dye and trim use\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rich blue gemstone color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"enchanting table fuel\",\n            \"blue dye production\",\n            \"armor trim smithing\",\n            \"crafting lapis block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top player use cases\"\n        }\n      }\n    },\n    \"minecraft:lapis_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore obtained from world\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"underground, less common than iron\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined then processed away\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined for lapis lazuli\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone block with mineral veins\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"indigo\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone with blue mineral flecks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"source of lapis lazuli via smelting\",\n            \"mined for enchanting supply\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is lapis extraction\"\n        }\n      }\n    },\n    \"minecraft:large_amethyst_bud\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crystal growth, primarily decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"amethyst\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains amethyst\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires silk touch to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"collected for decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for crystal aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic crystal growth\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple amethyst crystal\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"large buds emit light level 4\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crystal decoration in builds\",\n            \"amethyst geode aesthetics\",\n            \"stepping stone to cluster harvest\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary player use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:lantern\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"village\"],\n      \"rationale\": \"Generates in snowy tundra villages naturally\",\n      \"confidence\": 0.8\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "9c590c32-a7de-437f-b7df-74c8ed58b57b",
+  "total_cost_usd": 0.26895865,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4899,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16307,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4899,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16307,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4899,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4899
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4036,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0041259999999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16307,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4899,
+      "webSearchRequests": 0,
+      "costUSD": 0.26483265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7aad6f69-b78f-4dd0-b015-cdfd1c3f0d7c"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 279018,
+  "duration_api_ms": 279697,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:weathered_copper_chain\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Chains hang lanterns/bells; primarily decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Requires placed copper chain + oxidation wait\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for specific copper-themed aesthetics\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural accent; hangs decor items\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Weathered oxidation variant; copper natural\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Partial patina; muted teal-copper tones\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Chain blocks support waterlogging\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"hang lanterns and bells\", \"decorative copper chain links\", \"copper-themed build accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core chain use cases\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"model item/template_chest → chest = storage\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Requires copper chest + natural oxidation\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Active storage blocks used regularly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Primary purpose is item storage\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stores items like all standard chests\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Weathered oxidation variant; copper natural\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Weathered copper patina tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Chests can be waterlogged like vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"item storage with copper aesthetic\", \"decorative storage chest variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Storage with specific visual theme\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Doors are structural building elements\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Requires copper door + oxidation process\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in specific copper-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural door in building construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mechanical door; weathered stage variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Weathered copper patina\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper doors support waterlogging\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"door for copper-themed builds\", \"player-openable metal door\", \"decorative entryway\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Door use cases in copper builds\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper_golem_statue\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Statue block; purely decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Specific crafted statue; not freely available\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed once as a display piece\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Purely decorative statue block\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Ornate figurine; weathered stage variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Weathered copper patina on statue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted decoration; no natural generation\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative copper golem display piece\", \"copper-themed tribute statue\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Display purposes only\"\n        }\n      }\n    },\n    \"minecraft:weathered_copper_grate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Grate is structural/decorative build block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Directly craftable; copper is abundant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for specific build aesthetics\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural and decorative build element\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mechanical grid pattern; weathered variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Weathered copper patina tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Grates support waterlogging\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative grid pattern in builds\", \"permeable block for light/airflow aesthetic\", \"ventilation-style building accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Grate use cases in builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"origin\",\n      \"value\": \"natural_weathering\",\n      \"rationale\": \"Weathered/exposed/oxidized copper variants have no production recipe and no natural loot table generation — obtained solely by natural oxidation of a placed copper item over time, or by scraping a more-oxidized stage. No existing origin value captures this mechanic.\"\n    }\n  ],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "94971ca2-ba28-4d7c-b3c5-5fdf43c8994a",
+  "total_cost_usd": 0.2807619,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4606,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 17188,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4606,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17188,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4606,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4606
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3743,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003813,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17188,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4606,
+      "webSearchRequests": 0,
+      "costUSD": 0.2769489,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "00f7404d-b194-4377-860c-3821a1961d56"
+}

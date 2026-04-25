@@ -1,0 +1,340 @@
+{
+  "items": {
+    "minecraft:weathered_lightning_rod": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redirects lightning; emits redstone signal"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "inferred",
+          "rationale": "lightning rod crafted from copper ingots"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires copper oxidation time or steps"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build for lightning guard"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "lightning protection; redstone signal on strike"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized-copper variant of lightning rod"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper has teal-green patina"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no chest loot; only via copper oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "conducts_lightning",
+            "oxidizes_over_time",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "redirects lightning; copper oxidizes; can waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "redirecting lightning strikes",
+            "redstone signal on lightning strike",
+            "preventing lightning-caused fire spread",
+            "oxidation-stage copper aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "core lightning rod player uses"
+        }
+      }
+    },
+    "minecraft:weeping_vines": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed as hanging nether vine decoration"
+        },
+        "material_family": {
+          "value": "vine",
+          "signal": "inferred",
+          "rationale": "vine-type nether plant block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in nether crimson forest"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for nether builds occasionally"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is nether-themed decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic nether vine plant"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "warm",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "deep crimson-red nether vine color"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "inferred",
+          "rationale": "grows naturally in nether biomes"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed hanging vine decoration",
+            "compostable organic material",
+            "climbable surface in nether builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core weeping vine player uses"
+        }
+      }
+    },
+    "minecraft:wet_sponge": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "part of sponge water-draining cycle"
+        },
+        "material_family": {
+          "value": "sponge",
+          "signal": "pattern",
+          "rationale": "id contains sponge"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires ocean monument or elder guardian"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "dried and cycled periodically"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "dried sponge drains water for builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic sea sponge material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dull yellowish wet sponge color"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt or place in nether to dry into sponge",
+            "byproduct after dry sponge absorbs water"
+          ],
+          "signal": "inferred",
+          "rationale": "core wet sponge player actions"
+        }
+      }
+    },
+    "minecraft:wheat": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw crop harvested from wheat farm blocks"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "named",
+          "rationale": "item id is wheat"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "trivially farmable staple crop"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "key ingredient in staple food bread"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "trading",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "grown/harvested; villager trade; hay blocks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw grain plant crop"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "sandy",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "golden yellow-brown ripe wheat"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "rationale": "tags: cow/goat/horse/llama/sheep_food"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting bread, cake, cookies",
+            "feeding horses, cows, sheep, llamas, goats",
+            "crafting hay block and packed mud",
+            "trading with farmer villagers"
+          ],
+          "signal": "inferred",
+          "rationale": "core wheat uses via tags and recipes"
+        }
+      }
+    },
+    "minecraft:wheat_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "seeds obtained raw by breaking grass"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "pattern",
+          "rationale": "seeds of the wheat plant"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "drop everywhere from tall grass"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "planted regularly for wheat farms"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "planted for wheat; villagers pick up"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw plant seeds"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "small tan-brown seeds"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "rationale": "tags: chicken_food, parrot_food"
+        },
+        "primary_uses": {
+          "values": [
+            "planting to grow wheat crops",
+            "breeding and taming chickens and parrots",
+            "compostable material"
+          ],
+          "signal": "inferred",
+          "rationale": "core wheat seed uses via tags"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:wet_sponge",
+      "facet": "origin",
+      "current": [
+        "mob_drop"
+      ],
+      "suggested": [
+        "mob_drop",
+        "ocean_monument"
+      ],
+      "rationale": "wet sponge rooms generate in ocean monuments",
+      "confidence": 0.9
+    }
+  ]
+}

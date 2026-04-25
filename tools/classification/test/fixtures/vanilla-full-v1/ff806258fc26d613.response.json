@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 194816,
+  "duration_api_ms": 195572,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:green_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds multiple item types in one slot\"\n        },\n        \"dye_color\": {\n          \"value\": \"green\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix green_ + bundles tag\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"bundle base recipe uses rabbit hide\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"everyday inventory management tool\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use is organizing inventory\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed hide bundle, organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green colored item\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, transmute only\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sits in regular inventory slots\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"portable multi-item storage\", \"inventory slot compression\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bundle use cases\"\n        }\n      }\n    },\n    \"minecraft:green_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles are aesthetic lighting decor\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"candles crafted from honeycomb+string\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative/lighting use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for atmosphere and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wax candle, organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green colored item\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lit candle emits light level 3-12\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ambient lighting decoration\", \"birthday cake candles\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core candle use cases\"\n        }\n      }\n    },\n    \"minecraft:green_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpets are floor decoration\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common decorating element\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor covering and structural decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool carpet, organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green colored item\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:dampens_vibrations\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"floor decoration\", \"llama carpet equip\", \"vibration dampening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core carpet use cases\"\n        }\n      }\n    },\n    \"minecraft:green_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete is a primary building material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as building structure\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid color smooth block\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green matte smooth surface\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"player-made via powder+water contact\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"vibrant colored building block\", \"pixel art construction\", \"interior decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core concrete use cases\"\n        }\n      }\n    },\n    \"minecraft:green_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable block, converts to concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate for concrete production\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to produce concrete for building\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid colored sandy block\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green sandy-textured block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand when unsupported\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"create green concrete via water contact\", \"gravity-affected building block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core concrete powder use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "a379cdc0-b907-422c-94d6-9ffe49bfbf28",
+  "total_cost_usd": 0.22641590000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4410,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13627,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4410,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13627,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4410,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4410
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3547,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003617,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13627,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4410,
+      "webSearchRequests": 0,
+      "costUSD": 0.22279890000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "79247bd4-4eb8-4fad-9d35-65d21cfeee29"
+}

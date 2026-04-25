@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 216110,
+  "duration_api_ms": 217052,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:cod_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only mob spawner\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only used in creative/admin contexts\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"represents a living creature\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs are creative-only\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg suffix → spawns linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spawn a cod fish in the world\", \"Creative testing and map-making\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg core function\"\n        }\n      }\n    },\n    \"minecraft:command_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only command executor block\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only map-makers and admins use it\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-triggered command automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical function, ominous appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange-amber command block texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Execute commands via redstone trigger\", \"Adventure map scripting\", \"Server automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core admin/map-making uses\"\n        }\n      }\n    },\n    \"minecraft:command_block_minecart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only cmd executor on rails\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in vanilla survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche admin/map-making use\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"executes commands along rail paths\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical vehicle + command block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Execute commands along a rail path\", \"Moving command sequences for maps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core command block minecart use\"\n        }\n      }\n    },\n    \"minecraft:comparator\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"named\",\n          \"rationale\": \"display name is Redstone Comparator\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from stone base\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\", \"nether_quartz\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe uses redstone torches + quartz\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core redstone logic block\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"signal comparison and automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"functional redstone mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey stone with dark redstone elements\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Compare or subtract redstone signals\", \"Detect container fullness level\", \"Read block states for circuits\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core comparator functions\"\n        }\n      }\n    },\n    \"minecraft:compass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigation to spawn or lodestone\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 4 iron ingots\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires redstone dust in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for navigation, not constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"navigation tool for exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical navigation instrument\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron casing with warm needle face\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Navigate to world spawn or lodestone\", \"Craft maps and recovery compass\", \"Find spawn point when lost\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core compass functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "6c59a0d0-630e-4cbb-a39a-d5e8fd47fd49",
+  "total_cost_usd": 0.2386969,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3366,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14776,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3366,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14776,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3366,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3366
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2503,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002578,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14776,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3366,
+      "webSearchRequests": 0,
+      "costUSD": 0.2361189,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "627b4cd5-0692-41b8-a063-0ac27325572c"
+}

@@ -1,0 +1,284 @@
+{
+  "items": {
+    "minecraft:allay_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawns allay mob on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs are creative-only"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche creative-mode use"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "allay collects and sorts items"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mob-themed spawn item"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "allay is pale blue"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns an allay"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn allay mob",
+            "item collection automation setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core purpose"
+        }
+      }
+    },
+    "minecraft:allium": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower picked from world as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common in flower forest/meadow biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally for dye or stew"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "decor + bee food/stew"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "small_flowers tag, natural flora"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright purple allium flower"
+        },
+        "primary_uses": {
+          "values": [
+            "craft magenta dye",
+            "suspicious stew ingredient",
+            "bee food",
+            "flower decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of confirms dye+stew"
+        }
+      }
+    },
+    "minecraft:amethyst_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid cube used in construction/decor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires geode shards to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative builds and compact storage"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "crystal construction+decoration"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystalline gem block"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "purple amethyst crystal"
+        },
+        "primary_uses": {
+          "values": [
+            "compact amethyst shard storage",
+            "purple crystal decoration",
+            "note block instrument"
+          ],
+          "signal": "inferred",
+          "rationale": "standard gem block uses"
+        }
+      }
+    },
+    "minecraft:amethyst_cluster": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "silk-touch crystal, placed for decor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "geode caves, needs silk touch"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decoration or farm use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative light source"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crystal growth, natural origin"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light, purple crystal"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "cluster emits light level 5"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative crystal light source",
+            "shard farm seed placement"
+          ],
+          "signal": "inferred",
+          "rationale": "placed decor or mined for shards"
+        }
+      }
+    },
+    "minecraft:amethyst_shard": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "pattern",
+          "rationale": "_shard suffix; gem/shard = material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "geode caves + select chests"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "trim material + sculk sensor + blocks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "blocks/trims/calibrated sculk sensor"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "gem shard, natural crystal"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "purple amethyst shard"
+        },
+        "primary_uses": {
+          "values": [
+            "armor trim smithing",
+            "calibrated sculk sensor",
+            "amethyst block crafting",
+            "duplicate allays"
+          ],
+          "signal": "inferred",
+          "rationale": "tag trim_materials + recipe uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

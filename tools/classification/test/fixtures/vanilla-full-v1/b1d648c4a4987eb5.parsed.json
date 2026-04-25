@@ -1,0 +1,253 @@
+{
+  "items": {
+    "minecraft:zombie_head": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "inferred",
+          "rationale": "mob head, rare charged-creeper drop"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "display or niche use, rarely needed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily placed as decor or worn"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob head, one of several skulls"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "zombie grey-green tones, decayed"
+        },
+        "origin": {
+          "values": [
+            "mob_drop",
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "charged creeper kills zombie on surface"
+        },
+        "spawn_interaction": {
+          "values": [
+            "repels_mobs"
+          ],
+          "signal": "inferred",
+          "rationale": "reduces zombie detection range when worn"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard inventory slot"
+        },
+        "primary_uses": {
+          "values": [
+            "Display as decorative trophy",
+            "Wear to reduce zombie detection",
+            "Craft firework stars",
+            "Note block instrument"
+          ],
+          "signal": "inferred",
+          "rationale": "key gameplay uses of mob heads"
+        }
+      }
+    },
+    "minecraft:zombie_horse_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn egg pattern: summons mob on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "zombie horses have no survival spawn egg source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only niche use"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns mob for farms or world building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "undead variant of horse mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn zombie horse mob",
+            "Creative mode mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "minecraft:zombie_nautilus_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn egg pattern: summons mob on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot source found"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "uncommon mob, creative-only"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns mob for farm or world use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic zombie variant mob"
+        },
+        "palette": {
+          "values": [
+            "aqua",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "nautilus aquatic + zombie dark tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn zombie nautilus mob",
+            "Creative mode mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is mob spawning"
+        }
+      }
+    },
+    "minecraft:zombie_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn egg pattern: summons mob on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in vanilla survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "common mob, used in creative builds/farms"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns zombies for mob farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "standard undead mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn zombie mob",
+            "Creative mob farm setup",
+            "Creative mode mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg uses"
+        }
+      }
+    },
+    "minecraft:zombie_villager_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "spawn egg pattern: summons mob on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in vanilla survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for villager curing setups"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "cure -> discounted trades workflow"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "zombie variant of villager mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn zombie villager",
+            "Set up villager curing farm",
+            "Creative mode mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "curing for trade discounts is key use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

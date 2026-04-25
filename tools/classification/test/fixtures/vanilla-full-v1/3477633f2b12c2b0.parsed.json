@@ -1,0 +1,265 @@
+{
+  "items": {
+    "minecraft:pitcher_plant": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "flower block; placed for aesthetics"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flowering plant block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs sniffer-sourced pod to grow"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche dye source, decorative use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decor; bee_food tag"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic flowering plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "green stem, purple pitcher cup"
+        },
+        "primary_uses": {
+          "values": [
+            "cyan dye crafting",
+            "decoration as tall flower",
+            "bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe + flowers + bee_food tags"
+        }
+      }
+    },
+    "minecraft:pitcher_pod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw seed dug up by sniffer"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "unprocessed plant seed"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "sniffer required to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted once per desired flower"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "villager_plantable_seeds tag"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "sniffer digs up ancient seeds"
+        },
+        "primary_uses": {
+          "values": [
+            "plant to grow pitcher plant",
+            "feed chickens and parrots"
+          ],
+          "signal": "inferred",
+          "rationale": "plantable seed; chicken_food/parrot_food tags"
+        }
+      }
+    },
+    "minecraft:player_head": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "schema disambiguation: heads=decorative_block"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "noteblock/fireworks/decor niche"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "noteblock_top_instruments tag; placed decor"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "player-specific display skull"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "charged creeper kills player to drop"
+        },
+        "primary_uses": {
+          "values": [
+            "wall/floor decoration",
+            "noteblock instrument",
+            "firework star component"
+          ],
+          "signal": "inferred",
+          "rationale": "noteblock tag + firework_star recipe"
+        }
+      }
+    },
+    "minecraft:plenty_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "shard-type ingredient for decorated pot"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "fired clay pottery fragment"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "archaeology RNG, specific site type"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_ingredients tag"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate pottery pots",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_sherds tag"
+        }
+      }
+    },
+    "minecraft:podzol": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "terrain soil block, structural use"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "inferred",
+          "rationale": "grass_blocks tag, soil type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant on taiga biome surfaces"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche landscaping block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "terrain block for builds and scenes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic forest floor block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark soil with needle-litter top"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "taiga and mega taiga biome surface"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "soft block, movable like dirt"
+        },
+        "primary_uses": {
+          "values": [
+            "terrain landscaping",
+            "forest biome builds",
+            "grows spruce/ferns without light"
+          ],
+          "signal": "inferred",
+          "rationale": "terrain block with unique growth property"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

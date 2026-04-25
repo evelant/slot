@@ -1,0 +1,405 @@
+# Items to classify
+{
+  "items": [
+    {
+      "id": "minecraft:acacia_pressure_plate",
+      "namespace": "minecraft",
+      "display_name": "Acacia Pressure Plate",
+      "minecraft_tags_direct": [
+        "minecraft:wooden_pressure_plates"
+      ],
+      "minecraft_tags_inherited": [],
+      "processing_in": [],
+      "recipe_consumption_by_type": {},
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "sample_ingredient_of": [],
+      "sample_output_of": [
+        "minecraft:acacia_pressure_plate"
+      ],
+      "model_parents": [
+        "block/acacia_pressure_plate",
+        "block/pressure_plate_up",
+        "block/thin_block",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/acacia_pressure_plate"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "confidence": 1,
+          "source": "rule:material_family_from_id",
+          "rationale": "id prefix acacia_"
+        },
+        "form": {
+          "value": "pressure_plate",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:wooden_pressure_plates"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "is_fuel": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_fuel_from_id_or_tag"
+        }
+      }
+    },
+    {
+      "id": "minecraft:acacia_sapling",
+      "namespace": "minecraft",
+      "display_name": "Acacia Sapling",
+      "minecraft_tags_direct": [
+        "minecraft:saplings"
+      ],
+      "minecraft_tags_inherited": [],
+      "processing_in": [],
+      "recipe_consumption_by_type": {},
+      "recipe_production_by_type": {},
+      "sample_ingredient_of": [],
+      "sample_output_of": [],
+      "model_parents": [
+        "item/acacia_sapling",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/acacia_leaves",
+        "minecraft:blocks/acacia_sapling",
+        "minecraft:blocks/potted_acacia_sapling",
+        "minecraft:chests/village/village_savanna_house"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "confidence": 1,
+          "source": "rule:material_family_from_id",
+          "rationale": "id prefix acacia_"
+        },
+        "form": {
+          "value": "sapling",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:saplings"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "village"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "is_fuel": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_fuel_from_id_or_tag"
+        }
+      }
+    },
+    {
+      "id": "minecraft:acacia_shelf",
+      "namespace": "minecraft",
+      "display_name": "Acacia Shelf",
+      "minecraft_tags_direct": [
+        "minecraft:wooden_shelves"
+      ],
+      "minecraft_tags_inherited": [],
+      "processing_in": [],
+      "recipe_consumption_by_type": {},
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "sample_ingredient_of": [],
+      "sample_output_of": [
+        "minecraft:acacia_shelf"
+      ],
+      "model_parents": [
+        "block/acacia_shelf_inventory",
+        "block/template_shelf_inventory",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/acacia_shelf"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "has_nbt_variation": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:has_nbt_variation_from_component"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "confidence": 1,
+          "source": "rule:material_family_from_id",
+          "rationale": "id prefix acacia_"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        }
+      }
+    },
+    {
+      "id": "minecraft:acacia_sign",
+      "namespace": "minecraft",
+      "display_name": "Acacia Sign",
+      "minecraft_tags_direct": [
+        "minecraft:signs"
+      ],
+      "minecraft_tags_inherited": [],
+      "processing_in": [],
+      "recipe_consumption_by_type": {},
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "sample_ingredient_of": [],
+      "sample_output_of": [
+        "minecraft:acacia_sign"
+      ],
+      "model_parents": [
+        "item/acacia_sign",
+        "item/generated",
+        "builtin/generated"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/acacia_sign"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "confidence": 1,
+          "source": "rule:material_family_from_id",
+          "rationale": "id prefix acacia_"
+        },
+        "form": {
+          "value": "sign",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:signs"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "is_fuel": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_fuel_from_id_or_tag"
+        }
+      }
+    },
+    {
+      "id": "minecraft:acacia_slab",
+      "namespace": "minecraft",
+      "display_name": "Acacia Slab",
+      "minecraft_tags_direct": [
+        "minecraft:wooden_slabs"
+      ],
+      "minecraft_tags_inherited": [
+        "minecraft:slabs"
+      ],
+      "processing_in": [
+        "crafting"
+      ],
+      "recipe_consumption_by_type": {
+        "crafting_shaped": 5
+      },
+      "recipe_production_by_type": {
+        "crafting_shaped": 1
+      },
+      "sample_ingredient_of": [
+        "minecraft:barrel",
+        "minecraft:chiseled_bookshelf",
+        "minecraft:composter",
+        "minecraft:daylight_detector",
+        "minecraft:lectern"
+      ],
+      "sample_output_of": [
+        "minecraft:acacia_slab"
+      ],
+      "model_parents": [
+        "block/acacia_slab",
+        "block/slab",
+        "block/block"
+      ],
+      "sample_loot_sources": [
+        "minecraft:blocks/acacia_slab"
+      ],
+      "lore": [],
+      "component_highlights": {
+        "minecraft:rarity": "common"
+      },
+      "stage2_facets": {
+        "mod_namespace": {
+          "value": "minecraft",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_stackable": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_stackable_from_component"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "material_family": {
+          "value": "wood_acacia",
+          "confidence": 1,
+          "source": "rule:material_family_from_id",
+          "rationale": "id prefix acacia_"
+        },
+        "form": {
+          "value": "slab",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:slabs"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "is_fuel": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_fuel_from_id_or_tag"
+        }
+      }
+    }
+  ]
+}
+Respond with a single JSON object matching the expected output shape above. No other text.

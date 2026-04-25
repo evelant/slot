@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 167937,
+  "duration_api_ms": 168675,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pink_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass pane used as structural window element\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational window/wall material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"windows and decorative glass walls\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stained = explicitly dyed glass\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is pastel; glass is translucent\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass panes accept water in their block space\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building windows and glass walls\", \"decorating structures with color\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use of a colored glass pane\"\n        }\n      }\n    },\n    \"minecraft:pink_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta is a colored building material\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational decorative building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for colored structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed clay; earthy origin\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink terracotta is warm and muted in tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative colored building block\", \"crafting pink glazed terracotta\", \"colorful structure material\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream from recipe and building use\"\n        }\n      }\n    },\n    \"minecraft:pink_tulip\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower harvested directly from world\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for dye/stew, not constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown for dye; placed as decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural flower with distinct pink hue\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"soft pink tone\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:bee_food attracts bees\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting pink dye\", \"making suspicious stew\", \"decoration in flower pots\", \"bee food/pollination\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream uses from recipe and tag data\"\n        }\n      }\n    },\n    \"minecraft:pink_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool is a placeable colored building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in building, beds, and crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored structures, beds, carpets, banners\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool; animal-derived material\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink wool reads as soft and light\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"sculk_silent\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wool burns; tag dampens_vibrations\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"colored building material\", \"crafting beds and carpets\", \"silencing sculk sensors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wool gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:piston\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"mechanism\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical actuator activated by redstone\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobblestone forms main body (4 in recipe)\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\", \"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 planks and 1 iron ingot in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core redstone and automation component\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone-driven; automation and contraptions\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"physically moving mechanical device\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden face, stone/matte body\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pistons can be pushed by other pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"pushing blocks and entities\", \"redstone contraptions\", \"automation builds\", \"crafting sticky piston\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core piston gameplay functions\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "77e38b41-5ed0-4250-a173-ced31a96f111",
+  "total_cost_usd": 0.20046665000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4667,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11815,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4667
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11815,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4667,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4667,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3804,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038840000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11815,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4667,
+      "webSearchRequests": 0,
+      "costUSD": 0.19658265000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8b7071d8-e909-4090-a15a-159e95befae4"
+}

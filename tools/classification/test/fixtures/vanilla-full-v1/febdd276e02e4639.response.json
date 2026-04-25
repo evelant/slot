@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 158151,
+  "duration_api_ms": 159162,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:waxed_oxidized_copper_chest\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest tag + form=storage_block → item storage\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chests used constantly in base building\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores items; placed while building bases\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant of the standard chest\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized copper reads as teal-green\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"27-slot standard chest storage\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block entity top surface blocks mob spawn\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block entity; pistons cannot move it\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"storing items in base\", \"copper aesthetic storage block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core chest use cases\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes; redstone-activatable\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"doors placed in most builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural; can be redstone-triggered\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant; door is mechanical\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized copper reads as teal-green\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"doors pushed/pulled by pistons in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative copper door\", \"redstone-controlled access point\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door use cases\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper_golem_statue\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue block—purely aesthetic placement\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative; not every build uses statues\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue serves decoration only\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornate statue of a mechanical golem\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized copper reads as teal-green\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative copper golem statue\", \"base and garden ornamentation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue is purely decorative\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper_grate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural structural grate element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche building material, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural + decorative building use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant; grate is industrial\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized copper reads as teal-green\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grates waterlog; non-entity so piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative architectural grate\", \"semi-transparent building element\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grate primary use cases\"\n        }\n      }\n    },\n    \"minecraft:waxed_oxidized_copper_lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lanterns emit light—functional purpose\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lighting placed constantly in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for light and aesthetic appeal\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant; lantern is mechanical fixture\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal copper body with emissive warm glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lanterns emit light; placeable underwater\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"light source block\", \"copper aesthetic lantern\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core lantern use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:waxed_oxidized_copper_door\",\n      \"facet\": \"required_tool_tier\",\n      \"current\": null,\n      \"suggested\": \"stone\",\n      \"rationale\": \"Copper doors share needs_stone_tool tag with other copper blocks in this batch; stage2 rule likely missed the tag\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e8e1d360-27e8-4f9a-9971-b5178fce6872",
+  "total_cost_usd": 0.1978414,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4628,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11652,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4628,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11652,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4628,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4628
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3765,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00385,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11652,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4628,
+      "webSearchRequests": 0,
+      "costUSD": 0.1939914,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0a460487-aa0f-48f6-9b20-0933be50eefa"
+}

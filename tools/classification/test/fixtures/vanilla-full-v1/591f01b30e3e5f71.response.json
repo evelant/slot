@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 175723,
+  "duration_api_ms": 176651,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:sculk_vein\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin overlay, no active function, pure decor\"\n        },\n        \"material_family\": {\n          \"value\": \"sculk\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sculk_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common; fills deep dark\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche deep dark aesthetic use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for sculk ambiance\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic spreading organism\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"near-black blue-grey sculk texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"deep dark themed decoration\",\n            \"sculk aesthetic builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"atmosphere/decor only\"\n        }\n      }\n    },\n    \"minecraft:sea_lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is emitting light lvl 15\"\n        },\n        \"material_family\": {\n          \"value\": \"prismarine\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from prismarine crystals/shards\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs ocean monument prismarine mats\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular bright decorative light source\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light source and ocean theme builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing prismarine aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"aqua\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue-white pulsing light block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light level 15\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"bright light source (level 15)\",\n            \"ocean-themed decoration\",\n            \"underwater lighting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top-tier decorative light block\"\n        }\n      }\n    },\n    \"minecraft:sea_pickle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ocean organism, smelted for dye\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common; warm ocean floors\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche lime dye input and light use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for underwater light/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean organism\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow-green glow when placed underwater\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light_underwater\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glows when placed in water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelt into lime dye\",\n            \"underwater decoration\",\n            \"underwater light source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye ingredient and decorative block\"\n        }\n      }\n    },\n    \"minecraft:seagrass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ocean plant, no crafting recipe output\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covers entire ocean floors densely\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mainly used for turtle breeding\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:turtle_food\",\n          \"rationale\": \"feeds and breeds turtles\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green underwater grass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"breed and feed turtles\",\n            \"compost material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"turtle food tag and compostable\"\n        }\n      }\n    },\n    \"minecraft:sentry_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied at smithing table to trim armor\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one cosmetic use per armor piece\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor trims are purely cosmetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"minimal template item appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply sentry trim pattern to armor\",\n            \"duplicate with diamonds and base material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing trim application/duplication\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:sea_lantern\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"ocean_monument\"],\n      \"rationale\": \"silk touch mines block from ocean monuments\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "85c9c6e5-7854-4e99-bba2-4b90118cc96e",
+  "total_cost_usd": 0.21415315000000001,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3861,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12983,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3861,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12983,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3861,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3861
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2998,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0030729999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12983,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3861,
+      "webSearchRequests": 0,
+      "costUSD": 0.21108015000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0dcd781a-5785-4d52-a862-7e2b4b3a0ef7"
+}

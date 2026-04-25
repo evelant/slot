@@ -1,0 +1,321 @@
+{
+  "items": {
+    "minecraft:cooked_mutton": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "mutton",
+          "signal": "pattern",
+          "rationale": "id suffix = meat type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicitly stated in component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "solid stats, easy sheep farming"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via sheep husbandry"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked animal food, no craft flair"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown/tan cooked meat texture"
+        },
+        "origin": {
+          "values": [
+            "mob_drop",
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "sheep drop raw mutton, overworld mob"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 6 hunger, 9.6 saturation",
+            "feed tamed wolves"
+          ],
+          "signal": "named",
+          "rationale": "food stats + wolf_food tag"
+        }
+      }
+    },
+    "minecraft:cooked_porkchop": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "pork",
+          "signal": "pattern",
+          "rationale": "porkchop id = pork material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicitly stated in component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "highest saturation cooked food"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "produced via pig husbandry"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked animal food"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-brown cooked pork tone"
+        },
+        "origin": {
+          "values": [
+            "mob_drop",
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "pigs drop porkchop; overworld mob"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 8 hunger, 12.8 saturation",
+            "top-tier vanilla food source",
+            "piglins pick up and eat this"
+          ],
+          "signal": "named",
+          "rationale": "food stats + piglin_food tag"
+        }
+      }
+    },
+    "minecraft:cooked_rabbit": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "rabbit",
+          "signal": "pattern",
+          "rationale": "id suffix = meat type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicitly stated in component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rabbits harder to farm than pigs/sheep"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "from rabbit hunting/farming"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked animal food"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown cooked meat tones"
+        },
+        "origin": {
+          "values": [
+            "mob_drop",
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "rabbits drop in overworld biomes"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 5 hunger, 6 saturation",
+            "key ingredient for rabbit stew",
+            "feed tamed wolves"
+          ],
+          "signal": "inferred",
+          "rationale": "food stats + rabbit_stew recipe use"
+        }
+      }
+    },
+    "minecraft:cooked_salmon": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "salmon",
+          "signal": "pattern",
+          "rationale": "id suffix = fish type"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicitly stated in component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fishing less passive than land farming"
+        },
+        "activity": {
+          "values": [
+            "fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "primary source is fishing/salmon mobs"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish, natural food"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "salmon orange-pink coloring"
+        },
+        "origin": {
+          "values": [
+            "fishing",
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "fished or dropped by salmon mobs"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 6 hunger, 9.6 saturation",
+            "feed tamed wolves and cats"
+          ],
+          "signal": "named",
+          "rationale": "food stats + wolf_food/nautilus tags"
+        }
+      }
+    },
+    "minecraft:cookie": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "wheat",
+          "signal": "inferred",
+          "rationale": "wheat is primary crafting ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "cocoa"
+          ],
+          "signal": "inferred",
+          "rationale": "cocoa_beans are second ingredient"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "explicitly stated in component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "very low nutrition, rarely preferred"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from farmed wheat and cocoa"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple baked food item"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "tan/brown baked biscuit tones"
+        },
+        "primary_uses": {
+          "values": [
+            "low-saturation snack food",
+            "fatal to parrots (avoid feeding)"
+          ],
+          "signal": "named",
+          "rationale": "parrot_poisonous_food tag + low stats"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

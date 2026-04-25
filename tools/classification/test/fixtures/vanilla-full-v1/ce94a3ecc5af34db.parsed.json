@@ -1,0 +1,266 @@
+{
+  "items": {
+    "minecraft:cod_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only mob spawner"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only used in creative/admin contexts"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents a living creature"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs are creative-only"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → spawns linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a cod fish in the world",
+            "Creative testing and map-making"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core function"
+        }
+      }
+    },
+    "minecraft:command_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only command executor block"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only map-makers and admins use it"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-triggered command automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical function, ominous appearance"
+        },
+        "palette": {
+          "values": [
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-amber command block texture"
+        },
+        "primary_uses": {
+          "values": [
+            "Execute commands via redstone trigger",
+            "Adventure map scripting",
+            "Server automation"
+          ],
+          "signal": "inferred",
+          "rationale": "core admin/map-making uses"
+        }
+      }
+    },
+    "minecraft:command_block_minecart": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only cmd executor on rails"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "not obtainable in vanilla survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche admin/map-making use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "executes commands along rail paths"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical vehicle + command block"
+        },
+        "primary_uses": {
+          "values": [
+            "Execute commands along a rail path",
+            "Moving command sequences for maps"
+          ],
+          "signal": "inferred",
+          "rationale": "core command block minecart use"
+        }
+      }
+    },
+    "minecraft:comparator": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "named",
+          "rationale": "display name is Redstone Comparator"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "crafted from stone base"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone",
+            "nether_quartz"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe uses redstone torches + quartz"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core redstone logic block"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "signal comparison and automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "functional redstone mechanism"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "grey stone with dark redstone elements"
+        },
+        "primary_uses": {
+          "values": [
+            "Compare or subtract redstone signals",
+            "Detect container fullness level",
+            "Read block states for circuits"
+          ],
+          "signal": "inferred",
+          "rationale": "core comparator functions"
+        }
+      }
+    },
+    "minecraft:compass": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigation to spawn or lodestone"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from 4 iron ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "requires redstone dust in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for navigation, not constantly"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "navigation tool for exploration"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical navigation instrument"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "iron casing with warm needle face"
+        },
+        "primary_uses": {
+          "values": [
+            "Navigate to world spawn or lodestone",
+            "Craft maps and recovery compass",
+            "Find spawn point when lost"
+          ],
+          "signal": "inferred",
+          "rationale": "core compass functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 158065,
+  "duration_api_ms": 159301,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:white_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid colored block for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular clean-finish building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for construction and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed color variant of concrete\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright white, smooth matte surface\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powder+water conversion, no natural gen\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_low\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete blast resistance ~9, moderate\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building clean white structures\", \"decorating interiors and facades\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core builder use case\"\n        }\n      }\n    },\n    \"minecraft:white_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"places as block, converts to concrete\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains concrete_powder\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed to produce concrete blocks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate step to concrete\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed color variant\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright white powdery texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand/gravel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"converting to white concrete via water\", \"gravity-affected building block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary purpose is concrete production\"\n        }\n      }\n    },\n    \"minecraft:white_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed crafting ingredient / dye\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _dye, tag minecraft:dyes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 13+ shapeless recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyes wool, terracotta, concrete powder\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple functional dye item\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white / bright tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dyeing wool and blocks white\", \"crafting white concrete powder\", \"dyeing leather armor\", \"firework star coloring\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses from recipe_consumption list\"\n        }\n      }\n    },\n    \"minecraft:white_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"patterned block primarily for aesthetics\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted from white terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative niche use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"directional patterned decor block\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"distinctive glazed pattern design\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"glossy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white tone with glazed sheen\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta not piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorating with directional tile patterns\", \"building themed structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unique facing pattern is main appeal\"\n        }\n      }\n    },\n    \"minecraft:white_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips happy ghast for riding\"\n        },\n        \"material_family\": {\n          \"value\": \"leather\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness-class equipment, likely leather\"\n        },\n        \"dye_color\": {\n          \"value\": \"white\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix white_ + dyeable item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires happy ghast to use\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables riding ghast for exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed leather-type harness item\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white colored item\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, crafted via recipe\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:happy_ghast_tempt_items\",\n          \"rationale\": \"tag explicitly marks as ghast tempt item\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables player riding on happy ghast\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"equipping happy ghasts for riding\", \"tempting happy ghasts\", \"dyeing to other harness colors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tag and recipe data indicate all three\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "9ffe94cb-daf6-4199-a8b4-11e26b4a8218",
+  "total_cost_usd": 0.18779765,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4323,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11080,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4323,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11080,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4323,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4323
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3460,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00353,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11080,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4323,
+      "webSearchRequests": 0,
+      "costUSD": 0.18426765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a2106481-fe23-4df0-8880-8dc3cc388dd9"
+}

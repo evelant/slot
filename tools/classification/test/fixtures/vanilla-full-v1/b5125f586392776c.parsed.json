@@ -1,0 +1,303 @@
+{
+  "items": {
+    "minecraft:brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form of bricks; structural use"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id brick_wall; crafted from bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls used less than full blocks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural borders and garden edging"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard masonry wall, no special flair"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-brown fired clay tone"
+        },
+        "primary_uses": {
+          "values": [
+            "fence/border alternative",
+            "decorative wall edging",
+            "building structures"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wall block applications"
+        }
+      }
+    },
+    "minecraft:bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid placeable block for structures"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id=bricks; fired clay brick block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular decorative masonry block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "construction and aesthetic masonry use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "classic masonry block, no special flair"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-brown fired clay color"
+        },
+        "primary_uses": {
+          "values": [
+            "building walls and floors",
+            "crafting brick slabs/stairs/walls",
+            "decorative masonry construction"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of the bricks block"
+        }
+      }
+    },
+    "minecraft:brown_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are primarily aesthetic decor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for decor, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "aesthetic wall/ceiling decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed item in one of 16 color family"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown is earthy and muted in tone"
+        },
+        "primary_uses": {
+          "values": [
+            "wall/ceiling decoration",
+            "shield decoration base",
+            "faction or base markers",
+            "banner pattern crafting base"
+          ],
+          "signal": "inferred",
+          "rationale": "typical banner use cases"
+        }
+      }
+    },
+    "minecraft:brown_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive: sleep, set spawn point"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used every night cycle in survival"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in base; spawn-sets for exploration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed item in one of 16 color family"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown is earthy and muted in tone"
+        },
+        "primary_uses": {
+          "values": [
+            "skip night / advance to day",
+            "set player respawn point",
+            "base furnishing"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed gameplay functions"
+        }
+      }
+    },
+    "minecraft:brown_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable container for multiple item types"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in base bundle recipe"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id prefix brown_ + bundles tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for inventory management"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "compacts inventory; portable item grouping"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed; crafted from organic hide/string"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown leather earthy muted tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; transmute/crafted only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "occupies standard inventory slots"
+        },
+        "primary_uses": {
+          "values": [
+            "carry multiple item types in one slot",
+            "compact and organize inventory",
+            "quick item retrieval by right-click"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle gameplay use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

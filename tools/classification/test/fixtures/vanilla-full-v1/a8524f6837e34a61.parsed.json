@@ -1,0 +1,292 @@
+{
+  "items": {
+    "minecraft:iron_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "cannot open by hand; needs redstone/button"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id prefix iron_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in builds as secure entrance"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally; needs redstone/button"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned iron; opens mechanically"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "flat gray iron texture"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "doors are pushed/pulled by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "secure door requiring button or lever",
+            "building protected access points",
+            "piston door mechanisms"
+          ],
+          "signal": "inferred",
+          "rationale": "core gameplay uses"
+        }
+      }
+    },
+    "minecraft:iron_golem_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs: creative/command only"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot table, no recipe"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative use only"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn eggs always spawn linked mob"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "egg form = natural aesthetic category"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "cream/gray speckled egg texture"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn iron golem on demand",
+            "creative/command mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "sole function of spawn eggs"
+        }
+      }
+    },
+    "minecraft:iron_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "suffix _helmet + tag head_armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard mid-game armor, worn routinely"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "armor worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned iron armor aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "flat gray iron texture"
+        },
+        "primary_uses": {
+          "values": [
+            "head protection in combat",
+            "complete iron armor set",
+            "armor trim decoration via smithing",
+            "recycle to iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "standard helmet use cases"
+        }
+      }
+    },
+    "minecraft:iron_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:hoes"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden handle/stick visible in model"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for farming but not everyday essential"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:hoes → tilling soil"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "simple iron tool aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte",
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "iron head + wooden handle"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil into farmland",
+            "harvesting crops quickly",
+            "breaking hoe-mineable blocks (leaves, hay)"
+          ],
+          "signal": "inferred",
+          "rationale": "core hoe functions"
+        }
+      }
+    },
+    "minecraft:iron_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equippable armor slot on horses"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id prefix iron_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "loot-only; no crafting recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when riding horses in danger"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protects mount during combat/exploration"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "simple iron horse armor aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray iron coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "protect horses from damage",
+            "equip mount for dangerous terrain",
+            "recycle to iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "standard horse armor use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

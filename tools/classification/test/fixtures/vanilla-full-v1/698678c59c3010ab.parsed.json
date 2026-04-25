@@ -1,0 +1,290 @@
+{
+  "items": {
+    "minecraft:lantern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "light source chosen for aesthetics"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from iron nuggets + torch"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron nuggets and torches are accessible"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely placed in builds for lighting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for light and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted metal light device"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "warm golden flame glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lanterns emit light level 15"
+        },
+        "primary_uses": {
+          "values": [
+            "atmospheric lighting in builds",
+            "decorating interiors and paths",
+            "hanging ceiling decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player use cases"
+        }
+      }
+    },
+    "minecraft:lapis_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "compressed lapis like iron_block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires mining lapis lazuli"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "for compact storage or decoration"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative or storage block"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "vivid blue decorative block"
+        },
+        "palette": {
+          "values": [
+            "indigo"
+          ],
+          "signal": "inferred",
+          "rationale": "deep blue lapis color"
+        },
+        "primary_uses": {
+          "values": [
+            "compact lapis lazuli storage",
+            "decorative blue building block",
+            "beacon base material"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player use cases"
+        }
+      }
+    },
+    "minecraft:lapis_lazuli": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "refined gem for crafting and enchanting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires cave mining, not farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "consumed heavily at enchanting table"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "enchanting fuel; dye and trim use"
+        },
+        "palette": {
+          "values": [
+            "indigo"
+          ],
+          "signal": "inferred",
+          "rationale": "rich blue gemstone color"
+        },
+        "primary_uses": {
+          "values": [
+            "enchanting table fuel",
+            "blue dye production",
+            "armor trim smithing",
+            "crafting lapis block"
+          ],
+          "signal": "inferred",
+          "rationale": "top player use cases"
+        }
+      }
+    },
+    "minecraft:lapis_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore obtained from world"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "underground, less common than iron"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined then processed away"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined for lapis lazuli"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "stone block with mineral veins"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "indigo"
+          ],
+          "signal": "inferred",
+          "rationale": "stone with blue mineral flecks"
+        },
+        "primary_uses": {
+          "values": [
+            "source of lapis lazuli via smelting",
+            "mined for enchanting supply"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is lapis extraction"
+        }
+      }
+    },
+    "minecraft:large_amethyst_bud": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "crystal growth, primarily decorative"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "id contains amethyst"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires silk touch to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected for decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for crystal aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "organic crystal growth"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "purple amethyst crystal"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "large buds emit light level 4"
+        },
+        "primary_uses": {
+          "values": [
+            "crystal decoration in builds",
+            "amethyst geode aesthetics",
+            "stepping stone to cluster harvest"
+          ],
+          "signal": "inferred",
+          "rationale": "primary player use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:lantern",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "village"
+      ],
+      "rationale": "Generates in snowy tundra villages naturally",
+      "confidence": 0.8
+    }
+  ]
+}

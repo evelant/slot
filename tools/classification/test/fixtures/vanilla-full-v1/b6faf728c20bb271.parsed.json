@@ -1,0 +1,297 @@
+{
+  "items": {
+    "minecraft:chorus_plant": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "End plant placed for decoration only"
+        },
+        "material_family": {
+          "value": "chorus_plant",
+          "signal": "pattern",
+          "rationale": "id directly names the material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Admin/creative-only; no survival drop"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "No gameplay function; purely decorative"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for End-themed decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Organic End plant"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "Purple-toned End plant, dark biome"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "Grows only on End outer islands"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Stem drops fruit, not block itself"
+        },
+        "primary_uses": {
+          "values": [
+            "End-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "Purely decorative block placement"
+        }
+      }
+    },
+    "minecraft:cinnabar": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Base stone used as building material"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id directly names the material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Mineable stone type, likely widespread"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in themed cinnabar builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed in structures, cut into variants"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Natural geological block"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "Cinnabar = deep red mineral"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "guess",
+          "rationale": "Natural stone; generation biome unclear"
+        },
+        "primary_uses": {
+          "values": [
+            "building cinnabar structures",
+            "stonecutting into slabs/stairs/walls"
+          ],
+          "signal": "inferred",
+          "rationale": "Base block for a variant family"
+        }
+      }
+    },
+    "minecraft:cinnabar_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab tag = structural building form"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix cinnabar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common cinnabar"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Slab for building detail"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed brick slab = dressed stone"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "Cinnabar = deep red"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floor/ceiling detail",
+            "cinnabar brick accent"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard slab building uses"
+        }
+      }
+    },
+    "minecraft:cinnabar_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs tag = structural building form"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix cinnabar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common cinnabar"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Stairs for building detail"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed brick stairs = dressed stone"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "Cinnabar = deep red"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "roof/overhang detail"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard stairs building uses"
+        }
+      }
+    },
+    "minecraft:cinnabar_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "walls tag = structural building form"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix cinnabar"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common cinnabar"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Wall block for building"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "Processed brick wall = dressed stone"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "Cinnabar = deep red"
+        },
+        "primary_uses": {
+          "values": [
+            "fence/barrier detail",
+            "cinnabar brick border"
+          ],
+          "signal": "inferred",
+          "rationale": "Standard wall building uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

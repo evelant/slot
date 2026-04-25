@@ -1,0 +1,344 @@
+{
+  "items": {
+    "minecraft:honeycomb_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid cube block placed for structure/deco"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "honeycombs farmable from beehives"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block for builds and decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic bee-wax material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-yellow honeycomb color"
+        },
+        "primary_uses": {
+          "values": [
+            "compact honeycomb storage block",
+            "decorative building material"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from 4 honeycombs for deco/storage"
+        }
+      }
+    },
+    "minecraft:hopper": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "actively transfers items between containers"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "recipe uses iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "iron easily farmable"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core automation block, used constantly"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "item routing, sorting, redstone triggering"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "iron funnel mechanism"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron funnel appearance"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "transfers items between inventories"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "has 5-slot internal inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "item transport between containers",
+            "automation sorting systems",
+            "item collection funnel"
+          ],
+          "signal": "inferred",
+          "rationale": "workhorse logistics/automation block"
+        }
+      }
+    },
+    "minecraft:hopper_minecart": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "minecart vehicle form from stage2"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "crafted from hopper + minecart (both iron)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common iron components"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rail automation is a niche setup"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "mobile item collection on rail lines"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "minecart with hopper mechanism"
+        },
+        "transport_medium": {
+          "values": [
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "collects and transports items on rails"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "has 5-slot item inventory"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "mobile item collection on rails",
+            "automated rail item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "rail-based item logistics"
+        }
+      }
+    },
+    "minecraft:horn_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "non-cube cross-shaped coral, purely decorative"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id has _coral suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in warm ocean biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underwater/aquarium builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "aquatic decoration and ocean builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean organism, natural aesthetic"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "horn coral is bright yellow"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral placed in world waterlogs"
+        },
+        "primary_uses": {
+          "values": [
+            "underwater/aquarium decoration",
+            "ocean-themed builds"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow aquatic decor block"
+        }
+      }
+    },
+    "minecraft:horn_coral_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid cube coral block for building"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id matches *_coral_block pattern"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in warm ocean biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underwater building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block for underwater structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean organism material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "horn coral is bright yellow"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral blocks waterlog when placed"
+        },
+        "primary_uses": {
+          "values": [
+            "underwater building material",
+            "ocean-themed builds",
+            "colorful aquatic block"
+          ],
+          "signal": "inferred",
+          "rationale": "bright yellow solid coral for construction"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:honeycomb_block",
+      "facet": "material_family",
+      "current": "honey",
+      "suggested": "honeycomb",
+      "rationale": "Block is crafted from honeycombs (wax item), not honey. Honey is a separate item (honey_bottle). These are distinct Minecraft materials.",
+      "confidence": 0.95
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 286983,
+  "duration_api_ms": 287790,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:composter\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"composting block; farmer job site\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from wooden slabs\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard farm and village utility\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"composting plants; auto-farm component\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood barrel with functional process\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak/wood brown tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"convert plant waste to bonemeal\",\n            \"farmer villager job site block\",\n            \"automated bonemeal farm component\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core composter gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:conduit\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"conduit power buff in water\"\n        },\n        \"material_family\": {\n          \"value\": \"nautilus_shell\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"8 nautilus shells dominate recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"heart_of_the_sea\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"heart of sea center catalyst\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche underwater use only\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"underwater builds and exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare glowing magical sea artifact\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aqua glow, blue-green ocean aesthetic\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glows bright; waterlogged in ocean\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harms hostile mobs in water when active\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"conduit power: water breathing + speed\",\n            \"damage hostile mobs in activation range\",\n            \"underwater base enabler\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core conduit functions\"\n        }\n      }\n    },\n    \"minecraft:cooked_beef\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food + consumable components\"\n        },\n        \"material_family\": {\n          \"value\": \"beef\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"cooked beef product\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"best vanilla saturation; used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cow farm output\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooked meat food\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown-red cooked meat tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore 8 hunger + 12.8 saturation\",\n            \"wolf taming and feeding\",\n            \"top-tier vanilla food source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core steak gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:cooked_chicken\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food + consumable components\"\n        },\n        \"material_family\": {\n          \"value\": \"chicken\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"cooked chicken product\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"chickens common; solid mid-tier food\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chicken farm product\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooked poultry food\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-brown cooked chicken\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore 6 hunger + 7.2 saturation\",\n            \"wolf feeding\",\n            \"chicken farm staple output\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core cooked chicken uses\"\n        }\n      }\n    },\n    \"minecraft:cooked_cod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"food + consumable components\"\n        },\n        \"material_family\": {\n          \"value\": \"cod\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"cooked cod fish\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant from fishing and oceans\"\n        },\n        \"activity\": {\n          \"values\": [\"fishing\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fishing product; fish farm output\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cooked fish food\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-brown cooked fish tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restore 5 hunger + 6 saturation\",\n            \"wolf feeding\",\n            \"fishing and ocean exploration food\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core cooked cod uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:cooked_beef\",\n      \"facet\": \"origin\",\n      \"current\": [\"village\"],\n      \"suggested\": [\"village\", \"trial_chamber\"],\n      \"rationale\": \"loot source spawners/ominous/trial_chamber/consumables present in provided data but absent from stage2\",\n      \"confidence\": 0.9\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d912104c-42ca-458e-ba9c-1b5f39661f0d",
+  "total_cost_usd": 0.37173464999999994,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3795,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 23509,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3795,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 23509,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3795,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3795
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2932,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003012,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 23509,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3795,
+      "webSearchRequests": 0,
+      "costUSD": 0.36872264999999993,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0fa97de6-ff13-4130-a00d-f8959cf9a7f4"
+}

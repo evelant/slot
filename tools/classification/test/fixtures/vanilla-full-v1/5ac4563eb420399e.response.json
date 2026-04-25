@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 246724,
+  "duration_api_ms": 247639,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:copper_golem_statue\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue = purely aesthetic placement\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix copper_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative blocks placed occasionally\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue used purely for decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golem is a copper mechanical construct\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"new copper is bright orange-brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"pattern\",\n          \"evidence\": \"ingredient of waxed_copper_golem_statue_from_honeycomb\",\n          \"rationale\": \"waxed variant confirms oxidation mechanic\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative copper golem statue\",\n            \"oxidizes for patina effect\",\n            \"wax to preserve appearance\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"statue display and oxidation showcase\"\n        }\n      }\n    },\n    \"minecraft:copper_grate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural grate block for architecture\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix copper_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche copper architectural element\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in construction and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"industrial grate aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"new copper color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"evidence\": \"ingredient of waxed_copper_grate_from_honeycomb\",\n          \"rationale\": \"waxed variant confirms oxidation; grates waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"transparent copper building block\",\n            \"decorative industrial grating\",\n            \"wax to preserve copper color\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"building and aesthetic uses\"\n        }\n      }\n    },\n    \"minecraft:copper_helmet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:head_armor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper tier mid-progression armor\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor worn for combat protection\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard armor, no special aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"head armor protection\",\n            \"smithing trim application\",\n            \"copper tier armor piece\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protection and trim base uses\"\n        }\n      }\n    },\n    \"minecraft:copper_hoe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:hoes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper tier mid-progression tool\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:hoes = farming tool\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard tool appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"tilling soil into farmland\",\n            \"breaking decorated pots\",\n            \"copper-tier farming tool\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoe uses from tags and tool component\"\n        }\n      }\n    },\n    \"minecraft:copper_horse_armor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse armor = protective armor for mounts\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix copper_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"loot-only, no crafting recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse armor rarely used in practice\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"protects mount in combat and travel\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard horse armor appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper material color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"protect horses in combat\",\n            \"horse equipment from loot chests\",\n            \"mount armor collectible\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse protection and collection uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "3489083d-6081-4343-8e0f-ff2113e2fc94",
+  "total_cost_usd": 0.2895449,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4974,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 17657,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4974,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17657,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4974,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4974
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4111,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004181,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17657,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4974,
+      "webSearchRequests": 0,
+      "costUSD": 0.2853639,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "bb3dba41-cd06-44c7-8743-b3984f483ff6"
+}

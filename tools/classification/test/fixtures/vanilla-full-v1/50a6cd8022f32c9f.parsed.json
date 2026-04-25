@@ -1,0 +1,269 @@
+{
+  "items": {
+    "minecraft:iron_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:pickaxes + form=tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common in component"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "core progression tool, used constantly"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "mines blocks; weapon component usable"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard unadorned iron tool"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "iron = dark gray metal"
+        },
+        "primary_uses": {
+          "values": [
+            "mining stone and ores",
+            "harvesting iron-tier blocks",
+            "smelt into iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "pickaxe core gameplay uses"
+        }
+      }
+    },
+    "minecraft:iron_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:shovels + form=tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common in component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly, less than pickaxe"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "digs terrain; creates grass paths"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard unadorned iron tool"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "iron = dark gray metal"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt, sand, gravel",
+            "creating grass paths",
+            "smelt into iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel core gameplay uses"
+        }
+      }
+    },
+    "minecraft:iron_spear": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:spears + weapon component"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id prefix iron_; repairs via iron_tools"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id prefix iron_; repairable with iron"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common in component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "viable combat weapon, loot-accessible"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon with melee + lunge enchant"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard iron weapon"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "iron = dark gray metal"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "lunge/thrown attacks",
+            "smelt into iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "spear = melee + lunge enchant"
+        }
+      }
+    },
+    "minecraft:iron_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:swords + form=weapon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common in component"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard combat weapon, used regularly"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard iron sword"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "iron = dark gray metal"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "cutting cobwebs",
+            "smelt into iron nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "sword combat + cobweb instant mine"
+        }
+      }
+    },
+    "minecraft:iron_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive gate; requires redstone"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "id prefix iron_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common in component"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific builds and redstone setups"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural gate + redstone activated"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "iron grate = mechanical aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "iron = dark gray metal"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-controlled access point",
+            "mob farm entry/exit control",
+            "hidden floors and passages"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone gate + structural uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

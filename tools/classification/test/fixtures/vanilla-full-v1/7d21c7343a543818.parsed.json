@@ -1,0 +1,322 @@
+{
+  "items": {
+    "minecraft:pink_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "ornate glazed pattern, aesthetic primary"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _glazed_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block for aesthetic builds"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "directional glazed pattern + dye tint"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "glossy"
+          ],
+          "signal": "inferred",
+          "rationale": "pink soft tone + shiny glaze finish"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative patterned tile in builds",
+            "Colorful wall/floor covering",
+            "Themed room decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta core use"
+        }
+      }
+    },
+    "minecraft:pink_harness": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equip on happy ghast to enable riding"
+        },
+        "dye_color": {
+          "value": "pink",
+          "signal": "pattern",
+          "rationale": "id prefix pink_ + tag harnesses"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized mob equipment"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "enables riding happy ghast"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyeable harness item"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pink = soft pastel tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted only"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "allows players to ride ghast"
+        },
+        "primary_uses": {
+          "values": [
+            "Equip on Happy Ghast to allow riding",
+            "Dye to recolor harness",
+            "Tempt/tame Happy Ghast"
+          ],
+          "signal": "inferred",
+          "rationale": "harness core functions"
+        }
+      }
+    },
+    "minecraft:pink_petals": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower picked from world as-is"
+        },
+        "material_family": {
+          "value": "flower",
+          "signal": "named",
+          "rationale": "tag minecraft:flowers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche dye source / decor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "grown/harvested, dye + decor use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "plant + pink tint"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "soft pink petal tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "cherry grove biome surface plant"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:bee_food"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft pink dye",
+            "Decorative ground cover block",
+            "Attract and feed bees"
+          ],
+          "signal": "inferred",
+          "rationale": "dye source + bee food + decor"
+        }
+      }
+    },
+    "minecraft:pink_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "portable storage retaining contents"
+        },
+        "material_family": {
+          "value": "shulker",
+          "signal": "named",
+          "rationale": "tag minecraft:shulker_boxes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires end mob drop to craft base"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core logistics/storage item"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage + item transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored storage block"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "coral"
+          ],
+          "signal": "inferred",
+          "rationale": "pink = soft warm tone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard item stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable storage keeping contents on break",
+            "Color-coded storage organization",
+            "Bulk item transport in inventory"
+          ],
+          "signal": "inferred",
+          "rationale": "shulker box primary functions"
+        }
+      }
+    },
+    "minecraft:pink_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural glass element in builds"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id suffix _stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative build material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows/panels in builds"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "tinted glass variant"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "pink tone + see-through glass"
+        },
+        "primary_uses": {
+          "values": [
+            "Colored windows in builds",
+            "Tinted light filtering",
+            "Decorative glass panels",
+            "Crafting stained glass panes"
+          ],
+          "signal": "inferred",
+          "rationale": "stained glass primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

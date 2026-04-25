@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:trader_llama_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn egg instantiates a specific mob"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs are creative/cmd only"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "creative-only, specific mob variant"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche creative/admin use only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns a naturally-occurring mob"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg always spawns linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a Trader Llama",
+            "Creative mode mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose is spawning the mob"
+        }
+      }
+    },
+    "minecraft:trapped_chest": {
+      "facets": {
+        "role": {
+          "values": [
+            "storage_block",
+            "functional_block"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "chest storage + redstone signal on open"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "chest crafted/textured with oak wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially crafted from wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "useful but less common than plain chest"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items + emits redstone on access"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain chest with trap mechanism"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "standard oak chest brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood construction burns"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item storage chest"
+        },
+        "primary_uses": {
+          "values": [
+            "Store items with redstone output on open",
+            "Trap and alert detection system",
+            "Redstone circuit trigger on access"
+          ],
+          "signal": "inferred",
+          "rationale": "storage + redstone trigger"
+        }
+      }
+    },
+    "minecraft:trial_key": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "consumed to unlock vault blocks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "trial chamber loot drop"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per vault block"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "opens trial chamber vault blocks"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "key for ancient dungeon vault"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "trial key has teal/cyan texture"
+        },
+        "primary_uses": {
+          "values": [
+            "Unlock vault blocks in trial chambers",
+            "Single-use trial reward access"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use is opening vault blocks"
+        }
+      }
+    },
+    "minecraft:trial_spawner": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active mob-spawning block with cooldown"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only special structure block"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/map-making use only"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "creative placement + spawns combat mobs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical spawner with ominous state variant"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "native to trial chamber structures"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawner block spawns linked trial mobs"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn trial chamber combat mobs",
+            "Creative trial chamber construction"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns mobs in trial context"
+        }
+      }
+    },
+    "minecraft:trident": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "evidence": "minecraft:weapon component",
+          "rationale": "weapon component explicitly present"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rare to get, used regularly when found"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "melee/ranged combat + riptide travel"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally obtained mob drop weapon"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-green trident texture"
+        },
+        "primary_uses": {
+          "values": [
+            "Melee combat weapon",
+            "Thrown ranged attack",
+            "Riptide water/rain locomotion",
+            "Channeling lightning strikes"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile combat and mobility weapon"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:trident",
+      "facet": "origin",
+      "current": [
+        "trial_chamber"
+      ],
+      "suggested": [
+        "trial_chamber",
+        "mob_drop"
+      ],
+      "rationale": "Drowned drop tridents in survival; primary source",
+      "confidence": 0.95
+    }
+  ]
+}

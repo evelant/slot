@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 137371,
+  "duration_api_ms": 138259,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:armadillo_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"summons mob on use; no other function\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/commands only in vanilla\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; rarely actively used\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob farm setup; wolf scute farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"represents a living creature\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in vanilla survival\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn armadillos\", \"mob farm population\", \"wolf armor scute farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses of spawn egg\"\n        }\n      }\n    },\n    \"minecraft:armor_stand\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"functional_block\", \"decorative_block\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive entity but used primarily for display\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily crafted from sticks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"stone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smooth stone slab required in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap, abundant crafting materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for display, not regularly consumed\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily displays armor aesthetically\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wood and stone construction\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot source listed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"displaying armor and equipment\", \"decorative poses\", \"map art builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"common player uses\"\n        }\n      }\n    },\n    \"minecraft:arms_up_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag decorated_pot_ingredients confirms ingredient\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when crafting decorated pots\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"feeds into decorated pot crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact with historic motif\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta-toned desert archaeology item\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting decorated pots\", \"archaeology collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary player uses\"\n        }\n      }\n    },\n    \"minecraft:arrow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"ammunition\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:arrows; fired from bows/crossbows\"\n        },\n        \"material_family\": {\n          \"value\": \"flint\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary crafting material in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\", \"feather\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick and feather in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted or looted everywhere\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"consumed in nearly every ranged combat\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use as ranged weapon ammunition\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic unmodified arrow\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"bow ammunition\", \"crossbow ammunition\", \"crafting tipped/spectral arrows\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses\"\n        }\n      }\n    },\n    \"minecraft:axolotl_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports live mob; releases on use\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket is made of iron\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires locating lush cave axolotl\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when collecting or deploying axolotls\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"combat\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"collection; aquatic combat aid; mob farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"contains a living aquatic creature\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axolotls found in lush caves\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"transporting axolotls\", \"releasing axolotls for combat aid\", \"axolotl farm stocking\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"common player uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "1f5aaf7a-c920-4a70-bed2-49baba29a875",
+  "total_cost_usd": 0.17716515000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3313,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10691,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3313,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10691,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3313,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3313
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2450,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00252,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10691,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3313,
+      "webSearchRequests": 0,
+      "costUSD": 0.17464515000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c4a4d1b3-2075-4a6f-a008-031f78a63fe4"
+}

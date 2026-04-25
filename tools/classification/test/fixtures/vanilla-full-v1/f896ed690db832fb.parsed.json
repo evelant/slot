@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:acacia_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural fence w/ open/close access"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant wood, easy to make"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds, not every session"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as fence gate in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-brown wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block burns and catches fire"
+        },
+        "primary_uses": {
+          "values": [
+            "Building fences and enclosures",
+            "Controlling player and mob access"
+          ],
+          "signal": "inferred",
+          "rationale": "fence gate primary functions"
+        }
+      }
+    },
+    "minecraft:acacia_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "sign form is decorative/communicative"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "chains (iron) in hanging sign recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted; needs wood + iron chains"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for labeling areas, not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "labeling and decorative builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wood item burns"
+        },
+        "primary_uses": {
+          "values": [
+            "Labeling storage areas and rooms",
+            "Decorative signage in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "hanging sign use cases"
+        }
+      }
+    },
+    "minecraft:acacia_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw foliage collected from trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "every tree yields many leaves"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decor or composting, not daily"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "decor placement or composting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "foliage from trees"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia leaves yellow-green hue"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are flammable blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "Decoration and tree canopy aesthetics",
+            "Composting for bone meal",
+            "Crafting leaf litter"
+          ],
+          "signal": "inferred",
+          "rationale": "leaf use cases"
+        }
+      }
+    },
+    "minecraft:acacia_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw log harvested from trees"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "logs from trees everywhere in overworld"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "fundamental early-game resource"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as logs; processed to planks"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-brown bark"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns and catches fire"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting acacia planks",
+            "Fuel for furnaces",
+            "Decorative log blocks in builds",
+            "Crafting charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "log downstream uses"
+        }
+      }
+    },
+    "minecraft:acacia_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "primary processed structural wood"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "one crafting step from abundant logs"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "fundamental building/crafting material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary structural building block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "undecorated processed wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia warm orange-tan planks"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns"
+        },
+        "primary_uses": {
+          "values": [
+            "Building structures and floors",
+            "Crafting wood items and tools",
+            "Fuel for furnaces"
+          ],
+          "signal": "inferred",
+          "rationale": "plank primary uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:acacia_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_acacia",
+      "rationale": "id prefix acacia_ identifies material; wooden_tool_materials tag is generic across all plank types and does not indicate oak",
+      "confidence": 0.95
+    }
+  ]
+}

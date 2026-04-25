@@ -1,0 +1,273 @@
+{
+  "items": {
+    "minecraft:spruce_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone pulse on press"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant spruce planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds but not constantly"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds, triggers redstone"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, one of many wood types"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce is dark brown wood"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone pulse input",
+            "door/gate activation",
+            "decorative spruce builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button use cases"
+        }
+      }
+    },
+    "minecraft:spruce_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "primary purpose is water vehicle"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "boat + chest, both easy to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational water travel"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel + item transport"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, one of many boat types"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce dark brown texture"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat holds item inventory"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player and stores items"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with portable storage",
+            "ferrying items across water"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat primary functions"
+        }
+      }
+    },
+    "minecraft:spruce_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive open/close block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from spruce planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in most player structures"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed when building structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, wood type variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce dark brown wood"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances and exits",
+            "mob-proof barriers",
+            "decorative spruce builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door use cases"
+        }
+      }
+    },
+    "minecraft:spruce_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from planks and sticks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in enclosures and builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "perimeter builds and animal pens"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, wood type variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce dark brown wood"
+        },
+        "primary_uses": {
+          "values": [
+            "perimeter barriers and enclosures",
+            "animal pens",
+            "decorative borders"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence use cases"
+        }
+      }
+    },
+    "minecraft:spruce_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive gate, opens/closes on use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from planks and sticks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used wherever fences are placed"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "gated entry for builds and pens"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, wood type variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce dark brown wood"
+        },
+        "primary_uses": {
+          "values": [
+            "gated entry to enclosures",
+            "openable access through fence lines"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gate use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

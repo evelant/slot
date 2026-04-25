@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:oak_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-height structural block for builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs used heavily in most builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "undecorated organic oak wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak is medium warm-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; slab is piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "decorative steps and rooflines",
+            "crafting barrels and bookshelves"
+          ],
+          "signal": "inferred",
+          "rationale": "core slab use cases"
+        }
+      }
+    },
+    "minecraft:oak_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are structural building blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs used heavily in roofs and steps"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairways and decorative rooflines"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "undecorated organic oak wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak is medium warm-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; stairs are piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "stairways and multi-level access",
+            "decorative rooflines and arches",
+            "corner and step detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "core stairs use cases"
+        }
+      }
+    },
+    "minecraft:oak_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "architectural hatch; primarily building use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "hatches in builds; redstone activation"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "undecorated organic oak wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak is medium warm-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; trapdoor is piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "hatch openings in floors and ceilings",
+            "decorative table tops and panels",
+            "redstone-activated barriers"
+          ],
+          "signal": "inferred",
+          "rationale": "core trapdoor use cases"
+        }
+      }
+    },
+    "minecraft:oak_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "all-bark log variant; structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in wood-heavy builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative columns and structural use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain all-bark organic block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak is medium warm-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; block is piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "all-bark decorative columns and walls",
+            "crafting oak planks and charcoal",
+            "fuel in furnaces and smokers"
+          ],
+          "signal": "inferred",
+          "rationale": "core oak wood block use cases"
+        }
+      }
+    },
+    "minecraft:observer": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits pulse on block state change"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "cobblestone-dominant recipe (6 blocks)"
+        },
+        "material_secondary": {
+          "values": [
+            "nether_quartz",
+            "redstone_dust"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe requires quartz and redstone"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether quartz; needs nether trip"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone builds only"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "core sensor for redstone automation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "electronic sensor device aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gray stone body with quartz face"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "piston movement triggers pulse output"
+        },
+        "primary_uses": {
+          "values": [
+            "detecting block state changes",
+            "clock circuits and pulse generators",
+            "crop and tree farm automation",
+            "piston extender chains"
+          ],
+          "signal": "inferred",
+          "rationale": "core observer use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 135059,
+  "duration_api_ms": 135950,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form of bricks; structural use\"\n        },\n        \"material_family\": {\n          \"value\": \"brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id brick_wall; crafted from bricks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"walls used less than full blocks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural borders and garden edging\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard masonry wall, no special flair\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish-brown fired clay tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"fence/border alternative\",\n            \"decorative wall edging\",\n            \"building structures\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical wall block applications\"\n        }\n      }\n    },\n    \"minecraft:bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid placeable block for structures\"\n        },\n        \"material_family\": {\n          \"value\": \"brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id=bricks; fired clay brick block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular decorative masonry block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"construction and aesthetic masonry use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"classic masonry block, no special flair\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish-brown fired clay color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building walls and floors\",\n            \"crafting brick slabs/stairs/walls\",\n            \"decorative masonry construction\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main uses of the bricks block\"\n        }\n      }\n    },\n    \"minecraft:brown_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are primarily aesthetic decor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for decor, not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic wall/ceiling decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed item in one of 16 color family\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown is earthy and muted in tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"wall/ceiling decoration\",\n            \"shield decoration base\",\n            \"faction or base markers\",\n            \"banner pattern crafting base\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical banner use cases\"\n        }\n      }\n    },\n    \"minecraft:brown_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive: sleep, set spawn point\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every night cycle in survival\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in base; spawn-sets for exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed item in one of 16 color family\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown is earthy and muted in tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"skip night / advance to day\",\n            \"set player respawn point\",\n            \"base furnishing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:brown_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable container for multiple item types\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string used in base bundle recipe\"\n        },\n        \"dye_color\": {\n          \"value\": \"brown\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix brown_ + bundles tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for inventory management\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compacts inventory; portable item grouping\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed; crafted from organic hide/string\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown leather earthy muted tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; transmute/crafted only\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"occupies standard inventory slots\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"carry multiple item types in one slot\",\n            \"compact and organize inventory\",\n            \"quick item retrieval by right-click\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bundle gameplay use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "2f36c471-8361-49c9-ad64-bacf28dcd5c5",
+  "total_cost_usd": 0.1695859,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4710,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9743,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4710,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9743,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4710,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4710
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3847,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003922,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9743,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4710,
+      "webSearchRequests": 0,
+      "costUSD": 0.1656639,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "34c5fcca-0452-48eb-92af-c6da600769ce"
+}

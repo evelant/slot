@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 187441,
+  "duration_api_ms": 188317,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:beetroot_seeds\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw seed dropped from world plants\"\n        },\n        \"material_family\": {\n          \"value\": \"beetroot\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix beetroot_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted once per crop cycle\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag villager_plantable_seeds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic seed\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small brown/tan seed appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"plant beetroot crops\", \"feed chickens and parrots\"],\n          \"signal\": \"named\",\n          \"rationale\": \"plantable_seeds + chicken_food tags\"\n        }\n      }\n    },\n    \"minecraft:beetroot_soup\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has minecraft:consumable component\"\n        },\n        \"material_family\": {\n          \"value\": \"beetroot\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix beetroot_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche food; bread/steak preferred\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant-based bowl food\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"reddish-purple beetroot hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"restore 6 hunger points\", \"moderate saturation food\"],\n          \"signal\": \"named\",\n          \"rationale\": \"nutrition=6 saturation=7.2\"\n        }\n      }\n    },\n    \"minecraft:bell\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rings to reveal raiders in raids\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold appearance; piglin_loved tag\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one per village; not craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rung mainly during raids\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raid alert + village aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornate gold bell\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-colored bell\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ring to alert villagers of raids\", \"reveal hidden raiders nearby\", \"village center decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core raid mechanic block\"\n        }\n      }\n    },\n    \"minecraft:big_dripleaf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant decor; tilt is passive mechanic\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural plant block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lush cave exclusive\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decor and redstone use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lush cave decor + tilt redstone\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lush cave plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green dripleaf plant\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in lush caves only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows in lush cave shallow water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"lush cave decoration\", \"redstone tilt detection\", \"obstacle course element\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tilt mechanic and aesthetics\"\n        }\n      }\n    },\n    \"minecraft:birch_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag boats; suffix _boat\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap craft from birch planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when crossing water bodies\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel vehicle\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wooden boat\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch is lightest vanilla wood\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; crafted from planks\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player and mobs on water\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat floats on water surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel\", \"transport mobs across water\", \"upgrade base for chest boat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vehicle + ingredient for chest boat\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:bell\",\n      \"facet\": \"origin\",\n      \"current\": [\"ruined_portal\"],\n      \"suggested\": [\"ruined_portal\", \"village\"],\n      \"rationale\": \"Bells generate in village centers; primary natural source is village structures, not ruined portals\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "f43145a3-433a-4493-a2fb-3a4d855974a0",
+  "total_cost_usd": 0.22112315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3641,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13517,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3641,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13517,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3641,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3641
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2778,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0028580000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13517,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3641,
+      "webSearchRequests": 0,
+      "costUSD": 0.21826515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "fe5b3bc0-3f28-43d5-84e2-c0ecc537d068"
+}

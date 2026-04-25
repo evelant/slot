@@ -1,0 +1,271 @@
+{
+  "items": {
+    "minecraft:polished_cinnabar_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form is structural, not decorative"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix polished_cinnabar_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls used less than slabs/full blocks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall blocks serve structural & aesthetic roles"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished = processed variant of base stone"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "vivid"
+          ],
+          "signal": "guess",
+          "rationale": "cinnabar = red mineral; mod color unconfirmed"
+        },
+        "primary_uses": {
+          "values": [
+            "building border walls",
+            "decorative fencing",
+            "structural edging"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall block use cases"
+        }
+      }
+    },
+    "minecraft:polished_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full stone block; primarily structural"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "rationale": "id prefix polished_deepslate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "15 downstream recipes; heavily used"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stone block; ingredient for many variants"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished = refined variant of deepslate"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is dark grey stone"
+        },
+        "primary_uses": {
+          "values": [
+            "building with dark stone",
+            "stonecutting into deepslate bricks/tiles",
+            "intermediate block for deepslate variants"
+          ],
+          "signal": "inferred",
+          "rationale": "wide downstream recipe use + structural"
+        }
+      }
+    },
+    "minecraft:polished_deepslate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab = structural building form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs among most used building forms"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs used for floors, roofs, detail work"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished variant of deepslate"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is dark grey stone"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring and roofing",
+            "building detail layers",
+            "step definition in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab use cases"
+        }
+      }
+    },
+    "minecraft:polished_deepslate_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs = structural building form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs commonly used in architecture"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for access routes and decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished variant of deepslate"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is dark grey stone"
+        },
+        "primary_uses": {
+          "values": [
+            "stairways and ramps",
+            "decorative rooflines",
+            "architectural edging"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs use cases"
+        }
+      }
+    },
+    "minecraft:polished_deepslate_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall = structural building form"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "walls less used than slabs or stairs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall blocks for borders and structure"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "polished variant of deepslate"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is dark grey stone"
+        },
+        "primary_uses": {
+          "values": [
+            "border walls and fencing",
+            "path and garden edging",
+            "decorative pillars"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wall block use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

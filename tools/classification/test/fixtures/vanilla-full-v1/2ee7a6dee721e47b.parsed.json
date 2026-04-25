@@ -1,0 +1,286 @@
+{
+  "items": {
+    "minecraft:waxed_weathered_copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest form = primary item storage"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs weathered copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aesthetic alt to standard wood chest"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stores items, placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of standard chest"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green finish"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "copper chests support waterlogging"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds items in standard inventory slots"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items in copper-themed build",
+            "aesthetic storage block",
+            "waxed to lock weathered look"
+          ],
+          "signal": "inferred",
+          "rationale": "chest function + oxidation lock"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door = structural building element"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs weathered copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aesthetic door choice"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural door in builds"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of standard door"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green finish"
+        },
+        "primary_uses": {
+          "values": [
+            "copper-aesthetic door for builds",
+            "waxed to lock weathered look"
+          ],
+          "signal": "inferred",
+          "rationale": "door use + aesthetic lock"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "statue = primarily aesthetic block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs weathered copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative statue placed occasionally"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative sculpture"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "sculptural copper mob figure"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green finish"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper golem figure",
+            "copper-themed building accent",
+            "waxed to lock weathered look"
+          ],
+          "signal": "inferred",
+          "rationale": "statue purpose + aesthetic lock"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "grate = structural/decorative block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs weathered copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aesthetic building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in structures and as decor"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "grid pattern reads mechanical"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "weathered copper teal-green finish"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "copper grates support waterlogging"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper grid building block",
+            "light/air-permeable partition",
+            "waxed to lock weathered look"
+          ],
+          "signal": "inferred",
+          "rationale": "grate function + aesthetic lock"
+        }
+      }
+    },
+    "minecraft:waxed_weathered_copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "lantern = active light emitter"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs weathered copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aesthetic lighting choice"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for light and aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "fancy copper lantern variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized teal body + warm light glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "lanterns emit light and waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "light source with copper aesthetic",
+            "decorative hanging or standing lantern",
+            "waxed to lock weathered look"
+          ],
+          "signal": "inferred",
+          "rationale": "lantern function + aesthetic lock"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

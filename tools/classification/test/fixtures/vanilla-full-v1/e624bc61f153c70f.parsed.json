@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:composter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "composting block; farmer job site"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "crafted from wooden slabs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard farm and village utility"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "composting plants; auto-farm component"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood barrel with functional process"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak/wood brown tones"
+        },
+        "primary_uses": {
+          "values": [
+            "convert plant waste to bonemeal",
+            "farmer villager job site block",
+            "automated bonemeal farm component"
+          ],
+          "signal": "inferred",
+          "rationale": "core composter gameplay uses"
+        }
+      }
+    },
+    "minecraft:conduit": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "conduit power buff in water"
+        },
+        "material_family": {
+          "value": "nautilus_shell",
+          "signal": "inferred",
+          "rationale": "8 nautilus shells dominate recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "heart_of_the_sea"
+          ],
+          "signal": "inferred",
+          "rationale": "heart of sea center catalyst"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche underwater use only"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "underwater builds and exploration"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "rare glowing magical sea artifact"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "aqua glow, blue-green ocean aesthetic"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glows bright; waterlogged in ocean"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "harms hostile mobs in water when active"
+        },
+        "primary_uses": {
+          "values": [
+            "conduit power: water breathing + speed",
+            "damage hostile mobs in activation range",
+            "underwater base enabler"
+          ],
+          "signal": "inferred",
+          "rationale": "core conduit functions"
+        }
+      }
+    },
+    "minecraft:cooked_beef": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food + consumable components"
+        },
+        "material_family": {
+          "value": "beef",
+          "signal": "pattern",
+          "rationale": "cooked beef product"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "best vanilla saturation; used constantly"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "cow farm output"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked meat food"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown-red cooked meat tones"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 8 hunger + 12.8 saturation",
+            "wolf taming and feeding",
+            "top-tier vanilla food source"
+          ],
+          "signal": "inferred",
+          "rationale": "core steak gameplay uses"
+        }
+      }
+    },
+    "minecraft:cooked_chicken": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food + consumable components"
+        },
+        "material_family": {
+          "value": "chicken",
+          "signal": "pattern",
+          "rationale": "cooked chicken product"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "chickens common; solid mid-tier food"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "chicken farm product"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked poultry food"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-brown cooked chicken"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 6 hunger + 7.2 saturation",
+            "wolf feeding",
+            "chicken farm staple output"
+          ],
+          "signal": "inferred",
+          "rationale": "core cooked chicken uses"
+        }
+      }
+    },
+    "minecraft:cooked_cod": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food + consumable components"
+        },
+        "material_family": {
+          "value": "cod",
+          "signal": "pattern",
+          "rationale": "cooked cod fish"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "abundant from fishing and oceans"
+        },
+        "activity": {
+          "values": [
+            "fishing",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "fishing product; fish farm output"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "cooked fish food"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-brown cooked fish tones"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 5 hunger + 6 saturation",
+            "wolf feeding",
+            "fishing and ocean exploration food"
+          ],
+          "signal": "inferred",
+          "rationale": "core cooked cod uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:cooked_beef",
+      "facet": "origin",
+      "current": [
+        "village"
+      ],
+      "suggested": [
+        "village",
+        "trial_chamber"
+      ],
+      "rationale": "loot source spawners/ominous/trial_chamber/consumables present in provided data but absent from stage2",
+      "confidence": 0.9
+    }
+  ]
+}

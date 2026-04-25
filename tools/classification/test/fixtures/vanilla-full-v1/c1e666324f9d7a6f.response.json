@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 86985,
+  "duration_api_ms": 88140,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:bamboo_mosaic_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs are primary structural elements\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific build projects\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs serve structural & aesthetic roles\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo=natural; mosaic=patterned variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo is pale warm-toned wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block; catches fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative staircase construction\", \"architectural detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for structure and aesthetics\"\n        }\n      }\n    },\n    \"minecraft:bamboo_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"planks are core building/crafting blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks consumed by 49+ shaped recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks used to build and craft wood items\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat uniform block; natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo is pale light-toned wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood plank; highly flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building bamboo wood structures\", \"crafting bamboo wood items\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base crafting/building material\"\n        }\n      }\n    },\n    \"minecraft:bamboo_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"pressure plates are redstone input devices\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"detects entities; triggers circuits\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo material; mechanical function\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo pale light wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden pressure plate; combustible\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"detecting entity presence\", \"triggering redstone circuits\", \"automatic doors/gates\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressure plate core use cases\"\n        }\n      }\n    },\n    \"minecraft:bamboo_raft\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:boats; water vehicle\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when water travel is needed\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rafts used for water travel/exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo construction; rustic natural look\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo pale wood appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; craft recipe only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raft carries player over water\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raft is a boat; floats on water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel and river crossing\", \"transporting players across oceans\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat-class water transport\"\n        }\n      }\n    },\n    \"minecraft:bamboo_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory shelf; interactive storage/display\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific storage/display builds\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf stores and displays items\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo wood aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo pale warm-toned wood\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf holds standard items per nbt variation\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block; combustible\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"displaying stored items visually\", \"decorative item storage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf with inventory for display use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:bamboo_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_bamboo\",\n      \"rationale\": \"id is bamboo_planks; oak tag match is wrong; bamboo id wins\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "8d92554a-06cb-4103-9c68-e1def1328e0e",
+  "total_cost_usd": 0.12997039999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4612,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7133,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4612,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7133,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4612,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4612
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3749,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003824,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7133,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4612,
+      "webSearchRequests": 0,
+      "costUSD": 0.1261464,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4033f771-b9ca-4ba8-8112-863956148ca0"
+}

@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:map": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigation/cartography tool"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "pattern",
+          "rationale": "crafted from 8 paper + compass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component explicitly states common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific exploration tasks"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "reveals and tracks terrain while navigating"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic parchment map, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "parchment tan tones, faded ink look"
+        },
+        "primary_uses": {
+          "values": [
+            "Reveal and navigate terrain",
+            "Clone for shared exploration maps",
+            "Locate structures via explorer map upgrade"
+          ],
+          "signal": "inferred",
+          "rationale": "core empty map functions"
+        }
+      }
+    },
+    "minecraft:medium_amethyst_bud": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "crystal growth stage, no crafting use"
+        },
+        "material_family": {
+          "value": "amethyst",
+          "signal": "pattern",
+          "rationale": "id contains amethyst"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "geodes locatable but not ubiquitous"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block, no crafting recipes"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipes; purely placed as decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "organic crystal growth, elegant appearance"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "crystal",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "purple amethyst hue, emits light level 2"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "medium bud emits light level 2 in Java"
+        },
+        "primary_uses": {
+          "values": [
+            "Crystal decoration in builds",
+            "Display amethyst growth stages"
+          ],
+          "signal": "inferred",
+          "rationale": "no utility beyond placement as decor"
+        }
+      }
+    },
+    "minecraft:melon": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "block item with block model, placeable"
+        },
+        "material_family": {
+          "value": "melon",
+          "signal": "pattern",
+          "rationale": "id is melon"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component states common, farmable crop"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common farming output, broken repeatedly"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary crop block; also placeable in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic crop block"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "green striped exterior"
+        },
+        "primary_uses": {
+          "values": [
+            "Break for melon slices",
+            "Compact 9 slices for storage/transport",
+            "Decorative farm block"
+          ],
+          "signal": "inferred",
+          "rationale": "main melon block uses"
+        }
+      }
+    },
+    "minecraft:melon_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw seed obtained from world, planted to grow"
+        },
+        "material_family": {
+          "value": "melon",
+          "signal": "pattern",
+          "rationale": "id prefix melon_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted once per farm, not a daily-use item"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "plant melon crops; chicken_food/parrot_food tags"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic seed"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "small cream/brown seed sprite"
+        },
+        "primary_uses": {
+          "values": [
+            "Plant melon crops",
+            "Feed chickens and parrots"
+          ],
+          "signal": "inferred",
+          "rationale": "chicken_food and parrot_food tags confirm animal use"
+        }
+      }
+    },
+    "minecraft:melon_slice": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "minecraft:food + minecraft:consumable components",
+          "rationale": "food and consumable components present"
+        },
+        "material_family": {
+          "value": "melon",
+          "signal": "pattern",
+          "rationale": "id prefix melon_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component states common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food used regularly in early/mid game"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "food crop; crafts glistering melon for potions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic food item"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-red melon flesh color"
+        },
+        "primary_uses": {
+          "values": [
+            "Eat to restore 2 hunger",
+            "Craft glistering melon slice",
+            "Potion of Healing ingredient chain",
+            "Recompress into melon block"
+          ],
+          "signal": "inferred",
+          "rationale": "food + potion ingredient + compression"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:melon_seeds",
+      "facet": "origin",
+      "current": [
+        "mineshaft",
+        "overworld_cave",
+        "woodland_mansion"
+      ],
+      "suggested": [
+        "mineshaft",
+        "overworld_cave",
+        "woodland_mansion",
+        "overworld_surface"
+      ],
+      "rationale": "Melon stems grow in surface jungle biomes; blocks/melon_stem and blocks/attached_melon_stem loot should classify as overworld_surface",
+      "confidence": 0.8
+    }
+  ]
+}

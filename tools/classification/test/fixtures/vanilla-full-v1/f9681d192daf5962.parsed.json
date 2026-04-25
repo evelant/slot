@@ -1,0 +1,284 @@
+{
+  "items": {
+    "minecraft:brewer_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "tagged decorated_pot_ingredients; consumed in crafting"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "fired clay pottery artifact"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one-time use per decorated pot"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to pattern decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact with historic motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "typical fired-clay appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "ingredient for decorated pots",
+            "archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "only downstream use is decorating pots"
+        }
+      }
+    },
+    "minecraft:brewing_stand": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active brewing interface block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "cobblestone base in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "blaze_rod"
+          ],
+          "signal": "inferred",
+          "rationale": "blaze rod is structural top element"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires nether blaze rod to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used repeatedly for potion production"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is brewing potions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "mechanical brewing apparatus"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark cobblestone and metal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "brew potions from ingredients",
+            "create splash and lingering potions",
+            "fuel with blaze powder"
+          ],
+          "signal": "inferred",
+          "rationale": "core potion production block"
+        }
+      }
+    },
+    "minecraft:brick": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "smelted clay; processed crafting ingredient"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "inferred",
+          "rationale": "brick is smelted from clay ball"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building brick structures"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "crafts brick blocks and decorative pots"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple fired clay material"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "warm reddish-brown clay color"
+        },
+        "primary_uses": {
+          "values": [
+            "craft brick blocks",
+            "craft flower pots",
+            "craft decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream recipes"
+        }
+      }
+    },
+    "minecraft:brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form; structural use"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id prefix brick_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche architectural variant"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural construction use"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab variant of brick"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "classic brick red-brown"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height brick flooring",
+            "architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab use cases"
+        }
+      }
+    },
+    "minecraft:brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form; structural use"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "pattern",
+          "rationale": "id prefix brick_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche architectural variant"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural construction use"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair variant of brick"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "classic brick red-brown"
+        },
+        "primary_uses": {
+          "values": [
+            "build staircases",
+            "architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

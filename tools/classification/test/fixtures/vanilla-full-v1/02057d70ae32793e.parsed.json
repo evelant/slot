@@ -1,0 +1,302 @@
+{
+  "items": {
+    "minecraft:mangrove_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks are primary structural wood blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "planks used constantly in building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural builds and decorative uses"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, mangrove is a wood variant"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove planks are reddish-pink"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden planks burn"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting furniture and tools",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses of planks"
+        }
+      }
+    },
+    "minecraft:mangrove_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "_pressure_plate suffix + wooden_pressure_plates tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "emits signal on entity step"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material with mechanical function"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood reddish-pink tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; thin plate is piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "detect entity on plate",
+            "trigger redstone circuits",
+            "mob farm gates"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate core uses"
+        }
+      }
+    },
+    "minecraft:mangrove_propagule": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "sapling dropped naturally from mangrove trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when planting mangrove trees"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "grow trees; decorate flower pots"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic hanging plant seedling"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "small green hanging propagule"
+        },
+        "primary_uses": {
+          "values": [
+            "growing mangrove trees",
+            "flower pot decoration",
+            "bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "propagule main uses"
+        }
+      }
+    },
+    "minecraft:mangrove_roots": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "roots are primarily aesthetic natural decor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds for aesthetics"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure or decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic root material"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gnarled roots, earthy tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generates in mangrove swamps"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based; roots can be waterlogged"
+        },
+        "primary_uses": {
+          "values": [
+            "aesthetic build decoration",
+            "crafting muddy mangrove roots",
+            "mangrove swamp build detail"
+          ],
+          "signal": "inferred",
+          "rationale": "roots main uses"
+        }
+      }
+    },
+    "minecraft:mangrove_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "shelf stores/displays items; has_nbt_variation=true"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for display or storage setups"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "displays items decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood variant, natural material"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish-pink wood tone"
+        },
+        "primary_uses": {
+          "values": [
+            "displaying items on shelf",
+            "interior decoration",
+            "wood storage decor"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf main uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:mangrove_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_mangrove",
+      "rationale": "id prefix mangrove_ overrides wooden_tool_materials tag; rule picked wrong wood species",
+      "confidence": 0.95
+    }
+  ]
+}

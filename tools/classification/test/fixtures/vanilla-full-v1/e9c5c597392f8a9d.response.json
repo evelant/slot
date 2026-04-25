@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 111484,
+  "duration_api_ms": 112176,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:sulfur_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form-variant of a brick block\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sulfur_brick\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"walls used less than full blocks\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall block for structure and trim\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall is a form-variant of brick block\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sulfur = yellow-amber mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"boundary walls in builds\", \"decorative wall detailing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard wall use cases\"\n        }\n      }\n    },\n    \"minecraft:sulfur_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick block, primary use is building\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sulfur\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient for slab/stairs/wall variants\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is structural building\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick variant processed from raw sulfur\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sulfur = yellow-amber mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"crafting sulfur brick variants\", \"stonecutting into slabs and walls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block + upstream ingredient for variants\"\n        }\n      }\n    },\n    \"minecraft:sulfur_cube_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob bucket, analogous to axolotl bucket\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"must find and catch the mob\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use; rarely needed in practice\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"contains and transports a living mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"transport sulfur cube to new location\", \"release sulfur cube from bucket\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob bucket standard use cases\"\n        }\n      }\n    },\n    \"minecraft:sulfur_cube_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative/admin-only items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no recipe, no loot source\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unobtainable in survival play\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin/creative use only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn sulfur cube mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"single use case of any spawn egg\"\n        }\n      }\n    },\n    \"minecraft:sulfur_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form of sulfur block\"\n        },\n        \"material_family\": {\n          \"value\": \"sulfur\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix sulfur\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity component = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs widely used; ingredient for chiseled\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for floors, steps, trim\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab is a form-variant of sulfur block\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sulfur = yellow-amber mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height flooring and steps\", \"decorative trim detailing\", \"crafting chiseled_sulfur\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab functions + chiseled ingredient\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "04fdf4f0-4917-4918-85fb-3c3d87ddf2dc",
+  "total_cost_usd": 0.1326779,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3982,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7513,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3982,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7513,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3982,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3982
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3119,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003194,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7513,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3982,
+      "webSearchRequests": 0,
+      "costUSD": 0.12948389999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "c504fb66-8983-4b30-869f-be391e3177cb"
+}

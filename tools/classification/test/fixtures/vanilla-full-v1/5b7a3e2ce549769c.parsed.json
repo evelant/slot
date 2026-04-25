@@ -1,0 +1,326 @@
+{
+  "items": {
+    "minecraft:exposed_copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "chest-form block = dedicated item storage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "chests placed throughout most bases"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is storing items"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidation stage; natural material"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage = light green patina begins"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no production recipe; derived via oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper progresses through oxidation stages"
+        },
+        "primary_uses": {
+          "values": [
+            "storing items",
+            "copper-themed storage block",
+            "oxidation stage showcase"
+          ],
+          "signal": "inferred",
+          "rationale": "chest function + copper aesthetic"
+        }
+      }
+    },
+    "minecraft:exposed_copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "doors are structural entrance elements"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed selectively in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "door for entrances in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidation variant; natural material"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage = light green patina begins"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no production recipe; derived via oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper progresses through oxidation stages"
+        },
+        "primary_uses": {
+          "values": [
+            "copper door for structures",
+            "aesthetic entrance block",
+            "oxidation stage decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "door function + copper aesthetic"
+        }
+      }
+    },
+    "minecraft:exposed_copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "statue = purely aesthetic block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative; placed selectively"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "statue serves decorative purpose only"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "sculptural statue; copper oxidation variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage = light green patina begins"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural spawn; derived via oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper progresses through oxidation stages"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper golem statue",
+            "copper golem themed decor",
+            "oxidation showcase block"
+          ],
+          "signal": "inferred",
+          "rationale": "sculptural decor referencing copper golem"
+        }
+      }
+    },
+    "minecraft:exposed_copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "grates are structural decorative build blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural + aesthetic use in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial grate look; copper oxidation variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed stage = light green patina begins"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time"
+          ],
+          "signal": "inferred",
+          "rationale": "copper progresses through oxidation stages"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper grate block",
+            "partial-transparency building element",
+            "copper aesthetic structure"
+          ],
+          "signal": "inferred",
+          "rationale": "grate aesthetic + see-through properties"
+        }
+      }
+    },
+    "minecraft:exposed_copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "lantern emits light = active function"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative light source; niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "light source for builds and aesthetic decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "lantern=mechanical craft; copper oxidation variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed copper patina + emits warm glow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no production recipe; derived via oxidation"
+        },
+        "environmental_property": {
+          "values": [
+            "oxidizes_over_time",
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "copper oxidizes; lantern emits light"
+        },
+        "primary_uses": {
+          "values": [
+            "light source block",
+            "copper aesthetic lighting",
+            "decorative copper lantern"
+          ],
+          "signal": "inferred",
+          "rationale": "lantern = lighting + decor function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

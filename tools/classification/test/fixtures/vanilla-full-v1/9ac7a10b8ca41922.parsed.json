@@ -1,0 +1,319 @@
+{
+  "items": {
+    "minecraft:moss_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block placed for structure/decoration"
+        },
+        "material_family": {
+          "value": "moss",
+          "signal": "pattern",
+          "rationale": "id is moss_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component says common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche moss-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "placed decoratively; bonemeal spreading"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic living moss material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "green moss on earthy stone"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative moss-aesthetic building",
+            "craft mossy cobblestone and stone bricks",
+            "bonemeal to spread moss patches"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and bone meal mechanic"
+        }
+      }
+    },
+    "minecraft:moss_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin carpet form, purely aesthetic"
+        },
+        "material_family": {
+          "value": "moss",
+          "signal": "pattern",
+          "rationale": "id is moss_carpet"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component says common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative flooring use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet form = decorative flooring only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic moss material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "green moss carpet"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "plant material; stage2 confirms is_fuel"
+        },
+        "primary_uses": {
+          "values": [
+            "thin moss floor cover for builds",
+            "blocks mob spawning on surface below"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet mechanic + decor use"
+        }
+      }
+    },
+    "minecraft:mossy_cobblestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full stone block, structural/decorative"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "pattern",
+          "rationale": "id prefix mossy_cobblestone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component says common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche rustic/dungeon builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stone block for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of cobblestone"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone with muted green moss"
+        },
+        "primary_uses": {
+          "values": [
+            "rustic and dungeon-aesthetic builds",
+            "craft mossy slab, stairs, and wall",
+            "duplicate wild armor trim template"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list includes wild_armor_trim"
+        }
+      }
+    },
+    "minecraft:mossy_cobblestone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of building block"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "pattern",
+          "rationale": "id is mossy_cobblestone_slab"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component says common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building use"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for construction detail"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of cobblestone"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone with muted green moss"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height detail in mossy stone builds",
+            "rustic slab flooring or roofing"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form use cases"
+        }
+      }
+    },
+    "minecraft:mossy_cobblestone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form of building block"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "pattern",
+          "rationale": "id is mossy_cobblestone_stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component says common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative building use"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mossy variant of cobblestone"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone with muted green moss"
+        },
+        "primary_uses": {
+          "values": [
+            "stair access in rustic/mossy builds",
+            "decorative stair shapes for dungeon theme"
+          ],
+          "signal": "inferred",
+          "rationale": "stair form use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:moss_block",
+      "facet": "origin",
+      "current": [
+        "overworld_ocean",
+        "trial_chamber"
+      ],
+      "suggested": [
+        "overworld_ocean",
+        "trial_chamber",
+        "overworld_cave"
+      ],
+      "rationale": "Moss generates in lush caves; missed by chest loot rule",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:mossy_cobblestone",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_cave",
+        "crafted_only"
+      ],
+      "rationale": "Generates structurally in dungeons (overworld_cave)",
+      "confidence": 0.92
+    }
+  ]
+}

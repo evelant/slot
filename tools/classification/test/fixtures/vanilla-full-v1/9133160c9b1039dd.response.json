@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 108446,
+  "duration_api_ms": 109122,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:dark_oak_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"vehicle for water traversal\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component sets rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when crossing water bodies\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel and world exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; one of several boat types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak is a dark brown wood\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted from planks\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boats float; wood catches fire\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player and mobs on water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel\", \"transporting mobs across water\", \"crafting chest boat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core water vehicle functions\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"buttons emit momentary redstone pulse\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component sets rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in specific builds/circuits\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone input device used in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; one of several button types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak coloring\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden block; pops off piston push\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"trigger momentary redstone pulse\", \"activate doors and gates\", \"decorative switch\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard button uses\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"vehicle primary; chest is secondary\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component sets rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use: water travel with cargo\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel with inventory\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; one of several chest boat types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted from boat+chest\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat floats; wood catches fire\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\", \"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player, mobs, and chest items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with onboard storage\", \"mobile item transport on water\", \"transporting mobs with supplies\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest boat core functions\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive open/close mechanic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component sets rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"every structure needs entrances\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structure entrance\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; one of several door types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak coloring\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden door; piston movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building entrances\", \"separating interior spaces\", \"redstone-operable barrier\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door uses\"\n        }\n      }\n    },\n    \"minecraft:dark_oak_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier; primary use is building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component sets rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in farms and enclosures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural borders; mob containment\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; one of several fence types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dark oak coloring\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden fence; piston movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"mob containment pens\", \"decorative borders and railings\", \"structural enclosures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "dfe3506c-cf13-4184-a001-4406f482fdcf",
+  "total_cost_usd": 0.15198740000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4264,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8711,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4264,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8711,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4264,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4264
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3401,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003476,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8711,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4264,
+      "webSearchRequests": 0,
+      "costUSD": 0.14851140000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "4b6bb859-5148-4552-94e1-0725531528f1"
+}

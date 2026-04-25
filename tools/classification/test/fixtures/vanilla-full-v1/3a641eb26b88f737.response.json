@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 176451,
+  "duration_api_ms": 177474,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:heavy_weighted_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pressure plate = redstone signal source\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"heavy plate crafted from iron ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component says common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche contraption use only\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"entity-count signal drives contraptions\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flat iron plate with mechanical function\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron finish, flat surface\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"proportional redstone output by entity count\",\n            \"entity detection in redstone circuits\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core mechanic of heavy weighted plate\"\n        }\n      }\n    },\n    \"minecraft:hoglin_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only admin items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival source for any spawn egg\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative mode only; no survival drop\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only in creative or admin play\"\n        },\n        \"origin\": {\n          \"values\": [\"nether\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoglins spawn in the nether crimson forest\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal-type mob egg\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hoglin is brownish-orange in color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn hoglin mob in creative mode\",\n            \"mob farm testing and setup\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose of spawn eggs\"\n        }\n      }\n    },\n    \"minecraft:honey_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block; physics props are secondary\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires bee farm to produce\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche redstone/automation use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flying machines, sticky pistons, decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic bee-product block\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-amber honey color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"slows_walking\", \"piston_sticky\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slows entities; sticks to pistons like slime\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"slows entities walking over or on sides\",\n            \"piston-sticky for flying machines\",\n            \"decorative honey aesthetic\",\n            \"reverts to honey bottles via crafting\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core honey block gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:honey_bottle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has food + consumable components\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component says common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational anti-poison use\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"counters poison met in caves/mineshafts\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural bee product in glass bottle\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"amber honey in translucent glass bottle\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"removes poison status effect on drink\",\n            \"restores 6 hunger points\",\n            \"crafts honey block or sugar\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"remove_effects:poison explicit in component\"\n        }\n      }\n    },\n    \"minecraft:honeycomb\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"harvested directly from beehives as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires bee farming or wild hive luck\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for waxing copper and candles\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wax copper; candles; beehive crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw bee harvest, organic resource\"\n        },\n        \"palette\": {\n          \"values\": [\"amber\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden-amber honeycomb color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"wax copper blocks to prevent oxidation\",\n            \"craft candles\",\n            \"craft beehives\",\n            \"craft honeycomb block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top downstream uses from ingredient list\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "50540b2c-8497-4ebd-95e8-9b9273e65084",
+  "total_cost_usd": 0.21074065000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4071,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12689,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4071,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12689,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4071,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4071
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3208,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003283,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12689,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4071,
+      "webSearchRequests": 0,
+      "costUSD": 0.20745765000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d3c42a59-a963-4967-81ac-3b56700b7384"
+}

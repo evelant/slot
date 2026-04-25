@@ -1,0 +1,311 @@
+{
+  "items": {
+    "minecraft:reinforced_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural, max blast resistance, creative use"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "rationale": "id suffix _deepslate"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, unobtainable in survival"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "creative-only block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used in creative builds"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient city frame block, plain texture"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate is dark grey and matte"
+        },
+        "origin": {
+          "values": [
+            "ancient_city"
+          ],
+          "signal": "inferred",
+          "rationale": "generates as ancient city portal frame"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_max",
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "highest blast resist, pistons cannot move it"
+        },
+        "primary_uses": {
+          "values": [
+            "creative building with max blast resistance",
+            "indestructible structure framing",
+            "ancient city aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "creative blast-proof structural block"
+        }
+      }
+    },
+    "minecraft:repeater": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "display_name = Redstone Repeater"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "crafted from stone slabs as base"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "requires redstone dust and torches"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easy craft from abundant materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core component in redstone circuits"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "primary function is signal control"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone mechanical component"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-colored matte finish"
+        },
+        "primary_uses": {
+          "values": [
+            "delay redstone signals 1-4 ticks",
+            "extend signal range beyond 15 blocks",
+            "lock redstone signal state"
+          ],
+          "signal": "inferred",
+          "rationale": "three core repeater functions"
+        }
+      }
+    },
+    "minecraft:repeating_command_block": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "executes commands continuously, active behavior"
+        },
+        "material_family": {
+          "value": "command_block",
+          "signal": "pattern",
+          "rationale": "id contains command_block"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "admin/creative only, niche server use"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "automates commands, optionally redstone-gated"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "command block admin aesthetic"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "repeating command block is purple-violet"
+        },
+        "primary_uses": {
+          "values": [
+            "execute commands every game tick",
+            "always-on server automation",
+            "map-making unconditional command loops"
+          ],
+          "signal": "inferred",
+          "rationale": "repeating = continuous command executor"
+        }
+      }
+    },
+    "minecraft:resin_block": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "compresses 9 resin clumps, uncraftable back"
+        },
+        "material_family": {
+          "value": "resin",
+          "signal": "pattern",
+          "rationale": "id prefix resin_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "pale garden biome required for resin"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche pale garden crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable decorative/structural block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic resin material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin is orange-amber in color"
+        },
+        "primary_uses": {
+          "values": [
+            "compact storage for resin clumps",
+            "building with pale garden theme",
+            "crafting creaking hearts"
+          ],
+          "signal": "inferred",
+          "rationale": "storage block + craft ingredient"
+        }
+      }
+    },
+    "minecraft:resin_brick": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "smelted intermediate, used in crafting/smithing"
+        },
+        "material_family": {
+          "value": "resin",
+          "signal": "pattern",
+          "rationale": "id prefix resin_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "pale garden biome + smelting required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for trims and resin brick blocks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "crafts brick blocks; armor trim for aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "organic material, fancy as trim"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin is orange-amber colored"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "smelted from resin block, no direct loot"
+        },
+        "primary_uses": {
+          "values": [
+            "armor trim material (smithing table)",
+            "crafting resin brick blocks",
+            "pale garden themed decoration"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:provides_trim_material: minecraft:resin",
+          "rationale": "component names trim role directly"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

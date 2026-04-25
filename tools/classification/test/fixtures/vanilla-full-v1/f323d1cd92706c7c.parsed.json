@@ -1,0 +1,343 @@
+{
+  "items": {
+    "minecraft:white_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colored block for construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains _concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular clean-finish building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for construction and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant of concrete"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "bright white, smooth matte surface"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "powder+water conversion, no natural gen"
+        },
+        "environmental_property": {
+          "values": [
+            "blast_resistant_low"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete blast resistance ~9, moderate"
+        },
+        "primary_uses": {
+          "values": [
+            "building clean white structures",
+            "decorating interiors and facades"
+          ],
+          "signal": "inferred",
+          "rationale": "core builder use case"
+        }
+      }
+    },
+    "minecraft:white_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "places as block, converts to concrete"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains concrete_powder"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "needed to produce concrete blocks"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "intermediate step to concrete"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "bright white powdery texture"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand/gravel"
+        },
+        "primary_uses": {
+          "values": [
+            "converting to white concrete via water",
+            "gravity-affected building block"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is concrete production"
+        }
+      }
+    },
+    "minecraft:white_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed crafting ingredient / dye"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "id ends _dye, tag minecraft:dyes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in 13+ shapeless recipes"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "dyes wool, terracotta, concrete powder"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple functional dye item"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white / bright tone"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing wool and blocks white",
+            "crafting white concrete powder",
+            "dyeing leather armor",
+            "firework star coloring"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses from recipe_consumption list"
+        }
+      }
+    },
+    "minecraft:white_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "patterned block primarily for aesthetics"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "inferred",
+          "rationale": "smelted from white terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative niche use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "directional patterned decor block"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "distinctive glazed pattern design"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "glossy"
+          ],
+          "signal": "inferred",
+          "rationale": "white tone with glazed sheen"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta not piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating with directional tile patterns",
+            "building themed structures"
+          ],
+          "signal": "inferred",
+          "rationale": "unique facing pattern is main appeal"
+        }
+      }
+    },
+    "minecraft:white_harness": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "equips happy ghast for riding"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "harness-class equipment, likely leather"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "rationale": "id prefix white_ + dyeable item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "requires happy ghast to use"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables riding ghast for exploration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed leather-type harness item"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white colored item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, crafted via recipe"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:happy_ghast_tempt_items",
+          "rationale": "tag explicitly marks as ghast tempt item"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "enables player riding on happy ghast"
+        },
+        "primary_uses": {
+          "values": [
+            "equipping happy ghasts for riding",
+            "tempting happy ghasts",
+            "dyeing to other harness colors"
+          ],
+          "signal": "inferred",
+          "rationale": "tag and recipe data indicate all three"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

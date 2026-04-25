@@ -1,0 +1,325 @@
+{
+  "items": {
+    "minecraft:brown_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "schema lists candles as decorative_block"
+        },
+        "material_family": {
+          "value": "wax",
+          "signal": "inferred",
+          "rationale": "candles crafted from honeycomb/wax"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for atmosphere and decor"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed, one of 16 colors, wax origin"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown is earthy warm tone"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "lit candles emit light"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lighting",
+            "atmosphere building",
+            "cake topping"
+          ],
+          "signal": "inferred",
+          "rationale": "known candle gameplay uses"
+        }
+      }
+    },
+    "minecraft:brown_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "schema lists carpets as decorative_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in decorated builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "floor and llama decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool, one of 16 colors, organic"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown wool earthy warm tone"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet occupies surface, blocks mob spawns"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "floor decoration",
+            "llama decoration",
+            "vibration dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet main gameplay uses"
+        }
+      }
+    },
+    "minecraft:brown_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "concrete is structural building material"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "_concrete suffix in id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "construction and colored decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed solid block, one of 16 colors"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown concrete muted earthy tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "made by wetting concrete powder, no loot"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "colored construction block",
+            "hard-surface decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete primary gameplay uses"
+        }
+      }
+    },
+    "minecraft:brown_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "precursor for concrete building material"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "_concrete_powder id, same family as concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "transitional, not an end-use block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "step in making concrete"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed powder, one of 16 colors"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown powder muted earthy tone"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand/gravel when unsupported"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting brown concrete",
+            "sand-like fill block"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder uses"
+        }
+      }
+    },
+    "minecraft:brown_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "schema explicitly lists dyes as material"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "tag minecraft:dyes + _dye id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when dyeing items"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to color blocks and items"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dye item, one of 16, cocoa-derived"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown earthy tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot source, crafted from cocoa beans"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing items brown",
+            "crafting colored blocks",
+            "firework star color"
+          ],
+          "signal": "inferred",
+          "rationale": "dye downstream uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

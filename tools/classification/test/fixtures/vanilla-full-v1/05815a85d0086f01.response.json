@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 150972,
+  "duration_api_ms": 151671,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:jungle_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits brief redstone pulse when pressed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially crafted from jungle planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only in specific redstone setups\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pulse source; placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; jungle variant of buttons\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle planks medium warm brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wooden_buttons tag implies flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone pulse source\", \"door/gate trigger\", \"jungle wood decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core button gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:jungle_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"water vehicle; chest is secondary feature\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from jungle boat + chest\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational water logistics vehicle\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel and item ferry\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood vehicle with chest mechanism\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle planks medium brown tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafted boat+chest\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player and chest inventory\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat floats on water; wood burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with storage\", \"river/ocean item transport\", \"mobile chest on waterways\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core chest boat gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:jungle_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive block that opens/closes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from jungle planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in nearly every structure\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structure access; redstone-triggerable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; jungle variant of doors\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle planks medium brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wooden_doors tag implies flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"entryway in wood buildings\", \"mob exclusion barrier\", \"redstone-triggered passage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core door gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:jungle_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier/border element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from jungle planks and sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in farms and builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural border; animal pen enclosure\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; jungle fence variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle planks medium brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"wooden_fences tag implies flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"animal pen enclosure\", \"decorative border/railing\", \"building perimeter barrier\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core fence gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:jungle_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"openable gate integrated into fences\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from jungle planks and sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used wherever fences are placed\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gate for structures, pens, redstone\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood; jungle variant; opens/closes\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle planks medium brown tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"fence_gates tag implies flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"gated entry for fence enclosures\", \"redstone-operated gate\", \"mob pen access point\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core fence gate gameplay uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "f39b7556-c7e2-4149-8082-99c1fa6584e4",
+  "total_cost_usd": 0.17832965,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4355,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10439,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4355,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10439,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4355,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4355
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3492,
+      "outputTokens": 13,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003557,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10439,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4355,
+      "webSearchRequests": 0,
+      "costUSD": 0.17477265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "9f3e0b20-7b14-4222-8235-69d75445ed7b"
+}

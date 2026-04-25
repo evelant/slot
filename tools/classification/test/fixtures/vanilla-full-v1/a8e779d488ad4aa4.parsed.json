@@ -1,0 +1,290 @@
+{
+  "items": {
+    "minecraft:resin_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form of a brick block"
+        },
+        "material_family": {
+          "value": "resin_brick",
+          "signal": "pattern",
+          "rationale": "id prefix resin_brick_*"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from pale garden resin"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative slab in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for structural/decorative use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic origin, shaped variant form"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin is orange-amber"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height building block",
+            "ingredient for chiseled resin bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "slab build use + chiseled recipe"
+        }
+      }
+    },
+    "minecraft:resin_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs form of a brick block"
+        },
+        "material_family": {
+          "value": "resin_brick",
+          "signal": "pattern",
+          "rationale": "id prefix resin_brick_*"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from pale garden resin"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative stairs in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for structural/decorative use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic origin, shaped variant form"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin is orange-amber"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase building element",
+            "decorative building accent"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs use in themed builds"
+        }
+      }
+    },
+    "minecraft:resin_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall form of a brick block"
+        },
+        "material_family": {
+          "value": "resin_brick",
+          "signal": "pattern",
+          "rationale": "id prefix resin_brick_*"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "derived from pale garden resin"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative wall in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall for building/decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic origin, shaped variant form"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin is orange-amber"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative fence/barrier",
+            "building wall accent"
+          ],
+          "signal": "inferred",
+          "rationale": "wall use in themed builds"
+        }
+      }
+    },
+    "minecraft:resin_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "base brick block; model cube_all"
+        },
+        "material_family": {
+          "value": "resin_brick",
+          "signal": "pattern",
+          "rationale": "id is resin_bricks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from pale garden resin"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "building block in themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block for building/decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic resin material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin is orange-amber"
+        },
+        "primary_uses": {
+          "values": [
+            "building block",
+            "stonecutting into slab/stair/wall/chiseled"
+          ],
+          "signal": "inferred",
+          "rationale": "base block + stonecutting source"
+        }
+      }
+    },
+    "minecraft:resin_clump": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "drops raw from creaking_heart block"
+        },
+        "material_family": {
+          "value": "resin",
+          "signal": "pattern",
+          "rationale": "id prefix resin"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires locating pale garden biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "batch-used to craft resin bricks"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: resin bricks for building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic raw material"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "resin has orange-amber color"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "creaking_heart in pale garden; stage2 adds woodland_mansion"
+        },
+        "primary_uses": {
+          "values": [
+            "craft resin blocks and bricks",
+            "smelt into resin brick item"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient for resin_block, resin_brick"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

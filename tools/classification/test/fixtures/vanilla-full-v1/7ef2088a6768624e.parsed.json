@@ -1,0 +1,313 @@
+{
+  "items": {
+    "minecraft:glass_bottle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "holds water/potion/honey contents"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id prefix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "prerequisite for all potions"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "core path: bottle→water bottle→potion"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "clear unadorned glass"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "clear glass silhouette"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing potions",
+            "collecting water",
+            "collecting honey from beehives"
+          ],
+          "signal": "inferred",
+          "rationale": "three main vanilla uses"
+        }
+      }
+    },
+    "minecraft:glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "thin structural glass window element"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id prefix glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common window/barrier material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows, facades, barriers"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "clear, uncolored pane"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "clear glass reads as pale/translucent"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "panes accept water in same space"
+        },
+        "primary_uses": {
+          "values": [
+            "windows and transparent barriers",
+            "base for stained glass panes",
+            "decorative facades"
+          ],
+          "signal": "inferred",
+          "rationale": "typical player usage patterns"
+        }
+      }
+    },
+    "minecraft:glistering_melon_slice": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "crafted intermediate: melon+gold nuggets"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "wrapped in 8 gold nuggets"
+        },
+        "material_secondary": {
+          "values": [
+            "melon"
+          ],
+          "signal": "inferred",
+          "rationale": "melon slice is the base"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires gold nuggets to craft"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche brewing ingredient"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "brews Potion of Healing"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "fruit-derived item"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "gold sheen on green melon"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved",
+          "rationale": "directly tagged piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "brewing Potion of Healing",
+            "piglin attraction item"
+          ],
+          "signal": "inferred",
+          "rationale": "two main vanilla roles"
+        }
+      }
+    },
+    "minecraft:globe_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "loom template; consumed applying pattern"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "no recipe or standard loot source"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per banner decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "applies globe pattern in loom"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "rare special banner pattern"
+        },
+        "origin": {
+          "values": [
+            "trading"
+          ],
+          "signal": "guess",
+          "rationale": "no loot/recipe; likely cartographer"
+        },
+        "primary_uses": {
+          "values": [
+            "apply globe pattern to banners in loom"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:provides_banner_patterns:#minecraft:pattern_item/globe",
+          "rationale": "sole function per component"
+        }
+      }
+    },
+    "minecraft:glow_berries": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "evidence": "minecraft:food + minecraft:consumable",
+          "rationale": "has food and consumable components"
+        },
+        "material_family": {
+          "value": "berry",
+          "signal": "pattern",
+          "rationale": "id suffix _berries"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "lush cave exclusive plant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "low nutrition; niche as light source"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "cave vine farming; gathered exploring"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural cave fruit"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "orange luminous berries"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "cave vines in lush caves"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "vine block emits light-14 when fruiting"
+        },
+        "primary_uses": {
+          "values": [
+            "food (2 hunger / 0.4 saturation)",
+            "planting cave vines for ambient light",
+            "breeding and attracting foxes"
+          ],
+          "signal": "inferred",
+          "rationale": "vanilla gameplay roles"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

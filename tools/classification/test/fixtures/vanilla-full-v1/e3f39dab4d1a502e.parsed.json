@@ -1,0 +1,283 @@
+{
+  "items": {
+    "minecraft:warped_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "pressure_plate form → redstone trigger"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "trigger signal + nether build element"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "fungal nether wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood is teal/cyan"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:non_flammable_wood"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone signal trigger on step",
+            "nether-themed redstone circuits",
+            "mob detection in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "pressure plate core function"
+        }
+      }
+    },
+    "minecraft:warped_roots": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "no crafting use; purely decorative plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether decoration item"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as nether decor; no other use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic nether forest plant"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped biome teal/cyan palette"
+        },
+        "primary_uses": {
+          "values": [
+            "nether warped forest decoration",
+            "potted plant display"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipes; decorative only"
+        }
+      }
+    },
+    "minecraft:warped_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "stores/displays items (has_nbt_variation)"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty display-storage block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "storage_management",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "item display + nether builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood fungal aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood teal palette"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:non_flammable_wood"
+        },
+        "primary_uses": {
+          "values": [
+            "display items on shelf",
+            "decorative nether build storage",
+            "accessible item showcase"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf + has_nbt_variation"
+        }
+      }
+    },
+    "minecraft:warped_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs are decorative/informational"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for labeling, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for text labels and decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood teal palette"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:non_flammable_wood"
+        },
+        "primary_uses": {
+          "values": [
+            "label areas and rooms",
+            "nether build wall accent",
+            "clickable text signage"
+          ],
+          "signal": "inferred",
+          "rationale": "sign core function"
+        }
+      }
+    },
+    "minecraft:warped_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form → structural building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs widely used in construction"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary role is structural"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood aesthetic"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood teal palette"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:non_flammable_wood"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height building block",
+            "step and stair alternative",
+            "nether build structural element",
+            "ingredient for barrel/lectern/composter"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form + sample_ingredient_of list"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

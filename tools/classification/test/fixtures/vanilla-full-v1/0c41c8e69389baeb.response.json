@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 158331,
+  "duration_api_ms": 159034,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:infested_mossy_stone_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block, structural stone appearance\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"mossy stone bricks base material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"silk touch + stronghold only\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never used intentionally\"\n        },\n        \"origin\": {\n          \"values\": [\"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"infested blocks generate in strongholds\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"named\",\n          \"rationale\": \"Infested → spawns silverfish on break\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"mossy variant of stone bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey stone with green moss\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"silk touch collection\", \"hidden trap in custom maps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche uses only\"\n        }\n      }\n    },\n    \"minecraft:infested_stone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block, identical to plain stone\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stone base material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"silk touch + stronghold only\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never used intentionally\"\n        },\n        \"origin\": {\n          \"values\": [\"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"infested blocks generate in strongholds\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"named\",\n          \"rationale\": \"Infested → spawns silverfish on break\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"identical texture to plain stone\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey stone texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"silk touch collection\", \"hidden trap in custom maps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche uses only\"\n        }\n      }\n    },\n    \"minecraft:infested_stone_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block, stone bricks appearance\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stone bricks base material\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"silk touch + stronghold only\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never used intentionally\"\n        },\n        \"origin\": {\n          \"values\": [\"stronghold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"infested blocks generate in strongholds\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"named\",\n          \"rationale\": \"Infested → spawns silverfish on break\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"identical texture to stone bricks\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey stone texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"silk touch collection\", \"hidden trap in custom maps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche uses only\"\n        }\n      }\n    },\n    \"minecraft:ink_sac\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop, unprocessed\"\n        },\n        \"material_family\": {\n          \"value\": \"ink\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"contains squid ink\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"squids common; also fishing junk\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for black dye or writable books\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black dye for colored blocks and items\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mob drop\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black ink\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft black dye\", \"craft writable book\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only two recipe uses from data\"\n        }\n      }\n    },\n    \"minecraft:iron_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"suffix _axe + tool component present\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"everyday woodcutting and log stripping\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tree harvesting + melee weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard mid-tier iron tool\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grey iron finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"chop and strip wood\", \"melee combat (disables shields)\", \"break decorated pots\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"axe dual role: tool + weapon\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "57a6b903-b41f-48e6-91ee-ce6a7e21ff70",
+  "total_cost_usd": 0.19660715,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4005,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11768,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4005,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11768,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4005,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4005
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3142,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003212,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11768,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4005,
+      "webSearchRequests": 0,
+      "costUSD": 0.19339515000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "9d0f1677-4ed2-4175-bf85-e7bfb25d3911"
+}

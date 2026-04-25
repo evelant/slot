@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 172550,
+  "duration_api_ms": 173549,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:chorus_plant\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"End plant placed for decoration only\"\n        },\n        \"material_family\": {\n          \"value\": \"chorus_plant\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id directly names the material\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Admin/creative-only; no survival drop\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"No gameplay function; purely decorative\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed for End-themed decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Organic End plant\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Purple-toned End plant, dark biome\"\n        },\n        \"origin\": {\n          \"values\": [\"end\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Grows only on End outer islands\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stem drops fruit, not block itself\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"End-themed decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Purely decorative block placement\"\n        }\n      }\n    },\n    \"minecraft:cinnabar\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Base stone used as building material\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id directly names the material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Mineable stone type, likely widespread\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in themed cinnabar builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed in structures, cut into variants\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Natural geological block\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cinnabar = deep red mineral\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"guess\",\n          \"rationale\": \"Natural stone; generation biome unclear\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building cinnabar structures\", \"stonecutting into slabs/stairs/walls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Base block for a variant family\"\n        }\n      }\n    },\n    \"minecraft:cinnabar_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab tag = structural building form\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix cinnabar\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from common cinnabar\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Slab for building detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Processed brick slab = dressed stone\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cinnabar = deep red\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height floor/ceiling detail\", \"cinnabar brick accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard slab building uses\"\n        }\n      }\n    },\n    \"minecraft:cinnabar_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs tag = structural building form\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix cinnabar\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from common cinnabar\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs for building detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Processed brick stairs = dressed stone\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cinnabar = deep red\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircase construction\", \"roof/overhang detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard stairs building uses\"\n        }\n      }\n    },\n    \"minecraft:cinnabar_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"walls tag = structural building form\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix cinnabar\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from common cinnabar\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wall block for building\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Processed brick wall = dressed stone\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cinnabar = deep red\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fence/barrier detail\", \"cinnabar brick border\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard wall building uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "094d212a-0fdc-4cf6-853e-24f7c76335e2",
+  "total_cost_usd": 0.2196869,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4406,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13179,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4406,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13179,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4406,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4406
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3543,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0036230000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13179,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4406,
+      "webSearchRequests": 0,
+      "costUSD": 0.2160639,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8c41cf6c-9b73-48a7-803f-3160da7294be"
+}

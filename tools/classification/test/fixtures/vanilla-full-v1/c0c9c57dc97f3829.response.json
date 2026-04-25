@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 70295,
+  "duration_api_ms": 71256,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:tuff_brick_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"wall form of a processed stone set\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from very abundant tuff\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall blocks used often in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural wall/border\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard brick wall, no special aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tuff gray-green muted stone tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building walls and barriers\", \"stone decorative fencing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form used as border element\"\n        }\n      }\n    },\n    \"minecraft:tuff_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"full brick block, primary building form\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant tuff\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base of entire tuff brick set\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural block\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard brick texture, no special look\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tuff gray-green muted tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building stone structures\", \"base for tuff brick variants\", \"decorative stone walls\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block and ingredient for brick sub-set\"\n        }\n      }\n    },\n    \"minecraft:tuff_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab form of stone block set\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant tuff\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used constantly in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as half-block structural element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw tuff texture, geological look\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tuff gray-green muted tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-block flooring and roofing\", \"ingredient for chiseled tuff\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab use + stonecutter ingredient\"\n        }\n      }\n    },\n    \"minecraft:tuff_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stair form of stone block set\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant tuff\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs used widely in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as stepped structural element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw tuff texture, geological look\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tuff gray-green muted tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building staircases\", \"decorative stone edging and trim\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for elevation and roof lines\"\n        }\n      }\n    },\n    \"minecraft:tuff_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"wall form of plain stone block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant tuff\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall blocks used often in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as wall/fence element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw tuff texture, geological look\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tuff gray-green muted tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building natural stone walls\", \"rustic border and barrier\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall used for natural-look borders\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "6f49d2d1-ea92-4c31-b784-afb090c347ba",
+  "total_cost_usd": 0.1130659,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4870,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 5924,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4870,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 5924,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4870
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4007,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004087,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 5924,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4870,
+      "webSearchRequests": 0,
+      "costUSD": 0.10897889999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f1d11e0a-5cf8-4fa4-854a-645bbf3d6d64"
+}

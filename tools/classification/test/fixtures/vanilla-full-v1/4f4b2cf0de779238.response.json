@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 87039,
+  "duration_api_ms": 88359,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:birch_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone pulse when pressed\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common birch planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only needed for redstone circuits\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone input; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unadorned wood form\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch is pale/creamy wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; standard movable block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"redstone signal source\", \"trigger doors and trapdoors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core button use cases\"\n        }\n      }\n    },\n    \"minecraft:birch_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"transport\", \"container_portable\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vehicle + built-in chest storage\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap craft from planks + chest\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational for water cargo runs\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves player and items over water\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood vehicle shape\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale wood coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; shapeless recipe only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"item\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carries player + chest inventory\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest stores standard items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"water travel with cargo\", \"item logistics on rivers/oceans\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest boat primary use cases\"\n        }\n      }\n    },\n    \"minecraft:birch_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes; interactive; redstone\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"very cheap craft from planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in most player structures\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds; redstone activated\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple birch wood texture\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"entry/exit for structures\", \"mob barrier\", \"redstone-activated opening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard door use cases\"\n        }\n      }\n    },\n    \"minecraft:birch_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barrier; no open/close mechanic\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap craft from planks and sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common in farms and builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal pens; structural borders\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain wood fence form\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"animal pens\", \"decorative barriers\", \"structure borders\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence use cases\"\n        }\n      }\n    },\n    \"minecraft:birch_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"opens/closes; redstone controllable\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap craft from planks and sticks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"paired with fences in most farm builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pen entry; redstone automation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain birch wood gate\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"gate for animal pens\", \"fence opening\", \"redstone-controlled entry\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard fence gate use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "d1ffd361-87cd-499a-9ec3-44aca006efb8",
+  "total_cost_usd": 0.13517115,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4389,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7550,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4389,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7550,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4389,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4389
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3526,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003606,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7550,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4389,
+      "webSearchRequests": 0,
+      "costUSD": 0.13156515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "cb13eff5-d87a-450b-88b3-ed148b42408d"
+}

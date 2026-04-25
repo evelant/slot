@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 195186,
+  "duration_api_ms": 199424,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:oxidized_copper_golem_statue\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Statue block; purely aesthetic display\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Needs copper golem to fully oxidize\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed as decorative statue\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Placed for aesthetic display only\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Golem form; ornate sculpted shape\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix oxidized_copper_\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper golems oxidize in overworld\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative golem statue display\", \"Wax to preserve oxidized state\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Aesthetic statue; waxable\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper_grate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Transparent structural copper block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from common oxidized copper\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Niche decorative building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper variant; organic oxidized look\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix oxidized_copper_\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper grates can be waterlogged\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Transparent copper building block\", \"Decorative screen or filter\", \"Waterlogging applications\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Semi-transparent block for building\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper_lantern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Lantern primarily aesthetic lighting\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper lanterns oxidize over time\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Decorative light, used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Aesthetic lighting block\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Ornate lantern; organic copper look\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Oxidized copper; emits warm glow\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper lanterns oxidize in overworld\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Lanterns glow and can waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative copper lighting block\", \"Oxidized aesthetic accent light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Ambient lighting with copper look\"\n        }\n      }\n    },\n    \"minecraft:oxidized_copper_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Trapdoors open/close interactively\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper trapdoors oxidize over time\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for specific entryways\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Door mechanic; redstone activatable\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Hinged door; copper oxidized variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix oxidized_copper_\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Copper trapdoors oxidize in overworld\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Trapdoors can be waterlogged\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Openable copper trapdoor\", \"Redstone-controlled barrier\", \"Decorative copper accent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Functional door with aesthetic value\"\n        }\n      }\n    },\n    \"minecraft:oxidized_cut_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural cut copper block\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains oxidized_cut_copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Crafted from common oxidized copper\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in copper-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Building with cut copper pattern\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cut variant; geometric plain face\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix oxidized_cut_copper\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Building with cut copper pattern\", \"Crafting slabs stairs chiseled forms\", \"Decorative oxidized surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Block used in copper builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "d00ac577-05d1-4462-beb4-d6ad4bba3b3a",
+  "total_cost_usd": 0.2287399,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4954,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13609,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4954
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13609,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4954,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4954,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4091,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004171,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13609,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4954,
+      "webSearchRequests": 0,
+      "costUSD": 0.2245689,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "977fe978-1457-4ebb-a65e-e3bfa4f32b70"
+}

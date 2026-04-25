@@ -1,0 +1,316 @@
+{
+  "items": {
+    "minecraft:cobblestone_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "walls are structural building elements"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant cobblestone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in builds but not constantly"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is structural building"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "undecorated rough gray stone"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "rough gray-brown cobblestone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "structural walls and borders",
+            "defensive castle or fort walls",
+            "garden path edging"
+          ],
+          "signal": "inferred",
+          "rationale": "standard building wall block uses"
+        }
+      }
+    },
+    "minecraft:cobweb": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primarily placed for aesthetic effect"
+        },
+        "material_family": {
+          "value": "cobweb",
+          "signal": "pattern",
+          "rationale": "id is cobweb"
+        },
+        "origin": {
+          "values": [
+            "mineshaft",
+            "stronghold",
+            "woodland_mansion",
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generates in these structures"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires exploring specific structures"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use in builds or traps"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for horror/spooky builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic spider-silk material"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "off-white semi-transparent web"
+        },
+        "environmental_property": {
+          "values": [
+            "slows_walking"
+          ],
+          "signal": "inferred",
+          "rationale": "entities slow when moving through cobweb"
+        },
+        "primary_uses": {
+          "values": [
+            "slowing entities in traps",
+            "spooky/horror build decoration",
+            "string source via shears"
+          ],
+          "signal": "inferred",
+          "rationale": "main gameplay roles of cobweb"
+        }
+      }
+    },
+    "minecraft:cocoa_beans": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "harvested directly from cocoa pods"
+        },
+        "material_family": {
+          "value": "cocoa",
+          "signal": "pattern",
+          "rationale": "id prefix cocoa_"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grows on jungle tree trunks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires finding jungle biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye and cookies, not constantly"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "farm crop; downstream use as brown dye"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic jungle crop"
+        },
+        "palette": {
+          "values": [
+            "amber",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown-orange cocoa pod coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting brown dye",
+            "crafting cookies",
+            "jungle farming crop"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses per recipe data"
+        }
+      }
+    },
+    "minecraft:cod": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw unprocessed fish obtained from world"
+        },
+        "material_family": {
+          "value": "cod",
+          "signal": "pattern",
+          "rationale": "id is cod"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in oceans, easily fished"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common early-game food and pet-food"
+        },
+        "activity": {
+          "values": [
+            "fishing",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by fishing; used to feed pets"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw fish, organic resource"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray-blue fish coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "cook into cooked cod for food",
+            "feed cats and ocelots",
+            "feed wolves and dolphins"
+          ],
+          "signal": "inferred",
+          "rationale": "food and pet-feeding roles"
+        }
+      }
+    },
+    "minecraft:cod_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to transport live cod fish"
+        },
+        "material_family": {
+          "value": "cod",
+          "signal": "inferred",
+          "rationale": "primary contents are a live cod"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "bucket container is iron"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "captured from ocean cod with bucket"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cod abundant in ocean biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used specifically to relocate fish"
+        },
+        "activity": {
+          "values": [
+            "fishing"
+          ],
+          "signal": "inferred",
+          "rationale": "tied to fishing and fish transport"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "live creature in container"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray bucket with blue-gray fish"
+        },
+        "primary_uses": {
+          "values": [
+            "transport live cod to new location",
+            "populate aquariums or fish ponds"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is fish relocation"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

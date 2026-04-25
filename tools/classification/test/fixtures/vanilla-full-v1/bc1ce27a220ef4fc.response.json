@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 109895,
+  "duration_api_ms": 110985,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:stripped_dark_oak_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark log block; primary use is structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires dark oak forest, but easy to farm\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for dark oak aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural/decorative column\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark oak is near-espresso dark brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building dark oak structures\",\n            \"fuel for furnaces\",\n            \"crafting dark oak planks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipes and block placement\"\n        }\n      }\n    },\n    \"minecraft:stripped_jungle_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"log block; primary use is structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle biome required but logs abundant there\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for jungle-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle log is pale cream-tan\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtained by axe-stripping jungle trees\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building jungle structures\",\n            \"fuel for furnaces\",\n            \"crafting jungle planks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipes and block placement\"\n        }\n      }\n    },\n    \"minecraft:stripped_jungle_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark log block; primary use is structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from stripped jungle log\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for jungle-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural/column element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"jungle wood is pale cream-tan\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building jungle structures\",\n            \"fuel for furnaces\",\n            \"crafting jungle planks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipes and block placement\"\n        }\n      }\n    },\n    \"minecraft:stripped_mangrove_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"log block; primary use is structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove swamps accessible; logs abundant there\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for mangrove-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove log has reddish-orange hue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"obtained by axe-stripping mangrove trees\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building mangrove structures\",\n            \"fuel for furnaces\",\n            \"crafting mangrove planks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipes and block placement\"\n        }\n      }\n    },\n    \"minecraft:stripped_mangrove_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"all-bark log block; primary use is structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from stripped mangrove log\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for mangrove-aesthetic builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural/column element\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove wood has reddish-orange hue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building mangrove structures\",\n            \"fuel for furnaces\",\n            \"crafting mangrove planks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipes and block placement\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b5ca8d74-5cac-4a96-8c03-9f5823f3e4e4",
+  "total_cost_usd": 0.15066415,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5697,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8169,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5697,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8169,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5697,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5697
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4834,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004909,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8169,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5697,
+      "webSearchRequests": 0,
+      "costUSD": 0.14575515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "de63ab3c-21e4-421f-a4a5-e8fa702c3410"
+}

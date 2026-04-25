@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 184718,
+  "duration_api_ms": 185372,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:budding_amethyst\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows amethyst clusters over time\"\n        },\n        \"material_family\": {\n          \"value\": \"amethyst\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix amethyst\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; unobtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; creative farms or decor\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows harvestable amethyst clusters\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"geode crystal with purple glow\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple amethyst crystal texture\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns in amethyst geodes underground\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cannot be moved by pistons in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"growing amethyst clusters in creative\",\n            \"creative amethyst farm source\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole function is cluster growth\"\n        }\n      }\n    },\n    \"minecraft:bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds multiple item stacks in one slot\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"main body made from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string used in crafting recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"craftable + found in village chests\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core inventory management tool\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compact and transport mixed item stacks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from natural hide and string\"\n        },\n        \"palette\": {\n          \"values\": [\"sandy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tan/brown rabbit hide coloring\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"occupies a standard inventory slot\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"compact multiple items in one slot\",\n            \"portable inventory expansion\",\n            \"organize varied item stacks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle core inventory mechanic\"\n        }\n      }\n    },\n    \"minecraft:burn_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological collectible for decorated pots\"\n        },\n        \"material_family\": {\n          \"value\": \"clay\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pottery sherds are fired clay fragments\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per decorated pot crafted\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in decorated_pot crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact from trail ruins\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta clay tones with burn motif\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting decorated pots\",\n            \"archaeology collection display\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_sherds tag confirms use\"\n        }\n      }\n    },\n    \"minecraft:bush\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small placeable shrub, primarily aesthetic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"surface plant, common in applicable biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for landscape decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as aesthetic shrub block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small leafy shrub plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small green leafy shrub\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loot source blocks/bush confirms surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leafy plant block, flammable material\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"landscape and garden decoration\",\n            \"natural terrain accent\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no crafting use; purely decorative plant\"\n        }\n      }\n    },\n    \"minecraft:cactus\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant harvested from desert biome\"\n        },\n        \"material_family\": {\n          \"value\": \"cactus\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"item id is cactus\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity = common\",\n          \"rationale\": \"farmable desert plant\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"commonly farmed for green dye\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmed for dye; placed as decor/barrier\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"desert plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green cactus plant\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cactus damages entities that touch it\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelting into green dye\",\n            \"farming renewable green dye\",\n            \"camel food\",\n            \"defensive barrier placement\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye ingredient + camel_food tag + barrier\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "f0b58794-d18a-43be-9d72-8530ece9966b",
+  "total_cost_usd": 0.23158415000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3737,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14184,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3737,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14184,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3737,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3737
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2874,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002954,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14184,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3737,
+      "webSearchRequests": 0,
+      "costUSD": 0.22863015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1d36a2d3-4d1b-46d5-9cae-2639acf7cd67"
+}

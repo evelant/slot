@@ -1,0 +1,327 @@
+{
+  "items": {
+    "minecraft:blue_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin wool; primary use is floor decor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from farmable wool"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used floor decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "floor and llama decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye-colored wool carpets"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "wool has a matte textile finish"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "dampens_vibrations tag; wool burns"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "non-solid; prevents spawn on block below"
+        },
+        "primary_uses": {
+          "values": [
+            "floor decoration",
+            "dampen sculk vibrations",
+            "llama decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet use cases"
+        }
+      }
+    },
+    "minecraft:blue_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block used for construction"
+        },
+        "material_family": {
+          "value": "concrete",
+          "signal": "pattern",
+          "rationale": "id contains 'concrete'"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder+water; no natural gen"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common materials"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular builder's block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "construction and pixel art"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid colored; no ornamentation"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth solid surface; saturated blue"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block; movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "pixel art",
+            "colored walls and floors"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete block uses"
+        }
+      }
+    },
+    "minecraft:blue_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "gravity block; precursor to concrete"
+        },
+        "material_family": {
+          "value": "concrete_powder",
+          "signal": "pattern",
+          "rationale": "id contains 'concrete_powder'"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common sand/gravel/dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate step; rarely placed as-is"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft concrete for building"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored powder variant"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "powder texture; saturated blue"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand; piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "convert to blue concrete via water",
+            "gravity-affected building block"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder use cases"
+        }
+      }
+    },
+    "minecraft:blue_dye": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "processed dye; crafting ingredient"
+        },
+        "material_family": {
+          "value": "dye",
+          "signal": "pattern",
+          "rationale": "id ends _dye; minecraft:dye component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from cornflower or lapis lazuli"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cornflower and lapis are common sources"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in many dyeing recipes"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to color blocks and items"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye colors"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "saturated blue color"
+        },
+        "primary_uses": {
+          "values": [
+            "dyeing wool, concrete, glass, terracotta",
+            "crafting cyan/purple dye",
+            "coloring fireworks"
+          ],
+          "signal": "inferred",
+          "rationale": "blue dye downstream uses"
+        }
+      }
+    },
+    "minecraft:blue_egg": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop from blue chicken variant"
+        },
+        "material_family": {
+          "value": "egg",
+          "signal": "pattern",
+          "rationale": "id ends _egg; in minecraft:eggs tag"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "rationale": "gameplay/chicken_lay loot source"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires specific blue chicken variant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in cake/pumpkin pie recipes"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from chicken variant farming"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural colored variant of regular egg"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "blue-tinted light pastel egg color"
+        },
+        "primary_uses": {
+          "values": [
+            "baking cake and pumpkin pie",
+            "throwable projectile",
+            "variant chicken farming"
+          ],
+          "signal": "inferred",
+          "rationale": "egg use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

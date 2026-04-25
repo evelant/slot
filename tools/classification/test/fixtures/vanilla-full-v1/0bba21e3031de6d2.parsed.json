@@ -1,0 +1,337 @@
+{
+  "items": {
+    "minecraft:shield": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "defensive off-hand protective equipment"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "6 planks in recipe; repairs with wooden mats"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "pattern",
+          "rationale": "1 iron ingot in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard defensive tool for most players"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "used to block attacks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "base form, no decoration applied"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "planks + iron ingot visual"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item"
+        },
+        "primary_uses": {
+          "values": [
+            "Block melee and projectile attacks",
+            "Apply banner decoration for customization",
+            "Off-hand defensive slot equipment"
+          ],
+          "signal": "inferred",
+          "rationale": "core shield gameplay functions"
+        }
+      }
+    },
+    "minecraft:short_dry_grass": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "no recipes; placed for dry biome aesthetics"
+        },
+        "material_family": {
+          "value": "grass",
+          "signal": "pattern",
+          "rationale": "id: short_dry_grass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use in arid builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for aesthetic effect only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring dry plant"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dry yellowish-brown tones"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "arid/dry overworld biome surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "dry plant material, catches fire"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative dry-biome ground cover",
+            "Arid landscape accent in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for visual effect"
+        }
+      }
+    },
+    "minecraft:short_grass": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed for aesthetics; minor seed source"
+        },
+        "material_family": {
+          "value": "grass",
+          "signal": "pattern",
+          "rationale": "id: short_grass"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "covers nearly all overworld surfaces"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "collected for seeds or placed as deco"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "seed source when broken; ground cover deco"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural surface plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green grass color"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "plant matter, fire spreads to it"
+        },
+        "primary_uses": {
+          "values": [
+            "Obtain wheat/grass seeds when broken",
+            "Natural ground decoration in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core player use cases"
+        }
+      }
+    },
+    "minecraft:shroomlight": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "nether light source; no interactive mechanic"
+        },
+        "material_family": {
+          "value": "fungal",
+          "signal": "inferred",
+          "rationale": "grows on huge nether fungi"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires farming huge fungi in nether"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in nether builds as light"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "light source and deco in nether builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fungal nether growth"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-red luminous nether block"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "light level 15 emitter"
+        },
+        "primary_uses": {
+          "values": [
+            "High-output light source (level 15)",
+            "Nether-themed decorative building block",
+            "Bone-meal-farmable nether light source"
+          ],
+          "signal": "inferred",
+          "rationale": "main player use cases"
+        }
+      }
+    },
+    "minecraft:shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable storage retaining contents on break"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "pattern",
+          "rationale": "crafted from 2 shulker shells + chest"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "pattern",
+          "rationale": "chest (wood) in recipe"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "shulker shells require End exploration"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core logistics item for most players"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable chest for item transport"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "base undyed form"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "default purple shulker shell color"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "normal inventory item"
+        },
+        "primary_uses": {
+          "values": [
+            "Portable inventory expansion",
+            "Transport items safely across distances",
+            "Color-coded storage organization"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

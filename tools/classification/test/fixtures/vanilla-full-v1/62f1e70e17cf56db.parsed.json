@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:diamond_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "tag minecraft:shovels + tool component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond tier requires deep mining"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "shovels used regularly for digging"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "digs soil/gravel; terraforming"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool, no special theme"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond cyan-blue crystal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Dig dirt/sand/gravel fast",
+            "Terraforming terrain",
+            "Upgrade to netherite shovel"
+          ],
+          "signal": "inferred",
+          "rationale": "core shovel use cases"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item slot"
+        }
+      }
+    },
+    "minecraft:diamond_spear": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:spears + weapon component"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_ + diamond_tool_materials"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "repairable with #diamond_tool_materials"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond tier weapon"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized vs sword; lunge playstyle niche"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "spears tag + melee_weapon enchantable"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard weapon, no special theme"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond blue-crystal look"
+        },
+        "primary_uses": {
+          "values": [
+            "Melee combat",
+            "Lunge attack (enchantable)",
+            "Upgrade to netherite spear"
+          ],
+          "signal": "inferred",
+          "rationale": "spear combat use cases"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item slot"
+        }
+      }
+    },
+    "minecraft:diamond_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:swords + weapon component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "diamond tier weapon"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary combat weapon used constantly"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "pattern",
+          "rationale": "swords tag + weapon/sweeping enchants"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sword aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond blue-crystal look"
+        },
+        "primary_uses": {
+          "values": [
+            "Melee combat",
+            "Mob killing",
+            "Sweeping edge attacks"
+          ],
+          "signal": "inferred",
+          "rationale": "core sword use cases"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard item slot"
+        }
+      }
+    },
+    "minecraft:diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stone block; primary use is structural building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "generates abundantly in overworld blobs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when white stone aesthetic wanted"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stone block for builds; deco variety"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated stone variant"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/light-gray speckled stone"
+        },
+        "primary_uses": {
+          "values": [
+            "White stone aesthetic building",
+            "Craft polished diorite/slabs/stairs",
+            "Stone variety in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core diorite uses"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block slot"
+        }
+      }
+    },
+    "minecraft:diorite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab for architectural building detail"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common diorite"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific diorite-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "half-height element for builds/detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "slab shape variant of diorite base block"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/light-gray stone slab"
+        },
+        "primary_uses": {
+          "values": [
+            "Half-height building element",
+            "Architectural stonework detail"
+          ],
+          "signal": "inferred",
+          "rationale": "slab use cases"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "standard block slot"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:diorite",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_cave",
+        "overworld_surface"
+      ],
+      "rationale": "Diorite generates naturally as world-gen blobs in overworld; loot-table rule missed world-gen sources and only saw self-drop",
+      "confidence": 0.95
+    }
+  ]
+}

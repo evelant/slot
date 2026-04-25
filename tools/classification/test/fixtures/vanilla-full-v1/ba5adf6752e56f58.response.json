@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 188579,
+  "duration_api_ms": 189293,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:charcoal\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed smelting product; crafting ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"charcoal\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is charcoal; distinct processed fuel material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"produced by smelting any log; always accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary early-game smelting fuel\"\n        },\n        \"activity\": {\n          \"values\": [\"power_generation\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"furnace fuel; crafts torches/campfires\"\n        },\n        \"flavor\": {\n          \"value\": \"plain\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple unprocessed smelting byproduct\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black/dark charcoal appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires smelting logs to produce\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"furnace fuel for smelting\",\n            \"crafting torches and campfires\",\n            \"crafting fire charges\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream recipe uses\"\n        }\n      }\n    },\n    \"minecraft:cherry_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"suffix _boat; water travel vehicle\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap to craft from cherry planks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used situationally when crossing water\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water travel; enables ocean/river exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood variant of the boat family\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"warm\", \"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood distinctive pink/warm tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat floats on water; wooden so burnable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports players and mobs on water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"water travel and navigation\",\n            \"exploration of ocean and river biomes\",\n            \"ingredient for cherry chest boat\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main vanilla boat use cases\"\n        }\n      }\n    },\n    \"minecraft:cherry_button\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits momentary redstone pulse on click\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially crafted from 1 plank\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in specific redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone trigger; placed on walls/blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood variant of wooden buttons\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood pink/warm tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden; piston movable; catches fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"momentary redstone pulse input\",\n            \"activating doors and trapdoors\",\n            \"redstone circuit trigger\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical button functions\"\n        }\n      }\n    },\n    \"minecraft:cherry_chest_boat\": {\n      \"facets\": {\n        \"role\": {\n          \"values\": [\"transport\", \"container_portable\"],\n          \"ambiguous\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat+chest hybrid: moves player and stores items\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from boat + chest; accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche: water travel with cargo\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves player and items across water\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood variant chest boat\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"warm\", \"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood pink/warm tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; recipe only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"floats\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat floats; wooden so burnable\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"item\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports player/mobs; stores items in chest\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"water transport with built-in storage\",\n            \"moving item stacks across water\",\n            \"exploration with extra inventory\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chest boat primary use cases\"\n        }\n      }\n    },\n    \"minecraft:cherry_door\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural architectural entrance element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap to craft from cherry planks\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in virtually every structure built\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is structural; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood variant door\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"warm\", \"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry wood distinctive pink tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden door burns; movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building entrances and exits\",\n            \"mob exclusion from structures\",\n            \"privacy and aesthetic doorways\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary door use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "8ffae1f7-7618-4a8d-8e3a-39fbb14a5d0d",
+  "total_cost_usd": 0.22630865,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4059,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13731,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4059,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13731,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4059,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4059
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3196,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0032660000000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13731,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4059,
+      "webSearchRequests": 0,
+      "costUSD": 0.22304265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "20acee1e-673e-4fbc-a57f-4496b6263288"
+}

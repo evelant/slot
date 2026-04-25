@@ -1,0 +1,310 @@
+{
+  "items": {
+    "minecraft:blue_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "ornate glazed pattern is primarily decorative"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id and model suffix glazed_terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "smelt terracotta + blue dye"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decorative tiling use"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed + ornate directional pattern"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright saturated blue glaze"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative wall and floor tiling",
+            "themed build aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glazed terracotta use"
+        }
+      }
+    },
+    "minecraft:blue_harness": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "equips happy ghast for player riding"
+        },
+        "dye_color": {
+          "value": "blue",
+          "signal": "pattern",
+          "rationale": "id prefix blue_ + harnesses tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "specific mob equipment, crafted"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "only useful with happy ghast mounts"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "enables aerial travel on happy ghast"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed harness equipment"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot table sources found"
+        },
+        "transport_medium": {
+          "values": [
+            "player"
+          ],
+          "signal": "inferred",
+          "rationale": "transports player aboard happy ghast"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghast for riding",
+            "aerial transport and exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "harnesses tag confirms mount purpose"
+        }
+      }
+    },
+    "minecraft:blue_ice": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block for structures and highways"
+        },
+        "material_family": {
+          "value": "ice",
+          "signal": "pattern",
+          "rationale": "id suffix _ice, compressed ice variant"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "frozen ocean biomes; needs Silk Touch"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized for boat highways"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "boat highways and cold-themed builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring ice block"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "deep blue crystalline appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "slippery"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:sulfur_cube_archetype/fast_sliding",
+          "rationale": "fast_sliding tag confirms extreme slip"
+        },
+        "primary_uses": {
+          "values": [
+            "ultra-fast boat highways",
+            "cold-themed building decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "main known blue ice use cases"
+        }
+      }
+    },
+    "minecraft:blue_orchid": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower found/grown in world"
+        },
+        "material_family": {
+          "value": "flower",
+          "signal": "pattern",
+          "rationale": "tag minecraft:small_flowers"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "swamps are a common biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche dye and stew ingredient"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "dye source and decorative planting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally growing flower"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pale light-blue flower"
+        },
+        "primary_uses": {
+          "values": [
+            "light blue dye source",
+            "suspicious stew ingredient",
+            "decorative planting"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of confirms uses"
+        }
+      }
+    },
+    "minecraft:blue_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "retains inventory when broken"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "crafted from shulker shells + chest"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires end-sourced shulker shells"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core late-game storage system"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable storage and item transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dyed shulker variants"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard stackable items"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "color-coded inventory sorting",
+            "bulk item transport"
+          ],
+          "signal": "inferred",
+          "rationale": "main shulker box use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:blue_ice",
+      "facet": "origin",
+      "current": [
+        "village"
+      ],
+      "suggested": [
+        "village",
+        "overworld_ocean"
+      ],
+      "rationale": "Blue ice generates naturally in frozen ocean icebergs; loot-table rule missed terrain gen",
+      "confidence": 0.9
+    }
+  ]
+}

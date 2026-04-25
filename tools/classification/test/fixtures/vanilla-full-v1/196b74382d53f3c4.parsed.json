@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:leather_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "equippable foot armor piece"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game tier, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for damage reduction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic material; fully dyeable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural brown leather base tone"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn",
+            "powder_snow_walkable"
+          ],
+          "signal": "named",
+          "rationale": "freeze_immune_wearables tag; boots walk on powder snow"
+        },
+        "primary_uses": {
+          "values": [
+            "starter foot armor",
+            "walk on powder snow",
+            "dyeable for cosmetics"
+          ],
+          "signal": "inferred",
+          "rationale": "core leather boots gameplay roles"
+        }
+      }
+    },
+    "minecraft:leather_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "equippable chest armor piece"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game tier, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for damage reduction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic material; fully dyeable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural brown leather base tone"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "rationale": "freeze_immune_wearables tag"
+        },
+        "primary_uses": {
+          "values": [
+            "starter chest armor",
+            "dyeable for cosmetics",
+            "early combat protection"
+          ],
+          "signal": "inferred",
+          "rationale": "core leather chestplate roles"
+        }
+      }
+    },
+    "minecraft:leather_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "equippable head armor piece"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game tier, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for damage reduction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic material; fully dyeable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural brown leather base tone"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "rationale": "freeze_immune_wearables tag"
+        },
+        "primary_uses": {
+          "values": [
+            "starter head armor",
+            "dyeable for cosmetics",
+            "early combat protection"
+          ],
+          "signal": "inferred",
+          "rationale": "core leather helmet roles"
+        }
+      }
+    },
+    "minecraft:leather_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "armor piece equipped on horses"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "pattern",
+          "rationale": "leather_ name prefix"
+        },
+        "tier": {
+          "value": "leather",
+          "signal": "pattern",
+          "rationale": "lowest horse armor tier"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational; only useful on horses"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "horse protection while mounted/riding"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic material; dyeable via cauldron"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural brown leather base tone"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "rationale": "freeze_immune_wearables tag"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; shaped craft only"
+        },
+        "primary_uses": {
+          "values": [
+            "horse protection in combat",
+            "dyeable horse cosmetic"
+          ],
+          "signal": "inferred",
+          "rationale": "core leather horse armor roles"
+        }
+      }
+    },
+    "minecraft:leather_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "equippable leg armor piece"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "early-game tier, quickly replaced"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for damage reduction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "organic material; fully dyeable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural brown leather base tone"
+        },
+        "environmental_property": {
+          "values": [
+            "freeze_immune_when_worn"
+          ],
+          "signal": "named",
+          "rationale": "freeze_immune_wearables tag"
+        },
+        "primary_uses": {
+          "values": [
+            "starter leg armor",
+            "dyeable for cosmetics",
+            "early combat protection"
+          ],
+          "signal": "inferred",
+          "rationale": "core leather leggings roles"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

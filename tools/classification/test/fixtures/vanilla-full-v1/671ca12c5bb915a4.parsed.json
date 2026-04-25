@@ -1,0 +1,379 @@
+{
+  "items": {
+    "minecraft:white_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are aesthetic/marking blocks"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from 6 wool + 1 stick"
+        },
+        "material_secondary": {
+          "values": [
+            "stick"
+          ],
+          "signal": "inferred",
+          "rationale": "stick forms the banner pole"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "marking and decorating areas"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "one of 16 dye color variants"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white banner reads as light-toned"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wool material is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating bases and structures",
+            "shield decoration",
+            "copying banner patterns"
+          ],
+          "signal": "inferred",
+          "rationale": "core banner gameplay uses"
+        }
+      }
+    },
+    "minecraft:white_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sleeps player, sets spawn point"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from 3 wool + 3 planks"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "planks form the bed frame"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "used every in-game night cycle"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "base setup; spawn-point setting"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "simple design; dye color variant"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "sleeping to skip night",
+            "setting respawn point",
+            "villager trading ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed gameplay uses"
+        }
+      }
+    },
+    "minecraft:white_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "holds multiple item types in one slot"
+        },
+        "dye_color": {
+          "value": "white",
+          "signal": "pattern",
+          "rationale": "id prefix white_ + bundles tag"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "crafted from 6 rabbit hide + 2 string"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string as strap/closure"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "inventory management tool"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable multi-type container"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "hide material, simple pouch form"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "natural hide tone; white dye variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot sources in data"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits standard inventory slots"
+        },
+        "primary_uses": {
+          "values": [
+            "stack multiple item types in one slot",
+            "portable inventory organization",
+            "dye to other bundle colors"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle use cases"
+        }
+      }
+    },
+    "minecraft:white_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are decorative lighting items"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "crafted from 1 honeycomb + 1 string"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string forms the wick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, placed as needed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primarily decorative lighting"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "wax material; one of 16 dye variants"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "white wax; warm glow when lit"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "candles emit light when lit"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "loot sources are only placed block drops"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lighting and ambiance",
+            "cake candle decoration",
+            "mood lighting in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core candle use cases"
+        }
+      }
+    },
+    "minecraft:white_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin decorative floor covering"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for floor decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor decor in builds"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "flat textile; dye color variant"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white coloring"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "mobs cannot spawn on thin carpet"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "dampens_vibrations tag; wool burns"
+        },
+        "primary_uses": {
+          "values": [
+            "floor and surface decoration",
+            "suppressing mob spawns",
+            "vibration dampening near sculk sensors",
+            "llama decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core carpet uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:white_bed",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "village"
+      ],
+      "rationale": "White beds generate in plains village houses",
+      "confidence": 0.85
+    }
+  ]
+}

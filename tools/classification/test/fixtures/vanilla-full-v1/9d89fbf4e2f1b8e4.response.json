@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 129882,
+  "duration_api_ms": 130980,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:stripped_acacia_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structural log block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wood used regularly in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural placement or aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural wood; stripped variant of log\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia warm orange-tan hue\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia trees in savanna biome\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\", \"piston_movable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag logs_that_burn; wood block\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full opaque solid block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build structures and homes\", \"craft into acacia planks\", \"use as fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"log core building and crafting use\"\n        }\n      }\n    },\n    \"minecraft:stripped_acacia_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structural wood block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche aesthetic; less used than logs\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural or aesthetic placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia warm orange-tan hue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\", \"piston_movable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag logs_that_burn; wood block\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full opaque solid block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative building element\", \"craft into acacia planks\", \"use as fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted wood variant downstream uses\"\n        }\n      }\n    },\n    \"minecraft:stripped_bamboo_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structural bamboo block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche material; bamboo-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural or aesthetic placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant; natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo pale yellow-green tone\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo grows in jungle biomes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-type block movable by piston\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full opaque solid block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build bamboo-themed structures\", \"craft into bamboo planks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bamboo wood building and crafting\"\n        }\n      }\n    },\n    \"minecraft:stripped_birch_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structural log block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wood used regularly in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural or aesthetic placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of natural log\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale white-cream hue\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch trees on overworld surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\", \"piston_movable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag logs_that_burn; wood block\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full opaque solid block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build structures and homes\", \"craft into birch planks\", \"use as fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"log core building and crafting use\"\n        }\n      }\n    },\n    \"minecraft:stripped_birch_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structural wood block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche aesthetic; less used than logs\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural or aesthetic placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stripped variant of wood block\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_pale\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch pale white-cream hue\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\", \"piston_movable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag logs_that_burn; wood block\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"full opaque solid block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative building element\", \"craft into birch planks\", \"use as fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted wood variant downstream uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "59048bcb-670d-4aba-9ab7-0c46d22778ba",
+  "total_cost_usd": 0.16907840000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5440,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9478,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5440,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9478,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5440,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5440
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4577,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004652000000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9478,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5440,
+      "webSearchRequests": 0,
+      "costUSD": 0.16442640000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "2e7658af-7d04-4a39-a2de-3a06a330fd7e"
+}

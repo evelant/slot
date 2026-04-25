@@ -1,0 +1,332 @@
+{
+  "items": {
+    "minecraft:magenta_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "bundle is a portable item container"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "bundles crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in bundle recipe"
+        },
+        "dye_color": {
+          "value": "magenta",
+          "signal": "pattern",
+          "rationale": "id prefix magenta_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "actively used for inventory management"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle organizes and carries items"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed; made from organic hide"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is a vivid bright hue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural loot sources listed"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds regular stackable items"
+        },
+        "primary_uses": {
+          "values": [
+            "portable container for multiple item types",
+            "inventory consolidation and organization",
+            "carry unstackable items together"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle core gameplay purpose"
+        }
+      }
+    },
+    "minecraft:magenta_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are primarily aesthetic light decor"
+        },
+        "material_family": {
+          "value": "honeycomb",
+          "signal": "inferred",
+          "rationale": "candles crafted from honeycomb"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string as wick in candle recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed for ambiance, not daily use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "candles used for decorative lighting"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wax candle; organic material"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is vivid"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "loot tables are block self-drops only"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when lit (level 3)"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting and decoration",
+            "birthday cake candles",
+            "colorful light source accent"
+          ],
+          "signal": "inferred",
+          "rationale": "candle gameplay purposes"
+        }
+      }
+    },
+    "minecraft:magenta_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "carpets are floor decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once for decor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "carpets decorate floors and builds"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool carpet; organic material"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta is vivid"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "piston_movable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag dampens_vibrations; thin movable block"
+        },
+        "primary_uses": {
+          "values": [
+            "floor and interior decoration",
+            "llama equipment slot decoration",
+            "vibration dampening for sculk sensors"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet main uses"
+        }
+      }
+    },
+    "minecraft:magenta_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "concrete is a structural building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular colorful building material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete used for construction"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "solid dyed block, smooth uniform surface"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta vivid; concrete has matte finish"
+        },
+        "primary_uses": {
+          "values": [
+            "colorful structural building",
+            "smooth solid-color surfaces",
+            "decorative construction accent"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete building uses"
+        }
+      }
+    },
+    "minecraft:magenta_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "precursor block for concrete production"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate; converted to concrete quickly"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "converted to concrete for construction"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed powder block, uniform color"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "magenta vivid; powder has matte look"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand/gravel blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "water conversion to magenta concrete",
+            "gravity-based building techniques",
+            "colored powder block construction"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder main uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

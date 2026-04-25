@@ -1,0 +1,334 @@
+{
+  "items": {
+    "minecraft:granite_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form = structural block for builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively in stone builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and stone aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural stone in wall form variant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "granite has warm pinkish-brown tones"
+        },
+        "primary_uses": {
+          "values": [
+            "building decorative stone walls",
+            "granite-themed structures"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wall block uses"
+        }
+      }
+    },
+    "minecraft:grass_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable terrain block"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "inferred",
+          "rationale": "dirt base with grass layer on top"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "covers most of every overworld surface"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in nature builds, not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "terrain builds; sheep graze, grass spreads to dirt"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural terrain block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "brown dirt base + green grass top"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "top layer of overworld terrain"
+        },
+        "spawn_interaction": {
+          "values": [
+            "allows_spawning"
+          ],
+          "signal": "inferred",
+          "rationale": "canonical mob and animal spawn surface"
+        },
+        "primary_uses": {
+          "values": [
+            "natural terrain decoration",
+            "nature and garden builds",
+            "mob spawn surface"
+          ],
+          "signal": "inferred",
+          "rationale": "typical grass block uses"
+        }
+      }
+    },
+    "minecraft:gravel": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw world material, not processed"
+        },
+        "material_family": {
+          "value": "gravel",
+          "signal": "pattern",
+          "rationale": "id=gravel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "widespread in overworld"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used for flint and concrete powder"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder crafting; path/terrain use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw rock material"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "grey-brown gravel texture"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls when block below is removed"
+        },
+        "primary_uses": {
+          "values": [
+            "flint source when mined",
+            "crafting concrete powder",
+            "path decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "main gravel uses"
+        }
+      }
+    },
+    "minecraft:gray_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are primarily decorative"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from wool and sticks"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "stick = wood forms the banner pole"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component explicit"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed decoratively, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "decoration; shield customization"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored banner"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "gray is muted and moderately dark"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating builds and structures",
+            "shield customization",
+            "banner pattern duplication"
+          ],
+          "signal": "inferred",
+          "rationale": "main banner uses"
+        }
+      }
+    },
+    "minecraft:gray_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "bed has active sleep and respawn function"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "crafted from wool and planks"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "planks form the bed frame"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component explicit"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used nightly to skip darkness"
+        },
+        "activity": {
+          "values": [
+            "exploration",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "sets respawn for exploration; placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dye-colored bed variant"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "gray is muted and cool-toned"
+        },
+        "primary_uses": {
+          "values": [
+            "skip night cycle",
+            "set respawn point",
+            "recolor with dye"
+          ],
+          "signal": "inferred",
+          "rationale": "main bed uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:gravel",
+      "facet": "origin",
+      "current": [
+        "trading"
+      ],
+      "suggested": [
+        "trading",
+        "overworld_surface",
+        "overworld_cave",
+        "overworld_ocean"
+      ],
+      "rationale": "Gravel generates naturally in overworld rivers, beaches, and caves; stage2 only caught piglin_bartering loot table",
+      "confidence": 0.9
+    }
+  ]
+}

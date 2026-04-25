@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 147274,
+  "duration_api_ms": 148307,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:deepslate_iron_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore from world, not processed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron ore abundant in caves\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron mined regularly throughout game\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron→tools/weapons for mining & combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally generated ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark deepslate with tan ore veins\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt/blast into iron ingots\", \"silk touch ore collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ore smelted for iron\"\n        }\n      }\n    },\n    \"minecraft:deepslate_lapis_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore from world, not processed\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lapis less common than iron or coal\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined when enchanting supplies needed\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lapis used for enchanting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally generated ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"indigo\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blue lapis veins on dark deepslate\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt/blast into lapis lazuli\", \"silk touch collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ore → lapis for enchanting\"\n        }\n      }\n    },\n    \"minecraft:deepslate_redstone_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore from world, not processed\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone very abundant at deep levels\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone used constantly in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yields redstone dust for circuits\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally generated ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark deepslate with red glowing veins\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glows when activated by entity contact\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"mine for redstone dust\", \"silk touch ore collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ore → redstone for circuits\"\n        }\n      }\n    },\n    \"minecraft:deepslate_tile_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form is primarily structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant deepslate\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used heavily in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for floors, roofs, trim\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tile variant of deepslate family\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark charcoal gray matte block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-block flooring\", \"roofing accent\", \"architectural trim\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab construction uses\"\n        }\n      }\n    },\n    \"minecraft:deepslate_tile_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form is primarily structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant deepslate\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs used heavily in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"for staircases, architectural detail\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tile variant of deepslate family\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark charcoal gray matte block\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building staircases\", \"architectural trim/roofing\", \"decorative steps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stairs construction uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "27e6147a-d1e0-4d0d-a956-d23700192a82",
+  "total_cost_usd": 0.1992269,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5666,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11416,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5666,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11416,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5666,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5666
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4803,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004883,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11416,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5666,
+      "webSearchRequests": 0,
+      "costUSD": 0.1943439,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0e609222-9fc6-4187-85c3-a628b855aed9"
+}

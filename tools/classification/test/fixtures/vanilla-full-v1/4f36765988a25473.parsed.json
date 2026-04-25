@@ -1,0 +1,271 @@
+{
+  "items": {
+    "minecraft:test_instance_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "test block; no recipes/loot/gameplay use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "test block, no survival obtainment"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "no actual player utility"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "featureless cube_all test block"
+        },
+        "primary_uses": {
+          "values": [
+            "developer/testing placeholder"
+          ],
+          "signal": "inferred",
+          "rationale": "no gameplay purpose evident"
+        }
+      }
+    },
+    "minecraft:tide_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "pattern",
+          "rationale": "smithing_template suffix → upgrade role"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor piece"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean/tide motif on template"
+        },
+        "palette": {
+          "values": [
+            "aqua",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "tide/ocean visual theme"
+        },
+        "primary_uses": {
+          "values": [
+            "apply tide trim to armor",
+            "duplicate template via crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing template standard uses"
+        }
+      }
+    },
+    "minecraft:tinted_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "glass block variant, cube_all model"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component rarity = common"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id and model indicate glass type"
+        },
+        "material_secondary": {
+          "values": [
+            "amethyst"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted with amethyst shards + glass"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "useful niche building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "builds + mob farm ceilings"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "special-property glass variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "dark tinted see-through block"
+        },
+        "primary_uses": {
+          "values": [
+            "light-blocking transparent building",
+            "mob farm ceilings",
+            "aesthetic dark glass builds"
+          ],
+          "signal": "inferred",
+          "rationale": "unique light-block + see-through combo"
+        }
+      }
+    },
+    "minecraft:tipped_arrow": {
+      "facets": {
+        "role": {
+          "value": "ammunition",
+          "signal": "pattern",
+          "rationale": "tag minecraft:arrows; projectile item"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in ranged combat"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "ranged potion delivery in combat"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "potion-enhanced arrow variant"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing potion-colored tip"
+        },
+        "primary_uses": {
+          "values": [
+            "apply potion effects at range",
+            "ranged combat debuffing"
+          ],
+          "signal": "inferred",
+          "rationale": "ranged potion delivery"
+        }
+      }
+    },
+    "minecraft:tnt": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "active explosive mechanism block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component rarity = common"
+        },
+        "material_family": {
+          "value": "gunpowder",
+          "signal": "inferred",
+          "rationale": "gunpowder is key functional ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "sand"
+          ],
+          "signal": "inferred",
+          "rationale": "sand + gunpowder craft recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "terrain clearing, traps, cannons"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "iconic classic design"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "sandy beige + red texture"
+        },
+        "environmental_property": {
+          "values": [
+            "ignitable_by_fire",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "fire triggers detonation; pistons push it"
+        },
+        "primary_uses": {
+          "values": [
+            "terrain demolition",
+            "combat traps",
+            "TNT minecart crafting",
+            "redstone cannons"
+          ],
+          "signal": "inferred",
+          "rationale": "core gameplay uses of TNT"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

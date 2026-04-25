@@ -1,0 +1,299 @@
+{
+  "items": {
+    "minecraft:yellow_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Glass block used to build windows/walls"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from sand+dye, easily obtained"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in specific aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for windows and colored walls"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Stained = dye-colored glass"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "Yellow glass: vivid and translucent"
+        },
+        "primary_uses": {
+          "values": [
+            "building colored windows",
+            "decorating structures",
+            "crafting yellow glass panes"
+          ],
+          "signal": "inferred",
+          "rationale": "Common stained glass uses"
+        }
+      }
+    },
+    "minecraft:yellow_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Pane form for windows and structures"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from stained glass; ruins find"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in specific aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for windows/colored walls"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Stained/colored glass"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "Yellow glass is vivid and translucent"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Glass panes are waterloggable blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "building window frames",
+            "decorating with colored glass"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary glass pane uses"
+        }
+      }
+    },
+    "minecraft:yellow_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Solid colored block for building"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id ends in _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted+dye; also badlands natural gen"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed as colored structural block"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed terracotta"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "Yellow terracotta has warm earthy tone"
+        },
+        "primary_uses": {
+          "values": [
+            "building badlands-themed structures",
+            "earthy colored decoration",
+            "crafting glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary terracotta uses"
+        }
+      }
+    },
+    "minecraft:yellow_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Wool block for building/decorating"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Sheep are farmable, easily obtained"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Used for beds, carpets, builds regularly"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Block + crafts into beds/carpets"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Dyed animal product"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "Yellow wool is vivid yellow"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "named",
+          "rationale": "Dampens_vibrations tag; wool burns"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting beds and carpets",
+            "building colored structures",
+            "sound dampening builds"
+          ],
+          "signal": "inferred",
+          "rationale": "Core wool gameplay uses"
+        }
+      }
+    },
+    "minecraft:zoglin_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "Creative-only mob spawner item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "Spawn eggs unobtainable in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "Not obtainable in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "Rarely used even in creative"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "Spawn egg spawns its linked mob type"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "One of many spawn egg variants"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning zoglins in creative mode",
+            "mob testing and map-making"
+          ],
+          "signal": "inferred",
+          "rationale": "Spawn egg use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:yellow_terracotta",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "overworld_surface"
+      ],
+      "rationale": "Yellow terracotta naturally generates in badlands",
+      "confidence": 0.85
+    }
+  ]
+}

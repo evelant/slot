@@ -1,0 +1,263 @@
+{
+  "items": {
+    "minecraft:stone_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:swords + minecraft:weapon component"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "early-game melee workhorse"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "sword = melee combat primary use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic unadorned stone weapon"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone, flat finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, shaped crafting only"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat vs mobs",
+            "early-game damage dealer",
+            "sweeping edge attacks vs groups"
+          ],
+          "signal": "inferred",
+          "rationale": "core sword gameplay"
+        }
+      }
+    },
+    "minecraft:stonecutter": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive cutting station for stone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "id prefix stone"
+        },
+        "material_secondary": {
+          "values": [
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "iron ingot blade in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used during stone-heavy builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "cuts stone into structural/decorative variants"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "animated rotating saw blade"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "stone body + dark iron blade"
+        },
+        "primary_uses": {
+          "values": [
+            "cut stone into slabs/stairs/walls",
+            "efficient stone variant crafting",
+            "reduce material waste vs crafting table"
+          ],
+          "signal": "inferred",
+          "rationale": "core stonecutter uses"
+        }
+      }
+    },
+    "minecraft:stray_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only mob spawning tool"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot table or recipe"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "only via creative inventory or commands"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative context only"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn_egg suffix → spawns stray"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn a stray skeleton",
+            "creative/admin mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg function"
+        }
+      }
+    },
+    "minecraft:strider_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only mob spawning tool"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot table or recipe"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "only via creative inventory or commands"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative context only"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn_egg suffix → spawns strider"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn a strider mob",
+            "creative/admin mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg function"
+        }
+      }
+    },
+    "minecraft:string": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop, not processed/refined"
+        },
+        "material_family": {
+          "value": "fiber",
+          "signal": "inferred",
+          "rationale": "silk-like raw fiber material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "ingredient in many key recipes"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "fishing",
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "bow/xbow, fishing rod, scaffolding, loom"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw fiber from spiders/cobwebs"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "off-white pale thin fiber"
+        },
+        "primary_uses": {
+          "values": [
+            "craft bows and crossbows",
+            "make fishing rods",
+            "produce white wool",
+            "craft leads and scaffolding"
+          ],
+          "signal": "inferred",
+          "rationale": "top downstream recipe uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

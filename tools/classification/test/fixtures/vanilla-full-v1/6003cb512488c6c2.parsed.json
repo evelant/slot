@@ -1,0 +1,307 @@
+{
+  "items": {
+    "minecraft:oxidized_copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Statue block; purely aesthetic display"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Needs copper golem to fully oxidize"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Placed as decorative statue"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Placed for aesthetic display only"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "Golem form; ornate sculpted shape"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "id prefix oxidized_copper_"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper golems oxidize in overworld"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative golem statue display",
+            "Wax to preserve oxidized state"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic statue; waxable"
+        }
+      }
+    },
+    "minecraft:oxidized_copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Transparent structural copper block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common oxidized copper"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Niche decorative building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural and aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper variant; organic oxidized look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "id prefix oxidized_copper_"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper grates can be waterlogged"
+        },
+        "primary_uses": {
+          "values": [
+            "Transparent copper building block",
+            "Decorative screen or filter",
+            "Waterlogging applications"
+          ],
+          "signal": "inferred",
+          "rationale": "Semi-transparent block for building"
+        }
+      }
+    },
+    "minecraft:oxidized_copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Lantern primarily aesthetic lighting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Copper lanterns oxidize over time"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Decorative light, used selectively"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Aesthetic lighting block"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Ornate lantern; organic copper look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "Oxidized copper; emits warm glow"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper lanterns oxidize in overworld"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Lanterns glow and can waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative copper lighting block",
+            "Oxidized aesthetic accent light"
+          ],
+          "signal": "inferred",
+          "rationale": "Ambient lighting with copper look"
+        }
+      }
+    },
+    "minecraft:oxidized_copper_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "Trapdoors open/close interactively"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Copper trapdoors oxidize over time"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for specific entryways"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "Door mechanic; redstone activatable"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Hinged door; copper oxidized variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "id prefix oxidized_copper_"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper trapdoors oxidize in overworld"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Trapdoors can be waterlogged"
+        },
+        "primary_uses": {
+          "values": [
+            "Openable copper trapdoor",
+            "Redstone-controlled barrier",
+            "Decorative copper accent"
+          ],
+          "signal": "inferred",
+          "rationale": "Functional door with aesthetic value"
+        }
+      }
+    },
+    "minecraft:oxidized_cut_copper": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Structural cut copper block"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains oxidized_cut_copper"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Crafted from common oxidized copper"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in copper-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Building with cut copper pattern"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Cut variant; geometric plain face"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "id prefix oxidized_cut_copper"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with cut copper pattern",
+            "Crafting slabs stairs chiseled forms",
+            "Decorative oxidized surface"
+          ],
+          "signal": "inferred",
+          "rationale": "Block used in copper builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

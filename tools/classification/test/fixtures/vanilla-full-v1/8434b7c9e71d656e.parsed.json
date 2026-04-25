@@ -1,0 +1,310 @@
+{
+  "items": {
+    "minecraft:weathered_copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Chains hang lanterns/bells; primarily decorative"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires placed copper chain + oxidation wait"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for specific copper-themed aesthetics"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural accent; hangs decor items"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered oxidation variant; copper natural"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Partial patina; muted teal-copper tones"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Chain blocks support waterlogging"
+        },
+        "primary_uses": {
+          "values": [
+            "hang lanterns and bells",
+            "decorative copper chain links",
+            "copper-themed build accent"
+          ],
+          "signal": "inferred",
+          "rationale": "Core chain use cases"
+        }
+      }
+    },
+    "minecraft:weathered_copper_chest": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "model item/template_chest → chest = storage"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires copper chest + natural oxidation"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "Active storage blocks used regularly"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary purpose is item storage"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "Stores items like all standard chests"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered oxidation variant; copper natural"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered copper patina tone"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Chests can be waterlogged like vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "item storage with copper aesthetic",
+            "decorative storage chest variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Storage with specific visual theme"
+        }
+      }
+    },
+    "minecraft:weathered_copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Doors are structural building elements"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Requires copper door + oxidation process"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in specific copper-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural door in building construction"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Mechanical door; weathered stage variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered copper patina"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Copper doors support waterlogging"
+        },
+        "primary_uses": {
+          "values": [
+            "door for copper-themed builds",
+            "player-openable metal door",
+            "decorative entryway"
+          ],
+          "signal": "inferred",
+          "rationale": "Door use cases in copper builds"
+        }
+      }
+    },
+    "minecraft:weathered_copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Statue block; purely decorative"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "Specific crafted statue; not freely available"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "Placed once as a display piece"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Purely decorative statue block"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "Ornate figurine; weathered stage variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered copper patina on statue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "Crafted decoration; no natural generation"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper golem display piece",
+            "copper-themed tribute statue"
+          ],
+          "signal": "inferred",
+          "rationale": "Display purposes only"
+        }
+      }
+    },
+    "minecraft:weathered_copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "Grate is structural/decorative build block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "Directly craftable; copper is abundant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used for specific build aesthetics"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Structural and decorative build element"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "Mechanical grid pattern; weathered variant"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "Weathered copper patina tone"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "Grates support waterlogging"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative grid pattern in builds",
+            "permeable block for light/airflow aesthetic",
+            "ventilation-style building accent"
+          ],
+          "signal": "inferred",
+          "rationale": "Grate use cases in builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "origin",
+      "value": "natural_weathering",
+      "rationale": "Weathered/exposed/oxidized copper variants have no production recipe and no natural loot table generation — obtained solely by natural oxidation of a placed copper item over time, or by scraping a more-oxidized stage. No existing origin value captures this mechanic."
+    }
+  ],
+  "corrections": []
+}

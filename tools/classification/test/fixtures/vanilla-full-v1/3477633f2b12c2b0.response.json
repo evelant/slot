@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 195901,
+  "duration_api_ms": 196559,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pitcher_plant\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower block; placed for aesthetics\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flowering plant block\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needs sniffer-sourced pod to grow\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche dye source, decorative use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decor; bee_food tag\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic flowering plant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green stem, purple pitcher cup\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"cyan dye crafting\", \"decoration as tall flower\", \"bee food source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe + flowers + bee_food tags\"\n        }\n      }\n    },\n    \"minecraft:pitcher_pod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw seed dug up by sniffer\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed plant seed\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sniffer required to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted once per desired flower\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"villager_plantable_seeds tag\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sniffer digs up ancient seeds\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"plant to grow pitcher plant\", \"feed chickens and parrots\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plantable seed; chicken_food/parrot_food tags\"\n        }\n      }\n    },\n    \"minecraft:player_head\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"schema disambiguation: heads=decorative_block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"noteblock/fireworks/decor niche\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"noteblock_top_instruments tag; placed decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"player-specific display skull\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"charged creeper kills player to drop\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"wall/floor decoration\", \"noteblock instrument\", \"firework star component\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"noteblock tag + firework_star recipe\"\n        }\n      }\n    },\n    \"minecraft:plenty_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shard-type ingredient for decorated pot\"\n        },\n        \"material_family\": {\n          \"value\": \"ceramic\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fired clay pottery fragment\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology RNG, specific site type\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_ingredients tag\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological artifact\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorate pottery pots\", \"archaeology collectible\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_sherds tag\"\n        }\n      }\n    },\n    \"minecraft:podzol\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"terrain soil block, structural use\"\n        },\n        \"material_family\": {\n          \"value\": \"dirt\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grass_blocks tag, soil type\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant on taiga biome surfaces\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche landscaping block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terrain block for builds and scenes\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic forest floor block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muddy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark soil with needle-litter top\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"taiga and mega taiga biome surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"soft block, movable like dirt\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"terrain landscaping\", \"forest biome builds\", \"grows spruce/ferns without light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terrain block with unique growth property\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "fbcf2736-d917-4343-917f-7083a5f46eb2",
+  "total_cost_usd": 0.2184479,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3762,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13301,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3762
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13301,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3762,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3762,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2899,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0029690000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13301,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3762,
+      "webSearchRequests": 0,
+      "costUSD": 0.2154789,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "682f6d0e-9106-4b60-b9ff-eb99c3bc17b6"
+}

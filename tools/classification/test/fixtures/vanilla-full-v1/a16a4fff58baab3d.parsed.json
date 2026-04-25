@@ -1,0 +1,302 @@
+{
+  "items": {
+    "minecraft:dragon_head": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "skulls tag; schema lists heads as decorative"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "rare end trophy, mostly placed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as trophy/cosmetic block"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "dark dragon; ancient End lore"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark scales, glowing eyes"
+        },
+        "primary_uses": {
+          "values": [
+            "place as End trophy decoration",
+            "worn cosmetically on head",
+            "firework star dragon shape ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "main gameplay uses"
+        }
+      }
+    },
+    "minecraft:dried_ghast": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "hydrates in water to spawn Happy Ghast"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "piglin barter or crafted; not trivial"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per Happy Ghast desired"
+        },
+        "activity": {
+          "values": [
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "grows into rideable flying Happy Ghast"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dried creature/mob form"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "dusty dried nether creature"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "fully hydrated → spawns Happy Ghast"
+        },
+        "primary_uses": {
+          "values": [
+            "hydrate in water to spawn Happy Ghast",
+            "obtain rideable flying mount"
+          ],
+          "signal": "inferred",
+          "rationale": "sole functional purpose"
+        }
+      }
+    },
+    "minecraft:dried_kelp": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food component present"
+        },
+        "material_family": {
+          "value": "kelp",
+          "signal": "pattern",
+          "rationale": "id: dried_kelp"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "infinite kelp farms in ocean"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common food, fuel, bulk craft"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "primary product of kelp farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dried ocean plant"
+        },
+        "palette": {
+          "values": [
+            "olive",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dried green-brown seaweed"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "processed from ocean-sourced kelp"
+        },
+        "primary_uses": {
+          "values": [
+            "quick low-hunger food (1 point)",
+            "craft dried kelp block for fuel",
+            "mild furnace fuel"
+          ],
+          "signal": "inferred",
+          "rationale": "top gameplay uses"
+        }
+      }
+    },
+    "minecraft:dried_kelp_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid cube block; build and fuel storage"
+        },
+        "material_family": {
+          "value": "kelp",
+          "signal": "pattern",
+          "rationale": "id prefix dried_kelp"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "crafted from infinitely farmable kelp"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "top-tier kelp-farm fuel block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "power_generation"
+          ],
+          "signal": "inferred",
+          "rationale": "construction + 200s burn fuel"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "compressed plant block"
+        },
+        "palette": {
+          "values": [
+            "olive",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark dried seaweed block"
+        },
+        "primary_uses": {
+          "values": [
+            "efficient furnace fuel (200s)",
+            "build with natural block aesthetic",
+            "bulk kelp storage/transport form"
+          ],
+          "signal": "inferred",
+          "rationale": "top gameplay uses"
+        }
+      }
+    },
+    "minecraft:dripstone_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid cube block for cave construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "dripstone caves generate frequently"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche cave-aesthetic building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "cave-theme construction block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural cave mineral block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "warm tan/brown cave stone"
+        },
+        "primary_uses": {
+          "values": [
+            "cave-aesthetic building block",
+            "craft into pointed dripstone",
+            "dripstone cave decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:dripstone_block",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_cave"
+      ],
+      "rationale": "Dripstone blocks generate naturally in dripstone cave biomes; crafted_only is wrong",
+      "confidence": 0.92
+    },
+    {
+      "item": "minecraft:dried_ghast",
+      "facet": "origin",
+      "current": [
+        "trading"
+      ],
+      "suggested": [
+        "trading",
+        "nether"
+      ],
+      "rationale": "Dried ghast block generates naturally in the nether; blocks/ loot table signals natural gen",
+      "confidence": 0.75
+    }
+  ]
+}

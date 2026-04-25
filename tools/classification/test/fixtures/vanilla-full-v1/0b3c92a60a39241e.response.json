@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 203442,
+  "duration_api_ms": 204183,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:blue_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornate glazed pattern is primarily decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id and model suffix glazed_terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelt terracotta + blue dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative block\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative tiling use\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed + ornate directional pattern\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright saturated blue glaze\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative wall and floor tiling\", \"themed build aesthetics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard glazed terracotta use\"\n        }\n      }\n    },\n    \"minecraft:blue_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips happy ghast for player riding\"\n        },\n        \"dye_color\": {\n          \"value\": \"blue\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix blue_ + harnesses tag\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific mob equipment, crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only useful with happy ghast mounts\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables aerial travel on happy ghast\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed harness equipment\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot table sources found\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transports player aboard happy ghast\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"equip happy ghast for riding\", \"aerial transport and exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harnesses tag confirms mount purpose\"\n        }\n      }\n    },\n    \"minecraft:blue_ice\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block for structures and highways\"\n        },\n        \"material_family\": {\n          \"value\": \"ice\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _ice, compressed ice variant\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"frozen ocean biomes; needs Silk Touch\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized for boat highways\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boat highways and cold-themed builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring ice block\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep blue crystalline appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"slippery\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:sulfur_cube_archetype/fast_sliding\",\n          \"rationale\": \"fast_sliding tag confirms extreme slip\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ultra-fast boat highways\", \"cold-themed building decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main known blue ice use cases\"\n        }\n      }\n    },\n    \"minecraft:blue_orchid\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower found/grown in world\"\n        },\n        \"material_family\": {\n          \"value\": \"flower\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:small_flowers\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"swamps are a common biome\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche dye and stew ingredient\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye source and decorative planting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally growing flower\"\n        },\n        \"palette\": {\n          \"values\": [\"cool\", \"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale light-blue flower\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"light blue dye source\", \"suspicious stew ingredient\", \"decorative planting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sample_ingredient_of confirms uses\"\n        }\n      }\n    },\n    \"minecraft:blue_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"retains inventory when broken\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker_shell\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from shulker shells + chest\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires end-sourced shulker shells\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core late-game storage system\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable storage and item transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"one of 16 dyed shulker variants\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard stackable items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"portable item storage\", \"color-coded inventory sorting\", \"bulk item transport\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main shulker box use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:blue_ice\",\n      \"facet\": \"origin\",\n      \"current\": [\"village\"],\n      \"suggested\": [\"village\", \"overworld_ocean\"],\n      \"rationale\": \"Blue ice generates naturally in frozen ocean icebergs; loot-table rule missed terrain gen\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "f19d9e5e-f79a-4735-be3f-03e42fa4ff4e",
+  "total_cost_usd": 0.2559519,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4386,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15603,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4386,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15603,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4386,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4386
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3523,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0036030000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15603,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4386,
+      "webSearchRequests": 0,
+      "costUSD": 0.2523489,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7ece9814-f877-4872-b8e2-8ad5a9e802d1"
+}

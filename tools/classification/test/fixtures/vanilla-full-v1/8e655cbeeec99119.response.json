@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 173621,
+  "duration_api_ms": 174551,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:purple_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable item container holds multiple stacks\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle recipe also uses string\"\n        },\n        \"dye_color\": {\n          \"value\": \"purple\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix purple_ + bundles tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for regular inventory management\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable multi-stack item container\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed variant of base bundle\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple hue maps to violet\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, only transmute craft\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard inventory items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable multi-stack item storage\",\n            \"organize inventory during exploration\",\n            \"carry partial stacks together\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bundle mechanics\"\n        }\n      }\n    },\n    \"minecraft:purple_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles primarily serve aesthetic/decor role\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific decor builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative light source\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wax candle, organic beeswax form\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple dye + emits light when lit\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles emit light when lit\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative ambient lighting\",\n            \"cake candle decoration\",\n            \"atmosphere in builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core candle gameplay role\"\n        }\n      }\n    },\n    \"minecraft:purple_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin wool floor covering, primarily decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific decor or builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor decor and vibration dampening\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool, organic texture\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple dye color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\", \"piston_movable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag dampens_vibrations; thin block moves\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin block; mobs cannot spawn on carpets\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative floor covering\",\n            \"dampen sculk vibrations\",\n            \"llama saddle decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core carpet uses\"\n        }\n      }\n    },\n    \"minecraft:purple_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid colorful structural material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular vibrant building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural building material\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed concrete color variant\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple hue, flat solid finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"formed via powder+water, no loot source\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"vibrant solid building material\",\n            \"colorful decorative structures\",\n            \"flat-color pixel art builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core concrete gameplay role\"\n        }\n      }\n    },\n    \"minecraft:purple_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable gravity block, concrete precursor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate step toward concrete\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed to create concrete blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed concrete powder variant\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purple hue, grainy powder texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand/gravel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"convert to purple concrete via water\",\n            \"gravity-affected building block\",\n            \"sand-substitute filler block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core concrete powder uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "5df73f9c-6d89-4147-9af0-7275bf467f2d",
+  "total_cost_usd": 0.22454090000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4410,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13502,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4410
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13502,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4410,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4410,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3547,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003617,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13502,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4410,
+      "webSearchRequests": 0,
+      "costUSD": 0.2209239,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e0aa0446-fb7e-4829-ba1d-12f520e5757d"
+}

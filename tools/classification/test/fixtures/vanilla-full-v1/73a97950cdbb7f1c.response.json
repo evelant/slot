@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 105030,
+  "duration_api_ms": 105745,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:lectern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds books; librarian job site block\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"any wood slabs + bookshelf in recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"bookshelf\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bookshelf is required recipe component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per base; not every session\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"book display + librarian job site\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple wood block, no fancy aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural brown oak-toned wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Hold books for reading\", \"Librarian villager job site\", \"Display written books\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core lectern mechanics\"\n        }\n      }\n    },\n    \"minecraft:lever\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic on/off redstone signal input\"\n        },\n        \"material_family\": {\n          \"value\": \"cobblestone\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobblestone is primary recipe component\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick (wood) in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common redstone toggle in many builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary redstone switch; used in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple mechanical toggle device\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray cobblestone + brown stick appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Toggle redstone signal on/off\", \"Permanent power source switch\", \"Basic redstone input\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core lever mechanics\"\n        }\n      }\n    },\n    \"minecraft:light\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"named\",\n          \"rationale\": \"creative-only hardcoded admin item\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative builders use for invisible lighting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative build ambient lighting tool\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"invisible light source; no physical form\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits variable light 0-15; barely visible\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"produces light level 0-15 via NBT\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Invisible ambient light in creative builds\", \"Variable light level 0-15\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core use of minecraft:light block\"\n        }\n      }\n    },\n    \"minecraft:light_blue_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are primarily aesthetic wall decor\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"6 wool + 1 stick in banner recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stick in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for decoration; not daily use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall decor + shield decoration use\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool banner, fabric-look aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light blue is a pale/pastel blue tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Wall or ceiling decoration\", \"Shield decoration\", \"Faction or team marker\", \"Banner pattern base\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core banner mechanics\"\n        }\n      }\n    },\n    \"minecraft:light_blue_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sleep to skip night; sets spawn point\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 wool in bed recipe\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"3 planks in bed recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every night cycle in survival\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"home furnishing + spawn reset for explorers\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool color variant of bed\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light blue is a pale/pastel blue tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Sleep to skip night\", \"Set respawn point\", \"Home base furnishing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core bed mechanics\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "94ae2b6c-31b1-489f-ac7a-5ff4de9cf102",
+  "total_cost_usd": 0.13600315,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4281,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 7640,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4281,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 7640,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4281,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4281
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3418,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003493,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 7640,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4281,
+      "webSearchRequests": 0,
+      "costUSD": 0.13251015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "94fe343f-44b1-4817-ae6e-e020647cb4d6"
+}

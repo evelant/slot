@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:jungle_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits brief redstone pulse when pressed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially crafted from jungle planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only in specific redstone setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "pulse source; placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; jungle variant of buttons"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle planks medium warm brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden_buttons tag implies flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone pulse source",
+            "door/gate trigger",
+            "jungle wood decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core button gameplay uses"
+        }
+      }
+    },
+    "minecraft:jungle_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "water vehicle; chest is secondary feature"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from jungle boat + chest"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational water logistics vehicle"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel and item ferry"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood vehicle with chest mechanism"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle planks medium brown tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted boat+chest"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player and chest inventory"
+        },
+        "environmental_property": {
+          "values": [
+            "floats",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "boat floats on water; wood burns"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with storage",
+            "river/ocean item transport",
+            "mobile chest on waterways"
+          ],
+          "signal": "inferred",
+          "rationale": "core chest boat gameplay uses"
+        }
+      }
+    },
+    "minecraft:jungle_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive block that opens/closes"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from jungle planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in nearly every structure"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structure access; redstone-triggerable"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; jungle variant of doors"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle planks medium brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden_doors tag implies flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "entryway in wood buildings",
+            "mob exclusion barrier",
+            "redstone-triggered passage"
+          ],
+          "signal": "inferred",
+          "rationale": "core door gameplay uses"
+        }
+      }
+    },
+    "minecraft:jungle_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier/border element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from jungle planks and sticks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in farms and builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "structural border; animal pen enclosure"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; jungle fence variant"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle planks medium brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "wooden_fences tag implies flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "animal pen enclosure",
+            "decorative border/railing",
+            "building perimeter barrier"
+          ],
+          "signal": "inferred",
+          "rationale": "core fence gameplay uses"
+        }
+      }
+    },
+    "minecraft:jungle_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "openable gate integrated into fences"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from jungle planks and sticks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used wherever fences are placed"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "gate for structures, pens, redstone"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "wood; jungle variant; opens/closes"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle planks medium brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "fence_gates tag implies flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "gated entry for fence enclosures",
+            "redstone-operated gate",
+            "mob pen access point"
+          ],
+          "signal": "inferred",
+          "rationale": "core fence gate gameplay uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

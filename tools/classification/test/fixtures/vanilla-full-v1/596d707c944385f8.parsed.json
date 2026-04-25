@@ -1,0 +1,275 @@
+{
+  "items": {
+    "minecraft:cyan_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural colored block for building"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id contains _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative structure"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed terracotta variant"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan terracotta is muted teal"
+        },
+        "primary_uses": {
+          "values": [
+            "building colored structures",
+            "terracotta decoration",
+            "smelting to glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "standard terracotta use cases"
+        }
+      }
+    },
+    "minecraft:cyan_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural/decorative block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "beds, carpets, banners, building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as block; crafts carpets/beds/banners"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed natural material"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "cyan is teal-range color"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "dampens_vibrations tag; wool is flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting beds, carpets, banners",
+            "building with colored blocks",
+            "sound dampening"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wool use cases"
+        }
+      }
+    },
+    "minecraft:damaged_anvil": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "repairs/renames items like other anvils"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "anvils are crafted from iron blocks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires anvil degradation to reach"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "regularly used for repairs/enchants"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "combines enchantments, renames, repairs"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "heavy iron mechanical tool"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron gray appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "repairing items",
+            "combining enchantments",
+            "renaming items"
+          ],
+          "signal": "inferred",
+          "rationale": "standard anvil use cases"
+        }
+      }
+    },
+    "minecraft:dandelion": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower picked raw from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "grows widely on overworld surface"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye/stew occasionally"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "farmed for dye, used in flower pots"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural plant"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "yellow flower, warm tone"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting yellow dye",
+            "making suspicious stew",
+            "flower pot decoration",
+            "bee and rabbit food"
+          ],
+          "signal": "inferred",
+          "rationale": "standard dandelion use cases"
+        }
+      }
+    },
+    "minecraft:danger_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingredient for decorated pots"
+        },
+        "material_family": {
+          "value": "pottery",
+          "signal": "pattern",
+          "rationale": "id ends _pottery_sherd"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only for decorated pots"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological artifact"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "clay/pottery appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting decorated pots",
+            "archaeological collection"
+          ],
+          "signal": "inferred",
+          "rationale": "sherd's only uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

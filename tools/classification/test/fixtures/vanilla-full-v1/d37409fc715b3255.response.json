@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 140217,
+  "duration_api_ms": 140962,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:black_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta is patterned decorative tile\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"smelted from terracotta blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from widely available materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorative builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed has intricate directional patterns\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black ceramic matte finish\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"patterned decorative tile\",\n            \"colorful accent blocks\",\n            \"directional pattern building\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta primary uses\"\n        }\n      }\n    },\n    \"minecraft:black_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equips happy ghast enabling player riding\"\n        },\n        \"material_family\": {\n          \"value\": \"leather\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyeable harness, likely leather base\"\n        },\n        \"dye_color\": {\n          \"value\": \"black\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix + minecraft:harnesses tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from accessible materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when riding happy ghasts\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables happy ghast transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed harness variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black harness\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources in data\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:happy_ghast_tempt_items\",\n          \"rationale\": \"tempts/attracts happy ghasts\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"equip happy ghast for riding\",\n            \"dye into other harness colors\",\n            \"tempt happy ghasts\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness core functionality\"\n        }\n      }\n    },\n    \"minecraft:black_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable inventory storage block\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker_shell\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base box crafted from 2 shulker shells\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker shells require end exploration\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used constantly for inventory management\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"storage and logistics core use\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed shulker box variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black shulker box\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard item stacks\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable inventory expansion\",\n            \"color-coded storage organization\",\n            \"keeps items through death\",\n            \"nested storage inside chests\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker box primary uses\"\n        }\n      }\n    },\n    \"minecraft:black_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural glass block for builds\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from glass + dye\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted from sand and dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific decorative builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for structure and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed glass variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black tinted translucent glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative windows\",\n            \"light filtering\",\n            \"crafting stained glass panes\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stained glass primary uses\"\n        }\n      }\n    },\n    \"minecraft:black_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin glass pane for windows and facades\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"made from stained glass blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted from stained glass\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in window and facade builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for windows and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored glass pane variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"black tinted translucent pane\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"window construction\",\n            \"decorative partitions\",\n            \"building facades\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass pane primary uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d7a15fb0-0ce0-4d58-8cdc-c10f1f19f869",
+  "total_cost_usd": 0.2100449,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4454,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12521,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4454,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12521,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4454,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4454
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3591,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003671,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12521,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4454,
+      "webSearchRequests": 0,
+      "costUSD": 0.2063739,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "e4f947d7-86a6-4a24-8ee7-4a451693126e"
+}

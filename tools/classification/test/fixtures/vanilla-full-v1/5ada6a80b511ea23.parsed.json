@@ -1,0 +1,316 @@
+{
+  "items": {
+    "minecraft:tnt_minecart": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "explosive device; transport is incidental"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "minecart body crafted from 5 iron ingots"
+        },
+        "material_secondary": {
+          "values": [
+            "tnt"
+          ],
+          "signal": "pattern",
+          "rationale": "TNT block is the explosive payload"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche demolition/trap use"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "blasting ores and setting combat traps"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "cart+explosive contraption"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron cart with red/warm TNT"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot_sources; recipe_production present"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "explosion damages nearby entities"
+        },
+        "primary_uses": {
+          "values": [
+            "Demolition blasting on rails",
+            "Combat trap on minecart tracks",
+            "Mining large ore veins quickly"
+          ],
+          "signal": "inferred",
+          "rationale": "core TNT minecart use cases"
+        }
+      }
+    },
+    "minecraft:torch": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is active light emission"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "pattern",
+          "rationale": "stick is structural element"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "sticks+coal; placed by thousands"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "placed constantly in caves and builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "mining",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "lighting for builds, caves, decoration"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple stick+coal aesthetic"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "warm orange flame, actively emits light"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "light lvl 14; pops off when piston pushes"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "torch light prevents hostile mob spawning"
+        },
+        "primary_uses": {
+          "values": [
+            "Illuminate dark areas",
+            "Block mob spawning in bases",
+            "Cave exploration lighting",
+            "Craft lanterns and jack o lanterns"
+          ],
+          "signal": "inferred",
+          "rationale": "core torch use cases"
+        }
+      }
+    },
+    "minecraft:torchflower": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant obtained from world"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires sniffer seed progression"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye/stew occasionally"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "grown for dye and decorative display"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "rare ornate flower from ancient seeds"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-amber flower coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft orange dye",
+            "Make suspicious stew",
+            "Rare decorative flower",
+            "Attracts bees"
+          ],
+          "signal": "inferred",
+          "rationale": "dye source and decorative uses"
+        }
+      }
+    },
+    "minecraft:torchflower_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw seeds dug by sniffer; unprocessed"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "sniffer-dug; sniffers require archaeology"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted once sniffer farm established"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted to grow torchflower"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple seed from rare ancient plant"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "orange-amber seed appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Plant to grow torchflower",
+            "Feed sniffer to breed",
+            "Feed chickens and parrots"
+          ],
+          "signal": "inferred",
+          "rationale": "planting and animal feeding uses"
+        }
+      }
+    },
+    "minecraft:totem_of_undying": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "consumed on lethal hit to prevent death"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hoarded; consumed only on near-death"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "held in offhand during dangerous fights"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient artifact with magical death prevention"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "amber"
+          ],
+          "signal": "inferred",
+          "rationale": "golden yellow totem aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "Prevent death when held in offhand",
+            "Survive raids and boss fights",
+            "Obtained by killing evokers"
+          ],
+          "signal": "inferred",
+          "rationale": "death-prevention utility item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:totem_of_undying",
+      "facet": "rarity",
+      "current": "uncommon",
+      "suggested": "rare",
+      "rationale": "Evokers only in woodland mansions/raids; milestone drop",
+      "confidence": 0.7
+    }
+  ]
+}

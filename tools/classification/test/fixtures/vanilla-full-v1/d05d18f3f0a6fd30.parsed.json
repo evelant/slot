@@ -1,0 +1,260 @@
+{
+  "items": {
+    "minecraft:waxed_chiseled_copper": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chiseled pattern = primarily aesthetic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative block used situationally"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for copper aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled variant of copper block"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed = stays at fresh copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper-pattern block",
+            "building copper-themed structures"
+          ],
+          "signal": "inferred",
+          "rationale": "chiseled = decor; waxed = permanent build"
+        }
+      }
+    },
+    "minecraft:waxed_copper_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "bars = structural barrier like iron bars"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche structural/decorative use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used as barriers and window detail"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "bar form = mechanical aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed = stays fresh copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper barriers and windows",
+            "mob-proof openings with gaps"
+          ],
+          "signal": "inferred",
+          "rationale": "same function as iron bars, copper variant"
+        }
+      }
+    },
+    "minecraft:waxed_copper_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "waxed = frozen oxidation for building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable; copper is abundant"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when building copper structures"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed block placed for structure"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "undecorated full block form"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed = stays fresh copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "building permanent copper structures",
+            "storage block for copper ingots",
+            "crafting copper variants via stonecutting"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed preserves look; ingredient of variants"
+        }
+      }
+    },
+    "minecraft:waxed_copper_bulb": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "toggleable light source w/ redstone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in redstone lighting setups"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "light + redstone toggle + copper decor"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-toggled device aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "copper color + emits light when active"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "copper bulb is a toggleable light source"
+        },
+        "primary_uses": {
+          "values": [
+            "redstone-toggleable light source",
+            "copper-themed lighting decor"
+          ],
+          "signal": "inferred",
+          "rationale": "core function is redstone-controlled light"
+        }
+      }
+    },
+    "minecraft:waxed_copper_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "chains = primarily decorative connectors"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from copper + honeycomb"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for hanging decor situationally"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "hang lanterns/bells, aesthetic detail"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "chain = mechanical/industrial aesthetic"
+        },
+        "palette": {
+          "values": [
+            "copper_bright"
+          ],
+          "signal": "inferred",
+          "rationale": "waxed = stays fresh copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "hanging lanterns and bells",
+            "decorative chain detail"
+          ],
+          "signal": "inferred",
+          "rationale": "same use as iron chain but copper variant"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 128796,
+  "duration_api_ms": 129629,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:enderman_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn mobs on right-click\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires creative/commands; not survival\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/map building situational use\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enderman farms; combat scenario setup\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"egg form representing mob\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enderman is black with purple eyes\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg id pattern\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no vanilla survival acquisition path\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn endermen in world\", \"mob farm setup\", \"adventure map design\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical spawn egg use cases\"\n        }\n      }\n    },\n    \"minecraft:endermite_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn mobs on right-click\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires creative/commands to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use in creative or farms\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"endermites lure endermen to XP farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"egg form representing mob\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"endermite is dark purple\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg id pattern\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no vanilla survival acquisition path\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn endermites\", \"lure endermen to farms\", \"creative testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"endermite niche use cases\"\n        }\n      }\n    },\n    \"minecraft:evoker_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn mobs on right-click\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires creative/commands to obtain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative/map building only\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"evoker is hostile combat-focused mob\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"egg form; evoker is threatening illager\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"evoker wears gray-dark robes\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"_spawn_egg id pattern\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no vanilla survival acquisition path\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn evokers\", \"totem farm setup\", \"combat challenge maps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"evoker-specific use cases\"\n        }\n      }\n    },\n    \"minecraft:experience_bottle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown to spawn XP orbs on impact\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in loot; used situationally\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"XP gained used for enchanting/anvil\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical condensed XP bottle\"\n        },\n        \"palette\": {\n          \"values\": [\"glowing\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shimmering green-blue glass bottle\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass bottle containing XP essence\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"gain XP on demand\", \"fast enchanting prep\", \"leveling up quickly\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown for immediate XP gain\"\n        }\n      }\n    },\n    \"minecraft:explorer_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in decorated pot recipe\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used specifically for decorated pots\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to craft decorated pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological find from ocean ruins\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fired clay pottery appearance\"\n        },\n        \"material_family\": {\n          \"value\": \"pottery\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fired clay sherd fragment\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft decorated pots\", \"archaeology collection\", \"decorating builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_ingredients tag\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "ba0aec1f-dc4a-4e80-920b-fc92f2122548",
+  "total_cost_usd": 0.14984940000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3056,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8951,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3056,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8951,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3056,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3056
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2193,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002268,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8951,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3056,
+      "webSearchRequests": 0,
+      "costUSD": 0.14758140000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d48f060f-fce5-4cb2-8204-5ed074188af6"
+}

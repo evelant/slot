@@ -1,0 +1,317 @@
+{
+  "items": {
+    "minecraft:pink_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "glass pane used as structural window element"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational window/wall material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "windows and decorative glass walls"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "stained = explicitly dyed glass"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is pastel; glass is translucent"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes accept water in their block space"
+        },
+        "primary_uses": {
+          "values": [
+            "building windows and glass walls",
+            "decorating structures with color"
+          ],
+          "signal": "inferred",
+          "rationale": "core use of a colored glass pane"
+        }
+      }
+    },
+    "minecraft:pink_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "terracotta is a colored building material"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix _terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational decorative building block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for colored structures"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed clay; earthy origin"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "pink terracotta is warm and muted in tone"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative colored building block",
+            "crafting pink glazed terracotta",
+            "colorful structure material"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream from recipe and building use"
+        }
+      }
+    },
+    "minecraft:pink_tulip": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower harvested directly from world"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye/stew, not constantly"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "grown for dye; placed as decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "natural flower with distinct pink hue"
+        },
+        "palette": {
+          "values": [
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "soft pink tone"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:bee_food attracts bees"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting pink dye",
+            "making suspicious stew",
+            "decoration in flower pots",
+            "bee food/pollination"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream uses from recipe and tag data"
+        }
+      }
+    },
+    "minecraft:pink_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wool is a placeable colored building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in building, beds, and crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "colored structures, beds, carpets, banners"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool; animal-derived material"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pink wool reads as soft and light"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "rationale": "wool burns; tag dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building material",
+            "crafting beds and carpets",
+            "silencing sculk sensors"
+          ],
+          "signal": "inferred",
+          "rationale": "core wool gameplay uses"
+        }
+      }
+    },
+    "minecraft:piston": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "mechanical actuator activated by redstone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "inferred",
+          "rationale": "cobblestone forms main body (4 in recipe)"
+        },
+        "material_secondary": {
+          "values": [
+            "wood",
+            "iron"
+          ],
+          "signal": "inferred",
+          "rationale": "3 planks and 1 iron ingot in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core redstone and automation component"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone-driven; automation and contraptions"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "physically moving mechanical device"
+        },
+        "palette": {
+          "values": [
+            "wood_light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden face, stone/matte body"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "pistons can be pushed by other pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "pushing blocks and entities",
+            "redstone contraptions",
+            "automation builds",
+            "crafting sticky piston"
+          ],
+          "signal": "inferred",
+          "rationale": "core piston gameplay functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

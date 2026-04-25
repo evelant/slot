@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 116345,
+  "duration_api_ms": 117398,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:polished_andesite_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs tag; structural placement\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"andesite abundant; trivial to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only in specific builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural stair block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"polished form of andesite\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light gray polished stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building stairways\", \"architectural trim\", \"structural steps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs shape = stair use cases\"\n        }\n      }\n    },\n    \"minecraft:polished_basalt\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full block placed for decoration/structure\"\n        },\n        \"material_family\": {\n          \"value\": \"basalt\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix polished_basalt\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"basalt plentiful in nether\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether-theme builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural/deco block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"polished volcanic column stone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray with column banding\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed builds\", \"basalt column decoration\", \"dark stone floors\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether stone decorative block\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structural block; also craft base\"\n        },\n        \"material_family\": {\n          \"value\": \"blackstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix polished_blackstone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone common in nether\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether builds and crafting base\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"polished form of blackstone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"very dark purple-black stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building nether structures\", \"crafting blackstone variants\", \"dark decorative floor\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether block and craft ingredient\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone_brick_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"slab tag; structural half-block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common nether stone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether-theme builds only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as half-height structural slab\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick pattern adds refinement\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark blackstone brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height nether floors\", \"decorative slab trim\", \"architectural detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form for build detail\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone_brick_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stairs tag; structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common nether stone\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether-theme builds only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as stair block in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick stairs more refined\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark blackstone brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building dark stairways\", \"architectural nether detail\", \"decorative steps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form for nether builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:polished_blackstone\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"bastion\"],\n      \"rationale\": \"generates naturally in bastion remnant structures\",\n      \"confidence\": 0.75\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "30a0c318-df28-4ab5-a134-81c1971b8931",
+  "total_cost_usd": 0.16543015,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5133,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9332,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 5133
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9332,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5133,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 5133,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4270,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004345000000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9332,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5133,
+      "webSearchRequests": 0,
+      "costUSD": 0.16108515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a8289554-9c8d-45b4-bf63-47a70c2eb366"
+}

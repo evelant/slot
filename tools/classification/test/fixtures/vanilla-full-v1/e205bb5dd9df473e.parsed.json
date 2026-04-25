@@ -1,0 +1,284 @@
+{
+  "items": {
+    "minecraft:spruce_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "dropped from world leaves; not processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common drop from taiga trees"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when establishing tree farms"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "grow trees for wood/farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "living plant item"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "visually green sapling"
+        },
+        "primary_uses": {
+          "values": [
+            "grow spruce trees",
+            "fuel",
+            "potted plant decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core sapling end-uses"
+        }
+      }
+    },
+    "minecraft:spruce_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "holds/displays items; has_nbt_variation"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common spruce wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche display/decor block"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "display items and decorate builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce is a dark-toned wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block burns"
+        },
+        "primary_uses": {
+          "values": [
+            "display items decoratively",
+            "organize items visually"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf primary purpose"
+        }
+      }
+    },
+    "minecraft:spruce_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "signs are text/label decoratives"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from wood; found in villages"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "useful for labeling but not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "label and decorate builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden sign"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce dark wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block burns"
+        },
+        "primary_uses": {
+          "values": [
+            "label areas and chests",
+            "display text in world",
+            "themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core sign uses"
+        }
+      }
+    },
+    "minecraft:spruce_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:slabs → structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easy to craft from planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in construction"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and detail block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce dark wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block burns"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height flooring",
+            "roofing detail",
+            "stair alternatives",
+            "ingredient for barrels/composters"
+          ],
+          "signal": "inferred",
+          "rationale": "common slab end-uses"
+        }
+      }
+    },
+    "minecraft:spruce_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:stairs → structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easy to craft from planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in staircases and roofs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and decorative use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based block"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce dark wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block burns"
+        },
+        "primary_uses": {
+          "values": [
+            "staircases",
+            "roof building",
+            "decorative edges and trim"
+          ],
+          "signal": "inferred",
+          "rationale": "core stairs end-uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

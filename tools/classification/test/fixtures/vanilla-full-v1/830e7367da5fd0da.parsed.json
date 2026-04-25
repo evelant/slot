@@ -1,0 +1,310 @@
+{
+  "items": {
+    "minecraft:jungle_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "signs have write/click text interaction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for labeling, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds for text/decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; one of 8 wood variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood warm medium-brown tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood item; is_fuel implies flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "label areas with text",
+            "decorate builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core hanging sign use cases"
+        }
+      }
+    },
+    "minecraft:jungle_leaves": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "leaves placed for aesthetic foliage"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in tree/hedge builds"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "foliage for builds and landscapes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic leaf block"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green foliage appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are flammable in Minecraft"
+        },
+        "primary_uses": {
+          "values": [
+            "decorate builds with foliage",
+            "craft leaf litter",
+            "source saplings and sticks"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of jungle leaves"
+        }
+      }
+    },
+    "minecraft:jungle_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw log from tree, unprocessed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "key material; used in many recipes"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as log in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "raw wood; one of many log variants"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle log warm medium-brown bark"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "craft jungle planks",
+            "build log structures",
+            "make charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "top uses from ingredient list"
+        }
+      }
+    },
+    "minecraft:jungle_planks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "planks primary structural material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "50+ recipes; ubiquitous in building"
+        },
+        "tier": {
+          "value": "wooden",
+          "signal": "pattern",
+          "rationale": "tag minecraft:wooden_tool_materials"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary structural and crafting block"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "flat planks; jungle wood variant"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle planks orange-brown warm tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood planks are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "build structures",
+            "craft furniture and tools",
+            "make stairs and slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "core plank use cases"
+        }
+      }
+    },
+    "minecraft:jungle_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "pressure plates emit redstone signal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific redstone setups"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers redstone; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "functional sensor made of wood"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood pressure plate; is_fuel=true"
+        },
+        "primary_uses": {
+          "values": [
+            "detect player/mob steps",
+            "trigger redstone circuits",
+            "activate doors or traps"
+          ],
+          "signal": "inferred",
+          "rationale": "core pressure plate use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:jungle_planks",
+      "facet": "material_family",
+      "current": "wood_oak",
+      "suggested": "wood_jungle",
+      "rationale": "id is jungle_planks; oak assigned generically from wooden_tool_materials tag",
+      "confidence": 0.95
+    }
+  ]
+}

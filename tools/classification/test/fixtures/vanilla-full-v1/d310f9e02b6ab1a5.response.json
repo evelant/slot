@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 218075,
+  "duration_api_ms": 219415,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:red_bundle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds multiple item types in inventory\"\n        },\n        \"material_family\": {\n          \"value\": \"rabbit_hide\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base bundle crafted from rabbit hide\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string is the other base bundle ingredient\"\n        },\n        \"dye_color\": {\n          \"value\": \"red\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix red_; dyed variant\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from accessible materials\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used regularly for inventory management\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"consolidates items; aids item logistics\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dyed color variant of base bundle\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"saturated red hue\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot; crafted via transmute\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fits in standard inventory slots\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"consolidate inventory items\",\n            \"carry mixed item stacks\",\n            \"reduce hotbar clutter\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bundle core inventory function\"\n        }\n      }\n    },\n    \"minecraft:red_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decor; lighting is secondary\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles crafted from honeycomb\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"string is the second candle ingredient\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bees accessible; craftable in overworld\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used by decorators; not universal\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is aesthetic placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wax; organic natural feel\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red color; warm candlelight glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lit candle emits light level 3\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ambient lighting decoration\",\n            \"cake decoration\",\n            \"marking locations visually\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"candle core in-game uses\"\n        }\n      }\n    },\n    \"minecraft:red_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin floor covering; primarily aesthetic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool from sheep is easily farmed\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds; not an everyday item\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor decor; some structural use\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyed wool; natural textile material\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"saturated red dye color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\", \"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dampens_vibrations tag; wool carpet burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"floor and surface decoration\",\n            \"llama decoration\",\n            \"vibration dampening\",\n            \"color-coded floor zones\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpet key gameplay roles\"\n        }\n      }\n    },\n    \"minecraft:red_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid durable block for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends _concrete; tag minecraft:concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made from sand, gravel, dye; accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular colored building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid color; no pattern or texture\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright red; smooth matte surface\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural gen; made via powder+water\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_high\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"9.0 blast resistance; pistons can move it\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"solid colored building surface\",\n            \"pixel art and accent builds\",\n            \"interior design block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete is a go-to build material\"\n        }\n      }\n    },\n    \"minecraft:red_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed block; precursor to concrete\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete_powder\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _concrete_powder\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"sand\", \"gravel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 4 sand + 4 gravel + dye\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sand and gravel are abundant resources\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting step for popular concrete block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to produce concrete for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid color; granular appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red-dyed sandy-textured block\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand; movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting red concrete via water contact\",\n            \"gravity-based builds or traps\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"concrete powder core gameplay uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "285d51b5-19dc-450c-b5e3-e55089d996ea",
+  "total_cost_usd": 0.2788208999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4410,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 17120,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4410
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17120,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4410,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4410,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3547,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003627,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17120,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4410,
+      "webSearchRequests": 0,
+      "costUSD": 0.27519389999999994,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a7267862-552d-4e0f-8324-4a40cb0b3a6c"
+}

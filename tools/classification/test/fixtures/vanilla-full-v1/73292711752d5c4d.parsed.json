@@ -1,0 +1,280 @@
+{
+  "items": {
+    "minecraft:dispenser": {
+      "facets": {
+        "role": {
+          "value": "mechanism",
+          "signal": "inferred",
+          "rationale": "redstone-activated item dispensing device"
+        },
+        "material_family": {
+          "value": "cobblestone",
+          "signal": "inferred",
+          "rationale": "7 cobblestone dominate recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone dust in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific contraptions only"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "fires via redstone; core automation block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone machine block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-gray cobblestone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "dispense items and projectiles",
+            "redstone automation",
+            "trap building"
+          ],
+          "signal": "inferred",
+          "rationale": "core dispensing functionality"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "pistons can push dispensers"
+        }
+      }
+    },
+    "minecraft:dolphin_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, no survival source"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe or loot table entry"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "unavailable in survival mode"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used rarely outside creative"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn mobs for farms/creative builds"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg always spawns its linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn dolphins in creative",
+            "mob farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg function"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "silver"
+          ],
+          "signal": "inferred",
+          "rationale": "dolphin gray-teal coloring"
+        }
+      }
+    },
+    "minecraft:donkey_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only spawn egg, no survival source"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no recipe or loot table entry"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "unavailable in survival mode"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used rarely outside creative"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn mobs for farms/creative builds"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg always spawns its linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn donkeys in creative",
+            "mob farm setup"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg function"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "donkey brown coloring"
+        }
+      }
+    },
+    "minecraft:dragon_breath": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "collected raw from dragon breath cloud"
+        },
+        "origin": {
+          "values": [
+            "end"
+          ],
+          "signal": "inferred",
+          "rationale": "harvested in End from dragon attack"
+        },
+        "activity": {
+          "values": [
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "sole use: brew lingering potions"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical dragon essence in a bottle"
+        },
+        "palette": {
+          "values": [
+            "violet",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "purple glowing bottle"
+        },
+        "primary_uses": {
+          "values": [
+            "brew lingering potions",
+            "end boss encounter reward"
+          ],
+          "signal": "inferred",
+          "rationale": "only crafting use is lingering potions"
+        }
+      }
+    },
+    "minecraft:dragon_egg": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "inferred",
+          "rationale": "unique proof of defeating Ender Dragon"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "one per world, purely displayed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative trophy block"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient relic from dragon boss"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "deep black speckled texture"
+        },
+        "primary_uses": {
+          "values": [
+            "trophy for defeating Ender Dragon",
+            "rare decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "prestige display item only"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand when unsupported"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

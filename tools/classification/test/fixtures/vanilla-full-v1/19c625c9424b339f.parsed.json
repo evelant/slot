@@ -1,0 +1,294 @@
+{
+  "items": {
+    "minecraft:enderman_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to spawn mobs on right-click"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires creative/commands; not survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative/map building situational use"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "enderman farms; combat scenario setup"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "egg form representing mob"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "enderman is black with purple eyes"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg id pattern"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no vanilla survival acquisition path"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn endermen in world",
+            "mob farm setup",
+            "adventure map design"
+          ],
+          "signal": "inferred",
+          "rationale": "typical spawn egg use cases"
+        }
+      }
+    },
+    "minecraft:endermite_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to spawn mobs on right-click"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires creative/commands to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use in creative or farms"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "endermites lure endermen to XP farms"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "egg form representing mob"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "endermite is dark purple"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg id pattern"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no vanilla survival acquisition path"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn endermites",
+            "lure endermen to farms",
+            "creative testing"
+          ],
+          "signal": "inferred",
+          "rationale": "endermite niche use cases"
+        }
+      }
+    },
+    "minecraft:evoker_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to spawn mobs on right-click"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires creative/commands to obtain"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "creative/map building only"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "evoker is hostile combat-focused mob"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "egg form; evoker is threatening illager"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "evoker wears gray-dark robes"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg id pattern"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no vanilla survival acquisition path"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn evokers",
+            "totem farm setup",
+            "combat challenge maps"
+          ],
+          "signal": "inferred",
+          "rationale": "evoker-specific use cases"
+        }
+      }
+    },
+    "minecraft:experience_bottle": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "thrown to spawn XP orbs on impact"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "found in loot; used situationally"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "XP gained used for enchanting/anvil"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical condensed XP bottle"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "shimmering green-blue glass bottle"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "inferred",
+          "rationale": "glass bottle containing XP essence"
+        },
+        "primary_uses": {
+          "values": [
+            "gain XP on demand",
+            "fast enchanting prep",
+            "leveling up quickly"
+          ],
+          "signal": "inferred",
+          "rationale": "thrown for immediate XP gain"
+        }
+      }
+    },
+    "minecraft:explorer_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "ingredient in decorated pot recipe"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used specifically for decorated pots"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to craft decorated pots"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "archaeological find from ocean ruins"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "fired clay pottery appearance"
+        },
+        "material_family": {
+          "value": "pottery",
+          "signal": "inferred",
+          "rationale": "fired clay sherd fragment"
+        },
+        "primary_uses": {
+          "values": [
+            "craft decorated pots",
+            "archaeology collection",
+            "decorating builds"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_ingredients tag"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

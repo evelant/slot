@@ -1,0 +1,310 @@
+{
+  "items": {
+    "minecraft:pale_oak_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "drops from leaves, planted raw, not refined"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted occasionally to grow trees"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "planted to grow wood supply"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic plant item"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "pale muted green sapling sprite"
+        },
+        "primary_uses": {
+          "values": [
+            "plant pale oak trees",
+            "grow renewable wood supply",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "sapling core functions"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "plant/wood item burns"
+        }
+      }
+    },
+    "minecraft:pale_oak_shelf": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "has_nbt_variation implies item storage/state"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche furniture/display block"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "display/store items aesthetically"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wood furniture block"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak is very light wood tone"
+        },
+        "primary_uses": {
+          "values": [
+            "display books or items",
+            "pale oak furniture decoration",
+            "interior build detail"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf display/storage uses"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood block burns"
+        }
+      }
+    },
+    "minecraft:pale_oak_sign": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sign accepts text, click events; interactive"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when labeling is needed"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "labels and decor in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wood sign"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak light wood color"
+        },
+        "primary_uses": {
+          "values": [
+            "label locations with text",
+            "decorate builds",
+            "wayfinding markers"
+          ],
+          "signal": "inferred",
+          "rationale": "sign standard uses"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood sign burns"
+        }
+      }
+    },
+    "minecraft:pale_oak_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag wooden_slabs, form=slab"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs are core building staple"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic wood slab form"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak very light wood tone"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "decorative half-block builds",
+            "ingredient for barrels/composters/lecterns"
+          ],
+          "signal": "inferred",
+          "rationale": "slab building and crafting uses"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood slab burns"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "bottom slabs prevent mob spawning"
+        }
+      }
+    },
+    "minecraft:pale_oak_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag wooden_stairs, form=stairs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs heavily used in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic wood stair block"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak very light wood"
+        },
+        "primary_uses": {
+          "values": [
+            "stair blocks for elevation changes",
+            "decorative roofing shapes",
+            "furniture building"
+          ],
+          "signal": "inferred",
+          "rationale": "stair standard uses"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood stairs burn"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "non-full stair blocks prevent spawning"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

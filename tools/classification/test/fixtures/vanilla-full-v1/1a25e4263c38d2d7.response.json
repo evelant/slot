@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 169210,
+  "duration_api_ms": 170523,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:magenta_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"processed dye; not raw world pickup\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:dye component = magenta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used to color many item types\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to color/dye aesthetic items\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"explicit dye colorant item\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"derived from allium/lilac surface flowers\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dyeing wool and textiles\",\n            \"coloring beds and carpets\",\n            \"firework star coloring\",\n            \"leather armor dyeing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"confirmed by sample_ingredient_of list\"\n        }\n      }\n    },\n    \"minecraft:magenta_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ornate patterned; primarily aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"smelted from magenta terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative block\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative architectural use\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed = ornate patterned surface\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta glaze is a vivid color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed terracotta not moved by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative floor and wall patterns\",\n            \"bold color in builds\",\n            \"directional pattern designs\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard glazed terracotta usage\"\n        }\n      }\n    },\n    \"minecraft:magenta_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mob equipment enabling ghast riding\"\n        },\n        \"dye_color\": {\n          \"value\": \"magenta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix magenta + colored harness pattern\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness crafted from wool in 1.21.5\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only when riding happy ghasts\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables flying via happy ghast\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored wool-based mob accessory\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; recipe production only\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:happy_ghast_tempt_items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"equip happy ghast for riding\",\n            \"tempt and attract happy ghast\",\n            \"color-coded ghast accessory\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness function + tempt tag confirms\"\n        }\n      }\n    },\n    \"minecraft:magenta_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"shulker_boxes tag; form=storage_block\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from shulker shells\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires end exploration for shells\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core portable storage used constantly\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable storage and item transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyeable 16-color storage block\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magenta is a vivid color\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items in 27 slots\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker boxes cannot be pushed by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable 27-slot storage\",\n            \"keeps contents when broken\",\n            \"color-coded storage organization\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core shulker box gameplay purpose\"\n        }\n      }\n    },\n    \"minecraft:magenta_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural glass used in windows/walls\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds but not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative structural building material\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"explicitly stained/colored glass\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass=translucent; magenta=vivid\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass blocks are piston movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colored windows and skylights\",\n            \"decorative glass walls\",\n            \"light color filtering\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stained glass uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "48d8f8b0-d467-4e0b-a2de-b8b2dd5474da",
+  "total_cost_usd": 0.2243504,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4692,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13399,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4692,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13399,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4692,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4692
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3829,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003914,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13399,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4692,
+      "webSearchRequests": 0,
+      "costUSD": 0.2204364,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "66f64a01-2b67-4b40-b9af-369a225d13b0"
+}

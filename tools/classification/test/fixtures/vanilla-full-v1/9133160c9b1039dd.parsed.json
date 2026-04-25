@@ -1,0 +1,332 @@
+{
+  "items": {
+    "minecraft:dark_oak_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "vehicle for water traversal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component sets rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when crossing water bodies"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel and world exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; one of several boat types"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak is a dark brown wood"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted from planks"
+        },
+        "environmental_property": {
+          "values": [
+            "floats",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "boats float; wood catches fire"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player and mobs on water"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel",
+            "transporting mobs across water",
+            "crafting chest boat"
+          ],
+          "signal": "inferred",
+          "rationale": "core water vehicle functions"
+        }
+      }
+    },
+    "minecraft:dark_oak_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "buttons emit momentary redstone pulse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component sets rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed in specific builds/circuits"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone input device used in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; one of several button types"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden block; pops off piston push"
+        },
+        "primary_uses": {
+          "values": [
+            "trigger momentary redstone pulse",
+            "activate doors and gates",
+            "decorative switch"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button uses"
+        }
+      }
+    },
+    "minecraft:dark_oak_chest_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "inferred",
+          "rationale": "vehicle primary; chest is secondary"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component sets rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use: water travel with cargo"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel with inventory"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; one of several chest boat types"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted from boat+chest"
+        },
+        "environmental_property": {
+          "values": [
+            "floats",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "boat floats; wood catches fire"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player, mobs, and chest items"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with onboard storage",
+            "mobile item transport on water",
+            "transporting mobs with supplies"
+          ],
+          "signal": "inferred",
+          "rationale": "chest boat core functions"
+        }
+      }
+    },
+    "minecraft:dark_oak_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive open/close mechanic"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component sets rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "every structure needs entrances"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structure entrance"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; one of several door types"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden door; piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "separating interior spaces",
+            "redstone-operable barrier"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door uses"
+        }
+      }
+    },
+    "minecraft:dark_oak_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier; primary use is building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component sets rarity:common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common in farms and enclosures"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "structural borders; mob containment"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; one of several fence types"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "dark oak coloring"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable",
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wooden fence; piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "mob containment pens",
+            "decorative borders and railings",
+            "structural enclosures"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,289 @@
+{
+  "items": {
+    "minecraft:parrot_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs place a mob on right-click"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "no loot table or recipe; creative/cmd only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when populating builds or farms"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot or recipe found"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns tameable animals for farms/builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mob spawn item, wildlife theme"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn a parrot on demand",
+            "populate builds with wildlife"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawn egg purpose"
+        }
+      }
+    },
+    "minecraft:pearlescent_froglight": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "exotic glowing column block for ambiance"
+        },
+        "material_family": {
+          "value": "froglight",
+          "signal": "pattern",
+          "rationale": "id suffix _froglight"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires warm frog to eat a magma cube"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative light source"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "light-emitting decor placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "organic origin, exotic pearlescent look"
+        },
+        "palette": {
+          "values": [
+            "iridescent",
+            "glowing",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "pearlescent = soft shimmery luminous glow"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "froглights emit light level 15"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative light source",
+            "ambient lighting in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "primary in-game uses of froглights"
+        }
+      }
+    },
+    "minecraft:peony": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "tall flower gathered from overworld as-is"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flower/plant category"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "grows in flower forests and plains"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for dye; not an everyday item"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "dye crafting and bee-food farming"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "natural flower; vibrant pink hue"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "peony is a pink warm-toned flower"
+        },
+        "primary_uses": {
+          "values": [
+            "craft pink dye",
+            "decorative tall flower",
+            "bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe output and minecraft:bee_food tag"
+        }
+      }
+    },
+    "minecraft:petrified_oak_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form, structural use in builds"
+        },
+        "material_family": {
+          "value": "wood_oak",
+          "signal": "inferred",
+          "rationale": "visually oak; petrified stone behavior"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only; unobtainable in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, very niche use"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slab used in construction"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "petrified = ancient fossilized oak variant"
+        },
+        "palette": {
+          "values": [
+            "wood_medium"
+          ],
+          "signal": "inferred",
+          "rationale": "oak wood visual appearance"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-type block; won't burn unlike wood"
+        },
+        "primary_uses": {
+          "values": [
+            "fire-resistant wood-look slab",
+            "creative-only building material"
+          ],
+          "signal": "inferred",
+          "rationale": "key distinguisher from regular oak slab"
+        }
+      }
+    },
+    "minecraft:phantom_membrane": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw mob drop used directly in recipes"
+        },
+        "material_family": {
+          "value": "phantom",
+          "signal": "pattern",
+          "rationale": "id prefix phantom_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "phantoms spawn only after 3 sleepless nights"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "elytra repair and slow falling brewing"
+        },
+        "activity": {
+          "values": [
+            "brewing",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "slow falling potion; elytra repair for flight"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob drop"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "thin membrane; pale blue-gray tone"
+        },
+        "primary_uses": {
+          "values": [
+            "repair elytra at crafting table",
+            "brew slow falling potion"
+          ],
+          "signal": "inferred",
+          "rationale": "only vanilla uses for phantom membrane"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

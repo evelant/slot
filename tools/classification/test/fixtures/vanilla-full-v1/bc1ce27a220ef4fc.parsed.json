@@ -1,0 +1,300 @@
+{
+  "items": {
+    "minecraft:stripped_dark_oak_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "all-bark log block; primary use is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "requires dark oak forest, but easy to farm"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only for dark oak aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural/decorative column"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark oak is near-espresso dark brown"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "building dark oak structures",
+            "fuel for furnaces",
+            "crafting dark oak planks"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and block placement"
+        }
+      }
+    },
+    "minecraft:stripped_jungle_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log block; primary use is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "jungle biome required but logs abundant there"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for jungle-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural element"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle log is pale cream-tan"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by axe-stripping jungle trees"
+        },
+        "primary_uses": {
+          "values": [
+            "building jungle structures",
+            "fuel for furnaces",
+            "crafting jungle planks"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and block placement"
+        }
+      }
+    },
+    "minecraft:stripped_jungle_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "all-bark log block; primary use is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stripped jungle log"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for jungle-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural/column element"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "jungle wood is pale cream-tan"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "building jungle structures",
+            "fuel for furnaces",
+            "crafting jungle planks"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and block placement"
+        }
+      }
+    },
+    "minecraft:stripped_mangrove_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "log block; primary use is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mangrove swamps accessible; logs abundant there"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for mangrove-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural element"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove log has reddish-orange hue"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained by axe-stripping mangrove trees"
+        },
+        "primary_uses": {
+          "values": [
+            "building mangrove structures",
+            "fuel for furnaces",
+            "crafting mangrove planks"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and block placement"
+        }
+      }
+    },
+    "minecraft:stripped_mangrove_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "all-bark log block; primary use is structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from stripped mangrove log"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for mangrove-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural/column element"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood has reddish-orange hue"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "building mangrove structures",
+            "fuel for furnaces",
+            "crafting mangrove planks"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes and block placement"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

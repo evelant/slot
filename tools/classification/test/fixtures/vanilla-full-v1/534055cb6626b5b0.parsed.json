@@ -1,0 +1,308 @@
+{
+  "items": {
+    "minecraft:birch_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural hatch used in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in construction"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as architectural hatch/gate"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch is pale/light toned wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; pistons can push it"
+        },
+        "primary_uses": {
+          "values": [
+            "building hatches and passage gates",
+            "mob farm floor/ceiling trick",
+            "decorative architectural detail"
+          ],
+          "signal": "inferred",
+          "rationale": "typical trapdoor player uses"
+        }
+      }
+    },
+    "minecraft:birch_wood": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "all-bark log variant from birch trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used in building and crafting"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural/decorative block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed wood"
+        },
+        "palette": {
+          "values": [
+            "wood_light"
+          ],
+          "signal": "inferred",
+          "rationale": "birch is pale/light toned"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; piston movable"
+        },
+        "primary_uses": {
+          "values": [
+            "building with birch aesthetic",
+            "crafting into planks and items",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "typical log block uses"
+        }
+      }
+    },
+    "minecraft:black_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "primary purpose is aesthetic display"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "pattern",
+          "rationale": "banners crafted from 6 wool + stick"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, not everyday use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black is a dark tone"
+        },
+        "primary_uses": {
+          "values": [
+            "decorating bases and builds",
+            "marking locations",
+            "shield decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "standard banner player uses"
+        }
+      }
+    },
+    "minecraft:black_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "active mechanic: sleep and set spawn"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "inferred",
+          "rationale": "wool is the color-defining component"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "inferred",
+          "rationale": "planks form the bed frame"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "everyday",
+          "signal": "inferred",
+          "rationale": "players sleep every night"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black is a dark tone"
+        },
+        "primary_uses": {
+          "values": [
+            "skip the night cycle",
+            "set respawn point"
+          ],
+          "signal": "inferred",
+          "rationale": "core bed functions"
+        }
+      }
+    },
+    "minecraft:black_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "portable item container held in inventory"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "string used in base bundle recipe"
+        },
+        "dye_color": {
+          "value": "black",
+          "signal": "pattern",
+          "rationale": "id prefix black_ + bundles tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "rabbit hide is not trivially obtained"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for inventory mgmt"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable multi-item container"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed color variant"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black is a dark tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot tables; transmute-only production"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds regular stackable items"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage",
+            "group mixed items in one slot",
+            "inventory organization"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

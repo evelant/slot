@@ -1,0 +1,352 @@
+{
+  "items": {
+    "minecraft:enchanted_book": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "applies enchants at anvil; clear function"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "book = paper base material"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used situationally for enchanting gear"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "applied at anvil for enchanting"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "glowing magical tome"
+        },
+        "palette": {
+          "values": [
+            "glowing",
+            "iridescent"
+          ],
+          "signal": "inferred",
+          "rationale": "enchantment shimmer effect"
+        },
+        "origin": {
+          "values": [
+            "fishing",
+            "trading",
+            "stronghold",
+            "mineshaft",
+            "jungle_temple",
+            "desert_temple",
+            "ancient_city",
+            "trial_chamber"
+          ],
+          "signal": "inferred",
+          "rationale": "many loot tables + fishing + librarian"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply enchantments at an anvil",
+            "Trade with librarian villagers",
+            "Store specific enchantments for gear"
+          ],
+          "signal": "inferred",
+          "rationale": "core enchanting utility"
+        }
+      }
+    },
+    "minecraft:enchanted_golden_apple": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "pattern",
+          "rationale": "food with powerful consume effects"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "pattern",
+          "rationale": "golden apple = gold material"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "hoarded; used only in emergencies"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "combat survival + horse taming/breeding"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "premium magical food"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "gold apple with enchant shimmer"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:piglin_loved",
+          "rationale": "piglins pick up and admire"
+        },
+        "primary_uses": {
+          "values": [
+            "Emergency combat survival via strong effects",
+            "Horse taming and breeding",
+            "Mojang banner pattern ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "main gameplay uses"
+        }
+      }
+    },
+    "minecraft:enchanting_table": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive enchanting station block"
+        },
+        "material_family": {
+          "value": "obsidian",
+          "signal": "pattern",
+          "rationale": "primary recipe ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "diamond",
+            "book"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe requires diamonds + book"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires diamonds to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly in mid-game progression"
+        },
+        "activity": {
+          "values": [
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "purpose-built enchanting station"
+        },
+        "flavor": {
+          "values": [
+            "mystical",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "magical floating book aesthetic"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "obsidian body + glowing runes"
+        },
+        "primary_uses": {
+          "values": [
+            "Enchant tools weapons and armor",
+            "Center of bookshelf enchanting setup",
+            "Required for max-level enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "core enchanting block"
+        }
+      }
+    },
+    "minecraft:end_crystal": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used to respawn Ender Dragon"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "glass forms outer body in recipe"
+        },
+        "material_secondary": {
+          "values": [
+            "ghast_tear",
+            "eye_of_ender"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe needs ghast tear + eye of ender"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "ghast tears + eyes of ender required"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "dragon respawn or explosive traps"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "dragon respawn + explosive weapon"
+        },
+        "flavor": {
+          "values": [
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "magical glowing crystal entity"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "glowing",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "transparent crystal with fire glow"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "entity drops nothing; craft to get item"
+        },
+        "primary_uses": {
+          "values": [
+            "Respawn the Ender Dragon",
+            "Explosive placed entity for combat/traps",
+            "Heal Ender Dragon during fight"
+          ],
+          "signal": "inferred",
+          "rationale": "core End gameplay uses"
+        }
+      }
+    },
+    "minecraft:end_portal_frame": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "part of End portal activation mechanic"
+        },
+        "material_family": {
+          "value": "end_stone",
+          "signal": "inferred",
+          "rationale": "visually and thematically end stone"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only; no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "one-time portal builds in creative"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "portal construction + End access"
+        },
+        "flavor": {
+          "values": [
+            "ancient",
+            "mystical"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient portal structure"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "end stone pale earthy tones"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "generates in strongholds only"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "minecraft:end_portal"
+          ],
+          "signal": "inferred",
+          "rationale": "12 frames form the End portal"
+        },
+        "multiblock_role": {
+          "value": "casing",
+          "signal": "inferred",
+          "rationale": "forms the outer ring of End portal"
+        },
+        "primary_uses": {
+          "values": [
+            "Build End portal structure (creative)",
+            "Activate End portal with Eyes of Ender",
+            "Stronghold aesthetic building (creative)"
+          ],
+          "signal": "inferred",
+          "rationale": "portal construction use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:end_portal_frame",
+      "facet": "y_level_range",
+      "current": "end_islands",
+      "suggested": "overworld_underground",
+      "rationale": "End portal frames generate in strongholds (overworld underground), not The End; 'end_' in the id refers to destination, not location",
+      "confidence": 0.95
+    }
+  ]
+}

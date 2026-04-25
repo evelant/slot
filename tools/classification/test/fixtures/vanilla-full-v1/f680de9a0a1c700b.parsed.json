@@ -1,0 +1,281 @@
+{
+  "items": {
+    "minecraft:stone_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "outputs redstone signal on entity step"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "id prefix stone_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "trivially craftable from stone"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard redstone trigger in builds"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is redstone input signal"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "plain stone, activating mechanism"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray matte stone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "detect entities for redstone signal",
+            "automated door/gate triggers",
+            "detector rail ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "core redstone input device uses"
+        }
+      }
+    },
+    "minecraft:stone_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "rationale": "tag minecraft:shovels"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stone is abundant, easily crafted"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "everyday digging tool early game"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "digs dirt/sand; creates path blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic undecorated stone tool"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone gray + stick brown handle"
+        },
+        "primary_uses": {
+          "values": [
+            "dig dirt/sand/gravel/clay",
+            "create dirt path blocks",
+            "flatten terrain quickly"
+          ],
+          "signal": "inferred",
+          "rationale": "standard shovel use cases"
+        }
+      }
+    },
+    "minecraft:stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:slabs; structural half block"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "id prefix stone_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stone universally abundant"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular structural/detail block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural accent and aesthetic detail"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain stone variant"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray matte stone"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "building accent trim",
+            "grindstone ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab uses"
+        }
+      }
+    },
+    "minecraft:stone_spear": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "named",
+          "rationale": "tag minecraft:spears; weapon component"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "id prefix stone_"
+        },
+        "tier": {
+          "value": "stone",
+          "signal": "named",
+          "rationale": "repairable #minecraft:stone_tool_materials"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable stone-tier weapon"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche vs sword; lunge-focused playstyle"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "melee weapon with lunge mechanic"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "stone-tier undecorated weapon"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "stone gray + stick brown shaft"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat with lunge ability",
+            "early-game stone-tier weapon",
+            "loot from underwater ruins"
+          ],
+          "signal": "inferred",
+          "rationale": "spear combat role"
+        }
+      }
+    },
+    "minecraft:stone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:stairs; structural stair"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "id prefix stone_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "stone universally abundant"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard architectural stair block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "plain stone block variant"
+        },
+        "palette": {
+          "values": [
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "gray matte stone"
+        },
+        "primary_uses": {
+          "values": [
+            "vertical navigation in structures",
+            "architectural staircases",
+            "exterior structure detail"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair block uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

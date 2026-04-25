@@ -1,0 +1,307 @@
+{
+  "items": {
+    "minecraft:lime_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "bundles hold stacks of other items"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle recipe uses rabbit hide"
+        },
+        "material_secondary": {
+          "values": [
+            "string"
+          ],
+          "signal": "inferred",
+          "rationale": "base bundle recipe uses string"
+        },
+        "dye_color": {
+          "value": "lime",
+          "signal": "pattern",
+          "rationale": "id prefix lime_ + bundles tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche convenience item"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "holds mixed stacks for transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed variant of plain bundle"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot tables; transmute dye only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard item stacks"
+        },
+        "primary_uses": {
+          "values": [
+            "hold multiple item stacks compactly",
+            "portable inventory management",
+            "colored bundle variant"
+          ],
+          "signal": "inferred",
+          "rationale": "core bundle gameplay function"
+        }
+      }
+    },
+    "minecraft:lime_candle": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "candles are aesthetic lighting decor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative niche use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for ambiance and light"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed candle; wax/wick aesthetic"
+        },
+        "palette": {
+          "values": [
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "emits light when lit"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "loot only from own placed block"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light"
+          ],
+          "signal": "inferred",
+          "rationale": "candles emit light when lit"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting decoration",
+            "cake topper decoration",
+            "colored light source"
+          ],
+          "signal": "inferred",
+          "rationale": "candle gameplay uses"
+        }
+      }
+    },
+    "minecraft:lime_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "carpet is floor decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, not universal"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "floor cover and llama deco"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed wool carpet"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "floor decoration",
+            "llama decoration",
+            "dampen sculk vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "carpet gameplay uses"
+        }
+      }
+    },
+    "minecraft:lime_concrete": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colored block for structures"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular colorful building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structures and bold color work"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed concrete variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "lime is bright saturated green"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "formed powder+water; not world-gen"
+        },
+        "primary_uses": {
+          "values": [
+            "bold lime green building blocks",
+            "colorful decoration surfaces"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete building uses"
+        }
+      }
+    },
+    "minecraft:lime_concrete_powder": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "block placed then hardened to concrete"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "intermediate step to concrete"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "processed into lime concrete"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed concrete powder variant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "lime is bright saturated green"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "falls like sand/gravel"
+        },
+        "primary_uses": {
+          "values": [
+            "harden into lime concrete via water",
+            "gravity-affected lime green block"
+          ],
+          "signal": "inferred",
+          "rationale": "concrete powder core uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

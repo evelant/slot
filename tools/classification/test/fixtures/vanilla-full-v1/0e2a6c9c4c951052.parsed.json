@@ -1,0 +1,294 @@
+{
+  "items": {
+    "minecraft:waxed_exposed_copper_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "door = architectural element, structural use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty copper variant, niche builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; redstone-operable"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant of door; hinged mechanism"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "copper doors waterlog; doors piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "architectural entrances in copper builds",
+            "redstone-triggered gates",
+            "decorative copper-themed doors"
+          ],
+          "signal": "inferred",
+          "rationale": "door primary purposes"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_golem_statue": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "statue = aesthetic placed block, no function"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "display_only",
+          "signal": "inferred",
+          "rationale": "placed once as decoration, never consumed"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative statue"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "golem figure; ornate copper casting"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative copper golem tribute",
+            "room focal decoration",
+            "copper-themed build accent"
+          ],
+          "signal": "inferred",
+          "rationale": "statue primary purposes"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_grate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "grate = structural architectural panel"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty copper-build block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; industrial grate look"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "copper grates waterlog like copper blocks"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative grate panels",
+            "ventilation aesthetic in builds",
+            "light-permitting copper walls"
+          ],
+          "signal": "inferred",
+          "rationale": "grate primary purposes"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_lantern": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "primary function is light emission"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "light sources used regularly in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for lighting and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper lantern variant; mechanical housing"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "exposed copper finish + emits light"
+        },
+        "environmental_property": {
+          "values": [
+            "emits_light",
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "lanterns emit light and can waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "ambient lighting in copper builds",
+            "decorative hanging lantern",
+            "copper-themed illumination"
+          ],
+          "signal": "inferred",
+          "rationale": "lantern primary purposes"
+        }
+      }
+    },
+    "minecraft:waxed_exposed_copper_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "trapdoor = architectural hatch element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty copper variant, niche builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed in builds; redstone-operable hatch"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "copper variant; hinged panel mechanism"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "exposed = first oxidation stage"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoors waterlog; piston-movable"
+        },
+        "primary_uses": {
+          "values": [
+            "access hatches in copper builds",
+            "redstone-operated floor panels",
+            "decorative ceiling/floor accent"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoor primary purposes"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

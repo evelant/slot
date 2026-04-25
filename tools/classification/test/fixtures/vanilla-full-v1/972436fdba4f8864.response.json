@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 157267,
+  "duration_api_ms": 157970,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:mud_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block; source of slab/stair/wall\"\n        },\n        \"material_family\": {\n          \"value\": \"mud\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix + crafted from packed mud\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche biome block; not everyday use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for constructing structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"earth-derived brick material\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muddy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown/tan mud brick texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building mud brick structures\",\n            \"crafting mud brick stairs/slabs/walls\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block + ingredient for variants\"\n        }\n      }\n    },\n    \"minecraft:muddy_mangrove_roots\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block; structural/decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"mud\",\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:mud\",\n          \"rationale\": \"directly in minecraft:mud tag\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"mangrove_wood\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from mangrove roots + mud\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche biome-themed block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove swamp build/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic root+mud composite\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muddy\", \"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark roots embedded in mud\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorating mangrove swamp builds\",\n            \"adding organic texture to structures\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thematic decoration block\"\n        }\n      }\n    },\n    \"minecraft:mule_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"right-click to place linked mob\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used only for spawning specific mob\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mules are pack/transport animals\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg item\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg places linked mob on use\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in survival\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawning mules in creative mode\",\n            \"mob farm or stable setup\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use of spawn eggs\"\n        }\n      }\n    },\n    \"minecraft:mushroom_stem\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid axe-mineable block; log analog\"\n        },\n        \"material_family\": {\n          \"value\": \"mushroom\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix mushroom_stem\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires finding/growing huge mushrooms\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche; no crafting recipes at all\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mushroom-themed builds/decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic fungal block\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"whitish/tan with brown speckles\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"huge mushrooms in overworld biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building mushroom-themed structures\",\n            \"decorative organic block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for aesthetics/building\"\n        }\n      }\n    },\n    \"minecraft:mushroom_stew\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:consumable set\"\n        },\n        \"material_family\": {\n          \"value\": \"mushroom\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from red+brown mushrooms+bowl\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-stackable; less practical than bread\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mushrooms farmed; main mushroom food\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic mushroom-based food\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brownish warm stew coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mooshroom right-click with bowl\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"restoring 6 hunger + 7.2 saturation\",\n            \"early-game food source\",\n            \"mooshroom milk product\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"food consumption primary purpose\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "1e46005a-f4f5-4a0a-b997-175aead36e91",
+  "total_cost_usd": 0.21358139999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3608,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13025,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3608,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13025,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3608,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3608
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2745,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00282,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13025,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3608,
+      "webSearchRequests": 0,
+      "costUSD": 0.2107614,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "548c8465-60ce-4166-8f7b-81324237840e"
+}

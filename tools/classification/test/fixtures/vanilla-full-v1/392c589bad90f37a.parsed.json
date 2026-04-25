@@ -1,0 +1,323 @@
+{
+  "items": {
+    "minecraft:painting": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placed on walls for aesthetic display"
+        },
+        "material_family": {
+          "value": "wood",
+          "signal": "inferred",
+          "rationale": "crafted primarily from sticks"
+        },
+        "material_secondary": {
+          "values": [
+            "wool"
+          ],
+          "signal": "inferred",
+          "rationale": "wool center piece in recipe"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "basic sticks+wool ingredients"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed once per build spot"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for wall aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "art item with many variants"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "colorful artwork display"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources, has crafting recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "wall decoration",
+            "aesthetic expression in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative placed item"
+        }
+      }
+    },
+    "minecraft:pale_hanging_moss": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "hanging plant placed for atmosphere"
+        },
+        "material_family": {
+          "value": "pale_moss",
+          "signal": "inferred",
+          "rationale": "pale garden moss variety material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires finding pale garden biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, used selectively"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "atmospheric decorative block"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant/vegetation item"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale = desaturated light tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in pale garden surface biome"
+        },
+        "primary_uses": {
+          "values": [
+            "atmospheric decoration",
+            "pale garden aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative hanging plant"
+        }
+      }
+    },
+    "minecraft:pale_moss_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block for building/decor"
+        },
+        "material_family": {
+          "value": "pale_moss",
+          "signal": "pattern",
+          "rationale": "id prefix pale_moss"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires pale garden biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche biome block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally or decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic moss material"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale, desaturated appearance"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "found in pale garden biome"
+        },
+        "primary_uses": {
+          "values": [
+            "building/decoration",
+            "crafting pale moss carpet"
+          ],
+          "signal": "inferred",
+          "rationale": "building block + crafting ingredient"
+        }
+      }
+    },
+    "minecraft:pale_moss_carpet": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "thin carpet for floor decoration"
+        },
+        "material_family": {
+          "value": "pale_moss",
+          "signal": "pattern",
+          "rationale": "id prefix pale_moss"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from biome-specific pale moss"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative floor covering"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for floor aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-based carpet material"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale tone matches pale moss"
+        },
+        "primary_uses": {
+          "values": [
+            "floor decoration",
+            "ground cover for builds"
+          ],
+          "signal": "inferred",
+          "rationale": "thin aesthetic surface coverage"
+        }
+      }
+    },
+    "minecraft:pale_oak_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "boats tag, vehicle form"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires pale oak from pale garden"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for water crossings"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel and exploration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, one of many boat variants"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak has light grey-white wood tone"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources listed"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "boats carry players and passive mobs"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "boats float on water"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel",
+            "transporting mobs across water"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is water navigation"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

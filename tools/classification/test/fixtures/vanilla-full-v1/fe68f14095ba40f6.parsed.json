@@ -1,0 +1,288 @@
+{
+  "items": {
+    "minecraft:blue_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "primary use is windows/structure"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains _stained_glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as windows or decorative element"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed colored variant of plain glass"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "glass is translucent; blue is cool tone"
+        },
+        "primary_uses": {
+          "values": [
+            "building colored windows",
+            "filtering light with color",
+            "decorating interiors"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stained glass player uses"
+        }
+      }
+    },
+    "minecraft:blue_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "pane is thin window/structural element"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "id contains _stained_glass_pane"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "thin pane for windows or dividers"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "colored variant of plain glass pane"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "glass is translucent; blue is cool tone"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "non-full blocks waterlog in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "thin window panes",
+            "decorative dividers",
+            "building facades"
+          ],
+          "signal": "inferred",
+          "rationale": "typical glass pane player uses"
+        }
+      }
+    },
+    "minecraft:blue_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "terracotta is a solid building block"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id ends _terracotta; tag terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural or decorative block"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed clay with earthy natural feel"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "terracotta dyes give muted earthy tones"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "badlands-style builds",
+            "smelting into glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "typical terracotta player uses"
+        }
+      }
+    },
+    "minecraft:blue_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wool placed as solid building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "many downstream uses: beds, banners"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used in builds and crafting decor items"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed wool with natural organic feel"
+        },
+        "palette": {
+          "values": [
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "blue is a cool color tone"
+        },
+        "environmental_property": {
+          "values": [
+            "sculk_silent"
+          ],
+          "signal": "pattern",
+          "evidence": "tag minecraft:dampens_vibrations",
+          "rationale": "dampens_vibrations → sculk silent"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting beds and banners",
+            "building and decorating",
+            "crafting carpets",
+            "dampens sculk vibrations"
+          ],
+          "signal": "inferred",
+          "rationale": "wool's top player uses"
+        }
+      }
+    },
+    "minecraft:bogged_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs are utility mob-spawners"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no loot/craft source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used only in creative/admin contexts"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot sources or recipes found"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "mob spawn egg, organic theme"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn eggs spawn their linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning bogged skeletons",
+            "creative/admin mob placement"
+          ],
+          "signal": "inferred",
+          "rationale": "typical spawn egg player uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

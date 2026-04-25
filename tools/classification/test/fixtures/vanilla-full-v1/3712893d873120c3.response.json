@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 134590,
+  "duration_api_ms": 135601,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:ravager_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative/admin-only items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, no recipes, creative only\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"not obtainable in survival gameplay\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"rarely used even in creative\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg pattern → spawns linked mob\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ravager is a raid/combat mob\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generic spawn egg form\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ravager is brownish-gray\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spawn a ravager mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole function of item\"\n        }\n      }\n    },\n    \"minecraft:raw_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw ore chunk, unprocessed world pickup\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper ore is abundant in overworld\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted routinely for copper ingots\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream copper used for blocks and deco\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw unprocessed ore chunk\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw copper has pinkish-orange color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Smelt or blast into copper ingots\", \"Compact 9:1 into raw copper block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary downstream uses\"\n        }\n      }\n    },\n    \"minecraft:raw_copper_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"9:1 compact raw copper storage\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common copper ore\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when bulk-storing raw copper\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compact storage; also used as building block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rough unprocessed ore block aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pinkish-orange raw copper color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"9:1 compact raw copper storage\", \"Building or decorative block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main player uses\"\n        }\n      }\n    },\n    \"minecraft:raw_gold\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw ore chunk, unprocessed world pickup\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw gold → gold tool/armor tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold ore less common than iron/copper\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smelted routinely for gold ingots\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold ingots used for armor/weapons and bartering\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw unprocessed ore chunk\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow-orange raw gold color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_loved\",\n          \"rationale\": \"explicit piglin_loved tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Smelt or blast into gold ingots\", \"Compact 9:1 into raw gold block\", \"Piglins attracted; neutralizes aggro\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary downstream uses\"\n        }\n      }\n    },\n    \"minecraft:raw_gold_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"9:1 compact raw gold storage\"\n        },\n        \"tier\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"raw gold block → gold tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from uncommon gold ore\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when bulk-storing raw gold\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"compact storage; also decorative block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rough unprocessed ore block aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"yellow-orange raw gold color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:piglin_loved\",\n          \"rationale\": \"explicit piglin_loved tag\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"9:1 compact raw gold storage\", \"Decorative or building block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main player uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "b193e8d1-f1a2-4a12-a18e-4d961f5652f1",
+  "total_cost_usd": 0.16467915000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4337,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9534,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4337
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9534,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4337,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4337,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3474,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003549,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9534,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4337,
+      "webSearchRequests": 0,
+      "costUSD": 0.16113015000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "aeae9a7b-a6c9-469a-a681-6bc9844cd1e2"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 139695,
+  "duration_api_ms": 140507,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:acacia_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone signal on entity step\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when redstone triggers needed\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"triggers signals; placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, one of many wood types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia's orange-red wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; plate movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"trigger redstone on entity step\",\n            \"automatic door opener\",\n            \"mob farm trigger\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard pressure plate functions\"\n        }\n      }\n    },\n    \"minecraft:acacia_sapling\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from leaves; unprocessed plant\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for tree farm setup\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tree farming; wood supply for building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic plant item\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green sapling visual\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"grow acacia trees\",\n            \"tree farm seed\",\n            \"decorative potted plant\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sapling uses\"\n        }\n      }\n    },\n    \"minecraft:acacia_shelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"storage_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds items; has_nbt_variation confirms data\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative storage block\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stores and displays items decoratively\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, one of many wood types\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-red wood tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"display items on shelf\",\n            \"decorative storage block\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shelf block primary purpose\"\n        }\n      }\n    },\n    \"minecraft:acacia_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive text writing/display block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when text labels needed\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"labels areas; decorative text display\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, wood type variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-red wood\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"label chests and rooms\",\n            \"directional markers\",\n            \"decorative text display\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sign uses\"\n        }\n      }\n    },\n    \"minecraft:acacia_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-height structural building element\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common rarity\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used constantly in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is structural construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, wood type variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"acacia orange-red wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; slabs movable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"half-height floor or ceiling\",\n            \"stair alternative for builds\",\n            \"ingredient for barrels and composters\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "2160e9de-b62c-47c0-819c-95b2c628dc92",
+  "total_cost_usd": 0.19267200000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 9440,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 10227,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9440,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10227,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 9440,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9440
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3778,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038580000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10227,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 9440,
+      "webSearchRequests": 0,
+      "costUSD": 0.18881400000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f4b545ec-cf4c-4fb9-b6ac-cc35e9d84d07"
+}

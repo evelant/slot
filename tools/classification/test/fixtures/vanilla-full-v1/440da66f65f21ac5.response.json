@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 201834,
+  "duration_api_ms": 202768,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:warped_fungus_on_a_stick\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to steer/ride striders across lava\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fishing rod + warped fungus, both easy\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only needed crossing nether lava lakes\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"strider riding for nether navigation\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fungus + stick = organic materials\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped fungus is distinctly teal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no world loot source; crafted only\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables player transport via strider\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag minecraft:strider_tempt_items\",\n          \"rationale\": \"tempts striders toward holder\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Control strider while riding\", \"Cross nether lava lakes\", \"Steer nether mob transport\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core purpose = strider navigation\"\n        }\n      }\n    },\n    \"minecraft:warped_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs display text, primarily decorative\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant warped wood\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when labeling or decorating\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"text labels and nether-themed builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood variant, organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood reads as teal\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag minecraft:non_flammable_wood\",\n          \"rationale\": \"non_flammable_wood = fireproof\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Label and annotate locations\", \"Nether-themed decoration\", \"Hanging text display\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sign function = text display + decor\"\n        }\n      }\n    },\n    \"minecraft:warped_hyphae\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"log-equivalent structural block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant in warped forest biome\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core nether wood building block\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural log block for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fungal log variant from nether\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark teal hyphae bark texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag minecraft:non_flammable_wood\",\n          \"rationale\": \"non_flammable_wood = fireproof\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Structural nether building block\", \"Crafting warped planks\", \"Decorative log pillar\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"log = structure + plank source\"\n        }\n      }\n    },\n    \"minecraft:warped_nylium\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"terrain ground block placed in builds\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires silk touch to collect\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche nether garden use only\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"garden base block, spreads nether fungi\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural nether terrain block\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"teal top surface on netherrack base\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Nether garden base block\", \"Spread nether vegetation via bonemeal\", \"Decorative nether ground cover\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for nether gardens and decor\"\n        }\n      }\n    },\n    \"minecraft:warped_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag minecraft:planks\",\n          \"rationale\": \"planks = standard building block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant warped stems\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary nether wood for building/crafting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks = core structural material\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped wood variant, distinctive teal\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"warped planks are distinctly teal\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"pattern\",\n          \"evidence\": \"tag minecraft:non_flammable_wood\",\n          \"rationale\": \"non_flammable_wood = fireproof\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Fireproof nether building material\", \"Crafting nether furniture and tools\", \"Structural floor and wall planks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core plank uses = build + craft\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:warped_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_warped\",\n      \"rationale\": \"warped planks are warped wood; rule incorrectly mapped minecraft:wooden_tool_materials tag to oak\",\n      \"confidence\": 0.95\n    },\n    {\n      \"item\": \"minecraft:warped_nylium\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_warped\",\n      \"suggested\": \"netherrack\",\n      \"rationale\": \"nylium is netherrack-based (required_tool=pickaxe not axe); not a wood material\",\n      \"confidence\": 0.82\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "288d4e99-0f98-43bd-b309-6405125bd9f3",
+  "total_cost_usd": 0.25249815000000003,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5061,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15159,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5061,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15159,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5061,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5061
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4198,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0042780000000000006,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15159,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5061,
+      "webSearchRequests": 0,
+      "costUSD": 0.24822015000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "81a434b6-b912-4d08-a6d0-1be510d7aef7"
+}

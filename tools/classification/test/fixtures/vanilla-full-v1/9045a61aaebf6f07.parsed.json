@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:wither_rose": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "plant flower collected from world"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "flower in small_flowers tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires wither to kill mobs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "black dye, stew, niche decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "flower used for decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "dark wither-themed flower"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "black petals, dark wither theme"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "wither places rose on mob kill"
+        },
+        "spawn_interaction": {
+          "values": [
+            "damages_entities"
+          ],
+          "signal": "inferred",
+          "rationale": "contact deals wither damage"
+        },
+        "primary_uses": {
+          "values": [
+            "craft black dye",
+            "suspicious stew ingredient",
+            "decorative flower",
+            "wither damage trap"
+          ],
+          "signal": "inferred",
+          "rationale": "recipes plus block damage property"
+        }
+      }
+    },
+    "minecraft:wither_skeleton_skull": {
+      "facets": {
+        "role": {
+          "value": "trophy",
+          "signal": "inferred",
+          "rationale": "mob head, worn or used to summon wither"
+        },
+        "material_family": {
+          "value": "bone",
+          "signal": "inferred",
+          "rationale": "wither skeleton is skeletal"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "wither summoning, banner pattern"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "summon wither; worn/displayed"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dark wither skull"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark wither skeleton coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "summon the wither boss",
+            "skull banner pattern",
+            "head cosmetic",
+            "noteblock instrument"
+          ],
+          "signal": "inferred",
+          "rationale": "crafting uses and wither summoning"
+        }
+      }
+    },
+    "minecraft:wither_skeleton_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawns wither skeletons on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "spawn eggs not in survival loot"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche admin use only"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn for fights or mob farms"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg form"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "wither skeleton dark palette"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "all spawn eggs spawn linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn wither skeletons",
+            "mob farm setup",
+            "creative testing"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg primary function"
+        }
+      }
+    },
+    "minecraft:wither_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawns the wither boss on use"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "spawn eggs not in survival"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival source"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "boss spawn egg, very specific use"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns wither boss for combat"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "spawns the wither boss"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "wither is dark/black colored"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "all spawn eggs spawn linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn the wither boss",
+            "boss fight testing"
+          ],
+          "signal": "inferred",
+          "rationale": "boss spawn egg primary function"
+        }
+      }
+    },
+    "minecraft:wolf_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equips on wolves as armor"
+        },
+        "material_family": {
+          "value": "armadillo_scute",
+          "signal": "inferred",
+          "rationale": "crafted from armadillo scutes"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "armadillos in specific biomes only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used by wolf-keeping players"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "protects wolves in combat"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "natural scute material; dyeable"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "natural armadillo scute coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no natural spawn, crafted from scutes"
+        },
+        "primary_uses": {
+          "values": [
+            "protect tamed wolves in combat",
+            "dyeable wolf cosmetic"
+          ],
+          "signal": "inferred",
+          "rationale": "wolf armor function"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

@@ -1,0 +1,318 @@
+{
+  "items": {
+    "minecraft:turtle_egg": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "laid by turtles; not crafted"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs turtle breeding on beaches"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "breed/hatch for turtle farm"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "hatch turtles to obtain scutes"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic natural egg"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "pale sandy-white egg texture"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "pattern",
+          "rationale": "beach block from turtle_egg loot table"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs",
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "undead trample; hatches into turtle"
+        },
+        "primary_uses": {
+          "values": [
+            "Hatch into baby turtles",
+            "Source of scutes via turtle farming",
+            "Attracts undead mobs at night"
+          ],
+          "signal": "inferred",
+          "rationale": "core turtle lifecycle mechanics"
+        }
+      }
+    },
+    "minecraft:turtle_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "_helmet suffix + head_armor tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs 5 scutes from turtle farming"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche use for underwater exploration"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "armor + Water Breathing for diving"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted from organic turtle scutes"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "green-brown turtle shell coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; shaped craft only"
+        },
+        "primary_uses": {
+          "values": [
+            "Head armor with Water Breathing I effect",
+            "Underwater exploration aid",
+            "Trimmable helmet slot"
+          ],
+          "signal": "inferred",
+          "rationale": "unique water breathing property"
+        }
+      }
+    },
+    "minecraft:turtle_scute": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "mob drop from turtle growing up"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs turtle breeding + growth cycle"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used to craft/repair turtle helmet"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream: helmet for combat/diving"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic reptile scale drop"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "green-brown scute coloring"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "pattern",
+          "rationale": "loot source: turtle_grow gameplay"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft turtle helmet (5 scutes needed)",
+            "Repair turtle helmet"
+          ],
+          "signal": "inferred",
+          "rationale": "only crafting use"
+        }
+      }
+    },
+    "minecraft:turtle_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → utility spawner"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only in vanilla"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative/admin use only"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn turtles for scute farm setup"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg has mob-themed coloring"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "turtle coloring: sandy body, green"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg always spawns linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn turtle mobs (creative/admin)",
+            "Set up turtle farms quickly"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg core purpose"
+        }
+      }
+    },
+    "minecraft:twisting_vines": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed nether plant like kelp"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in warped forest biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche build/decor/compost use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placeable climbable nether vine"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic nether plant"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "mint"
+          ],
+          "signal": "inferred",
+          "rationale": "warped forest teal-mint hue"
+        },
+        "origin": {
+          "values": [
+            "nether"
+          ],
+          "signal": "pattern",
+          "rationale": "loot: twisting_vines block (nether)"
+        },
+        "primary_uses": {
+          "values": [
+            "Climbable surface in nether builds",
+            "Decorative upward-growing vine",
+            "Composting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "main uses of placed/held vines"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "trample_sensitive",
+      "rationale": "Turtle eggs break when walked/jumped on by most entities"
+    },
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "climbable",
+      "rationale": "Player can climb up twisting vines (and weeping vines)"
+    }
+  ],
+  "corrections": []
+}

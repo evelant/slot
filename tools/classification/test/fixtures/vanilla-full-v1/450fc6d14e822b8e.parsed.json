@@ -1,0 +1,311 @@
+{
+  "items": {
+    "minecraft:netherite_shovel": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "id suffix _shovel + tag minecraft:shovels"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite requires scarce ancient debris"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "shovel used situationally, not every session"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "digs terrain, creates path blocks"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard functional tool aesthetic"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite dark matte finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; smithing_transform only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant types=#is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "digging dirt/sand/gravel/snow",
+            "creating path blocks",
+            "snow layer clearing"
+          ],
+          "signal": "inferred",
+          "rationale": "shovel mechanics"
+        }
+      }
+    },
+    "minecraft:netherite_spear": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "tag minecraft:spears + weapon component"
+        },
+        "material_family": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "id prefix netherite_"
+        },
+        "tier": {
+          "value": "netherite",
+          "signal": "pattern",
+          "rationale": "repairable with #netherite_tool_materials"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite tier; smithing_transform only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialized weapon, not default loadout"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon with melee + lunge enchantability"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard functional weapon aesthetic"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite dark matte finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; smithing_transform only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant types=#is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat",
+            "charged lunge attacks"
+          ],
+          "signal": "inferred",
+          "rationale": "weapon component + enchantable/lunge tag"
+        }
+      }
+    },
+    "minecraft:netherite_sword": {
+      "facets": {
+        "role": {
+          "value": "weapon",
+          "signal": "pattern",
+          "rationale": "id suffix _sword + tag minecraft:swords"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "netherite tier requires ancient debris"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "top-tier melee weapon, used constantly"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary melee weapon"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard weapon aesthetic"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "pattern",
+          "rationale": "netherite dark matte finish"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; smithing_transform only"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "named",
+          "rationale": "damage_resistant types=#is_fire component"
+        },
+        "primary_uses": {
+          "values": [
+            "melee combat and mob killing",
+            "cobweb clearing",
+            "sweeping-edge AoE attacks"
+          ],
+          "signal": "inferred",
+          "rationale": "cobweb rule + sweeping enchantable tag"
+        }
+      }
+    },
+    "minecraft:netherite_upgrade_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "consumed in smithing to upgrade gear tier"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed once per piece upgrade"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing templates are ancient artifacts"
+        },
+        "palette": {
+          "values": [
+            "netherite_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark template texture matches netherite"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrading diamond gear to netherite",
+            "duplicating via shaped crafting"
+          ],
+          "signal": "named",
+          "rationale": "sample_ingredient_of lists netherite upgrades"
+        }
+      }
+    },
+    "minecraft:netherrack": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "nether equivalent of stone; placed for structure"
+        },
+        "material_family": {
+          "value": "netherrack",
+          "signal": "pattern",
+          "rationale": "id = netherrack"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "fills vast portions of the Nether"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for nether builds and fire sources"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "nether-themed builds; eternal fire decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw nether terrain block"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-brown porous texture"
+        },
+        "environmental_property": {
+          "values": [
+            "ignitable_by_fire"
+          ],
+          "signal": "inferred",
+          "rationale": "fire placed on netherrack burns indefinitely"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed building",
+            "eternal fire source",
+            "nether brick crafting ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "core nether block uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [
+    {
+      "kind": "add_value",
+      "facet": "environmental_property",
+      "value": "sustains_fire",
+      "rationale": "ignitable_by_fire doesn't capture netherrack's unique property that fire placed on it never extinguishes; distinct mechanic from merely being ignitable"
+    }
+  ],
+  "corrections": []
+}

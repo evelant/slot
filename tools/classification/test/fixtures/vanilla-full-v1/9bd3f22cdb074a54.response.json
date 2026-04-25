@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 223235,
+  "duration_api_ms": 224669,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:cyan_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles are aesthetic lighting decor\"\n        },\n        \"material_family\": {\n          \"value\": \"honeycomb\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from string + honeycomb\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from accessible materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific color-themed decor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is ambient decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wax/organic aesthetic, explicitly cyan\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan reads as teal\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no natural loot source; always crafted\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lit candle emits light level 3\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"ambient lighting decoration\", \"birthday cake topping\", \"colored light source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core candle gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:cyan_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin floor covering, primarily aesthetic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"easily crafted from cyan wool\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular floor decoration element\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor decor, layering, sculk suppression\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool texture, explicitly cyan dyed\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan maps to teal palette\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-full block prevents mob spawning\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\", \"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"dampens_vibrations tag; wool flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"floor decoration\", \"llama decoration\", \"mob spawn prevention\", \"vibration dampening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core carpet gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:cyan_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block used for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"made from sand, gravel, and dye\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid construction block\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"uniform smooth texture, cyan dyed\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan concrete is teal-range\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"created by wetting concrete powder\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"colored construction\", \"pixel art builds\", \"modern interior design\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core concrete gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:cyan_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable gravity block\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete_powder\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _concrete_powder\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from sand, gravel, cyan dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate step to concrete\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to create concrete\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grainy texture, cyan dyed\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan color with sand-like texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand and gravel\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting cyan concrete\", \"gravity building trick\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core concrete powder uses\"\n        }\n      }\n    },\n    \"minecraft:cyan_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting ingredient for dyeing\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _dye + dyes tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from blue+green or pitcher plant\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when dyeing cyan items\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to color blocks and items\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plant-derived pigment, cyan color\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cyan dye is teal-range\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no direct loot; produced via recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dyeing wool and glass\", \"coloring beds and banners\", \"firework star coloring\", \"concrete powder crafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core dye gameplay uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "43a02d40-7aa9-4e1a-9942-c298771d89f7",
+  "total_cost_usd": 0.27842114999999995,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4549,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 17050,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4549,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17050,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4549,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4549
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3686,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0037560000000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17050,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4549,
+      "webSearchRequests": 0,
+      "costUSD": 0.27466514999999997,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "da005536-cbaa-4443-9d28-ad1cc3b64d2b"
+}

@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 147656,
+  "duration_api_ms": 148606,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pointed_dripstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable cave block; building/trap primary use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche: traps, cauldrons, cave builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in builds; stalactite drip fills cauldrons\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cave stalactite/stalagmite formation\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brownish-gray dripstone color\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns in dripstone caves underground\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"damages_entities\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tips deal damage to entities landing on them\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"cave building and decoration\",\n            \"spike trap setup for mob damage\",\n            \"stalactite drip-fill cauldrons water/lava\",\n            \"craft into dripstone blocks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:poisonous_potato\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has food+consumable components\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"almost never eaten; poison risk deters use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unassuming potato appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"potato-brown coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"desperate emergency food (2 hunger, 60% poison)\",\n            \"byproduct of potato crop farming\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"only practical use is starvation fallback\"\n        }\n      }\n    },\n    \"minecraft:polar_bear_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs are creative-only admin items\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs unobtainable in survival\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used occasionally for spawning/testing\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"represents a natural overworld mob\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"ivory\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"polar bear white/cream coloring\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns polar bear on use\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn polar bears in creative mode\",\n            \"mob testing and map building\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard spawn egg purposes\"\n        }\n      }\n    },\n    \"minecraft:polished_andesite\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"polished stone block for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"andesite\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix polished_andesite\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in stone-themed builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for construction and stone detailing\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple polished variant of andesite\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray polished stone appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building walls and floors\",\n            \"crafting into slabs and stairs\",\n            \"decorative stone accent detailing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard polished stone building uses\"\n        }\n      }\n    },\n    \"minecraft:polished_andesite_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for building and architectural detail\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs heavily used in construction\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floors, roofs, decorative stepping\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab variant of polished andesite\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray polished stone appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"building floors and thin roofs\",\n            \"half-block stair-like steps\",\n            \"decorative stone building detailing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard slab building uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "4cb19fed-2f70-4477-ab3b-17d9ae3c7fcf",
+  "total_cost_usd": 0.16602615000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4089,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9702,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4089
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9702,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4089,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4089,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3226,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003306,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9702,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4089,
+      "webSearchRequests": 0,
+      "costUSD": 0.16272015000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "eb849418-b9e2-4587-973b-bc2c643ebf21"
+}

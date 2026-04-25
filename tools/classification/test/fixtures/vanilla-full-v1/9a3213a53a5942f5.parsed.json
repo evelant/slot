@@ -1,0 +1,308 @@
+{
+  "items": {
+    "minecraft:creeper_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs place mobs; a utility action"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "unobtainable in survival; creative-only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively in creative/testing"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mob theme"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "creeper is dark green"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "vanilla spawn eggs not in survival loot"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "id pattern *_spawn_egg places named mob"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a creeper instantly",
+            "Creative mob placement and testing"
+          ],
+          "signal": "inferred",
+          "rationale": "core function of all spawn eggs"
+        }
+      }
+    },
+    "minecraft:crimson_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "tag minecraft:buttons; emits pulse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant nether planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed selectively as redstone triggers"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "pulse trigger; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; nether variant of button"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson is deep red-brown wood"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "non-immovable small block; relevant in redstone"
+        },
+        "primary_uses": {
+          "values": [
+            "Trigger momentary redstone pulse",
+            "Decorative wood-tone switch"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button use cases"
+        }
+      }
+    },
+    "minecraft:crimson_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "doors are structural passage elements"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common nether planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "standard component in most builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural use; can be redstone-operated"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood door; nether crimson variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson is deep red-brown wood"
+        },
+        "primary_uses": {
+          "values": [
+            "Block passage between rooms",
+            "Mob barrier",
+            "Redstone-operable entrance"
+          ],
+          "signal": "inferred",
+          "rationale": "standard door use cases"
+        }
+      }
+    },
+    "minecraft:crimson_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fences are structural barrier blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common nether planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in builds and animal pens"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "structural barrier; used in animal enclosures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; nether crimson variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson is deep red-brown wood"
+        },
+        "primary_uses": {
+          "values": [
+            "Animal containment fencing",
+            "Decorative barrier",
+            "Build perimeter"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence use cases"
+        }
+      }
+    },
+    "minecraft:crimson_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence gate is structural; pairs with fences"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common nether planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed at fence openings; not everywhere"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "fence enclosures; supports redstone control"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material; nether crimson variant"
+        },
+        "palette": {
+          "values": [
+            "wood_dark",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "crimson is deep red-brown wood"
+        },
+        "primary_uses": {
+          "values": [
+            "Gate for fence enclosures",
+            "Mob-proof opening in barrier",
+            "Redstone-operable gate"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence gate use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:crimson_button",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+      "confidence": 0.8
+    },
+    {
+      "item": "minecraft:crimson_door",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+      "confidence": 0.8
+    },
+    {
+      "item": "minecraft:crimson_fence",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+      "confidence": 0.8
+    },
+    {
+      "item": "minecraft:crimson_fence_gate",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+      "confidence": 0.8
+    }
+  ]
+}

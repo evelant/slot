@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 205533,
+  "duration_api_ms": 206448,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:fletching_table\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fletcher job site, interactive behavior\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from planks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once to assign villager job\"\n        },\n        \"activity\": {\n          \"values\": [\"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables fletcher villager trades\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood and stone construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown plank appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based block, is_fuel=true\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"fletcher villager job site block\",\n            \"enables trading arrows, bows, crossbows\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole vanilla use\"\n        }\n      }\n    },\n    \"minecraft:flint\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw drop from gravel, unprocessed\"\n        },\n        \"material_family\": {\n          \"value\": \"flint\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id = flint\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"~10% drop from abundant gravel\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"key ingredient in arrows and tools\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"arrows=combat; flint_and_steel=portals\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from gravel (overworld common)\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray-charcoal flint color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft arrows\",\n            \"craft flint and steel\",\n            \"craft fletching table\"\n          ],\n          \"signal\": \"pattern\",\n          \"rationale\": \"sample_ingredient_of confirms\"\n        }\n      }\n    },\n    \"minecraft:flint_and_steel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fire-starting tool, has durability\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"steel=iron; recipe uses iron ingot\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"flint\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flint in name and recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"cheap craft, found in common chests\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mainly used for portal lighting\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portals=exploration; creeper_igniters\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple functional tool, no decoration\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"silver\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron+flint coloring\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"light nether portals\",\n            \"start fires and ignite campfires\",\n            \"ignite creepers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creeper_igniters tag + fire use\"\n        }\n      }\n    },\n    \"minecraft:flow_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"applied at smithing table to trim armor\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per armor trim application\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor trimming is cosmetic only\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"drops from ominous trial vault only\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flow pattern = vivid teal swirl\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply flow armor trim at smithing table\",\n            \"duplicate template at crafting table\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing_trim + self-copy recipe\"\n        }\n      }\n    },\n    \"minecraft:flow_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"reusable loom input for banner patterns\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when decorating banners\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loom banner decoration use\"\n        },\n        \"flavor\": {\n          \"values\": [\"ominous\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ominous vault source; organic flow motif\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flow motif turquoise/teal vivid\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply flow pattern to banners in loom\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"provides_banner_patterns component\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "16b26f52-d7b4-41bd-a61f-c1e7f5420ab4",
+  "total_cost_usd": 0.25584565000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3831,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15772,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3831,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15772,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3831,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3831
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2968,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003043,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15772,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3831,
+      "webSearchRequests": 0,
+      "costUSD": 0.25280265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "53f2da0e-d088-4692-b0be-2f1ac25e6dbb"
+}

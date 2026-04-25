@@ -1,0 +1,239 @@
+{
+  "items": {
+    "minecraft:chain_command_block": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only command block variant"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "automation"
+          ],
+          "signal": "inferred",
+          "rationale": "triggered by redstone, runs command chains"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "technical computational block aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark metallic with chain-link texture"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, niche map-making use"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable",
+            "blast_resistant_max"
+          ],
+          "signal": "inferred",
+          "rationale": "command blocks immovable, infinite blast res"
+        },
+        "primary_uses": {
+          "values": [
+            "chain command execution",
+            "conditional command sequences",
+            "map-making automation"
+          ],
+          "signal": "inferred",
+          "rationale": "chain variant for sequential chained cmds"
+        }
+      }
+    },
+    "minecraft:chainmail_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:foot_armor"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian linked-ring, unadorned"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron-link mesh appearance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mid-tier; most skip to iron/diamond"
+        },
+        "primary_uses": {
+          "values": [
+            "foot protection in combat",
+            "mid-tier armor progression",
+            "smithing trim decorative base"
+          ],
+          "signal": "inferred",
+          "rationale": "boots protect feet, trimmable"
+        }
+      }
+    },
+    "minecraft:chainmail_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:chest_armor"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian linked-ring, unadorned"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron-link mesh appearance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mid-tier; most skip to iron/diamond"
+        },
+        "primary_uses": {
+          "values": [
+            "chest protection in combat",
+            "mid-tier armor progression",
+            "smithing trim decorative base"
+          ],
+          "signal": "inferred",
+          "rationale": "chestplate highest armor value slot"
+        }
+      }
+    },
+    "minecraft:chainmail_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:head_armor"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian linked-ring, unadorned"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron-link mesh appearance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mid-tier; most skip to iron/diamond"
+        },
+        "primary_uses": {
+          "values": [
+            "head protection in combat",
+            "mid-tier armor progression",
+            "smithing trim decorative base"
+          ],
+          "signal": "inferred",
+          "rationale": "helmet protects head slot"
+        }
+      }
+    },
+    "minecraft:chainmail_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:leg_armor"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "worn for combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "utilitarian linked-ring, unadorned"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "dark iron-link mesh appearance"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mid-tier; most skip to iron/diamond"
+        },
+        "primary_uses": {
+          "values": [
+            "leg protection in combat",
+            "mid-tier armor progression",
+            "smithing trim decorative base"
+          ],
+          "signal": "inferred",
+          "rationale": "leggings protect legs slot"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

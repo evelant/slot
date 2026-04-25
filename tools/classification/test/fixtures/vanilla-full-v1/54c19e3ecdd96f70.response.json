@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 182535,
+  "duration_api_ms": 183774,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:copper_torch\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is emitting light level 14\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix copper_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"players place many torches for lighting\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed in bases and dark caves\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant of regular torch\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper hue + warm flame glow\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\", \"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light 14; copper oxidizes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"lighting caves and structures\", \"preventing mob spawning via light\", \"crafting copper lantern\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core torch uses; ingredient_of copper_lantern\"\n        }\n      }\n    },\n    \"minecraft:copper_trapdoor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural element, opens/closes\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix copper_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds but not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"architectural; redstone-activatable\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper variant; hinged moving component\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fresh unoxidized copper color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper oxidizes; trapdoors piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building entry and exit points\", \"redstone-controlled openings\", \"decorative copper architecture\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard trapdoor uses in copper aesthetic\"\n        }\n      }\n    },\n    \"minecraft:cornflower\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"picked from world, unprocessed flower\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag small_flowers; flower block item\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for dye or stew, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmed for blue dye; decorative placement\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower; distinctly blue-colored\"\n        },\n        \"palette\": {\n          \"values\": [\"vivid\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright blue flower; cool hue\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting blue dye\", \"crafting suspicious stew\", \"bee food and pot decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe_ingredient blue_dye and suspicious_stew\"\n        }\n      }\n    },\n    \"minecraft:cow_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to instantly spawn a cow\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, rarely used in play\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns cows for livestock farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal-themed spawn egg\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources or recipes in survival\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg mechanic spawns named mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawning cows in creative mode\", \"map-making and adventure maps\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core spawn egg use cases\"\n        }\n      }\n    },\n    \"minecraft:cracked_deepslate_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural/decorative stone block variant\"\n        },\n        \"material_family\": {\n          \"value\": \"deepslate\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains deepslate_\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires smelting deepslate bricks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche aesthetic use in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for aged/dark stone builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cracked variant; worn aged aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep charcoal stone, muted tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative dark stone building\", \"ancient or ruined build aesthetics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cracked look used for worn/aged builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d983ceac-f225-48fd-911a-22ddcac7003f",
+  "total_cost_usd": 0.2166254,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3972,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13112,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3972,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13112,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3972,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3972
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3109,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003194,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13112,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3972,
+      "webSearchRequests": 0,
+      "costUSD": 0.2134314,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "f3496713-3cae-4e41-a713-55aef43a7197"
+}

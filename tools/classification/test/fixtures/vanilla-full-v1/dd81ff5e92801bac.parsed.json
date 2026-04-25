@@ -1,0 +1,264 @@
+{
+  "items": {
+    "minecraft:warped_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are structural; form=stairs confirms"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only for warped-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs used in construction and decor"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "organic nether fungus; one of many wood types"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood is distinctly teal/cyan"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed stair construction",
+            "warped wood build details"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair usage in themed builds"
+        }
+      }
+    },
+    "minecraft:warped_stem": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw log harvested from nether fungus tree"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "regularly converted to planks"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary downstream use is planks for building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw organic fungal stem"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped stem is teal/cyan"
+        },
+        "primary_uses": {
+          "values": [
+            "craft warped planks",
+            "furnace fuel",
+            "craft campfire/smoker"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of confirms these uses"
+        }
+      }
+    },
+    "minecraft:warped_trapdoor": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "trapdoors open/close; redstone-controllable"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in nether builds and redstone traps"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "trapdoors used in builds and redstone"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood + hinged mechanical function"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood is teal/cyan"
+        },
+        "primary_uses": {
+          "values": [
+            "trapdoor passage/access hatch",
+            "redstone-controlled gate",
+            "mob trap component"
+          ],
+          "signal": "inferred",
+          "rationale": "standard trapdoor gameplay uses"
+        }
+      }
+    },
+    "minecraft:warped_wart_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid full cube, no functional or crafting use"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether decor use only"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used for nether-themed builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic nether growth block"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wart block is vivid teal"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed decorative building"
+          ],
+          "signal": "inferred",
+          "rationale": "no crafting use; purely structural/decor"
+        }
+      }
+    },
+    "minecraft:water_bucket": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "multi-purpose water placement/transport tool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "bucket + any water = trivial to obtain"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used constantly throughout progression"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building",
+            "exploration",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "irrigation, water features, MLG, mob control"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "signal": "inferred",
+          "rationale": "contains a fluid payload"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "water is blue-aqua"
+        },
+        "primary_uses": {
+          "values": [
+            "place water source blocks",
+            "irrigate farmland",
+            "transport aquatic mobs",
+            "extinguish fires"
+          ],
+          "signal": "inferred",
+          "rationale": "standard water bucket gameplay uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

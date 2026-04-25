@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 109779,
+  "duration_api_ms": 110530,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:stripped_cherry_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural wood log, stripped form\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core building/crafting material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structurally and decoratively\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood; stripped is a form variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry inner wood is light pinkish-warm\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry grove biome on surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft cherry planks\", \"build wood structures\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"logs to planks, building, smelting fuel\"\n        }\n      }\n    },\n    \"minecraft:stripped_cherry_wood\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural all-bark wood block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bark variant, less used than logs\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structurally and decoratively\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood; bark variant form\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cherry bark is light pinkish-warm tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build bark-textured structures\", \"craft cherry planks\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bark block for building, planks, fuel\"\n        }\n      }\n    },\n    \"minecraft:stripped_crimson_hyphae\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether all-bark wood block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bark variant, less used than stems\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structurally and decoratively\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fungal wood; stripped bark variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crimson is bold saturated red-purple\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build nether bark structures\", \"craft crimson planks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bark block for building, planks crafting\"\n        }\n      }\n    },\n    \"minecraft:stripped_crimson_stem\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether log equivalent, structural\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core nether building/crafting material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structurally and decoratively\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fungal wood; stripped stem variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crimson is bold saturated red-purple\"\n        },\n        \"origin\": {\n          \"values\": [\"nether\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crimson forest biome in the nether\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft crimson planks\", \"build nether structures\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stems to planks, building, smelting fuel\"\n        }\n      }\n    },\n    \"minecraft:stripped_dark_oak_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural wood log, stripped form\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core building/crafting material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed structurally and decoratively\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood; stripped is a form variant\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark oak inner wood is deep dark brown\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark oak forest biome on surface\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:logs_that_burn\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft dark oak planks\", \"build dark structures\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"logs to planks, building, smelting fuel\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "e102bb47-3cea-4ee7-b5b9-d1ec0a74bc37",
+  "total_cost_usd": 0.15846339999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5580,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8726,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5580,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8726,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5580,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5580
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4717,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004792,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8726,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5580,
+      "webSearchRequests": 0,
+      "costUSD": 0.15367139999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "71cce647-d7a6-4c3b-a334-a6b29087a91a"
+}

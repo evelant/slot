@@ -1,0 +1,283 @@
+{
+  "items": {
+    "minecraft:bamboo": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "unprocessed plant; schema lists bamboo"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific crafts, not daily"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "scaffolding→building; commonly farmed"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "unprocessed plant material"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo cane is distinctly green"
+        },
+        "primary_uses": {
+          "values": [
+            "craft scaffolding",
+            "craft bamboo blocks and planks",
+            "craft sticks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe outputs + is_fuel tag"
+        }
+      }
+    },
+    "minecraft:bamboo_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "cube_column model; structural block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche build material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural column block for builds"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo wood variant type"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo is pale yellow-green"
+        },
+        "primary_uses": {
+          "values": [
+            "building structures",
+            "crafting bamboo planks",
+            "decorative pillar"
+          ],
+          "signal": "inferred",
+          "rationale": "structural + planks ingredient"
+        }
+      }
+    },
+    "minecraft:bamboo_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "tag minecraft:wooden_buttons"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in redstone builds, not daily"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers redstone; placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone activation device"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo material color"
+        },
+        "primary_uses": {
+          "values": [
+            "trigger redstone circuits",
+            "open doors and trapdoors"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button function"
+        }
+      }
+    },
+    "minecraft:bamboo_chest_raft": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "tag minecraft:chest_boats"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational water travel item"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "raft moves player; chest holds items"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo craft + functional chest"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo material coloring"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafted only"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "chest holds standard items"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "item"
+          ],
+          "signal": "inferred",
+          "rationale": "transports player + chest storage"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel with inventory storage",
+            "carry items across rivers and oceans"
+          ],
+          "signal": "inferred",
+          "rationale": "chest raft = transport + storage"
+        }
+      }
+    },
+    "minecraft:bamboo_door": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "architectural access element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "doors used in nearly every build"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural; openable by redstone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo material"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "bamboo coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "building entrances",
+            "access control",
+            "redstone-triggered door"
+          ],
+          "signal": "inferred",
+          "rationale": "standard wooden door functions"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

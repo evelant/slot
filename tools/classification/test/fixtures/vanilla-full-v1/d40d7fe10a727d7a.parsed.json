@@ -1,0 +1,285 @@
+{
+  "items": {
+    "minecraft:diamond_horse_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "equips on horses as protective armor"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "loot-only, many tables, not craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used only when riding horses"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "horse protection in mounted combat"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond tier implies high-quality item"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond blue-crystal visual"
+        },
+        "primary_uses": {
+          "values": [
+            "Protect horses in combat",
+            "Upgrade to netherite horse armor"
+          ],
+          "signal": "inferred",
+          "rationale": "armor function + smithing upgrade path"
+        }
+      }
+    },
+    "minecraft:diamond_leggings": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "named",
+          "evidence": "tag minecraft:leg_armor",
+          "rationale": "explicit leg armor tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "craftable but requires diamonds"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core combat gear at diamond tier"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is combat protection"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard armor piece, no special theme"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond blue-crystal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Leg armor in combat",
+            "Apply armor trims for aesthetics",
+            "Upgrade to netherite leggings"
+          ],
+          "signal": "inferred",
+          "rationale": "combat + 18 trim recipes + smithing path"
+        }
+      }
+    },
+    "minecraft:diamond_nautilus_armor": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "inferred",
+          "rationale": "named armor, smiths into netherite variant"
+        },
+        "material_family": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "material_secondary": {
+          "values": [
+            "nautilus"
+          ],
+          "signal": "pattern",
+          "rationale": "nautilus in item id/name"
+        },
+        "tier": {
+          "value": "diamond",
+          "signal": "pattern",
+          "rationale": "id prefix diamond_"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "ocean loot only, not craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean-context armor"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean loot, armor for aquatic play"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "nautilus=natural; diamond tier=fancy"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "aqua"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond + nautilus ocean aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "Armor found in ocean structures",
+            "Upgrade to netherite nautilus armor"
+          ],
+          "signal": "inferred",
+          "rationale": "ocean loot + smithing upgrade path"
+        }
+      }
+    },
+    "minecraft:diamond_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "pattern",
+          "rationale": "raw ore block mined from world"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "precious but findable by mining"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mined specifically when needed"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "mined to obtain diamonds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally generated ore block"
+        },
+        "palette": {
+          "values": [
+            "crystal",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "blue diamond veins in dark stone"
+        },
+        "primary_uses": {
+          "values": [
+            "Mine/smelt for diamonds",
+            "XP source when smelting",
+            "Decorative ore block display"
+          ],
+          "signal": "inferred",
+          "rationale": "smelting yields diamonds + XP"
+        }
+      }
+    },
+    "minecraft:diamond_pickaxe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "named",
+          "evidence": "tag minecraft:pickaxes",
+          "rationale": "explicit pickaxe tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "craftable but requires diamonds"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "primary mining tool mid-late game"
+        },
+        "activity": {
+          "values": [
+            "mining",
+            "combat"
+          ],
+          "signal": "inferred",
+          "evidence": "minecraft:weapon component present",
+          "rationale": "pickaxe + weapon component"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool, no special aesthetic"
+        },
+        "palette": {
+          "values": [
+            "crystal"
+          ],
+          "signal": "inferred",
+          "rationale": "diamond blue-crystal appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "Mining all stone and ore blocks",
+            "Upgrade to netherite pickaxe",
+            "Secondary melee weapon"
+          ],
+          "signal": "inferred",
+          "rationale": "tool + smithing + weapon component"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

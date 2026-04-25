@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:iron_bars": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural barrier like fence/wall"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron_ prefix in item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche structural use in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "barrier/window element in builds"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "bare iron grid; industrial look"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "barrier or window in builds",
+            "prison/dungeon aesthetic fencing",
+            "structural partitioning"
+          ],
+          "signal": "inferred",
+          "rationale": "core in-world uses"
+        }
+      }
+    },
+    "minecraft:iron_block": {
+      "facets": {
+        "role": {
+          "values": [
+            "storage_block",
+            "building_block"
+          ],
+          "ambiguous": true,
+          "signal": "inferred",
+          "rationale": "compact ingot storage and build material"
+        },
+        "tier": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "block compresses 9 iron ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "anvil/golem builds; not everyday use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "storage_management"
+          ],
+          "signal": "inferred",
+          "rationale": "compact storage and build material"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "solid flat iron block"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron surface"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "4 blocks + carved pumpkin = iron golem"
+        },
+        "primary_uses": {
+          "values": [
+            "compact iron ingot storage",
+            "iron golem construction",
+            "crafting anvils and beacons",
+            "heavy building material"
+          ],
+          "signal": "inferred",
+          "rationale": "core gameplay uses"
+        }
+      }
+    },
+    "minecraft:iron_boots": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:foot_armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple mid-game armor, worn constantly"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration",
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "worn in combat/travel; often enchanted"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned iron plate armor"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron finish"
+        },
+        "primary_uses": {
+          "values": [
+            "foot protection in combat and travel",
+            "mid-game armor set piece",
+            "smithing trim decoration base"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of iron boots"
+        }
+      }
+    },
+    "minecraft:iron_chain": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "aesthetic; hangs lanterns/signs/bells"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "pattern",
+          "rationale": "iron_ prefix in item id"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative niche use in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "used to hang lanterns, bells, signs"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "industrial chain link aesthetic"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "dark grey iron chain links"
+        },
+        "primary_uses": {
+          "values": [
+            "hanging lanterns or bells",
+            "hanging sign connector",
+            "decorative chain in builds"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of chain block"
+        }
+      }
+    },
+    "minecraft:iron_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "tag minecraft:chest_armor"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity component = common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "staple mid-game armor, worn constantly"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration",
+            "enchanting"
+          ],
+          "signal": "inferred",
+          "rationale": "worn in combat/travel; often enchanted"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unadorned iron plate armor"
+        },
+        "palette": {
+          "values": [
+            "iron_dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "grey iron finish"
+        },
+        "primary_uses": {
+          "values": [
+            "torso protection in combat and travel",
+            "mid-game armor set piece",
+            "smithing trim decoration base"
+          ],
+          "signal": "inferred",
+          "rationale": "core uses of iron chestplate"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

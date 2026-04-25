@@ -1,0 +1,314 @@
+{
+  "items": {
+    "minecraft:brown_egg": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "laid by chickens; raw unprocessed mob drop"
+        },
+        "origin": {
+          "values": [
+            "mob_drop"
+          ],
+          "signal": "named",
+          "evidence": "minecraft:gameplay/chicken_lay",
+          "rationale": "loot table: chicken lays eggs"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; chickens easily farmed"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common ingredient in cake/pie; throwable"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "obtained from chicken farms; food recipes downstream"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic animal product"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown-toned egg shell"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting cake and pumpkin pie",
+            "throwable projectile; chance to spawn chick",
+            "chicken-farm renewable product"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list + standard egg throw mechanic"
+        }
+      }
+    },
+    "minecraft:brown_glazed_terracotta": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "pattern",
+          "rationale": "glazed_terracotta = patterned decorative block"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id suffix + smelted from brown terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative use only"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta is structural/aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed = patterned colored terracotta variant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "brown glazed; muted earth tones with pattern"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative patterned wall/floor block",
+            "directional-pattern building element"
+          ],
+          "signal": "inferred",
+          "rationale": "glazed terracotta primary gameplay purpose"
+        }
+      }
+    },
+    "minecraft:brown_harness": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "equips on happy ghast to enable riding; saddle-like"
+        },
+        "dye_color": {
+          "value": "brown",
+          "signal": "pattern",
+          "rationale": "id prefix + harnesses tag; dyeable to all 16 colors"
+        },
+        "material_family": {
+          "value": "leather",
+          "signal": "inferred",
+          "rationale": "harness equipment conventionally leather"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources listed; crafted only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used specifically when riding happy ghasts"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "harness enables flying ghast riding"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "leather harness with dye color"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown leather item"
+        },
+        "primary_uses": {
+          "values": [
+            "equip happy ghast to enable riding",
+            "tempt and attract happy ghasts",
+            "dye to any of 16 harness colors"
+          ],
+          "signal": "inferred",
+          "rationale": "harnesses + tempt_items tag + dye recipes"
+        }
+      }
+    },
+    "minecraft:brown_mushroom": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "grows naturally in world; raw fungal plant"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave",
+            "overworld_surface",
+            "mob_drop"
+          ],
+          "signal": "inferred",
+          "rationale": "dark caves/swamps; mooshroom+bogged shearing"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; farmable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in stews and fermented spider eye"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "brewing"
+          ],
+          "signal": "inferred",
+          "rationale": "food stews + fermented spider eye for potions"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic fungal plant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown-toned mushroom cap"
+        },
+        "primary_uses": {
+          "values": [
+            "mushroom stew ingredient",
+            "fermented spider eye crafting",
+            "suspicious stew ingredient",
+            "rabbit stew ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "sample_ingredient_of covers stews and brewing"
+        }
+      }
+    },
+    "minecraft:brown_mushroom_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid full block; used for natural structures/builds"
+        },
+        "material_family": {
+          "value": "mushroom",
+          "signal": "pattern",
+          "rationale": "id = brown_mushroom_block"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface",
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "giant mushrooms in swamp/dark forest/caves"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common; mineable from giant mushrooms"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche organic building/decorating use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "solid block for natural-style builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic mushroom cap material"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brown mushroom block; warm earthy tones"
+        },
+        "primary_uses": {
+          "values": [
+            "natural-look organic building block",
+            "decorative mushroom-biome structure element"
+          ],
+          "signal": "inferred",
+          "rationale": "no recipes; purely structural or decorative use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

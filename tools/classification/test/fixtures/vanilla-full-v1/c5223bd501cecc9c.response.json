@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 195478,
+  "duration_api_ms": 196270,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:polished_blackstone_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs form = structural building use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Abundant in nether; component=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Building blocks used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Polished shaped variant of blackstone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Blackstone is near-black, unglossed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-style staircase construction\", \"dark stone architectural detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs form + dark nether material\"\n        }\n      }\n    },\n    \"minecraft:polished_blackstone_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wall form = structural building use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Abundant in nether; component=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Building blocks used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Polished shaped variant of blackstone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Blackstone is near-black, unglossed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-style perimeter walls\", \"decorative fence/barrier alternative\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Wall form + dark nether material\"\n        }\n      }\n    },\n    \"minecraft:polished_cinnabar\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Full block cut into variants, structural\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix polished_cinnabar_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Component=common; building block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Building blocks used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Block for construction and aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Polished form of raw cinnabar\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cinnabar is bright red/scarlet mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"base cinnabar building block\", \"stonecutting into cinnabar variants\", \"ingredient for cinnabar bricks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe outputs: cut variants + bricks\"\n        }\n      }\n    },\n    \"minecraft:polished_cinnabar_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Slab is a structural building form\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix polished_cinnabar_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Component=common; building block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Building blocks used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Slab for floors, roofing, detailing\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Polished cinnabar slab form\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cinnabar is bright red/scarlet mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height flooring or roofing\", \"cinnabar slab detailing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Slab form + cinnabar material\"\n        }\n      }\n    },\n    \"minecraft:polished_cinnabar_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs form = structural building use\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix polished_cinnabar_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Component=common; building block\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Building blocks used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Staircase and aesthetic use\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Polished cinnabar stair form\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Cinnabar is bright red/scarlet mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"cinnabar staircase construction\", \"red-stone aesthetic stairs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Stairs form + cinnabar material\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"spawn_interaction\",\n      \"value\": \"swallowable_by_mob\",\n      \"rationale\": \"Tag minecraft:sulfur_cube_swallowable implies a mob (sulfur cube) can consume/swallow this block type; no existing spawn_interaction value captures this mechanic\"\n    }\n  ],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:polished_blackstone_stairs\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"bastion\"],\n      \"rationale\": \"Bastion remnants structurally generate polished blackstone stairs; mineable in-world even without loot table drop\",\n      \"confidence\": 0.75\n    },\n    {\n      \"item\": \"minecraft:polished_blackstone_wall\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"bastion\"],\n      \"rationale\": \"Bastion remnants structurally generate polished blackstone walls; mineable in-world even without loot table drop\",\n      \"confidence\": 0.70\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "622cb993-184e-4609-a58b-4742bca0d872",
+  "total_cost_usd": 0.25506365,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4919,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15375,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4919
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15375,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4919,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4919,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4056,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004136,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15375,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4919,
+      "webSearchRequests": 0,
+      "costUSD": 0.25092765,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "42f67e1a-7031-435b-9390-fd181929d68e"
+}

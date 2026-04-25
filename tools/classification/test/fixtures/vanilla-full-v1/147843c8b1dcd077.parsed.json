@@ -1,0 +1,326 @@
+{
+  "items": {
+    "minecraft:stripped_oak_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stripped log placed as structural block"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "oak trees extremely common worldwide"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular wood building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural + aesthetic log building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of natural log"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm medium-brown oak wood tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "oak trees on overworld surface, axe-stripped"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "structural log building",
+            "craft planks and hanging signs",
+            "smelt into charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list + building use"
+        }
+      }
+    },
+    "minecraft:stripped_oak_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural all-bark wood block"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "crafted from abundant oak logs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "less used than logs in typical builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "uniform texture used aesthetically"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of full-bark wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_medium",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "warm medium-brown oak tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "aesthetic building with uniform texture",
+            "craft oak planks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list + building use"
+        }
+      }
+    },
+    "minecraft:stripped_pale_oak_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stripped log placed as structural block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "pale garden biome rarer than oak biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche biome wood, occasional use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural + pale aesthetic building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of pale oak log"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak is whitish light-colored wood"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "pale garden biome on overworld surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "pale aesthetic log building",
+            "craft pale oak planks and signs",
+            "smelt into charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list + building use"
+        }
+      }
+    },
+    "minecraft:stripped_pale_oak_wood": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placed as structural all-bark wood block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "crafted from uncommon pale oak logs"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche aesthetic block, occasional use"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "uniform pale texture used aesthetically"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of pale oak wood block"
+        },
+        "palette": {
+          "values": [
+            "wood_pale",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale oak whitish light-colored wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "pale aesthetic uniform-texture building",
+            "craft pale oak planks",
+            "fuel source"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list + building use"
+        }
+      }
+    },
+    "minecraft:stripped_spruce_log": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stripped log placed as structural block"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "spruce very common in taiga biomes"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common dark wood building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural + aesthetic log building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stripped variant of spruce log"
+        },
+        "palette": {
+          "values": [
+            "wood_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce is a dark-brown wood tone"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "spruce trees on taiga overworld surface"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "ignitable_by_fire"
+          ],
+          "signal": "pattern",
+          "rationale": "tag minecraft:logs_that_burn"
+        },
+        "primary_uses": {
+          "values": [
+            "dark wood structural building",
+            "craft spruce planks and signs",
+            "smelt into charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "ingredient list + building use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

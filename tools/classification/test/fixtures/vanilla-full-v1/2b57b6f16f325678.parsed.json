@@ -1,0 +1,287 @@
+{
+  "items": {
+    "minecraft:flow_pottery_sherd": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "Collectible sherd for pot decoration"
+        },
+        "material_family": {
+          "value": "ceramic",
+          "signal": "inferred",
+          "rationale": "Pottery sherds are fired ceramic pieces"
+        },
+        "origin": {
+          "values": [
+            "trial_chamber",
+            "archaeology_site"
+          ],
+          "signal": "inferred",
+          "rationale": "Flow sherd via trial chamber brushing"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Rarely used; only for decorated pots"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_ingredients tag confirms"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "Archaeological artifact, historic motif"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "Terracotta-toned pottery aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "Craft decorated pots with flow motif",
+            "Archaeology collectible"
+          ],
+          "signal": "inferred",
+          "rationale": "decorated_pot_ingredients; trial chamber"
+        }
+      }
+    },
+    "minecraft:flower_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "Reusable loom template for banners"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "Crafted from paper and oxeye daisy"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "No loot sources; shapeless recipe only"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used occasionally for banner aesthetics"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Applies flower pattern to banners"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "Flower motif; decorative craft item"
+        },
+        "primary_uses": {
+          "values": [
+            "Apply flower pattern to banners in loom",
+            "Reusable loom decoration template"
+          ],
+          "signal": "inferred",
+          "rationale": "banner_patterns component + loom tag"
+        }
+      }
+    },
+    "minecraft:flower_pot": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "Holds plants for indoor decoration"
+        },
+        "material_family": {
+          "value": "brick",
+          "signal": "inferred",
+          "rationale": "Crafted from 3 bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used occasionally for home decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "Primary use is decorative plant display"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "Simple ceramic pot, no embellishment"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "Brick/terracotta orange-brown tone"
+        },
+        "primary_uses": {
+          "values": [
+            "Holds flowers and plants when placed",
+            "Decorative indoor plant display"
+          ],
+          "signal": "inferred",
+          "rationale": "Potted block loot sources confirm"
+        }
+      }
+    },
+    "minecraft:flowering_azalea": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Wild shrub found growing on surface"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "Organic azalea bush, not processed"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Planted for decor or azalea tree farm"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "Decor shrub; marks lush caves; grows"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "Flowering bush, purely organic"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "Green leaves with pink-white flowers"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative flowering shrub when placed",
+            "Indicates lush cave below",
+            "Bee food source",
+            "Grows into azalea tree with bonemeal"
+          ],
+          "signal": "inferred",
+          "rationale": "bee_food + saplings tags confirm"
+        }
+      }
+    },
+    "minecraft:flowering_azalea_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "Leaves harvested from azalea trees"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "Leaf block, organic plant matter"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity = common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "Used in nature builds or leaf litter"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "Decorative leaves; crafts leaf litter"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "Leaves with visible flower clusters"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "Green with pink-white floral tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Decorative leaf block for nature builds",
+            "Crafts leaf litter",
+            "Bee food source"
+          ],
+          "signal": "inferred",
+          "rationale": "bee_food tag + leaf_litter ingredient"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

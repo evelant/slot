@@ -1,0 +1,315 @@
+{
+  "items": {
+    "minecraft:field_masoned_banner_pattern": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "used in loom to stamp banner pattern"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "crafted from paper + bricks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "only used when decorating banners"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "loom_patterns tag; applied to banners"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of many banner pattern variants"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; crafting_shapeless only"
+        },
+        "primary_uses": {
+          "values": [
+            "apply field masoned pattern to banners",
+            "loom ingredient for brick-pattern banner"
+          ],
+          "signal": "inferred",
+          "rationale": "loom_patterns tag confirms use"
+        }
+      }
+    },
+    "minecraft:filled_map": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "navigation tool showing terrain"
+        },
+        "material_family": {
+          "value": "paper",
+          "signal": "inferred",
+          "rationale": "derived from paper-based map"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "regularly used for navigation"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "primary purpose is terrain navigation"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "unthemed parchment map"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "parchment and terrain color tones"
+        },
+        "primary_uses": {
+          "values": [
+            "navigate and display explored terrain",
+            "clone or extend maps",
+            "mark locations with banners"
+          ],
+          "signal": "inferred",
+          "rationale": "cloning/extending recipes + exploration"
+        }
+      }
+    },
+    "minecraft:fire_charge": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "throwable ignition; dispenser projectile"
+        },
+        "material_family": {
+          "value": "blaze_powder",
+          "signal": "inferred",
+          "rationale": "primary crafting component"
+        },
+        "material_secondary": {
+          "values": [
+            "gunpowder",
+            "coal"
+          ],
+          "signal": "inferred",
+          "rationale": "crafted with gunpowder + coal/charcoal"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational ignition and combat use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "ignites entities/portals; dispenser use"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "glowing"
+          ],
+          "signal": "inferred",
+          "rationale": "orange fire visual"
+        },
+        "primary_uses": {
+          "values": [
+            "ignite blocks and entities",
+            "light nether portals",
+            "dispenser fire projectile",
+            "firework star ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "creeper_igniters tag + firework_star recipe"
+        }
+      }
+    },
+    "minecraft:fire_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "ocean plant placed for aesthetics"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id: fire_coral"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean/aquarium decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as ocean aesthetic accent"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic marine plant"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red/orange coral"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral holds water when placed"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean and aquarium decoration",
+            "underwater building accent"
+          ],
+          "signal": "inferred",
+          "rationale": "no crafting use; purely decorative"
+        }
+      }
+    },
+    "minecraft:fire_coral_block": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "solid coral block for decoration"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id: fire_coral_block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean/aquarium decoration"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "solid coral block placed in builds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic marine block"
+        },
+        "palette": {
+          "values": [
+            "coral",
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright red/orange solid coral"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "found in warm ocean biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral block waterlogs when placed"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean and aquarium decoration",
+            "underwater building block"
+          ],
+          "signal": "inferred",
+          "rationale": "no crafting use; decorative/structural"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

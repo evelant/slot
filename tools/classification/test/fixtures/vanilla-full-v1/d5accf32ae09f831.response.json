@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 111741,
+  "duration_api_ms": 112474,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pale_oak_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"signs display text; primarily decorative labeling\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component explicitly states common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed situationally for labeling\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds for labeling/aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain wood, natural material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak is distinctively light/pale wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden sign is flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"label chests and areas\", \"decorative signage in builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sign use cases\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw foliage harvested as-is from trees\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"covers every pale oak canopy\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for decoration or composting\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"foliage decor; compostable; leaf litter\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic foliage block\"\n        },\n        \"palette\": {\n          \"values\": [\"muted\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak leaves are desaturated/pale\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves are highly flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"foliage decoration in builds\", \"composting for bonemeal\", \"crafting leaf litter\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard leaf use cases\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood harvested directly from trees\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common; found in pale oak forests\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core crafting input; heavily used\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as structural or decorative log\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood, organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak has distinctively pale bark\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood logs burn and catch fire\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting pale oak planks\", \"building with log blocks\", \"fuel and charcoal production\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard log use cases\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_planks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planks are primary structural building material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"most-used building block in game\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary structural building block\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"plain processed wood panels\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak planks are very light-toned\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden planks are flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building structures\", \"crafting furniture and tools\", \"fuel source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard plank use cases\"\n        }\n      }\n    },\n    \"minecraft:pale_oak_pressure_plate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone signal on entity step\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component states common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in specific door/redstone builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redstone signal source; placed in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wooden mechanical trigger\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pale oak coloring\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"ignitable_by_fire\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; thin plates are piston-movable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"auto-open doors and gates\", \"entity detection for redstone circuits\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard pressure plate uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:pale_oak_planks\",\n      \"facet\": \"material_family\",\n      \"current\": \"wood_oak\",\n      \"suggested\": \"wood_pale_oak\",\n      \"rationale\": \"Planks are pale oak; rule misread wooden_tool_materials tag which groups all plank types, not oak-specific\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "3aa91f27-0683-4928-a2bf-a53053b96ea8",
+  "total_cost_usd": 0.15145789999999998,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5082,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8417,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 5082
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8417,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5082,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 5082,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4219,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004288999999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8417,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5082,
+      "webSearchRequests": 0,
+      "costUSD": 0.1471689,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "33ae8181-60a2-4a33-829b-49a9f309d4c6"
+}

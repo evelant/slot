@@ -1,0 +1,322 @@
+{
+  "items": {
+    "minecraft:oxidized_cut_copper_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form = structural building use"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains 'copper'"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative build choice, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab used for building/decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized = weathered variant of copper"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "fully oxidized copper = teal-green patina"
+        },
+        "primary_uses": {
+          "values": [
+            "Building with oxidized copper aesthetic",
+            "Wax to lock patina state",
+            "Decorative half-height copper slab"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab + oxidized copper uses"
+        }
+      }
+    },
+    "minecraft:oxidized_cut_copper_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs form = structural building use"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "id contains 'copper'"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative build choice, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for building/decoration"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized = weathered variant of copper"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "fully oxidized copper = teal-green patina"
+        },
+        "primary_uses": {
+          "values": [
+            "Building stairs with oxidized copper look",
+            "Wax to lock patina state",
+            "Decorative copper staircase"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs + oxidized copper uses"
+        }
+      }
+    },
+    "minecraft:oxidized_lightning_rod": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "redirects lightning, emits redstone signal"
+        },
+        "material_family": {
+          "value": "copper",
+          "signal": "pattern",
+          "rationale": "lightning rod crafted from copper ingots"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational: lightning protection/redstone"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "placed on builds; emits redstone on strike"
+        },
+        "flavor": {
+          "values": [
+            "variant",
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "oxidized variant; functional device"
+        },
+        "palette": {
+          "values": [
+            "copper_oxidized"
+          ],
+          "signal": "pattern",
+          "rationale": "fully oxidized copper = teal patina"
+        },
+        "environmental_property": {
+          "values": [
+            "conducts_lightning"
+          ],
+          "signal": "inferred",
+          "rationale": "core mechanic: attracts/redirects lightning"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no direct recipe; oxidizes from crafted rod"
+        },
+        "primary_uses": {
+          "values": [
+            "Redirect lightning strikes to safe spot",
+            "Trigger redstone pulse on lightning strike",
+            "Wax to preserve oxidized appearance"
+          ],
+          "signal": "inferred",
+          "rationale": "core lightning rod gameplay functions"
+        }
+      }
+    },
+    "minecraft:packed_ice": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid placeable ice block"
+        },
+        "material_family": {
+          "value": "ice",
+          "signal": "pattern",
+          "rationale": "id = packed_ice"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs silk touch + cold biome or 9 ice"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational: ice roads, blue ice crafting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "ice roads for speed; structural frozen build"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "natural ice; denser form than regular ice"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "light",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "icy blue-white semi-transparent look"
+        },
+        "environmental_property": {
+          "values": [
+            "slippery"
+          ],
+          "signal": "inferred",
+          "rationale": "packed ice is highly slippery surface"
+        },
+        "primary_uses": {
+          "values": [
+            "Ice roads for fast boat/player travel",
+            "Crafting blue ice (9 packed ice)",
+            "Building with frozen aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "main gameplay uses of packed ice"
+        }
+      }
+    },
+    "minecraft:packed_mud": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block; earthen building material"
+        },
+        "material_family": {
+          "value": "mud",
+          "signal": "pattern",
+          "rationale": "id = packed_mud; crafted from mud"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mud + wheat both trivially obtained"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "mainly a mud brick precursor"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed structurally or as mud brick step"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "simple earthy block, no ornamentation"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "brown/tan earth tones"
+        },
+        "primary_uses": {
+          "values": [
+            "Crafting mud bricks",
+            "Natural/earthy building material"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is mud brick precursor"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:packed_ice",
+      "facet": "origin",
+      "current": [
+        "ancient_city"
+      ],
+      "suggested": [
+        "ancient_city",
+        "overworld_surface"
+      ],
+      "rationale": "packed ice generates naturally in ice spike and frozen ocean biomes; block loot table confirms mined-in-world drops",
+      "confidence": 0.9
+    }
+  ]
+}

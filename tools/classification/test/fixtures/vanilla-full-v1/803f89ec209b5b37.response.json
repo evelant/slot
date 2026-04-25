@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 149709,
+  "duration_api_ms": 150606,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:golden_spear\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"minecraft:weapon component + spears tag\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix golden_\"\n        },\n        \"tier\": {\n          \"value\": \"golden\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix golden_\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold durability is very low (32 uses)\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"melee and throwable weapon\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard weapon, no ornate lore\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold material item\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; crafting_shaped only\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"melee combat\", \"throwable spear attack\", \"high enchantability weapon\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spear + enchantable/lunge tag\"\n        }\n      }\n    },\n    \"minecraft:golden_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"sword suffix + minecraft:weapon component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"very low durability; niche use cases\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"melee weapon primary use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard sword design\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold material\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"melee combat\", \"highest enchantability tier\", \"piglin neutrality when held\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sword stats + piglin_loved tag\"\n        }\n      }\n    },\n    \"minecraft:granite\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid stone block for building\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates freely in overworld terrain\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used by builders, not universal necessity\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone block placed for structure and deco\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring igneous stone\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pinkish-brown speckled stone texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building with stone aesthetics\", \"crafting polished granite\", \"stone variant decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"block use + stonecutting ingredient list\"\n        }\n      }\n    },\n    \"minecraft:granite_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form factor for construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant granite\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when building with granite\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-block slab for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural stone slab\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inherits granite pinkish-brown texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-block surface construction\", \"architectural step detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form factor use cases\"\n        }\n      }\n    },\n    \"minecraft:granite_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form factor for construction\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from abundant granite\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when building with granite\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stair block for construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural stone stairs\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inherits granite pinkish-brown texture\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"staircase construction\", \"architectural roofing and detail\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs form factor use cases\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:granite\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\", \"overworld_cave\"],\n      \"rationale\": \"Granite is a naturally generating overworld stone type; rule mistook absence of chest/mob loot for crafted_only\",\n      \"confidence\": 0.95\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "d23f10a1-8cbd-4f53-9e08-199d2aeeb4a7",
+  "total_cost_usd": 0.18890765,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5083,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10913,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5083,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10913,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5083,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5083
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4220,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004295,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10913,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5083,
+      "webSearchRequests": 0,
+      "costUSD": 0.18461265000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7f112b7b-c76a-46b3-b876-756288c37531"
+}

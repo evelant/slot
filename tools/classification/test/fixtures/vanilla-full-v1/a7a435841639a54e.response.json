@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 171760,
+  "duration_api_ms": 172533,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:pink_candle\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"candles are primarily aesthetic light sources\"\n        },\n        \"material_family\": {\n          \"value\": \"wax\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from honeycomb (wax) + string\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative use, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is ambient decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wax/organic origin + pink dye\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a soft, light tone\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from honeycomb+string+dye\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light when lit (1-3 levels)\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"ambient decorative lighting\",\n            \"cake decoration (placed on cake)\",\n            \"counting marker (up to 4 per block)\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"known candle gameplay functions\"\n        }\n      }\n    },\n    \"minecraft:pink_carpet\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin wool layer, primarily aesthetic\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorative builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"floor decor + sculk vibration suppression\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool material + pink dye color\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a soft/light tone\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"blocks_monster_spawn\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"carpets prevent mob spawning below\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"sculk_silent\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:dampens_vibrations\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative floor covering\",\n            \"llama equipment (saddle carpet)\",\n            \"suppressing sculk sensor vibrations\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard carpet gameplay roles\"\n        }\n      }\n    },\n    \"minecraft:pink_concrete\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid uniform block for construction\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _concrete\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorative builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored construction material\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid uniform pink, no texture variation\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink reads as light/pastel\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powder+water contact; not naturally found\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colored building material\",\n            \"pixel art and decorative architecture\",\n            \"smooth flat-colored surfaces\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical concrete block usage\"\n        }\n      }\n    },\n    \"minecraft:pink_concrete_powder\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placeable gravity block, converts to concrete\"\n        },\n        \"material_family\": {\n          \"value\": \"concrete_powder\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _concrete_powder\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"intermediate step toward concrete\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to produce concrete for building\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"uniform pink powder block\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"powder is a soft pink tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"gravity_affected\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"falls like sand/gravel when unsupported\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"producing pink concrete via water contact\",\n            \"gravity-based building mechanic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard concrete powder functions\"\n        }\n      }\n    },\n    \"minecraft:pink_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed crafting/dyeing ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _dye, tag minecraft:dyes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component_highlights rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when dyeing items\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyeing wool/carpet/beds/armor/blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sourced from flowers + pink dye color\"\n        },\n        \"palette\": {\n          \"values\": [\"pastel\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"pink is a soft/pastel tone\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"from peony, pink tulip, pink petals\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dyeing wool, carpet, and beds pink\",\n            \"leather armor color customization\",\n            \"firework star coloring\",\n            \"banner patterns via loom\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard dye downstream uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "56349295-6e95-4ab0-8aa7-0419568ef6cc",
+  "total_cost_usd": 0.1926129,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4602,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 11312,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 4602
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 11312,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4602,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4602,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3739,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0038190000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 11312,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4602,
+      "webSearchRequests": 0,
+      "costUSD": 0.18879390000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "ae5ac96c-8478-40f1-9c87-1adcb81a5170"
+}

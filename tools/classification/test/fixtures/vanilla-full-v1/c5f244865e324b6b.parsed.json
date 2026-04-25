@@ -1,0 +1,292 @@
+{
+  "items": {
+    "minecraft:vindicator_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs place mobs when used"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot source; creative/command only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely used outside testing/creative"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "vindicator is a hostile combat mob"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → spawns linked mob"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning vindicators",
+            "mob farm / raid testing",
+            "creative combat scenario setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg primary use is mob spawning"
+        }
+      }
+    },
+    "minecraft:vine": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw plant gathered from world as-is"
+        },
+        "material_family": {
+          "value": "vine",
+          "signal": "pattern",
+          "rationale": "id is minecraft:vine"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in jungles, swamps, dark forests"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in jungle/swamp biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used occasionally for mossy blocks"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "makes mossy blocks and banner patterns"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic climbing plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "visually a leafy green climbing plant"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "vines are flammable in Minecraft"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting mossy cobblestone/bricks",
+            "bordure banner pattern ingredient",
+            "climbing/decorative block placement"
+          ],
+          "signal": "inferred",
+          "rationale": "from sample_ingredient_of recipes"
+        }
+      }
+    },
+    "minecraft:wandering_trader_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs place mobs when used"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot source; creative/command only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "rarely used outside testing/creative"
+        },
+        "activity": {
+          "values": [
+            "trading"
+          ],
+          "signal": "inferred",
+          "rationale": "wandering trader enables trading"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → spawns linked mob"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning wandering traders",
+            "testing trade mechanics",
+            "creative/command use"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg purpose is mob placement"
+        }
+      }
+    },
+    "minecraft:ward_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "smithing trim upgrade applied to armor"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "used once per armor piece; very niche"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "found in ancient city; ward motif"
+        },
+        "palette": {
+          "values": [
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient city origin; dark aesthetic"
+        },
+        "primary_uses": {
+          "values": [
+            "applying ward trim to armor",
+            "duplicating template via crafting",
+            "armor cosmetic customization"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing_trim use + self-duplication recipe"
+        }
+      }
+    },
+    "minecraft:warden_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawn eggs place mobs when used"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot source; creative/command only"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity = common",
+          "rationale": "component rarity = common"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche use; warden is admin/test mob"
+        },
+        "activity": {
+          "values": [
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "warden is a combat encounter mob"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix → spawns linked mob"
+        },
+        "flavor": {
+          "values": [
+            "ominous"
+          ],
+          "signal": "inferred",
+          "rationale": "warden is the most threatening mob"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "emissive"
+          ],
+          "signal": "inferred",
+          "rationale": "dark body + glowing blue highlights"
+        },
+        "primary_uses": {
+          "values": [
+            "spawning wardens for combat challenges",
+            "testing warden AI/mechanics",
+            "creative/command use"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg primary use is mob spawning"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

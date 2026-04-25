@@ -1,0 +1,350 @@
+{
+  "items": {
+    "minecraft:ice": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable block; ice roads, structures"
+        },
+        "material_family": {
+          "value": "ice",
+          "signal": "pattern",
+          "rationale": "id is ice"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity: common",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational; ice roads, packed ice"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "transportation"
+          ],
+          "signal": "inferred",
+          "rationale": "ice roads for boat/player speed"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural frozen biome material"
+        },
+        "palette": {
+          "values": [
+            "cool",
+            "translucent"
+          ],
+          "signal": "inferred",
+          "rationale": "pale blue-white, semi-transparent"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "frozen lakes/rivers in cold biomes"
+        },
+        "environmental_property": {
+          "values": [
+            "slippery"
+          ],
+          "signal": "inferred",
+          "rationale": "ice has very low friction (0.98)"
+        },
+        "primary_uses": {
+          "values": [
+            "building ice roads for speed travel",
+            "crafting packed ice",
+            "water source when melted"
+          ],
+          "signal": "inferred",
+          "rationale": "top player use cases"
+        }
+      }
+    },
+    "minecraft:infested_chiseled_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "visually identical to chiseled stone bricks"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "chiseled stone bricks base material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stronghold only; silk touch required"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never intentionally collected"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "trap blocks in adventure/PvP builds"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "hidden-trap variant of stone bricks"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone tone"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "exclusive to stronghold generation"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "releases silverfish when broken"
+        },
+        "primary_uses": {
+          "values": [
+            "silverfish trap in adventure maps",
+            "stronghold-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "niche trap and deco uses"
+        }
+      }
+    },
+    "minecraft:infested_cobblestone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "visually identical to cobblestone"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "cobblestone = processed stone"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stronghold only; silk touch required"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never intentionally collected"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "trap blocks in adventure/PvP builds"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "hidden-trap variant of cobblestone"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone tone"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "exclusive to stronghold generation"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "releases silverfish when broken"
+        },
+        "primary_uses": {
+          "values": [
+            "silverfish trap in adventure maps",
+            "stronghold-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "niche trap and deco uses"
+        }
+      }
+    },
+    "minecraft:infested_cracked_stone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "visually identical to cracked stone bricks"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "cracked stone bricks base material"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stronghold only; silk touch required"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never intentionally collected"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "trap blocks in adventure/PvP builds"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "hidden-trap variant of cracked stone bricks"
+        },
+        "palette": {
+          "values": [
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "gray stone tone"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "exclusive to stronghold generation"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "releases silverfish when broken"
+        },
+        "primary_uses": {
+          "values": [
+            "silverfish trap in adventure maps",
+            "stronghold-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "niche trap and deco uses"
+        }
+      }
+    },
+    "minecraft:infested_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "visually identical to deepslate"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "rationale": "deepslate-based infested block"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "stronghold only; silk touch required"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "almost never intentionally collected"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "trap blocks in adventure/PvP builds"
+        },
+        "flavor": {
+          "values": [
+            "ominous",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "hidden-trap variant of deepslate"
+        },
+        "palette": {
+          "values": [
+            "muted",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark gray deepslate tone"
+        },
+        "origin": {
+          "values": [
+            "stronghold"
+          ],
+          "signal": "inferred",
+          "rationale": "deepslate-level stronghold layers"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "releases silverfish when broken"
+        },
+        "primary_uses": {
+          "values": [
+            "silverfish trap in adventure maps",
+            "deepslate-themed decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "niche trap and deco uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

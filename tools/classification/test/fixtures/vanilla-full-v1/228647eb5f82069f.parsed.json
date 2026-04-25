@@ -1,0 +1,306 @@
+{
+  "items": {
+    "minecraft:piglin_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only mob spawner"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot or recipe"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg id → spawns named mob"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival obtainment"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in adventure maps or testing"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "piglin egg: gold base, dark accent"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn a Piglin mob",
+            "adventure map mob setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg's only gameplay purpose"
+        }
+      }
+    },
+    "minecraft:pillager_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "creative-only mob spawner"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival loot or recipe"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "_spawn_egg id → spawns named mob"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only, no survival obtainment"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in adventure maps or testing"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted"
+          ],
+          "signal": "inferred",
+          "rationale": "pillager egg: dark gray tones"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn a Pillager mob",
+            "adventure map mob setup"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn egg's only gameplay purpose"
+        }
+      }
+    },
+    "minecraft:pink_banner": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "banners are primarily decorative"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "pattern",
+          "rationale": "banner recipe uses 6 wool"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from wool"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative, used situationally"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall decor and shield pattern use"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye-color variants"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a warm pastel hue"
+        },
+        "primary_uses": {
+          "values": [
+            "wall decoration",
+            "shield customization",
+            "banner pattern layering"
+          ],
+          "signal": "inferred",
+          "rationale": "banner's main uses"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits standard inventory slots"
+        }
+      }
+    },
+    "minecraft:pink_bed": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "sets spawn, skips night"
+        },
+        "material_family": {
+          "value": "wool",
+          "signal": "pattern",
+          "rationale": "bed recipe requires wool"
+        },
+        "material_secondary": {
+          "values": [
+            "wood"
+          ],
+          "signal": "pattern",
+          "rationale": "bed recipe requires wood planks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "easily crafted from wool and wood"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used every night in survival"
+        },
+        "activity": {
+          "values": [
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "sets spawn point during exploration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye-color variants"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a warm pastel hue"
+        },
+        "primary_uses": {
+          "values": [
+            "skip night",
+            "set spawn point",
+            "decorative bedroom block"
+          ],
+          "signal": "inferred",
+          "rationale": "bed's core gameplay functions"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits standard inventory slots"
+        }
+      }
+    },
+    "minecraft:pink_bundle": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "bundles hold multiple stacked items"
+        },
+        "dye_color": {
+          "value": "pink",
+          "signal": "pattern",
+          "rationale": "id prefix pink + bundles tag"
+        },
+        "material_family": {
+          "value": "rabbit_hide",
+          "signal": "inferred",
+          "rationale": "base bundle crafted from rabbit hide"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "rabbit hide obtainable from rabbits"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "used regularly for inventory mgmt"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "bundles manage inventory capacity"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye-color variants"
+        },
+        "palette": {
+          "values": [
+            "pastel",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "pink is a warm pastel hue"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "inferred",
+          "rationale": "no loot sources; transmute recipe only"
+        },
+        "primary_uses": {
+          "values": [
+            "carry mixed item stacks",
+            "reduce inventory slot use",
+            "color-coded storage"
+          ],
+          "signal": "inferred",
+          "rationale": "bundle's core gameplay purpose"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits standard inventory slots"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

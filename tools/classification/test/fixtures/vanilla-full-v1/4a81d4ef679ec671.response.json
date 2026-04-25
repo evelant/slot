@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 170630,
+  "duration_api_ms": 171368,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:milk_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"named\",\n          \"rationale\": \"has minecraft:consumable component, drinkable\"\n        },\n        \"material_family\": {\n          \"value\": \"milk\",\n          \"signal\": \"named\",\n          \"rationale\": \"display_name + content is milk\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket container is iron\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational: clear effects or bake cake\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmed from cows; clears effects in combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"milk is white/cream colored\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"drink to clear all status effects\",\n            \"ingredient for cake crafting\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"clear_all_effects on_consume; cake recipe\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bucket with fluid content\"\n        }\n      }\n    },\n    \"minecraft:minecart\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"transport\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"vehicle placed on rails to transport\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from iron ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when rail networks are built\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"logistics\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rail transport; item routing; redstone systems\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron vehicle on rails\"\n        },\n        \"palette\": {\n          \"values\": [\"silver\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray iron appearance\"\n        },\n        \"origin\": {\n          \"value\": \"crafted_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; produced by crafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"player/mob transport on rails\",\n            \"base for chest/hopper/furnace minecarts\",\n            \"rail-based logistics and automation\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"vehicle + ingredient for minecart variants\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"player\", \"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"base minecart carries player or mob\"\n        }\n      }\n    },\n    \"minecraft:miner_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"curiosity\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeology collectible, decorative pot piece\"\n        },\n        \"material_family\": {\n          \"value\": \"pottery\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ceramic sherd from archaeology brushing\"\n        },\n        \"frequency\": {\n          \"value\": \"display_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in decorated pots, primarily display\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_ingredients tag\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"archaeological item with historical motif\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta clay tones from desert site\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"craft decorated pots with miner motif\",\n            \"archaeology collectible\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorated_pot_ingredients; collectible\"\n        }\n      }\n    },\n    \"minecraft:mojang_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in loom to apply pattern to banners\"\n        },\n        \"material_family\": {\n          \"value\": \"paper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banner patterns use paper as crafting base\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche use; rare special pattern\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"loom_patterns tag; applies logo to banners\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rare easter-egg Mojang logo pattern\"\n        },\n        \"origin\": {\n          \"value\": \"crafted_only\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources; produced by crafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"apply Mojang logo to banner via loom\",\n            \"rare collector banner decoration\"\n          ],\n          \"signal\": \"named\",\n          \"rationale\": \"provides_banner_patterns + loom_patterns tag\"\n        }\n      }\n    },\n    \"minecraft:mooshroom_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"right-click to place/spawn mooshroom mob\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only; survival players rarely use\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mooshrooms yield mushrooms and milk\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal mob egg; mushroom-cow variant\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"red mooshroom coloring\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs not obtainable in survival\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg pattern; summons linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"spawn a mooshroom mob\",\n            \"creative mode mob placement\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg function\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"origin\",\n      \"value\": \"creative_inventory\",\n      \"rationale\": \"Spawn eggs and admin-only items have no survival loot origin; crafted_only is misleading — a dedicated creative_inventory value would distinguish them cleanly\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "37d0d365-d1f0-45b3-98c3-480b19ec1fad",
+  "total_cost_usd": 0.19910964999999997,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3355,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 12140,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3355,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 12140,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3355,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3355
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2492,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0025719999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 12140,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3355,
+      "webSearchRequests": 0,
+      "costUSD": 0.19653764999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "6005a0ae-22cb-4798-af24-8473c931067d"
+}

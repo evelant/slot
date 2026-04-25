@@ -1,0 +1,294 @@
+{
+  "items": {
+    "minecraft:cinnabar_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "brick block, structural use"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix cinnabar_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "non-vanilla specialty brick"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "brick block primary uses"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "brick form of base material"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cinnabar = red mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "build cinnabar brick structures",
+            "craft slab/stairs/wall variants"
+          ],
+          "signal": "inferred",
+          "rationale": "block role + sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:cinnabar_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab = structural"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix cinnabar_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty slab"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cinnabar = red mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height building element",
+            "ingredient for chiseled_cinnabar"
+          ],
+          "signal": "inferred",
+          "rationale": "slab use + sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:cinnabar_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stairs = structural"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix cinnabar_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty stairs block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs form"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cinnabar = red mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "stair-shaped building element",
+            "decorative cinnabar architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs use"
+        }
+      }
+    },
+    "minecraft:cinnabar_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall = structural"
+        },
+        "material_family": {
+          "value": "cinnabar",
+          "signal": "pattern",
+          "rationale": "id prefix cinnabar_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specialty wall block"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form"
+        },
+        "palette": {
+          "values": [
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "cinnabar = red mineral"
+        },
+        "primary_uses": {
+          "values": [
+            "fence/barrier building element",
+            "decorative cinnabar architecture"
+          ],
+          "signal": "inferred",
+          "rationale": "wall block use"
+        }
+      }
+    },
+    "minecraft:clay": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw world block, not processed"
+        },
+        "material_family": {
+          "value": "clay",
+          "signal": "pattern",
+          "rationale": "id = clay"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core terracotta/pottery chain"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "smelt→terracotta for building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring raw block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "grayish-blue clay color"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into terracotta",
+            "craft into clay balls",
+            "pottery and brick crafting chains"
+          ],
+          "signal": "inferred",
+          "rationale": "processing_in + sample_ingredient_of"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:clay",
+      "facet": "origin",
+      "current": [
+        "archaeology_site",
+        "village"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "overworld_ocean",
+        "archaeology_site",
+        "village"
+      ],
+      "rationale": "Clay generates naturally in riverbeds and ocean floors; primary origin missed",
+      "confidence": 0.95
+    }
+  ]
+}

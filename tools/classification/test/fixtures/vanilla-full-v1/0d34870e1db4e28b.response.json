@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 179302,
+  "duration_api_ms": 180011,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:chiseled_cinnabar\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled stone block variant\"\n        },\n        \"material_family\": {\n          \"value\": \"cinnabar\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _cinnabar\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative variant used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled stone used in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled = patterned stone variant\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"coral\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cinnabar = red-orange mineral\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative building\", \"cinnabar aesthetic structures\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled stone for decoration\"\n        }\n      }\n    },\n    \"minecraft:chiseled_copper\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled copper block\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _copper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"building variant used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper block for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled = patterned variant\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_bright\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"unoxidized copper is orange-bright\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"oxidizes_over_time\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"copper blocks oxidize in vanilla\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copper-themed building\", \"wax to lock patina stage\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled copper decorative block\"\n        }\n      }\n    },\n    \"minecraft:chiseled_deepslate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled stone variant\"\n        },\n        \"material_family\": {\n          \"value\": \"deepslate\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains _deepslate\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative block used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark stone for underground builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled = patterned variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deepslate is dark grey stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"deep-cave aesthetic building\", \"underground structure decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled deepslate for dark stone builds\"\n        }\n      }\n    },\n    \"minecraft:chiseled_nether_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled nether brick block\"\n        },\n        \"material_family\": {\n          \"value\": \"nether_brick\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id nether_bricks suffix\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether building used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether aesthetic building block\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled skull-pattern nether aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether brick = dark reddish-brown\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"fireproof\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether brick material is non-flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"nether-themed building\", \"fireproof decorative masonry\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled nether bricks for nether builds\"\n        }\n      }\n    },\n    \"minecraft:chiseled_polished_blackstone\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled stone block variant\"\n        },\n        \"material_family\": {\n          \"value\": \"blackstone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains blackstone\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether decorative block used selectively\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone for dark aesthetic builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"chiseled + polished = 2-step variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"blackstone is very dark stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"dark nether-aesthetic building\", \"polished blackstone decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chiseled polished blackstone for dark builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:chiseled_copper\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"trial_chamber\"],\n      \"rationale\": \"trial chambers generate with chiseled copper blocks\",\n      \"confidence\": 0.75\n    },\n    {\n      \"item\": \"minecraft:chiseled_polished_blackstone\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"bastion\"],\n      \"rationale\": \"bastion remnants contain chiseled polished blackstone\",\n      \"confidence\": 0.70\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "1f6f4935-5c26-4b66-bd32-24d8057891fe",
+  "total_cost_usd": 0.23518640000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4608,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14148,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4608,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14148,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4608,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4608
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3745,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00383,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14148,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4608,
+      "webSearchRequests": 0,
+      "costUSD": 0.23135640000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "431e2873-6541-44a6-b702-367c40489808"
+}

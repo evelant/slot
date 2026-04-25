@@ -1,0 +1,331 @@
+{
+  "items": {
+    "minecraft:red_nether_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "slab form; structural use"
+        },
+        "material_family": {
+          "value": "red_nether_brick",
+          "signal": "pattern",
+          "rationale": "crafted from red_nether_bricks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs nether fortress materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab + aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "red variant of nether brick"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark red brick texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "nether brick cannot catch fire"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed slab floors/ceilings",
+            "decorative step detail"
+          ],
+          "signal": "inferred",
+          "rationale": "typical slab use cases"
+        }
+      }
+    },
+    "minecraft:red_nether_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "stair form; structural use"
+        },
+        "material_family": {
+          "value": "red_nether_brick",
+          "signal": "pattern",
+          "rationale": "crafted from red_nether_bricks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs nether fortress materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs + aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "red variant of nether brick"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark red brick texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "nether brick cannot catch fire"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed stairways",
+            "decorative step shaping"
+          ],
+          "signal": "inferred",
+          "rationale": "typical stair use cases"
+        }
+      }
+    },
+    "minecraft:red_nether_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "wall form; structural use"
+        },
+        "material_family": {
+          "value": "red_nether_brick",
+          "signal": "pattern",
+          "rationale": "crafted from red_nether_bricks"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs nether fortress materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural wall + aesthetic use"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "red variant of nether brick"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark red brick texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "nether brick cannot catch fire"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed fencing/barriers",
+            "decorative wall detail"
+          ],
+          "signal": "inferred",
+          "rationale": "typical wall block use cases"
+        }
+      }
+    },
+    "minecraft:red_nether_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full brick block for building"
+        },
+        "material_family": {
+          "value": "nether_brick",
+          "signal": "pattern",
+          "rationale": "primary recipe ingredient"
+        },
+        "material_secondary": {
+          "values": [
+            "nether_wart"
+          ],
+          "signal": "pattern",
+          "rationale": "recipe: nether_brick + nether_wart"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "needs nether fortress materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche nether-aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed block + stonecutting source"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "red variant of nether bricks"
+        },
+        "palette": {
+          "values": [
+            "maroon",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "dark red brick texture"
+        },
+        "environmental_property": {
+          "values": [
+            "fireproof"
+          ],
+          "signal": "inferred",
+          "rationale": "nether brick cannot catch fire"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed building block",
+            "source for slab/stair/wall variants"
+          ],
+          "signal": "inferred",
+          "rationale": "block + stonecutting upstream"
+        }
+      }
+    },
+    "minecraft:red_sand": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "found naturally in badlands biome"
+        },
+        "material_family": {
+          "value": "sand",
+          "signal": "pattern",
+          "rationale": "tag minecraft:sand; sand variant"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "exclusive to badlands biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when badlands available"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed, smelted to glass, sandstone"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring sand variant"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-orange sand color"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "surface layer of badlands biome"
+        },
+        "environmental_property": {
+          "values": [
+            "gravity_affected"
+          ],
+          "signal": "inferred",
+          "rationale": "sand falls like gravel"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt into glass",
+            "craft red sandstone",
+            "building/decoration in badlands style"
+          ],
+          "signal": "inferred",
+          "rationale": "sand downstream uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

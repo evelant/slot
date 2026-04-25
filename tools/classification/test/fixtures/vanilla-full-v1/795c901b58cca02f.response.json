@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 224306,
+  "duration_api_ms": 225052,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:snort_pottery_sherd\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Shard-type ingredient for decorated pots\"\n        },\n        \"material_family\": {\n          \"value\": \"clay\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Pottery sherds are fired clay artifacts\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used to craft decorated pots\"\n        },\n        \"flavor\": {\n          \"values\": [\"ancient\", \"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Archaeological artifact from ruins\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Clay pottery has warm earthy tones\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Specific use: crafting decorated pots\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Craft decorated pots\", \"Archaeology collection\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Tag decorated_pot_ingredients defines use\"\n        }\n      }\n    },\n    \"minecraft:snout_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"Smithing template applies cosmetic trim upgrade\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Snout trim is purely cosmetic on armor\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"ominous\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Piglin snout pattern; bastion origin\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Bastion piglin gold-and-dark aesthetic\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used once per armor piece trimmed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Apply snout trim to armor\", \"Duplicate via diamond crafting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing_trim use + shaped duplication recipe\"\n        }\n      }\n    },\n    \"minecraft:snow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Thin layer block; primarily aesthetic use\"\n        },\n        \"material_family\": {\n          \"value\": \"snow\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is minecraft:snow\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Snow layers for winter builds and decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Natural world block\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"White cold-toned snow appearance\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used in winter-themed builds\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorative snow layering\", \"Craft snow blocks\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Thin layers for aesthetics; inputs to snow_block\"\n        }\n      }\n    },\n    \"minecraft:snow_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Full solid block used in structures\"\n        },\n        \"material_family\": {\n          \"value\": \"snow\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains snow\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Structural snow builds and winter decor\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Natural world block\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"White cold-toned snow appearance\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"slippery\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"Tag sulfur_cube_archetype/fast_sliding\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Used for snow builds or golem crafting\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Build snow structures\", \"Craft snow layers\", \"Construct snow golems\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Building, crafting, snow golem base block\"\n        }\n      }\n    },\n    \"minecraft:snow_golem_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Spawn egg: places snow golem mob\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"No survival loot or recipe; creative-only\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Snow golems attack mobs with snowballs\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Standard spawn egg appearance\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"Creative-only; rarely used item\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"All spawn eggs place their linked mob\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"No loot sources or crafting recipe\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spawn snow golems\", \"Snow golem mob farm setup\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Core use: placing snow golem entities\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "3530f3c9-003f-414f-a2dd-82b91e791346",
+  "total_cost_usd": 0.2193789,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3798,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13351,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3798,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13351,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3798,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3798
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2935,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0030150000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13351,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3798,
+      "webSearchRequests": 0,
+      "costUSD": 0.2163639,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "51b58070-6911-487d-b2fd-7f6c372085b6"
+}

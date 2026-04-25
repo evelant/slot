@@ -22,26 +22,50 @@ const TIER_TAG_TO_VALUE: Record<string, string> = {
   "minecraft:needs_diamond_tool": "diamond",
 };
 
+/**
+ * Items where the `mineable/<tool>` tag describes mining speed but the actual
+ * required tool to GET A DROP is different. For glow_lichen, axe mines it
+ * faster but only shears/silk-touch yield the item. Vanilla v1 canary catch.
+ */
+const REQUIRED_TOOL_OVERRIDES: Record<string, string> = {
+  "minecraft:glow_lichen": "shears",
+};
+
 export const requiredToolRule: Rule = {
   id: "required_tool",
   facets: ["required_tool", "required_tool_tier"],
   run({ record, blockTagClosure }) {
     const out: RuleOutput[] = [];
     const blockTags = blockTagClosure.get(record.id);
+
+    const override = REQUIRED_TOOL_OVERRIDES[record.id];
+    if (override) {
+      out.push({
+        facet: "required_tool",
+        kind: "single",
+        value: override,
+        source: "rule:required_tool_id_override",
+        confidence: 1,
+        rationale: "id-specific override",
+      });
+      // continue so we still emit tier from block-tag inspection
+    }
     if (!blockTags || blockTags.length === 0) return out;
 
-    for (const tag of blockTags) {
-      const kind = TOOL_TAG_TO_KIND[tag];
-      if (kind) {
-        out.push({
-          facet: "required_tool",
-          kind: "single",
-          value: kind,
-          source: "rule:required_tool_from_block_tag",
-          confidence: 1,
-          rationale: `tag ${tag}`,
-        });
-        break;
+    if (!override) {
+      for (const tag of blockTags) {
+        const kind = TOOL_TAG_TO_KIND[tag];
+        if (kind) {
+          out.push({
+            facet: "required_tool",
+            kind: "single",
+            value: kind,
+            source: "rule:required_tool_from_block_tag",
+            confidence: 1,
+            rationale: `tag ${tag}`,
+          });
+          break;
+        }
       }
     }
 

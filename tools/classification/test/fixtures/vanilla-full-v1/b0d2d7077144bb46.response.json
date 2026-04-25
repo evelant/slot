@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 136709,
+  "duration_api_ms": 137419,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:purpur_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab = structural architecture use\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires reaching the End\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche End-themed building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for structural/detail work\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exotic End material, ornate purple\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purpur is distinctly purple/violet\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"End-themed construction\", \"slab detailing in End builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural slab from End material\"\n        }\n      }\n    },\n    \"minecraft:purpur_stairs\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs = structural architecture use\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires reaching the End\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche End-themed building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stairs for structural/detail work\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"exotic End material, ornate purple\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purpur is distinctly purple/violet\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"End-themed construction\", \"staircase detailing in End builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural stairs from End material\"\n        }\n      }\n    },\n    \"minecraft:quartz\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"gem/mineral, primary crafting input\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant in Nether, piglin barter\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific recipes/trims\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"quartz blocks + comparator/daylight det\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mineral drop from ore\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/pale mineral appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"crafting quartz blocks\", \"crafting comparators/daylight detectors\", \"armor trims via smithing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream uses of quartz\"\n        }\n      }\n    },\n    \"minecraft:quartz_block\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full block for decorative building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from farmable nether quartz\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic building material\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/polished building aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"polished white elegant block\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/pale quartz appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative white building block\", \"crafting quartz variants (stairs/slabs/bricks)\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"building and crafting downstream\"\n        }\n      }\n    },\n    \"minecraft:quartz_bricks\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"full block, brick-textured variant\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from quartz blocks\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic building variant\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white brick building aesthetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brick pattern variant of quartz block\"\n        },\n        \"palette\": {\n          \"values\": [\"ivory\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white/pale quartz appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative quartz brick texture\", \"white building with brick pattern\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"textured alternative to plain quartz\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "1928fa1c-4645-4206-ab1c-9de171dd82f3",
+  "total_cost_usd": 0.1704804,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5072,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 9687,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 5072
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 9687,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5072,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 5072,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4209,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004299,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 9687,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5072,
+      "webSearchRequests": 0,
+      "costUSD": 0.1661814,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "60dbe00a-c286-44d0-ad51-8e39d1fb2a6e"
+}

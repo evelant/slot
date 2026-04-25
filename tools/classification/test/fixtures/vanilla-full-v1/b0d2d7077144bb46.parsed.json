@@ -1,0 +1,256 @@
+{
+  "items": {
+    "minecraft:purpur_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab = structural architecture use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires reaching the End"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche End-themed building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for structural/detail work"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "exotic End material, ornate purple"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purpur is distinctly purple/violet"
+        },
+        "primary_uses": {
+          "values": [
+            "End-themed construction",
+            "slab detailing in End builds"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab from End material"
+        }
+      }
+    },
+    "minecraft:purpur_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs = structural architecture use"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires reaching the End"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche End-themed building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for structural/detail work"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "exotic End material, ornate purple"
+        },
+        "palette": {
+          "values": [
+            "violet"
+          ],
+          "signal": "inferred",
+          "rationale": "purpur is distinctly purple/violet"
+        },
+        "primary_uses": {
+          "values": [
+            "End-themed construction",
+            "staircase detailing in End builds"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stairs from End material"
+        }
+      }
+    },
+    "minecraft:quartz": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "gem/mineral, primary crafting input"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in Nether, piglin barter"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific recipes/trims"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "quartz blocks + comparator/daylight det"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw mineral drop from ore"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white/pale mineral appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting quartz blocks",
+            "crafting comparators/daylight detectors",
+            "armor trims via smithing"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream uses of quartz"
+        }
+      }
+    },
+    "minecraft:quartz_block": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block for decorative building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from farmable nether quartz"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aesthetic building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "white/polished building aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "polished white elegant block"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white/pale quartz appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative white building block",
+            "crafting quartz variants (stairs/slabs/bricks)"
+          ],
+          "signal": "inferred",
+          "rationale": "building and crafting downstream"
+        }
+      }
+    },
+    "minecraft:quartz_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full block, brick-textured variant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from quartz blocks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "aesthetic building variant"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "white brick building aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "brick pattern variant of quartz block"
+        },
+        "palette": {
+          "values": [
+            "ivory",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white/pale quartz appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative quartz brick texture",
+            "white building with brick pattern"
+          ],
+          "signal": "inferred",
+          "rationale": "textured alternative to plain quartz"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

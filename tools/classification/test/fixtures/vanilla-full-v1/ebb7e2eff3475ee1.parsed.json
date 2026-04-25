@@ -1,0 +1,290 @@
+{
+  "items": {
+    "minecraft:acacia_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "emits redstone signal on entity step"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when redstone triggers needed"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "triggers signals; placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, one of many wood types"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia's orange-red wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; plate movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "trigger redstone on entity step",
+            "automatic door opener",
+            "mob farm trigger"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pressure plate functions"
+        }
+      }
+    },
+    "minecraft:acacia_sapling": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "drops from leaves; unprocessed plant"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for tree farm setup"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "tree farming; wood supply for building"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic plant item"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green sapling visual"
+        },
+        "primary_uses": {
+          "values": [
+            "grow acacia trees",
+            "tree farm seed",
+            "decorative potted plant"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sapling uses"
+        }
+      }
+    },
+    "minecraft:acacia_shelf": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "inferred",
+          "rationale": "holds items; has_nbt_variation confirms data"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative storage block"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stores and displays items decoratively"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, one of many wood types"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-red wood tone"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items"
+        },
+        "primary_uses": {
+          "values": [
+            "display items on shelf",
+            "decorative storage block"
+          ],
+          "signal": "inferred",
+          "rationale": "shelf block primary purpose"
+        }
+      }
+    },
+    "minecraft:acacia_sign": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive text writing/display block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common rarity"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when text labels needed"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "labels areas; decorative text display"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, wood type variant"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-red wood"
+        },
+        "primary_uses": {
+          "values": [
+            "label chests and rooms",
+            "directional markers",
+            "decorative text display"
+          ],
+          "signal": "inferred",
+          "rationale": "standard sign uses"
+        }
+      }
+    },
+    "minecraft:acacia_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-height structural building element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common rarity"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs used constantly in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is structural construction"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, wood type variant"
+        },
+        "palette": {
+          "values": [
+            "wood_red",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "acacia orange-red wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; slabs movable by pistons"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floor or ceiling",
+            "stair alternative for builds",
+            "ingredient for barrels and composters"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

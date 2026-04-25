@@ -1,0 +1,317 @@
+{
+  "items": {
+    "minecraft:golden_carrot": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "food+consumable components present"
+        },
+        "material_family": {
+          "value": "carrot",
+          "signal": "pattern",
+          "rationale": "base ingredient is a carrot"
+        },
+        "material_secondary": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "crafted wrapped in gold nuggets"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "high-sat food used regularly"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "brewing",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "horse breed/tame; night vision; food"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-based food item"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-colored food item"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "high-saturation food source",
+            "horse breeding and taming",
+            "night vision potion ingredient",
+            "rabbit taming"
+          ],
+          "signal": "inferred",
+          "rationale": "food+horse_food+rabbit_food tags"
+        }
+      }
+    },
+    "minecraft:golden_chestplate": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "suffix _chestplate + chest_armor tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "weak durability; niche piglin-safety use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protection + piglin-safe nether exploring"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard armor piece"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved",
+            "piglin_pacifying"
+          ],
+          "signal": "named",
+          "rationale": "piglin_loved + piglin_safe_armor tags"
+        },
+        "primary_uses": {
+          "values": [
+            "chest armor protection",
+            "piglin neutrality when worn",
+            "smithing trim decoration base",
+            "smelt to gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "armor+piglin_safe+trim+smelting uses"
+        }
+      }
+    },
+    "minecraft:golden_dandelion": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "placeable small flower; primarily decorative"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative and dye use"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as decorative flower block"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "golden variant of base dandelion"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "golden-colored flower"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "origin": {
+          "values": [
+            "overworld_surface"
+          ],
+          "signal": "inferred",
+          "rationale": "small_flowers tag; grows on surface"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative flower placement",
+            "yellow dye crafting",
+            "suspicious stew ingredient"
+          ],
+          "signal": "inferred",
+          "rationale": "dye+stew recipes; block placement"
+        }
+      }
+    },
+    "minecraft:golden_helmet": {
+      "facets": {
+        "role": {
+          "value": "armor",
+          "signal": "pattern",
+          "rationale": "suffix _helmet + head_armor tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "weak durability; niche piglin-safety use"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "protection + piglin-safe nether exploring"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard armor piece"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved",
+            "piglin_pacifying"
+          ],
+          "signal": "named",
+          "rationale": "piglin_loved + piglin_safe_armor tags"
+        },
+        "primary_uses": {
+          "values": [
+            "head armor protection",
+            "piglin neutrality when worn",
+            "smithing trim decoration base",
+            "smelt to gold nuggets"
+          ],
+          "signal": "inferred",
+          "rationale": "armor+piglin_safe+trim+smelting uses"
+        }
+      }
+    },
+    "minecraft:golden_hoe": {
+      "facets": {
+        "role": {
+          "value": "tool",
+          "signal": "pattern",
+          "rationale": "suffix _hoe + minecraft:hoes tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "fragile; fast but rarely the top pick"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:hoes; tills and harvests"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard tool"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "pattern",
+          "rationale": "gold material"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "tilling soil at max speed",
+            "harvesting crops quickly",
+            "breaks decorated pots"
+          ],
+          "signal": "inferred",
+          "rationale": "hoe use; speed=12; breaks_decorated_pots"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

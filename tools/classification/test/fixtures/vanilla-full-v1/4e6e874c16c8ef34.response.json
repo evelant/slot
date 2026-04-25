@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 263991,
+  "duration_api_ms": 264721,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:weathered_lightning_rod\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"redirects lightning; emits redstone signal\"\n        },\n        \"material_family\": {\n          \"value\": \"copper\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"lightning rod crafted from copper ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires copper oxidation time or steps\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per build for lightning guard\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lightning protection; redstone signal on strike\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oxidized-copper variant of lightning rod\"\n        },\n        \"palette\": {\n          \"values\": [\"copper_oxidized\", \"teal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weathered copper has teal-green patina\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no chest loot; only via copper oxidation\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"conducts_lightning\", \"oxidizes_over_time\", \"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"redirects lightning; copper oxidizes; can waterlog\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"redirecting lightning strikes\",\n            \"redstone signal on lightning strike\",\n            \"preventing lightning-caused fire spread\",\n            \"oxidation-stage copper aesthetic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core lightning rod player uses\"\n        }\n      }\n    },\n    \"minecraft:weeping_vines\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as hanging nether vine decoration\"\n        },\n        \"material_family\": {\n          \"value\": \"vine\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"vine-type nether plant block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant in nether crimson forest\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for nether builds occasionally\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is nether-themed decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic nether vine plant\"\n        },\n        \"palette\": {\n          \"values\": [\"maroon\", \"warm\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deep crimson-red nether vine color\"\n        },\n        \"origin\": {\n          \"values\": [\"nether\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grows naturally in nether biomes\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"nether-themed hanging vine decoration\",\n            \"compostable organic material\",\n            \"climbable surface in nether builds\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core weeping vine player uses\"\n        }\n      }\n    },\n    \"minecraft:wet_sponge\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"part of sponge water-draining cycle\"\n        },\n        \"material_family\": {\n          \"value\": \"sponge\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains sponge\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires ocean monument or elder guardian\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried and cycled periodically\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dried sponge drains water for builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic sea sponge material\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dull yellowish wet sponge color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"smelt or place in nether to dry into sponge\",\n            \"byproduct after dry sponge absorbs water\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wet sponge player actions\"\n        }\n      }\n    },\n    \"minecraft:wheat\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw crop harvested from wheat farm blocks\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"named\",\n          \"rationale\": \"item id is wheat\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"trivially farmable staple crop\"\n        },\n        \"frequency\": {\n          \"value\": \"everyday\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"key ingredient in staple food bread\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"trading\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grown/harvested; villager trade; hay blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw grain plant crop\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"sandy\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden yellow-brown ripe wheat\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tags: cow/goat/horse/llama/sheep_food\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting bread, cake, cookies\",\n            \"feeding horses, cows, sheep, llamas, goats\",\n            \"crafting hay block and packed mud\",\n            \"trading with farmer villagers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wheat uses via tags and recipes\"\n        }\n      }\n    },\n    \"minecraft:wheat_seeds\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"seeds obtained raw by breaking grass\"\n        },\n        \"material_family\": {\n          \"value\": \"wheat\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"seeds of the wheat plant\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"drop everywhere from tall grass\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted regularly for wheat farms\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"trading\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"planted for wheat; villagers pick up\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw plant seeds\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small tan-brown seeds\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tags: chicken_food, parrot_food\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"planting to grow wheat crops\",\n            \"breeding and taming chickens and parrots\",\n            \"compostable material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core wheat seed uses via tags\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:wet_sponge\",\n      \"facet\": \"origin\",\n      \"current\": [\"mob_drop\"],\n      \"suggested\": [\"mob_drop\", \"ocean_monument\"],\n      \"rationale\": \"wet sponge rooms generate in ocean monuments\",\n      \"confidence\": 0.9\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "60273d2d-93ee-48b9-9609-c6a7beae7b5b",
+  "total_cost_usd": 0.29487839999999993,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4180,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 18264,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4180,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 18264,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4180,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4180
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3317,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0033870000000000003,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 18264,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4180,
+      "webSearchRequests": 0,
+      "costUSD": 0.29149139999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "02969202-8281-43f1-ad15-18f8f03c6b89"
+}

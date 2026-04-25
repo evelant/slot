@@ -1,0 +1,293 @@
+{
+  "items": {
+    "minecraft:mangrove_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fences are structural enclosure blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from accessible mangrove wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific enclosure builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is fence construction"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove wood has reddish tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; block movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "animal pens and mob containment",
+            "boundary fencing in builds",
+            "decorative borders"
+          ],
+          "signal": "inferred",
+          "rationale": "typical fence applications"
+        }
+      }
+    },
+    "minecraft:mangrove_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural gate within fence lines"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common mangrove wood"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "one per fence entrance, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural gate; redstone-activatable"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material, organic appearance"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; block movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "fence entry and exit points",
+            "redstone-toggled gate",
+            "mob pen access control"
+          ],
+          "signal": "inferred",
+          "rationale": "typical fence gate applications"
+        }
+      }
+    },
+    "minecraft:mangrove_hanging_sign": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "text display and aesthetic decoration"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common mangrove materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed selectively for labeling"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "text decor; placed in structures"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "wood material"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove reddish wood tone"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood-based sign burns"
+        },
+        "primary_uses": {
+          "values": [
+            "labeling areas and storage",
+            "decorative hanging signage",
+            "waypoint markers"
+          ],
+          "signal": "inferred",
+          "rationale": "typical hanging sign uses"
+        }
+      }
+    },
+    "minecraft:mangrove_leaves": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "harvested directly from trees, unprocessed"
+        },
+        "rarity": {
+          "value": "abundant",
+          "signal": "inferred",
+          "rationale": "plentiful on mangrove tree canopies"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used selectively in builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "foliage builds; decor; compost/leaf litter"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural tree foliage"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green foliage color"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable"
+          ],
+          "signal": "inferred",
+          "rationale": "leaves are flammable"
+        },
+        "primary_uses": {
+          "values": [
+            "tree foliage in builds",
+            "composting for bonemeal",
+            "crafting leaf litter"
+          ],
+          "signal": "inferred",
+          "rationale": "typical leaf uses"
+        }
+      }
+    },
+    "minecraft:mangrove_log": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw wood harvested directly from trees"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "mangrove swamps accessible; abundant within"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "wood heavily used in crafting and building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as log blocks; basis for wood crafting"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw tree material"
+        },
+        "palette": {
+          "values": [
+            "wood_red"
+          ],
+          "signal": "inferred",
+          "rationale": "mangrove has distinctive reddish wood"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "piston_movable"
+          ],
+          "signal": "inferred",
+          "rationale": "wood burns; movable by piston"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting planks and wood products",
+            "building with decorative log blocks",
+            "smelting to charcoal"
+          ],
+          "signal": "inferred",
+          "rationale": "primary log uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

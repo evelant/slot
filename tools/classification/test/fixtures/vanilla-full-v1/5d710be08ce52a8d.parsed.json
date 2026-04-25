@@ -1,0 +1,304 @@
+{
+  "items": {
+    "minecraft:warped_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "buttons emit momentary redstone pulse"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from nether-obtainable planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "situational redstone/build accent use"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "pulse emitter; build accent"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether fungal wood set member"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood teal/cyan hue"
+        },
+        "primary_uses": {
+          "values": [
+            "emit redstone pulse when pressed",
+            "build accent and decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core button functions"
+        }
+      }
+    },
+    "minecraft:warped_door": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive open/close passage block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from nether-obtainable planks"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "doors used in most structures"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "structural access + redstone activation"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether fungal wood set member"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood teal/cyan hue"
+        },
+        "primary_uses": {
+          "values": [
+            "openable passage in structures",
+            "redstone-activated access control"
+          ],
+          "signal": "inferred",
+          "rationale": "core door functions"
+        }
+      }
+    },
+    "minecraft:warped_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural perimeter barrier block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from nether-obtainable planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in farms, pens, landscaping"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural perimeter use"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether fungal wood set member"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood teal/cyan hue"
+        },
+        "primary_uses": {
+          "values": [
+            "perimeter barriers and animal pens",
+            "decorative border element"
+          ],
+          "signal": "inferred",
+          "rationale": "core fence functions"
+        }
+      }
+    },
+    "minecraft:warped_fence_gate": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "interactive openable gate block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from nether-obtainable planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "paired with fences situationally"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "fence access point + redstone activation"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether fungal wood set member"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped wood teal/cyan hue"
+        },
+        "primary_uses": {
+          "values": [
+            "player-passable opening in fence lines",
+            "redstone-triggered gate"
+          ],
+          "signal": "inferred",
+          "rationale": "core fence gate functions"
+        }
+      }
+    },
+    "minecraft:warped_fungus": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "nether plant gathered from world as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in warped forest biome"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche strider/tree-farming use"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "strider steering + warped tree growing"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "nether fungal plant"
+        },
+        "palette": {
+          "values": [
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "warped fungus teal/cyan coloring"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "named",
+          "evidence": "tag minecraft:strider_tempt_items",
+          "rationale": "tempts and lures striders"
+        },
+        "primary_uses": {
+          "values": [
+            "craft warped fungus on a stick",
+            "tempt and feed striders",
+            "plant to grow warped trees"
+          ],
+          "signal": "inferred",
+          "rationale": "all downstream uses of the item"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:warped_button",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:warped_door",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:warped_fence",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:warped_fence_gate",
+      "facet": "is_fuel",
+      "current": true,
+      "suggested": false,
+      "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+      "confidence": 0.85
+    },
+    {
+      "item": "minecraft:warped_fungus",
+      "facet": "material_family",
+      "current": "wood_warped",
+      "suggested": "fungus_warped",
+      "rationale": "fungus plant, not wood; prefix rule misfired",
+      "confidence": 0.8
+    }
+  ]
+}

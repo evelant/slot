@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 240415,
+  "duration_api_ms": 241149,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:coal_ore\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw ore block mined from world as-is\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"coal heavily used for smelting/torches\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"participates in the mining gameplay loop\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"naturally occurring ore block\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone texture with dark coal veins\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"smelt or blast to obtain coal\", \"mine for early-game fuel supply\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ore processed into coal fuel\"\n        }\n      }\n    },\n    \"minecraft:coarse_dirt\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural terrain/landscaping block\"\n        },\n        \"material_family\": {\n          \"value\": \"dirt\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id dirt suffix, tag minecraft:dirt\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component declares common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific terrain/build needs\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"landscaping and terrain shaping\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"variant of regular dirt, natural texture\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"muddy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rough brown dirt appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"terrain that prevents grass spread\", \"landscaping fill work\", \"till with hoe to get regular dirt\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"grass-free dirt variant\"\n        }\n      }\n    },\n    \"minecraft:coast_armor_trim_smithing_template\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"upgrade\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing template for armor cosmetic trim\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used once per armor piece trim\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor trims are purely cosmetic\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cosmetic upgrade found in exploration loot\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"sandy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold-colored template with coast/wave theme\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"apply coast trim pattern to armor\", \"duplicate via crafting for more uses\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"smithing trim template functions\"\n        }\n      }\n    },\n    \"minecraft:cobbled_deepslate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is construction/building\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"abundant in deep underground layers\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"popular dark stone for building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for structures and decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cobbled variant of deepslate stone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark grey cracked stone appearance\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mined from deepslate layers Y -8 to -64\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"build dark stone structures\", \"stonecutting into slabs/stairs/walls\", \"craft brewing stand\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"versatile deep-cave building stone\"\n        }\n      }\n    },\n    \"minecraft:cobbled_deepslate_slab\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"half-height slab for building\"\n        },\n        \"material_family\": {\n          \"value\": \"deepslate\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains deepslate, made from cobbled_deepslate\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common cobbled deepslate\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"slabs used for specific architectural details\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form used in building\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab form of natural deep stone\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\", \"cool\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark grey stone appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"half-height deepslate building\", \"ingredient for chiseled deepslate\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slab for dark stone builds\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:coarse_dirt\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\", \"crafted_only\"],\n      \"rationale\": \"generates naturally in savanna/taiga/windswept biomes\",\n      \"confidence\": 0.9\n    },\n    {\n      \"item\": \"minecraft:cobbled_deepslate\",\n      \"facet\": \"material_family\",\n      \"current\": \"stone\",\n      \"suggested\": \"deepslate\",\n      \"rationale\": \"block is distinctly deepslate not generic stone\",\n      \"confidence\": 0.72\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "7a5a1eca-84f2-47e0-8a2a-6280c1446c30",
+  "total_cost_usd": 0.2759458999999999,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4970,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16751,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4970,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16751,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4970,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4970
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4107,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004187000000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16751,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4970,
+      "webSearchRequests": 0,
+      "costUSD": 0.2717588999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "d70caa38-f155-4456-b4e8-d42c588054af"
+}

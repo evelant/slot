@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 223733,
+  "duration_api_ms": 225393,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:cartography_table\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive map editing station\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from planks and paper\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common; easily crafted\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for map work, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"zooms, copies, and locks maps\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material; working station\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"oak plank construction\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based block, flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"copy and zoom maps\", \"lock maps\", \"expand map scale\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core cartography table functions\"\n        }\n      }\n    },\n    \"minecraft:carved_pumpkin\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily seasonal decorative block\"\n        },\n        \"material_family\": {\n          \"value\": \"pumpkin\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id: carved_pumpkin\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"seasonal and niche use\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed decor, golem builds, farmable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic; carved variant of pumpkin\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"orange pumpkin, earthy tones\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\", \"mob_drop\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"surface pumpkin; shear snow golem\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"constructs iron/snow golems when placed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"seasonal decoration\", \"prevent endermen aggro when worn\", \"craft jack o lantern\", \"construct iron/snow golems\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core gameplay uses\"\n        }\n      }\n    },\n    \"minecraft:cat_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg; places mob on use\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, not survival-obtainable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific mob setup use\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cats deter creepers/phantoms\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns a cat on use\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs are creative-only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn cats in creative/admin mode\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole function of spawn egg\"\n        }\n      }\n    },\n    \"minecraft:cauldron\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid vessel; dyeing and cleaning\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from 7 iron ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity:common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific dyeing/cleaning tasks\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fluid decor; leather dyeing/washing\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"utilitarian iron vessel\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron construction\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates naturally in witch huts\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"store water/lava/powder snow\", \"dye leather armor\", \"wash dyed items\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core cauldron functions\"\n        }\n      }\n    },\n    \"minecraft:cave_spider_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg; places mob on use\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, not survival-obtainable\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific hostile mob setups\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"hostile mob; combat/farm scenarios\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawns a cave spider on use\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"vanilla spawn eggs are creative-only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn cave spiders in creative/admin mode\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole function of spawn egg\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "17eddc52-4b38-4a34-aff1-2d82556fb698",
+  "total_cost_usd": 0.2521889,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3498,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 15634,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3498,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 15634,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3498,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3498
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2635,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0027050000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 15634,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3498,
+      "webSearchRequests": 0,
+      "costUSD": 0.24948389999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "7a912511-80b9-4e21-ba9b-c371391e362d"
+}

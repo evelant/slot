@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 202801,
+  "duration_api_ms": 203670,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:barrier\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only invisible wall block\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only for map/admin use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to wall off adventure map areas\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"invisible in world, no aesthetics\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_max\", \"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"indestructible, unpushable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Invisible collision walls for adventure maps\", \"Admin-only boundary block\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole creative-only use case\"\n        }\n      }\n    },\n    \"minecraft:basalt\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"solid columnar nether stone block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"generates abundantly in nether\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether aesthetic building use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for nether-themed structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural stone with polished variant\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray columnar nether stone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Building nether-themed structures\", \"Craft or cut to polished basalt\", \"Stonecutting into slab/stair variants\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nether building block with variants\"\n        }\n      }\n    },\n    \"minecraft:bat_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn eggs are mob-spawning utilities\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only, unobtainable in survival\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"bats are passive; rarely spawned\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn eggs absent from survival loot\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn egg summons its linked mob\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal/mob themed spawn item\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bat egg is dark brown/black toned\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Spawn bats in creative/map contexts\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sole purpose is spawning bats\"\n        }\n      }\n    },\n    \"minecraft:beacon\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"grants area status effect buffs\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass is dominant recipe ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"obsidian\", \"nether_star\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe uses obsidian + nether_star\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per base, rarely moved\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"mining\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"buffs aid combat, mining, building\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\", \"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing end-game prestige block\"\n        },\n        \"palette\": {\n          \"values\": [\"teal\", \"glowing\", \"crystal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass crystal with teal glow beam\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"emits_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits light level 15\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Grants area status effect buffs\", \"End-game prestige structure centerpiece\", \"Haste/Speed/Strength/Regen buffs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary gameplay purpose of beacon\"\n        }\n      }\n    },\n    \"minecraft:bedrock\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only indestructible block\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unobtainable in survival mode\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only placed in admin/creative builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for indestructible creative builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\", \"ancient\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primordial indestructible foundation\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark mottled gray texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"blast_resistant_max\", \"piston_immovable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"indestructible, unpushable by pistons\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Indestructible boundary/floor for maps\", \"Creative mode admin builds\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only indestructible block\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "60db0f89-912d-42e9-ba67-b29043b67206",
+  "total_cost_usd": 0.21704915,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3637,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 13247,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3637,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 13247,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3637,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3637
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2774,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002849,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 13247,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3637,
+      "webSearchRequests": 0,
+      "costUSD": 0.21420015,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "54d96836-7116-4351-986a-c783820e7f74"
+}

@@ -1,0 +1,291 @@
+{
+  "items": {
+    "minecraft:polished_diorite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full polished stone block, structural/decorative"
+        },
+        "material_family": {
+          "value": "diorite",
+          "signal": "pattern",
+          "rationale": "id=polished_diorite, base material is diorite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant overworld stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block, not primary build mat"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stone block for builds and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth monolithic surface, minimal ornament"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/light-gray smooth stone texture"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative structural stone block",
+            "craft diorite slabs and stairs",
+            "smooth light-gray stone aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "block form + downstream ingredient role"
+        }
+      }
+    },
+    "minecraft:polished_diorite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant overworld stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative slab"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for architectural builds"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth plain stone, no ornament"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/light-gray polished stone"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "non-full block; mobs cannot spawn on slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height stone floor or ceiling",
+            "mob-proof flooring",
+            "smooth light-gray stone accent"
+          ],
+          "signal": "inferred",
+          "rationale": "slab mechanics + decorative use"
+        }
+      }
+    },
+    "minecraft:polished_diorite_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form of building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant overworld stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche architectural stairs"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stairs for architectural builds"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth plain stone, minimal ornament"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "white/light-gray polished stone"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "non-full block; mobs cannot spawn on stairs"
+        },
+        "primary_uses": {
+          "values": [
+            "stair-shaped stone architectural element",
+            "smooth stone level transitions"
+          ],
+          "signal": "inferred",
+          "rationale": "stair form, architectural use"
+        }
+      }
+    },
+    "minecraft:polished_granite": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "full polished stone block, structural/decorative"
+        },
+        "material_family": {
+          "value": "granite",
+          "signal": "pattern",
+          "rationale": "id=polished_granite, base material is granite"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant overworld stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative block, not primary build mat"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "stone block for builds and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth monolithic surface, minimal ornament"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "granite is pinkish/warm-brown stone"
+        },
+        "primary_uses": {
+          "values": [
+            "warm-tone decorative stone block",
+            "craft granite slabs and stairs",
+            "polished warm stone aesthetic"
+          ],
+          "signal": "inferred",
+          "rationale": "block form + downstream ingredient role"
+        }
+      }
+    },
+    "minecraft:polished_granite_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab form of building block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from abundant overworld stone"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decorative slab"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for architectural builds"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "smooth plain stone, no ornament"
+        },
+        "palette": {
+          "values": [
+            "warm",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "granite warm pinkish-brown tone"
+        },
+        "spawn_interaction": {
+          "values": [
+            "blocks_monster_spawn"
+          ],
+          "signal": "inferred",
+          "rationale": "non-full block; mobs cannot spawn on slabs"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height warm stone floor or ceiling",
+            "mob-proof flooring",
+            "warm stone accent"
+          ],
+          "signal": "inferred",
+          "rationale": "slab mechanics + warm aesthetic"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

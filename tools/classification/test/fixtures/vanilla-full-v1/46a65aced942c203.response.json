@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 144377,
+  "duration_api_ms": 145560,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:golden_horse_armor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"horse armor = equippable mob armor\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"golden_ prefix\"\n        },\n        \"tier\": {\n          \"value\": \"golden\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"golden material tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"not craftable, multi-loot-chest find\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"horses not always armored\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mounted combat + overland travel\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard horse armor, no special aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden colored\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"equip horse for protection\", \"smelt into gold nuggets\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"horse armor primary functions\"\n        }\n      }\n    },\n    \"minecraft:golden_leggings\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:leg_armor\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable with gold ingots\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"very low durability limits regular use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leg armor worn for combat protection\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard gold leggings\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden colored\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\", \"piglin_pacifying\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tags: piglin_loved + piglin_safe_armor\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"leg armor in combat\", \"pacify piglins when worn\", \"armor trim base\", \"smelt into gold nuggets\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of golden leggings\"\n        }\n      }\n    },\n    \"minecraft:golden_nautilus_armor\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"armor\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"name ends _armor; mob-equip pattern\"\n        },\n        \"material_family\": {\n          \"value\": \"gold\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"golden_ prefix\"\n        },\n        \"tier\": {\n          \"value\": \"golden\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"golden material tier\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"not craftable, ocean loot only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specialized aquatic mob armor\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aquatic mob armor; ocean exploration reward\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"nautilus/ocean motif\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\", \"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gold base with ocean/nautilus theme\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"equip aquatic mob for protection\", \"smelt into gold nuggets\", \"ocean loot reward\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ocean armor primary functions\"\n        }\n      }\n    },\n    \"minecraft:golden_pickaxe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:pickaxes\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable with gold ingots\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fast but only 32 uses durability\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mining tool; highest enchantability (32)\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard pickaxe form\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden colored\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fast mining (speed 12)\", \"enchant for fortune/silk touch\", \"smelt into gold nuggets\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of gold pickaxe\"\n        }\n      }\n    },\n    \"minecraft:golden_shovel\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:shovels\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable with gold ingots\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fast but very low durability\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dig soil; right-click creates path blocks\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard shovel form\"\n        },\n        \"palette\": {\n          \"values\": [\"gold\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"golden colored\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"piglin_loved\"],\n          \"signal\": \"named\",\n          \"rationale\": \"tag minecraft:piglin_loved\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"fast dirt/sand/gravel digging\", \"create path blocks\", \"smelt into gold nuggets\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core uses of gold shovel\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "288bdc77-c48b-4690-abd5-d3d8d3bab5eb",
+  "total_cost_usd": 0.18798615000000002,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5509,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10717,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5509,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10717,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5509,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5509
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4646,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004716,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10717,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5509,
+      "webSearchRequests": 0,
+      "costUSD": 0.18327015000000002,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "8adaca15-10be-4e60-beca-3650462deddf"
+}

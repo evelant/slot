@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 205710,
+  "duration_api_ms": 206855,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:deepslate_tile_wall\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall block; structural use in builds\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common deepslate\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"walls used less than slabs/stairs\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural barriers + aesthetic edging\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tile variant form of base deepslate\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"deepslate is dark gray, non-glossy\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"structural walls and borders\",\n            \"decorative fencing in stone builds\",\n            \"medieval/dungeon aesthetic\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall form + deepslate aesthetic\"\n        }\n      }\n    },\n    \"minecraft:deepslate_tiles\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid tile block; surface/structure use\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common deepslate\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic builds, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tile surfaces in builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"polished tile variant of deepslate\"\n        },\n        \"palette\": {\n          \"values\": [\"dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark gray smooth tile appearance\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative floors and walls\",\n            \"crafting tile slab/stair/wall variants\",\n            \"dungeon or modern build aesthetics\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tile block + producer of variants\"\n        }\n      }\n    },\n    \"minecraft:detector_rail\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"redstone_component\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"emits redstone signal on minecart detection\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe uses 6 iron ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable from iron; found in mineshafts\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in minecart circuit builds\"\n        },\n        \"activity\": {\n          \"values\": [\"redstone\", \"transportation\", \"automation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"detects carts; part of rail+signal systems\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mechanical pressure-detecting rail\"\n        },\n        \"palette\": {\n          \"values\": [\"iron_dark\", \"matte\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dark iron rail appearance\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"signal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary function: emit redstone signal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"detect passing minecarts\",\n            \"trigger redstone circuits from carts\",\n            \"minecart sorting and routing systems\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"detector rail core function\"\n        }\n      }\n    },\n    \"minecraft:diamond\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"refined gem; intermediate crafting material\"\n        },\n        \"tier\": {\n          \"value\": \"diamond\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:diamond_tool_materials\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires dedicated Y=-58 strip mining\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"central to tools, armor, enchanting table\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\", \"enchanting\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"downstream: pickaxes, armor, enchant table\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"precious gem material\"\n        },\n        \"palette\": {\n          \"values\": [\"crystal\", \"aqua\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"Minecraft diamond depicted as cyan crystal\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting diamond tools and armor\",\n            \"crafting enchanting table\",\n            \"beacon payment\",\n            \"armor trim material\",\n            \"upgrade to netherite via smithing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient_of + tag data\"\n        }\n      }\n    },\n    \"minecraft:diamond_axe\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"tool\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"axes classified as tools; weapon secondary\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires uncommon diamonds to craft\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary wood-chopping and combat tool\"\n        },\n        \"activity\": {\n          \"values\": [\"mining\", \"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"chops wood; melee weapon vs players/mobs\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard diamond tier tool, no special fx\"\n        },\n        \"palette\": {\n          \"values\": [\"aqua\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"diamond tools depicted in bright cyan\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"chopping wood and logs efficiently\",\n            \"melee combat (disables shields 5s)\",\n            \"upgrade to netherite axe via smithing\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"weapon+tool components + smithing upgrade\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"combat_bonus\",\n      \"value\": \"disables_blocking\",\n      \"rationale\": \"Axes disable shield blocking for 5s on hit; no current value captures this\"\n    }\n  ],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "adbc92a3-e99f-4f0e-b882-8b24da31fd57",
+  "total_cost_usd": 0.2482394,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 5616,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 14700,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5616,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14700,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 5616,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5616
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 4753,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.004823,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14700,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 5616,
+      "webSearchRequests": 0,
+      "costUSD": 0.2434164,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "66be865b-3ec8-4386-bb58-03257413f167"
+}

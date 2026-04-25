@@ -1,0 +1,295 @@
+{
+  "items": {
+    "minecraft:coal_ore": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw ore block mined from world as-is"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "coal heavily used for smelting/torches"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "signal": "inferred",
+          "rationale": "participates in the mining gameplay loop"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "naturally occurring ore block"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "dark"
+          ],
+          "signal": "inferred",
+          "rationale": "stone texture with dark coal veins"
+        },
+        "primary_uses": {
+          "values": [
+            "smelt or blast to obtain coal",
+            "mine for early-game fuel supply"
+          ],
+          "signal": "inferred",
+          "rationale": "ore processed into coal fuel"
+        }
+      }
+    },
+    "minecraft:coarse_dirt": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "structural terrain/landscaping block"
+        },
+        "material_family": {
+          "value": "dirt",
+          "signal": "pattern",
+          "rationale": "id dirt suffix, tag minecraft:dirt"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "evidence": "minecraft:rarity=common",
+          "rationale": "component declares common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific terrain/build needs"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "landscaping and terrain shaping"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "variant of regular dirt, natural texture"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muddy"
+          ],
+          "signal": "inferred",
+          "rationale": "rough brown dirt appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "terrain that prevents grass spread",
+            "landscaping fill work",
+            "till with hoe to get regular dirt"
+          ],
+          "signal": "inferred",
+          "rationale": "grass-free dirt variant"
+        }
+      }
+    },
+    "minecraft:coast_armor_trim_smithing_template": {
+      "facets": {
+        "role": {
+          "value": "upgrade",
+          "signal": "inferred",
+          "rationale": "smithing template for armor cosmetic trim"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used once per armor piece trim"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "armor trims are purely cosmetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "cosmetic upgrade found in exploration loot"
+        },
+        "palette": {
+          "values": [
+            "gold",
+            "sandy"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-colored template with coast/wave theme"
+        },
+        "primary_uses": {
+          "values": [
+            "apply coast trim pattern to armor",
+            "duplicate via crafting for more uses"
+          ],
+          "signal": "inferred",
+          "rationale": "smithing trim template functions"
+        }
+      }
+    },
+    "minecraft:cobbled_deepslate": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "primary use is construction/building"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "abundant in deep underground layers"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "popular dark stone for building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "used for structures and decoration"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "cobbled variant of deepslate stone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "dark grey cracked stone appearance"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "mined from deepslate layers Y -8 to -64"
+        },
+        "primary_uses": {
+          "values": [
+            "build dark stone structures",
+            "stonecutting into slabs/stairs/walls",
+            "craft brewing stand"
+          ],
+          "signal": "inferred",
+          "rationale": "versatile deep-cave building stone"
+        }
+      }
+    },
+    "minecraft:cobbled_deepslate_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-height slab for building"
+        },
+        "material_family": {
+          "value": "deepslate",
+          "signal": "pattern",
+          "rationale": "id contains deepslate, made from cobbled_deepslate"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "crafted from common cobbled deepslate"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "slabs used for specific architectural details"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form used in building"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "slab form of natural deep stone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "muted",
+            "cool"
+          ],
+          "signal": "inferred",
+          "rationale": "dark grey stone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height deepslate building",
+            "ingredient for chiseled deepslate"
+          ],
+          "signal": "inferred",
+          "rationale": "slab for dark stone builds"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:coarse_dirt",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "overworld_surface",
+        "crafted_only"
+      ],
+      "rationale": "generates naturally in savanna/taiga/windswept biomes",
+      "confidence": 0.9
+    },
+    {
+      "item": "minecraft:cobbled_deepslate",
+      "facet": "material_family",
+      "current": "stone",
+      "suggested": "deepslate",
+      "rationale": "block is distinctly deepslate not generic stone",
+      "confidence": 0.72
+    }
+  ]
+}

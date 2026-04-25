@@ -1,0 +1,324 @@
+{
+  "items": {
+    "minecraft:beetroot_seeds": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "raw seed dropped from world plants"
+        },
+        "material_family": {
+          "value": "beetroot",
+          "signal": "pattern",
+          "rationale": "id prefix beetroot_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "planted once per crop cycle"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "signal": "named",
+          "rationale": "tag villager_plantable_seeds"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic seed"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "small brown/tan seed appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "plant beetroot crops",
+            "feed chickens and parrots"
+          ],
+          "signal": "named",
+          "rationale": "plantable_seeds + chicken_food tags"
+        }
+      }
+    },
+    "minecraft:beetroot_soup": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has minecraft:consumable component"
+        },
+        "material_family": {
+          "value": "beetroot",
+          "signal": "pattern",
+          "rationale": "id prefix beetroot_"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche food; bread/steak preferred"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "plant-based bowl food"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "reddish-purple beetroot hue"
+        },
+        "primary_uses": {
+          "values": [
+            "restore 6 hunger points",
+            "moderate saturation food"
+          ],
+          "signal": "named",
+          "rationale": "nutrition=6 saturation=7.2"
+        }
+      }
+    },
+    "minecraft:bell": {
+      "facets": {
+        "role": {
+          "value": "functional_block",
+          "signal": "inferred",
+          "rationale": "rings to reveal raiders in raids"
+        },
+        "material_family": {
+          "value": "gold",
+          "signal": "inferred",
+          "rationale": "gold appearance; piglin_loved tag"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "one per village; not craftable"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "rung mainly during raids"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "raid alert + village aesthetic"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "signal": "inferred",
+          "rationale": "ornate gold bell"
+        },
+        "palette": {
+          "values": [
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "gold-colored bell"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_loved"
+          ],
+          "signal": "named",
+          "rationale": "tag minecraft:piglin_loved"
+        },
+        "primary_uses": {
+          "values": [
+            "ring to alert villagers of raids",
+            "reveal hidden raiders nearby",
+            "village center decoration"
+          ],
+          "signal": "inferred",
+          "rationale": "core raid mechanic block"
+        }
+      }
+    },
+    "minecraft:big_dripleaf": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "plant decor; tilt is passive mechanic"
+        },
+        "material_family": {
+          "value": "plant",
+          "signal": "inferred",
+          "rationale": "natural plant block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "lush cave exclusive"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche decor and redstone use"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "redstone"
+          ],
+          "signal": "inferred",
+          "rationale": "lush cave decor + tilt redstone"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "lush cave plant"
+        },
+        "palette": {
+          "values": [
+            "leaf_green"
+          ],
+          "signal": "inferred",
+          "rationale": "green dripleaf plant"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in lush caves only"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in lush cave shallow water"
+        },
+        "primary_uses": {
+          "values": [
+            "lush cave decoration",
+            "redstone tilt detection",
+            "obstacle course element"
+          ],
+          "signal": "inferred",
+          "rationale": "tilt mechanic and aesthetics"
+        }
+      }
+    },
+    "minecraft:birch_boat": {
+      "facets": {
+        "role": {
+          "value": "transport",
+          "signal": "pattern",
+          "rationale": "tag boats; suffix _boat"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "cheap craft from birch planks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used when crossing water bodies"
+        },
+        "activity": {
+          "values": [
+            "transportation",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "water travel vehicle"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "simple wooden boat"
+        },
+        "palette": {
+          "values": [
+            "wood_pale"
+          ],
+          "signal": "inferred",
+          "rationale": "birch is lightest vanilla wood"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "signal": "pattern",
+          "rationale": "no loot sources; crafted from planks"
+        },
+        "transport_medium": {
+          "values": [
+            "player",
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "carries player and mobs on water"
+        },
+        "environmental_property": {
+          "values": [
+            "floats"
+          ],
+          "signal": "inferred",
+          "rationale": "boat floats on water surface"
+        },
+        "primary_uses": {
+          "values": [
+            "water travel",
+            "transport mobs across water",
+            "upgrade base for chest boat"
+          ],
+          "signal": "inferred",
+          "rationale": "vehicle + ingredient for chest boat"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:bell",
+      "facet": "origin",
+      "current": [
+        "ruined_portal"
+      ],
+      "suggested": [
+        "ruined_portal",
+        "village"
+      ],
+      "rationale": "Bells generate in village centers; primary natural source is village structures, not ruined portals",
+      "confidence": 0.9
+    }
+  ]
+}

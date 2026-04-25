@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 143256,
+  "duration_api_ms": 144647,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:lilac\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed tall flower collected raw\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flowering plant, no refining\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"birch/dark oak forest biomes\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"needed for magenta dye or decor\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as decor; bee_food for bee farms\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"tall wildflower with distinct purple hue\"\n        },\n        \"palette\": {\n          \"values\": [\"violet\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lilac is purple-violet\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft magenta dye\", \"garden/build decoration\", \"bee food source\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye recipe + decor + bee_food tag\"\n        }\n      }\n    },\n    \"minecraft:lily_of_the_valley\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"unprocessed small flower from world\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"small flower, no processing\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"flower forest biome only\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"white dye or suspicious stew, situational\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decor + bee_food tag for bee farming\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"small white wildflower\"\n        },\n        \"palette\": {\n          \"values\": [\"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"white small flower\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft white dye\", \"craft suspicious stew\", \"garden decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye + stew recipes + decor\"\n        }\n      }\n    },\n    \"minecraft:lily_pad\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"no crafting use; placed on water for aesthetics\"\n        },\n        \"material_family\": {\n          \"value\": \"plant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aquatic plant block\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common water plant + fishing junk\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational water decor or traversal\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water surface deco; crossing water\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"aquatic plant, no processing\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green floating pad\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorate water surfaces\", \"cross water without swimming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"water decor + traversal aid\"\n        }\n      }\n    },\n    \"minecraft:lime_banner\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"banners are primarily decorative\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"banner recipe uses wool\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"stick in banner recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from early-game materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for marking or decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wall decor, location marking\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime dye; empty pattern list\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime = light green\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"wall/ceiling decoration\", \"mark locations/waypoints\", \"decorate shields\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decor + shield_decoration recipe\"\n        }\n      }\n    },\n    \"minecraft:lime_bed\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"sleep, skip night, set respawn point\"\n        },\n        \"material_family\": {\n          \"value\": \"wool\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"bed recipe uses wool\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"wood\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"planks in bed recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early-game craftable\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used every night cycle\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"skip night; set respawn for exploration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime dye color variant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime = light green\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"sleep to skip night\", \"set respawn point\", \"bedroom decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sleep mechanic + decor\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:lily_pad\",\n      \"facet\": \"origin\",\n      \"current\": [\"fishing\"],\n      \"suggested\": [\"fishing\", \"overworld_surface\"],\n      \"rationale\": \"lily pads spawn naturally on overworld water; loot table minecraft:blocks/lily_pad confirms world origin\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "9bdb98f0-6f43-4ccd-8e9e-372649370366",
+  "total_cost_usd": 0.1853579,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4382,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10898,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4382,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10898,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4382,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4382
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3519,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0035989999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10898,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4382,
+      "webSearchRequests": 0,
+      "costUSD": 0.1817589,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "3717414f-4c3b-4356-9574-f6a8b76d51c1"
+}

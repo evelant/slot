@@ -1,0 +1,301 @@
+{
+  "items": {
+    "minecraft:tripwire_hook": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "inferred",
+          "rationale": "placed block triggers redstone on tripwire"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "crafted from iron ingot + stick + plank"
+        },
+        "material_secondary": {
+          "values": [
+            "wood_oak"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe uses stick and wood plank"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche trap use, not everyday"
+        },
+        "activity": {
+          "values": [
+            "redstone",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "tripwire circuit + trapped chest crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "signal": "inferred",
+          "rationale": "iron hook mechanism"
+        },
+        "palette": {
+          "values": [
+            "iron_dark"
+          ],
+          "signal": "inferred",
+          "rationale": "iron-colored hook"
+        },
+        "primary_uses": {
+          "values": [
+            "tripwire circuit trigger",
+            "craft crossbow",
+            "craft trapped chest"
+          ],
+          "signal": "inferred",
+          "rationale": "redstone function + sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:tropical_fish": {
+      "facets": {
+        "role": {
+          "value": "consumable",
+          "signal": "named",
+          "rationale": "has minecraft:food + :consumable components"
+        },
+        "material_family": {
+          "value": "fish",
+          "signal": "pattern",
+          "rationale": "id suffix + fishes tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "nutrition:1, very poor food choice"
+        },
+        "activity": {
+          "values": [
+            "fishing",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "caught fishing; feeds wolves/nautiluses"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "raw fish from ocean"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "bright tropical coloration"
+        },
+        "primary_uses": {
+          "values": [
+            "low-value food (1 nutrition)",
+            "feed wolves",
+            "feed nautiluses"
+          ],
+          "signal": "inferred",
+          "rationale": "food comp + wolf_food + nautilus_food tags"
+        }
+      }
+    },
+    "minecraft:tropical_fish_bucket": {
+      "facets": {
+        "role": {
+          "value": "container_portable",
+          "signal": "inferred",
+          "rationale": "bucket holds live fish + water"
+        },
+        "material_family": {
+          "value": "iron",
+          "signal": "inferred",
+          "rationale": "bucket is iron"
+        },
+        "material_secondary": {
+          "values": [
+            "water"
+          ],
+          "signal": "inferred",
+          "rationale": "contains water alongside live fish"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component rarity:common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche: fish transport + axolotl feeding"
+        },
+        "activity": {
+          "values": [
+            "fishing",
+            "farming"
+          ],
+          "signal": "inferred",
+          "rationale": "captured in ocean; feeds axolotls"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "live fish in water"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "bucketed in warm ocean biomes"
+        },
+        "transport_medium": {
+          "values": [
+            "mob"
+          ],
+          "signal": "inferred",
+          "rationale": "transports live tropical fish mob"
+        },
+        "primary_uses": {
+          "values": [
+            "transport live tropical fish",
+            "feed axolotls",
+            "release fish in new location"
+          ],
+          "signal": "inferred",
+          "rationale": "mob transport + axolotl_food tag"
+        }
+      }
+    },
+    "minecraft:tropical_fish_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "_spawn_egg suffix = creative/admin item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "all spawn eggs are creative-only"
+        },
+        "rarity": {
+          "value": "unique",
+          "signal": "inferred",
+          "rationale": "no survival obtainment path"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "admin/creative tool, niche use"
+        },
+        "palette": {
+          "values": [
+            "vivid"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn eggs have bright distinct colors"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn tropical fish in creative",
+            "map-making / adventure use"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg purpose"
+        }
+      }
+    },
+    "minecraft:tube_coral": {
+      "facets": {
+        "role": {
+          "value": "decorative_block",
+          "signal": "inferred",
+          "rationale": "coral is purely aesthetic, no function"
+        },
+        "material_family": {
+          "value": "coral",
+          "signal": "pattern",
+          "rationale": "id suffix _coral"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires silk touch; dies without water"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "niche ocean/aquarium decor"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "placed purely for aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "organic coral growth"
+        },
+        "palette": {
+          "values": [
+            "vivid",
+            "teal"
+          ],
+          "signal": "inferred",
+          "rationale": "tube coral is bright blue-teal"
+        },
+        "origin": {
+          "values": [
+            "overworld_ocean"
+          ],
+          "signal": "inferred",
+          "rationale": "grows in warm ocean coral reefs"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "coral blocks can waterlog"
+        },
+        "primary_uses": {
+          "values": [
+            "ocean/aquarium decoration",
+            "coral reef building",
+            "underwater aesthetics"
+          ],
+          "signal": "inferred",
+          "rationale": "purely decorative coral block"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

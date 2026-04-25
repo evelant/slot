@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 231386,
+  "duration_api_ms": 232099,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:bookshelf\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"boosts enchanting table; lectern ingredient\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from wood planks\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"paper\", \"leather\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"books (paper+leather) in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component: common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed once per enchanting setup\"\n        },\n        \"activity\": {\n          \"values\": [\"enchanting\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"boosts enchanting; library decor use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-and-book organic aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown oak plank texture\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood block; fire spreads to it\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Boost enchanting table level\", \"Craft lecterns\", \"Library decoration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main reasons player places bookshelf\"\n        }\n      }\n    },\n    \"minecraft:bordure_indented_banner_pattern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"reusable loom pattern stamp\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific craft; niche pattern item\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"narrow banner-decorating use case\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in loom to decorate banners\"\n        },\n        \"flavor\": {\n          \"values\": [\"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative bordered banner pattern\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot tables; crafted with vine\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Apply bordure indented pattern in loom\"],\n          \"signal\": \"named\",\n          \"evidence\": \"provides_banner_patterns:#minecraft:pattern_item/bordure_indented\",\n          \"rationale\": \"sole use per banner-pattern component\"\n        }\n      }\n    },\n    \"minecraft:bow\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"named\",\n          \"rationale\": \"id=bow; skeleton_preferred_weapons tag\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from sticks (wood)\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"string\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"string is key bow recipe component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary ranged weapon all progression\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ranged weapon for mob/player combat\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood and string construction\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_medium\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown sticks, grey string\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Ranged combat with arrows\", \"Shoot projectiles at mobs/players\", \"Craft dispensers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core ranged use; dispenser ingredient\"\n        }\n      }\n    },\n    \"minecraft:bowl\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafting component for all soups/stews\"\n        },\n        \"material_family\": {\n          \"value\": \"wood\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"crafted from wood planks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"rarity component: common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in 21 soup/stew recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"enables food/stew production\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple unadorned wooden bowl\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light wooden color\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Craft mushroom stew\", \"Craft beetroot soup\", \"Craft suspicious stew\", \"Craft rabbit stew\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top soup/stew recipes it enables\"\n        }\n      }\n    },\n    \"minecraft:brain_coral\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"coral placed for aquatic decoration\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"warm ocean + silk touch required\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche aquarium/ocean builds\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed for coral decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\", \"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic marine creature; vivid pink\"\n        },\n        \"palette\": {\n          \"values\": [\"coral\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright pink coral coloring\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_ocean\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"found in warm ocean biomes\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"non-full coral block holds water\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Aquarium and ocean-themed decoration\", \"Decorative coral block placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primarily decorative use\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:bookshelf\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"crafted_only\", \"village\", \"woodland_mansion\"],\n      \"rationale\": \"Bookshelves generate naturally in village library rooms and woodland mansion library rooms\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "d7c4d787-dc73-4c4d-baf8-a8c17b82e795",
+  "total_cost_usd": 0.24142245,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3781,
+    "cache_read_input_tokens": 4939,
+    "output_tokens": 14841,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3781,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 14841,
+        "cache_read_input_tokens": 4939,
+        "cache_creation_input_tokens": 3781,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3781
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3058,
+      "outputTokens": 16,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003138,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 14841,
+      "cacheReadInputTokens": 4939,
+      "cacheCreationInputTokens": 3781,
+      "webSearchRequests": 0,
+      "costUSD": 0.23828445,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "dacc0d6b-4c18-4827-8e3b-2b9bd7070593"
+}

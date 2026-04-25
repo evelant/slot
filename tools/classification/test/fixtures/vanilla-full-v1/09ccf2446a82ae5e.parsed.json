@@ -1,0 +1,328 @@
+{
+  "items": {
+    "minecraft:white_shulker_box": {
+      "facets": {
+        "role": {
+          "value": "storage_block",
+          "signal": "pattern",
+          "rationale": "shulker_boxes tag; container block form"
+        },
+        "material_family": {
+          "value": "shulker_shell",
+          "signal": "inferred",
+          "rationale": "crafted from shulker shells"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "signal": "inferred",
+          "rationale": "requires End progression to craft"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "core portable storage once unlocked"
+        },
+        "activity": {
+          "values": [
+            "storage_management",
+            "logistics"
+          ],
+          "signal": "inferred",
+          "rationale": "portable container for sorting/transport"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed variant of base shulker box"
+        },
+        "palette": {
+          "values": [
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white coloring"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "holds standard items in any slot"
+        },
+        "environmental_property": {
+          "values": [
+            "piston_immovable"
+          ],
+          "signal": "inferred",
+          "rationale": "push_reaction BLOCK in vanilla"
+        },
+        "primary_uses": {
+          "values": [
+            "portable item storage container",
+            "organize items by category",
+            "transport large item quantities"
+          ],
+          "signal": "inferred",
+          "rationale": "core shulker box use cases"
+        }
+      }
+    },
+    "minecraft:white_stained_glass": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "transparent structural/decorative block"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "stained variant of base glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed glass variant"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white transparent glass block"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative transparent window block",
+            "colored light filtering",
+            "building facades and skylights"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stained glass uses"
+        }
+      }
+    },
+    "minecraft:white_stained_glass_pane": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "thin structural glass form"
+        },
+        "material_family": {
+          "value": "glass",
+          "signal": "pattern",
+          "rationale": "pane form of stained glass"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed glass pane variant"
+        },
+        "palette": {
+          "values": [
+            "translucent",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "white transparent pane"
+        },
+        "environmental_property": {
+          "values": [
+            "waterlogs"
+          ],
+          "signal": "inferred",
+          "rationale": "glass panes waterlog in Java Edition"
+        },
+        "primary_uses": {
+          "values": [
+            "thin decorative window element",
+            "space-efficient glass alternative",
+            "detailed facades and borders"
+          ],
+          "signal": "inferred",
+          "rationale": "standard glass pane uses"
+        }
+      }
+    },
+    "minecraft:white_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid colored structural block"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "terracotta tag, id suffix"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "rarity component: common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific themed builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed for structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "pattern",
+          "rationale": "dyed terracotta variant"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "muted",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "pale earthy terracotta tone"
+        },
+        "primary_uses": {
+          "values": [
+            "colored building and decoration block",
+            "craft into white glazed terracotta",
+            "badlands and adobe style builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard terracotta uses"
+        }
+      }
+    },
+    "minecraft:white_tulip": {
+      "facets": {
+        "role": {
+          "value": "natural_resource",
+          "signal": "inferred",
+          "rationale": "flower found growing in world"
+        },
+        "material_family": {
+          "value": "flower",
+          "signal": "pattern",
+          "rationale": "small_flowers tag"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "common in plains and forest biomes"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific dye or stew use"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "grown for dye, placed as decor"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural flower item"
+        },
+        "palette": {
+          "values": [
+            "light",
+            "pastel"
+          ],
+          "signal": "inferred",
+          "rationale": "white soft-toned flower"
+        },
+        "spawn_interaction": {
+          "values": [
+            "attracts_mobs"
+          ],
+          "signal": "pattern",
+          "rationale": "bee_food tag; bees seek flowers"
+        },
+        "primary_uses": {
+          "values": [
+            "light gray dye source",
+            "suspicious stew ingredient",
+            "decorative flower and pot plant"
+          ],
+          "signal": "inferred",
+          "rationale": "recipe outputs and flower use"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": [
+    {
+      "item": "minecraft:white_terracotta",
+      "facet": "origin",
+      "current": [
+        "crafted_only"
+      ],
+      "suggested": [
+        "crafted_only",
+        "overworld_surface"
+      ],
+      "rationale": "White terracotta generates naturally in badlands biome layer strata",
+      "confidence": 0.85
+    }
+  ]
+}

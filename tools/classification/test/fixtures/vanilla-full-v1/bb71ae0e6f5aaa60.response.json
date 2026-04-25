@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 117769,
+  "duration_api_ms": 118734,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:mangrove_fence\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"fences are structural enclosure blocks\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from accessible mangrove wood\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for specific enclosure builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary use is fence construction\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove wood has reddish tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; block movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"animal pens and mob containment\",\n            \"boundary fencing in builds\",\n            \"decorative borders\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical fence applications\"\n        }\n      }\n    },\n    \"minecraft:mangrove_fence_gate\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural gate within fence lines\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common mangrove wood\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"one per fence entrance, not everyday\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"redstone\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural gate; redstone-activatable\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material, organic appearance\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; block movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"fence entry and exit points\",\n            \"redstone-toggled gate\",\n            \"mob pen access control\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical fence gate applications\"\n        }\n      }\n    },\n    \"minecraft:mangrove_hanging_sign\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"text display and aesthetic decoration\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from common mangrove materials\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed selectively for labeling\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\", \"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"text decor; placed in structures\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove reddish wood tone\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood-based sign burns\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"labeling areas and storage\",\n            \"decorative hanging signage\",\n            \"waypoint markers\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical hanging sign uses\"\n        }\n      }\n    },\n    \"minecraft:mangrove_leaves\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"harvested directly from trees, unprocessed\"\n        },\n        \"rarity\": {\n          \"value\": \"abundant\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"plentiful on mangrove tree canopies\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used selectively in builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\", \"farming\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"foliage builds; decor; compost/leaf litter\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural tree foliage\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green foliage color\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaves are flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"tree foliage in builds\",\n            \"composting for bonemeal\",\n            \"crafting leaf litter\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical leaf uses\"\n        }\n      }\n    },\n    \"minecraft:mangrove_log\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw wood harvested directly from trees\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove swamps accessible; abundant within\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood heavily used in crafting and building\"\n        },\n        \"activity\": {\n          \"values\": [\"building\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"placed as log blocks; basis for wood crafting\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw tree material\"\n        },\n        \"palette\": {\n          \"values\": [\"wood_red\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"mangrove has distinctive reddish wood\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\", \"piston_movable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wood burns; movable by piston\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"crafting planks and wood products\",\n            \"building with decorative log blocks\",\n            \"smelting to charcoal\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"primary log uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "45480bbe-8829-4a38-8aa5-59cffe7c876a",
+  "total_cost_usd": 0.1538564,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4848,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8650,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4848,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8650,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4848,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4848
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3985,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00407,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8650,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4848,
+      "webSearchRequests": 0,
+      "costUSD": 0.14978640000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "1c48715c-e6b1-4c15-8c1e-96d53f9915f2"
+}

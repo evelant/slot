@@ -1,0 +1,259 @@
+{
+  "items": {
+    "minecraft:polished_blackstone_brick_wall": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "wall form is structural element"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "decorative wall, used selectively"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "walls serve structure and aesthetics"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "polished brick variant of blackstone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone near-black matte texture"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative and structural walls",
+            "nether-aesthetic border detail",
+            "castle or fortress styling"
+          ],
+          "signal": "inferred",
+          "rationale": "wall form primary uses"
+        }
+      }
+    },
+    "minecraft:polished_blackstone_bricks": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "cube_all model, bricks = structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "base block for full variant family"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "structural and aesthetic block"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "processed polished brick variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone near-black matte texture"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-aesthetic building",
+            "crafting slab/stair/wall variants",
+            "decorative brick structures"
+          ],
+          "signal": "inferred",
+          "rationale": "bricks build and feed variant recipes"
+        }
+      }
+    },
+    "minecraft:polished_blackstone_button": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "tag minecraft:buttons = redstone input"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when redstone pulse needed"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "pattern",
+          "rationale": "buttons emit momentary redstone signal"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "stone button variant in blackstone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone dark matte appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "momentary redstone pulse",
+            "door or gate activation",
+            "redstone circuit input"
+          ],
+          "signal": "inferred",
+          "rationale": "standard button uses"
+        }
+      }
+    },
+    "minecraft:polished_blackstone_pressure_plate": {
+      "facets": {
+        "role": {
+          "value": "redstone_component",
+          "signal": "pattern",
+          "rationale": "pressure_plate model = redstone input"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "placed when mob/player trigger needed"
+        },
+        "activity": {
+          "values": [
+            "redstone"
+          ],
+          "signal": "pattern",
+          "rationale": "pressure plates emit redstone signal"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "stone pressure plate in blackstone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone dark matte appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "player/mob-triggered redstone",
+            "door or trapdoor activation",
+            "trap or counter mechanism"
+          ],
+          "signal": "inferred",
+          "rationale": "standard pressure plate uses"
+        }
+      }
+    },
+    "minecraft:polished_blackstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "pattern",
+          "rationale": "tag minecraft:slabs = structural"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs heavily used in building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "slabs used for floors, roofs, detail"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "pattern",
+          "rationale": "slab variant of polished blackstone"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone dark matte appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floor or roof layer",
+            "decorative stair step detail",
+            "nether-style build finishing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab building uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

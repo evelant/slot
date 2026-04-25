@@ -1,0 +1,244 @@
+{
+  "items": {
+    "minecraft:smooth_sandstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are structural building elements"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in specific builds, not everyday"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "shaped form of smooth sandstone block"
+        },
+        "palette": {
+          "values": [
+            "sandy",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "sandstone is beige/sandy, smooth=matte"
+        },
+        "primary_uses": {
+          "values": [
+            "staircase construction",
+            "decorative desert-style facades",
+            "height transitions in sandstone builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair use cases"
+        }
+      }
+    },
+    "minecraft:smooth_stone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "smelted stone used primarily for building"
+        },
+        "material_family": {
+          "value": "stone",
+          "signal": "pattern",
+          "rationale": "id=smooth_stone, base material is stone"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "widely used in builds and key recipes"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "flat featureless gray surface"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray matte stone appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "building clean stone structures",
+            "crafting blast furnace",
+            "crafting smooth stone slabs"
+          ],
+          "signal": "inferred",
+          "rationale": "main downstream recipe targets"
+        }
+      }
+    },
+    "minecraft:smooth_stone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slabs are structural half-height blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component minecraft:rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs are among most-used build elements"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary use is construction"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "undecorated slab form of smooth stone"
+        },
+        "palette": {
+          "values": [
+            "matte",
+            "light"
+          ],
+          "signal": "inferred",
+          "rationale": "light gray matte appearance"
+        },
+        "primary_uses": {
+          "values": [
+            "half-height floors and ceilings",
+            "stair-free height transitions",
+            "crafting armor stands"
+          ],
+          "signal": "inferred",
+          "rationale": "core slab build uses + armor stand recipe"
+        }
+      }
+    },
+    "minecraft:sniffer_egg": {
+      "facets": {
+        "role": {
+          "value": "curiosity",
+          "signal": "inferred",
+          "rationale": "rare egg that hatches an ancient mob"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "placed rarely; mainly for breeding sniffers"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "exploration"
+          ],
+          "signal": "inferred",
+          "rationale": "hatch sniffers for ancient seed farming"
+        },
+        "flavor": {
+          "values": [
+            "natural",
+            "ancient"
+          ],
+          "signal": "inferred",
+          "rationale": "ancient creature egg from archaeology"
+        },
+        "palette": {
+          "values": [
+            "earthy",
+            "warm"
+          ],
+          "signal": "inferred",
+          "rationale": "brownish-red egg coloration"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "inferred",
+          "rationale": "hatches into sniffer when placed"
+        },
+        "primary_uses": {
+          "values": [
+            "hatch into sniffer mob",
+            "obtain torchflower/pitcher plant seeds",
+            "sniffer mob breeding"
+          ],
+          "signal": "inferred",
+          "rationale": "sniffer sniffs ancient seeds; eggs breed"
+        }
+      }
+    },
+    "minecraft:sniffer_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "pattern",
+          "rationale": "spawn eggs are creative-only admin items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "pattern",
+          "rationale": "no loot source, no recipe, spawn egg id"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "pattern",
+          "rationale": "spawn egg summons its linked mob"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn sniffer mob in creative mode"
+          ],
+          "signal": "inferred",
+          "rationale": "sole purpose of spawn eggs"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

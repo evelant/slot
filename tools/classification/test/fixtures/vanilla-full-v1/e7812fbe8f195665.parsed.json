@@ -1,0 +1,280 @@
+{
+  "items": {
+    "minecraft:black_terracotta": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "solid block for building/decoration"
+        },
+        "material_family": {
+          "value": "terracotta",
+          "signal": "pattern",
+          "rationale": "id/tag contains terracotta"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for specific aesthetic builds"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed as structural/decorative block"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "one of 16 dye-colored terracotta variants"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "black terracotta dark brownish-black tone"
+        },
+        "primary_uses": {
+          "values": [
+            "building dark-themed structures",
+            "interior decoration",
+            "precursor to glazed terracotta"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:black_wool": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "placeable full block and crafting material"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "specific color used for targeted crafts"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "signal": "inferred",
+          "rationale": "placed and used in decorative crafts"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "dyed natural fiber material"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "black wool very dark matte texture"
+        },
+        "environmental_property": {
+          "values": [
+            "burnable",
+            "sculk_silent"
+          ],
+          "signal": "inferred",
+          "rationale": "wool burns; tag dampens_vibrations"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting beds and banners",
+            "building soft interiors",
+            "dampening sculk vibrations",
+            "carpet crafting"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:blackstone": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "nether stone for building and stone-tier crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "common nether building material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "primary construction use"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "natural nether stone variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "very dark stone color"
+        },
+        "environmental_property": {
+          "values": [
+            "piglin_barters_with"
+          ],
+          "signal": "pattern",
+          "rationale": "loot source: gameplay/piglin_bartering"
+        },
+        "primary_uses": {
+          "values": [
+            "building nether-themed structures",
+            "crafting stone-tier tools",
+            "stonecutting decorative variants"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:blackstone_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "half-block form for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "slabs widely used in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone dark color"
+        },
+        "primary_uses": {
+          "values": [
+            "building nether-themed structures",
+            "decorative half-block detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    },
+    "minecraft:blackstone_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stair form for construction"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "named",
+          "rationale": "component_highlights rarity=common"
+        },
+        "frequency": {
+          "value": "frequent",
+          "signal": "inferred",
+          "rationale": "stairs widely used in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "construction use"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stairs variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "matte"
+          ],
+          "signal": "inferred",
+          "rationale": "blackstone dark color"
+        },
+        "primary_uses": {
+          "values": [
+            "building nether-themed structures",
+            "staircase construction"
+          ],
+          "signal": "inferred",
+          "rationale": "main player uses"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

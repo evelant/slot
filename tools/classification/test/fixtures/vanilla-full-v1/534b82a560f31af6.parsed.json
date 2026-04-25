@@ -1,0 +1,255 @@
+{
+  "items": {
+    "minecraft:nautilus_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "admin",
+          "signal": "inferred",
+          "rationale": "spawn eggs are creative-only admin items"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no loot source, no recipe; creative only"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "not obtainable in survival without commands"
+        },
+        "frequency": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "niche admin or creative use only"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "signal": "inferred",
+          "rationale": "represents a natural aquatic mob"
+        },
+        "palette": {
+          "values": [
+            "teal",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "nautilus shell: teal and brown tones"
+        },
+        "primary_uses": {
+          "values": [
+            "spawn nautilus mob in world",
+            "creative/admin mob testing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard spawn egg function"
+        }
+      }
+    },
+    "minecraft:nether_brick": {
+      "facets": {
+        "role": {
+          "value": "material",
+          "signal": "inferred",
+          "rationale": "smelted intermediate crafting ingredient"
+        },
+        "material_family": {
+          "value": "nether_brick",
+          "signal": "pattern",
+          "rationale": "id matches material name exactly"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "farmable via bartering or smelting netherrack"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "consumed when building nether brick structures"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "downstream uses are building blocks/fences"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "signal": "inferred",
+          "rationale": "basic crafting material, no embellishment"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark reddish-brown nether texture"
+        },
+        "primary_uses": {
+          "values": [
+            "craft nether bricks block",
+            "craft nether brick fence",
+            "craft red nether bricks"
+          ],
+          "signal": "inferred",
+          "rationale": "confirmed by sample_ingredient_of"
+        }
+      }
+    },
+    "minecraft:nether_brick_fence": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "fence is a structural barrier block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable from common nether materials"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in nether-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural fence for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether-themed variant of fence family"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark reddish nether brick coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed fencing and barriers",
+            "nether fortress aesthetic builds"
+          ],
+          "signal": "inferred",
+          "rationale": "standard fence block use in nether context"
+        }
+      }
+    },
+    "minecraft:nether_brick_slab": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "slab is a structural half-block"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable and stonecuttable from nether bricks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in nether-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural slab for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether-themed slab variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark reddish nether brick coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed half-block construction",
+            "decorative nether build detailing"
+          ],
+          "signal": "inferred",
+          "rationale": "standard slab use cases"
+        }
+      }
+    },
+    "minecraft:nether_brick_stairs": {
+      "facets": {
+        "role": {
+          "value": "building_block",
+          "signal": "inferred",
+          "rationale": "stairs are structural building blocks"
+        },
+        "rarity": {
+          "value": "common",
+          "signal": "inferred",
+          "rationale": "craftable and stonecuttable from nether bricks"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used in nether-themed builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "signal": "inferred",
+          "rationale": "structural stair block for construction"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "signal": "inferred",
+          "rationale": "nether-themed stair variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "signal": "inferred",
+          "rationale": "dark reddish nether brick coloring"
+        },
+        "primary_uses": {
+          "values": [
+            "nether-themed stairways",
+            "nether fortress architectural details"
+          ],
+          "signal": "inferred",
+          "rationale": "standard stair block use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

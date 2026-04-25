@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 130872,
+  "duration_api_ms": 131650,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:light_gray_dye\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"material\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"processed from flowers/mixed dyes\"\n        },\n        \"material_family\": {\n          \"value\": \"dye\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id ends in _dye\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component asserts common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"19 recipes consume it\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to dye wool/glass/armor/beds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"one of 16 dye colors\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light gray is soft and desaturated\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_surface\", \"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"azure bluet/oxeye daisy; also mixed\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"dye wool, glass, concrete, beds\",\n            \"color leather armor\",\n            \"firework star coloring\",\n            \"craft colored blocks\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"recipe_consumption shows broad dye use\"\n        }\n      }\n    },\n    \"minecraft:light_gray_glazed_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"glazed pattern is primarily aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix glazed_terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component asserts common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche decorative use\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative/patterned building block\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"fancy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dye color + intricate glazed pattern\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light gray is soft desaturated tone\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"decorative walls and floors\",\n            \"patterned building exterior\",\n            \"interior decoration\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"typical glazed terracotta uses\"\n        }\n      }\n    },\n    \"minecraft:light_gray_harness\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"equip on happy ghast to enable riding\"\n        },\n        \"dye_color\": {\n          \"value\": \"light_gray\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix + minecraft:harnesses tag\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"craftable, no special drops needed\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used when flying via happy ghast\"\n        },\n        \"activity\": {\n          \"values\": [\"transportation\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness enables ghast flight/riding\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"dyeable in 16 colors\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"no loot sources; produced by crafting\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"attracts_mobs\"],\n          \"signal\": \"named\",\n          \"evidence\": \"tag minecraft:happy_ghast_tempt_items\",\n          \"rationale\": \"tempts happy ghasts when held\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"equip on happy ghast for riding\",\n            \"tempt happy ghasts when held\",\n            \"dyeable for color-coding ghasts\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"harness + tempt tag together\"\n        }\n      }\n    },\n    \"minecraft:light_gray_shulker_box\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"retains contents when broken/carried\"\n        },\n        \"material_family\": {\n          \"value\": \"shulker_shell\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"base shulker box requires shulker shells\"\n        },\n        \"rarity\": {\n          \"value\": \"uncommon\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires End progression + shulker kills\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"core portable storage item for late game\"\n        },\n        \"activity\": {\n          \"values\": [\"storage_management\", \"logistics\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable inventory management\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"one of 16 dye colors\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"light gray desaturated tone\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"holds standard items\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"portable storage with persistent contents\",\n            \"color-coded inventory organization\",\n            \"bulk item transport between locations\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"shulker box core functions\"\n        }\n      }\n    },\n    \"minecraft:light_gray_stained_glass\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"structural transparent building material\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix stained_glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"evidence\": \"minecraft:rarity=common\",\n          \"rationale\": \"component asserts common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used for windows and decoration\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"colored transparent building material\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"one of 16 stained glass colors\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"light\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"transparent light gray glass\"\n        },\n        \"primary_uses\": {\n          \"values\": [\n            \"colored windows and skylights\",\n            \"light-filtering decoration\",\n            \"transparent building material\"\n          ],\n          \"signal\": \"inferred\",\n          \"rationale\": \"standard stained glass uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "1eccad36-7edf-44b6-859f-07cdf4aedbff",
+  "total_cost_usd": 0.17822765,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4723,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 10315,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4723,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 10315,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4723,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4723
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3860,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003935,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 10315,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4723,
+      "webSearchRequests": 0,
+      "costUSD": 0.17429265,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "570cf2ec-7812-4fa2-97d4-d965de0c494b"
+}

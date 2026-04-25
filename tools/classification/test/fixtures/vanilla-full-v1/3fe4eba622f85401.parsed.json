@@ -1,0 +1,76 @@
+{
+  "items": {
+    "minecraft:zombified_piglin_spawn_egg": {
+      "facets": {
+        "role": {
+          "value": "utility",
+          "signal": "inferred",
+          "rationale": "spawns mob on use; creative/admin tool"
+        },
+        "rarity": {
+          "value": "rare",
+          "signal": "inferred",
+          "rationale": "creative-only; unobtainable in survival"
+        },
+        "frequency": {
+          "value": "occasional",
+          "signal": "inferred",
+          "rationale": "used for farm setup or mob testing"
+        },
+        "activity": {
+          "values": [
+            "farming",
+            "combat"
+          ],
+          "signal": "inferred",
+          "rationale": "gold/XP farms; combat encounter testing"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "signal": "inferred",
+          "rationale": "spawn eggs are color-coded by mob"
+        },
+        "palette": {
+          "values": [
+            "leaf_green",
+            "gold"
+          ],
+          "signal": "inferred",
+          "rationale": "zombie green + piglin gold tones"
+        },
+        "spawn_interaction": {
+          "values": [
+            "spawns_linked_mob"
+          ],
+          "signal": "named",
+          "rationale": "spawn egg spawns its named mob"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "signal": "inferred",
+          "rationale": "fits standard inventory slots"
+        },
+        "is_creative_only": {
+          "value": true,
+          "signal": "inferred",
+          "rationale": "no survival obtainment method"
+        },
+        "primary_uses": {
+          "values": [
+            "Spawn a Zombified Piglin instantly",
+            "Set up gold/XP farms",
+            "Test mob mechanics in creative"
+          ],
+          "signal": "inferred",
+          "rationale": "core spawn egg use cases"
+        }
+      }
+    }
+  },
+  "schema_proposals": [],
+  "corrections": []
+}

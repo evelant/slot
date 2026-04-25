@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 260231,
+  "duration_api_ms": 260985,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:lime_stained_glass_pane\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"pane used structurally as windows\"\n        },\n        \"material_family\": {\n          \"value\": \"glass\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"stained glass variant of base glass\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from cheap sand+dye\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative use, not daily staple\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"windows and colored builds\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"lime dye color variant of glass pane\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"translucent\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lime green translucent glass\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"waterlogs\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glass panes waterlog in Java Edition\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"colored windows in builds\", \"decorative barriers\", \"light filtering\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stained glass pane use cases\"\n        }\n      }\n    },\n    \"minecraft:lime_terracotta\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid decorative building block\"\n        },\n        \"material_family\": {\n          \"value\": \"terracotta\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id suffix _terracotta\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"crafted from clay+dye, accessible\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in builds, not daily\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative building material\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"variant\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"lime dye color variant of terracotta\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"muted\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"muted earthy lime green terracotta\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"decorative building block\", \"smelt into lime glazed terracotta\", \"colored structure material\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"terracotta use cases\"\n        }\n      }\n    },\n    \"minecraft:lime_wool\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"building_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"solid block for building and decoration\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"farmable from lime sheep or dyeing\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"widely used in builds, beds, carpets\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"building and colorful decoration\"\n        },\n        \"flavor\": {\n          \"values\": [\"colored\", \"natural\", \"variant\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"natural material, lime dyed variant\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"vivid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bright lime green wool\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool is flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"building and decoration\", \"crafting carpets and beds\", \"re-dyeing to other colors\", \"sound/vibration dampening\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"wool primary uses\"\n        }\n      }\n    },\n    \"minecraft:lingering_potion\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"consumable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown item consumed on use\"\n        },\n        \"rarity\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"requires dragon breath post-End boss\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"situational combat/utility use\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"brewing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"thrown in combat, part of brewing loop\"\n        },\n        \"flavor\": {\n          \"values\": [\"mystical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"magical potion item\"\n        },\n        \"palette\": {\n          \"values\": [\"translucent\", \"glowing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"glowing colored liquid bottle\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"create area-effect cloud on throw\", \"craft tipped arrows via imbuing\", \"combat utility effects\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lingering potion uses\"\n        }\n      }\n    },\n    \"minecraft:llama_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used to spawn llama mobs\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot tables, no recipes\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative mode only, no survival source\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"niche creative/map-making use\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal mob spawn egg\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg spawns its linked mob\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn llamas in creative mode\", \"map making and testing\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [\n    {\n      \"kind\": \"add_value\",\n      \"facet\": \"origin\",\n      \"value\": \"brewing\",\n      \"rationale\": \"Splash/lingering potions are primarily obtained via brewing stand; no current origin value captures this production pathway\"\n    }\n  ],\n  \"corrections\": []\n}",
+  "stop_reason": "end_turn",
+  "session_id": "e7499355-157b-4830-a7af-36cfa25d1005",
+  "total_cost_usd": 0.2843089,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 4338,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 17509,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4338,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 17509,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 4338,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4338
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3475,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0035499999999999998,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 17509,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 4338,
+      "webSearchRequests": 0,
+      "costUSD": 0.2807589,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "0bdab9cc-2946-4509-966e-6bf532629cc4"
+}

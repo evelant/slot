@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 221238,
+  "duration_api_ms": 222090,
+  "num_turns": 1,
+  "result": "{\n  \"items\": {\n    \"minecraft:large_fern\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"tall plant; no ingredient uses, purely aesthetic\"\n        },\n        \"material_family\": {\n          \"value\": \"fern\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id contains 'fern'\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"decorative, not an everyday necessity\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no ingredient uses; placed for aesthetics\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic plant block\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"ferns are green\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Decorating builds with natural plants\", \"Composting for bonemeal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main player uses\"\n        }\n      }\n    },\n    \"minecraft:lava_bucket\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"container_portable\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"portable bucket holding lava fluid\"\n        },\n        \"material_family\": {\n          \"value\": \"iron\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"bucket crafted from 3 iron ingots\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"common fuel and lava-source tool\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"mining\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lava sources, cobble/obsidian gen\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"utilitarian bucket, no special aesthetic\"\n        },\n        \"palette\": {\n          \"values\": [\"warm\", \"glowing\", \"emissive\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lava is visually warm, glowing, emissive\"\n        },\n        \"origin\": {\n          \"values\": [\"overworld_cave\", \"nether\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"lava sources in caves and nether\"\n        },\n        \"storage_categories\": {\n          \"values\": [\"standard\", \"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"inventory item that holds fluid\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"fluid\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"moves lava from source to destination\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Fuel for furnaces and smelting\", \"Creating lava sources\", \"Obsidian and cobblestone generation\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main player uses\"\n        }\n      }\n    },\n    \"minecraft:lead\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"utility\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"leashes mobs to fence posts\"\n        },\n        \"material_family\": {\n          \"value\": \"string\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"string is primary craft ingredient\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"slimeball\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"slimeball used in crafting recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"specific mob-handling use case\"\n        },\n        \"activity\": {\n          \"values\": [\"farming\", \"exploration\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animal husbandry and mob transport\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"simple rope utility item\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"rope/string earthy brown tones\"\n        },\n        \"transport_medium\": {\n          \"values\": [\"mob\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"guides and moves mobs\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Leashing mobs to fence posts\", \"Moving animals between areas\", \"Preventing mobs from wandering\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core player uses\"\n        }\n      }\n    },\n    \"minecraft:leaf_litter\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"decorative_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"thin ground-cover; no ingredient uses\"\n        },\n        \"material_family\": {\n          \"value\": \"leaves\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id is leaf_litter; fallen leaf material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"aesthetic decoration only\"\n        },\n        \"activity\": {\n          \"values\": [\"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"purely decorative ground cover\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"fallen leaf organic material\"\n        },\n        \"palette\": {\n          \"values\": [\"leaf_green\", \"earthy\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"green/earthy fallen leaf tones\"\n        },\n        \"environmental_property\": {\n          \"values\": [\"burnable\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"leaf material is flammable\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Forest floor decoration\", \"Composting for bonemeal\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main player uses\"\n        }\n      }\n    },\n    \"minecraft:leather\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop, not a refined product\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component rarity=common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used in many diverse recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"enchanting\", \"storage_management\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"armor, books, bundles, item frames\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"organic animal product\"\n        },\n        \"palette\": {\n          \"values\": [\"earthy\", \"warm\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"brown leather tones\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"Crafting leather armor\", \"Crafting books for enchanting\", \"Crafting bundles for storage\", \"Crafting item frames\", \"Trading with leatherworker villagers\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"main downstream crafting uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": [\n    {\n      \"item\": \"minecraft:leaf_litter\",\n      \"facet\": \"origin\",\n      \"current\": [\"crafted_only\"],\n      \"suggested\": [\"overworld_surface\"],\n      \"rationale\": \"leaf_litter generates naturally in forest biomes; not crafted_only\",\n      \"confidence\": 0.85\n    }\n  ]\n}",
+  "stop_reason": "end_turn",
+  "session_id": "c8c5ba5c-1879-4f2b-aa74-0b1d198432c7",
+  "total_cost_usd": 0.26400290000000004,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3642,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 16376,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3642,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 16376,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3642,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3642
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2779,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002849,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 16376,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3642,
+      "webSearchRequests": 0,
+      "costUSD": 0.26115390000000005,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "af814aad-ed8d-40bc-9618-f9b5c3005c60"
+}

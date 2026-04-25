@@ -1,0 +1,69 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "api_error_status": null,
+  "duration_ms": 113375,
+  "duration_api_ms": 114113,
+  "num_turns": 1,
+  "result": "```json\n{\n  \"items\": {\n    \"minecraft:stone_sword\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"weapon\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"tag minecraft:swords + minecraft:weapon component\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"early-game melee workhorse\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"sword = melee combat primary use\"\n        },\n        \"flavor\": {\n          \"values\": [\"plain\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"basic unadorned stone weapon\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"gray stone, flat finish\"\n        },\n        \"origin\": {\n          \"values\": [\"crafted_only\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"no loot sources, shaped crafting only\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"melee combat vs mobs\", \"early-game damage dealer\", \"sweeping edge attacks vs groups\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core sword gameplay\"\n        }\n      }\n    },\n    \"minecraft:stonecutter\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"functional_block\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"interactive cutting station for stone\"\n        },\n        \"material_family\": {\n          \"value\": \"stone\",\n          \"signal\": \"pattern\",\n          \"rationale\": \"id prefix stone\"\n        },\n        \"material_secondary\": {\n          \"values\": [\"iron\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"iron ingot blade in recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"occasional\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"used during stone-heavy builds\"\n        },\n        \"activity\": {\n          \"values\": [\"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"cuts stone into structural/decorative variants\"\n        },\n        \"flavor\": {\n          \"values\": [\"mechanical\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"animated rotating saw blade\"\n        },\n        \"palette\": {\n          \"values\": [\"matte\", \"iron_dark\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"stone body + dark iron blade\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"cut stone into slabs/stairs/walls\", \"efficient stone variant crafting\", \"reduce material waste vs crafting table\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"core stonecutter uses\"\n        }\n      }\n    },\n    \"minecraft:stray_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only mob spawning tool\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival loot table or recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only via creative inventory or commands\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin/creative context only\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn_egg suffix → spawns stray\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn a stray skeleton\", \"creative/admin mob placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg function\"\n        }\n      }\n    },\n    \"minecraft:strider_spawn_egg\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"admin\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"creative-only mob spawning tool\"\n        },\n        \"is_creative_only\": {\n          \"value\": true,\n          \"signal\": \"inferred\",\n          \"rationale\": \"no survival loot table or recipe\"\n        },\n        \"rarity\": {\n          \"value\": \"unique\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"only via creative inventory or commands\"\n        },\n        \"frequency\": {\n          \"value\": \"rare\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"admin/creative context only\"\n        },\n        \"spawn_interaction\": {\n          \"values\": [\"spawns_linked_mob\"],\n          \"signal\": \"pattern\",\n          \"rationale\": \"spawn_egg suffix → spawns strider\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"spawn a strider mob\", \"creative/admin mob placement\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"spawn egg function\"\n        }\n      }\n    },\n    \"minecraft:string\": {\n      \"facets\": {\n        \"role\": {\n          \"value\": \"natural_resource\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw mob drop, not processed/refined\"\n        },\n        \"material_family\": {\n          \"value\": \"fiber\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"silk-like raw fiber material\"\n        },\n        \"rarity\": {\n          \"value\": \"common\",\n          \"signal\": \"named\",\n          \"rationale\": \"component minecraft:rarity = common\"\n        },\n        \"frequency\": {\n          \"value\": \"frequent\",\n          \"signal\": \"inferred\",\n          \"rationale\": \"ingredient in many key recipes\"\n        },\n        \"activity\": {\n          \"values\": [\"combat\", \"fishing\", \"building\", \"decorating\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"bow/xbow, fishing rod, scaffolding, loom\"\n        },\n        \"flavor\": {\n          \"values\": [\"natural\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"raw fiber from spiders/cobwebs\"\n        },\n        \"palette\": {\n          \"values\": [\"light\", \"muted\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"off-white pale thin fiber\"\n        },\n        \"primary_uses\": {\n          \"values\": [\"craft bows and crossbows\", \"make fishing rods\", \"produce white wool\", \"craft leads and scaffolding\"],\n          \"signal\": \"inferred\",\n          \"rationale\": \"top downstream recipe uses\"\n        }\n      }\n    }\n  },\n  \"schema_proposals\": [],\n  \"corrections\": []\n}\n```",
+  "stop_reason": "end_turn",
+  "session_id": "90b96feb-b174-4d19-9f4e-062fea156225",
+  "total_cost_usd": 0.14920615,
+  "usage": {
+    "input_tokens": 3,
+    "cache_creation_input_tokens": 3789,
+    "cache_read_input_tokens": 6158,
+    "output_tokens": 8676,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 3789,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [
+      {
+        "input_tokens": 3,
+        "output_tokens": 8676,
+        "cache_read_input_tokens": 6158,
+        "cache_creation_input_tokens": 3789,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3789
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2926,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 3,
+      "outputTokens": 8676,
+      "cacheReadInputTokens": 6158,
+      "cacheCreationInputTokens": 3789,
+      "webSearchRequests": 0,
+      "costUSD": 0.14620515,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "uuid": "a53faeb1-1891-445e-b78c-3896f8422d3e"
+}
