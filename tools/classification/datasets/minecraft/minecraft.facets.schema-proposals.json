@@ -1,0 +1,98 @@
+[
+  {
+    "kind": "add_value",
+    "facet": "origin",
+    "value": "creative_only",
+    "rationale": "Spawn eggs and admin items have no world origin; crafted_only is misleading as they are not crafted either"
+  },
+  {
+    "kind": "add_value",
+    "facet": "spawn_interaction",
+    "value": "swallowable_by_mob",
+    "rationale": "Tag minecraft:sulfur_cube_swallowable on calcite (and similar blocks) indicates a mob can physically ingest/swallow the block. No existing spawn_interaction value covers block-ingestion by a mob; attracts_mobs and mob_transport are both wrong in meaning."
+  },
+  {
+    "kind": "add_value",
+    "facet": "combat_bonus",
+    "value": "disables_blocking",
+    "rationale": "Axes disable shield blocking for 5s on hit; no current value captures this"
+  },
+  {
+    "kind": "add_value",
+    "facet": "environmental_property",
+    "value": "mob_swallowable",
+    "rationale": "gray_glazed_terracotta carries tag minecraft:sulfur_cube_swallowable, implying a mob can consume or interact with it as a block; no existing environmental_property value covers block-consumption by mobs"
+  },
+  {
+    "kind": "add_value",
+    "facet": "origin",
+    "value": "brewing",
+    "rationale": "Splash/lingering potions are primarily obtained via brewing stand; no current origin value captures this production pathway"
+  },
+  {
+    "kind": "add_value",
+    "facet": "origin",
+    "value": "creative_inventory",
+    "rationale": "Spawn eggs and admin-only items have no survival loot origin; crafted_only is misleading — a dedicated creative_inventory value would distinguish them cleanly"
+  },
+  {
+    "kind": "add_value",
+    "facet": "environmental_property",
+    "value": "sustains_fire",
+    "rationale": "ignitable_by_fire doesn't capture netherrack's unique property that fire placed on it never extinguishes; distinct mechanic from merely being ignitable"
+  },
+  {
+    "kind": "add_facet",
+    "name": "native_biome",
+    "suggested_kind": "multi_free_text",
+    "rationale": "biome-endemic items like eyeblossom need biome context beyond overworld_surface"
+  },
+  {
+    "kind": "add_value",
+    "facet": "spawn_interaction",
+    "value": "swallowable_by_mob",
+    "rationale": "Tag minecraft:sulfur_cube_swallowable implies a mob (sulfur cube) can consume/swallow this block type; no existing spawn_interaction value captures this mechanic"
+  },
+  {
+    "kind": "add_value",
+    "facet": "origin",
+    "value": "brewing_stand",
+    "rationale": "Potions are primarily obtained via brewing stand; no existing origin value captures this production method"
+  },
+  {
+    "kind": "add_value",
+    "facet": "environmental_property",
+    "value": "piglin_repellent",
+    "rationale": "Tag piglin_repellents causes piglins to flee; distinct from piglin_pacifying (prevents aggression); soul torch, soul lantern, soul campfire all need this"
+  },
+  {
+    "kind": "add_value",
+    "facet": "combat_bonus",
+    "value": "inflicts_glowing",
+    "rationale": "Spectral arrow applies Glowing status effect to hit entities; not representable in current combat_bonus enum"
+  },
+  {
+    "kind": "add_value",
+    "facet": "environmental_property",
+    "value": "trample_sensitive",
+    "rationale": "Turtle eggs break when walked/jumped on by most entities"
+  },
+  {
+    "kind": "add_value",
+    "facet": "environmental_property",
+    "value": "climbable",
+    "rationale": "Player can climb up twisting vines (and weeping vines)"
+  },
+  {
+    "kind": "add_facet",
+    "name": "oxidation_stage",
+    "suggested_kind": "enum",
+    "rationale": "Copper has 4 stages (base/exposed/weathered/oxidized) plus waxed flag; useful for grouping copper variants in inventory UI"
+  },
+  {
+    "kind": "add_value",
+    "facet": "origin",
+    "value": "natural_weathering",
+    "rationale": "Weathered/exposed/oxidized copper variants have no production recipe and no natural loot table generation — obtained solely by natural oxidation of a placed copper item over time, or by scraping a more-oxidized stage. No existing origin value captures this mechanic."
+  }
+]

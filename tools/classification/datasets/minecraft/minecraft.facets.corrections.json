@@ -1,0 +1,1157 @@
+[
+  {
+    "item": "minecraft:acacia_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_acacia",
+    "rationale": "id prefix acacia_ identifies material; wooden_tool_materials tag is generic across all plank types and does not indicate oak",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:andesite",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface",
+      "overworld_cave"
+    ],
+    "rationale": "Andesite generates naturally in overworld blobs; crafted_only is incorrect",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:armadillo_scute",
+    "facet": "origin",
+    "current": [
+      "archaeology_site"
+    ],
+    "suggested": [
+      "mob_drop"
+    ],
+    "rationale": "Loot from mob brush/shed, not archaeology",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:bamboo_mosaic",
+    "facet": "is_fuel",
+    "current": false,
+    "suggested": true,
+    "rationale": "bamboo_mosaic is bamboo wood; bamboo_mosaic_slab (same material) correctly has is_fuel:true; all bamboo wood products are burnable fuel",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:bamboo_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_bamboo",
+    "rationale": "id is bamboo_planks; oak tag match is wrong; bamboo id wins",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:bell",
+    "facet": "origin",
+    "current": [
+      "ruined_portal"
+    ],
+    "suggested": [
+      "ruined_portal",
+      "village"
+    ],
+    "rationale": "Bells generate in village centers; primary natural source is village structures, not ruined portals",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:birch_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_birch",
+    "rationale": "Birch planks derive from birch logs; rule incorrectly mapped wooden_tool_materials tag to wood_oak for all plank types",
+    "confidence": 0.97
+  },
+  {
+    "item": "minecraft:blue_ice",
+    "facet": "origin",
+    "current": [
+      "village"
+    ],
+    "suggested": [
+      "village",
+      "overworld_ocean"
+    ],
+    "rationale": "Blue ice generates naturally in frozen ocean icebergs; loot-table rule missed terrain gen",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:bone_block",
+    "facet": "origin",
+    "current": [
+      "bastion",
+      "nether"
+    ],
+    "suggested": [
+      "bastion",
+      "nether",
+      "overworld_cave"
+    ],
+    "rationale": "Bone blocks generate in overworld fossil structures underground; loot-table scan misses world-gen origin",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:bookshelf",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "village",
+      "woodland_mansion"
+    ],
+    "rationale": "Bookshelves generate naturally in village library rooms and woodland mansion library rooms",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:brown_terracotta",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface"
+    ],
+    "rationale": "generates naturally as badlands terrain",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:cherry_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_cherry",
+    "rationale": "ID is cherry_planks; rule incorrectly mapped wooden_tool_materials tag to oak for all wood types",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:chiseled_copper",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "trial_chamber"
+    ],
+    "rationale": "trial chambers generate with chiseled copper blocks",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:chiseled_polished_blackstone",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "bastion"
+    ],
+    "rationale": "bastion remnants contain chiseled polished blackstone",
+    "confidence": 0.7
+  },
+  {
+    "item": "minecraft:clay",
+    "facet": "origin",
+    "current": [
+      "archaeology_site",
+      "village"
+    ],
+    "suggested": [
+      "overworld_surface",
+      "overworld_ocean",
+      "archaeology_site",
+      "village"
+    ],
+    "rationale": "Clay generates naturally in riverbeds and ocean floors; primary origin missed",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:coarse_dirt",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface",
+      "crafted_only"
+    ],
+    "rationale": "generates naturally in savanna/taiga/windswept biomes",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:cobbled_deepslate",
+    "facet": "material_family",
+    "current": "stone",
+    "suggested": "deepslate",
+    "rationale": "block is distinctly deepslate not generic stone",
+    "confidence": 0.72
+  },
+  {
+    "item": "minecraft:cooked_beef",
+    "facet": "origin",
+    "current": [
+      "village"
+    ],
+    "suggested": [
+      "village",
+      "trial_chamber"
+    ],
+    "rationale": "loot source spawners/ominous/trial_chamber/consumables present in provided data but absent from stage2",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:crafting_table",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "village",
+      "crafted_only"
+    ],
+    "rationale": "Crafting tables generate in village structures",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:creaking_heart",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface",
+      "crafted_only"
+    ],
+    "rationale": "Naturally generates in Pale Oak trees in Pale Garden biome",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:creeper_head",
+    "facet": "rarity",
+    "current": "uncommon",
+    "suggested": "rare",
+    "rationale": "Requires charged creeper to kill a creeper; very rare event",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:crimson_button",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:crimson_door",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:crimson_fence",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:crimson_fence_gate",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "Non-flammable wood (crimson) cannot be used as furnace fuel in vanilla Minecraft",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:crimson_fungus",
+    "facet": "material_family",
+    "current": "wood_crimson",
+    "suggested": "omit",
+    "rationale": "Crimson fungus is a nether plant, not a wood product; id prefix rule incorrectly assigned wood_crimson",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:crimson_nylium",
+    "facet": "material_family",
+    "current": "wood_crimson",
+    "suggested": "netherrack",
+    "rationale": "Nylium is overgrown netherrack terrain, not wood; id prefix crimson_ rule misfired",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:crimson_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_crimson",
+    "rationale": "Planks are crimson wood; wooden_tool_materials tag incorrectly resolved to oak",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:cut_sandstone",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "village"
+    ],
+    "rationale": "desert village structures use cut sandstone blocks",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:cut_sandstone_slab",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "village"
+    ],
+    "rationale": "desert village roofs use cut sandstone slabs",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:dark_oak_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_dark_oak",
+    "rationale": "id prefix is dark_oak_; wooden_tool_materials tag is generic to all wood species, not oak-specific",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:dark_prismarine",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "ocean_monument"
+    ],
+    "rationale": "Dark prismarine generates naturally in ocean monuments and drops when mined with a pickaxe; crafted_only misses the primary natural source",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:dead_bush",
+    "facet": "origin",
+    "current": [
+      "archaeology_site",
+      "village"
+    ],
+    "suggested": [
+      "archaeology_site",
+      "village",
+      "overworld_surface"
+    ],
+    "rationale": "Dead bush spawns naturally in deserts/badlands/savannas",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:deepslate_bricks",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "ancient_city"
+    ],
+    "rationale": "Deepslate bricks generate naturally in ancient city structures",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:deepslate_brick_slab",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "ancient_city"
+    ],
+    "rationale": "Deepslate brick slabs generate in ancient city structures",
+    "confidence": 0.72
+  },
+  {
+    "item": "minecraft:deepslate_brick_stairs",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "ancient_city"
+    ],
+    "rationale": "Deepslate brick stairs generate in ancient city structures",
+    "confidence": 0.72
+  },
+  {
+    "item": "minecraft:deepslate_brick_wall",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "ancient_city"
+    ],
+    "rationale": "Deepslate brick walls generate in ancient city structures",
+    "confidence": 0.7
+  },
+  {
+    "item": "minecraft:diorite",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_cave",
+      "overworld_surface"
+    ],
+    "rationale": "Diorite generates naturally as world-gen blobs in overworld; loot-table rule missed world-gen sources and only saw self-drop",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:dripstone_block",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_cave"
+    ],
+    "rationale": "Dripstone blocks generate naturally in dripstone cave biomes; crafted_only is wrong",
+    "confidence": 0.92
+  },
+  {
+    "item": "minecraft:dried_ghast",
+    "facet": "origin",
+    "current": [
+      "trading"
+    ],
+    "suggested": [
+      "trading",
+      "nether"
+    ],
+    "rationale": "Dried ghast block generates naturally in the nether; blocks/ loot table signals natural gen",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:egg",
+    "facet": "origin",
+    "current": [
+      "trial_chamber",
+      "village"
+    ],
+    "suggested": [
+      "trial_chamber",
+      "village",
+      "mob_drop"
+    ],
+    "rationale": "loot source minecraft:gameplay/chicken_lay confirms mob_drop is primary origin",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:end_portal_frame",
+    "facet": "y_level_range",
+    "current": "end_islands",
+    "suggested": "overworld_underground",
+    "rationale": "End portal frames generate in strongholds (overworld underground), not The End; 'end_' in the id refers to destination, not location",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:fox_spawn_egg",
+    "facet": "is_creative_only",
+    "current": null,
+    "suggested": true,
+    "rationale": "vanilla spawn eggs are creative-only in survival",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:frog_spawn_egg",
+    "facet": "is_creative_only",
+    "current": null,
+    "suggested": true,
+    "rationale": "vanilla spawn eggs are creative-only in survival",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:glow_lichen",
+    "facet": "required_tool",
+    "current": "axe",
+    "suggested": "shears",
+    "rationale": "Glow lichen drops via shears or Silk Touch; axe tag reflects mining speed, not drop method",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:goat_horn",
+    "facet": "origin",
+    "current": [
+      "pillager_outpost"
+    ],
+    "suggested": [
+      "pillager_outpost",
+      "mob_drop",
+      "overworld_surface"
+    ],
+    "rationale": "Goats drop horns when ramming solid blocks in mountain biomes; primary acquisition method missing",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:granite",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface",
+      "overworld_cave"
+    ],
+    "rationale": "Granite is a naturally generating overworld stone type; rule mistook absence of chest/mob loot for crafted_only",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:gravel",
+    "facet": "origin",
+    "current": [
+      "trading"
+    ],
+    "suggested": [
+      "trading",
+      "overworld_surface",
+      "overworld_cave",
+      "overworld_ocean"
+    ],
+    "rationale": "Gravel generates naturally in overworld rivers, beaches, and caves; stage2 only caught piglin_bartering loot table",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:hay_block",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "village"
+    ],
+    "rationale": "Hay bales generate naturally as structure blocks in plains/savanna villages; obtainable without crafting",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:honeycomb_block",
+    "facet": "material_family",
+    "current": "honey",
+    "suggested": "honeycomb",
+    "rationale": "Block is crafted from honeycombs (wax item), not honey. Honey is a separate item (honey_bottle). These are distinct Minecraft materials.",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:jungle_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_jungle",
+    "rationale": "id is jungle_planks; oak assigned generically from wooden_tool_materials tag",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:jungle_wood",
+    "facet": "origin",
+    "current": [
+      "overworld_surface"
+    ],
+    "suggested": [
+      "crafted_only"
+    ],
+    "rationale": "jungle trees spawn jungle_log; all-bark wood variant is crafted only",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:lantern",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "village"
+    ],
+    "rationale": "Generates in snowy tundra villages naturally",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:leaf_litter",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface"
+    ],
+    "rationale": "leaf_litter generates naturally in forest biomes; not crafted_only",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:lily_pad",
+    "facet": "origin",
+    "current": [
+      "fishing"
+    ],
+    "suggested": [
+      "fishing",
+      "overworld_surface"
+    ],
+    "rationale": "lily pads spawn naturally on overworld water; loot table minecraft:blocks/lily_pad confirms world origin",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:mangrove_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_mangrove",
+    "rationale": "id prefix mangrove_ overrides wooden_tool_materials tag; rule picked wrong wood species",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:melon_seeds",
+    "facet": "origin",
+    "current": [
+      "mineshaft",
+      "overworld_cave",
+      "woodland_mansion"
+    ],
+    "suggested": [
+      "mineshaft",
+      "overworld_cave",
+      "woodland_mansion",
+      "overworld_surface"
+    ],
+    "rationale": "Melon stems grow in surface jungle biomes; blocks/melon_stem and blocks/attached_melon_stem loot should classify as overworld_surface",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:moss_block",
+    "facet": "origin",
+    "current": [
+      "overworld_ocean",
+      "trial_chamber"
+    ],
+    "suggested": [
+      "overworld_ocean",
+      "trial_chamber",
+      "overworld_cave"
+    ],
+    "rationale": "Moss generates in lush caves; missed by chest loot rule",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:mossy_cobblestone",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_cave",
+      "crafted_only"
+    ],
+    "rationale": "Generates structurally in dungeons (overworld_cave)",
+    "confidence": 0.92
+  },
+  {
+    "item": "minecraft:obsidian",
+    "facet": "origin",
+    "current": [
+      "bastion",
+      "nether_fortress",
+      "ruined_portal",
+      "trading",
+      "village"
+    ],
+    "suggested": [
+      "bastion",
+      "nether_fortress",
+      "ruined_portal",
+      "trading",
+      "village",
+      "overworld_cave"
+    ],
+    "rationale": "Obsidian forms naturally where lava meets water in overworld caves; loot-table scan misses natural generation",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:orange_terracotta",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_surface"
+    ],
+    "rationale": "orange terracotta generates naturally in badlands biomes",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:packed_ice",
+    "facet": "origin",
+    "current": [
+      "ancient_city"
+    ],
+    "suggested": [
+      "ancient_city",
+      "overworld_surface"
+    ],
+    "rationale": "packed ice generates naturally in ice spike and frozen ocean biomes; block loot table confirms mined-in-world drops",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:pale_oak_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_pale_oak",
+    "rationale": "Planks are pale oak; rule misread wooden_tool_materials tag which groups all plank types, not oak-specific",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:polished_blackstone",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "bastion"
+    ],
+    "rationale": "generates naturally in bastion remnant structures",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:polished_blackstone_stairs",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "bastion"
+    ],
+    "rationale": "Bastion remnants structurally generate polished blackstone stairs; mineable in-world even without loot table drop",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:polished_blackstone_wall",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "bastion"
+    ],
+    "rationale": "Bastion remnants structurally generate polished blackstone walls; mineable in-world even without loot table drop",
+    "confidence": 0.7
+  },
+  {
+    "item": "minecraft:prismarine",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "ocean_monument"
+    ],
+    "rationale": "Prismarine generates naturally in ocean monuments; crafted_only is wrong",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:prismarine_bricks",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_ocean"
+    ],
+    "rationale": "prismarine bricks generate naturally as part of ocean monument structures and can be mined directly",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:red_sandstone",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_surface"
+    ],
+    "rationale": "Generates naturally below red sand in badlands biome",
+    "confidence": 0.82
+  },
+  {
+    "item": "minecraft:red_terracotta",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_surface"
+    ],
+    "rationale": "Red terracotta generates naturally in badlands biome strata",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:sand",
+    "facet": "origin",
+    "current": [
+      "desert_temple"
+    ],
+    "suggested": [
+      "desert_temple",
+      "overworld_surface"
+    ],
+    "rationale": "blocks/sand loot source = overworld_surface drop",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:sandstone",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface",
+      "crafted_only"
+    ],
+    "rationale": "Sandstone naturally generates in desert/beach biomes; rule missed world-gen origin",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:sea_lantern",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "ocean_monument"
+    ],
+    "rationale": "silk touch mines block from ocean monuments",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:smooth_basalt",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_cave"
+    ],
+    "rationale": "smooth basalt generates naturally as outer shell of amethyst geodes in overworld caves; can be mined directly",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:smooth_basalt",
+    "facet": "y_level_range",
+    "current": "nether_surface",
+    "suggested": "overworld_underground",
+    "rationale": "id-pattern rule matched 'basalt' to nether, but smooth_basalt occurs in overworld geodes (y -64 to 30), not nether surface",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:soul_campfire",
+    "facet": "origin",
+    "current": [
+      "nether"
+    ],
+    "suggested": [
+      "crafted_only"
+    ],
+    "rationale": "crafted only; sole loot source is self-drop, not natural nether gen",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:soul_lantern",
+    "facet": "origin",
+    "current": [
+      "nether"
+    ],
+    "suggested": [
+      "crafted_only"
+    ],
+    "rationale": "crafted only; sole loot source is self-drop, not natural nether gen",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:sponge",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "ocean_monument"
+    ],
+    "rationale": "sponge generates in monument rooms; not craft-only",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:spruce_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_spruce",
+    "rationale": "id is spruce_planks; wooden_tool_materials tag incorrectly resolved to wood_oak instead of item-specific prefix",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:stone",
+    "facet": "origin",
+    "current": [
+      "village"
+    ],
+    "suggested": [
+      "overworld_cave",
+      "overworld_surface",
+      "village"
+    ],
+    "rationale": "stone generates throughout the overworld; village is supplementary loot only",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:stripped_spruce_wood",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_surface"
+    ],
+    "rationale": "Obtained by axe-stripping spruce wood in the overworld, not crafted from materials",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:stripped_warped_hyphae",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "nether"
+    ],
+    "rationale": "Obtained by stripping warped hyphae in nether warped forest biome",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:stripped_warped_hyphae",
+    "facet": "form",
+    "current": "stripped_log",
+    "suggested": "stripped_wood",
+    "rationale": "Hyphae is the all-bark wood form; stem is the log form — same distinction as oak_wood vs oak_log",
+    "confidence": 0.82
+  },
+  {
+    "item": "minecraft:sulfur",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "overworld_cave"
+    ],
+    "rationale": "loot source blocks/sulfur + sulfur_from_sulfur_spikes confirm natural world spawn; crafted_only is wrong",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:tall_grass",
+    "facet": "origin",
+    "current": [
+      "village"
+    ],
+    "suggested": [
+      "village",
+      "overworld_surface"
+    ],
+    "rationale": "tall grass generates on overworld surface in most biomes; village is secondary",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:terracotta",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_surface"
+    ],
+    "rationale": "terracotta generates naturally and abundantly in badlands biomes",
+    "confidence": 0.92
+  },
+  {
+    "item": "minecraft:trident",
+    "facet": "origin",
+    "current": [
+      "trial_chamber"
+    ],
+    "suggested": [
+      "trial_chamber",
+      "mob_drop"
+    ],
+    "rationale": "Drowned drop tridents in survival; primary source",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:totem_of_undying",
+    "facet": "rarity",
+    "current": "uncommon",
+    "suggested": "rare",
+    "rationale": "Evokers only in woodland mansions/raids; milestone drop",
+    "confidence": 0.7
+  },
+  {
+    "item": "minecraft:warped_button",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:warped_door",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:warped_fence",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:warped_fence_gate",
+    "facet": "is_fuel",
+    "current": true,
+    "suggested": false,
+    "rationale": "non_flammable_wood tag; warped wood cannot be furnace fuel",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:warped_fungus",
+    "facet": "material_family",
+    "current": "wood_warped",
+    "suggested": "fungus_warped",
+    "rationale": "fungus plant, not wood; prefix rule misfired",
+    "confidence": 0.8
+  },
+  {
+    "item": "minecraft:warped_planks",
+    "facet": "material_family",
+    "current": "wood_oak",
+    "suggested": "wood_warped",
+    "rationale": "warped planks are warped wood; rule incorrectly mapped minecraft:wooden_tool_materials tag to oak",
+    "confidence": 0.95
+  },
+  {
+    "item": "minecraft:warped_nylium",
+    "facet": "material_family",
+    "current": "wood_warped",
+    "suggested": "netherrack",
+    "rationale": "nylium is netherrack-based (required_tool=pickaxe not axe); not a wood material",
+    "confidence": 0.82
+  },
+  {
+    "item": "minecraft:waxed_oxidized_copper_door",
+    "facet": "required_tool_tier",
+    "current": null,
+    "suggested": "stone",
+    "rationale": "Copper doors share needs_stone_tool tag with other copper blocks in this batch; stage2 rule likely missed the tag",
+    "confidence": 0.75
+  },
+  {
+    "item": "minecraft:wet_sponge",
+    "facet": "origin",
+    "current": [
+      "mob_drop"
+    ],
+    "suggested": [
+      "mob_drop",
+      "ocean_monument"
+    ],
+    "rationale": "wet sponge rooms generate in ocean monuments",
+    "confidence": 0.9
+  },
+  {
+    "item": "minecraft:white_bed",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "village"
+    ],
+    "rationale": "White beds generate in plains village houses",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:white_terracotta",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_surface"
+    ],
+    "rationale": "White terracotta generates naturally in badlands biome layer strata",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:yellow_dye",
+    "facet": "origin",
+    "current": [
+      "archaeology_site",
+      "village"
+    ],
+    "suggested": [
+      "archaeology_site",
+      "village",
+      "overworld_surface"
+    ],
+    "rationale": "crafted from dandelion/sunflower/wildflowers",
+    "confidence": 0.85
+  },
+  {
+    "item": "minecraft:yellow_terracotta",
+    "facet": "origin",
+    "current": [
+      "crafted_only"
+    ],
+    "suggested": [
+      "crafted_only",
+      "overworld_surface"
+    ],
+    "rationale": "Yellow terracotta naturally generates in badlands",
+    "confidence": 0.85
+  }
+]
