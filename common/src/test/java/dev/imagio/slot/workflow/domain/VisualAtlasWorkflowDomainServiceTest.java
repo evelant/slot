@@ -16,19 +16,12 @@ class VisualAtlasWorkflowDomainServiceTest {
         ItemIdentity apple = ItemIdentity.of("minecraft:apple");
 
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Machines",
-                744,
-                104,
-                320,
-                196,
-                0xCC5A4A6E,
-                apple
+                "Machines", 744, 104, 0xCC5A4A6E, apple
         );
-        VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 16, 60);
+        VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 0);
 
         assertEquals(island.id(), assignment.islandId());
-        assertEquals(16, assignment.localX());
-        assertEquals(60, assignment.localY());
+        assertEquals(0, assignment.ordinal());
         assertTrue(runtime.snapshot().visualHomeMap().playerIslands().stream().anyMatch(candidate -> candidate.id().equals(island.id())));
         assertEquals(assignment, runtime.snapshot().visualHomeMap().assignment(apple));
         assertTrue(runtime.visualAtlasWorkflow().clearHome(apple));
@@ -39,7 +32,7 @@ class VisualAtlasWorkflowDomainServiceTest {
     void renameIslandUpdatesLabelAndReturnsExistingWhenUnchanged() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Machines", 10, 20, 320, 196, 0xCC5A4A6E, null
+                "Machines", 10, 20, 0xCC5A4A6E, null
         );
 
         VisualAtlasIsland renamed = runtime.visualAtlasWorkflow().renameIsland(island.id(), "Factory");
@@ -57,7 +50,7 @@ class VisualAtlasWorkflowDomainServiceTest {
     void recolorIslandUpdatesColorAndReturnsExistingWhenUnchanged() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Machines", 10, 20, 320, 196, 0xCC5A4A6E, null
+                "Machines", 10, 20, 0xCC5A4A6E, null
         );
 
         VisualAtlasIsland recolored = runtime.visualAtlasWorkflow().recolorIsland(island.id(), 0xFF112233);
@@ -76,7 +69,7 @@ class VisualAtlasWorkflowDomainServiceTest {
         ItemIdentity apple = ItemIdentity.of("minecraft:apple");
         ItemIdentity pumpkin = ItemIdentity.of("minecraft:pumpkin");
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Food", 10, 20, 320, 196, 0xCC5A4A6E, apple
+                "Food", 10, 20, 0xCC5A4A6E, apple
         );
 
         VisualAtlasIsland updated = runtime.visualAtlasWorkflow().setIslandIcon(island.id(), pumpkin);
@@ -95,10 +88,10 @@ class VisualAtlasWorkflowDomainServiceTest {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         ItemIdentity apple = ItemIdentity.of("minecraft:apple");
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Food", 10, 20, 320, 196, 0xCC5A4A6E, apple
+                "Food", 10, 20, 0xCC5A4A6E, apple
         );
 
-        runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 4, 4);
+        runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 0);
         assertFalse(runtime.visualAtlasWorkflow().deleteIsland(island.id()));
         assertNotNull(runtime.snapshot().visualHomeMap().island(island.id()));
 
@@ -124,27 +117,131 @@ class VisualAtlasWorkflowDomainServiceTest {
     }
 
     @Test
-    void moveIslandUpdatesOriginWithoutChangingLocalHomes() {
+    void moveIslandUpdatesOriginWithoutChangingOrdinals() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
         ItemIdentity apple = ItemIdentity.of("minecraft:apple");
 
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Machines",
-                744,
-                104,
-                320,
-                196,
-                0xCC5A4A6E,
-                apple
+                "Machines", 744, 104, 0xCC5A4A6E, apple
         );
-        runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 16, 60);
+        runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 0);
 
         VisualAtlasIsland moved = runtime.visualAtlasWorkflow().moveIsland(island.id(), 988, 244);
         VisualHomeAssignment assignment = runtime.snapshot().visualHomeMap().assignment(apple);
 
         assertEquals(988, moved.x());
         assertEquals(244, moved.y());
-        assertEquals(16, assignment.localX());
-        assertEquals(60, assignment.localY());
+        assertEquals(0, assignment.ordinal());
+    }
+
+    @Test
+    void appendThenInsertShiftsExistingOrdinals() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity apple = ItemIdentity.of("minecraft:apple");
+        ItemIdentity bread = ItemIdentity.of("minecraft:bread");
+        ItemIdentity carrot = ItemIdentity.of("minecraft:carrot");
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Food", 0, 0, 0xCC000000, apple
+        );
+
+        runtime.visualAtlasWorkflow().assignHome(apple, island.id(), 0);
+        runtime.visualAtlasWorkflow().assignHome(bread, island.id(), 1);
+        // Insert carrot at ordinal 0 — apple/bread should both shift +1.
+        runtime.visualAtlasWorkflow().assignHome(carrot, island.id(), 0);
+
+        VisualHomeMap map = runtime.snapshot().visualHomeMap();
+        assertEquals(0, map.assignment(carrot).ordinal());
+        assertEquals(1, map.assignment(apple).ordinal());
+        assertEquals(2, map.assignment(bread).ordinal());
+    }
+
+    @Test
+    void sameIslandMoveDownPositionsAfterTarget() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity a = ItemIdentity.of("minecraft:a");
+        ItemIdentity b = ItemIdentity.of("minecraft:b");
+        ItemIdentity c = ItemIdentity.of("minecraft:c");
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Pile", 0, 0, 0xCC000000, a
+        );
+        runtime.visualAtlasWorkflow().assignHome(a, island.id(), 0);
+        runtime.visualAtlasWorkflow().assignHome(b, island.id(), 1);
+        runtime.visualAtlasWorkflow().assignHome(c, island.id(), 2);
+
+        // Move a (ordinal 0) onto c (current ordinal 2) — same-island
+        // forward move: a should land at ordinal 1 (immediately before
+        // c's old position) so the visible order becomes [b, a, c].
+        runtime.visualAtlasWorkflow().assignHome(a, island.id(), 2);
+
+        VisualHomeMap map = runtime.snapshot().visualHomeMap();
+        assertEquals(0, map.assignment(b).ordinal());
+        assertEquals(1, map.assignment(a).ordinal());
+        assertEquals(2, map.assignment(c).ordinal());
+    }
+
+    @Test
+    void crossIslandMoveCompactsSourceAndShiftsDestination() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity a = ItemIdentity.of("minecraft:a");
+        ItemIdentity b = ItemIdentity.of("minecraft:b");
+        ItemIdentity c = ItemIdentity.of("minecraft:c");
+        VisualAtlasIsland src = runtime.visualAtlasWorkflow().createIsland(
+                "Src", 0, 0, 0xCC000000, a
+        );
+        VisualAtlasIsland dst = runtime.visualAtlasWorkflow().createIsland(
+                "Dst", 200, 0, 0xCC000000, c
+        );
+        runtime.visualAtlasWorkflow().assignHome(a, src.id(), 0);
+        runtime.visualAtlasWorkflow().assignHome(b, src.id(), 1);
+        runtime.visualAtlasWorkflow().assignHome(c, dst.id(), 0);
+
+        // Move a (src ord 0) into dst at ordinal 0 — c shifts from 0 to 1,
+        // and src compacts so b becomes ord 0.
+        runtime.visualAtlasWorkflow().assignHome(a, dst.id(), 0);
+
+        VisualHomeMap map = runtime.snapshot().visualHomeMap();
+        assertEquals(0, map.assignment(b).ordinal());
+        assertEquals(src.id(), map.assignment(b).islandId());
+        assertEquals(0, map.assignment(a).ordinal());
+        assertEquals(dst.id(), map.assignment(a).islandId());
+        assertEquals(1, map.assignment(c).ordinal());
+    }
+
+    @Test
+    void clearHomeCompactsTrailingOrdinals() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity a = ItemIdentity.of("minecraft:a");
+        ItemIdentity b = ItemIdentity.of("minecraft:b");
+        ItemIdentity c = ItemIdentity.of("minecraft:c");
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Pile", 0, 0, 0xCC000000, a
+        );
+        runtime.visualAtlasWorkflow().assignHome(a, island.id(), 0);
+        runtime.visualAtlasWorkflow().assignHome(b, island.id(), 1);
+        runtime.visualAtlasWorkflow().assignHome(c, island.id(), 2);
+
+        runtime.visualAtlasWorkflow().clearHome(b);
+
+        VisualHomeMap map = runtime.snapshot().visualHomeMap();
+        assertNull(map.assignment(b));
+        assertEquals(0, map.assignment(a).ordinal());
+        assertEquals(1, map.assignment(c).ordinal());
+    }
+
+    @Test
+    void appendOrdinalBeyondEndClampsToTail() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        ItemIdentity a = ItemIdentity.of("minecraft:a");
+        ItemIdentity b = ItemIdentity.of("minecraft:b");
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Pile", 0, 0, 0xCC000000, a
+        );
+        runtime.visualAtlasWorkflow().assignHome(a, island.id(), 0);
+        runtime.visualAtlasWorkflow().assignHome(b, island.id(), 999);
+
+        VisualHomeMap map = runtime.snapshot().visualHomeMap();
+        assertEquals(0, map.assignment(a).ordinal());
+        assertEquals(1, map.assignment(b).ordinal(),
+                "out-of-range ordinal should clamp to size-of-island after the prior items");
     }
 }

@@ -17,7 +17,7 @@ class SlotWorkspaceUndoTest {
     void renameIslandUndoRestoresPriorLabelAndRedoReplays() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Original", 10, 20, 96, 72, 0xFF0000FF, null);
+                "Original", 10, 20, 0xFF0000FF, null);
 
         WorkspaceCommandOutcome rename = SlotWorkspaceCommandService.renameIsland(
                 runtime, island.id(), "Renamed");
@@ -40,7 +40,7 @@ class SlotWorkspaceUndoTest {
     void deleteIslandUndoRecreatesIslandWithSameIdAndProperties() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Ghost", 42, 42, 120, 96, 0xFFDDCC00, null);
+                "Ghost", 42, 42, 0xFFDDCC00, null);
         String islandId = island.id();
 
         WorkspaceCommandOutcome delete = SlotWorkspaceCommandService.deleteIsland(runtime, islandId);
@@ -63,7 +63,7 @@ class SlotWorkspaceUndoTest {
     void recolorIslandUndoRestoresPriorColor() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Painted", 0, 0, 96, 72, 0xFFAA0000, null);
+                "Painted", 0, 0, 0xFFAA0000, null);
 
         SlotWorkspaceCommandService.recolorIsland(runtime, island.id(), 0xFF00AA00);
         assertEquals(0xFF00AA00, runtime.visualAtlasWorkflow().visualHomeMap().island(island.id()).color());
@@ -87,7 +87,7 @@ class SlotWorkspaceUndoTest {
     void performRedoAfterFreshActionRejects() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Fresh", 0, 0, 96, 72, 0xFF123456, null);
+                "Fresh", 0, 0, 0xFF123456, null);
         SlotWorkspaceCommandService.renameIsland(runtime, island.id(), "Renamed");
 
         WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.performRedo(runtime);
@@ -99,7 +99,7 @@ class SlotWorkspaceUndoTest {
     void newActionClearsRedoStack() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Base", 0, 0, 96, 72, 0xFF111111, null);
+                "Base", 0, 0, 0xFF111111, null);
 
         SlotWorkspaceCommandService.renameIsland(runtime, island.id(), "First");
         SlotWorkspaceCommandService.performUndo(runtime);

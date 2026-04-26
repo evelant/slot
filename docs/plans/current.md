@@ -7,30 +7,29 @@ short operational handoff, read [../status.md](../status.md) first.
 
 **Active plan:** core-workflow UX pass landed (all six slices in
 [core-workflow-ux.md](core-workflow-ux.md), plus playtest follow-ups
-documented in [../status.md](../status.md)). Three parallel tracks are
-now active:
+documented in [../status.md](../status.md)). Relevance-LOD prototype
+through Phase 2.2 has landed (with UI polish on top). The active
+near-term track is:
 
-1. **Relevance-LOD prototype.** Phase 1 (core machinery) landed —
-   `Band` + score abstractions + `WeightedGridPacker` + debug overlay
-   in `common/`. Phase 2 (wire all available contributors, move
-   layout client-side, drop position/size from `AtlasItem` wire
-   format) is in flight. See
-   [relevance-lod-prototype.md](relevance-lod-prototype.md) for the
-   sequence and
-   [../decisions/0005-relevance-score-and-layout-locality.md](../decisions/0005-relevance-score-and-layout-locality.md)
-   for the architectural choice that shapes Phase 2.
-2. **Classification → atlas-homing integration.** First vanilla
-   classification dataset is committed at
-   [`tools/classification/datasets/minecraft/`](../../tools/classification/datasets/minecraft/)
-   (1536 items, 30 facets). Next is loading it through a runtime
-   `FacetIndex` in `common/` and wiring the `role`-based homing rule
-   into the atlas behind a feature flag, replacing the
-   `SemanticBucketResolver` keyword path. See
-   [item-classification.md](item-classification.md) milestones 6
-   (FacetIndex) and 7 (atlas wiring). Sequenced after relevance-LOD
-   Phase 2 per
-   [relevance-lod-prototype.md](relevance-lod-prototype.md).
-3. **Kit prototype slice 4** — resume per [kit-prototype.md](kit-prototype.md).
+1. **`FacetIndex` runtime.** Load the shipped vanilla dataset
+   ([`tools/classification/datasets/minecraft/`](../../tools/classification/datasets/minecraft/),
+   1536 items / 30 facets) into a thin `common/` `FacetIndex`,
+   JSONSchema-validated, exposing `role` lookup. Wire it behind a
+   feature flag at the homing call site
+   ([SlotTestCommands.java:128](../../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java#L128))
+   with `SemanticBucketResolver` as the no-data fallback.
+   Regression-check `RealisticAtlasGeneratorTest`. Stop and playtest
+   before stage-4 NN work. See [item-classification.md](item-classification.md)
+   milestones 6 (FacetIndex) and 7 (atlas wiring); the concrete
+   6-step plan is in [item-classification.md § Runtime](item-classification.md#runtime).
+
+Parallel tracks (deferred, available when FacetIndex stalls):
+
+- **Relevance-LOD UI refinement.** Playtest-driven polish — pip
+  readability at modded scale, atlas convulse on pickup, drag-drop
+  ordinal feel. See "Risks and open questions" in
+  [relevance-lod-prototype.md](relevance-lod-prototype.md).
+- **Kit prototype slice 4** — resume per [kit-prototype.md](kit-prototype.md).
 
 For product goals, see [../product/direction.md](../product/direction.md).
 For current architecture, see [../architecture/overview.md](../architecture/overview.md).

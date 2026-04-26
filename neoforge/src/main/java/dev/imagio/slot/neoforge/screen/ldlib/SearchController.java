@@ -272,18 +272,16 @@ final class SearchController {
             ));
         }
         for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
-            dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement placement =
-                    host.currentLayout.islandPlacementOf(island.islandId());
-            int x = placement != null ? placement.x() : island.x();
-            int y = placement != null ? placement.y() : island.y();
-            int w = placement != null ? placement.width() : island.width();
-            int h = placement != null ? placement.height() : island.height();
+            dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement placement = host.islandPlacementFor(island);
             rows.add(new AtlasSearchIndex.SearchRow(
                     island.label(),
                     island.islandId(),
                     AtlasSearchIndex.Pool.SECONDARY,
                     island.carriedCount() > 0,
-                    x, y, w, h
+                    placement.x(),
+                    placement.y(),
+                    placement.width(),
+                    placement.height()
             ));
         }
         return rows;

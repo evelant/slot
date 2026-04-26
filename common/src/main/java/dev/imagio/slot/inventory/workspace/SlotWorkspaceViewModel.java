@@ -241,10 +241,8 @@ public record SlotWorkspaceViewModel(
         List<AtlasItemAccumulator> accumulators = groupedAtlasEntries(resolvedAuthority, visualHomeMap);
         Map<ItemIdentity, Integer> recentRankByIdentity = recentRankByIdentity(recents);
         // Canonical order for the atlas pack: per-island, by the assignment's
-        // (localY, localX) — this preserves Phase-1 player intent until
-        // VisualHomeAssignment grows an explicit `ordinal` field in Phase 2g.
-        // Items without an assignment (Triage candidates) sort separately by
-        // recents → name.
+        // explicit ordinal (Phase 2.2). Items without an assignment (Triage
+        // candidates) sort separately by recents → name.
         accumulators.sort(Comparator
                 .comparing((AtlasItemAccumulator a) -> {
                     VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
@@ -254,11 +252,7 @@ public record SlotWorkspaceViewModel(
                     VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
                     return hm == null
                             ? recentRankByIdentity.getOrDefault(a.identity(), Integer.MAX_VALUE)
-                            : hm.localY();
-                })
-                .thenComparingInt(a -> {
-                    VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
-                    return hm == null ? 0 : hm.localX();
+                            : hm.ordinal();
                 })
                 .thenComparing(a -> a.name().toLowerCase(Locale.ROOT))
                 .thenComparing(a -> a.identity().itemId())
@@ -878,14 +872,18 @@ public record SlotWorkspaceViewModel(
         }
     }
 
+    /**
+     * Server-projected island chrome. Position is authored by the player
+     * and ships over the wire; size is computed client-side by
+     * {@code AtlasLayout} from the packer's auto-square wrap target. See
+     * {@code docs/decisions/0005-relevance-score-and-layout-locality.md}.
+     */
     public record AtlasIsland(
             String islandId,
             String label,
             VisualAtlasIslandKind kind,
             int x,
             int y,
-            int width,
-            int height,
             int color,
             int itemCount,
             int carriedCount
@@ -894,8 +892,6 @@ public record SlotWorkspaceViewModel(
             islandId = islandId == null ? "" : islandId;
             label = label == null || label.isBlank() ? islandId : label;
             kind = kind == null ? VisualAtlasIslandKind.PLAYER : kind;
-            width = Math.max(96, width);
-            height = Math.max(72, height);
             itemCount = Math.max(0, itemCount);
             carriedCount = Math.max(0, carriedCount);
         }
@@ -906,16 +902,14 @@ public record SlotWorkspaceViewModel(
                 VisualAtlasIslandKind kind,
                 int x,
                 int y,
-                int width,
-                int height,
                 int color,
                 int itemCount
         ) {
-            this(islandId, label, kind, x, y, width, height, color, itemCount, 0);
+            this(islandId, label, kind, x, y, color, itemCount, 0);
         }
 
         public AtlasIsland withCarriedCount(int newCarriedCount) {
-            return new AtlasIsland(islandId, label, kind, x, y, width, height, color, itemCount, newCarriedCount);
+            return new AtlasIsland(islandId, label, kind, x, y, color, itemCount, newCarriedCount);
         }
     }
 

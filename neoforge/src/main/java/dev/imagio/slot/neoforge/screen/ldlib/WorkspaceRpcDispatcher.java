@@ -70,7 +70,6 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 String.class,
                 Integer.class,
-                Integer.class,
                 host.session::assignHome
         ));
         createNamedIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
@@ -86,7 +85,6 @@ final class WorkspaceRpcDispatcher {
         hotbarToAtlasEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 Integer.class,
                 String.class,
-                Integer.class,
                 Integer.class,
                 host.session::moveHotbarToAtlas
         ));
@@ -483,14 +481,23 @@ final class WorkspaceRpcDispatcher {
             host.rebuild();
             return;
         }
-        sendAssignHome(item.identity(), islandId, -1, -1);
+        // Append at end-of-island when no spatial target was provided.
+        sendAssignHome(item.identity(), islandId, null);
     }
 
+    /**
+     * Send a home-assignment with an explicit insert position.
+     *
+     * <p>{@code ordinal} is the user-perspective slot in
+     * {@code islandId}: pass the ordinal of the item the user dropped
+     * onto (the new entry shoves it +1) or {@code null} to append at the
+     * end. Triage assignments ignore ordinal — see
+     * {@link SlotWorkspaceCommandService#applyHomeDrop}.
+     */
     void sendAssignHome(
             SlotWorkspaceViewModel.IdentityRef identity,
             String islandId,
-            int worldX,
-            int worldY
+            Integer ordinal
     ) {
         if (identity == null || islandId == null || islandId.isBlank()) {
             host.localStatus.set("invalid home target");
@@ -502,8 +509,7 @@ final class WorkspaceRpcDispatcher {
                 identity.comparisonMode(),
                 identity.componentFingerprint(),
                 islandId,
-                worldX,
-                worldY
+                ordinal
         );
         if (sent) {
             host.rememberRehomeTarget(islandId);
@@ -617,12 +623,11 @@ final class WorkspaceRpcDispatcher {
         }
     }
 
-    void sendMoveHotbarToAtlas(int hotbarIndex, String islandId, int worldX, int worldY) {
+    void sendMoveHotbarToAtlas(int hotbarIndex, String islandId, Integer ordinal) {
         boolean sent = hotbarToAtlasEmitter != null && hotbarToAtlasEmitter.send(
                 hotbarIndex,
                 islandId,
-                worldX,
-                worldY
+                ordinal
         );
         host.localStatus.set(sent ? "return to atlas requested" : "return to atlas unavailable");
         host.selectedAtlasIdentity.set(null);

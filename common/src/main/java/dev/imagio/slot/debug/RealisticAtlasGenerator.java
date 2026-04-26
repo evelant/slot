@@ -204,6 +204,9 @@ public final class RealisticAtlasGenerator {
             int itemCount = stacks.size();
             int cardsPerRow = dynamicCardsPerRow(itemCount);
             int rows = Math.max(1, (itemCount + cardsPerRow - 1) / cardsPerRow);
+            // Predicted footprint, used by layoutIslands to space rows out.
+            // The actual rendered size is owned by AtlasLayout post-2.2; this
+            // estimate just keeps the synthesized atlas non-overlapping.
             int width = ISLAND_PADDING_X * 2
                     + cardsPerRow * CARD_WIDTH
                     + Math.max(0, cardsPerRow - 1) * CARD_GAP;
@@ -217,16 +220,11 @@ public final class RealisticAtlasGenerator {
 
             ArrayList<VisualHomeAssignment> assignments = new ArrayList<>(stacks.size());
             for (int index = 0; index < stacks.size(); index++) {
-                int col = index % cardsPerRow;
-                int row = index / cardsPerRow;
-                int localX = ISLAND_PADDING_X + col * (CARD_WIDTH + CARD_GAP);
-                int localY = ISLAND_CONTENT_TOP + row * (CARD_HEIGHT + CARD_GAP);
                 ItemIdentity identity = ItemIdentityMatcher.create(stacks.get(index));
                 assignments.add(new VisualHomeAssignment(
                         identity,
                         islandId,
-                        localX,
-                        localY,
+                        index,
                         VisualHomeOrigin.PLAYER_PLACED,
                         true
                 ));
@@ -238,12 +236,18 @@ public final class RealisticAtlasGenerator {
                     VisualAtlasIslandKind.PLAYER,
                     0,
                     0,
-                    width,
-                    height,
                     group.parent().color(),
                     iconIdentity
             );
-            builds.add(new IslandBuild(group.parent(), group.subPriority(), island, assignments, new ArrayList<>(stacks)));
+            builds.add(new IslandBuild(
+                    group.parent(),
+                    group.subPriority(),
+                    island,
+                    width,
+                    height,
+                    assignments,
+                    new ArrayList<>(stacks)
+            ));
         }
         return builds;
     }
@@ -301,8 +305,6 @@ public final class RealisticAtlasGenerator {
                     old.kind(),
                     currentX,
                     currentY,
-                    old.width(),
-                    old.height(),
                     old.color(),
                     old.iconIdentity()
             );
@@ -310,11 +312,13 @@ public final class RealisticAtlasGenerator {
                     build.parentBucket(),
                     build.subPriority(),
                     placed,
+                    build.predictedWidth(),
+                    build.predictedHeight(),
                     build.assignments(),
                     build.stacks()
             ));
-            currentX += placed.width();
-            rowMaxHeight = Math.max(rowMaxHeight, placed.height());
+            currentX += build.predictedWidth();
+            rowMaxHeight = Math.max(rowMaxHeight, build.predictedHeight());
         }
     }
 
@@ -630,6 +634,8 @@ public final class RealisticAtlasGenerator {
         private final SemanticBucket parentBucket;
         private final int subPriority;
         private final VisualAtlasIsland island;
+        private final int predictedWidth;
+        private final int predictedHeight;
         private final List<VisualHomeAssignment> assignments;
         private final List<ItemStack> stacks;
 
@@ -637,12 +643,16 @@ public final class RealisticAtlasGenerator {
                 SemanticBucket parentBucket,
                 int subPriority,
                 VisualAtlasIsland island,
+                int predictedWidth,
+                int predictedHeight,
                 List<VisualHomeAssignment> assignments,
                 List<ItemStack> stacks
         ) {
             this.parentBucket = parentBucket;
             this.subPriority = subPriority;
             this.island = island;
+            this.predictedWidth = predictedWidth;
+            this.predictedHeight = predictedHeight;
             this.assignments = assignments;
             this.stacks = stacks;
         }
@@ -657,6 +667,14 @@ public final class RealisticAtlasGenerator {
 
         VisualAtlasIsland island() {
             return island;
+        }
+
+        int predictedWidth() {
+            return predictedWidth;
+        }
+
+        int predictedHeight() {
+            return predictedHeight;
         }
 
         List<VisualHomeAssignment> assignments() {

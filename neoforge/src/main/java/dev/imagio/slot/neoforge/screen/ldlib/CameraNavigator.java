@@ -113,14 +113,9 @@ final class CameraNavigator {
     AtlasCamera computeOverviewCamera(float viewportWidth, float viewportHeight) {
         ArrayList<FitCarriedCamera.Rect> fitRects = new ArrayList<>();
         for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
-            AtlasLayoutResult.IslandPlacement placement = host.currentLayout.islandPlacementOf(island.islandId());
-            if (placement != null) {
-                fitRects.add(FitCarriedCamera.Rect.of(
-                        placement.x(), placement.y(), placement.width(), placement.height()));
-            } else {
-                fitRects.add(FitCarriedCamera.Rect.of(
-                        island.x(), island.y(), island.width(), island.height()));
-            }
+            AtlasLayoutResult.IslandPlacement placement = host.islandPlacementFor(island);
+            fitRects.add(FitCarriedCamera.Rect.of(
+                    placement.x(), placement.y(), placement.width(), placement.height()));
         }
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
             if (item.carried()) {
@@ -209,8 +204,9 @@ final class CameraNavigator {
         if (viewportWidth <= 0f || viewportHeight <= 0f) {
             return null;
         }
+        AtlasLayoutResult.IslandPlacement placement = host.islandPlacementFor(island);
         FitCarriedCamera.Camera camera = FitCarriedCamera.fit(
-                FitCarriedCamera.Rect.of(island.x(), island.y(), island.width(), island.height()),
+                FitCarriedCamera.Rect.of(placement.x(), placement.y(), placement.width(), placement.height()),
                 viewportWidth,
                 viewportHeight,
                 CARRIED_FIT_MIN_SCALE,

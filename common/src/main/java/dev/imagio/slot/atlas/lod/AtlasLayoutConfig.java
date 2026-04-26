@@ -4,8 +4,14 @@ package dev.imagio.slot.atlas.lod;
  * Tuning knobs for {@link AtlasLayout}. Per-item world cell size is
  * {@code baseCardSize × (1 + relevanceLift × score)}; the packer uses
  * the resulting heterogeneous cells to position items in canonical
- * order. Atlas-level packing reuses the same gap/padding for the
- * island layer.
+ * order.
+ *
+ * <p>Phase 2.2 introduced auto-square island sizing. The container
+ * width passed to the packer for each island is
+ * {@code round(sqrt(totalCellArea) × targetAspectFudge)}, clamped to a
+ * floor that keeps empty / single-card islands legible. The result is
+ * square-ish without authoring width/height on
+ * {@link dev.imagio.slot.workflow.domain.VisualAtlasIsland}.
  */
 public record AtlasLayoutConfig(
         int baseCardWidth,
@@ -16,13 +22,23 @@ public record AtlasLayoutConfig(
         int cardGap,
         int atlasIslandGap,
         int atlasMargin,
-        float relevanceLift
+        int minIslandWidth,
+        int minIslandHeight,
+        float relevanceLift,
+        float targetAspectFudge,
+        float ghostShrinkFactor
 ) {
     /**
      * Defaults match {@code SlotWorkspaceAtlasLayout} constants.
      * {@link #relevanceLift} = {@code 1.5f} so a max-relevance item
-     * gets {@code 2.5×} the world cell size of a baseline item; tune
-     * in playtest.
+     * gets {@code 2.5×} the world cell size of a baseline item.
+     * {@link #targetAspectFudge} = {@code 1.2f} biases the auto-square
+     * shape slightly wider than tall so labels read naturally and the
+     * wrap math reliably picks the next-up column count when the area
+     * sqrt sits near a column boundary — playtest-tunable.
+     * {@link #ghostShrinkFactor} = {@code 0.65f} pushes non-carried
+     * (ghost) cards even smaller than the relevance-zero baseline so
+     * the carried items dominate the visual hierarchy at a glance.
      */
     public static final AtlasLayoutConfig DEFAULT = new AtlasLayoutConfig(
             32,
@@ -33,7 +49,11 @@ public record AtlasLayoutConfig(
             4,
             16,
             24,
-            1.5f
+            96,
+            72,
+            1.5f,
+            1.2f,
+            0.65f
     );
 
     public AtlasLayoutConfig {
@@ -45,8 +65,18 @@ public record AtlasLayoutConfig(
         cardGap = Math.max(0, cardGap);
         atlasIslandGap = Math.max(0, atlasIslandGap);
         atlasMargin = Math.max(0, atlasMargin);
+        minIslandWidth = Math.max(baseCardWidth + islandPaddingX * 2, minIslandWidth);
+        minIslandHeight = Math.max(baseCardHeight + islandContentTop + islandPaddingY, minIslandHeight);
         if (Float.isNaN(relevanceLift) || relevanceLift < 0f) {
             relevanceLift = 0f;
+        }
+        if (Float.isNaN(targetAspectFudge) || targetAspectFudge <= 0f) {
+            targetAspectFudge = 1f;
+        }
+        if (Float.isNaN(ghostShrinkFactor) || ghostShrinkFactor <= 0f) {
+            ghostShrinkFactor = 1f;
+        } else if (ghostShrinkFactor > 1f) {
+            ghostShrinkFactor = 1f;
         }
     }
 
@@ -60,6 +90,21 @@ public record AtlasLayoutConfig(
 
     public int liftedHeight(float score) {
         return Math.max(1, Math.round(baseCardHeight * (1f + relevanceLift * clamp01(score))));
+    }
+
+    /**
+     * Auto-square wrap target for an island whose cells have the given
+     * total pixel area. Falls back to the empty-island floor when the
+     * island has no content. Includes side padding so the packer wraps
+     * at the right intra-island column count.
+     */
+    public int autoSquareWrapWidth(int totalCellArea) {
+        if (totalCellArea <= 0) {
+            return minIslandWidth;
+        }
+        int rawTarget = Math.round((float) Math.sqrt(totalCellArea) * targetAspectFudge);
+        int contentTarget = Math.max(baseCardWidth, rawTarget);
+        return Math.max(minIslandWidth, contentTarget + islandPaddingX * 2);
     }
 
     private static float clamp01(float v) {

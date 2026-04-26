@@ -290,7 +290,7 @@ final class ContextMenuBuilder {
                     true,
                     null,
                     () -> {
-                        host.rpc.sendAssignHome(item.identity(), targetIslandId, 0, 0);
+                        host.rpc.sendAssignHome(item.identity(), targetIslandId, null);
                         closeContextMenu();
                     }
             ));

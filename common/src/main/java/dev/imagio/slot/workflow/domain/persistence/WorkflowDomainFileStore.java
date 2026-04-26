@@ -70,7 +70,7 @@ import java.util.UUID;
 
 public final class WorkflowDomainFileStore implements WorkflowDomainPersistencePort {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private static final int SCHEMA_VERSION = 5;
+    private static final int SCHEMA_VERSION = 6;
 
     private final Path statePath;
 
@@ -166,9 +166,17 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
 
         WorkflowProjection.Snapshot workflowCheckpoint = decodeWorkflowCheckpoint(state.workflowCheckpoint);
+        // Phase 2.2 (schema 6) replaced freeform (localX, localY) with ordinal.
+        // The checkpoint migrates cleanly via decodeVisualHomesWithMigration,
+        // but cached VisualHomeAssigned/Cleared events stored before the bump
+        // carry ordinal=0 and would collapse every identity onto a single slot
+        // when replayed. Strip them — the only loss is unsaved homing actions
+        // since the last checkpoint, acceptable for an unreleased mod.
+        boolean stripLegacyHomeEvents = state.version < 6;
         WorkflowEventStore.Snapshot workflowEvents = new WorkflowEventStore.Snapshot(
                 state.workflowNextStreamSequence <= 0L ? 1L : state.workflowNextStreamSequence,
                 state.workflowEvents == null ? List.of() : state.workflowEvents.stream()
+                        .filter(rec -> !stripLegacyHomeEvents || !isLegacyVisualHomeEvent(rec))
                         .map(WorkflowDomainFileStore::decodeWorkflowRecord)
                         .filter(java.util.Objects::nonNull)
                         .toList()
@@ -521,15 +529,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
 
-        LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>();
-        if (data.visualHomes != null) {
-            for (VisualHomeData homeData : data.visualHomes) {
-                VisualHomeAssignment home = decodeVisualHome(homeData);
-                if (home != null) {
-                    visualHomes.put(home.identity(), home);
-                }
-            }
-        }
+        LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = decodeVisualHomesWithMigration(data.visualHomes);
 
         LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>();
         if (data.dismissedTemplateIds != null) {
@@ -1206,8 +1206,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 island.kind().name(),
                 island.x(),
                 island.y(),
-                island.width(),
-                island.height(),
                 island.color(),
                 identity(island.iconIdentity())
         );
@@ -1223,8 +1221,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 decodeEnum(VisualAtlasIslandKind.class, data.kind, VisualAtlasIslandKind.PLAYER),
                 data.x,
                 data.y,
-                data.width,
-                data.height,
                 data.color,
                 decodeIdentity(data.iconIdentity)
         );
@@ -1313,15 +1309,95 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
     }
 
+    private static boolean isLegacyVisualHomeEvent(WorkflowEventData record) {
+        return record != null
+                && ("VisualHomeAssigned".equals(record.kind) || "VisualHomeCleared".equals(record.kind));
+    }
+
+    /**
+     * Decode the persisted visual-home list, deriving ordinals from legacy
+     * {@code (x, y)} pairs when the file pre-dates Phase 2.2.
+     *
+     * <p>Migration heuristic: if any assignment carries an explicit
+     * non-zero {@code ordinal}, treat the whole file as Phase-2.2 and
+     * trust each ordinal as-is. Otherwise group assignments by island and
+     * derive ordinals from the {@code (y, x, identity)} sort — matching
+     * the canonical pre-2.2 client-side render order. The next save flushes
+     * the migrated form back to disk.
+     */
+    private static LinkedHashMap<ItemIdentity, VisualHomeAssignment> decodeVisualHomesWithMigration(
+            List<VisualHomeData> rawHomes
+    ) {
+        LinkedHashMap<ItemIdentity, VisualHomeAssignment> result = new LinkedHashMap<>();
+        if (rawHomes == null || rawHomes.isEmpty()) {
+            return result;
+        }
+        boolean hasExplicitOrdinal = false;
+        for (VisualHomeData raw : rawHomes) {
+            if (raw != null && raw.ordinal > 0) {
+                hasExplicitOrdinal = true;
+                break;
+            }
+        }
+        if (hasExplicitOrdinal) {
+            for (VisualHomeData raw : rawHomes) {
+                VisualHomeAssignment assignment = decodeVisualHome(raw);
+                if (assignment != null) {
+                    result.put(assignment.identity(), assignment);
+                }
+            }
+            return result;
+        }
+        // Group by island, sort by (y, x, identity), assign ordinals 0..N-1.
+        // Iteration order of rawHomes is preserved for cross-island insertion
+        // order so the result keeps a stable shape.
+        LinkedHashMap<String, List<VisualHomeData>> byIsland = new LinkedHashMap<>();
+        for (VisualHomeData raw : rawHomes) {
+            if (raw == null || blank(raw.islandId)) {
+                continue;
+            }
+            byIsland.computeIfAbsent(raw.islandId, k -> new ArrayList<>()).add(raw);
+        }
+        for (List<VisualHomeData> islandRaws : byIsland.values()) {
+            islandRaws.sort((a, b) -> {
+                int cmp = Integer.compare(a.y, b.y);
+                if (cmp != 0) return cmp;
+                cmp = Integer.compare(a.x, b.x);
+                if (cmp != 0) return cmp;
+                String aId = a.identity == null ? "" : nonNull(a.identity.itemId());
+                String bId = b.identity == null ? "" : nonNull(b.identity.itemId());
+                return aId.compareTo(bId);
+            });
+            for (int ordinal = 0; ordinal < islandRaws.size(); ordinal++) {
+                VisualHomeData raw = islandRaws.get(ordinal);
+                ItemIdentity identity = decodeIdentity(raw.identity);
+                if (identity == null) {
+                    continue;
+                }
+                result.put(identity, new VisualHomeAssignment(
+                        identity,
+                        raw.islandId,
+                        ordinal,
+                        decodeEnum(VisualHomeOrigin.class, raw.origin, VisualHomeOrigin.PLAYER_PLACED),
+                        raw.locked
+                ));
+            }
+        }
+        return result;
+    }
+
     private static VisualHomeData visualHome(VisualHomeAssignment assignment) {
         if (assignment == null) {
             return null;
         }
+        // Phase 2.2+: write {x = y = 0, ordinal = N}. The legacy x/y slots
+        // stay in the schema only so older saves can still parse and migrate.
         return new VisualHomeData(
                 identity(assignment.identity()),
                 assignment.islandId(),
-                assignment.localX(),
-                assignment.localY(),
+                0,
+                0,
+                assignment.ordinal(),
                 assignment.origin().name(),
                 assignment.locked()
         );
@@ -1332,11 +1408,13 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         if (identity == null || data == null || blank(data.islandId)) {
             return null;
         }
+        // Pre-2.2 saves carry localX/localY in {x, y}; the ordinal field is
+        // absent (decoded as 0). Migration to ordinals happens after the
+        // checkpoint loads — see migrateOrdinals in load().
         return new VisualHomeAssignment(
                 identity,
                 data.islandId,
-                data.x,
-                data.y,
+                Math.max(0, data.ordinal),
                 decodeEnum(VisualHomeOrigin.class, data.origin, VisualHomeOrigin.PLAYER_PLACED),
                 data.locked
         );
@@ -1627,18 +1705,26 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             String kind,
             int x,
             int y,
-            int width,
-            int height,
             int color,
             IdentityData iconIdentity
     ) {
     }
 
+    /**
+     * Persisted shape for {@link VisualHomeAssignment}.
+     *
+     * <p>{@code x} / {@code y} were the freeform-coordinate pair used by
+     * pre-2.2 SLOT. They linger only so older saves still parse — they
+     * feed {@code migrateOrdinalsFromLegacyCoords} on load. Phase 2.2+
+     * writes use {@code ordinal} only and the migrated state writes back
+     * with {@code x = y = 0}.
+     */
     private record VisualHomeData(
             IdentityData identity,
             String islandId,
             int x,
             int y,
+            int ordinal,
             String origin,
             boolean locked
     ) {

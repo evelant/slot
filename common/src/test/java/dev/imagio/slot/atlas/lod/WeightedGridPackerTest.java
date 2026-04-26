@@ -1,8 +1,6 @@
 package dev.imagio.slot.atlas.lod;
 
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
-import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -96,33 +94,37 @@ class WeightedGridPackerTest {
     }
 
     /**
-     * Phase 1 invariant: with all cells at the existing
-     * {@code CARD_WIDTH × CARD_HEIGHT} and the same padding/gap as
-     * {@link SlotWorkspaceAtlasLayout#placementForOrdinal}, the packer
-     * output must match {@code placementForOrdinal} for every ordinal
-     * across a range of container widths. Regression guard for the
-     * carried-only Phase 1 layout.
+     * Phase 1 invariant: with all cells at the standard
+     * {@code CARD_WIDTH × CARD_HEIGHT} and the same padding/gap as the
+     * legacy server-side placement helper, the packer output must
+     * match the simple {@code (ordinal % cols, ordinal / cols)}
+     * grid math across a range of container widths. Regression guard
+     * for uniform-cell layouts when relevance lift is zero.
      */
     @Test
-    void uniformCellsMatchPlacementForOrdinalAcrossWidths() {
+    void uniformCellsMatchOrdinalGridAcrossWidths() {
+        int padX = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X;
+        int padTop = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP;
+        int gap = SlotWorkspaceAtlasLayout.CARD_GAP;
+        int cardW = SlotWorkspaceAtlasLayout.CARD_WIDTH;
+        int cardH = SlotWorkspaceAtlasLayout.CARD_HEIGHT;
         for (int containerWidth : new int[]{96, 100, 104, 108, 116, 120, 123, 124, 144, 180, 240, 360, 540}) {
-            List<WeightedGridPacker.Cell> cells = uniform(40, SlotWorkspaceAtlasLayout.CARD_WIDTH, SlotWorkspaceAtlasLayout.CARD_HEIGHT);
+            List<WeightedGridPacker.Cell> cells = uniform(40, cardW, cardH);
             List<WeightedGridPacker.Placement> packerOutput = WeightedGridPacker.pack(
-                    cells,
-                    containerWidth,
-                    SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X,
-                    SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
-                    SlotWorkspaceAtlasLayout.CARD_GAP
+                    cells, containerWidth, padX, padTop, gap
             );
 
-            List<SlotWorkspaceViewModel.AtlasIsland> islands = List.of(synthIsland("test", containerWidth, 800));
+            int availableWidth = Math.max(cardW, containerWidth - padX * 2);
+            int columns = Math.max(1, availableWidth / (cardW + gap));
             for (int ordinal = 0; ordinal < cells.size(); ordinal++) {
-                SlotWorkspaceAtlasLayout.Placement reference =
-                        SlotWorkspaceAtlasLayout.placementForOrdinal(islands, "test", ordinal);
+                int col = ordinal % columns;
+                int row = ordinal / columns;
+                int expectedX = padX + col * (cardW + gap);
+                int expectedY = padTop + row * (cardH + gap);
                 WeightedGridPacker.Placement packed = packerOutput.get(ordinal);
-                assertEquals(reference.localX(), packed.localX(),
+                assertEquals(expectedX, packed.localX(),
                         "containerWidth=" + containerWidth + " ordinal=" + ordinal + " localX");
-                assertEquals(reference.localY(), packed.localY(),
+                assertEquals(expectedY, packed.localY(),
                         "containerWidth=" + containerWidth + " ordinal=" + ordinal + " localY");
             }
         }
@@ -134,19 +136,5 @@ class WeightedGridPackerTest {
             cells.add(new WeightedGridPacker.Cell(width, height));
         }
         return Collections.unmodifiableList(cells);
-    }
-
-    private static SlotWorkspaceViewModel.AtlasIsland synthIsland(String id, int width, int height) {
-        return new SlotWorkspaceViewModel.AtlasIsland(
-                id,
-                "Test",
-                VisualAtlasIslandKind.PLAYER,
-                0,
-                0,
-                width,
-                height,
-                0xFF000000,
-                0
-        );
     }
 }

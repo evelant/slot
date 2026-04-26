@@ -31,11 +31,17 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
 import java.util.UUID;
 
+import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
+import dev.imagio.slot.workflow.domain.VisualHomeMap;
+import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WorkflowDomainFileStoreTest {
@@ -86,12 +92,10 @@ class WorkflowDomainFileStoreTest {
                 "Machines",
                 744,
                 104,
-                320,
-                196,
                 0xCC5A4A6E,
                 ItemIdentity.of("minecraft:torch")
         );
-        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:torch"), island.id(), 16, 60);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:torch"), island.id(), 0);
         runtime.visualAtlasWorkflow().moveIsland(island.id(), 912, 236);
         source.browseSessionState().replaceWith(new InventoryBrowseSessionState(
                 new InventoryBrowseFilter("torch", InventoryBrowseFilterScope.SELECTED_COLLECTION),
@@ -130,14 +134,14 @@ class WorkflowDomainFileStoreTest {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
 
         VisualAtlasIsland keeper = runtime.visualAtlasWorkflow().createIsland(
-                "Machines", 10, 20, 320, 196, 0xCC5A4A6E, ItemIdentity.of("minecraft:torch")
+                "Machines", 10, 20, 0xCC5A4A6E, ItemIdentity.of("minecraft:torch")
         );
         runtime.visualAtlasWorkflow().renameIsland(keeper.id(), "Workshop");
         runtime.visualAtlasWorkflow().recolorIsland(keeper.id(), 0xFF112233);
         runtime.visualAtlasWorkflow().setIslandIcon(keeper.id(), ItemIdentity.of("minecraft:anvil"));
 
         VisualAtlasIsland doomed = runtime.visualAtlasWorkflow().createIsland(
-                "Scraps", 40, 60, 240, 120, 0xFF222222, null
+                "Scraps", 40, 60, 0xFF222222, null
         );
         runtime.visualAtlasWorkflow().deleteIsland(doomed.id());
 
@@ -165,10 +169,10 @@ class WorkflowDomainFileStoreTest {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
 
         VisualAtlasIsland machines = runtime.visualAtlasWorkflow().createIsland(
-                "Machines", 10, 20, 320, 196, 0xCC5A4A6E, ItemIdentity.of("minecraft:redstone")
+                "Machines", 10, 20, 0xCC5A4A6E, ItemIdentity.of("minecraft:redstone")
         );
         VisualAtlasIsland food = runtime.visualAtlasWorkflow().createIsland(
-                "Food", 400, 20, 320, 196, 0xCC88AA44, ItemIdentity.of("minecraft:bread")
+                "Food", 400, 20, 0xCC88AA44, ItemIdentity.of("minecraft:bread")
         );
 
         ChestAnchor primaryAnchor = new ChestAnchor("minecraft:overworld", 100, 64, 200);
@@ -274,5 +278,74 @@ class WorkflowDomainFileStoreTest {
         ), restoredMining.bring());
         assertEquals(mining.id(), restored.workflowProjection().kitMap().activation().kitId());
         assertEquals(1, restored.workflowProjection().kitMap().activation().pageIndex());
+    }
+
+    @Test
+    void preTwoTwoFileMigratesLegacyCoordsIntoOrdinals() throws Exception {
+        // Hand-craft a v5 file with the freeform-coordinate visual-home shape:
+        // three identities homed to one island, sorted by (y, x) so the
+        // expected post-migration ordinals are stone=0, iron=1, gold=2.
+        String legacyJson = """
+                {
+                  "version": 5,
+                  "nextGlobalSequence": 1,
+                  "workflowNextStreamSequence": 1,
+                  "activityNextStreamSequence": 1,
+                  "activityMaxEvents": 0,
+                  "workflowCheckpoint": {
+                    "userCollections": [],
+                    "memberships": [],
+                    "desiredCounts": [],
+                    "loadouts": [],
+                    "favorites": [],
+                    "junk": [],
+                    "protection": {"identities": [], "targets": [], "protectPortableContainers": false},
+                    "recentDismissals": [],
+                    "visualIslands": [
+                      {"id": "machines", "label": "Machines", "kind": "PLAYER",
+                        "x": 100, "y": 100, "width": 320, "height": 196,
+                        "color": -858993460, "iconIdentity": null}
+                    ],
+                    "visualHomes": [
+                      {"identity": {"itemId": "minecraft:iron_ingot",
+                                    "comparisonMode": "ITEM_ID", "componentFingerprint": ""},
+                       "islandId": "machines", "x": 8, "y": 40,
+                       "origin": "PLAYER_PLACED", "locked": true},
+                      {"identity": {"itemId": "minecraft:gold_ingot",
+                                    "comparisonMode": "ITEM_ID", "componentFingerprint": ""},
+                       "islandId": "machines", "x": 8, "y": 76,
+                       "origin": "PLAYER_PLACED", "locked": true},
+                      {"identity": {"itemId": "minecraft:stone",
+                                    "comparisonMode": "ITEM_ID", "componentFingerprint": ""},
+                       "islandId": "machines", "x": 8, "y": 8,
+                       "origin": "PLAYER_PLACED", "locked": true}
+                    ],
+                    "dismissedTemplateIds": [],
+                    "claimedChests": [],
+                    "chestLinks": [],
+                    "kits": [],
+                    "kitActivation": null
+                  },
+                  "workflowEvents": [],
+                  "activityCheckpoint": null,
+                  "activityEvents": []
+                }
+                """;
+        Path stateFile = tempDir.resolve("slot-legacy.json");
+        Files.writeString(stateFile, legacyJson);
+
+        WorkflowDomainFileStore store = new WorkflowDomainFileStore(stateFile);
+        WorkflowDomainSnapshot loaded = store.load();
+        VisualHomeMap map = loaded.workflowProjection().visualHomeMap();
+
+        VisualHomeAssignment stone = map.assignment(ItemIdentity.of("minecraft:stone"));
+        VisualHomeAssignment iron = map.assignment(ItemIdentity.of("minecraft:iron_ingot"));
+        VisualHomeAssignment gold = map.assignment(ItemIdentity.of("minecraft:gold_ingot"));
+        assertNotNull(stone);
+        assertNotNull(iron);
+        assertNotNull(gold);
+        assertEquals(0, stone.ordinal(), "stone is the topmost legacy home → ordinal 0");
+        assertEquals(1, iron.ordinal(), "iron sits between stone and gold → ordinal 1");
+        assertEquals(2, gold.ordinal(), "gold is bottommost → ordinal 2");
     }
 }

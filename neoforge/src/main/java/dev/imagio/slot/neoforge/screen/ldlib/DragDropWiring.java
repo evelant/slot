@@ -10,6 +10,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
+import dev.imagio.slot.atlas.lod.AtlasDropResolver;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
@@ -81,13 +82,14 @@ final class DragDropWiring {
             if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
                 return;
             }
-            int grabOffsetX = Math.max(0, Math.min(island.width(), clickWorldX[0] - island.x()));
-            int grabOffsetY = Math.max(0, Math.min(island.height(), clickWorldY[0] - island.y()));
+            dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement islandPlace = host.islandPlacementFor(island);
+            int grabOffsetX = Math.max(0, Math.min(islandPlace.width(), clickWorldX[0] - islandPlace.x()));
+            int grabOffsetY = Math.max(0, Math.min(islandPlace.height(), clickWorldY[0] - islandPlace.y()));
             // Render the ghost at the actual island screen size (no minimum
             // clamp — small islands got spuriously wide ghosts). Cap at a
             // reasonable maximum so huge islands don't occlude the viewport.
-            int actualWidthPx = atlas.screenPixelsForWorldUnits(island.width());
-            int actualHeightPx = atlas.screenPixelsForWorldUnits(island.height());
+            int actualWidthPx = atlas.screenPixelsForWorldUnits(islandPlace.width());
+            int actualHeightPx = atlas.screenPixelsForWorldUnits(islandPlace.height());
             float dragScale = Math.min(1f, Math.min(260f / Math.max(1, actualWidthPx), 180f / Math.max(1, actualHeightPx)));
             int dragWidthPx = Math.max(1, Math.round(actualWidthPx * dragScale));
             int dragHeightPx = Math.max(1, Math.round(actualHeightPx * dragScale));
@@ -223,11 +225,12 @@ final class DragDropWiring {
                     }
                     host.menu.beginCreateIsland(item, worldX, worldY);
                 } else {
+                    // Drop on background = "return to inbox" (triage clear).
+                    // Triage is ordinal-less; null is fine.
                     host.rpc.sendAssignHome(
                             atlasItem.identity(),
                             SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                            worldX,
-                            worldY
+                            null
                     );
                 }
                 event.stopPropagation();
@@ -269,8 +272,7 @@ final class DragDropWiring {
                     host.rpc.sendMoveHotbarToAtlas(
                             hotbarItem.hotbarIndex(),
                             SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                            atlas.worldX(event.x),
-                            atlas.worldY(event.y)
+                            null
                     );
                 }
                 event.stopPropagation();
@@ -366,11 +368,11 @@ final class DragDropWiring {
             }
             AtlasItemDrag atlasItem = atlasItemDrag(event);
             if (atlasItem != null) {
+                Integer ordinal = resolveDropOrdinal(atlas, island.islandId(), event);
                 host.rpc.sendAssignHome(
                         atlasItem.identity(),
                         island.islandId(),
-                        atlas.worldX(event.x),
-                        atlas.worldY(event.y)
+                        ordinal
                 );
                 event.stopPropagation();
                 return;
@@ -380,11 +382,11 @@ final class DragDropWiring {
                 if (hotbarDragHasHome(hotbarItem)) {
                     host.rpc.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
                 } else {
+                    Integer ordinal = resolveDropOrdinal(atlas, island.islandId(), event);
                     host.rpc.sendMoveHotbarToAtlas(
                             hotbarItem.hotbarIndex(),
                             island.islandId(),
-                            atlas.worldX(event.x),
-                            atlas.worldY(event.y)
+                            ordinal
                     );
                 }
                 event.stopPropagation();
@@ -398,16 +400,35 @@ final class DragDropWiring {
                 // DRAG_END skips its default take-into-inventory path.
                 SlotWorkspaceViewModel.IdentityRef identity = SlotWorkspaceViewModel.IdentityRef.from(
                         dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(chestDrag.displayStack()));
+                Integer ordinal = resolveDropOrdinal(atlas, island.islandId(), event);
                 host.rpc.sendAssignHome(
                         identity,
                         island.islandId(),
-                        atlas.worldX(event.x),
-                        atlas.worldY(event.y)
+                        ordinal
                 );
                 host.chestDragDropConsumed = true;
                 event.stopPropagation();
             }
         });
+    }
+
+    /**
+     * Resolve the drop coordinate to an insert ordinal inside the
+     * destination island. Returns null when the drop missed every item
+     * in the island — caller treats that as "append to island".
+     */
+    Integer resolveDropOrdinal(SlotAtlasGraphView atlas, String islandId, UIEvent event) {
+        if (atlas == null || islandId == null || islandId.isBlank() || event == null) {
+            return null;
+        }
+        int worldX = atlas.worldX(event.x);
+        int worldY = atlas.worldY(event.y);
+        AtlasDropResolver.Resolution resolution =
+                AtlasDropResolver.resolve(host.viewModel, host.currentLayout, worldX, worldY);
+        if (resolution == null || !islandId.equals(resolution.islandId())) {
+            return null;
+        }
+        return resolution.ordinal();
     }
 
     void installViewportPanSurface(UIElement target, SlotAtlasGraphView atlas) {

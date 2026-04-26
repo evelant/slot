@@ -237,8 +237,7 @@ final class TriagePanelBuilder {
                 host.rpc.sendAssignHome(
                         atlasItem.identity(),
                         SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                        0,
-                        0
+                        null
                 );
                 event.stopPropagation();
                 return;
@@ -251,8 +250,7 @@ final class TriagePanelBuilder {
                     host.rpc.sendMoveHotbarToAtlas(
                             hotbarItem.hotbarIndex(),
                             SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                            0,
-                            0
+                            null
                     );
                 }
                 event.stopPropagation();

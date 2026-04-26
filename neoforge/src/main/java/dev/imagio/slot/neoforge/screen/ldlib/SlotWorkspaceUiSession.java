@@ -109,7 +109,7 @@ final class SlotWorkspaceUiSession {
         broadcast(serverPlayer);
     }
 
-    void assignHome(String itemId, String comparisonMode, String componentFingerprint, String islandId, Integer worldX, Integer worldY) {
+    void assignHome(String itemId, String comparisonMode, String componentFingerprint, String islandId, Integer ordinal) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
@@ -123,8 +123,7 @@ final class SlotWorkspaceUiSession {
                 comparisonMode,
                 componentFingerprint,
                 islandId,
-                worldX,
-                worldY
+                ordinal
         );
         applyOutcome(serverPlayer, outcome);
     }
@@ -1256,7 +1255,7 @@ final class SlotWorkspaceUiSession {
     private static final Function<InventoryEntrySnapshot, ItemIdentity> KIT_IDENTITY_RESOLVER =
             entry -> entry == null ? null : ItemIdentityMatcher.create(entry.stack());
 
-    void moveHotbarToAtlas(Integer hotbarIndex, String islandId, Integer worldX, Integer worldY) {
+    void moveHotbarToAtlas(Integer hotbarIndex, String islandId, Integer ordinal) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
@@ -1296,8 +1295,7 @@ final class SlotWorkspaceUiSession {
                 IslandSignalExtractor::extract,
                 identity,
                 islandId,
-                worldX,
-                worldY,
+                ordinal,
                 "slot_workspace.ldlib.drag.hotbar_home"
         ));
     }

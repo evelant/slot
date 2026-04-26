@@ -267,6 +267,30 @@ final class SlotWorkspaceUiController {
                     0f
             );
 
+    /**
+     * World-space placement for an island under the current layout.
+     * Falls back to the island's authored origin with a baseline empty
+     * footprint when the island isn't part of the latest layout (Triage
+     * island, transient view-model state).
+     */
+    AtlasLayoutResult.IslandPlacement islandPlacementFor(SlotWorkspaceViewModel.AtlasIsland island) {
+        if (island == null) {
+            return null;
+        }
+        AtlasLayoutResult.IslandPlacement placement = currentLayout.islandPlacementOf(island.islandId());
+        if (placement != null) {
+            return placement;
+        }
+        return new AtlasLayoutResult.IslandPlacement(
+                island.islandId(),
+                island.x(),
+                island.y(),
+                SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_WIDTH,
+                SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_HEIGHT,
+                island.itemCount()
+        );
+    }
+
     private static AtlasLayoutResult.ItemPlacement fallbackPlacement(SlotWorkspaceViewModel.AtlasItem item) {
         // Sane default for items the layout pass hasn't (yet) seen — Triage
         // items, freshly-arrived items, etc. Coordinates are zero-relative;

@@ -54,8 +54,7 @@ public final class SlotWorkspaceCommandService {
             String comparisonMode,
             String componentFingerprint,
             String islandId,
-            Integer worldX,
-            Integer worldY
+            Integer ordinal
     ) {
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null || islandId == null || islandId.isBlank()) {
@@ -73,8 +72,7 @@ public final class SlotWorkspaceCommandService {
                 signalExtractor,
                 identity,
                 islandId,
-                worldX,
-                worldY,
+                ordinal,
                 "slot_workspace.ldlib.home_assign"
         );
         if (outcome.success()) {
@@ -140,7 +138,6 @@ public final class SlotWorkspaceCommandService {
                 identity,
                 resolvedIslandId,
                 null,
-                null,
                 "slot_workspace.ldlib.chip_accept"
         );
         if (outcome.success()) {
@@ -205,22 +202,14 @@ public final class SlotWorkspaceCommandService {
                     trimmedLabel,
                     worldX,
                     worldY,
-                    SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_WIDTH,
-                    SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_HEIGHT,
                     color,
                     identity,
                     DomainEventMetadata.origin("slot_workspace.ldlib.island_create")
             );
-            SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
-                    SlotWorkspaceAtlasLayout.baseIslands(runtime.visualAtlasWorkflow().visualHomeMap()),
-                    created.id(),
-                    0
-            );
             runtime.visualAtlasWorkflow().assignHome(
                     identity,
                     created.id(),
-                    placement.localX(),
-                    placement.localY(),
+                    0,
                     VisualHomeOrigin.PLAYER_PLACED,
                     true,
                     DomainEventMetadata.origin("slot_workspace.ldlib.home_assign")
@@ -1076,9 +1065,10 @@ public final class SlotWorkspaceCommandService {
 
     /**
      * Apply the "drop identity onto island" rule: triage target clears the home;
-     * anything else assigns at the resolved placement and records a learned rule.
-     * Exposed publicly so the hotbar-to-atlas flow (which first runs a transfer)
-     * can re-use the same rule after the stack arrives in the main inventory.
+     * anything else assigns at the requested ordinal (null = append) and
+     * records a learned rule. Exposed publicly so the hotbar-to-atlas flow
+     * (which first runs a transfer) can re-use the same rule after the stack
+     * arrives in the main inventory.
      */
     public static WorkspaceCommandOutcome applyHomeDrop(
             WorkflowDomainRuntime runtime,
@@ -1087,8 +1077,7 @@ public final class SlotWorkspaceCommandService {
             Function<ItemStack, IslandSignalDescriptor> signalExtractor,
             ItemIdentity identity,
             String islandId,
-            Integer worldX,
-            Integer worldY,
+            Integer ordinal,
             String origin
     ) {
         if (identity == null || islandId == null || islandId.isBlank()) {
@@ -1107,27 +1096,47 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("unknown_island");
         }
 
-        SlotWorkspaceAtlasLayout.Placement placement = resolvePlacement(viewModel, islandId, worldX, worldY);
+        int resolvedOrdinal = resolveOrdinal(runtime, islandId, ordinal);
         runtime.visualAtlasWorkflow().assignHome(
                 identity,
                 islandId,
-                placement.localX(),
-                placement.localY(),
+                resolvedOrdinal,
                 VisualHomeOrigin.PLAYER_PLACED,
                 true,
                 DomainEventMetadata.origin(origin)
         );
         recordLearnedAssignment(viewModel, learnedRules, signalExtractor, identity, islandId);
         SlotDebugLog.log(
-                "LDLib atlas home assigned {} -> {} local={},{} atlas={},{}",
+                "LDLib atlas home assigned {} -> {} ordinal={}",
                 identity.itemId(),
                 islandId,
-                placement.localX(),
-                placement.localY(),
-                placement.x(),
-                placement.y()
+                resolvedOrdinal
         );
         return WorkspaceCommandOutcome.accepted("home assigned", island.label());
+    }
+
+    /**
+     * Resolve the ordinal a drop targets in {@code islandId}. A null
+     * ordinal means "append" — count the current assignments in the
+     * destination island so the new entry lands at the end. The
+     * projection still bounds-clamps if our snapshot is stale.
+     */
+    private static int resolveOrdinal(
+            WorkflowDomainRuntime runtime,
+            String islandId,
+            Integer ordinal
+    ) {
+        if (ordinal != null && ordinal >= 0) {
+            return ordinal;
+        }
+        var assignments = runtime.visualAtlasWorkflow().visualHomeMap().assignments().values();
+        int count = 0;
+        for (VisualHomeAssignment assignment : assignments) {
+            if (assignment != null && islandId.equals(assignment.islandId())) {
+                count++;
+            }
+        }
+        return count;
     }
 
     static ItemIdentity resolveIdentity(String itemId, String comparisonMode, String componentFingerprint) {
@@ -1191,8 +1200,6 @@ public final class SlotWorkspaceCommandService {
                 draft.label(),
                 draft.x(),
                 draft.y(),
-                draft.width(),
-                draft.height(),
                 template.defaultColor(),
                 seedIdentity,
                 DomainEventMetadata.origin("slot_workspace.ldlib.chip_accept.island_create")
@@ -1244,31 +1251,6 @@ public final class SlotWorkspaceCommandService {
         return viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(identity)) != null;
     }
 
-    private static SlotWorkspaceAtlasLayout.Placement resolvePlacement(
-            SlotWorkspaceViewModel viewModel,
-            String islandId,
-            Integer worldX,
-            Integer worldY
-    ) {
-        if (viewModel == null) {
-            return new SlotWorkspaceAtlasLayout.Placement(
-                    islandId,
-                    SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X,
-                    SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP,
-                    0,
-                    0
-            );
-        }
-        if (worldX != null && worldY != null) {
-            return SlotWorkspaceAtlasLayout.placementForDrop(viewModel.islands(), islandId, worldX, worldY);
-        }
-        return SlotWorkspaceAtlasLayout.placementForOrdinal(
-                viewModel.islands(),
-                islandId,
-                0
-        );
-    }
-
     private static String namespaceOf(String itemId) {
         if (itemId == null) {
             return "";
@@ -1299,8 +1281,7 @@ public final class SlotWorkspaceCommandService {
             runtime.visualAtlasWorkflow().assignHome(
                     target.identity(),
                     target.islandId(),
-                    target.localX(),
-                    target.localY(),
+                    target.ordinal(),
                     target.origin(),
                     target.locked(),
                     DomainEventMetadata.origin("workflow.undo.home.restore")
@@ -1320,8 +1301,6 @@ public final class SlotWorkspaceCommandService {
                 snapshot.label(),
                 snapshot.x(),
                 snapshot.y(),
-                snapshot.width(),
-                snapshot.height(),
                 snapshot.color(),
                 snapshot.iconIdentity(),
                 DomainEventMetadata.origin("workflow.undo.island.recreate")

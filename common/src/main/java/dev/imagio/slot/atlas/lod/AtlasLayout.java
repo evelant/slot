@@ -1,10 +1,12 @@
 package dev.imagio.slot.atlas.lod;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,12 @@ import java.util.Map;
  * {@code docs/decisions/0005-relevance-score-and-layout-locality.md}
  * for the broader architectural choice (layout is client-owned;
  * scoring is a derivation).
+ *
+ * <p>Phase 2.2: islands no longer carry authored width/height. The
+ * packer wraps to an auto-square target derived from the sum of cell
+ * areas (see {@link AtlasLayoutConfig#autoSquareWrapWidth(int)}), so
+ * the rendered island shape tracks the packed content with a slight
+ * aspect bias.
  */
 public final class AtlasLayout {
     private AtlasLayout() {
@@ -52,9 +60,8 @@ public final class AtlasLayout {
         }
 
         // Group atlas items by island, preserving the order they appear in the view model.
-        // That order is the canonical order for Phase 2 (it inherits from the prior
-        // (islandId, y, x, name) sort and is the seed for the future explicit ordinal field
-        // on VisualHomeAssignment).
+        // That order IS the canonical ordinal order for Phase 2.2 — the server-side
+        // accumulator sorts by (islandId, assignment.ordinal, name) before emitting.
         LinkedHashMap<String, List<ItemRow>> rowsByIsland = new LinkedHashMap<>();
         for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
             if (item == null) {
@@ -70,35 +77,48 @@ public final class AtlasLayout {
                     : RelevanceScore.compute(identity, ctx, chain).value();
             int width = cfg.liftedWidth(relevance);
             int height = cfg.liftedHeight(relevance);
+            // Non-carried items (ghosts: homed identities not in any
+            // carry source) shrink past the relevance baseline so the
+            // carried items dominate the visual hierarchy. Floor at the
+            // gap so cells stay clickable.
+            if (!item.carried()) {
+                width = Math.max(cfg.cardGap() + 1, Math.round(width * cfg.ghostShrinkFactor()));
+                height = Math.max(cfg.cardGap() + 1, Math.round(height * cfg.ghostShrinkFactor()));
+            }
             rowsByIsland.computeIfAbsent(islandId, k -> new ArrayList<>())
                     .add(new ItemRow(item.identity(), relevance, width, height));
         }
 
-        // Per-island packing: position items inside each island in canonical order.
-        // Phase 2.1 honours the island's AUTHORED top-left (island.x() / island.y())
-        // — the atlas-level packer is wired but unused until Phase 2.2 drops
-        // authored island width/height in favour of auto-square layout.
-        LinkedHashMap<SlotWorkspaceViewModel.IdentityRef, AtlasLayoutResult.ItemPlacement> itemResults = new LinkedHashMap<>();
-        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> islandResults = new LinkedHashMap<>();
+        // Per-island packing: compute the chrome bounds (auto-square)
+        // and per-item local placements first. Atlas-level de-overlap
+        // happens in the next pass so the bumps below operate on the
+        // already-packed footprints.
+        LinkedHashMap<String, IslandPack> packsById = new LinkedHashMap<>();
         for (Map.Entry<String, SlotWorkspaceViewModel.AtlasIsland> entry : atlasIslandsById.entrySet()) {
-            String islandId = entry.getKey();
-            SlotWorkspaceViewModel.AtlasIsland island = entry.getValue();
-            List<ItemRow> rows = rowsByIsland.getOrDefault(islandId, List.of());
-            IslandPack pack = packIsland(island, rows, cfg);
+            packsById.put(entry.getKey(), packIsland(rowsByIsland.getOrDefault(entry.getKey(), List.of()), cfg));
+        }
 
-            islandResults.put(islandId, new AtlasLayoutResult.IslandPlacement(
-                    islandId,
-                    island.x(),
-                    island.y(),
-                    pack.width(),
-                    pack.height(),
-                    pack.itemCount()
-            ));
+        // Atlas-level de-overlap: islands keep their authored top-left
+        // when there's room, but slide right (and wrap to a new row)
+        // when their packed footprint would collide with an already-
+        // placed neighbour. Walk in (authored y, x, id) order so the
+        // visual reading order matches what the player put down.
+        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> islandResults = packAtlas(atlasIslandsById, packsById, cfg);
+
+        // Item placements are anchored to each island's final origin.
+        LinkedHashMap<SlotWorkspaceViewModel.IdentityRef, AtlasLayoutResult.ItemPlacement> itemResults = new LinkedHashMap<>();
+        for (Map.Entry<String, AtlasLayoutResult.IslandPlacement> entry : islandResults.entrySet()) {
+            String islandId = entry.getKey();
+            AtlasLayoutResult.IslandPlacement placement = entry.getValue();
+            IslandPack pack = packsById.get(islandId);
+            if (pack == null) {
+                continue;
+            }
             for (PackedItem packed : pack.items()) {
                 itemResults.put(packed.identity(), new AtlasLayoutResult.ItemPlacement(
                         islandId,
-                        island.x() + packed.localX(),
-                        island.y() + packed.localY(),
+                        placement.x() + packed.localX(),
+                        placement.y() + packed.localY(),
                         packed.width(),
                         packed.height(),
                         packed.relevance()
@@ -107,6 +127,136 @@ public final class AtlasLayout {
         }
 
         return new AtlasLayoutResult(itemResults, islandResults);
+    }
+
+    /**
+     * Place every island so it doesn't overlap any other. Islands keep
+     * their authored top-left as the preferred origin; when that would
+     * collide with an already-placed neighbour the placement slides
+     * right past the obstruction (with {@code atlasIslandGap}). If
+     * sliding right can't make progress (collider is to our left), the
+     * placement drops to a row underneath the obstructing rect and
+     * resumes from the authored x.
+     *
+     * <p>The header strip sits ~16 px above the body so we reserve
+     * that band on each rect's claimed footprint; otherwise an island
+     * whose body just clears would still have its label crashing into
+     * the rect above it.
+     *
+     * <p>Walks islands in {@code (authored y, x, id)} order so the
+     * reading order matches what the player put down. Authored
+     * positions drive the *preference*; the de-overlap step only
+     * kicks in when needed.
+     */
+    private static LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> packAtlas(
+            LinkedHashMap<String, SlotWorkspaceViewModel.AtlasIsland> atlasIslandsById,
+            LinkedHashMap<String, IslandPack> packsById,
+            AtlasLayoutConfig cfg
+    ) {
+        ArrayList<SlotWorkspaceViewModel.AtlasIsland> ordered = new ArrayList<>(atlasIslandsById.values());
+        ordered.sort(Comparator
+                .comparingInt(SlotWorkspaceViewModel.AtlasIsland::y)
+                .thenComparingInt(SlotWorkspaceViewModel.AtlasIsland::x)
+                .thenComparing(SlotWorkspaceViewModel.AtlasIsland::islandId));
+
+        int gap = cfg.atlasIslandGap();
+        // Reserve the header strip + carried badge band above each
+        // body so neighbours don't overlap the label. Sourced from
+        // SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE — the same
+        // ceiling IslandChestBuilder.applyHeaderScale clamps the
+        // world header height to. As long as both sides consult the
+        // same constant, even at extreme zoom-out the header can't
+        // grow past the reserved band.
+        int headerBand = SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE;
+
+        // Placed rects carry their *claimed* footprint (y - headerBand,
+        // height + headerBand) so a plain AABB test catches header /
+        // body collisions symmetrically.
+        ArrayList<PlacedRect> placed = new ArrayList<>(ordered.size());
+        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> results = new LinkedHashMap<>();
+        for (SlotWorkspaceViewModel.AtlasIsland island : ordered) {
+            IslandPack pack = packsById.get(island.islandId());
+            int width = pack == null ? cfg.minIslandWidth() : pack.width();
+            int height = pack == null ? cfg.minIslandHeight() : pack.height();
+
+            int targetX = island.x();
+            int targetY = island.y();
+            int placeX = targetX;
+            int placeY = targetY;
+            int safety = 0;
+            int safetyLimit = 4 * Math.max(1, ordered.size());
+            while (true) {
+                PlacedRect collider = firstOverlap(placed, placeX, placeY - headerBand,
+                        width, height + headerBand, gap);
+                if (collider == null) {
+                    break;
+                }
+                int slideTo = collider.x() + collider.width() + gap;
+                if (slideTo > placeX) {
+                    placeX = slideTo;
+                } else {
+                    // Collider sits to our left or behind us; sliding
+                    // right won't make progress. Drop below the rect we
+                    // can't slide past and reset to the authored x.
+                    placeY = collider.y() + collider.height() + gap;
+                    placeX = targetX;
+                }
+                if (++safety > safetyLimit) {
+                    // Pathological input only — bail out at the authored
+                    // origin so we still produce a deterministic result.
+                    placeX = targetX;
+                    placeY = targetY;
+                    break;
+                }
+            }
+
+            placed.add(new PlacedRect(
+                    island.islandId(),
+                    placeX,
+                    placeY - headerBand,
+                    width,
+                    height + headerBand
+            ));
+            results.put(island.islandId(), new AtlasLayoutResult.IslandPlacement(
+                    island.islandId(),
+                    placeX,
+                    placeY,
+                    width,
+                    height,
+                    pack == null ? 0 : pack.itemCount()
+            ));
+        }
+        return results;
+    }
+
+    /**
+     * AABB overlap test with a uniform {@code gap} inflated on the
+     * candidate side. {@code (x, y, width, height)} is the candidate's
+     * full claimed footprint (header band already included by the
+     * caller); each entry in {@code placed} likewise carries its own
+     * inflated footprint, so the comparison is symmetric.
+     */
+    private static PlacedRect firstOverlap(
+            List<PlacedRect> placed,
+            int x, int y, int width, int height, int gap
+    ) {
+        int left = x - gap;
+        int top = y - gap;
+        int right = x + width + gap;
+        int bottom = y + height + gap;
+        for (PlacedRect rect : placed) {
+            if (right <= rect.x() || left >= rect.x() + rect.width()) {
+                continue;
+            }
+            if (bottom <= rect.y() || top >= rect.y() + rect.height()) {
+                continue;
+            }
+            return rect;
+        }
+        return null;
+    }
+
+    private record PlacedRect(String islandId, int x, int y, int width, int height) {
     }
 
     /**
@@ -123,19 +273,17 @@ public final class AtlasLayout {
         return layout(viewModel, ctx, contributors, config);
     }
 
-    private static IslandPack packIsland(
-            SlotWorkspaceViewModel.AtlasIsland island,
-            List<ItemRow> rows,
-            AtlasLayoutConfig cfg
-    ) {
+    private static IslandPack packIsland(List<ItemRow> rows, AtlasLayoutConfig cfg) {
         ArrayList<WeightedGridPacker.Cell> cells = new ArrayList<>(rows.size());
+        long totalCellArea = 0L;
         for (ItemRow row : rows) {
             cells.add(new WeightedGridPacker.Cell(row.width(), row.height()));
+            totalCellArea += (long) row.width() * (long) row.height();
         }
-        // Container width = the island's stored width. For Phase 2 we still
-        // honour the island's authored width as the wrap target so widening an
-        // island remains a player-driven choice.
-        int containerWidth = Math.max(cfg.baseCardWidth() + cfg.islandPaddingX() * 2, island.width());
+        // Auto-square wrap target: sqrt(sumOfCellAreas) × aspectFudge,
+        // floored at the empty-island min so single-card islands still
+        // read as islands.
+        int containerWidth = cfg.autoSquareWrapWidth((int) Math.min(Integer.MAX_VALUE, totalCellArea));
         List<WeightedGridPacker.Placement> packed = WeightedGridPacker.pack(
                 cells,
                 containerWidth,
@@ -156,17 +304,17 @@ public final class AtlasLayout {
         }
 
         int packedWidth = items.isEmpty()
-                ? Math.max(cfg.baseCardWidth() + cfg.islandPaddingX() * 2, island.width())
+                ? cfg.minIslandWidth()
                 : maxRight + cfg.islandPaddingX();
         int packedHeight = items.isEmpty()
-                ? island.height()
+                ? cfg.minIslandHeight()
                 : maxBottom + cfg.islandPaddingY();
 
-        // Honour the island's authored size as a floor — collapsing to content
-        // size is a Phase 3+ concern (chip-mode islands). For now an empty
-        // island keeps its authored real estate.
-        int finalWidth = Math.max(island.width(), packedWidth);
-        int finalHeight = Math.max(island.height(), packedHeight);
+        // Floor at the configured min so very-light islands still have
+        // chrome to grab; the packer otherwise sizes the chrome to its
+        // packed content.
+        int finalWidth = Math.max(cfg.minIslandWidth(), packedWidth);
+        int finalHeight = Math.max(cfg.minIslandHeight(), packedHeight);
         return new IslandPack(finalWidth, finalHeight, items);
     }
 

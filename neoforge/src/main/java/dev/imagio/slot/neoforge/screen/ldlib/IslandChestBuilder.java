@@ -43,12 +43,13 @@ final class IslandChestBuilder {
     }
 
     UIElement islandPanel(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
+        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement place = host.islandPlacementFor(island);
         UIElement panel = panel(island.color()).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(island.x())
-                .top(island.y())
-                .width(island.width())
-                .height(island.height())
+                .left(place.x())
+                .top(place.y())
+                .width(place.width())
+                .height(place.height())
                 .paddingAll(8)
                 .gapAll(3)
                 .flexDirection(FlexDirection.COLUMN));
@@ -132,11 +133,12 @@ final class IslandChestBuilder {
         // doesn't overlap the first row of item cards. Uses world-unit
         // absolute positioning against atlas host.content like every other
         // atlas-level element.
+        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement place = host.islandPlacementFor(island);
         Button badge = button(island.carriedCount() + "●", true, ACTIVE_HOTBAR);
         badge.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(island.x() + 2)
-                .top(island.y() - 14)
+                .left(place.x() + 2)
+                .top(place.y() - 14)
                 .width(26)
                 .height(12));
         badge.textStyle(style -> style
@@ -159,12 +161,13 @@ final class IslandChestBuilder {
             SlotWorkspaceViewModel.AtlasIsland island,
             UIElement islandPanelEl
     ) {
+        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement place = host.islandPlacementFor(island);
         Button header = button(island.label(), true, island.color());
         header.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(island.x())
-                .top(island.y() - 16)
-                .width(island.width())
+                .left(place.x())
+                .top(place.y() - 16)
+                .width(place.width())
                 .height(14));
         header.style(style -> style.zIndex(3));
         header.addEventListener(UIEvents.CLICK, event -> {
@@ -209,10 +212,12 @@ final class IslandChestBuilder {
                 return;
             }
             lastScale[0] = scale;
-            float islandScreenWidth = island.width() * scale;
+            // Re-resolve every tick — when the layout reflows (search,
+            // kit activation, ordinal drag-drop) the island bounds shift.
+            dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement currentPlace = host.islandPlacementFor(island);
+            float islandScreenWidth = currentPlace.width() * scale;
             float requestedFontPx = Math.min(12f, islandScreenWidth * 0.13f);
             float screenFontPx = headerBreakpointFontPx(Math.max(7f, requestedFontPx));
-            float worldFontPx = screenFontPx / Math.max(0.0001f, scale);
             float screenHeaderHeight = screenFontPx + 3f;
             // Floor the world height at the carried-count badge's world
             // size (12 world units plus a 2-unit margin = 14) so the badge
@@ -220,9 +225,24 @@ final class IslandChestBuilder {
             // scale > ~1 the screen-fixed header shrinks in world space
             // below the badge's world size and the counter visibly
             // escapes its backdrop.
-            float worldHeaderHeight = Math.max(14f, screenHeaderHeight / Math.max(0.0001f, scale));
+            //
+            // Ceiling at SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE
+            // (24 wu) so zooming out doesn't grow the header without
+            // bound and crash it into neighbours above. AtlasLayout.packAtlas
+            // reserves the same band when de-overlapping islands —
+            // both constants must stay in sync.
+            float screenScaledWorldHeader = screenHeaderHeight / Math.max(0.0001f, scale);
+            float worldHeaderHeight = Math.max(14f,
+                    Math.min(SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE, screenScaledWorldHeader));
             float screenGap = 2f;
             float worldGap = screenGap / Math.max(0.0001f, scale);
+
+            // Derive worldFontPx FROM the (clamped) strip height — when
+            // the screen-scaled height is capped by the world ceiling,
+            // the font has to shrink with it or the text overflows the
+            // strip vertically. Reserve 3 wu for the strip's internal
+            // padding (matching the +3 in screenHeaderHeight above).
+            float worldFontPx = Math.max(1f, worldHeaderHeight - 3f);
 
             // Re-apply textStyle whenever the quantized world fontSize
             // changes. The previous gate on screenFontPx alone missed the
@@ -242,9 +262,9 @@ final class IslandChestBuilder {
             }
             header.layout(layout -> layout
                     .positionType(TaffyPosition.ABSOLUTE)
-                    .left(island.x())
-                    .top(Math.round(island.y() - worldHeaderHeight - worldGap))
-                    .width(island.width())
+                    .left(currentPlace.x())
+                    .top(Math.round(currentPlace.y() - worldHeaderHeight - worldGap))
+                    .width(currentPlace.width())
                     .height(Math.round(worldHeaderHeight)));
             header.markTaffyStyleDirty();
         };
@@ -548,10 +568,11 @@ final class IslandChestBuilder {
     void addIslandHighlightFrame(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
         int thickness = LINK_HIGHLIGHT_THICKNESS;
         int color = LINK_HIGHLIGHT_COLOR;
-        int x = island.x();
-        int y = island.y();
-        int w = island.width();
-        int h = island.height();
+        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement place = host.islandPlacementFor(island);
+        int x = place.x();
+        int y = place.y();
+        int w = place.width();
+        int h = place.height();
         atlas.addContentChild(highlightFrameSegment(color, x - thickness, y - thickness, w + thickness * 2, thickness));
         atlas.addContentChild(highlightFrameSegment(color, x - thickness, y + h, w + thickness * 2, thickness));
         atlas.addContentChild(highlightFrameSegment(color, x - thickness, y, thickness, h));
@@ -580,10 +601,11 @@ final class IslandChestBuilder {
             atlas.addContentChild(thread);
         }
 
+        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement islandPlace = host.islandPlacementFor(island);
         float tileCx = tile.atlasX() + tile.width() / 2f;
         float tileCy = tile.atlasY() + tile.height() / 2f;
-        float islandCx = island.x() + island.width() / 2f;
-        float islandCy = island.y() + island.height() / 2f;
+        float islandCx = islandPlace.x() + islandPlace.width() / 2f;
+        float islandCy = islandPlace.y() + islandPlace.height() / 2f;
         float dx = islandCx - tileCx;
         float dy = islandCy - tileCy;
         float distance = (float) Math.sqrt(dx * dx + dy * dy);
@@ -602,7 +624,7 @@ final class IslandChestBuilder {
             host.localStatus.set("linked island: " + island.label());
         }));
 
-        float islandEdge = rectEdgeAlongDirection(island.width(), island.height(), cosA, sinA);
+        float islandEdge = rectEdgeAlongDirection(islandPlace.width(), islandPlace.height(), cosA, sinA);
         float islandArrowX = islandCx - (islandEdge + 6f) * cosA;
         float islandArrowY = islandCy - (islandEdge + 6f) * sinA;
         atlas.addContentChild(linkArrow(islandArrowX, islandArrowY, angleDeg + 180f, () -> {
@@ -676,10 +698,11 @@ final class IslandChestBuilder {
             int color,
             int thickness
     ) {
+        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement islandPlace = host.islandPlacementFor(island);
         int tileCenterX = tile.atlasX() + tile.width() / 2;
         int tileCenterY = tile.atlasY() + tile.height() / 2;
-        int islandCenterX = island.x() + island.width() / 2;
-        int islandCenterY = island.y() + island.height() / 2;
+        int islandCenterX = islandPlace.x() + islandPlace.width() / 2;
+        int islandCenterY = islandPlace.y() + islandPlace.height() / 2;
         int dx = islandCenterX - tileCenterX;
         int dy = islandCenterY - tileCenterY;
         double distance = Math.sqrt((double) dx * dx + (double) dy * dy);

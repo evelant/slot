@@ -231,28 +231,54 @@ Current prototype validation point:
 
 ## Current Focus
 
-**Relevance-LOD prototype** — Phase 1 (core machinery) and Phase 2.1
-(contributors + client-side layout + wire-format diet) **landed**
-2026-04-25. The atlas now renders relevance-shaped client-side via
-`AtlasLayout`; carried / search-match / kit-member / kit-missing /
-recently-touched contributors all fire; `AtlasItem` no longer carries
-position/size on the wire; `ghostScaleFor` and the freeform fitted-
-island path are gone. The transitional drag-drop path still uses
-`VisualHomeAssignment.localX/localY` as a canonical-order sort key.
+**Active focus: `FacetIndex` runtime**
+([plans/item-classification.md](plans/item-classification.md)
+milestone 6) — load the shipped vanilla classification dataset
+(`tools/classification/datasets/minecraft/minecraft.facets.complete.json`,
+1536 items / 30 facets) into a thin `common/.../classification/FacetIndex`,
+JSONSchema-validated, exposing `index.role(itemId) → Optional<RoleValue>`.
+Wire it behind a feature flag at the homing call site
+([SlotTestCommands.java:128](../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java#L128))
+with `SemanticBucketResolver` as the no-data fallback. Regression-check
+`RealisticAtlasGeneratorTest`. Stop and playtest before stage-4 NN
+work; see the 6-step "Integration sequence" in
+[item-classification.md § Runtime](plans/item-classification.md#runtime).
 
-Next is **Phase 2.2** — replace the transitional sort key with an
-explicit per-assignment `int ordinal`, switch drag-drop to push-insert
-semantics, drop authored island width/height in favour of auto-square
-layout, delete the freeform placement helpers
-(`SlotWorkspaceAtlasLayout.placementForOrdinal/placementForDrop/...`).
-See [plans/relevance-lod-prototype.md](plans/relevance-lod-prototype.md)
-for the sequence and
-[decisions/0005-relevance-score-and-layout-locality.md](decisions/0005-relevance-score-and-layout-locality.md)
-for the architectural choice the wire-format diet flows from.
+**Recently landed: Relevance-LOD Phase 2.2 + UI polish.** Phase 1,
+Phase 2.1, and Phase 2.2 are all in. The atlas renders
+relevance-shaped client-side via `AtlasLayout`; carried /
+search-match / kit-member / kit-missing / recently-touched
+contributors all fire; `AtlasItem` no longer carries position/size
+on the wire.
 
-Manual playtest deferred — verify in-game that activating a kit
-visibly grows kit-relevant items, search match pops, and pickups
-don't make the atlas convulse mid-session.
+Phase 2.2 (drag-drop ordinal semantics + auto-square islands)
+cleaned up the transitional sort key. `VisualHomeAssignment` now
+carries `int ordinal` instead of `localX/localY`; `VisualAtlasIsland`
+no longer authors `width/height` (the `AtlasLayout` packer wraps to
+`round(sqrt(totalCellArea) × targetAspectFudge)`). Drops are
+ordinal: `AtlasDropResolver` converts a world coord to
+`(islandId, ordinal)`, the RPC ships ordinal, and
+`WorkflowProjection.applyVisualHomeAssignment` performs the
+remove-from-source / insert-with-shift bookkeeping. Persistence
+schema bumped 5 → 6 with one-shot migration from legacy `(x, y)` to
+ordinals.
+
+Same-session UI polish on top of 2.2: atlas-level de-overlap in
+`AtlasLayout.packAtlas` keeps islands non-overlapping while
+preserving authored relative positions; shared
+`SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE` caps the header
+world height so zoom-out doesn't crash labels into the row above
+(text font derives from the clamped strip height); ghost
+(non-carried) cards shrink to 65% of the relevance baseline via
+`ghostShrinkFactor` and dim further (`GHOST_CARD_ALPHA` 0.18 → 0.10,
+icon overlay 0xC8 → 0xE0) so the carried set dominates the
+foreground. See [plans/relevance-lod-prototype.md](plans/relevance-lod-prototype.md)
+and [decisions/0005-relevance-score-and-layout-locality.md](decisions/0005-relevance-score-and-layout-locality.md).
+
+Manual playtest is ongoing and continues to inform UI polish
+(header LOD + ghost differentiation came out of the first session);
+further relevance-LOD refinement can stack on as needed without
+blocking FacetIndex.
 
 Atlas navigation (all four slices from
 [plans/atlas-navigation.md](plans/atlas-navigation.md)) is

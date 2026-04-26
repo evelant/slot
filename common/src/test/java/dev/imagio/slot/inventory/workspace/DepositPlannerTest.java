@@ -201,9 +201,9 @@ class DepositPlannerTest {
     private static VisualHomeMap homeMap(Map<ItemIdentity, VisualHomeAssignment> assignments) {
         List<VisualAtlasIsland> islands = List.of(
                 new VisualAtlasIsland(MACHINES_ID, "Machines", VisualAtlasIslandKind.PLAYER,
-                        0, 0, 260, 180, 0xCC5A4A6E, null),
+                        0, 0, 0xCC5A4A6E, null),
                 new VisualAtlasIsland(FOOD_ID, "Food", VisualAtlasIslandKind.PLAYER,
-                        0, 0, 260, 180, 0xCC5A4A6E, null)
+                        0, 0, 0xCC5A4A6E, null)
         );
         return new VisualHomeMap(islands, assignments, Set.of());
     }
@@ -212,8 +212,7 @@ class DepositPlannerTest {
         return new VisualHomeAssignment(
                 ItemIdentity.of("minecraft:placeholder"),
                 islandId,
-                10,
-                10,
+                0,
                 VisualHomeOrigin.PLAYER_PLACED,
                 true
         );

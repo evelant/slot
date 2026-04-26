@@ -5,8 +5,7 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 public record VisualHomeAssignment(
         ItemIdentity identity,
         String islandId,
-        int localX,
-        int localY,
+        int ordinal,
         VisualHomeOrigin origin,
         boolean locked
 ) {
@@ -18,6 +17,7 @@ public record VisualHomeAssignment(
             throw new IllegalArgumentException("islandId must not be blank");
         }
         islandId = islandId.trim();
+        ordinal = Math.max(0, ordinal);
         origin = origin == null ? VisualHomeOrigin.PLAYER_PLACED : origin;
     }
 }

@@ -70,8 +70,6 @@ public final class VisualAtlasWorkflowDomainService {
             String label,
             int x,
             int y,
-            int width,
-            int height,
             int color,
             ItemIdentity iconIdentity
     ) {
@@ -79,8 +77,6 @@ public final class VisualAtlasWorkflowDomainService {
                 label,
                 x,
                 y,
-                width,
-                height,
                 color,
                 iconIdentity,
                 DomainEventMetadata.origin("workflow.visual.island.create")
@@ -91,8 +87,6 @@ public final class VisualAtlasWorkflowDomainService {
             String label,
             int x,
             int y,
-            int width,
-            int height,
             int color,
             ItemIdentity iconIdentity,
             DomainEventMetadata metadata
@@ -108,8 +102,6 @@ public final class VisualAtlasWorkflowDomainService {
                         VisualAtlasIslandKind.PLAYER,
                         x,
                         y,
-                        width,
-                        height,
                         color,
                         iconIdentity
                 ),
@@ -122,8 +114,6 @@ public final class VisualAtlasWorkflowDomainService {
             String label,
             int x,
             int y,
-            int width,
-            int height,
             int color,
             ItemIdentity iconIdentity
     ) {
@@ -132,8 +122,6 @@ public final class VisualAtlasWorkflowDomainService {
                 label,
                 x,
                 y,
-                width,
-                height,
                 color,
                 iconIdentity,
                 DomainEventMetadata.origin("workflow.visual.island.create")
@@ -145,8 +133,6 @@ public final class VisualAtlasWorkflowDomainService {
             String label,
             int x,
             int y,
-            int width,
-            int height,
             int color,
             ItemIdentity iconIdentity,
             DomainEventMetadata metadata
@@ -165,8 +151,6 @@ public final class VisualAtlasWorkflowDomainService {
                         VisualAtlasIslandKind.PLAYER,
                         x,
                         y,
-                        width,
-                        height,
                         color,
                         iconIdentity
                 ),
@@ -186,14 +170,12 @@ public final class VisualAtlasWorkflowDomainService {
     public VisualHomeAssignment assignHome(
             ItemIdentity identity,
             String islandId,
-            int localX,
-            int localY
+            int ordinal
     ) {
         return assignHome(
                 identity,
                 islandId,
-                localX,
-                localY,
+                ordinal,
                 VisualHomeOrigin.PLAYER_PLACED,
                 true,
                 DomainEventMetadata.origin("workflow.visual.home.assign")
@@ -203,8 +185,7 @@ public final class VisualAtlasWorkflowDomainService {
     public VisualHomeAssignment assignHome(
             ItemIdentity identity,
             String islandId,
-            int localX,
-            int localY,
+            int ordinal,
             VisualHomeOrigin origin,
             boolean locked,
             DomainEventMetadata metadata
@@ -212,19 +193,19 @@ public final class VisualAtlasWorkflowDomainService {
         if (identity == null || islandId == null || islandId.isBlank()) {
             return null;
         }
-        VisualHomeAssignment next = new VisualHomeAssignment(
+        // The event carries the user-perspective insert position. The projection
+        // performs the remove-from-source / insert-with-shift bookkeeping so
+        // every other assignment in the affected islands gets its ordinal
+        // adjusted in lockstep.
+        VisualHomeAssignment requested = new VisualHomeAssignment(
                 identity,
                 islandId,
-                localX,
-                localY,
+                ordinal,
                 origin == null ? VisualHomeOrigin.PLAYER_PLACED : origin,
                 locked
         );
-        if (next.equals(visualHomeMap().assignment(identity))) {
-            return next;
-        }
         repository.appendWorkflowEvent(
-                new WorkflowEvent.VisualHomeAssigned(next),
+                new WorkflowEvent.VisualHomeAssigned(requested),
                 (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.home.assign")
         );
         mutationObserver.run();

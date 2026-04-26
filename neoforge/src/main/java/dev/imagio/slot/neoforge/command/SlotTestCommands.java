@@ -171,8 +171,6 @@ public final class SlotTestCommands {
                     island.label(),
                     island.x(),
                     island.y(),
-                    island.width(),
-                    island.height(),
                     island.color(),
                     island.iconIdentity()
             );
@@ -189,8 +187,7 @@ public final class SlotTestCommands {
             VisualHomeAssignment result = workflow.assignHome(
                     assignment.identity(),
                     assignment.islandId(),
-                    assignment.localX(),
-                    assignment.localY()
+                    assignment.ordinal()
             );
             if (result != null) {
                 applied++;

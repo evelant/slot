@@ -101,10 +101,7 @@ class RealisticAtlasGeneratorTest {
         for (VisualHomeAssignment assignment : plan.assignments().values()) {
             VisualAtlasIsland island = byId.get(assignment.islandId());
             assertNotNull(island, "assignment references unknown island: " + assignment.islandId());
-            assertTrue(assignment.localX() >= 0);
-            assertTrue(assignment.localY() >= 0);
-            assertTrue(assignment.localX() < island.width());
-            assertTrue(assignment.localY() < island.height());
+            assertTrue(assignment.ordinal() >= 0);
         }
     }
 
@@ -219,16 +216,16 @@ class RealisticAtlasGeneratorTest {
                 pool::classify
         );
 
+        // Islands no longer carry authored width/height (Phase 2.2 — sizes
+        // come from the client-side AtlasLayout packer). Verify the
+        // generator at least gives every island a distinct top-left so
+        // the synthetic atlas reads as multiple islands when rendered.
         List<VisualAtlasIsland> islands = new ArrayList<>(plan.islands());
-        for (int i = 0; i < islands.size(); i++) {
-            VisualAtlasIsland a = islands.get(i);
-            for (int j = i + 1; j < islands.size(); j++) {
-                VisualAtlasIsland b = islands.get(j);
-                boolean overlapX = a.x() < b.x() + b.width() && b.x() < a.x() + a.width();
-                boolean overlapY = a.y() < b.y() + b.height() && b.y() < a.y() + a.height();
-                assertTrue(!(overlapX && overlapY),
-                        "islands overlap: " + a.id() + " and " + b.id());
-            }
+        java.util.Set<Long> origins = new java.util.HashSet<>();
+        for (VisualAtlasIsland island : islands) {
+            long packed = ((long) island.x() << 32) | (island.y() & 0xFFFFFFFFL);
+            assertTrue(origins.add(packed),
+                    "duplicate island origin (" + island.x() + "," + island.y() + ") for " + island.id());
         }
     }
 

@@ -77,8 +77,7 @@ public record VisualHomeMap(
             copied.put(identity, new VisualHomeAssignment(
                     identity,
                     assignment.islandId(),
-                    assignment.localX(),
-                    assignment.localY(),
+                    assignment.ordinal(),
                     assignment.origin(),
                     assignment.locked()
             ));

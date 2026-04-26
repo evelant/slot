@@ -69,8 +69,14 @@ final class WorkspaceTheme {
     static final float NAV_CAPSULE_INSET_PX = 96f;
     static final float BELT_CAMERA_INSET_PX = 44f;
     static final float SIDE_CAMERA_INSET_PX = 48f;
-    static final float GHOST_CARD_ALPHA = 0.18f;
-    static final int GHOST_ICON_OVERLAY_COLOR = 0xC8060A0E;
+    // Ghost (non-carried homed) cards push hard into the background so
+    // a player scanning the atlas sees their actual carry first. Dropped
+    // from 0.18 → 0.10 and the icon dim overlay strengthened so ghost
+    // chrome + icon both clearly recede behind carried cards. Combined
+    // with AtlasLayoutConfig.ghostShrinkFactor = 0.65, ghosts also
+    // physically occupy less world space than the relevance baseline.
+    static final float GHOST_CARD_ALPHA = 0.10f;
+    static final int GHOST_ICON_OVERLAY_COLOR = 0xE0060A0E;
     static final int DRAG_START_THRESHOLD_PX = 4;
 
     static final int[] ISLAND_PALETTE = {

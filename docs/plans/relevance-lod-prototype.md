@@ -17,9 +17,9 @@ client-owned layout), see
    diet. **Landed** with transitional drag-drop using
    `localX/localY`-as-sort-key.
 3. **Phase 2.2** — drag-drop ordinal semantics + auto-square islands
-   + freeform-helper cleanup. **NEXT.**
+   + freeform-helper cleanup. **Landed.**
 4. **`FacetIndex` runtime** — [item-classification.md](item-classification.md)
-   milestone 6.
+   milestone 6. **NEXT.**
 5. **Phase 4** — classification-driven Triage chip suggestions.
 6. **Deferred** — `StorageArea` domain + `area_proximity` /
    `chest_holds_relevant`; `shopping_list`; per-player weights;
@@ -175,94 +175,130 @@ and islands auto-arrange — that's where the design's "constellation
 auto-organizes around what's relevant" feel comes from. Phase 2.1
 keeps player-authored island arrangement as a transitional fallback.
 
-### Phase 2.2 (next) — Ordinal drag-drop + auto-square islands
+### Phase 2.2 (landed) — Ordinal drag-drop + auto-square islands
 
-The transitional `localX/localY`-as-sort-key path works but the data
-model lies (positions live on the assignment but mean order). Time to
-clean it up.
+Drag-drop is now ordinal. The freeform-coordinate baggage on
+`VisualHomeAssignment` is gone, islands no longer ship authored
+width/height, and the client-side packer wraps to an auto-square
+target derived from the cells' total pixel area.
 
-Agreed semantics (2026-04-25):
+Agreed semantics (preserved from the plan; verified by tests):
 
 - **Push (insert) on drop.** Drop X onto B → remove X from its
   current order, insert at B's current ordinal. Everyone from that
   ordinal onward shifts +1.
 - **Drop on empty space within an island** → append to end.
-  Defer "spatial-proximity insertion" to playtest.
 - **Drop on yourself** → no-op.
-- **Cross-island drop** → same rules; remove from source list,
-  insert into destination list.
-- **No half-split** v1. Plain "insert before drop target." Add the
-  before/after split (left half = insert before, right half = insert
-  after) only if playtest shows people miss it.
+- **Cross-island drop** → remove from source list (compacting
+  ordinals after the gap), insert into destination list (shifting
+  ordinals at and after the insert slot).
+- **No half-split** v1. Plain "insert before drop target."
 
-Data-model changes:
+What landed:
 
-- `VisualHomeAssignment` gains `int ordinal`. Drops `localX` and
-  `localY` entirely — they're meaningless under the ordinal model
-  and we're carrying the freeform-coordinate baggage long enough.
-  **Plain numeric ordinal**, not a linked list and not fractional /
-  sparse ordinals. Considered both:
-  - Linked list (prev/next per assignment): O(1) inserts but every
-    render is a traversal walk, plus corruption recovery if a link
-    breaks. Not worth it at our scale (max ~50 items per island).
-  - Fractional / sparse (1.0, 2.0, 2.5 to insert between): O(1)
-    inserts without breaking the map shape, but introduces
-    rebalancing concerns. Solving a problem we don't have.
-  - Plain numeric (chosen): O(items_in_island) rewrite on insert.
-    Persistence is whole-workflow-file anyway, so disk cost is the
-    same whether one record or fifty changes.
-- One-shot migration on workflow-domain load: group existing
-  assignments by `islandId`, sort by `(localY, localX, identity)`,
-  assign ordinals `0..N-1`. Persist the migrated form. No transitional
-  period — once 2.2 lands, `localX/localY` are gone.
-- `VisualAtlasIsland` drops authoritative `width` / `height`. Min
-  floors stay as constants
-  (`PLAYER_ISLAND_MIN_WIDTH`, `PLAYER_ISLAND_MIN_HEIGHT`) so empty /
-  single-item islands have presence.
-- `AtlasLayoutConfig` gains a `targetAspectFudge` knob (~1.0–1.2);
-  per-island target width = `round(sqrt(sum_of_cell_areas) ×
-  aspectFudge)`. Packer wraps to that width. The result is
-  "square-ish" with relevance-driven cell variance honoured.
+- [`VisualHomeAssignment`](../../common/src/main/java/dev/imagio/slot/workflow/domain/VisualHomeAssignment.java)
+  carries `int ordinal` instead of `localX` / `localY`.
+- [`VisualAtlasIsland`](../../common/src/main/java/dev/imagio/slot/workflow/domain/VisualAtlasIsland.java)
+  drops authored `width` / `height` — chrome size now comes from the
+  client-side packer. Empty / single-card islands still read because
+  [`AtlasLayoutConfig`](../../common/src/main/java/dev/imagio/slot/atlas/lod/AtlasLayoutConfig.java)
+  carries `minIslandWidth` / `minIslandHeight` floors.
+- New `targetAspectFudge` knob on `AtlasLayoutConfig` (default
+  `1.2`). Per-island wrap width =
+  `round(sqrt(totalCellArea) × aspectFudge) + padding`, clamped at
+  the empty-island floor. Reads in [`AtlasLayout.packIsland`](../../common/src/main/java/dev/imagio/slot/atlas/lod/AtlasLayout.java).
+- [`SlotWorkspaceCommandService.assignHome`](../../common/src/main/java/dev/imagio/slot/inventory/workspace/SlotWorkspaceCommandService.java)
+  takes `(itemId, comparisonMode, fingerprint, islandId, ordinal)`.
+  `null` ordinal means "append" — `resolveOrdinal` counts the live
+  assignments in the destination island.
+- [`VisualAtlasWorkflowDomainService.assignHome`](../../common/src/main/java/dev/imagio/slot/workflow/domain/VisualAtlasWorkflowDomainService.java)
+  takes `(identity, islandId, ordinal, …)`. The
+  [`WorkflowProjection.applyVisualHomeAssignment`](../../common/src/main/java/dev/imagio/slot/workflow/domain/WorkflowProjection.java)
+  helper performs the remove-from-source + insert-with-shift
+  bookkeeping when the event projects.
+- [`AtlasDropResolver`](../../common/src/main/java/dev/imagio/slot/atlas/lod/AtlasDropResolver.java)
+  is the new pure helper. Given the live view model + layout result
+  + a world coordinate, it returns `(islandId, ordinal)` or `null`.
+  [`DragDropWiring.resolveDropOrdinal`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/DragDropWiring.java)
+  consumes it for atlas-item, hotbar, and chest-stack drops onto
+  islands.
+- Wire format change: the home RPC payload now ships
+  `(itemId, comparisonMode, fingerprint, islandId, ordinal)` — one
+  field instead of two world coords. `moveHotbarToAtlas` similarly
+  drops the world-coord pair in favour of `ordinal`.
+- View-model `AtlasIsland` drops `width` / `height`. Renderer paths
+  (island chrome, header, badges, link arrows, search index, camera
+  fits) read sizes through the new
+  [`SlotWorkspaceUiController.islandPlacementFor`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/SlotWorkspaceUiController.java)
+  helper, which falls back to the empty-island floor when the
+  layout pass hasn't included the island yet.
 
-Server-side mutation logic:
+UI follow-up polish (same session):
 
-- `SlotWorkspaceCommandService.assignHome` signature changes from
-  `(islandId, worldX, worldY)` to `(islandId, ordinal)`.
-- Mutation: remove from source island's ordinal list (decrement
-  ordinals after the removed slot), insert at destination ordinal
-  (increment ordinals at and after the insert slot). When source ==
-  destination, the combined remove+insert handles same-island moves
-  cleanly.
+- **Atlas-level de-overlap.** The auto-square sizing meant authored
+  `(x, y)` no longer guaranteed non-overlap. `AtlasLayout.packAtlas`
+  walks islands in `(authored y, x, id)` order and slides each one
+  right past collisions (with `atlasIslandGap`); when sliding can't
+  make progress (collider behind us), drops below and resumes from
+  the authored x. Authored positions still drive the *preference* —
+  well-spaced islands stay where the player put them.
+- **Island header LOD ceiling.** The header strip kept a fixed screen
+  size, so zooming out grew it without bound (~50 wu at scale 0.2),
+  crashing into rows above. New
+  [`SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE`](../../common/src/main/java/dev/imagio/slot/inventory/workspace/SlotWorkspaceAtlasLayout.java)
+  caps the world height (24 wu) and is shared by both
+  `IslandChestBuilder.applyHeaderScale` (which clamps the header
+  layout + derives the world font from the strip height so text
+  doesn't overflow vertically) and `AtlasLayout.packAtlas` (which
+  reserves the same band when probing for collisions). At extreme
+  zoom-out the header degrades to a thin colored bar — labels aren't
+  the point at that scale.
+- **Carried/ghost differentiation.** Non-carried (ghost) cards now
+  shrink to 65% of the relevance baseline via
+  `AtlasLayoutConfig.ghostShrinkFactor`. Combined with the existing
+  relevance lift, carried/ghost world-size ratio jumps from ~2.3× to
+  ~3.6×. `WorkspaceTheme.GHOST_CARD_ALPHA` dropped 0.18 → 0.10 and
+  `GHOST_ICON_OVERLAY_COLOR` alpha strengthened (0xC8 → 0xE0) so
+  ghost chrome and icons both clearly recede; the carried set forms
+  the visual foreground.
 
-Client-side drop resolution:
-
-- New helper (probably in `WorkspaceDrags` / `DragDropWiring`) that
-  takes a drop world coordinate and the current `AtlasLayoutResult`,
-  returns `(islandId, ordinal)`. Hit-tests against item bounding
-  boxes; if hit, `ordinal = target_item_ordinal`. Otherwise `ordinal =
-  end-of-island`.
-
-Cleanup (drop dead code from the freeform era):
+Cleanup (dead freeform code, removed):
 
 - `SlotWorkspaceAtlasLayout.placementForOrdinal`,
   `placementForDrop`, `clampPlacement`, `resolvePlacement`,
-  `LocalPlacement`, `Placement` records — all become dead. Remove.
-- `SlotWorkspaceCommandService.resolvePlacement` and call sites that
-  consumed `worldX`/`worldY` for placement.
-- Tests that exercise the freeform helpers (`placementStartsBelowIslandHeaderReserve`,
-  `dropPlacementFloorsToContentMinimumButAllowsGrowthPastEdge`, the
-  `storedLocalHomeCoordinatesProjectBackIntoAtlasSpace` chunk that
-  reads coordinate fields).
+  `LocalPlacement`, `Placement` — all gone.
+- `SlotWorkspaceCommandService.resolvePlacement` — gone; replaced
+  by `resolveOrdinal`.
+- Freeform-era tests
+  (`placementStartsBelowIslandHeaderReserve`,
+  `dropPlacementFloorsToContentMinimumButAllowsGrowthPastEdge`,
+  `storedLocalHomeCoordinatesProjectBackIntoAtlasSpace`) — gone.
 
-Tests to add:
+Migration:
 
-- `VisualHomeAssignmentMigrationTest` — pre-2.2 saves with localX/localY
-  produce sane ordinals on load.
-- Server-side ordinal mutation tests — insert, move within island,
-  move across islands, edge cases (empty, single-item, drop on self).
-- Client-side drop resolution tests — drop on item, drop on empty,
-  drop on self, cross-island drop.
-- `AtlasLayoutTest` extended for the auto-square sizing path.
+- Persistence schema bumped from 5 → 6.
+[`WorkflowDomainFileStore.decodeVisualHomesWithMigration`](../../common/src/main/java/dev/imagio/slot/workflow/domain/persistence/WorkflowDomainFileStore.java)
+  derives ordinals from legacy `(x, y)` per island when no
+  assignment carries an explicit ordinal. The next save flushes the
+  migrated form. Cached pre-2.2 `VisualHomeAssigned` /
+  `VisualHomeCleared` events are stripped on load — the migrated
+  checkpoint is authoritative; we accept losing any unsaved homing
+  actions since the last checkpoint.
+
+Tests added (or revised):
+
+- [`VisualAtlasWorkflowDomainServiceTest`](../../common/src/test/java/dev/imagio/slot/workflow/domain/VisualAtlasWorkflowDomainServiceTest.java)
+  — append-then-insert shift, same-island move down, cross-island
+  move with source compaction, clear compacts trailing ordinals,
+  out-of-range ordinal clamps to size.
+- [`AtlasDropResolverTest`](../../common/src/test/java/dev/imagio/slot/atlas/lod/AtlasDropResolverTest.java)
+  — drop on item, drop on island chrome, cross-island, drop in
+  empty space, triage skipped.
+- [`AtlasLayoutTest`](../../common/src/test/java/dev/imagio/slot/atlas/lod/AtlasLayoutTest.java)
+  — empty-island floor, auto-square aspect for many cells.
+- [`WorkflowDomainFileStoreTest.preTwoTwoFileMigratesLegacyCoordsIntoOrdinals`](../../neoforge/src/test/java/dev/imagio/slot/workflow/domain/persistence/WorkflowDomainFileStoreTest.java)
+  — hand-crafted v5 file with three legacy assignments; load
+  produces ordinals 0, 1, 2 in `(y, x, identity)` order.
 
 ### Out of scope this phase (still)
 

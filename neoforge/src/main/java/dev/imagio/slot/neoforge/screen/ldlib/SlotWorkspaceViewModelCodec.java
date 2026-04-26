@@ -304,8 +304,6 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putString("kind", island.kind().name());
         tag.putInt("x", island.x());
         tag.putInt("y", island.y());
-        tag.putInt("width", island.width());
-        tag.putInt("height", island.height());
         tag.putInt("color", island.color());
         tag.putInt("itemCount", island.itemCount());
         tag.putInt("carriedCount", island.carriedCount());
@@ -319,8 +317,6 @@ public final class SlotWorkspaceViewModelCodec {
                 decodeIslandKind(tag.getString("kind")),
                 tag.getInt("x"),
                 tag.getInt("y"),
-                tag.getInt("width"),
-                tag.getInt("height"),
                 tag.getInt("color"),
                 tag.getInt("itemCount"),
                 tag.getInt("carriedCount")

@@ -227,12 +227,10 @@ class SlotWorkspaceLdlibModelTest {
                 "Machines",
                 744,
                 104,
-                320,
-                196,
                 0xCC5A4A6E,
                 ItemIdentity.of("minecraft:apple")
         );
-        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:apple"), machines.id(), 16, 60);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:apple"), machines.id(), 0);
 
         SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
                 authority,
@@ -296,8 +294,6 @@ class SlotWorkspaceLdlibModelTest {
                 first.label(),
                 first.x(),
                 first.y(),
-                first.width(),
-                first.height(),
                 first.color(),
                 first.iconIdentity()
         );
@@ -308,113 +304,21 @@ class SlotWorkspaceLdlibModelTest {
         );
 
         assertEquals("Machines", first.label());
-        assertTrue(first.width() >= 96);
-        assertTrue(first.height() >= 72);
-        assertTrue(second.x() > first.x());
+        assertTrue(second.x() > first.x() || second.y() > first.y(),
+                "second draft should land at a distinct origin from the first");
     }
 
     @Test
-    void placementStartsBelowIslandHeaderReserve() {
-        WorkflowDomainRuntime runtime = runtime();
-        VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
-                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
-        List<SlotWorkspaceViewModel.AtlasIsland> islands =
-                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap());
-        SlotWorkspaceViewModel.AtlasIsland fixture = islands.stream()
-                .filter(island -> island.islandId().equals(materials.id()))
-                .findFirst()
-                .orElseThrow();
-
-        SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
-                islands,
-                materials.id(),
-                0
-        );
-
-        assertEquals(materials.id(), placement.islandId());
-        assertTrue(placement.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(placement.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(placement.x() >= fixture.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(placement.y() >= fixture.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-    }
-
-    @Test
-    void dropPlacementFloorsToContentMinimumButAllowsGrowthPastEdge() {
-        WorkflowDomainRuntime runtime = runtime();
-        VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
-                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
-        List<SlotWorkspaceViewModel.AtlasIsland> islands =
-                SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap());
-        SlotWorkspaceViewModel.AtlasIsland fixture = islands.stream()
-                .filter(island -> island.islandId().equals(materials.id()))
-                .findFirst()
-                .orElseThrow();
-
-        SlotWorkspaceAtlasLayout.Placement topLeft = SlotWorkspaceAtlasLayout.placementForDrop(
-                islands,
-                materials.id(),
-                fixture.x() - 200,
-                fixture.y() - 200
-        );
-        SlotWorkspaceAtlasLayout.Placement beyondRight = SlotWorkspaceAtlasLayout.placementForDrop(
-                islands,
-                materials.id(),
-                fixture.x() + fixture.width() + 200,
-                fixture.y() + fixture.height() + 200
-        );
-
-        assertTrue(topLeft.localX() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(topLeft.localY() >= SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(topLeft.x() >= fixture.x() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X);
-        assertTrue(topLeft.y() >= fixture.y() + SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP);
-        assertTrue(beyondRight.localX() > fixture.width(),
-                "drop past right edge should preserve requested localX as the canonical-order seed");
-        assertTrue(beyondRight.localY() > fixture.height(),
-                "drop past bottom edge should preserve requested localY as the canonical-order seed");
-    }
-
-    @Test
-    void storedLocalHomeCoordinatesProjectBackIntoAtlasSpace() {
+    void movedIslandReprojectsStoredOrdinalHomes() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
                 "Machines",
                 744,
                 104,
-                320,
-                196,
                 0xCC5A4A6E,
                 ItemIdentity.of("minecraft:redstone")
         );
-        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:redstone"), island.id(), 24, 60);
-
-        List<SlotWorkspaceViewModel.AtlasIsland> islands = SlotWorkspaceAtlasLayout.baseIslands(runtime.snapshot().visualHomeMap());
-        SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.resolvePlacement(
-                islands,
-                island.id(),
-                runtime.snapshot().visualHomeMap().assignment(ItemIdentity.of("minecraft:redstone")).localX(),
-                runtime.snapshot().visualHomeMap().assignment(ItemIdentity.of("minecraft:redstone")).localY()
-        );
-
-        assertEquals(island.id(), placement.islandId());
-        assertEquals(24, placement.localX());
-        assertEquals(60, placement.localY());
-        assertEquals(island.x() + 24, placement.x());
-        assertEquals(island.y() + 60, placement.y());
-    }
-
-    @Test
-    void movedIslandReprojectsStoredLocalHomes() {
-        WorkflowDomainRuntime runtime = runtime();
-        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
-                "Machines",
-                744,
-                104,
-                320,
-                196,
-                0xCC5A4A6E,
-                ItemIdentity.of("minecraft:redstone")
-        );
-        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:redstone"), island.id(), 24, 60);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:redstone"), island.id(), 0);
         runtime.visualAtlasWorkflow().moveIsland(island.id(), 960, 280);
 
         InventoryAuthoritySnapshot authority = authority(host(), Map.of(
@@ -602,8 +506,6 @@ class SlotWorkspaceLdlibModelTest {
                 draft.label(),
                 draft.x(),
                 draft.y(),
-                draft.width(),
-                draft.height(),
                 IslandSuggestionTemplate.MATERIALS.defaultColor(),
                 first
         );
@@ -649,8 +551,8 @@ class SlotWorkspaceLdlibModelTest {
         WorkflowDomainRuntime runtime = runtime();
         ItemIdentity absent = ItemIdentity.of("minecraft:diamond");
         VisualAtlasIsland gems = runtime.visualAtlasWorkflow().createIsland(
-                "Gems", 800, 200, 260, 180, 0xCC5A4A6E, absent);
-        runtime.visualAtlasWorkflow().assignHome(absent, gems.id(), 16, 60);
+                "Gems", 800, 200, 0xCC5A4A6E, absent);
+        runtime.visualAtlasWorkflow().assignHome(absent, gems.id(), 0);
 
         InventoryAuthoritySnapshot authority = authority(host(), Map.of());
 
@@ -755,10 +657,10 @@ class SlotWorkspaceLdlibModelTest {
         ));
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland gear = runtime.visualAtlasWorkflow().createIsland(
-                "Gear", 500, 200, 260, 180, 0xCC6E5A3C,
+                "Gear", 500, 200, 0xCC6E5A3C,
                 ItemIdentity.of("sophisticatedbackpacks:backpack"));
         runtime.visualAtlasWorkflow().assignHome(
-                ItemIdentity.of("sophisticatedbackpacks:backpack"), gear.id(), 16, 60);
+                ItemIdentity.of("sophisticatedbackpacks:backpack"), gear.id(), 0);
 
         java.util.function.Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver = identity ->
                 "sophisticatedbackpacks:backpack".equals(identity.itemId())
@@ -828,12 +730,12 @@ class SlotWorkspaceLdlibModelTest {
     void islandCarriedCountEqualsCarriedHomesInThatIsland() {
         WorkflowDomainRuntime runtime = runtime();
         VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
-                "Materials", 500, 200, 260, 180, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
+                "Materials", 500, 200, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
         VisualAtlasIsland gems = runtime.visualAtlasWorkflow().createIsland(
-                "Gems", 900, 200, 260, 180, 0xCC3C5A6E, ItemIdentity.of("minecraft:diamond"));
-        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:stone"), materials.id(), 16, 60);
-        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:cobblestone"), materials.id(), 48, 60);
-        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:diamond"), gems.id(), 16, 60);
+                "Gems", 900, 200, 0xCC3C5A6E, ItemIdentity.of("minecraft:diamond"));
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:stone"), materials.id(), 0);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:cobblestone"), materials.id(), 1);
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:diamond"), gems.id(), 0);
 
         InventoryAuthoritySnapshot authority = authority(host(), Map.of(
                 BuiltinInventoryIds.PLAYER_MAIN,
@@ -866,8 +768,6 @@ class SlotWorkspaceLdlibModelTest {
                 draft.label(),
                 draft.x(),
                 draft.y(),
-                draft.width(),
-                draft.height(),
                 template.defaultColor(),
                 identity
         );
@@ -880,12 +780,15 @@ class SlotWorkspaceLdlibModelTest {
             ItemIdentity identity,
             String islandId
     ) {
-        SlotWorkspaceAtlasLayout.Placement placement = SlotWorkspaceAtlasLayout.placementForOrdinal(
-                SlotWorkspaceAtlasLayout.baseIslands(runtime.visualAtlasWorkflow().visualHomeMap()),
-                islandId,
-                0
-        );
-        runtime.visualAtlasWorkflow().assignHome(identity, islandId, placement.localX(), placement.localY());
+        // Phase 2.2: append to the destination island. The projection
+        // shifts existing ordinals as needed.
+        int append = 0;
+        for (var assignment : runtime.visualAtlasWorkflow().visualHomeMap().assignments().values()) {
+            if (assignment != null && islandId.equals(assignment.islandId())) {
+                append++;
+            }
+        }
+        runtime.visualAtlasWorkflow().assignHome(identity, islandId, append);
         store.recordAssignment(descriptorFor(identity), islandId, System.currentTimeMillis());
     }
 

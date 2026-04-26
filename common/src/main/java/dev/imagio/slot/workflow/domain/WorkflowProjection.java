@@ -202,8 +202,6 @@ public final class WorkflowProjection {
                                     existing.kind(),
                                     event.x(),
                                     event.y(),
-                                    existing.width(),
-                                    existing.height(),
                                     existing.color(),
                                     existing.iconIdentity()
                             ));
@@ -223,8 +221,6 @@ public final class WorkflowProjection {
                                     existing.kind(),
                                     existing.x(),
                                     existing.y(),
-                                    existing.width(),
-                                    existing.height(),
                                     existing.color(),
                                     existing.iconIdentity()
                             ));
@@ -244,8 +240,6 @@ public final class WorkflowProjection {
                                     existing.kind(),
                                     existing.x(),
                                     existing.y(),
-                                    existing.width(),
-                                    existing.height(),
                                     event.color(),
                                     existing.iconIdentity()
                             ));
@@ -265,8 +259,6 @@ public final class WorkflowProjection {
                                     existing.kind(),
                                     existing.x(),
                                     existing.y(),
-                                    existing.width(),
-                                    existing.height(),
                                     existing.color(),
                                     event.iconIdentity()
                             ));
@@ -278,19 +270,26 @@ public final class WorkflowProjection {
             case WorkflowEvent.VisualIslandDeleted event -> {
                 if (event.islandId() != null && !event.islandId().isBlank()) {
                     playerIslands.removeIf(island -> island.id().equals(event.islandId()));
+                    // Compact ordinals in any island that lost an assignment
+                    // — but here we just drop them all wholesale because the
+                    // island itself is gone.
                     visualHomes.entrySet().removeIf(entry ->
                             entry.getValue() != null && event.islandId().equals(entry.getValue().islandId()));
                     chestLinks.removeIf(link -> event.islandId().equals(link.islandId()));
                 }
             }
             case WorkflowEvent.VisualHomeAssigned event -> {
-                if (event.assignment() != null && event.assignment().identity() != null) {
-                    visualHomes.put(event.assignment().identity(), event.assignment());
+                VisualHomeAssignment requested = event.assignment();
+                if (requested != null && requested.identity() != null) {
+                    applyVisualHomeAssignment(visualHomes, requested);
                 }
             }
             case WorkflowEvent.VisualHomeCleared event -> {
                 if (event.identity() != null) {
-                    visualHomes.remove(event.identity());
+                    VisualHomeAssignment removed = visualHomes.remove(event.identity());
+                    if (removed != null) {
+                        compactOrdinalsAfterRemove(visualHomes, removed.islandId(), removed.ordinal());
+                    }
                 }
             }
             case WorkflowEvent.TemplateIslandDismissed event -> {
@@ -398,6 +397,95 @@ public final class WorkflowProjection {
                 new ChestLinkMap(chestLinks),
                 kitMap
         );
+    }
+
+    /**
+     * Apply a {@link WorkflowEvent.VisualHomeAssigned} to the live home map.
+     *
+     * <p>The event carries the user-perspective insert position
+     * ({@code requested.ordinal()}). This helper performs the
+     * remove-from-source / insert-with-shift bookkeeping so all the other
+     * assignments in the affected islands stay in sync. See Phase 2.2 of
+     * {@code docs/plans/relevance-lod-prototype.md}.
+     */
+    static void applyVisualHomeAssignment(
+            LinkedHashMap<ItemIdentity, VisualHomeAssignment> assignments,
+            VisualHomeAssignment requested
+    ) {
+        ItemIdentity identity = requested.identity();
+        String dstIslandId = requested.islandId();
+        int dstOrdinal = Math.max(0, requested.ordinal());
+
+        VisualHomeAssignment previous = assignments.remove(identity);
+        if (previous != null) {
+            compactOrdinalsAfterRemove(assignments, previous.islandId(), previous.ordinal());
+        }
+
+        int dstSize = islandSize(assignments, dstIslandId);
+        int insertOrdinal = Math.min(dstOrdinal, dstSize);
+        // If src == dst and srcOrdinal < dstOrdinal, the user-perspective
+        // position already accounts for X being in the list; after the
+        // remove + compact step above, the insert target slid down by one.
+        if (previous != null
+                && previous.islandId().equals(dstIslandId)
+                && previous.ordinal() < dstOrdinal) {
+            insertOrdinal = Math.max(0, Math.min(dstOrdinal - 1, dstSize));
+        }
+        for (Map.Entry<ItemIdentity, VisualHomeAssignment> entry : assignments.entrySet()) {
+            VisualHomeAssignment existing = entry.getValue();
+            if (existing != null
+                    && dstIslandId.equals(existing.islandId())
+                    && existing.ordinal() >= insertOrdinal) {
+                entry.setValue(new VisualHomeAssignment(
+                        existing.identity(),
+                        existing.islandId(),
+                        existing.ordinal() + 1,
+                        existing.origin(),
+                        existing.locked()
+                ));
+            }
+        }
+        assignments.put(identity, new VisualHomeAssignment(
+                identity,
+                dstIslandId,
+                insertOrdinal,
+                requested.origin(),
+                requested.locked()
+        ));
+    }
+
+    static void compactOrdinalsAfterRemove(
+            LinkedHashMap<ItemIdentity, VisualHomeAssignment> assignments,
+            String islandId,
+            int removedOrdinal
+    ) {
+        for (Map.Entry<ItemIdentity, VisualHomeAssignment> entry : assignments.entrySet()) {
+            VisualHomeAssignment existing = entry.getValue();
+            if (existing != null
+                    && islandId.equals(existing.islandId())
+                    && existing.ordinal() > removedOrdinal) {
+                entry.setValue(new VisualHomeAssignment(
+                        existing.identity(),
+                        existing.islandId(),
+                        existing.ordinal() - 1,
+                        existing.origin(),
+                        existing.locked()
+                ));
+            }
+        }
+    }
+
+    private static int islandSize(
+            Map<ItemIdentity, VisualHomeAssignment> assignments,
+            String islandId
+    ) {
+        int count = 0;
+        for (VisualHomeAssignment assignment : assignments.values()) {
+            if (assignment != null && islandId.equals(assignment.islandId())) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private static LinkedHashMap<UUID, ClaimedChest> indexChests(List<ClaimedChest> source) {
