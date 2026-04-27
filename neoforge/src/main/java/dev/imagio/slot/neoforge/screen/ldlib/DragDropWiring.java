@@ -21,7 +21,6 @@ import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestTileDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.StorageZoneDrag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
@@ -279,24 +278,6 @@ final class DragDropWiring {
                 event.stopPropagation();
                 return;
             }
-            ChestTileDrag chestDrag = chestTileDrag(event);
-            if (chestDrag != null) {
-                host.rpc.sendMoveChest(
-                        chestDrag.storageId(),
-                        atlas.worldX(event.x) - chestDrag.grabOffsetX(),
-                        atlas.worldY(event.y) - chestDrag.grabOffsetY()
-                );
-                event.stopPropagation();
-                return;
-            }
-            StorageZoneDrag zoneDrag = storageZoneDrag(event);
-            if (zoneDrag != null) {
-                int newLeft = atlas.worldX(event.x) - zoneDrag.grabOffsetX();
-                int newTop = atlas.worldY(event.y) - zoneDrag.grabOffsetY();
-                host.rpc.sendMoveStorageZone(newLeft - zoneDrag.originX(), newTop - zoneDrag.originY());
-                event.stopPropagation();
-                return;
-            }
             HotbarSlotDrag hotbarItem = hotbarSlotDrag(event);
             if (hotbarItem != null) {
                 if (hotbarDragHasHome(hotbarItem)) {
@@ -351,29 +332,6 @@ final class DragDropWiring {
                 );
                 event.stopPropagation();
                 return;
-            }
-            ChestTileDrag chestDrag = chestTileDrag(event);
-            if (chestDrag != null) {
-                if (event.target == atlas) {
-                    return;
-                }
-                host.rpc.sendMoveChest(
-                        chestDrag.storageId(),
-                        atlas.worldX(event.x) - chestDrag.grabOffsetX(),
-                        atlas.worldY(event.y) - chestDrag.grabOffsetY()
-                );
-                event.stopPropagation();
-                return;
-            }
-            StorageZoneDrag zoneDrag = storageZoneDrag(event);
-            if (zoneDrag != null) {
-                if (event.target == atlas) {
-                    return;
-                }
-                int newLeft = atlas.worldX(event.x) - zoneDrag.grabOffsetX();
-                int newTop = atlas.worldY(event.y) - zoneDrag.grabOffsetY();
-                host.rpc.sendMoveStorageZone(newLeft - zoneDrag.originX(), newTop - zoneDrag.originY());
-                event.stopPropagation();
             }
         });
     }
@@ -512,12 +470,10 @@ final class DragDropWiring {
             return;
         }
         IslandDrag islandDrag = islandDrag(event);
-        ChestTileDrag chestDrag = chestTileDrag(event);
         boolean acceptable = atlasItemDrag(event) != null
                 || hotbarSlotDrag(event) != null
-                || islandDrag != null
-                || chestDrag != null;
-        int color = islandDrag != null || chestDrag != null ? SELECTED : WARNING;
+                || islandDrag != null;
+        int color = islandDrag != null ? SELECTED : WARNING;
         updateGenericDropOverlay(atlas, acceptable, color);
     }
 
@@ -568,11 +524,6 @@ final class DragDropWiring {
         return payload instanceof ChestStackDrag chestStackDrag ? chestStackDrag : null;
     }
 
-    StorageZoneDrag storageZoneDrag(UIEvent event) {
-        Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
-        return payload instanceof StorageZoneDrag storageZoneDrag ? storageZoneDrag : null;
-    }
-
     boolean isDirectDragTarget(UIEvent event, UIElement element) {
         return event != null && event.target == element;
     }
@@ -584,45 +535,37 @@ final class DragDropWiring {
 
     void installChestTileDragSource(
             UIElement source,
-            SlotAtlasGraphView atlas,
             SlotWorkspaceViewModel.ClaimedChestTile tile
     ) {
-        int[] clickWorldX = {Integer.MIN_VALUE};
-        int[] clickWorldY = {Integer.MIN_VALUE};
+        int[] clickScreenX = {Integer.MIN_VALUE};
+        int[] clickScreenY = {Integer.MIN_VALUE};
         source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button != 0) {
                 return;
             }
-            clickWorldX[0] = atlas.worldX(event.x);
-            clickWorldY[0] = atlas.worldY(event.y);
+            clickScreenX[0] = (int) event.x;
+            clickScreenY[0] = (int) event.y;
         }, true);
         source.addEventListener(UIEvents.MOUSE_UP, event -> {
-            clickWorldX[0] = Integer.MIN_VALUE;
-            clickWorldY[0] = Integer.MIN_VALUE;
+            clickScreenX[0] = Integer.MIN_VALUE;
+            clickScreenY[0] = Integer.MIN_VALUE;
         }, true);
         source.addEventListener(UIEvents.MOUSE_MOVE, event -> {
-            if (clickWorldX[0] == Integer.MIN_VALUE) {
+            if (clickScreenX[0] == Integer.MIN_VALUE) {
                 return;
             }
             if (!source.isMouseDown(0) || isDragging(source)) {
                 return;
             }
-            float scale = atlas.getScale();
-            float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
-            float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
-            if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
+            float dx = event.x - clickScreenX[0];
+            float dy = event.y - clickScreenY[0];
+            if (dx * dx + dy * dy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
                 return;
             }
-            int grabOffsetX = Math.max(0, Math.min(tile.width(), clickWorldX[0] - tile.atlasX()));
-            int grabOffsetY = Math.max(0, Math.min(tile.height(), clickWorldY[0] - tile.atlasY()));
-            int widthPx = Math.max(48, atlas.screenPixelsForWorldUnits(tile.width()));
-            int heightPx = Math.max(20, atlas.screenPixelsForWorldUnits(tile.height()));
-            int dragOffsetX = Math.round(grabOffsetX * scale);
-            int dragOffsetY = Math.round(grabOffsetY * scale);
             source.startDrag(
-                    new ChestTileDrag(tile.storageId(), grabOffsetX, grabOffsetY),
+                    new ChestTileDrag(tile.storageId(), 0, 0),
                     rect((STORAGE_TILE_FILL & 0x00FFFFFF) | 0x70000000)
-            ).setDragTexture(-dragOffsetX, -dragOffsetY, widthPx, heightPx);
+            ).setDragTexture(-10, -8, 96, 18);
             host.localStatus.set("dragging " + tile.label());
         });
         source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
@@ -630,36 +573,34 @@ final class DragDropWiring {
 
     void installChestStackDragSource(
             UIElement cell,
-            SlotAtlasGraphView atlas,
             String storageId,
             int chestSlotIndex,
             ItemStack stack,
             String chestLabel
     ) {
-        int[] clickWorldX = {Integer.MIN_VALUE};
-        int[] clickWorldY = {Integer.MIN_VALUE};
+        int[] clickScreenX = {Integer.MIN_VALUE};
+        int[] clickScreenY = {Integer.MIN_VALUE};
         cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button != 0) {
                 return;
             }
-            clickWorldX[0] = atlas.worldX(event.x);
-            clickWorldY[0] = atlas.worldY(event.y);
+            clickScreenX[0] = (int) event.x;
+            clickScreenY[0] = (int) event.y;
         });
         cell.addEventListener(UIEvents.MOUSE_UP, event -> {
-            clickWorldX[0] = Integer.MIN_VALUE;
-            clickWorldY[0] = Integer.MIN_VALUE;
+            clickScreenX[0] = Integer.MIN_VALUE;
+            clickScreenY[0] = Integer.MIN_VALUE;
         });
         cell.addEventListener(UIEvents.MOUSE_MOVE, event -> {
-            if (clickWorldX[0] == Integer.MIN_VALUE) {
+            if (clickScreenX[0] == Integer.MIN_VALUE) {
                 return;
             }
             if (!cell.isMouseDown(0) || isDragging(cell)) {
                 return;
             }
-            float scale = atlas.getScale();
-            float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
-            float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
-            if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
+            float dx = event.x - clickScreenX[0];
+            float dy = event.y - clickScreenY[0];
+            if (dx * dx + dy * dy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
                 return;
             }
             cell.startDrag(

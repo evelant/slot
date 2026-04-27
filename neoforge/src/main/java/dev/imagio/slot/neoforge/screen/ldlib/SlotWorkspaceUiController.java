@@ -39,8 +39,6 @@ import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitSlotDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.StorageZoneBounds;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.StorageZoneDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
@@ -87,31 +85,23 @@ final class SlotWorkspaceUiController {
     SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
     String hoveredIslandId;
     /**
-     * Storage areas the player has explicitly pinned-expanded by clicking
-     * their chip. Phase 3 of {@code docs/plans/storage-areas.md}: areas
-     * default-collapsed when nothing is proximate; the user can pin one
-     * open to inspect contents off-base. Persists across rebuilds within
-     * a session — a fresh screen open starts with everything collapsed.
+     * Manual override for the active storage tab. {@code null} means
+     * "follow proximity". Set when the player clicks a tab chip in the
+     * storage strip; cleared when the player clicks the active tab again.
+     * Per-session, not persisted to the projection.
      */
-    final java.util.Set<String> expandedAreaIds = new java.util.HashSet<>();
+    String activeStorageAreaId;
+    /**
+     * Cross-surface hover cursor for storage chest cards. Mirrors
+     * {@link #hoveredIslandId} in pattern: hovering a chest card sets
+     * this; island elements observe it to highlight their linked-from
+     * counterparts.
+     */
+    String hoveredStorageId;
     final Observable<Integer> selectedHotbarIndex = new Observable<>(-1);
     int hoveredHotbarIndex = -1;
     final List<Observable.Subscription> atlasContentSubscriptions = new ArrayList<>();
     final java.util.Map<Integer, UIElement> hotbarSlotElements = new java.util.HashMap<>();
-    /**
-     * Dim non-proximate link-thread elements, keyed by island id. Built
-     * once per atlas rebuild for every chest-linked island that has at
-     * least one non-proximate linked chest, hidden by default, and
-     * toggled visible on hover via
-     * {@link IslandChestBuilder#attachIslandHoverListeners}. Pre-creating
-     * the elements lets the hover handler call {@code setVisible} without
-     * forcing a full {@link #rebuildNow()} — a rebuild on hover would
-     * destroy the element holding the listener mid-event, fire a
-     * synthetic MOUSE_LEAVE on the destroyed element, fire MOUSE_ENTER on
-     * the freshly recreated one, and oscillate every frame. That loop is
-     * what previously made chest-linked island headers undraggable.
-     */
-    final java.util.Map<String, java.util.List<UIElement>> dimLinkThreadsByIsland = new java.util.HashMap<>();
     SlotWorkspaceViewModel.IdentityRef contextMenuAtlasIdentity;
     int contextMenuHotbarIndex = -1;
     String contextMenuKitId;
@@ -151,6 +141,7 @@ final class SlotWorkspaceUiController {
     final ContextMenuBuilder menu = new ContextMenuBuilder(this);
     final IslandChestBuilder islandChest = new IslandChestBuilder(this);
     final AtlasCardBuilder atlasCard = new AtlasCardBuilder(this);
+    final StoragePanelBuilder storagePanel = new StoragePanelBuilder(this);
     SlotAtlasGraphView atlasView;
     UIElement atlasPanelElement;
     UIElement hoverTrailOverlayElement;
@@ -590,6 +581,27 @@ final class SlotWorkspaceUiController {
 
 
 
+
+    /**
+     * Resolve which storage area the strip should expand. Manual
+     * override wins; otherwise the highest-displayOrder proximate area;
+     * otherwise null (strip stays collapsed).
+     */
+    String effectiveStorageAreaId() {
+        if (activeStorageAreaId != null && viewModel.storageArea(activeStorageAreaId) != null) {
+            return activeStorageAreaId;
+        }
+        SlotWorkspaceViewModel.StorageAreaSnapshot best = null;
+        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : viewModel.storageAreas()) {
+            if (!area.proximate()) {
+                continue;
+            }
+            if (best == null || area.displayOrder() > best.displayOrder()) {
+                best = area;
+            }
+        }
+        return best == null ? null : best.areaId();
+    }
 
     boolean anyChestProximate() {
         for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {

@@ -27,6 +27,8 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
+import dev.imagio.slot.workflow.domain.StorageArea;
+import dev.imagio.slot.workflow.domain.StorageAreaWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -285,6 +287,24 @@ public final class SlotTestCommands {
         int centerY = (int) Math.floor(player.getY());
         int centerZ = (int) Math.floor(player.getZ());
 
+        // Create the named storage areas the generator referenced (if any)
+        // up-front so each claim lands in the right area instead of the
+        // default Main Base bucket. Areas seeded near the player at the
+        // first chest's offset so their UI chip starts in a sensible spot.
+        StorageAreaWorkflowDomainService areaWorkflow =
+                SlotPlayerWorkflowRuntimeService.runtime(player).storageAreaWorkflow();
+        Map<String, UUID> areaIdByLabel = new LinkedHashMap<>();
+        for (ChestSpec spec : chests) {
+            String label = spec.areaLabel();
+            if (label == null || label.isBlank()) {
+                continue;
+            }
+            areaIdByLabel.computeIfAbsent(label, l -> {
+                StorageArea created = areaWorkflow.createArea(l, centerX, centerZ);
+                return created == null ? null : created.areaId();
+            });
+        }
+
         int placed = 0;
         int claimed = 0;
         int linked = 0;
@@ -313,7 +333,8 @@ public final class SlotTestCommands {
             }
             placed++;
             fillChestFromSpec(level, pos, spec);
-            ClaimedChest claimedChest = ChestClaimServerService.claim(player, pos);
+            UUID requestedAreaId = areaIdByLabel.get(spec.areaLabel());
+            ClaimedChest claimedChest = ChestClaimServerService.claim(player, pos, requestedAreaId);
             if (claimedChest == null) {
                 claimFailed++;
                 SlotCommon.LOGGER.warn(

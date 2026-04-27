@@ -62,6 +62,18 @@ public final class RealisticAtlasGenerator {
     private static final double CHEST_BUCKET_BIAS = 0.85;
     private static final int CHEST_MAX_PER_BUCKET = 5;
     private static final int CHEST_ITEMS_PER_ADDITIONAL = 20;
+
+    /**
+     * Storage-area split assigned to populate-generated chests. Tests
+     * exercise multiple areas in the storage panel by mapping each
+     * cardinal direction to an area label; cardinals 0/2 (WEST/EAST)
+     * land in "Mountain Mine" and 1/3 (NORTH/SOUTH) land in "Main
+     * Base", so even small chest budgets populate at least two
+     * tabs. Unlinked overflow inherits "Main Base" since it stacks
+     * behind the player (NORTH).
+     */
+    static final String CHEST_AREA_MAIN = "Main Base";
+    static final String CHEST_AREA_MOUNTAIN = "Mountain Mine";
     // Within a cluster: chests are packed tight (1-block gap between adjacent chests
     // both along primary axis and between lanes). Between parent clusters sharing a
     // cardinal: 5 spacer rows × 2 blocks = 10 blocks of empty space before the next
@@ -465,16 +477,32 @@ public final class RealisticAtlasGenerator {
                 .thenComparingInt(b -> b.match().isSubsystem() ? 1 : 0)
                 .thenComparing(b -> b.island().id()));
 
+        // Square-ish wrap target: islands flow horizontally inside a band
+        // sized to roughly sqrt(total area) so a populate run with many
+        // mechanism subsystems doesn't strew them in a single 3000-wide
+        // strip. Sub-rows within a cluster row stack tightly; different
+        // cluster rows still get the full ISLAND_GAP between them so the
+        // semantic grouping reads.
+        long totalArea = 0L;
+        for (IslandBuild b : builds) {
+            totalArea += (long) b.predictedWidth() * (long) b.predictedHeight();
+        }
+        int targetWidth = Math.max(800,
+                (int) Math.round(Math.sqrt(Math.max(1L, totalArea)) * 1.4));
+
         int currentY = ATLAS_ORIGIN_Y;
         int currentRow = -1;
         int currentX = ATLAS_ORIGIN_X;
         int rowMaxHeight = 0;
         int lastColumn = -1;
+        int subRowGap = ISLAND_GAP;
 
         for (int index = 0; index < builds.size(); index++) {
             IslandBuild build = builds.get(index);
             int row = build.match().clusterRow();
-            if (row != currentRow) {
+            int column = build.match().clusterColumn();
+            boolean newClusterRow = row != currentRow;
+            if (newClusterRow) {
                 if (currentRow != -1) {
                     currentY += rowMaxHeight + ISLAND_GAP;
                 }
@@ -482,9 +510,18 @@ public final class RealisticAtlasGenerator {
                 currentX = ATLAS_ORIGIN_X;
                 rowMaxHeight = 0;
                 lastColumn = -1;
+            } else {
+                int gap = column != lastColumn ? ISLAND_PARENT_GROUP_GAP : ISLAND_GAP;
+                int prospective = currentX + gap + build.predictedWidth();
+                if (prospective > ATLAS_ORIGIN_X + targetWidth && currentX > ATLAS_ORIGIN_X) {
+                    // Wrap to a sub-row within the same cluster row.
+                    currentY += rowMaxHeight + subRowGap;
+                    currentX = ATLAS_ORIGIN_X;
+                    rowMaxHeight = 0;
+                    lastColumn = -1;
+                }
             }
 
-            int column = build.match().clusterColumn();
             if (lastColumn != -1) {
                 currentX += column != lastColumn ? ISLAND_PARENT_GROUP_GAP : ISLAND_GAP;
             }
@@ -565,6 +602,7 @@ public final class RealisticAtlasGenerator {
         for (Map.Entry<Integer, List<IslandAllocation>> entry : byColumn.entrySet()) {
             int column = entry.getKey();
             Cardinal cardinal = CARDINAL_BY_COLUMN[Math.floorMod(column, CARDINAL_BY_COLUMN.length)];
+            String areaLabel = areaLabelForCardinal(cardinal);
 
             int perColumnLocal = 0;
             for (IslandAllocation allocation : entry.getValue()) {
@@ -576,7 +614,8 @@ public final class RealisticAtlasGenerator {
                             chestIndex++,
                             allocation.build(),
                             offset[0], offset[1],
-                            allHomedStacks, random
+                            allHomedStacks, random,
+                            areaLabel
                     ));
                 }
                 perColumnLocal += allocation.count();
@@ -586,19 +625,28 @@ public final class RealisticAtlasGenerator {
         }
 
         // Unlinked chests land in a small pile behind the player (NORTH, past any linked
-        // clusters that claimed NORTH).
+        // clusters that claimed NORTH). NORTH is "Main Base", matching the cardinal split.
         int unlinkedStartDepth = cardinalDepth.get(Cardinal.NORTH);
+        String unlinkedAreaLabel = areaLabelForCardinal(Cardinal.NORTH);
         for (int u = 0; u < unlinkedBudget; u++) {
             int[] offset = cardinalOffset(Cardinal.NORTH, unlinkedStartDepth, u);
             chests.add(buildChestSpec(
                     chestIndex++,
                     null,
                     offset[0], offset[1],
-                    allHomedStacks, random
+                    allHomedStacks, random,
+                    unlinkedAreaLabel
             ));
         }
 
         return chests;
+    }
+
+    private static String areaLabelForCardinal(Cardinal cardinal) {
+        return switch (cardinal) {
+            case WEST, EAST -> CHEST_AREA_MOUNTAIN;
+            case NORTH, SOUTH -> CHEST_AREA_MAIN;
+        };
     }
 
     private static int[] allocateChestsPerBucket(
@@ -698,7 +746,8 @@ public final class RealisticAtlasGenerator {
             int deltaX,
             int deltaZ,
             List<TemplatedStack> allHomedStacks,
-            Random random
+            Random random,
+            String areaLabel
     ) {
         IslandSuggestionTemplate linkedTemplate = linked != null ? linked.match().parentTemplate() : null;
         List<ItemStack> linkedPool = linked != null ? linked.stacksOnly() : List.of();
@@ -739,7 +788,7 @@ public final class RealisticAtlasGenerator {
         }
 
         String linkedIslandId = linked != null ? linked.island().id() : "";
-        return new ChestSpec(index, linkedIslandId, contents, deltaX, deltaZ);
+        return new ChestSpec(index, linkedIslandId, contents, deltaX, deltaZ, areaLabel);
     }
 
     private record IslandAllocation(IslandBuild build, int count) {

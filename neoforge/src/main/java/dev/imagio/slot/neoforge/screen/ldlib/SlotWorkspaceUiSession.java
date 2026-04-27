@@ -363,35 +363,17 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
-    void moveStorageZone(Integer deltaX, Integer deltaY) {
+    void moveChestToArea(String storageId, String areaId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        int dx = deltaX == null ? 0 : deltaX;
-        int dy = deltaY == null ? 0 : deltaY;
-        if (dx == 0 && dy == 0) {
-            return;
-        }
         refreshServerView(serverPlayer);
-        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        ClaimedChestMap map = runtime.chestClaimWorkflow().claimedChestMap();
-        int moved = 0;
-        for (ClaimedChest chest : map.chests()) {
-            WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.moveChest(
-                    runtime,
-                    viewModel,
-                    chest.storageId().toString(),
-                    chest.atlasX() + dx,
-                    chest.atlasY() + dy
-            );
-            if ("rejected".equals(outcome.status())) {
-                continue;
-            }
-            moved++;
-        }
-        status = moved > 0 ? "storage_zone_moved" : "rejected";
-        diagnostics = "moved=" + moved;
-        broadcast(serverPlayer);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.moveChestToArea(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                storageId,
+                areaId
+        ));
     }
 
     void renameIsland(String islandId, String label) {

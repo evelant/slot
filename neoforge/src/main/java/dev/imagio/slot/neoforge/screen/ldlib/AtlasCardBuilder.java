@@ -954,9 +954,9 @@ private void addCommonAtlasSignals(
         });
         // Items sit on top of their island panel (z=2 vs z=1) and receive
         // their own mouse enter/leave, so hovering an item inside an
-        // island must also flip host.hoveredIslandId — otherwise the dim
-        // link-thread preview only shows when the cursor happens to hit
-        // empty island background between cards.
+        // island must also flip host.hoveredIslandId — otherwise the
+        // cross-surface highlight on linked chest cards only fires when
+        // the cursor happens to hit empty island background between cards.
         SlotWorkspaceViewModel.AtlasIsland hoverIsland = host.viewModel.island(item.islandId());
         host.islandChest.attachIslandHoverListeners(button, hoverIsland);
         return button;

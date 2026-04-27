@@ -24,9 +24,11 @@ public record AtlasLayoutConfig(
         int atlasMargin,
         int minIslandWidth,
         int minIslandHeight,
+        int ghostOnlyIslandMinHeight,
         float relevanceLift,
         float targetAspectFudge,
-        float ghostShrinkFactor
+        float ghostShrinkFactor,
+        float trailingGhostExtraShrink
 ) {
     /**
      * Defaults match {@code SlotWorkspaceAtlasLayout} constants.
@@ -39,6 +41,11 @@ public record AtlasLayoutConfig(
      * {@link #ghostShrinkFactor} = {@code 0.65f} pushes non-carried
      * (ghost) cards even smaller than the relevance-zero baseline so
      * the carried items dominate the visual hierarchy at a glance.
+     * {@link #trailingGhostExtraShrink} = {@code 0.4f} on top of
+     * {@code ghostShrinkFactor} for ghosts that fall after the last
+     * carried item in canonical order: a row of trailing ghosts packs
+     * tightly into a thin strip and a fully-ghost island collapses to
+     * its {@link #ghostOnlyIslandMinHeight} (header-only).
      */
     public static final AtlasLayoutConfig DEFAULT = new AtlasLayoutConfig(
             32,
@@ -51,9 +58,11 @@ public record AtlasLayoutConfig(
             24,
             96,
             72,
+            12,
             1.5f,
             1.2f,
-            0.65f
+            0.65f,
+            0.4f
     );
 
     public AtlasLayoutConfig {
@@ -67,6 +76,7 @@ public record AtlasLayoutConfig(
         atlasMargin = Math.max(0, atlasMargin);
         minIslandWidth = Math.max(baseCardWidth + islandPaddingX * 2, minIslandWidth);
         minIslandHeight = Math.max(baseCardHeight + islandContentTop + islandPaddingY, minIslandHeight);
+        ghostOnlyIslandMinHeight = Math.max(1, ghostOnlyIslandMinHeight);
         if (Float.isNaN(relevanceLift) || relevanceLift < 0f) {
             relevanceLift = 0f;
         }
@@ -77,6 +87,11 @@ public record AtlasLayoutConfig(
             ghostShrinkFactor = 1f;
         } else if (ghostShrinkFactor > 1f) {
             ghostShrinkFactor = 1f;
+        }
+        if (Float.isNaN(trailingGhostExtraShrink) || trailingGhostExtraShrink <= 0f) {
+            trailingGhostExtraShrink = 1f;
+        } else if (trailingGhostExtraShrink > 1f) {
+            trailingGhostExtraShrink = 1f;
         }
     }
 

@@ -15,25 +15,14 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestTileDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.StorageZoneBounds;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.StorageZoneDrag;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
-import dev.vfyjxf.taffy.style.AlignContent;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 
 final class IslandChestBuilder {
     private final SlotWorkspaceUiController host;
@@ -81,12 +70,9 @@ final class IslandChestBuilder {
     }
 
     /**
-     * Install MOUSE_ENTER/LEAVE listeners on any atlas-level element that
-     * belongs visually to an island (panel, header, item cards, badge)
-     * so hovering ANY of them surfaces the dim non-proximate link threads.
-     * Atlas host.content is flat — these elements are siblings, not nested —
-     * so each one needs its own listener to flip {@code host.hoveredIslandId}.
-     * No-op for non-host.player islands and islands without non-proximate links.
+     * Track {@code host.hoveredIslandId} on enter/leave so chest cards in
+     * the storage strip can highlight themselves when their linked island
+     * is hovered. No-op for non-player islands.
      */
     void attachIslandHoverListeners(UIElement element, SlotWorkspaceViewModel.AtlasIsland island) {
         if (element == null || island == null) {
@@ -95,62 +81,15 @@ final class IslandChestBuilder {
         if (island.kind() != VisualAtlasIslandKind.PLAYER) {
             return;
         }
-        if (!islandHasNonProximateLinks(island.islandId())) {
-            return;
-        }
         String islandId = island.islandId();
-        // Toggle dim-thread visibility in place rather than triggering a
-        // host.rebuild(). A rebuild here destroys the element holding
-        // this listener mid-event, which fires a synthetic MOUSE_LEAVE on
-        // the destroyed element (clearing hoveredIslandId + scheduling
-        // another rebuild) and a fresh MOUSE_ENTER on the recreated
-        // element (setting hoveredIslandId + scheduling yet another
-        // rebuild). The result is a per-frame oscillation that visibly
-        // flickers the header and prevents drag-from-header from ever
-        // crossing the drag-start threshold. The threads are pre-built
-        // for every chest-linked island in AtlasPanelBuilder.buildAtlas
-        // and stored in host.dimLinkThreadsByIsland.
         element.addEventListener(UIEvents.MOUSE_ENTER, event -> {
-            if (!islandId.equals(host.hoveredIslandId)) {
-                setDimLinkThreadVisibility(host.hoveredIslandId, false);
-                host.hoveredIslandId = islandId;
-                setDimLinkThreadVisibility(islandId, true);
-            }
+            host.hoveredIslandId = islandId;
         }, true);
         element.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
             if (islandId.equals(host.hoveredIslandId)) {
                 host.hoveredIslandId = null;
-                setDimLinkThreadVisibility(islandId, false);
             }
         }, true);
-    }
-
-    private void setDimLinkThreadVisibility(String islandId, boolean visible) {
-        if (islandId == null) {
-            return;
-        }
-        List<UIElement> threads = host.dimLinkThreadsByIsland.get(islandId);
-        if (threads == null) {
-            return;
-        }
-        for (UIElement thread : threads) {
-            thread.setVisible(visible);
-        }
-    }
-
-    boolean islandHasNonProximateLinks(String islandId) {
-        if (islandId == null || islandId.isBlank()) {
-            return false;
-        }
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            if (tile.proximate()) {
-                continue;
-            }
-            if (tile.linkedIslandIds().contains(islandId)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     UIElement islandCarriedBadge(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
@@ -223,6 +162,7 @@ final class IslandChestBuilder {
         host.drag.installIslandDragSource(header, atlas, island);
         host.drag.installIslandDropTarget(header, islandPanelEl, atlas, island);
         attachIslandHoverListeners(header, island);
+        installIslandHoverPaint(header, island.islandId());
 
         float[] lastScale = {Float.NaN};
         int[] lastWorldFontQuarter = {-1};
@@ -303,246 +243,94 @@ final class IslandChestBuilder {
         return header;
     }
 
-    StorageZoneBounds storageZoneBounds() {
-        List<SlotWorkspaceViewModel.ClaimedChestTile> tiles = host.viewModel.claimedChestTiles();
-        if (tiles.isEmpty()) {
-            return null;
-        }
-        int minX = Integer.MAX_VALUE;
-        int minY = Integer.MAX_VALUE;
-        int maxX = Integer.MIN_VALUE;
-        int maxY = Integer.MIN_VALUE;
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : tiles) {
-            minX = Math.min(minX, tile.atlasX());
-            minY = Math.min(minY, tile.atlasY());
-            maxX = Math.max(maxX, tile.atlasX() + tile.width());
-            maxY = Math.max(maxY, tile.atlasY() + tile.height());
-        }
-        int pad = SlotWorkspaceAtlasLayout.STORAGE_ZONE_PADDING;
-        return new StorageZoneBounds(
-                minX - pad,
-                minY - pad,
-                (maxX - minX) + pad * 2,
-                (maxY - minY) + pad * 2
-        );
-    }
-
     /**
-     * Bounding box around a single storage area's chest tiles (with the
-     * standard zone padding). Used by Phase 3 to render per-area
-     * backdrops/headers when the area is expanded. Returns null if the
-     * area is empty.
+     * Aggregate per-area item presence for an island. Sums atlas-item
+     * presence counts across every item homed to {@code island}, keyed
+     * by area label. Returns null/empty when the island has no presence.
      */
-    StorageZoneBounds storageAreaBounds(SlotWorkspaceViewModel.StorageAreaSnapshot area) {
-        if (area == null || area.chestTiles().isEmpty()) {
-            return null;
-        }
-        int minX = Integer.MAX_VALUE;
-        int minY = Integer.MAX_VALUE;
-        int maxX = Integer.MIN_VALUE;
-        int maxY = Integer.MIN_VALUE;
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
-            minX = Math.min(minX, tile.atlasX());
-            minY = Math.min(minY, tile.atlasY());
-            maxX = Math.max(maxX, tile.atlasX() + tile.width());
-            maxY = Math.max(maxY, tile.atlasY() + tile.height());
-        }
-        int pad = SlotWorkspaceAtlasLayout.STORAGE_ZONE_PADDING;
-        return new StorageZoneBounds(
-                minX - pad,
-                minY - pad,
-                (maxX - minX) + pad * 2,
-                (maxY - minY) + pad * 2
-        );
-    }
-
-    /**
-     * Per-area header strip — same chrome as the legacy global storage
-     * zone header but labelled with the area's name + chest count.
-     */
-    UIElement storageAreaHeader(
-            StorageZoneBounds bounds,
-            SlotAtlasGraphView atlas,
-            SlotWorkspaceViewModel.StorageAreaSnapshot area
-    ) {
-        int headerHeight = STORAGE_ZONE_HEADER_HEIGHT;
-        UIElement header = panel(STORAGE_ZONE_HEADER_FILL).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(bounds.left())
-                .top(bounds.top() - headerHeight)
-                .width(bounds.width())
-                .height(headerHeight)
-                .paddingHorizontal(8)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        header.style(style -> style.zIndex(1));
-        String labelText = area.label() + " · " + area.chestCount();
-        Label title = label(labelText, ACCENT);
-        title.layout(layout -> layout.flex(1).height(headerHeight));
-        title.textStyle(style -> style
-                .textColor(ACCENT)
-                .textShadow(false)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        title.setAllowHitTest(false);
-        header.addChild(title);
-
-        // Click-to-collapse: clicking the header re-folds an explicitly
-        // expanded area. Proximity-expanded areas can also be clicked
-        // closed; the next proximity tick will reopen them.
-        String areaId = area.areaId();
-        header.addEventListener(UIEvents.CLICK, event -> {
-            if (event.button != 0) {
-                return;
+    UIElement islandPresenceStrip(SlotWorkspaceViewModel.AtlasIsland island) {
+        java.util.LinkedHashMap<String, Integer> totalsByArea = new java.util.LinkedHashMap<>();
+        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+            if (!island.islandId().equals(item.islandId())) {
+                continue;
             }
-            event.stopPropagation();
-            host.expandedAreaIds.remove(areaId);
-            host.rebuild();
-        });
-        return header;
-    }
-
-    /**
-     * Compact chip rendered when an area is collapsed. Click expands it.
-     * Phase 3 of {@code docs/plans/storage-areas.md}: at default zoom an
-     * atlas with multiple bases shows their chips taking ~40% of the old
-     * storage-zone footprint.
-     */
-    UIElement storageAreaChip(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.StorageAreaSnapshot area) {
-        int chipWidth = 120;
-        int chipHeight = 24;
-        int fill = area.proximate()
-                ? area.color()
-                : (area.color() & 0x00FFFFFF) | 0x60000000;
-        int textColor = area.proximate() ? TEXT : MUTED;
-
-        UIElement chip = panel(fill).layout(layout -> layout
+            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
+                if (entry.areaLabel() == null || entry.areaLabel().isBlank()) {
+                    continue;
+                }
+                totalsByArea.merge(entry.areaLabel(), entry.count(), Integer::sum);
+            }
+        }
+        if (totalsByArea.isEmpty()) {
+            return null;
+        }
+        java.util.List<java.util.Map.Entry<String, Integer>> ordered = new java.util.ArrayList<>(totalsByArea.entrySet());
+        ordered.sort(java.util.Map.Entry.<String, Integer>comparingByValue().reversed());
+        StringBuilder sb = new StringBuilder();
+        int shown = 0;
+        for (java.util.Map.Entry<String, Integer> entry : ordered) {
+            if (shown > 0) {
+                sb.append("  ");
+            }
+            sb.append(entry.getValue()).append(" ").append(entry.getKey());
+            shown++;
+            if (shown >= 3) {
+                break;
+            }
+        }
+        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement place = host.islandPlacementFor(island);
+        Label strip = label(sb.toString(), MUTED);
+        strip.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(area.atlasX())
-                .top(area.atlasY())
-                .width(chipWidth)
-                .height(chipHeight)
-                .paddingHorizontal(6)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        chip.style(style -> style.zIndex(1));
-
-        Label labelEl = label(area.label(), textColor);
-        labelEl.layout(layout -> layout.flex(1).height(chipHeight));
-        labelEl.textStyle(style -> style
-                .textColor(textColor)
-                .textShadow(false)
-                .fontSize(9)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        labelEl.setAllowHitTest(false);
-        chip.addChild(labelEl);
-
-        Label countEl = label("· " + area.chestCount(), MUTED);
-        countEl.layout(layout -> layout.width(28).height(chipHeight));
-        countEl.textStyle(style -> style
+                .left(place.x())
+                .top(place.y() + place.height() + 1)
+                .width(place.width())
+                .height(8));
+        strip.textStyle(style -> style
                 .textColor(MUTED)
                 .textShadow(false)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.RIGHT)
-                .textAlignVertical(Vertical.CENTER));
-        countEl.setAllowHitTest(false);
-        chip.addChild(countEl);
-
-        String areaId = area.areaId();
-        chip.addEventListener(UIEvents.CLICK, event -> {
-            if (event.button != 0) {
-                return;
-            }
-            event.stopPropagation();
-            host.expandedAreaIds.add(areaId);
-            host.rebuild();
-        });
-        return chip;
-    }
-
-    UIElement storageZoneBackdrop(StorageZoneBounds bounds) {
-        UIElement backdrop = panel(STORAGE_ZONE_FILL).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(bounds.left())
-                .top(bounds.top())
-                .width(bounds.width())
-                .height(bounds.height()));
-        backdrop.style(style -> style.zIndex(0));
-        backdrop.setAllowHitTest(false);
-        return backdrop;
-    }
-
-    UIElement storageZoneHeader(StorageZoneBounds bounds, SlotAtlasGraphView atlas) {
-        int headerHeight = STORAGE_ZONE_HEADER_HEIGHT;
-        UIElement header = panel(STORAGE_ZONE_HEADER_FILL).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(bounds.left())
-                .top(bounds.top() - headerHeight)
-                .width(bounds.width())
-                .height(headerHeight)
-                .paddingHorizontal(8)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        header.style(style -> style.zIndex(1));
-        Label title = label("Storage", ACCENT);
-        title.layout(layout -> layout.flex(1).height(headerHeight));
-        title.textStyle(style -> style
-                .textColor(ACCENT)
-                .textShadow(false)
-                .fontSize(8)
+                .fontSize(6)
                 .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        title.setAllowHitTest(false);
-        header.addChild(title);
-        installStorageZoneDragSource(header, atlas, bounds);
-        return header;
+                .textAlignVertical(Vertical.TOP));
+        strip.style(style -> style.zIndex(2));
+        strip.setAllowHitTest(false);
+        return strip;
     }
 
-    void installStorageZoneDragSource(UIElement source, SlotAtlasGraphView atlas, StorageZoneBounds bounds) {
-        int[] clickWorldX = {Integer.MIN_VALUE};
-        int[] clickWorldY = {Integer.MIN_VALUE};
-        source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (event.button != 0) {
+    /**
+     * Per-frame paint flip: when {@code host.hoveredStorageId} matches a
+     * chest linked to {@code islandId}, draw an accent overlay on
+     * {@code element}. Cheap enough to attach to every island title bar
+     * (it's a single equality check + a single overlay setter call when
+     * the state actually flips).
+     */
+    void installIslandHoverPaint(UIElement element, String islandId) {
+        boolean[] lastLit = {false};
+        element.addEventListener(UIEvents.TICK, event -> {
+            boolean lit = isStorageLinkedToIsland(host.hoveredStorageId, islandId);
+            if (lit == lastLit[0]) {
                 return;
             }
-            clickWorldX[0] = atlas.worldX(event.x);
-            clickWorldY[0] = atlas.worldY(event.y);
+            lastLit[0] = lit;
+            element.style(style -> style.overlayTexture(lit ? rect(HOVER_ACCENT_OVERLAY) : IGuiTexture.EMPTY));
         });
-        source.addEventListener(UIEvents.MOUSE_UP, event -> {
-            clickWorldX[0] = Integer.MIN_VALUE;
-            clickWorldY[0] = Integer.MIN_VALUE;
-        });
-        source.addEventListener(UIEvents.MOUSE_MOVE, event -> {
-            if (clickWorldX[0] == Integer.MIN_VALUE) {
-                return;
-            }
-            if (!source.isMouseDown(0) || host.drag.isDragging(source)) {
-                return;
-            }
-            float scale = atlas.getScale();
-            float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
-            float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
-            if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
-                return;
-            }
-            int grabOffsetX = clickWorldX[0] - bounds.left();
-            int grabOffsetY = clickWorldY[0] - bounds.top();
-            int widthPx = Math.max(48, atlas.screenPixelsForWorldUnits(bounds.width()));
-            int heightPx = Math.max(20, atlas.screenPixelsForWorldUnits(bounds.height() + STORAGE_ZONE_HEADER_HEIGHT));
-            int dragOffsetX = Math.round(grabOffsetX * scale);
-            int dragOffsetY = Math.round((grabOffsetY + STORAGE_ZONE_HEADER_HEIGHT) * scale);
-            source.startDrag(
-                    new StorageZoneDrag(grabOffsetX, grabOffsetY, bounds.left(), bounds.top()),
-                    rect((STORAGE_ZONE_FILL & 0x00FFFFFF) | 0x60000000)
-            ).setDragTexture(-dragOffsetX, -dragOffsetY, widthPx, heightPx);
-            host.localStatus.set("moving storage zone");
-        });
-        source.addEventListener(UIEvents.DRAG_END, event -> host.drag.handleDragEnd(event));
     }
 
-    UIElement chestTilePanel(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.ClaimedChestTile tile) {
+    boolean isStorageLinkedToIsland(String storageId, String islandId) {
+        if (storageId == null || islandId == null) {
+            return false;
+        }
+        SlotWorkspaceViewModel.ClaimedChestTile tile = host.viewModel.claimedChestTile(storageId);
+        return tile != null && tile.linkedIslandIds().contains(islandId);
+    }
+
+    /**
+     * Strip-flow chest card: header, item grid, link/take buttons, laid
+     * out as a flex child of the storage panel's card flow. Sized to the
+     * tile's authored width/height; inner elements are absolute-
+     * positioned relative to this panel.
+     */
+    UIElement chestTilePanelInFlow(SlotWorkspaceViewModel.ClaimedChestTile tile) {
         int fill = chestTileFill(tile);
         int textColor = tile.proximate() ? TEXT : MUTED;
         int cellSize = SlotWorkspaceAtlasLayout.CHEST_TILE_CELL;
@@ -551,9 +339,6 @@ final class IslandChestBuilder {
         int headerHeight = SlotWorkspaceAtlasLayout.CHEST_TILE_HEADER_HEIGHT;
 
         UIElement panel = panel(fill).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(tile.atlasX())
-                .top(tile.atlasY())
                 .width(tile.width())
                 .height(tile.height())
                 .paddingAll(0));
@@ -575,7 +360,7 @@ final class IslandChestBuilder {
         panel.addChild(header);
 
         int cellsToRender = tile.contents().size();
-        List<Integer> contentIndices = tile.contentSlotIndices();
+        java.util.List<Integer> contentIndices = tile.contentSlotIndices();
         for (int index = 0; index < cellsToRender; index++) {
             ItemStack stack = tile.contents().get(index);
             int chestSlotIndex = index < contentIndices.size() ? contentIndices.get(index) : index;
@@ -624,7 +409,7 @@ final class IslandChestBuilder {
                     host.selectedHotbarIndex.set(-1);
                     host.localStatus.set("selected " + cellStack.getHoverName().getString());
                 });
-                host.drag.installChestStackDragSource(cell, atlas, storageId, chestSlotIndex, cellStack, tile.label());
+                host.drag.installChestStackDragSource(cell, storageId, chestSlotIndex, cellStack, tile.label());
             }
             panel.addChild(cell);
         }
@@ -676,9 +461,34 @@ final class IslandChestBuilder {
         });
         panel.addChild(takeAllButton);
 
-        host.drag.installChestTileDragSource(panel, atlas, tile);
+        host.drag.installChestTileDragSource(panel, tile);
         installChestTileDropTarget(panel, tile);
+        installChestCardHover(panel, tile);
         return panel;
+    }
+
+    /**
+     * Track {@code host.hoveredStorageId} on enter/leave + paint accent
+     * when this tile's linked-from island is hovered.
+     */
+    void installChestCardHover(UIElement panel, SlotWorkspaceViewModel.ClaimedChestTile tile) {
+        String storageId = tile.storageId();
+        panel.addEventListener(UIEvents.MOUSE_ENTER, event -> host.hoveredStorageId = storageId, true);
+        panel.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            if (storageId.equals(host.hoveredStorageId)) {
+                host.hoveredStorageId = null;
+            }
+        }, true);
+        boolean[] lastLit = {false};
+        panel.addEventListener(UIEvents.TICK, event -> {
+            boolean lit = host.hoveredIslandId != null
+                    && tile.linkedIslandIds().contains(host.hoveredIslandId);
+            if (lit == lastLit[0]) {
+                return;
+            }
+            lastLit[0] = lit;
+            panel.style(style -> style.overlayTexture(lit ? rect(HOVER_ACCENT_OVERLAY) : IGuiTexture.EMPTY));
+        });
     }
 
     void installChestTileDropTarget(UIElement target, SlotWorkspaceViewModel.ClaimedChestTile tile) {
@@ -712,175 +522,6 @@ final class IslandChestBuilder {
     void updateChestTileDropOverlay(UIElement target, boolean proximate, UIEvent event) {
         boolean acceptable = host.drag.atlasItemDrag(event) != null || host.drag.hotbarSlotDrag(event) != null;
         host.drag.updateGenericDropOverlay(target, acceptable, proximate ? ACCENT : WARNING);
-    }
-
-
-    Set<String> highlightedIslandIdsFromProximateTiles() {
-        LinkedHashSet<String> highlighted = new LinkedHashSet<>();
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            if (tile.proximate()) {
-                highlighted.addAll(tile.linkedIslandIds());
-            }
-        }
-        return highlighted;
-    }
-
-    void addIslandHighlightFrame(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
-        int thickness = LINK_HIGHLIGHT_THICKNESS;
-        int color = LINK_HIGHLIGHT_COLOR;
-        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement place = host.islandPlacementFor(island);
-        int x = place.x();
-        int y = place.y();
-        int w = place.width();
-        int h = place.height();
-        atlas.addContentChild(highlightFrameSegment(color, x - thickness, y - thickness, w + thickness * 2, thickness));
-        atlas.addContentChild(highlightFrameSegment(color, x - thickness, y + h, w + thickness * 2, thickness));
-        atlas.addContentChild(highlightFrameSegment(color, x - thickness, y, thickness, h));
-        atlas.addContentChild(highlightFrameSegment(color, x + w, y, thickness, h));
-    }
-
-    UIElement highlightFrameSegment(int color, int x, int y, int w, int h) {
-        UIElement segment = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(x)
-                .top(y)
-                .width(w)
-                .height(h));
-        segment.style(style -> style.zIndex(5));
-        segment.setAllowHitTest(false);
-        return segment;
-    }
-
-    void addLinkAffordances(
-            SlotAtlasGraphView atlas,
-            SlotWorkspaceViewModel.ClaimedChestTile tile,
-            SlotWorkspaceViewModel.AtlasIsland island
-    ) {
-        UIElement thread = linkThread(tile, island);
-        if (thread != null) {
-            atlas.addContentChild(thread);
-        }
-
-        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement islandPlace = host.islandPlacementFor(island);
-        float tileCx = tile.atlasX() + tile.width() / 2f;
-        float tileCy = tile.atlasY() + tile.height() / 2f;
-        float islandCx = islandPlace.x() + islandPlace.width() / 2f;
-        float islandCy = islandPlace.y() + islandPlace.height() / 2f;
-        float dx = islandCx - tileCx;
-        float dy = islandCy - tileCy;
-        float distance = (float) Math.sqrt(dx * dx + dy * dy);
-        if (distance < 1f) {
-            return;
-        }
-        float cosA = dx / distance;
-        float sinA = dy / distance;
-        float angleDeg = (float) Math.toDegrees(Math.atan2(dy, dx));
-
-        float tileEdge = rectEdgeAlongDirection(tile.width(), tile.height(), cosA, sinA);
-        float tileArrowX = tileCx + (tileEdge + 6f) * cosA;
-        float tileArrowY = tileCy + (tileEdge + 6f) * sinA;
-        atlas.addContentChild(linkArrow(tileArrowX, tileArrowY, angleDeg, () -> {
-            host.camera.panToIsland(atlas, island);
-            host.localStatus.set("linked island: " + island.label());
-        }));
-
-        float islandEdge = rectEdgeAlongDirection(islandPlace.width(), islandPlace.height(), cosA, sinA);
-        float islandArrowX = islandCx - (islandEdge + 6f) * cosA;
-        float islandArrowY = islandCy - (islandEdge + 6f) * sinA;
-        atlas.addContentChild(linkArrow(islandArrowX, islandArrowY, angleDeg + 180f, () -> {
-            host.camera.panToChestTile(atlas, tile);
-            host.localStatus.set("linked chest: " + tile.label());
-        }));
-    }
-
-    float rectEdgeAlongDirection(int width, int height, float cosA, float sinA) {
-        float ax = Math.abs(cosA);
-        float ay = Math.abs(sinA);
-        float tx = ax < 0.001f ? Float.POSITIVE_INFINITY : (width / 2f) / ax;
-        float ty = ay < 0.001f ? Float.POSITIVE_INFINITY : (height / 2f) / ay;
-        return Math.min(tx, ty);
-    }
-
-    UIElement linkArrow(float worldX, float worldY, float rotationDeg, Runnable onClick) {
-        int size = 14;
-        Button arrow = button("\u25B6", true, 0x00000000);
-        arrow.layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(Math.round(worldX - size / 2f))
-                .top(Math.round(worldY - size / 2f))
-                .width(size)
-                .height(size));
-        arrow.textStyle(style -> style
-                .textColor(LINK_THREAD_COLOR)
-                .textShadow(false)
-                .fontSize(10f)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        arrow.buttonStyle(style -> {
-            style.baseTexture(IGuiTexture.EMPTY);
-            style.hoverTexture(rect(0x40FFFFFF));
-            style.pressedTexture(rect(0x60FFFFFF));
-        });
-        // Draw order is controlled by insertion order in buildAtlas
-        // (threads/arrows added before islands/chests). zIndex only
-        // influences hit-testing priority; leaving it at 0 keeps island
-        // and chest bodies (zIndex 1) ahead for clicks while still
-        // letting the arrow receive clicks where nothing else overlaps.
-        arrow.style(style -> style.zIndex(0));
-        arrow.transform(transform -> transform.pivot(0.5f, 0.5f).rotation(rotationDeg));
-        arrow.setOnClick(event -> {
-            if (event.button != 0) {
-                return;
-            }
-            event.stopPropagation();
-            onClick.run();
-        });
-        return arrow;
-    }
-
-    UIElement linkThread(
-            SlotWorkspaceViewModel.ClaimedChestTile tile,
-            SlotWorkspaceViewModel.AtlasIsland island
-    ) {
-        return buildThread(tile, island, LINK_THREAD_COLOR, 2);
-    }
-
-    UIElement dimLinkThread(
-            SlotWorkspaceViewModel.ClaimedChestTile tile,
-            SlotWorkspaceViewModel.AtlasIsland island
-    ) {
-        return buildThread(tile, island, LINK_THREAD_DIM_COLOR, 1);
-    }
-
-    UIElement buildThread(
-            SlotWorkspaceViewModel.ClaimedChestTile tile,
-            SlotWorkspaceViewModel.AtlasIsland island,
-            int color,
-            int thickness
-    ) {
-        dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement islandPlace = host.islandPlacementFor(island);
-        int tileCenterX = tile.atlasX() + tile.width() / 2;
-        int tileCenterY = tile.atlasY() + tile.height() / 2;
-        int islandCenterX = islandPlace.x() + islandPlace.width() / 2;
-        int islandCenterY = islandPlace.y() + islandPlace.height() / 2;
-        int dx = islandCenterX - tileCenterX;
-        int dy = islandCenterY - tileCenterY;
-        double distance = Math.sqrt((double) dx * dx + (double) dy * dy);
-        if (distance < 1.0) {
-            return null;
-        }
-        int length = Math.max(1, (int) Math.round(distance));
-        float angleDeg = (float) Math.toDegrees(Math.atan2(dy, dx));
-        UIElement thread = panel(color).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(tileCenterX)
-                .top(tileCenterY - thickness / 2)
-                .width(length)
-                .height(thickness));
-        thread.style(style -> style.zIndex(0));
-        thread.transform(transform -> transform.pivot(0f, 0.5f).rotation(angleDeg));
-        thread.setAllowHitTest(false);
-        return thread;
     }
 
     UIElement hoverTrailOverlay(SlotAtlasGraphView atlas) {
@@ -987,12 +628,9 @@ final class IslandChestBuilder {
     }
 
     /**
-     * Resolves the fill color for a chest tile. Phase 3 of
-     * {@code docs/plans/storage-areas.md}: tiles inherit their area's
-     * color so the player can see at a glance which base a chest
-     * belongs to. Falls back to the legacy storage-tile fill when the
-     * tile's area cannot be resolved (shouldn't happen post-migration
-     * but the projection doesn't hard-fail on dangling area refs).
+     * Resolves the fill color for a chest tile. Tiles inherit their
+     * area's color so the player can see at a glance which base a chest
+     * belongs to.
      */
     private int chestTileFill(SlotWorkspaceViewModel.ClaimedChestTile tile) {
         SlotWorkspaceViewModel.StorageAreaSnapshot area = host.viewModel.storageArea(tile.areaId());

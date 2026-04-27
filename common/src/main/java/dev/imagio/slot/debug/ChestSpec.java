@@ -7,10 +7,22 @@ public record ChestSpec(
         String linkedIslandId,
         List<ChestContentEntry> contents,
         int deltaX,
-        int deltaZ
+        int deltaZ,
+        String areaLabel
 ) {
     public ChestSpec {
         contents = contents == null ? List.of() : List.copyOf(contents);
+        areaLabel = areaLabel == null ? "" : areaLabel.trim();
+    }
+
+    public ChestSpec(
+            int index,
+            String linkedIslandId,
+            List<ChestContentEntry> contents,
+            int deltaX,
+            int deltaZ
+    ) {
+        this(index, linkedIslandId, contents, deltaX, deltaZ, "");
     }
 
     public boolean isLinked() {

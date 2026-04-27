@@ -41,17 +41,6 @@ final class WorkspaceDrags {
     ) {
     }
 
-    record StorageZoneBounds(int left, int top, int width, int height) {
-    }
-
-    record StorageZoneDrag(
-            int grabOffsetX,
-            int grabOffsetY,
-            int originX,
-            int originY
-    ) {
-    }
-
     record KitSlotDrag(
             String kitId,
             int pageIndex,

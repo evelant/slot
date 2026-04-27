@@ -6,13 +6,10 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.StorageZoneBounds;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
-
-import java.util.Set;
 
 final class AtlasPanelBuilder {
     private final SlotWorkspaceUiController host;
@@ -25,9 +22,9 @@ final class AtlasPanelBuilder {
         UIElement body = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .flex(1)
-                .gapAll(8)
-                .flexDirection(FlexDirection.ROW));
-        body.addChildren(atlasPanel());
+                .gapAll(0)
+                .flexDirection(FlexDirection.COLUMN));
+        body.addChildren(host.storagePanel.body(), atlasPanel());
         return body;
     }
 
@@ -42,7 +39,7 @@ final class AtlasPanelBuilder {
     void createPersistentAtlasPanel() {
         UIElement panel = panel(PANEL).layout(layout -> layout
                 .flex(1)
-                .heightPercent(100)
+                .widthPercent(100)
                 .paddingAll(0));
         host.clearSelectionOnDirectClick(panel);
 
@@ -106,7 +103,7 @@ final class AtlasPanelBuilder {
         // (host.atlasView, host.hoverTrailOverlayElement) will be re-added below.
         panel.clearAllChildren();
 
-        // Refresh atlas host.content (islands/cards/chest tiles/link threads) in-place.
+        // Refresh atlas host.content (islands/cards) in-place.
         atlas.clearAllContentChildren();
         buildAtlas(atlas);
 
@@ -141,65 +138,6 @@ final class AtlasPanelBuilder {
     }
 
     void buildAtlas(SlotAtlasGraphView atlas) {
-        // Phase 3 of docs/plans/storage-areas.md: render storage areas as
-        // first-class atlas containers. Each area is either expanded (its
-        // chest tiles render with a per-area backdrop + header, link
-        // threads draw normally) or collapsed (a small chip stands in).
-        java.util.Set<String> visibleStorageIds = new java.util.HashSet<>();
-        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : host.viewModel.storageAreas()) {
-            boolean expanded = area.shouldExpand() || host.expandedAreaIds.contains(area.areaId());
-            if (expanded) {
-                StorageZoneBounds bounds = host.islandChest.storageAreaBounds(area);
-                if (bounds != null) {
-                    atlas.addContentChild(host.islandChest.storageZoneBackdrop(bounds));
-                    atlas.addContentChild(host.islandChest.storageAreaHeader(bounds, atlas, area));
-                }
-                for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
-                    visibleStorageIds.add(tile.storageId());
-                }
-            }
-        }
-        // Link threads + arrows go in FIRST. LDLib's draw order is
-        // child-insertion order (UIElement.drawContents iterates the
-        // children list, not getSortedChildren — zIndex only affects
-        // hit testing). So anything drawn later sits visually on top.
-        // Threads + dim threads only render when the source chest is
-        // visible (its area is expanded); when the area is collapsed
-        // into a chip, the chip itself stands in for the affordance.
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            if (!tile.proximate() || !visibleStorageIds.contains(tile.storageId())) {
-                continue;
-            }
-            for (String islandId : tile.linkedIslandIds()) {
-                SlotWorkspaceViewModel.AtlasIsland island = host.viewModel.island(islandId);
-                if (island == null) {
-                    continue;
-                }
-                host.islandChest.addLinkAffordances(atlas, tile, island);
-            }
-        }
-        host.dimLinkThreadsByIsland.clear();
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            if (tile.proximate() || !visibleStorageIds.contains(tile.storageId())) {
-                continue;
-            }
-            for (String linkedIslandId : tile.linkedIslandIds()) {
-                SlotWorkspaceViewModel.AtlasIsland linked = host.viewModel.island(linkedIslandId);
-                if (linked == null) {
-                    continue;
-                }
-                UIElement dimThread = host.islandChest.dimLinkThread(tile, linked);
-                if (dimThread == null) {
-                    continue;
-                }
-                dimThread.setVisible(linkedIslandId.equals(host.hoveredIslandId));
-                host.dimLinkThreadsByIsland
-                        .computeIfAbsent(linkedIslandId, k -> new java.util.ArrayList<>())
-                        .add(dimThread);
-                atlas.addContentChild(dimThread);
-            }
-        }
-        Set<String> highlightedIslandIds = host.islandChest.highlightedIslandIdsFromProximateTiles();
         for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
             UIElement islandPanelEl = host.islandChest.islandPanel(atlas, island);
             atlas.addContentChild(islandPanelEl);
@@ -207,31 +145,9 @@ final class AtlasPanelBuilder {
             if (island.carriedCount() > 0) {
                 atlas.addContentChild(host.islandChest.islandCarriedBadge(atlas, island));
             }
-        }
-        for (String islandId : highlightedIslandIds) {
-            SlotWorkspaceViewModel.AtlasIsland island = host.viewModel.island(islandId);
-            if (island != null) {
-                host.islandChest.addIslandHighlightFrame(atlas, island);
-            }
-        }
-        // Render chest tiles for expanded areas, and chips for collapsed.
-        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : host.viewModel.storageAreas()) {
-            boolean expanded = area.shouldExpand() || host.expandedAreaIds.contains(area.areaId());
-            if (expanded) {
-                for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
-                    atlas.addContentChild(host.islandChest.chestTilePanel(atlas, tile));
-                }
-            } else {
-                atlas.addContentChild(host.islandChest.storageAreaChip(atlas, area));
-            }
-        }
-        // Backwards-compat: if a save somehow has chest tiles outside any
-        // area (shouldn't happen post-Phase 1 migration, but the projection
-        // doesn't hard-fail on dangling area refs), still render them at
-        // their atlas position so the player can see + relabel them.
-        if (host.viewModel.storageAreas().isEmpty()) {
-            for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-                atlas.addContentChild(host.islandChest.chestTilePanel(atlas, tile));
+            UIElement presence = host.islandChest.islandPresenceStrip(island);
+            if (presence != null) {
+                atlas.addContentChild(presence);
             }
         }
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {

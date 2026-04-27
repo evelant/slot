@@ -14,7 +14,7 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter hotbarToAtlasEmitter;
     RPCEmitter moveIslandEmitter;
     RPCEmitter moveChestEmitter;
-    RPCEmitter moveStorageZoneEmitter;
+    RPCEmitter moveChestToAreaEmitter;
     RPCEmitter relabelChestEmitter;
     RPCEmitter linkChestEmitter;
     RPCEmitter unlinkChestEmitter;
@@ -100,10 +100,10 @@ final class WorkspaceRpcDispatcher {
                 Integer.class,
                 host.session::moveChest
         ));
-        moveStorageZoneEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
-                Integer.class,
-                Integer.class,
-                host.session::moveStorageZone
+        moveChestToAreaEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                host.session::moveChestToArea
         ));
         relabelChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
@@ -672,12 +672,12 @@ final class WorkspaceRpcDispatcher {
         host.rebuild();
     }
 
-    void sendMoveStorageZone(int deltaX, int deltaY) {
-        if (deltaX == 0 && deltaY == 0) {
+    void sendMoveChestToArea(String storageId, String areaId) {
+        if (storageId == null || storageId.isBlank() || areaId == null || areaId.isBlank()) {
             return;
         }
-        boolean sent = moveStorageZoneEmitter != null && moveStorageZoneEmitter.send(deltaX, deltaY);
-        host.localStatus.set(sent ? "storage zone moved" : "storage zone move unavailable");
+        boolean sent = moveChestToAreaEmitter != null && moveChestToAreaEmitter.send(storageId, areaId);
+        host.localStatus.set(sent ? "chest reassigned" : "reassign unavailable");
         host.rebuild();
     }
 

@@ -59,10 +59,11 @@ public final class AtlasLayout {
             atlasIslandsById.put(island.islandId(), island);
         }
 
-        // Group atlas items by island, preserving the order they appear in the view model.
-        // That order IS the canonical ordinal order for Phase 2.2 — the server-side
-        // accumulator sorts by (islandId, assignment.ordinal, name) before emitting.
-        LinkedHashMap<String, List<ItemRow>> rowsByIsland = new LinkedHashMap<>();
+        // First pass: collect per-island items in canonical order plus
+        // record which items are carried so the next pass can shrink
+        // trailing ghosts. Canonical order = the order viewModel emits
+        // them in (server already sorted by (islandId, ordinal, name)).
+        LinkedHashMap<String, List<SlotWorkspaceViewModel.AtlasItem>> itemsByIsland = new LinkedHashMap<>();
         for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
             if (item == null) {
                 continue;
@@ -71,22 +72,50 @@ public final class AtlasLayout {
             if (!atlasIslandsById.containsKey(islandId)) {
                 continue;
             }
-            ItemIdentity identity = item.identity().toIdentity();
-            float relevance = identity == null
-                    ? 0f
-                    : RelevanceScore.compute(identity, ctx, chain).value();
-            int width = cfg.liftedWidth(relevance);
-            int height = cfg.liftedHeight(relevance);
-            // Non-carried items (ghosts: homed identities not in any
-            // carry source) shrink past the relevance baseline so the
-            // carried items dominate the visual hierarchy. Floor at the
-            // gap so cells stay clickable.
-            if (!item.carried()) {
-                width = Math.max(cfg.cardGap() + 1, Math.round(width * cfg.ghostShrinkFactor()));
-                height = Math.max(cfg.cardGap() + 1, Math.round(height * cfg.ghostShrinkFactor()));
+            itemsByIsland.computeIfAbsent(islandId, k -> new ArrayList<>()).add(item);
+        }
+
+        // Second pass: build cell rows. Ghosts after the last carried in
+        // canonical order (or every ghost when the island has no carried
+        // items at all) shrink to a pip so a row of trailing ghosts
+        // packs into a thin strip and an island that's purely ghosts
+        // collapses to header-only. Ghosts interleaved between carrieds
+        // keep the regular ghostShrinkFactor so the visual ordering
+        // stays legible.
+        LinkedHashMap<String, List<ItemRow>> rowsByIsland = new LinkedHashMap<>();
+        java.util.Set<String> ghostOnlyIslands = new java.util.HashSet<>();
+        for (Map.Entry<String, List<SlotWorkspaceViewModel.AtlasItem>> entry : itemsByIsland.entrySet()) {
+            List<SlotWorkspaceViewModel.AtlasItem> items = entry.getValue();
+            int lastCarriedIndex = -1;
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).carried()) {
+                    lastCarriedIndex = i;
+                }
             }
-            rowsByIsland.computeIfAbsent(islandId, k -> new ArrayList<>())
-                    .add(new ItemRow(item.identity(), relevance, width, height));
+            if (lastCarriedIndex < 0) {
+                ghostOnlyIslands.add(entry.getKey());
+            }
+            ArrayList<ItemRow> rows = new ArrayList<>(items.size());
+            for (int i = 0; i < items.size(); i++) {
+                SlotWorkspaceViewModel.AtlasItem item = items.get(i);
+                ItemIdentity identity = item.identity().toIdentity();
+                float relevance = identity == null
+                        ? 0f
+                        : RelevanceScore.compute(identity, ctx, chain).value();
+                int width = cfg.liftedWidth(relevance);
+                int height = cfg.liftedHeight(relevance);
+                if (!item.carried()) {
+                    boolean trailing = i > lastCarriedIndex;
+                    float shrink = trailing
+                            ? cfg.ghostShrinkFactor() * cfg.trailingGhostExtraShrink()
+                            : cfg.ghostShrinkFactor();
+                    int floor = trailing ? cfg.cardGap() + 1 : cfg.cardGap() + 1;
+                    width = Math.max(floor, Math.round(width * shrink));
+                    height = Math.max(floor, Math.round(height * shrink));
+                }
+                rows.add(new ItemRow(item.identity(), relevance, width, height));
+            }
+            rowsByIsland.put(entry.getKey(), rows);
         }
 
         // Per-island packing: compute the chrome bounds (auto-square)
@@ -95,7 +124,11 @@ public final class AtlasLayout {
         // already-packed footprints.
         LinkedHashMap<String, IslandPack> packsById = new LinkedHashMap<>();
         for (Map.Entry<String, SlotWorkspaceViewModel.AtlasIsland> entry : atlasIslandsById.entrySet()) {
-            packsById.put(entry.getKey(), packIsland(rowsByIsland.getOrDefault(entry.getKey(), List.of()), cfg));
+            String islandId = entry.getKey();
+            packsById.put(islandId, packIsland(
+                    rowsByIsland.getOrDefault(islandId, List.of()),
+                    cfg,
+                    ghostOnlyIslands.contains(islandId)));
         }
 
         // Atlas-level de-overlap: islands keep their authored top-left
@@ -273,7 +306,7 @@ public final class AtlasLayout {
         return layout(viewModel, ctx, contributors, config);
     }
 
-    private static IslandPack packIsland(List<ItemRow> rows, AtlasLayoutConfig cfg) {
+    private static IslandPack packIsland(List<ItemRow> rows, AtlasLayoutConfig cfg, boolean ghostOnly) {
         ArrayList<WeightedGridPacker.Cell> cells = new ArrayList<>(rows.size());
         long totalCellArea = 0L;
         for (ItemRow row : rows) {
@@ -310,11 +343,15 @@ public final class AtlasLayout {
                 ? cfg.minIslandHeight()
                 : maxBottom + cfg.islandPaddingY();
 
-        // Floor at the configured min so very-light islands still have
-        // chrome to grab; the packer otherwise sizes the chrome to its
-        // packed content.
-        int finalWidth = Math.max(cfg.minIslandWidth(), packedWidth);
-        int finalHeight = Math.max(cfg.minIslandHeight(), packedHeight);
+        // Ghost-only islands collapse to header-only chrome: the body
+        // shrinks to the configured min strip so only the title bar
+        // reads. Trailing-ghost shrink already keeps their packed
+        // height tight, so finalHeight tracks the actual packed content
+        // floored at the smaller ghost-only minimum.
+        int minWidth = cfg.minIslandWidth();
+        int minHeight = ghostOnly ? cfg.ghostOnlyIslandMinHeight() : cfg.minIslandHeight();
+        int finalWidth = Math.max(minWidth, packedWidth);
+        int finalHeight = Math.max(minHeight, packedHeight);
         return new IslandPack(finalWidth, finalHeight, items);
     }
 
